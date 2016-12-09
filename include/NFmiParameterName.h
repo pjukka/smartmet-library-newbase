@@ -1316,7 +1316,7 @@ enum FmiParameterName
   kFmiTemperatureSeaF1,
   kFmiTemperatureSeaF0,
 
-  kFmiPressureF100 = 4603,
+  kFmiPressureF100 = 4613,
   kFmiPressureF99,
   kFmiPressureF97_5,
   kFmiPressureF95,
@@ -1328,7 +1328,7 @@ enum FmiParameterName
   kFmiPressureF1,
   kFmiPressureF0,
 
-  kFmiTotalColumnWaterF100 = 4614,
+  kFmiTotalColumnWaterF100 = 4624,
   kFmiTotalColumnWaterF99,
   kFmiTotalColumnWaterF97_5,
   kFmiTotalColumnWaterF95,
@@ -1340,7 +1340,7 @@ enum FmiParameterName
   kFmiTotalColumnWaterF1,
   kFmiTotalColumnWaterF0,
 
-  kFmiSnowAccumulationF100 = 4625,
+  kFmiSnowAccumulationF100 = 4635,
   kFmiSnowAccumulationF99,
   kFmiSnowAccumulationF97_5,
   kFmiSnowAccumulationF95,
@@ -1352,7 +1352,7 @@ enum FmiParameterName
   kFmiSnowAccumulationF1,
   kFmiSnowAccumulationF0,
 
-  kFmiGeopHeightF100 = 4636,
+  kFmiGeopHeightF100 = 4646,
   kFmiGeopHeightF99,
   kFmiGeopHeightF97_5,
   kFmiGeopHeightF95,
@@ -1364,7 +1364,7 @@ enum FmiParameterName
   kFmiGeopHeightF1,
   kFmiGeopHeightF0,
 
-  kFmiSpecificHumidityF100 = 4647,
+  kFmiSpecificHumidityF100 = 4657,
   kFmiSpecificHumidityF99,
   kFmiSpecificHumidityF97_5,
   kFmiSpecificHumidityF95,
