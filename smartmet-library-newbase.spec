@@ -1,9 +1,11 @@
-%define LIBNAME newbase
+%define DIRNAME newbase
+%define LIBNAME smartmet-%{DIRNAME}
+%define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
-Name: libsmartmet-%{LIBNAME}
-Version: 16.11.18
+Name: %{SPECNAME}
+Version: 16.12.19
 Release: 1%{?dist}.fmi
-License: FMI
+License: MIT
 Group: Development/Libraries
 URL: http://www.weatherproof.fi
 Source: %{name}.tar.gz
@@ -19,6 +21,8 @@ Requires: boost-iostreams
 Requires: boost-system
 Requires: geos >= 3.4.2
 Provides: %{LIBNAME}
+Obsoletes: libsmartmet-newbase < 16.12.19
+Obsoletes: libsmartmet-newbase-debuginfo < 16.12.19
 
 %description
 FMI newbase library
@@ -26,37 +30,41 @@ FMI newbase library
 %prep
 rm -rf $RPM_BUILD_ROOT
 
-%setup -q -n %{LIBNAME}
+%setup -q -n %{DIRNAME}
  
 %build
 make %{_smp_mflags}
 
 %install
-%makeinstall includedir=%{buildroot}%{_includedir}/smartmet
+%makeinstall
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(0775,root,root,0775)
-%{_libdir}/libsmartmet_%{LIBNAME}.so
+%{_libdir}/libsmartmet-%{DIRNAME}.so
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%package -n libsmartmet-%{LIBNAME}-devel
+%package -n %{SPECNAME}-devel
 Summary: FMI newbase development files
-Provides: %{LIBNAME}-devel
+Provides: %{SPECNAME}-devel
+Obsoletes: libsmartmet-newbase-devel < 16.12.19
 
-%description -n libsmartmet-%{LIBNAME}-devel
+%description -n %{SPECNAME}-devel
 FMI newbase development files
 
-%files -n libsmartmet-%{LIBNAME}-devel
+%files -n %{SPECNAME}-devel
 %defattr(0664,root,root,0775)
-%{_includedir}/smartmet/%{LIBNAME}
-
+%{_includedir}/smartmet/%{DIRNAME}
 
 %changelog
+* Mon Dec 19 2016 Mika Heiskanen <mika.heiskanen@fmi.fi> - 16.12.19-1.fmi
+- Added Visibility2 (post processed)
+- Added fractile parameters
+
 * Fri Nov 18 2016 Mika Heiskanen <mika.heiskanen@fmi.fi> - 16.11.18-1.fmi
 - Added new Copernicus parameters: kFmiFrostLayerTop and kFmiFrostLayerBottom
 

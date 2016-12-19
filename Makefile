@@ -1,4 +1,7 @@
-LIB = newbase
+SUBNAME = newbase
+LIB = smartmet-$(SUBNAME)
+SPEC = smartmet-library-$(SUBNAME)
+INCDIR = smartmet/$(SUBNAME)
 
 # Installation directories
 
@@ -17,7 +20,7 @@ else
 endif
 
 bindir = $(PREFIX)/bin
-includedir = $(PREFIX)/include/smartmet
+includedir = $(PREFIX)/include
 datadir = $(PREFIX)/share
 objdir = obj
 
@@ -78,14 +81,11 @@ LIBS = -L$(libdir) \
 # rpm variables
 
 rpmsourcedir = /tmp/$(shell whoami)/rpmbuild
-
-rpmerr = "There's no spec file ($(LIB).spec). RPM wasn't created. Please make a spec file or copy and rename it into $(LIB).spec"
-
 rpmexcludevcs := $(shell tar --help | grep -m 1 -o -- '--exclude-vcs')
 
 # What to install
 
-LIBFILE = libsmartmet_$(LIB).so
+LIBFILE = libsmartmet-$(SUBNAME).so
 
 # How to install
 
@@ -135,14 +135,15 @@ format:
 	clang-format -i -style=file include/*.h source/*.cpp test/*.cpp
 
 install:
-	@mkdir -p $(includedir)/$(LIB)
+	@mkdir -p $(includedir)/$(INCDIR)
 	@list='$(HDRS)'; \
 	for hdr in $$list; do \
 	  HDR=$$(basename $$hdr); \
-	  echo $(INSTALL_DATA) $$hdr $(includedir)/$(LIB)/$$HDR; \
-	  $(INSTALL_DATA) $$hdr $(includedir)/$(LIB)/$$HDR; \
+	  echo $(INSTALL_DATA) $$hdr $(includedir)/$(INCDIR)/$$HDR; \
+	  $(INSTALL_DATA) $$hdr $(includedir)/$(INCDIR)/$$HDR; \
 	done
 	@mkdir -p $(libdir)
+	echo $(INSTALL_PROG) $(LIBFILE) $(libdir)/$(LIBFILE)
 	$(INSTALL_PROG) $(LIBFILE) $(libdir)/$(LIBFILE)
 
 test:
@@ -152,16 +153,16 @@ objdir:
 	@mkdir -p $(objdir)
 
 rpm: clean
-	if [ -e $(LIB).spec ]; \
+	if [ -e $(SPEC).spec ]; \
 	then \
-	  smartspecupdate $(LIB).spec ; \
+	  smartspecupdate $(SPEC).spec ; \
 	  mkdir -p $(rpmsourcedir) ; \
-	  tar $(rpmexcludevcs) -C ../ -cf $(rpmsourcedir)/libsmartmet-$(LIB).tar $(LIB) ; \
-	  gzip -f $(rpmsourcedir)/libsmartmet-$(LIB).tar ; \
-	  TAR_OPTIONS=--wildcards rpmbuild -v -ta $(rpmsourcedir)/libsmartmet-$(LIB).tar.gz ; \
-	  rm -f $(rpmsourcedir)/libsmartmet-$(LIB).tar.gz ; \
+	  tar $(rpmexcludevcs) -C ../ -cf $(rpmsourcedir)/$(SPEC).tar $(SUBNAME) ; \
+	  gzip -f $(rpmsourcedir)/$(SPEC).tar ; \
+	  TAR_OPTIONS=--wildcards rpmbuild -v -ta $(rpmsourcedir)/$(SPEC).tar.gz ; \
+	  rm -f $(rpmsourcedir)/$(SPEC).tar.gz ; \
 	else \
-	  echo $(rpmerr); \
+	  echo $(SPEC).spec file missing; \
 	fi;
 
 .SUFFIXES: $(SUFFIXES) .cpp
