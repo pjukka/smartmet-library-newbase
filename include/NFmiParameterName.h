@@ -1376,6 +1376,11 @@ enum FmiParameterName
   kFmiSpecificHumidityF1,
   kFmiSpecificHumidityF0,
 
+  kFmiPressureF90 = 4668,
+  kFmiPressureF75,
+  kFmiPressureF25,
+  kFmiPressureF10,
+
   /* START SOUNDING INDEX PARAMETERS */
 
   /*

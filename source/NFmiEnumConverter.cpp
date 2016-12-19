@@ -812,9 +812,13 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("PressureF1", kFmiPressureF1);
   PARAMINSERT("PressureF2.5", kFmiPressureF2_5);
   PARAMINSERT("PressureF5", kFmiPressureF5);
+  PARAMINSERT("PressureF10", kFmiPressureF10);
   PARAMINSERT("PressureF12.5", kFmiPressureF12_5);
+  PARAMINSERT("PressureF25", kFmiPressureF25);
   PARAMINSERT("PressureF50", kFmiPressureF50);
+  PARAMINSERT("PressureF75", kFmiPressureF75);
   PARAMINSERT("PressureF87.5", kFmiPressureF87_5);
+  PARAMINSERT("PressureF90", kFmiPressureF90);
   PARAMINSERT("PressureF95", kFmiPressureF95);
   PARAMINSERT("PressureF97.5", kFmiPressureF97_5);
   PARAMINSERT("PressureF99", kFmiPressureF99);
