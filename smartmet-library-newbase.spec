@@ -10,16 +10,16 @@ Group: Development/Libraries
 URL: http://www.weatherproof.fi
 Source: %{name}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires: boost-devel
+BuildRequires: boost-devel = 1.55
 BuildRequires: bzip2-devel
 BuildRequires: geos-devel >= 3.4.2
 BuildRequires: gdal-devel
 BuildRequires: scons
-Requires: boost-date-time
-Requires: boost-regex
-Requires: boost-filesystem
-Requires: boost-iostreams
-Requires: boost-system
+Requires: boost-date-time = 1.55
+Requires: boost-regex = 1.55
+Requires: boost-filesystem = 1.55
+Requires: boost-iostreams = 1.55
+Requires: boost-system = 1.55
 Requires: geos >= 3.4.2
 Provides: %{LIBNAME}
 Obsoletes: libsmartmet-newbase < 16.12.19
