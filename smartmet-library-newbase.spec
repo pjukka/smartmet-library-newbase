@@ -14,12 +14,12 @@ BuildRequires: boost-devel = 1.55
 BuildRequires: bzip2-devel
 BuildRequires: geos-devel >= 3.4.2
 BuildRequires: gdal-devel
-BuildRequires: scons
 Requires: boost-date-time = 1.55
 Requires: boost-regex = 1.55
 Requires: boost-filesystem = 1.55
 Requires: boost-iostreams = 1.55
 Requires: boost-system = 1.55
+Requires: gdal
 Requires: geos >= 3.4.2
 Provides: %{LIBNAME}
 Obsoletes: libsmartmet-newbase < 16.12.19
