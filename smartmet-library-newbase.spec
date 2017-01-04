@@ -11,6 +11,7 @@ URL: http://www.weatherproof.fi
 Source: %{name}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: boost-devel
+BuildRequires: bzip2-devel
 BuildRequires: geos-devel >= 3.4.2
 BuildRequires: gdal-devel
 BuildRequires: scons
