@@ -7,7 +7,7 @@ Version: 16.12.19
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
-URL: http://www.weatherproof.fi
+URL: https://github.com/fmidev/smartmet-library-newbase
 Source: %{name}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: boost-devel = 1.55
