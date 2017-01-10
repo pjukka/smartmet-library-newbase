@@ -1183,9 +1183,9 @@ enum FmiParameterName
 
   kFmiAreaOfRisk = 1228,
 
-  kFmiCloudBase2, // Second parameter for cloud base height (post processed with himan)
-  kFmiFrostLayerTop,    // Frost layer top measured from ground
-  kFmiFrostLayerBottom, // Frost layer bottom
+  kFmiCloudBase2,        // Second parameter for cloud base height (post processed with himan)
+  kFmiFrostLayerTop,     // Frost layer top measured from ground
+  kFmiFrostLayerBottom,  // Frost layer bottom
 
   kFmiVisibility2 = 1232,
 
@@ -1457,6 +1457,10 @@ enum FmiParameterName
   kFmiVolumetricSoilWaterLayer4,
   kFmiHighVegetationType,  // grib_api: TypeOfHighVegetation
   kFmiLowVegetationType,   // grib_api: TypeOfLowVegetation
+
+  // WindMill icing forecasts (Karoliina Hämäläinen, SOL-4545)
+  kFmiIcingRate = 4820,
+  kFmiIceMass = 4821,
 
   // Some value larger than any other enum value
   kFmiLastParameter = 6000

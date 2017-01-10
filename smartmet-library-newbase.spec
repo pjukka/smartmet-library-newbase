@@ -3,22 +3,22 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 16.12.19
+Version: 17.1.10
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
 URL: https://github.com/fmidev/smartmet-library-newbase
 Source: %{name}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires: boost-devel = 1.55
+BuildRequires: boost-devel >= 1.55, boost-devel < 1.56
 BuildRequires: bzip2-devel
 BuildRequires: geos-devel >= 3.4.2
 BuildRequires: gdal-devel
-Requires: boost-date-time = 1.55
-Requires: boost-regex = 1.55
-Requires: boost-filesystem = 1.55
-Requires: boost-iostreams = 1.55
-Requires: boost-system = 1.55
+Requires: boost-date-time >= 1.55, boost-date-time < 1.56
+Requires: boost-regex >= 1.55, boost-regex < 1.56
+Requires: boost-filesystem >= 1.55, boost-filesystem < 1.56
+Requires: boost-iostreams >= 1.55, boost-iostreams < 1.56
+Requires: boost-system >= 1.55, boost-system < 1.56
 Requires: gdal
 Requires: geos >= 3.4.2
 Provides: %{LIBNAME}
@@ -62,6 +62,10 @@ FMI newbase development files
 %{_includedir}/smartmet/%{DIRNAME}
 
 %changelog
+* Tue Jan 10 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.1.10-1.fmi
+- New parameter IcingRate [g/h] for wind mill icing forecasts
+- New parameter IceMass [kg] for wind mill icing forecasts
+
 * Mon Dec 19 2016 Mika Heiskanen <mika.heiskanen@fmi.fi> - 16.12.19-1.fmi
 - Added Visibility2 (post processed)
 - Added fractile parameters

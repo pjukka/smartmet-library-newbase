@@ -567,10 +567,12 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("IceCoverF100", kFmiIceCoverF100);
   PARAMINSERT("IceDegreeOfRidging", kFmiIceDegreeOfRidging);
   PARAMINSERT("IceDirection", kFmiIceDirection);
+  PARAMINSERT("IceMass", kFmiIceMass);
   PARAMINSERT("IceMaxThickness", kFmiIceMaxThickness);
   PARAMINSERT("IceMinThickness", kFmiIceMinThickness);
   PARAMINSERT("IceSpeed", kFmiIceSpeed);
   PARAMINSERT("IceThickness", kFmiIceThickness);
+  PARAMINSERT("IcingRate", kFmiIcingRate);
   PARAMINSERT("EastwardIceVelocity", kFmiIceVelocityU);
   PARAMINSERT("NorthwardIceVelocity", kFmiIceVelocityV);
   PARAMINSERT("Icing", kFmiIcing);
