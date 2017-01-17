@@ -18,7 +18,7 @@ INCLUDES = \
 	-I /usr/include/smartmet \
 	-I .
 
-LIBS =  ../libsmartmet_newbase.so \
+LIBS =  ../libsmartmet-newbase.so \
 	-lboost_date_time \
 	-lboost_regex \
 	-lboost_filesystem \
@@ -38,6 +38,6 @@ test: $(PROG)
 	./$$prog; \
 	done
 
-$(PROG) : % : %.cpp ../libsmartmet_newbase.so
+$(PROG) : % : %.cpp ../libsmartmet-newbase.so
 	$(CC) $(CFLAGS) -o $@ $@.cpp $(INCLUDES) $(LIBS)
 
