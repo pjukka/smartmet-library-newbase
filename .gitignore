@@ -2,4 +2,4 @@
 *Test
 obj
 *.plist
-libsmartmet_newbase*.so
+*.so
