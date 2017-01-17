@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.1.10
+Version: 17.1.17
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -62,6 +62,9 @@ FMI newbase development files
 %{_includedir}/smartmet/%{DIRNAME}
 
 %changelog
+* Tue Jan 17 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.1.17-1.fmi
+- New parameters for air pollutant concentrations
+
 * Tue Jan 10 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.1.10-1.fmi
 - New parameter IcingRate [g/h] for wind mill icing forecasts
 - New parameter IceMass [kg] for wind mill icing forecasts
