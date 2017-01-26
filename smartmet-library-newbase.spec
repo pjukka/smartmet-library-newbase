@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.1.17
+Version: 17.1.26
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -62,6 +62,9 @@ FMI newbase development files
 %{_includedir}/smartmet/%{DIRNAME}
 
 %changelog
+* Thu Jan 26 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.1.26-1.fmi
+- Added methods for calculating a hash value for the grid defined in querydata
+
 * Tue Jan 17 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.1.17-1.fmi
 - New parameters for air pollutant concentrations
 

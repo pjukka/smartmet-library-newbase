@@ -13,6 +13,7 @@
 
 #include "NFmiArea.h"
 #include "NFmiAreaFactory.h"
+#include <boost/functional/hash.hpp>
 
 // ----------------------------------------------------------------------
 /*!
@@ -393,8 +394,8 @@ double NFmiArea::FixLongitude(double theLon) const
     if (theLon > 180.00000001)  // Tämä ei voi olla tasan 180, koska SmartMet maailman rajaviivat
                                 // shapessa (maps\\shapes\\ne_10m_admin_0_countries) ja niiden
                                 // piirto imagine-kirjastolla menee jossain kohdissa sekaisin
-                                // reunoilla, koska siellä on käytetty vähän yli 180-pituuspiirin
-                                // meneviä arvoja Tyynenmeren 180 asteen pituuspiirin reunoilla
+      // reunoilla, koska siellä on käytetty vähän yli 180-pituuspiirin
+      // meneviä arvoja Tyynenmeren 180 asteen pituuspiirin reunoilla
       return theLon - 360;
     else
       return theLon;
@@ -450,4 +451,16 @@ NFmiArea *NFmiArea::DoForcePacificFix(void) const
   return 0;
 }
 
-// ======================================================================
+// ----------------------------------------------------------------------
+/*!
+ * \brief Return hash value for the base NFmiArea components
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiArea::HashValue() const
+{
+  std::size_t hash = itsXYRectArea.HashValue();
+  boost::hash_combine(hash, boost::hash_value(fPacificView));
+  boost::hash_combine(hash, boost::hash_value(WKT()));
+  return hash;
+}

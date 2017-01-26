@@ -13,6 +13,7 @@
 // ======================================================================
 
 #include "NFmiGridBase.h"
+#include <boost/functional/hash.hpp>
 #include <algorithm>
 #include <iostream>
 #include <cstring>
@@ -1329,4 +1330,24 @@ bool NFmiGridBase::operator==(const NFmiGridBase &theGrid) const
   }
 }
 
-// ======================================================================
+// ----------------------------------------------------------------------
+/*!
+ * \brief Hash value for the grid definition
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiGridBase::HashValue() const
+{
+  std::size_t hash = 0;
+
+  boost::hash_combine(hash, boost::hash_value(itsStartingCorner));
+  boost::hash_combine(hash, boost::hash_value(itsInterpolationMethod));
+  boost::hash_combine(hash, boost::hash_value(itsXNumber));
+  boost::hash_combine(hash, boost::hash_value(itsYNumber));
+  boost::hash_combine(hash, boost::hash_value(itsFirstX));
+  boost::hash_combine(hash, boost::hash_value(itsFirstY));
+  boost::hash_combine(hash, boost::hash_value(itsLastX));
+  boost::hash_combine(hash, boost::hash_value(itsLastY));
+
+  return hash;
+}

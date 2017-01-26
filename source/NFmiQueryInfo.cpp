@@ -1426,8 +1426,8 @@ float NFmiQueryInfo::InterpolatedValue_old(const NFmiPoint &theLatLonPoint)
         windInterpolator.operator()(tlWS, tlWD, (1 - dx) * dy);
 
         theValue = static_cast<float>(windInterpolator.Direction());  // meit‰ kiinnostaa vain
-                                                                      // tuulen suunta (t‰m‰ pit‰‰
-                                                                      // tehd‰ jotenkin fiksummin)
+        // tuulen suunta (t‰m‰ pit‰‰
+        // tehd‰ jotenkin fiksummin)
         return theValue;
       }
       else if (param == kFmiWaveDirection)
@@ -2957,7 +2957,7 @@ bool NFmiQueryInfo::SetDescriptors(NFmiQueryInfo *theQueryInfo, bool fIgnoreLeve
 {
   bool returnValue = true;
   if (theQueryInfo->IsParamUsable())  // T‰llainen testaus, siksi, ett‰ ei ohjelma
-  {  // ei kaadu, jos ollaan resetiss‰.
+  {                                   // ei kaadu, jos ollaan resetiss‰.
     if (!Param(NFmiParam(theQueryInfo->Param().GetParam()->GetIdent())))
     {
       returnValue = false;
@@ -3244,7 +3244,7 @@ float NFmiQueryInfo::InterpolatedValueFromTimeBag(const NFmiMetTime &theTime, in
           {
             case kFmiTotalWindMS:
             {  // korjasin k‰ytt‰m‰‰n SetToWeightedMean-metodia, joka laskee u- ja v-komponenttien
-               // avulla
+              // avulla
               NFmiTotalWind resultWind(itsInfoVersion);
               NFmiTotalWind tempWind1(value1, kFmiPackedWind, itsInfoVersion);
               NFmiTotalWind tempWind2(value2, kFmiPackedWind, itsInfoVersion);
@@ -3294,8 +3294,8 @@ float NFmiQueryInfo::InterpolatedValueFromTimeBag(const NFmiMetTime &theTime, in
             windInterpolator.operator()(ws2, value2, (1 - offset1));
             returnValue = static_cast<float>(windInterpolator.Direction());  // meit‰ kiinnostaa
                                                                              // vain tuulen suunta
-                                                                             // (t‰m‰ pit‰‰ tehd‰
-                                                                             // jotenkin fiksummin)
+            // (t‰m‰ pit‰‰ tehd‰
+            // jotenkin fiksummin)
           }
           else if (param == kFmiWaveDirection)
           {
@@ -3550,7 +3550,7 @@ float NFmiQueryInfo::InterpolatedValueFromTimeList(const NFmiMetTime &theTime,
       float value2 = FindNearestNonMissingValueFromTimeList(
           theTime, theMaxMinuteRange, index2, time2, kForward);
       //			float value2 = PeekValue(Index(ParamIndex(), LocationIndex(),
-      //LevelIndex(), index2));
+      // LevelIndex(), index2));
       if (value1 != kFloatMissing && value1 != kTCombinedWeatherFloatMissing &&
           value2 != kFloatMissing && value2 != kTCombinedWeatherFloatMissing)
       {
@@ -3568,8 +3568,8 @@ float NFmiQueryInfo::InterpolatedValueFromTimeList(const NFmiMetTime &theTime,
           windInterpolator.operator()(ws2, value2, (1 - offset1));
           returnValue = static_cast<float>(windInterpolator.Direction());  // meit‰ kiinnostaa vain
                                                                            // tuulen suunta (t‰m‰
-                                                                           // pit‰‰ tehd‰ jotenkin
-                                                                           // fiksummin)
+          // pit‰‰ tehd‰ jotenkin
+          // fiksummin)
         }
         else
           returnValue = Interpolate(Param(), theTime, time1, time2, value1, value2);
@@ -3918,7 +3918,7 @@ static float InterpolateWindDir(std::vector<float> &theWSvalues,
   windInterpolator.operator()(theWSvalues[3], theWDvalues[theWDStartIndex + 3], (1 - dx) * dy);
 
   return static_cast<float>(windInterpolator.Direction());  // meit‰ kiinnostaa vain tuulen suunta
-                                                            // (t‰m‰ pit‰‰ tehd‰ jotenkin fiksummin)
+  // (t‰m‰ pit‰‰ tehd‰ jotenkin fiksummin)
 }
 
 float NFmiQueryInfo::CachedLocationInterpolatedValue(std::vector<float> &theValues,
@@ -4050,8 +4050,8 @@ float NFmiQueryInfo::CachedTimeInterpolatedValue(float theValue1,
           windInterpolator.operator()(ws1, theValue1, offset);
           windInterpolator.operator()(ws2, theValue2, (1 - offset));
           value = static_cast<float>(windInterpolator.Direction());  // meit‰ kiinnostaa vain tuulen
-                                                                     // suunta (t‰m‰ pit‰‰ tehd‰
-                                                                     // jotenkin fiksummin)
+          // suunta (t‰m‰ pit‰‰ tehd‰
+          // jotenkin fiksummin)
         }
         else if (theParId == kFmiWaveDirection)
           value =
@@ -4398,7 +4398,7 @@ float NFmiQueryInfo::InterpolatedValue(const NFmiPoint &theLatLonPoint,
         return static_cast<float>(tmpWeather.SubValue(param));
 
         //				return InterpolatedValueForCombinedParam(gpoint, xShift,
-        //yShift);
+        // yShift);
       }
       else if (interp == kByCombinedParam)
       {
@@ -4445,8 +4445,8 @@ float NFmiQueryInfo::InterpolatedValue(const NFmiPoint &theLatLonPoint,
           windInterpolator.operator()(tlWS, topLeftValue, (1 - dx) * dy);
 
           theValue = static_cast<float>(windInterpolator.Direction());  // meit‰ kiinnostaa vain
-                                                                        // tuulen suunta (t‰m‰ pit‰‰
-                                                                        // tehd‰ jotenkin fiksummin)
+          // tuulen suunta (t‰m‰ pit‰‰
+          // tehd‰ jotenkin fiksummin)
         }
         else if (param == kFmiWaveDirection)
         {
@@ -5441,4 +5441,14 @@ const NFmiParamBag &NFmiQueryInfo::ParamBag() const
   throw std::runtime_error("Attempt to access parambag from querydata without one would crash");
 }
 
-// ======================================================================
+// ----------------------------------------------------------------------
+/*!
+ * \brief Unique hash value for the grid
+ *
+ * Used by smartmet-server to cache LatLonCache objects and set them
+ * to newly read NFmiQueryData using SetLatLonCache so that MakeLatLonCache
+ * is not needed and data can be shared between similar objects.
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiQueryInfo::GridHashValue() const { return itsHPlaceDescriptor->HashValue(); }

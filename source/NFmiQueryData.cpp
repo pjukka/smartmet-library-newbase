@@ -20,8 +20,12 @@
 #include "NFmiFileSystem.h"
 #include "NFmiStationBag.h"
 #include "NFmiSaveBaseFactory.h"
+
+#include <boost/make_shared.hpp>
+
 #include <fstream>
 #include <fcntl.h>
+
 #ifndef UNIX
 #include <io.h>
 #endif
@@ -626,16 +630,36 @@ bool NFmiQueryData::Advise(FmiAdvice theAdvice)
 /*!
  * \brief Return the latlon cache
  *
- * Note: This must not be done in constructors, since brainstorm
+ * Note: This must not be done in constructors, since smartmet-server
  * reads thousands of radar files and holding the coordinates
  * for all of them would take > 10 GB.
  */
 // ----------------------------------------------------------------------
 
-const checkedVector<NFmiPoint> &NFmiQueryData::LatLonCache() const
+boost::shared_ptr<std::vector<NFmiPoint> > NFmiQueryData::LatLonCache() const
 {
-  boost::call_once(boost::bind(&NFmiQueryData::MakeLatLonCache, this), itsLatLonCacheFlag);
+  // If not already set by SetLatLonCache, initialize once
+  if (!itsLatLonCache)
+    boost::call_once(boost::bind(&NFmiQueryData::MakeLatLonCache, this), itsLatLonCacheFlag);
   return itsLatLonCache;
+}
+
+// ----------------------------------------------------------------------
+/*!
+ * \brief Set the latlon cache
+ *
+ * Note: smartmet-server caches the created LatLonCaches and uses this
+ *       method to set the same value for all equivalent grids.
+ *
+ * Note: We assume there is no race condition between LatLonCache()
+ *       SetLatLonCache(), code should always call the latter before
+ *       allowing anything else to request access to the cache.
+ */
+// ----------------------------------------------------------------------
+
+void NFmiQueryData::SetLatLonCache(boost::shared_ptr<std::vector<NFmiPoint> > newCache)
+{
+  itsLatLonCache = newCache;
 }
 
 // ----------------------------------------------------------------------
@@ -648,8 +672,18 @@ const checkedVector<NFmiPoint> &NFmiQueryData::LatLonCache() const
 
 void NFmiQueryData::MakeLatLonCache() const
 {
-  itsLatLonCache.clear();
-  HPlaceDesc()->CreateLatLonCache(itsLatLonCache);
+  itsLatLonCache = boost::make_shared<std::vector<NFmiPoint> >();
+  HPlaceDesc()->CreateLatLonCache(*itsLatLonCache);
 }
 
-// ======================================================================
+// ----------------------------------------------------------------------
+/*!
+ * \brief Unique hash value for the grid
+ *
+ * Used by smartmet-server to cache LatLonCache objects and set them
+ * to newly read NFmiQueryData using SetLatLonCache so that MakeLatLonCache
+ * is not needed and data can be shared between similar objects.
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiQueryData::GridHashValue() const { return itsQueryInfo->GridHashValue(); }

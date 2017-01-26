@@ -66,6 +66,8 @@ class _FMI_DLL NFmiLocationBag : public NFmiSize
 
   bool IsInside(const NFmiPoint &theLatLon, double theRadius) const;
 
+  std::size_t HashValue() const;
+
  protected:
   NFmiLocationBag(NFmiLocation **theLocationBag, unsigned long theNumberOfLocations);
 

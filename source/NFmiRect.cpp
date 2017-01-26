@@ -13,6 +13,7 @@
 // ======================================================================
 
 #include "NFmiRect.h"
+#include <boost/functional/hash.hpp>
 #include <fstream>
 #include <algorithm>
 
@@ -415,6 +416,19 @@ bool NFmiRect::Intersect(const NFmiRect &theRect) const
     return true;
   else
     return false;
+}
+
+// ----------------------------------------------------------------------
+/*!
+ * \brief Return hash value for the rectangle
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiRect::HashValue() const
+{
+  std::size_t hash = itsPlace.HashValue();
+  boost::hash_combine(hash, itsSize.HashValue());
+  return hash;
 }
 
 // ======================================================================

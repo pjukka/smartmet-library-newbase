@@ -19,6 +19,8 @@
 #include "NFmiLocationBag.h"
 #include "NFmiSaveBaseFactory.h"
 
+#include <boost/functional/hash.hpp>
+
 using namespace std;
 
 // ----------------------------------------------------------------------
@@ -955,7 +957,7 @@ const checkedVector<std::pair<int, double> > NFmiHPlaceDescriptor::NearestLocati
  */
 // ----------------------------------------------------------------------
 
-void NFmiHPlaceDescriptor::CreateLatLonCache(checkedVector<NFmiPoint> &v)
+void NFmiHPlaceDescriptor::CreateLatLonCache(std::vector<NFmiPoint> &v)
 {
   NFmiPoint point;
 
@@ -992,4 +994,19 @@ bool NFmiHPlaceDescriptor::IsInside(const NFmiPoint &theLatLon, double theRadius
     return itsGrid->IsInside(theLatLon);
 }
 
-// ======================================================================
+// ----------------------------------------------------------------------
+/*!
+ * \brief Return hash value for caching unique grids or sets of locations
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiHPlaceDescriptor::HashValue() const
+{
+  std::size_t hash = 0;
+
+  if (itsLocationBag != 0) boost::hash_combine(hash, itsLocationBag->HashValue());
+
+  if (itsGrid != 0) boost::hash_combine(hash, itsGrid->HashValue());
+
+  return hash;
+}

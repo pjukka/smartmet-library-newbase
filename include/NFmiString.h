@@ -85,6 +85,8 @@ class _FMI_DLL NFmiString : public NFmiSortable
   bool IsLessThan(const NFmiSortable &aFmiTest) const;
   bool IsEqual(const NFmiSortable &aFmiTest) const;
 
+  std::size_t HashValue() const;
+
  protected:
   void SizeCheck(unsigned long len) const;
 

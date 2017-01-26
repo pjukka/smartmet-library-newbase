@@ -19,9 +19,12 @@
 #include "NFmiStation.h"
 #include "NFmiArea.h"
 #include "NFmiRadarStation.h"
-#include <functional>
-
 #include "NFmiVersion.h"
+
+#include <boost/foreach.hpp>
+#include <boost/functional/hash.hpp>
+
+#include <functional>
 
 using namespace std;
 
@@ -624,6 +627,24 @@ bool NFmiLocationBag::IsInside(const NFmiPoint &theLatLon, double theRadius) con
   // We'll ignore this result, we just want to know if there is one
   NFmiNearTreeLocation result;
   return itsNearTree.NearestPoint(result, searchloc, cordlimit);
+}
+
+// ----------------------------------------------------------------------
+/*!
+ * \brief Return hash value for the set of locations
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiLocationBag::HashValue() const
+{
+  std::size_t hash = 0;
+
+  BOOST_FOREACH (NFmiLocation *location, itsLocations)
+  {
+    if (location != 0) boost::hash_combine(hash, location->HashValue());
+  }
+
+  return hash;
 }
 
 // ======================================================================

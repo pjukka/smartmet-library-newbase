@@ -26,6 +26,7 @@
 // ======================================================================
 
 #include "NFmiPoint.h"
+#include <boost/functional/hash.hpp>
 #include <fstream>
 
 const NFmiPoint NFmiPoint::gMissingLatlon = NFmiPoint(kFloatMissing, kFloatMissing);
@@ -163,4 +164,15 @@ std::istream& NFmiPoint::Read(std::istream& file)
   return file;
 }
 
-// ======================================================================
+// ----------------------------------------------------------------------
+/*!
+ * \brief Return hash value for the point
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiPoint::HashValue() const
+{
+  std::size_t hash = boost::hash_value(itsX);
+  boost::hash_combine(hash, boost::hash_value(itsY));
+  return hash;
+}

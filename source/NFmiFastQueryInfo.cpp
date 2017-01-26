@@ -916,7 +916,7 @@ const NFmiPoint &NFmiFastQueryInfo::LatLon(unsigned long index) const
 
   if (index >= itsLocationSize) return dummy;
 
-  return itsRefQueryData->LatLonCache()[index];
+  return (*itsRefQueryData->LatLonCache())[index];
 }
 
 // ----------------------------------------------------------------------

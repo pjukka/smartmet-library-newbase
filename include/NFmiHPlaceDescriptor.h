@@ -96,7 +96,7 @@ class _FMI_DLL NFmiHPlaceDescriptor : public NFmiDataDescriptor
   bool Next(void);
   bool Previous(void);
 
-  void CreateLatLonCache(checkedVector<NFmiPoint> &v);
+  void CreateLatLonCache(std::vector<NFmiPoint> &v);
 
   virtual unsigned long Index(void) const;
   bool Index(unsigned long theIndex);
@@ -125,6 +125,8 @@ class _FMI_DLL NFmiHPlaceDescriptor : public NFmiDataDescriptor
   bool operator==(const NFmiHPlaceDescriptor &theHPlaceDescriptor) const;
 
   bool IsInside(const NFmiPoint &theLatLon, double theRadius) const;
+
+  std::size_t HashValue() const;
 
  protected:
   void Destroy(void);

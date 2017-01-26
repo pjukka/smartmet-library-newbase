@@ -525,6 +525,8 @@ class _FMI_DLL NFmiQueryInfo
   virtual bool IsInside(const NFmiMetTime &theTime) const;
   unsigned long GridXNumber(void) const { return itsGridXNumber; }
   unsigned long GridYNumber(void) const { return itsGridYNumber; }
+  std::size_t GridHashValue() const;
+
  private:
   const NFmiString MakeKeyValueString(const NFmiString &theKey, const NFmiString &theValue);
   bool FindFirstAnyKey();

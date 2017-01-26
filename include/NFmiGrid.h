@@ -169,6 +169,8 @@ class _FMI_DLL NFmiGrid : public NFmiGridBase
 
   static bool IsStrechableGlobalGrid(const NFmiGrid &theGrid);
 
+  std::size_t HashValue() const;
+
  protected:
   bool SwapData(FmiDirection theStartingCorner, bool walkXDimFirst);
 

@@ -20,6 +20,8 @@
 
 #include "NFmiString.h"
 
+#include <boost/functional/hash.hpp>
+
 #include <cstdlib>
 #include <string>
 #include <cstdio>
@@ -797,4 +799,16 @@ void NFmiString::FirstInWordToUpper(void)
   {
     if (fChar[i - 1] == ' ' && fChar[i] >= 'a') FirstCharToUpper(i);
   }
-}  // ======================================================================
+}
+
+// ----------------------------------------------------------------------
+/*!
+ * \brief Return hash value for the string
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiString::HashValue() const
+{
+  std::string name(CharPtr());
+  return boost::hash_value(name);
+}

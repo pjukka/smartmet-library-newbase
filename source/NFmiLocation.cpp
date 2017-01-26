@@ -25,6 +25,8 @@
 #include "NFmiMetTime.h"
 #include "NFmiAngle.h"
 
+#include <boost/functional/hash.hpp>
+
 #include <fstream>
 #include <algorithm>
 
@@ -838,4 +840,15 @@ const NFmiLocation NFmiLocation::GetLocation(double theAzimuthInDegrees,
   return ComputeLocation(theAzimuthInDegrees, theDistanceInMeters, usePacificView);
 }
 
-// 9.8.04/EL <--
+// ----------------------------------------------------------------------
+/*!
+ * \brief Return hash value for the location
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiLocation::HashValue() const
+{
+  std::size_t hash = NFmiIndividual::HashValue();
+  boost::hash_combine(hash, itsLatlon.HashValue());
+  return hash;
+}

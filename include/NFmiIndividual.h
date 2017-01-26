@@ -41,15 +41,9 @@ class _FMI_DLL NFmiIndividual : public NFmiSortable
   virtual std::istream &Read(std::istream &file);
 
   virtual const char *ClassName(void) const { return "NFmiIndividual"; }
-  // ----------------------------------------------------------------------
-  /*!
-   * Sets the ident and name of the NFmiIndividual-instance.
-   *
-   * \param ident
-   * \param name
-   */
-  // ----------------------------------------------------------------------
   void SetContents(long ident, NFmiString name);
+
+  std::size_t HashValue() const;
 
  private:
   NFmiString itsName;

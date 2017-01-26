@@ -16,9 +16,9 @@
 // ======================================================================
 
 #include "NFmiIndividual.h"
-#include <fstream>
-
 #include "NFmiVersion.h"
+#include <boost/functional/hash.hpp>
+#include <fstream>
 
 // ----------------------------------------------------------------------
 /*!
@@ -94,4 +94,15 @@ void NFmiIndividual::SetContents(long ident, NFmiString name)
   itsName = name;
 }
 
-// ======================================================================
+// ----------------------------------------------------------------------
+/*!
+ * \brief Return hash value for the individual
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiIndividual::HashValue() const
+{
+  std::size_t hash = itsName.HashValue();
+  boost::hash_combine(hash, boost::hash_value(itsIdent));
+  return hash;
+}

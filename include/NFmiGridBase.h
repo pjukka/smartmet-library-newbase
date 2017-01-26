@@ -151,6 +151,8 @@ class _FMI_DLL NFmiGridBase
   const NFmiPoint GridPoint(unsigned long theLocationIndex) const;
   bool operator==(const NFmiGridBase& theGrid) const;
 
+  std::size_t HashValue() const;
+
  protected:
   bool Init(unsigned long theXNumber, unsigned long theYNumber);
   bool Swap(FmiDirection theCurrentDirection);

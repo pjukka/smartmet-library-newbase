@@ -15,6 +15,7 @@
 #include "NFmiGrid.h"
 #include "NFmiLocationBag.h"
 #include "NFmiSaveBaseFactory.h"
+#include <boost/functional/hash.hpp>
 #include <cmath>
 #include <algorithm>
 #include <fstream>
@@ -841,4 +842,15 @@ bool NFmiGrid::IsStrechableGlobalGrid(const NFmiGrid &theGrid)
   return false;
 }
 
-// ======================================================================
+// ----------------------------------------------------------------------
+/*!
+ * \brief Return hash value for the grid + projection combination
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiGrid::HashValue() const
+{
+  std::size_t hash = NFmiGridBase::HashValue();
+  if (itsArea != 0) boost::hash_combine(hash, itsArea->HashValue());
+  return hash;
+}

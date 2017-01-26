@@ -61,6 +61,8 @@ class _FMI_DLL NFmiPoint
 
   const char *ClassName(void) const;
 
+  std::size_t HashValue() const;
+
  private:
   double itsX;  //!< Pisteen X-sijainti.
   double itsY;  //!< Pisteen Y-sijainti.

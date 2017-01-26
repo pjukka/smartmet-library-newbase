@@ -25,8 +25,8 @@ class _FMI_DLL NFmiRect
   void Left(double theValue);
   void Right(double theValue);
 
-  void Inflate(double theXYValue);  // Resize as centered
-  void Inflate(double x, double y);  // Resize as centered
+  void Inflate(double theXYValue);          // Resize as centered
+  void Inflate(double x, double y);         // Resize as centered
   void Inflate(const NFmiPoint &theValue);  // Resize as centered
 
   double Top(void) const;
@@ -94,6 +94,8 @@ class _FMI_DLL NFmiRect
   std::istream &Read(std::istream &file);
 
   const char *ClassName(void) const;
+
+  std::size_t HashValue() const;
 
  private:
   NFmiPoint itsPlace;

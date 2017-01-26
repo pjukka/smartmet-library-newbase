@@ -128,6 +128,8 @@ class _FMI_DLL NFmiArea
   NFmiArea *DoPossiblePacificFix(void) const;
   NFmiArea *DoForcePacificFix(void) const;
 
+  std::size_t HashValue() const;
+
  protected:
   int Sign(double theValue) const;
   double FixLongitude(double theLongitude) const;

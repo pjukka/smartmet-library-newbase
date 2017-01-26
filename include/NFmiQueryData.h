@@ -13,9 +13,11 @@
 #include "NFmiRawData.h"
 #include "NFmiStation.h"
 #include "NFmiStringList.h"
+#include <boost/shared_ptr.hpp>
 #include <boost/thread.hpp>
 #include <boost/thread/once.hpp>
 #include <string>
+#include <vector>
 
 class NFmiQueryInfo;
 
@@ -132,7 +134,11 @@ class _FMI_DLL NFmiQueryData
   double InfoVersion() const;
   void InfoVersion(double newValue) const;
 
-  const checkedVector<NFmiPoint> &LatLonCache() const;
+  boost::shared_ptr<std::vector<NFmiPoint> > LatLonCache() const;
+  void SetLatLonCache(boost::shared_ptr<std::vector<NFmiPoint> > newCache);
+
+  // Unique value for unique grids
+  std::size_t GridHashValue() const;
 
   // Tämä HPlaceDescriptorin asetus funktio on spesiaali funktio.
   // Sillä on tarkoitus muuttaa iteraattori-infon hilan aluetta
@@ -174,7 +180,7 @@ class _FMI_DLL NFmiQueryData
   NFmiQueryInfo *itsQueryInfo;
 
   void MakeLatLonCache() const;
-  mutable checkedVector<NFmiPoint> itsLatLonCache;
+  mutable boost::shared_ptr<std::vector<NFmiPoint> > itsLatLonCache;
   mutable boost::once_flag itsLatLonCacheFlag;
 
   friend class NFmiQueryInfo;
