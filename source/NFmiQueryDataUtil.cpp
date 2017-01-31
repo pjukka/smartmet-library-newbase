@@ -536,6 +536,32 @@ NFmiQueryData *NFmiQueryDataUtil::CreateEmptyData(NFmiQueryInfo &srcInfo)
 
 // ----------------------------------------------------------------------
 /*!
+ * \brief Create a memory mapped querydata for writing
+ *
+ * \param srcInfo Header data
+ * \param theFilename Filename for the mmapped data
+ * \param fInitialize True, if data is to be initialized to missing values
+ */
+// ----------------------------------------------------------------------
+
+NFmiQueryData *NFmiQueryDataUtil::CreateEmptyData(NFmiQueryInfo &srcInfo,
+                                                  const std::string &theFilename,
+                                                  bool fInitialize)
+{
+  if (srcInfo.Size() == 0)
+    throw std::runtime_error("Attempt to create empty querydata as a memory mapped file");
+  NFmiQueryData *data = new NFmiQueryData(srcInfo);
+
+  std::ostringstream header;
+  header << srcInfo;
+
+  // Initialize with given info as a string to given filename
+  data->Init(header.str(), theFilename, fInitialize);
+  return data;
+}
+
+// ----------------------------------------------------------------------
+/*!
  * Luo uuden QDatan, jossa on vain halutut parametrit. Voidaan käyttää
  * myös irroittamaan yhdistelmä parametrien aliparametreja.
  *

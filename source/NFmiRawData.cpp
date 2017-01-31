@@ -21,10 +21,10 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/filesystem/operations.hpp>
-#include <boost/interprocess/file_mapping.hpp>
-#include <boost/interprocess/mapped_region.hpp>
+#include <boost/iostreams/device/mapped_file.hpp>
 #include <boost/thread.hpp>
 
+#include <cstring>
 #include <iostream>
 #include <stdexcept>
 
@@ -43,8 +43,8 @@ typedef FooBar ReadLock;
 typedef FooBar WriteLock;
 #endif
 
-typedef boost::interprocess::file_mapping FileMapping;
-typedef boost::interprocess::mapped_region MappedRegion;
+typedef boost::iostreams::mapped_file_params MappedFileParams;
+typedef boost::iostreams::mapped_file MappedFile;
 
 using namespace std;
 
@@ -63,6 +63,10 @@ class NFmiRawData::Pimple
   Pimple(istream &file, size_t size, bool endianswap);
   Pimple(const string &filename, istream &file, size_t size);
   bool Init(size_t size);
+  bool Init(size_t size,
+            const std::string &theHeader,
+            const std::string &theFilename,
+            bool fInitialize);
   size_t Size() const;
   float GetValue(size_t index) const;
   bool SetValue(size_t index, float value);
@@ -79,9 +83,10 @@ class NFmiRawData::Pimple
 #endif
 
   mutable MutexType itsMutex;
-  mutable float *itsData;
-  mutable boost::scoped_ptr<FileMapping> itsFileMapping;
-  mutable boost::scoped_ptr<MappedRegion> itsMappedRegion;
+  mutable float *itsData;                               // non-memory mapped data
+  mutable boost::scoped_ptr<MappedFile> itsMappedFile;  // memory mapped data
+  size_t itsOffset;                                     // offset to raw data
+
   size_t itsSize;
   mutable bool itsSaveAsBinaryFlag;
   bool itsEndianSwapFlag;
@@ -103,8 +108,8 @@ NFmiRawData::Pimple::~Pimple() { delete[] itsData; }
 NFmiRawData::Pimple::Pimple()
     : itsMutex(),
       itsData(0),
-      itsFileMapping(0),
-      itsMappedRegion(0),
+      itsMappedFile(0),
+      itsOffset(0),
       itsSize(0),
       itsSaveAsBinaryFlag(true),
       itsEndianSwapFlag(false)
@@ -120,8 +125,8 @@ NFmiRawData::Pimple::Pimple()
 NFmiRawData::Pimple::Pimple(const Pimple &other)
     : itsMutex(),
       itsData(0),
-      itsFileMapping(0),
-      itsMappedRegion(0),
+      itsMappedFile(0),
+      itsOffset(0),
       itsSize(other.itsSize),
       itsSaveAsBinaryFlag(other.itsSaveAsBinaryFlag),
       itsEndianSwapFlag(false)
@@ -139,7 +144,7 @@ NFmiRawData::Pimple::Pimple(const Pimple &other)
   else
   {
     char *dst = reinterpret_cast<char *>(itsData);
-    char *src = reinterpret_cast<char *>(other.itsMappedRegion->get_address());
+    const char *src = other.itsMappedFile->const_data();
     memcpy(dst, src, itsSize * sizeof(float));
   }
 }
@@ -153,14 +158,12 @@ NFmiRawData::Pimple::Pimple(const Pimple &other)
 NFmiRawData::Pimple::Pimple(const string &filename, istream &file, size_t size)
     : itsMutex(),
       itsData(0),
-      itsFileMapping(0),
-      itsMappedRegion(0),
+      itsMappedFile(0),
+      itsOffset(0),
       itsSize(size),
       itsSaveAsBinaryFlag(true),
       itsEndianSwapFlag(false)
 {
-  using namespace boost::interprocess;
-
   WriteLock lock(itsMutex);
 
   // Backward compatibility:
@@ -184,16 +187,16 @@ NFmiRawData::Pimple::Pimple(const string &filename, istream &file, size_t size)
   // characters at the end for legacy data to work
 
   std::size_t filesize = boost::filesystem::file_size(filename);
-  std::size_t filepos = file.tellg();
+  itsOffset = file.tellg();
 
-  if (filepos + poolsize > filesize)
+  if (itsOffset + poolsize > filesize)
     throw std::runtime_error("Querydata file " +
-                             boost::lexical_cast<std::string>(filepos + poolsize - filesize) +
+                             boost::lexical_cast<std::string>(itsOffset + poolsize - filesize) +
                              " bytes too short: '" + filename + "'");
 
-  else if (filesize - filepos - poolsize > 2)
+  else if (filesize - itsOffset - poolsize > 2)
     throw std::runtime_error("Querydata file " +
-                             boost::lexical_cast<std::string>(filesize - filepos - poolsize) +
+                             boost::lexical_cast<std::string>(filesize - itsOffset - poolsize) +
                              " bytes too long: '" + filename + "'");
 
   // memory map starting from this file position
@@ -201,12 +204,12 @@ NFmiRawData::Pimple::Pimple(const string &filename, istream &file, size_t size)
 
   if (itsSaveAsBinaryFlag)
   {
-    itsFileMapping.reset(new FileMapping(filename.c_str(), read_only));
-
-    istream::pos_type offset = file.tellg();
-
-    itsMappedRegion.reset(
-        new MappedRegion(*itsFileMapping, read_only, offset, itsSize * sizeof(float)));
+    MappedFileParams params(filename.c_str());
+    params.flags = boost::iostreams::mapped_file::readonly;
+    params.length = filesize;
+    itsMappedFile.reset(new MappedFile(params));
+    if (!itsMappedFile->is_open())
+      throw std::runtime_error("Failed to memory map '" + filename + "' in read only mode");
   }
   else
   {
@@ -226,8 +229,8 @@ NFmiRawData::Pimple::Pimple(const string &filename, istream &file, size_t size)
 NFmiRawData::Pimple::Pimple(istream &file, size_t size, bool endianswap)
     : itsMutex(),
       itsData(0),
-      itsFileMapping(0),
-      itsMappedRegion(0),
+      itsMappedFile(0),
+      itsOffset(0),
       itsSize(size),
       itsSaveAsBinaryFlag(true),
       itsEndianSwapFlag(endianswap)
@@ -286,6 +289,62 @@ NFmiRawData::Pimple::Pimple(istream &file, size_t size, bool endianswap)
       ptr[i - 0] = tmp1;
     }
   }
+}
+
+// ----------------------------------------------------------------------
+/*!
+ * \brief Initialize memory mapped file for writing
+ */
+// ----------------------------------------------------------------------
+
+bool NFmiRawData::Pimple::Init(size_t size,
+                               const std::string &theHeader,
+                               const std::string &theFilename,
+                               bool fInitialize)
+{
+  WriteLock lock(itsMutex);
+
+  // Update number of elements in the data
+
+  itsSize = size;
+
+  // Create info header fully up to start of raw data
+
+  long datatype = 6;  // float??
+  bool saveasbinary = true;
+  std::ostringstream headerstream;
+  headerstream << theHeader << '\n' << datatype << '\n' << saveasbinary << '\n'
+               << itsSize * sizeof(float) << '\n';
+  std::string fullheader = headerstream.str();
+
+  // Now we know the offset to the start of raw data
+
+  itsOffset = fullheader.size();
+
+  // Create memory mapped file for writing
+
+  MappedFileParams params(theFilename.c_str());
+  params.flags = boost::iostreams::mapped_file::readwrite;
+  params.new_file_size = itsOffset + itsSize * sizeof(float);
+  itsMappedFile.reset(new MappedFile(params));
+
+  // Initialize the header
+
+  char *headerdata = itsMappedFile->data();
+  memcpy(headerdata, fullheader.c_str(), fullheader.size());
+
+  // Initialize the data section to kFloatMissing if so requested.
+  // It seems as if this is not requested, the mapped region
+  // will be initialized to zero bytes from start to finish.
+
+  if (fInitialize)
+  {
+    float *data = reinterpret_cast<float *>(itsMappedFile->data() + itsOffset);
+    for (std::size_t i = 0; i < itsSize; i++)
+      data[i] = kFloatMissing;
+  }
+
+  return true;
 }
 
 // ----------------------------------------------------------------------
@@ -357,8 +416,8 @@ void NFmiRawData::Pimple::Unmap() const
   char *src = reinterpret_cast<char *>(itsMappedRegion->get_address());
   memcpy(dst, src, itsSize * sizeof(float));
 
-  itsMappedRegion.reset();
-  itsFileMapping.reset();
+  itsMappedFile.reset();
+  itsOffset = 0;
 }
 #endif
 
@@ -376,7 +435,7 @@ float NFmiRawData::Pimple::GetValue(size_t index) const
 
   if (itsData) return itsData[index];
 
-  float *ptr = reinterpret_cast<float *>(itsMappedRegion->get_address());
+  const float *ptr = reinterpret_cast<const float *>(itsMappedFile->const_data() + itsOffset);
   return ptr[index];
 }
 
@@ -395,6 +454,13 @@ bool NFmiRawData::Pimple::SetValue(size_t index, float value)
   if (itsData)
   {
     itsData[index] = value;
+    return true;
+  }
+  else if (itsOffset > 0)
+  {
+    // We have mmapped output data
+    float *ptr = reinterpret_cast<float *>(itsMappedFile->data() + itsOffset);
+    ptr[index] = value;
     return true;
   }
 
@@ -435,7 +501,7 @@ ostream &NFmiRawData::Pimple::Write(ostream &file) const
     }
     else
     {
-      char *ptr = reinterpret_cast<char *>(itsMappedRegion->get_address());
+      const char *ptr = itsMappedFile->const_data();
       file.write(ptr, itsSize * sizeof(float));
     }
 
@@ -497,26 +563,7 @@ void NFmiRawData::Pimple::Undo(char *ptr)
 
 bool NFmiRawData::Pimple::Advise(FmiAdvice advice)
 {
-  if (!itsMappedRegion) return false;
-
-  // unknown whether this is really required
-  WriteLock lock(itsMutex);
-
-  switch (advice)
-  {
-    case kFmiAdviceNormal:
-      return itsMappedRegion->advise(boost::interprocess::mapped_region::advice_normal);
-    case kFmiAdviceSequential:
-      return itsMappedRegion->advise(boost::interprocess::mapped_region::advice_sequential);
-    case kFmiAdviceRandom:
-      return itsMappedRegion->advise(boost::interprocess::mapped_region::advice_random);
-    case kFmiAdviceWillNeed:
-      return itsMappedRegion->advise(boost::interprocess::mapped_region::advice_willneed);
-    case kFmiAdviceDontNeed:
-      return itsMappedRegion->advise(boost::interprocess::mapped_region::advice_dontneed);
-  }
-
-  // NOT REACHED
+  // was supported with boost::interprocess, not with boost::iostreams
   return false;
 }
 
@@ -570,6 +617,20 @@ NFmiRawData::NFmiRawData(istream &file, size_t size, bool endianswap)
 // ----------------------------------------------------------------------
 
 bool NFmiRawData::Init(size_t size) { return itsPimple->Init(size); }
+// ----------------------------------------------------------------------
+/*!
+ * \brief Init memory mapped file for writing
+ */
+// ----------------------------------------------------------------------
+
+bool NFmiRawData::Init(size_t size,
+                       const std::string &theHeader,
+                       const std::string &theFilename,
+                       bool fInitialize)
+{
+  return itsPimple->Init(size, theHeader, theFilename, fInitialize);
+}
+
 // ----------------------------------------------------------------------
 /*!
  * \brief Return size of raw data

@@ -62,6 +62,9 @@ FMI newbase development files
 %{_includedir}/smartmet/%{DIRNAME}
 
 %changelog
+* Upcoming
+- Added possibility to memory map writeable querydata
+
 * Thu Jan 26 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.1.26-1.fmi
 - Added methods for calculating a hash value for the grid defined in querydata
 
