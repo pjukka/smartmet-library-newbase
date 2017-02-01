@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.1.26
+Version: 17.2.1
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -62,6 +62,17 @@ FMI newbase development files
 %{_includedir}/smartmet/%{DIRNAME}
 
 %changelog
+* Wed Feb  1 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.2.1-1.fmi
+- Fixed two SnowDepth fractile parameter names
+- Added parameter for post-processed cloud top height (ft)
+- Added parameter for average wind speed (ms)
+- Added parameter for potential precipitation type (code)
+- Added parameter for humidity relative to ice (%)
+- Added parameter for hoar frost temperature (C)
+- Added parameter for available ensemble members (%)
+- Added parameter for post-processed wind gust speed
+- Added four parameters for probability of wave height with different limits (%)
+
 * Thu Jan 26 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.1.26-1.fmi
 - Added methods for calculating a hash value for the grid defined in querydata
 
