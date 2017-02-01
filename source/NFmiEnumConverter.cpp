@@ -273,10 +273,12 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("AreaOfRisk", kFmiAreaOfRisk);
   PARAMINSERT("AshConcentration", kFmiAshConcentration);
   PARAMINSERT("AshOnOff", kFmiAshOnOff);
+  PARAMINSERT("AvailableEnsembleMemberPercentage", kFmiAvailableEnsembleMemberPercentage);
   PARAMINSERT("AverageHumidity", kFmiAverageHumidity);
   PARAMINSERT("AveragePressure", kFmiAveragePressure);
   PARAMINSERT("AverageTemperature", kFmiAverageTemperature);
   PARAMINSERT("AverageWindDirection", kFmiAverageWindDirection);
+  PARAMINSERT("AverageWindSpeedMS", kFmiAverageWindSpeedMS);
   PARAMINSERT("AviVis", kFmiAviationVisibility);  // SPELLING!
   PARAMINSERT("AviationWeather1", kFmiAviationWeather1);
   PARAMINSERT("AviationWeather2", kFmiAviationWeather2);
@@ -318,6 +320,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("CloudIce", kFmiCloudIce);
   PARAMINSERT("CloudSymbol", kFmiCloudSymbol);
   PARAMINSERT("CloudTop", kFmiCloudTop);
+  PARAMINSERT("CloudTop2", kFmiCloudTop2);
   PARAMINSERT("CloudTopBrightnessTemperature", kFmiCloudTopBrightnessTemperature);
   PARAMINSERT("CloudWater", kFmiCloudWater);
   PARAMINSERT("CloudWaterReflectivity", kFmiCloudWaterReflectivity);
@@ -549,6 +552,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("Humidity2M", kFmiHumidity2M);
   PARAMINSERT("HumidityCode", kFmiHumidityCode);
   PARAMINSERT("HumidityDeviation", kFmiHumidityDeviation);
+  PARAMINSERT("HumidityRelativeToIce", kFmiHumidityRelativeToIce);
   PARAMINSERT("HumidityVoltage", kFmiHumidityVoltage);
   PARAMINSERT("IR", kFmiIR);
   PARAMINSERT("IceConcentration", kFmiIceConcentration);
@@ -729,6 +733,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("PollenIndexNut", kFmiPollenIndexNut);
   PARAMINSERT("PollenIndexSum", kFmiPollenIndexSum);
   PARAMINSERT("PotentialPrecipitationForm", kFmiPotentialPrecipitationForm);
+  PARAMINSERT("PotentialPrecipitationType", kFmiPotentialPrecipitationType);
   PARAMINSERT("PotentialTemperature", kFmiPotentialTemperature);
   PARAMINSERT("PrecipitableWater", kFmiPrecipitableWater);
   PARAMINSERT("PrecipitableWater2", kFmiPrecipitableWater2);
@@ -908,6 +913,10 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("ProbabilityOfPrecipitation3h8mm", kFmiProbabilityOfPrecipitation3h8mm);
   PARAMINSERT("ProbabilityOfPrecipitation3h90mm", kFmiProbabilityOfPrecipitation3h90mm);
   PARAMINSERT("ProbabilityOfPrecipitation3h9mm", kFmiProbabilityOfPrecipitation3h9mm);
+  PARAMINSERT("ProbabilityOfSigWaveHeightLimit1", kFmiProbabilityOfSigWaveHeightLimit1);
+  PARAMINSERT("ProbabilityOfSigWaveHeightLimit2", kFmiProbabilityOfSigWaveHeightLimit2);
+  PARAMINSERT("ProbabilityOfSigWaveHeightLimit3", kFmiProbabilityOfSigWaveHeightLimit3);
+  PARAMINSERT("ProbabilityOfSigWaveHeightLimit4", kFmiProbabilityOfSigWaveHeightLimit4);
   PARAMINSERT("ProbabilityOfSn24Limit1", kFmiProbabilityOfSn24Limit1);
   PARAMINSERT("ProbabilityOfSn24Limit2", kFmiProbabilityOfSn24Limit2);
   PARAMINSERT("ProbabilityOfSn24Limit3", kFmiProbabilityOfSn24Limit3);
@@ -1086,7 +1095,8 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("SnowDepthF50", kFmiSnowDepthF50);
   PARAMINSERT("SnowDepthF87.5", kFmiSnowDepthF87_5);
   PARAMINSERT("SnowDepthF95", kFmiSnowDepthF95);
-  PARAMINSERT("SnowDepthF97.5", kFmiSnowDepthF99);
+  PARAMINSERT("SnowDepthF97.5", kFmiSnowDepthF97_5);
+  PARAMINSERT("SnowDepthF99", kFmiSnowDepthF99);
   PARAMINSERT("SnowDepthF100", kFmiSnowDepthF100);
   PARAMINSERT("SnowDepth06", kFmiSnowDepth06);
   PARAMINSERT("SnowDepth18", kFmiSnowDepth18);
@@ -1351,6 +1361,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("WindDirectionDeviation", kFmiWindDirectionDeviation);
   PARAMINSERT("WindDirectionVoltage", kFmiWindDirectionVoltage);
   PARAMINSERT("WindGust", kFmiWindGust);
+  PARAMINSERT("WindGust2", kFmiWindGust2);
   PARAMINSERT("WindGustF0", kFmiWindGustF0);
   PARAMINSERT("WindGustF1", kFmiWindGustF1);
   PARAMINSERT("WindGustF2.5", kFmiWindGustF2_5);
