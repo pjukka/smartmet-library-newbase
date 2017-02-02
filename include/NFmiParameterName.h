@@ -1188,6 +1188,17 @@ enum FmiParameterName
   kFmiFrostLayerBottom,  // Frost layer bottom
 
   kFmiVisibility2 = 1232,
+  kFmiCloudTop2,         // post-processed cloud top
+  kFmiAverageWindSpeedMS,
+  kFmiPotentialPrecipitationType,
+  kFmiHumidityRelativeToIce,
+  kFmiHoarFrostTemperature,
+  kFmiAvailableEnsembleMemberPercentage,
+  kFmiWindGust2,         // post-processed wind gust speed
+  kFmiProbabilityOfSigWaveHeightLimit1,
+  kFmiProbabilityOfSigWaveHeightLimit2,
+  kFmiProbabilityOfSigWaveHeightLimit3,
+  kFmiProbabilityOfSigWaveHeightLimit4,
 
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 

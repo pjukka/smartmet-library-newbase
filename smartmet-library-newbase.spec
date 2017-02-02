@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.1.26
+Version: 17.2.2
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -62,8 +62,20 @@ FMI newbase development files
 %{_includedir}/smartmet/%{DIRNAME}
 
 %changelog
-* Upcoming
+
+* Thu Feb  2 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.2.2-1.fmi
 - Added possibility to memory map writeable querydata
+
+* Wed Feb  1 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.2.1-1.fmi
+- Fixed two SnowDepth fractile parameter names
+- Added parameter for post-processed cloud top height (ft)
+- Added parameter for average wind speed (ms)
+- Added parameter for potential precipitation type (code)
+- Added parameter for humidity relative to ice (%)
+- Added parameter for hoar frost temperature (C)
+- Added parameter for available ensemble members (%)
+- Added parameter for post-processed wind gust speed
+- Added four parameters for probability of wave height with different limits (%)
 
 * Thu Jan 26 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.1.26-1.fmi
 - Added methods for calculating a hash value for the grid defined in querydata
@@ -322,9 +334,9 @@ FMI newbase development files
 
 * Mon Apr  7 2014 Mika Heiskanen <mika.heiskanen@fmi.fi> - 14.4.7-1.fmi
 - Partio added AbsoluteHumidity and PrecipitationInstantSolid
-- Kinni‰ fixed define-directive handling in the preprocessor
+- Kinni√§ fixed define-directive handling in the preprocessor
 
-* Fri Mar 28 2014 Pertti Kinni‰ <pertti.kinnia@fmi.fi> - 14.3.28-1.fmi
+* Fri Mar 28 2014 Pertti Kinni√§ <pertti.kinnia@fmi.fi> - 14.3.28-1.fmi
 - Modifications to NFmiPreProcessor's #define handling (added some functionality needed by frontier)
 
 * Fri Mar 14 2014 Mika Heiskanen <mika.heiskanen@fmi.fi> - 14.3.14-1.fmi
@@ -457,10 +469,10 @@ FMI newbase development files
 - Using more cores when combining data
 - Use 1 hour precipitation if available when combining data
 
-* Tue Jun  4 2013 Timo Kuorem‰ki <timo.kuoremaki@fmi.fi> - 13.6.4-2.fmi
+* Tue Jun  4 2013 Timo Kuorem√§ki <timo.kuoremaki@fmi.fi> - 13.6.4-2.fmi
 - Fixed build
 
-* Tue Jun  4 2013 Timo Kuorem‰ki <timo.kuoremaki@fmi.fi> - 13.6.4-1.fmi
+* Tue Jun  4 2013 Timo Kuorem√§ki <timo.kuoremaki@fmi.fi> - 13.6.4-1.fmi
 - Added Lambert azimuthal equal-area projection
 
 * Mon May 27 2013 Mika Heiskanen <mika.heiskanen@fmi.fi> - 13.5.27-1.fmi
@@ -648,10 +660,10 @@ FMI newbase development files
 * Thu Mar 24 2011 Mika Heiskanen <mika.heiskanen@fmi.fi> - 11.3.24-1.el5.fmi
 - Upgraded to boost 1.46
 
-* Thu Mar 17 2011 Pekka Ker‰nen <pekka.keranen@geosaaga.fi> - 11.3.17-1.el6.fmi
+* Thu Mar 17 2011 Pekka Ker√§nen <pekka.keranen@geosaaga.fi> - 11.3.17-1.el6.fmi
 - Fixed compiler errors in RHEL6
 
-* Fri Mar 11 2011 Pekka Ker‰nen <pekkka.keranen@geosaaga.fi> - 11.3.11-1.el6.fmi
+* Fri Mar 11 2011 Pekka Ker√§nen <pekkka.keranen@geosaaga.fi> - 11.3.11-1.el6.fmi
 - Fixed compiler errors in RHEL6
 
 * Wed Feb 23 2011 Mika Heiskanen <mika.heiskanen@fmi.fi> - 11.2.23-1.el5.fmi
