@@ -136,7 +136,7 @@ class MyGrid
 
 struct CombinedParamStruct
 {  // t‰m‰ structi piti tehd‰, ett‰ sain v‰hennetty‰ boost::in Thread:ille annettujen parametrin
-   // m‰‰r‰‰ (max 9 parametria)
+  // m‰‰r‰‰ (max 9 parametria)
   CombinedParamStruct(void)
       : weather1(false), weather2(false), wind1(false), wind2(false), wind3(false)
   {
@@ -452,6 +452,9 @@ class _FMI_DLL NFmiQueryDataUtil
                                           bool fForceTimeBag = false);
 
   static NFmiQueryData *CreateEmptyData(NFmiQueryInfo &srcInfo);
+  static NFmiQueryData *CreateEmptyData(NFmiQueryInfo &srcInfo,
+                                        const std::string &theFilename,
+                                        bool fInitialize);
 
   //@{ \name datan konversiot 6:sta 7:aan tai p‰invastoin -funktiot
   static NFmiQueryData *FqdV6ToV7(NFmiFastQueryInfo &theSourceInfo);

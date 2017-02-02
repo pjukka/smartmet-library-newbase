@@ -26,6 +26,10 @@ class _FMI_DLL NFmiRawData
 
   NFmiRawData();
   bool Init(size_t size);
+  bool Init(size_t size,
+            const std::string& theHeader,
+            const std::string& theFilename,
+            bool fInitialize);
 
   NFmiRawData(const NFmiRawData& other);
 

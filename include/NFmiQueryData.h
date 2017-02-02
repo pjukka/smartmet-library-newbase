@@ -40,6 +40,7 @@ class _FMI_DLL NFmiQueryData
   // methods
   bool Init(const NFmiQueryInfo &theInfo);
   bool Init();
+  bool Init(const std::string &theHeader, const std::string &theFilename, bool fInitialize);
   void Destroy();
 
   NFmiQueryInfo *Info() const;

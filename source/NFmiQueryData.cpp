@@ -345,6 +345,21 @@ bool NFmiQueryData::Init(const NFmiQueryInfo &theInfo)
 
 // ----------------------------------------------------------------------
 /*!
+ * \brief Initialize memory mapped querydata
+ */
+// ----------------------------------------------------------------------
+
+bool NFmiQueryData::Init(const std::string &theHeader,
+                         const std::string &theFilename,
+                         bool fInitialize)
+{
+  if (!itsQueryInfo) return false;
+
+  return itsRawData->Init(itsQueryInfo->Size(), theHeader, theFilename, fInitialize);
+}
+
+// ----------------------------------------------------------------------
+/*!
  * \return Undocumented
  * \todo Should return an boost::shared_ptr
  */
