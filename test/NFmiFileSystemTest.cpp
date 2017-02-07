@@ -39,13 +39,13 @@ void filecomplete(void)
   if (result != "NFmiFileSystem.cpp")
     TEST_FAILED("Should not have found NFmiFileSystem from empty path");
 
-  result = FileComplete("NFmiFileSystem.cpp", "../source");
-  if (result != "../source/NFmiFileSystem.cpp")
-    TEST_FAILED("Should have found NFmiFileSystem.cpp from ../source");
+  result = FileComplete("NFmiFileSystem.cpp", "../newbase");
+  if (result != "../newbase/NFmiFileSystem.cpp")
+    TEST_FAILED("Should have found NFmiFileSystem.cpp from ../newbase");
 
-  result = FileComplete("NFmiFileSystem.cpp", "../include:../source");
-  if (result != "../source/NFmiFileSystem.cpp")
-    TEST_FAILED("Should have found NFmiFileSystem.cpp from ../include:../source");
+  result = FileComplete("NFmiFileSystem.cpp", "../test:../newbase");
+  if (result != "../newbase/NFmiFileSystem.cpp")
+    TEST_FAILED("Should have found NFmiFileSystem.cpp from ../test:../source");
 
   TEST_PASSED();
 }
