@@ -144,7 +144,7 @@ NFmiRawData::Pimple::Pimple(const Pimple &other)
   else
   {
     char *dst = reinterpret_cast<char *>(itsData);
-    const char *src = other.itsMappedFile->const_data();
+    const char *src = other.itsMappedFile->const_data() + other.itsOffset;
     memcpy(dst, src, itsSize * sizeof(float));
   }
 }
@@ -501,7 +501,7 @@ ostream &NFmiRawData::Pimple::Write(ostream &file) const
     }
     else
     {
-      const char *ptr = itsMappedFile->const_data();
+      const char *ptr = itsMappedFile->const_data() + itsOffset;
       file.write(ptr, itsSize * sizeof(float));
     }
 
