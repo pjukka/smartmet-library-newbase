@@ -43,7 +43,7 @@ NFmiHPlaceDescriptor::NFmiHPlaceDescriptor(void)
 /*!
  * Constructor
  *
- *†\param theLocationBag Undocumented
+ *¬†\param theLocationBag Undocumented
  * \param theSelectedType Undocumented
  * \param theMaxNumberOfSources Undocumented
  */
@@ -310,7 +310,7 @@ NFmiPoint NFmiHPlaceDescriptor::RelativePoint(void) const
 {
   if (itsLocationBag || !itsGrid)
     return NFmiPoint(kFloatMissing,
-                     kFloatMissing);  // Marko En tied‰ voidaanko t‰t‰ saada laskettua mitenk‰‰n?
+                     kFloatMissing);  // Marko En tied√§ voidaanko t√§t√§ saada laskettua mitenk√§√§n?
   return itsGrid->RelativePoint();
 }
 
@@ -327,7 +327,7 @@ NFmiPoint NFmiHPlaceDescriptor::RelativePoint(unsigned long theIndex) const
 {
   if (itsLocationBag || !itsGrid)
     return NFmiPoint(kFloatMissing,
-                     kFloatMissing);  // Marko En tied‰ voidaanko t‰t‰ saada laskettua mitenk‰‰n?
+                     kFloatMissing);  // Marko En tied√§ voidaanko t√§t√§ saada laskettua mitenk√§√§n?
   return itsGrid->RelativePoint(theIndex);
 }
 
@@ -371,7 +371,7 @@ unsigned long NFmiHPlaceDescriptor::Size(void) const
 {
   if (IsLocation()) return (itsLocationBag->GetSize());
   if (IsArea()) return 1ul;
-  if (itsGrid) return itsGrid->OriginalSize();  // Marko/23.11.1998, myˆs time, param, level jutut
+  if (itsGrid) return itsGrid->OriginalSize();  // Marko/23.11.1998, my√∂s time, param, level jutut
   return 0;
 }
 
@@ -411,7 +411,7 @@ bool NFmiHPlaceDescriptor::Index(unsigned long theIndex)
  * \param theIdent Undocumented
  * \return Undocumented
  * \todo Const long reference as input???
- * \todo Siirr‰ koodi NFmiLocationBag:iin!
+ * \todo Siirr√§ koodi NFmiLocationBag:iin!
  */
 // ----------------------------------------------------------------------
 
@@ -440,7 +440,7 @@ bool NFmiHPlaceDescriptor::Location(long theIdent)
 /*!
  * \param theName Undocumented
  * \return Undocumented
- * \todo Siirr‰ koodi NFmiLocationBag:iin!
+ * \todo Siirr√§ koodi NFmiLocationBag:iin!
  */
 // ----------------------------------------------------------------------
 
@@ -485,7 +485,7 @@ bool NFmiHPlaceDescriptor::Location(const NFmiString &theName)
 
 bool NFmiHPlaceDescriptor::Location(const NFmiPoint &theLonLatPoint, NFmiPoint *theGridPoint)
 {
-  if (IsLocation())  // Muutin k‰ytt‰m‰‰n locationbagin omaa koodia ("saman niminen asema" -bugin
+  if (IsLocation())  // Muutin k√§ytt√§m√§√§n locationbagin omaa koodia ("saman niminen asema" -bugin
                      // takia) /Marko
     return itsLocationBag->NearestLocation(theLonLatPoint);
   else if (IsGrid())
@@ -502,7 +502,7 @@ bool NFmiHPlaceDescriptor::Location(const NFmiPoint &theLonLatPoint, NFmiPoint *
 /*!
  * \param theLocation Undocumented
  * \return Undocumented
- * \todo Siirr‰ koodi NFmiLocationBag:iin!
+ * \todo Siirr√§ koodi NFmiLocationBag:iin!
  */
 // ----------------------------------------------------------------------
 
@@ -517,8 +517,8 @@ bool NFmiHPlaceDescriptor::Location(const NFmiLocation &theLocation)
     {
       tempBoolean = itsLocationBag->Next();
       if (!tempBoolean) break;
-    } while (!(theLocation == *itsLocationBag->Location()));  // Marko: kun k‰‰nnet‰‰n j‰rjestys,
-                                                              // voidaan etsi‰ myˆs locationilla
+    } while (!(theLocation == *itsLocationBag->Location()));  // Marko: kun k√§√§nnet√§√§n j√§rjestys,
+                                                              // voidaan etsi√§ my√∂s locationilla
                                                               // stationeita
 
     if (tempBoolean)
@@ -650,8 +650,8 @@ const NFmiHPlaceDescriptor NFmiHPlaceDescriptor::Combine(const NFmiHPlaceDescrip
 {
   if (itsLocationBag && theCombine.itsLocationBag)
     return NFmiHPlaceDescriptor(itsLocationBag->Combine(*(theCombine).itsLocationBag));
-  // jos ei voi yhdist‰‰ locationbagej‰, palauttaa this-descriptorin (voitaisiin ehk‰ laittaa jotain
-  // gridi yhdistelyj‰?)
+  // jos ei voi yhdist√§√§ locationbagej√§, palauttaa this-descriptorin (voitaisiin ehk√§ laittaa jotain
+  // gridi yhdistelyj√§?)
   return *this;
 }
 
@@ -718,9 +718,9 @@ bool NFmiHPlaceDescriptor::NearestPoint(const NFmiPoint &theLatLonPoint)
 
 // ----------------------------------------------------------------------
 /*!
- * Liikkuu xSteps:in ja ySteps:in osoittaman verran gridiss‰.
- * Jos ei ole gridi tai gridiss‰ ei p‰‰st‰ liikkumaan haluttua
- * askelm‰‰r‰‰, palautuu false.
+ * Liikkuu xSteps:in ja ySteps:in osoittaman verran gridiss√§.
+ * Jos ei ole gridi tai gridiss√§ ei p√§√§st√§ liikkumaan haluttua
+ * askelm√§√§r√§√§, palautuu false.
  *
  * \param xSteps Undocumented
  * \param ySteps Undocumented
@@ -922,11 +922,11 @@ bool NFmiHPlaceDescriptor::First(void)
 
 // ----------------------------------------------------------------------
 /*!
- * Hakee listan paikkaindeksi/et‰isyys metrein‰ pareja.
- * Listaan haetaan annettua paikkaa l‰himmat datapisteet j‰rjestyksess‰
- * l‰himm‰st‰ kauimpaan. Listaan haetaan joko haluttu m‰‰r‰ l‰himpi‰ pisteit‰
- * tai hakua voi myˆs rajoittaa maksimi et‰isyydell‰. Jos maksimi m‰‰r‰ksi
- *  laitetaan -1, haetaan paikkoja niin paljon kuin lˆytyy (maxEt‰isyys
+ * Hakee listan paikkaindeksi/et√§isyys metrein√§ pareja.
+ * Listaan haetaan annettua paikkaa l√§himmat datapisteet j√§rjestyksess√§
+ * l√§himm√§st√§ kauimpaan. Listaan haetaan joko haluttu m√§√§r√§ l√§himpi√§ pisteit√§
+ * tai hakua voi my√∂s rajoittaa maksimi et√§isyydell√§. Jos maksimi m√§√§r√§ksi
+ *  laitetaan -1, haetaan paikkoja niin paljon kuin l√∂ytyy (maxEt√§isyys
  *  rajoitus huomiooon ottaen).
  *
  * \param theLocation Undocumented

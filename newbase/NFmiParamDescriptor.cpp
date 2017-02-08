@@ -129,7 +129,7 @@ bool NFmiParamDescriptor::Param(FmiParameterName theParam)
  */
 // ----------------------------------------------------------------------
 
-// TƒMƒ PITƒƒ KORJATA KƒYTTƒMƒƒN PARAMBAGIN VASTAAVAA METODIA?!?!?!
+// T√ÑM√Ñ PIT√Ñ√Ñ KORJATA K√ÑYTT√ÑM√Ñ√ÑN PARAMBAGIN VASTAAVAA METODIA?!?!?!
 
 unsigned long NFmiParamDescriptor::SizeActive(void) const
 {
@@ -151,7 +151,7 @@ unsigned long NFmiParamDescriptor::SizeActive(void) const
 
 bool NFmiParamDescriptor::SetActivity(bool theActivityState, bool fIgnoreSubParam)
 {
-  // ei k‰ytet‰ en‰‰ parDesc:in aktiviteetti taulua, vaan antaa parambagin hoitaa homma
+  // ei k√§ytet√§ en√§√§ parDesc:in aktiviteetti taulua, vaan antaa parambagin hoitaa homma
   return itsParamBag->SetCurrentActive(theActivityState == true, fIgnoreSubParam == true);
 }
 
@@ -164,7 +164,7 @@ bool NFmiParamDescriptor::SetActivity(bool theActivityState, bool fIgnoreSubPara
 
 bool NFmiParamDescriptor::SetActivity(bool theActivityState)
 {
-  // ei k‰ytet‰ en‰‰ parDesc:in aktiviteetti taulua, vaan antaa parambagin hoitaa homma
+  // ei k√§ytet√§ en√§√§ parDesc:in aktiviteetti taulua, vaan antaa parambagin hoitaa homma
   return itsParamBag->SetCurrentActive(theActivityState == true);
 }
 
@@ -361,23 +361,23 @@ std::istream &NFmiParamDescriptor::Read(std::istream &file)
 
 NFmiDataIdent &NFmiParamDescriptor::Param(unsigned long theIndex, bool fIgnoreSubParam) const
 {
-  // 18.8.2000/Marko lis‰si tarkastuksia.
+  // 18.8.2000/Marko lis√§si tarkastuksia.
   // Paluuarvo on ongelmallinen, koska parambagi voi palauttaa 0 pointterin.
-  // ParamDescriptorinkin pit‰isi kai palauttaa pointteri?
-  // Laitoin assertin jolloin ohjelma pys‰htyy debug moodissa mutta ei release moodissa
+  // ParamDescriptorinkin pit√§isi kai palauttaa pointteri?
+  // Laitoin assertin jolloin ohjelma pys√§htyy debug moodissa mutta ei release moodissa
   // jos 0-pointteri.
 
   NFmiDataIdent *param = itsParamBag->Param(theIndex, fIgnoreSubParam == true);
 
   // 28.12.2001/Marko Poistin assertin ja palauttaa nyt virhetilanteessa dummy-dataidentin.
-  // assert(param); // korjaa ohjelmaasi jos se pys‰htyy t‰h‰n, t‰m‰ on vakava virhe (theIndex on
-  // pieless‰)
+  // assert(param); // korjaa ohjelmaasi jos se pys√§htyy t√§h√§n, t√§m√§ on vakava virhe (theIndex on
+  // pieless√§)
 
   if (param)
     return *param;
   else
   {
-    // 28.12.2001/Marko T‰m‰ on h‰t‰viritys 'virhetilanteeseen',
+    // 28.12.2001/Marko T√§m√§ on h√§t√§viritys 'virhetilanteeseen',
     // jolloin palautetaan 1. parametrin tuottaja
     return *(itsParamBag->Param(0, fIgnoreSubParam == true));
   }
@@ -393,23 +393,23 @@ NFmiDataIdent &NFmiParamDescriptor::Param(unsigned long theIndex, bool fIgnoreSu
 
 NFmiDataIdent &NFmiParamDescriptor::EditParam(unsigned long theIndex, bool fIgnoreSubParam)
 {
-  // 18.8.2000/Marko lis‰si tarkastuksia.
+  // 18.8.2000/Marko lis√§si tarkastuksia.
   // Paluuarvo on ongelmallinen, koska parambagi voi palauttaa 0 pointterin.
-  // ParamDescriptorinkin pit‰isi kai palauttaa pointteri?
-  // Laitoin assertin jolloin ohjelma pys‰htyy debug moodissa mutta ei release moodissa
+  // ParamDescriptorinkin pit√§isi kai palauttaa pointteri?
+  // Laitoin assertin jolloin ohjelma pys√§htyy debug moodissa mutta ei release moodissa
   // jos 0-pointteri.
 
   NFmiDataIdent *param = itsParamBag->Param(theIndex, fIgnoreSubParam == true);
 
   // 28.12.2001/Marko Poistin assertin ja palauttaa nyt virhetilanteessa dummy-dataidentin.
-  // assert(param); // korjaa ohjelmaasi jos se pys‰htyy t‰h‰n, t‰m‰ on vakava virhe (theIndex on
-  // pieless‰)
+  // assert(param); // korjaa ohjelmaasi jos se pys√§htyy t√§h√§n, t√§m√§ on vakava virhe (theIndex on
+  // pieless√§)
 
   if (param)
     return *param;
   else
   {
-    // 28.12.2001/Marko T‰m‰ on h‰t‰viritys virhetilanteeseen.
+    // 28.12.2001/Marko T√§m√§ on h√§t√§viritys virhetilanteeseen.
     static NFmiParam dummyParam(kFmiBadParameter, "virheparametri, korjaa koodiasi");
     static NFmiDataIdent dummy(dummyParam);
     return dummy;
@@ -430,8 +430,8 @@ bool NFmiParamDescriptor::Index(unsigned long theIndex)
 
 // ----------------------------------------------------------------------
 /*!
- * Katsoo, lˆytyykˆ mink‰‰n parametrin aliparametreist‰ annettua parametri‰.
- * Jos lˆytyy palauttaa true.
+ * Katsoo, l√∂ytyyk√∂ mink√§√§n parametrin aliparametreist√§ annettua parametri√§.
+ * Jos l√∂ytyy palauttaa true.
  *
  * \param theParam Undocumented
  * \result Undocumented

@@ -260,7 +260,7 @@ void NFmiLagrange::TiDenominator(void) { Denominator(itsTi, itsTiDenominator, it
  * \param xi Undocumented
  * \param x Undocumented
  * \param denominator Undocumented
- * \param i Undocumented
+ *Â \param i Undocumented
  * \param n Undocumented
  * \return Undocumented
  */

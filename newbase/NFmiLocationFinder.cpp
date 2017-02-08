@@ -376,7 +376,7 @@ unsigned long NFmiLocationFinder::FindWmo(const NFmiString& theName)
     // NFmiPoint lonLat2 = iter->second;
     // if(abs(lonLat2.X()-lonLat.X())< 0.5 && abs(lonLat2.Y()-lonLat.Y())< 0.5)
     if (iter->second ==
-        lonLat)  // flotarin epätarkkuus voi aiheuttaa eron n:ssä desimaalissa (Madrid???)
+        lonLat)  // flotarin epÃ¤tarkkuus voi aiheuttaa eron n:ssÃ¤ desimaalissa (Madrid???)
     {
       wmoName = iter->first;
       if (wmoName.substr(0, 3) == "wmo" && wmoName.size() == 8)

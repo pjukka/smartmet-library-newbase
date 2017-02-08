@@ -1,9 +1,9 @@
 // ======================================================================
 /*!
  * \file NFmiDataModifierExtremePlace.h
- * \brief abstrakti luokka paikkamin/max:ia varten joka myˆs antaa ‰‰rirvon
+ * \brief abstrakti luokka paikkamin/max:ia varten joka my√∂s antaa √§√§rirvon
  *  sattumispaikan. /Lasse
- *  vrt NFmiDataModifierExtreme joka antaa ajan kun ajan yly ‰‰riarvo
+ *  vrt NFmiDataModifierExtreme joka antaa ajan kun ajan yly √§√§riarvo
  */
 // ======================================================================
 

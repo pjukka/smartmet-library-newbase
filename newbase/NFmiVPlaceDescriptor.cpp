@@ -170,7 +170,7 @@ NFmiLevel *NFmiVPlaceDescriptor::LevelMaxValue(void) const
 /*!
  * \param theLevel Undocumented
  * \return Undocumented
- * \todo Siirr‰ koodi NFmiLevelBag:iin!
+ * \todo Siirr√§ koodi NFmiLevelBag:iin!
  */
 // ----------------------------------------------------------------------
 
@@ -335,7 +335,7 @@ std::ostream &NFmiVPlaceDescriptor::Write(std::ostream &file) const
     file << *itsLevelBag;
   else
   {
-    // Huom: Unixissa suora tulostus hankalaa, pit‰‰ castata objekti
+    // Huom: Unixissa suora tulostus hankalaa, pit√§√§ castata objekti
     //       constiksi jne, hankalampaa lukea.
     NFmiLevelBag tmp;
     file << tmp;

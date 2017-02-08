@@ -8,7 +8,7 @@
 #ifndef NFMILEVELTYPE_H
 #define NFMILEVELTYPE_H
 
-//! Enumeraatio mahdollisista korkeuspintojen tyypeist‰
+//! Enumeraatio mahdollisista korkeuspintojen tyypeist√§
 
 enum FmiLevelType
 {

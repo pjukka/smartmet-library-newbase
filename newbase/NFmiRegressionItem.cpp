@@ -56,7 +56,7 @@ void NFmiRegressionItem::Calculate(NFmiQueryInfo *theData)
   {
     if (theData)
     {
-      NFmiDataIdent tmpIdent(theData->Param());  // hidasta koodia, pitäisi olla PeekValue!!!!!!!!
+      NFmiDataIdent tmpIdent(theData->Param());  // hidasta koodia, pitÃ¤isi olla PeekValue!!!!!!!!
       theData->Param(*itsParam);
       itsReturnValue = itsConstant + itsCoefficient * theData->FloatValue();
       theData->Param(tmpIdent);
@@ -86,7 +86,7 @@ double NFmiRegressionItem::FloatValue(void)
     if (itsData)
     {
       NFmiParam tmpParam(
-          *itsData->Param().GetParam());  // hidasta koodia, pitäisi olla PeekValue!!!!!!!!
+          *itsData->Param().GetParam());  // hidasta koodia, pitÃ¤isi olla PeekValue!!!!!!!!
       itsData->Param(*itsParam->GetParam());
       itsReturnValue = itsCoefficient * itsData->FloatValue();
       itsData->Param(tmpParam);

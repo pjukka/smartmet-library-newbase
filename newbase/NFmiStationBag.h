@@ -11,7 +11,7 @@
 #include "NFmiStation.h"
 #include "NFmiLocationBag.h"
 
-// ÄLÄ KÄYTÄ TÄTÄ LUOKKAA UUSIIN JUTTUIHIN, VAAN KÄYTÄ NFmiLocationBag:ia
+// Ã„LÃ„ KÃ„YTÃ„ TÃ„TÃ„ LUOKKAA UUSIIN JUTTUIHIN, VAAN KÃ„YTÃ„ NFmiLocationBag:ia
 
 class _FMI_DLL NFmiStationBag : public NFmiLocationBag
 {

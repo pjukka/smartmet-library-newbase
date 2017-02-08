@@ -7,10 +7,10 @@
 /*!
  * \namespace NFmiSvgTools
  *
- * \brief Sis‰lt‰‰ NFmiSvgPath luokkaan liittyvi‰ tyˆkaluja
+ * \brief Sis√§lt√§√§ NFmiSvgPath luokkaan liittyvi√§ ty√∂kaluja
  *
- * T‰m‰ namespace sis‰lt‰‰ erilaisia tyˆkaluja, joiden toteuttamiseen
- * riitt‰‰ NFmiSvgPath luokan iteraattori interface, ja siten niit‰
+ * T√§m√§ namespace sis√§lt√§√§ erilaisia ty√∂kaluja, joiden toteuttamiseen
+ * riitt√§√§ NFmiSvgPath luokan iteraattori interface, ja siten niit√§
  * ei tarvitse toteuttaa NFmiSvgPath luokan metodeina.
  */
 // ======================================================================
@@ -26,11 +26,11 @@ namespace NFmiSvgTools
 {
 // ----------------------------------------------------------------------
 /*!
- * \brief Testaa onko annettu piste polun sis‰ll‰
+ * \brief Testaa onko annettu piste polun sis√§ll√§
  *
  * \param thePath Polku
  * \param thePoint Testattava piste
- * \return True, jos piste on polun sis‰ll‰
+ * \return True, jos piste on polun sis√§ll√§
  */
 // ----------------------------------------------------------------------
 
@@ -41,11 +41,11 @@ bool IsInside(const NFmiSvgPath& thePath, const NFmiPoint& thePoint)
 
 // ----------------------------------------------------------------------
 /*!
- * \brief Laske pisteen et‰isyys polusta
+ * \brief Laske pisteen et√§isyys polusta
  *
  * \param thePath Polku
  * \param thePoint Piste
- * \return Et‰isyys polusta
+ * \return Et√§isyys polusta
  */
 // ----------------------------------------------------------------------
 
@@ -98,18 +98,18 @@ double Distance(const NFmiSvgPath& thePath, const NFmiPoint& thePoint)
 
 // ----------------------------------------------------------------------
 /*!
- * \brief Laske latlon pisteen et‰isyys latlon polusta
+ * \brief Laske latlon pisteen et√§isyys latlon polusta
  *
- * Laskennassa k‰ytet‰‰n hyv‰ksi Equidistant projektiota
- * niin, ett‰ tutkittava piste on projektion keskipiste.
- * T‰llˆin et‰isyydet laskettuna suoraan projektion yksikˆss‰
+ * Laskennassa k√§ytet√§√§n hyv√§ksi Equidistant projektiota
+ * niin, ett√§ tutkittava piste on projektion keskipiste.
+ * T√§ll√∂in et√§isyydet laskettuna suoraan projektion yksik√∂ss√§
  * ovat valideja.
  *
- * Palauttaa -1, jos polku on tyhj‰.
+ * Palauttaa -1, jos polku on tyhj√§.
  *
  * \param thePath Polku (latlon)
  * \param thePoint Piste (latlon)
- * \return Et‰isyys polusta kilometrein‰
+ * \return Et√§isyys polusta kilometrein√§
  */
 // ----------------------------------------------------------------------
 
@@ -117,7 +117,7 @@ double GeoDistance(const NFmiSvgPath& thePath, const NFmiPoint& thePoint)
 {
   if (thePath.empty()) return -1;
 
-  // Nurkilla ei ole v‰li‰
+  // Nurkilla ei ole v√§li√§
   NFmiEquidistArea area(NFmiPoint(20, 50),
                         NFmiPoint(40, 70),
                         thePoint.X(),

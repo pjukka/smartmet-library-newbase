@@ -100,7 +100,7 @@ void NFmiLatLonArea::Init(bool fKeepWorldRect)
   if (!fKeepWorldRect)
     itsWorldRect =
         NFmiRect(LatLonToWorldXY(itsBottomLeftLatLon),
-                 LatLonToWorldXY(itsTopRightLatLon));  // 28.8.2001/Marko&Esa Lis‰tty laskuihin.
+                 LatLonToWorldXY(itsTopRightLatLon));  // 28.8.2001/Marko&Esa Lis√§tty laskuihin.
 
   itsXScaleFactor = (Right() - Left()) / (itsTopRightLatLon.X() - itsBottomLeftLatLon.X());
   itsYScaleFactor = (Top() - Bottom()) / (itsTopRightLatLon.Y() - itsBottomLeftLatLon.Y());
@@ -136,7 +136,7 @@ const NFmiPoint NFmiLatLonArea::ToXY(const NFmiPoint &theLatLonPoint) const
   double X = Left() + (usedLongitude - itsBottomLeftLatLon.X()) * itsXScaleFactor;
   double Y =
       Top() +
-      (theLatLonPoint.Y() - itsTopRightLatLon.Y()) * itsYScaleFactor;  // T‰ss‰ on edelleen virhe
+      (theLatLonPoint.Y() - itsTopRightLatLon.Y()) * itsYScaleFactor;  // T√§ss√§ on edelleen virhe
   return NFmiPoint(X, Y);
 }
 
@@ -242,9 +242,9 @@ std::istream &NFmiLatLonArea::Read(std::istream &file)
 
   Init();
 
-  // 28.8.2001/Marko&Esa T‰t‰ kutsuttaessa kaikki dataosat p‰ivittyv‰t,
+  // 28.8.2001/Marko&Esa T√§t√§ kutsuttaessa kaikki dataosat p√§ivittyv√§t,
   // jolloin voidaan esim. editoida tiedostoissa olevia areoiden projektio
-  // parametreja siten (t‰t‰ ei voitu tehd‰ ennen koska skaalauskertoimet eiv‰t p‰ivittyneet)
+  // parametreja siten (t√§t√§ ei voitu tehd√§ ennen koska skaalauskertoimet eiv√§t p√§ivittyneet)
 
   return file;
 }

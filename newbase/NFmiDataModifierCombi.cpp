@@ -132,7 +132,7 @@ void NFmiDataModifierCombi::Calculate(float theValue)
 
   if (itsNumberOfValues)
   {
-    // Ensimm‰isell‰ kierroksella muutetaan puuttuva nollaksi
+    // Ensimm√§isell√§ kierroksella muutetaan puuttuva nollaksi
     if (itsFrequencies[static_cast<int>(theValue)] == kFloatMissing)
     {
       itsFrequencies[static_cast<int>(theValue)] = 0;

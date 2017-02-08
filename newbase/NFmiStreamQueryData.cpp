@@ -133,12 +133,12 @@ NFmiFastQueryInfo *NFmiStreamQueryData::QueryInfoIter(void)
 
 NFmiQueryData *NFmiStreamQueryData::QueryData(bool theOwnerData)
 {
-  NFmiQueryData *tmp = itsQueryData;  // otetaan v‰liaikaismuuttujaan talteen silt‰ varalta jos
+  NFmiQueryData *tmp = itsQueryData;  // otetaan v√§liaikaismuuttujaan talteen silt√§ varalta jos
                                       // omistajuus vaihtuu ja itsQueryData nollataan
   itsOwnerData = theOwnerData;
   if (itsOwnerData)
     itsQueryData =
-        0;  // pit‰‰ nollata pointteri, muuten voi tapahtua kauheita jos luetaan uusi data sis‰‰n
+        0;  // pit√§√§ nollata pointteri, muuten voi tapahtua kauheita jos luetaan uusi data sis√§√§n
   return tmp;
 }
 
@@ -177,7 +177,7 @@ bool NFmiStreamQueryData::WriteData(const NFmiString &theFileName,
     if (theQueryData)
     {
       //		  theQueryData->InfoVersion(FmiInfoVersion); // uudessa data versio 7:ssa
-      //pit‰‰ asentaa 'sis‰inen' versio numerokin
+      //pit√§√§ asentaa 'sis√§inen' versio numerokin
       theQueryData->UseBinaryStorage(theLibVersion <= 5 ? false : true);
       dataFile << *theQueryData;
     }
@@ -186,7 +186,7 @@ bool NFmiStreamQueryData::WriteData(const NFmiString &theFileName,
       if (itsQueryData)
       {
         //			  itsQueryData->InfoVersion(FmiInfoVersion); // uudessa data versio
-        //7:ssa pit‰‰ asentaa 'sis‰inen' versio numerokin
+        //7:ssa pit√§√§ asentaa 'sis√§inen' versio numerokin
         itsQueryData->UseBinaryStorage(theLibVersion <= 5 ? false : true);
         dataFile << *itsQueryData;
       }
@@ -268,7 +268,7 @@ bool NFmiStreamQueryData::ReadData(const NFmiString &theFileName, NFmiQueryData 
   theTempData = static_cast<NFmiQueryData *>(new NFmiQueryData);
 
   if (theFileName ==
-      NFmiString(""))  // pit‰‰ tarkistaa, ettei tyhj‰ stringi, muuten kaatuu open:issa
+      NFmiString(""))  // pit√§√§ tarkistaa, ettei tyhj√§ stringi, muuten kaatuu open:issa
     return false;
 
   dataFile.open(theFileName, ios::in | ios::binary);
@@ -278,8 +278,8 @@ bool NFmiStreamQueryData::ReadData(const NFmiString &theFileName, NFmiQueryData 
     {
       dataFile >> *theTempData;
     }
-    // TODO t‰m‰ poikkeus k‰sittely on surkea surkea, koska se tunkee teksti‰ vain cerr:iin.
-    // Pit‰isi tehd‰ fiksummin (esim. heitt‰‰ runtime-poikkeus), mutta uskaltaako muuttaa en‰‰ t‰t‰
+    // TODO t√§m√§ poikkeus k√§sittely on surkea surkea, koska se tunkee teksti√§ vain cerr:iin.
+    // Pit√§isi tehd√§ fiksummin (esim. heitt√§√§ runtime-poikkeus), mutta uskaltaako muuttaa en√§√§ t√§t√§
     // toiminnallisuutta?
     catch (char *msg)
     {
@@ -287,7 +287,7 @@ bool NFmiStreamQueryData::ReadData(const NFmiString &theFileName, NFmiQueryData 
       cerr << "Could not open file: " << static_cast<char *>(theFileName) << " for reading."
            << endl;
       dataFile.close();
-      delete theTempData;  // siivotaan j‰ljet kun ongelmia tuli
+      delete theTempData;  // siivotaan j√§ljet kun ongelmia tuli
       theTempData = 0;
       return false;
     }
@@ -299,7 +299,7 @@ bool NFmiStreamQueryData::ReadData(const NFmiString &theFileName, NFmiQueryData 
       errStr += NFmiValueString::GetStringWithMaxDecimalsSmartWay(eDataMBSize, 1);
       errStr += " MB) for wanted data.";
       dataFile.close();
-      delete theTempData;  // siivotaan j‰ljet kun ongelmia tuli
+      delete theTempData;  // siivotaan j√§ljet kun ongelmia tuli
       theTempData = 0;
       throw std::runtime_error(errStr);
     }
@@ -307,7 +307,7 @@ bool NFmiStreamQueryData::ReadData(const NFmiString &theFileName, NFmiQueryData 
     catch (...)
     {
       dataFile.close();
-      delete theTempData;  // siivotaan j‰ljet kun ongelmia tuli
+      delete theTempData;  // siivotaan j√§ljet kun ongelmia tuli
       theTempData = 0;
       throw;
     }
@@ -381,7 +381,7 @@ bool NFmiStreamQueryData::ReadIn(NFmiQueryInfo *theQueryInfo)
 
 bool NFmiStreamQueryData::ReadIn(NFmiQueryData *theQueryData)
 {
-// Muunnetaan "stdin" bin‰‰ri moodiin --> pystyy lukemaan bin‰‰ri‰
+// Muunnetaan "stdin" bin√§√§ri moodiin --> pystyy lukemaan bin√§√§ri√§
 #ifndef UNIX
   int result = ::_setmode(_fileno(stdin), _O_BINARY);
   if (result == -1)
@@ -435,10 +435,10 @@ bool NFmiStreamQueryData::WriteCout(NFmiQueryData *theQueryData) const
 {
   NFmiQueryData *tempData = theQueryData ? theQueryData : itsQueryData;
   tempData->UseBinaryStorage(true);
-  if (tempData->InfoVersion() < 6.)  // jos datan infoversio on alle 6, pit‰‰ muuttaa 6:ksi
+  if (tempData->InfoVersion() < 6.)  // jos datan infoversio on alle 6, pit√§√§ muuttaa 6:ksi
     tempData->InfoVersion(6.);
 
-// Asetetaan 'stdout' bin‰‰ri moodiin --> kirjoittaa bin‰‰ri‰
+// Asetetaan 'stdout' bin√§√§ri moodiin --> kirjoittaa bin√§√§ri√§
 #ifndef UNIX
   int result = ::_setmode(_fileno(stdout), _O_BINARY);
   if (result == -1) cerr << "Could not set standard input into binary mode!";

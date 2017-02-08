@@ -100,7 +100,7 @@ class _FMI_DLL NFmiDataPool
   bool CalcMaxValue();
   bool CalcMinMaxValues();
 
-  // (Marko) n‰‰ pit‰is katsoa j‰rkeviksi (NFmiColorpool2 tarvitsee)
+  // (Marko) n√§√§ pit√§is katsoa j√§rkeviksi (NFmiColorpool2 tarvitsee)
   void Data(float* theData);
   void DoEndianByteSwap();
 
@@ -121,8 +121,8 @@ class _FMI_DLL NFmiDataPool
   double itsMissingValue[kMaxNumberOfDifferentMissingValues];
 
   mutable bool fUseBinaryStorage;
-  bool fDoEndianByteSwap;  // t‰m‰ tieto asetetaan ulkoa k‰sin (eli qdata kysyy qinfolta, pit‰‰kˆ
-                           // byte-swapata bin‰‰ri dataa)
+  bool fDoEndianByteSwap;  // t√§m√§ tieto asetetaan ulkoa k√§sin (eli qdata kysyy qinfolta, pit√§√§k√∂
+                           // byte-swapata bin√§√§ri dataa)
 };
 
 // ----------------------------------------------------------------------

@@ -8,8 +8,8 @@
  * \class NFmiCommentStripper
  *
  * Luokka poistaa C++ ja #-kommenttimerkit datasta ja palauttaa
- * riisutun merkkijonon. C++ -kommentit lˆydet‰‰n ja poistetaan myˆs
- * keskelt‰ rivi‰,  #-kommentit vain rivin alusta
+ * riisutun merkkijonon. C++ -kommentit l√∂ydet√§√§n ja poistetaan my√∂s
+ * keskelt√§ rivi√§,  #-kommentit vain rivin alusta
  *
  */
 // ======================================================================
@@ -108,7 +108,7 @@ NFmiCommentStripper::NFmiCommentStripper(const NFmiCommentStripper& theStripper)
 
 bool NFmiCommentStripper::ReadFile(const string& theFileName)
 {
-  ifstream in(theFileName.c_str());
+  ifstream in(theFileName.c_str(), std::ios::binary);
 #ifndef UNIX
   itsFileName = theFileName.substr(theFileName.rfind("\\") + 1);
 #else
@@ -121,7 +121,7 @@ bool NFmiCommentStripper::ReadFile(const string& theFileName)
     string filt_elem1("//");
     string rowbuffer, bigstring;
 
-    // luetaan tiedostoa rivi kerrallaan ja testataan lˆytyykˆ yhden rivin kommentteja
+    // luetaan tiedostoa rivi kerrallaan ja testataan l√∂ytyyk√∂ yhden rivin kommentteja
 
     while (getline(in, rowbuffer))
     {
@@ -145,9 +145,9 @@ bool NFmiCommentStripper::ReadFile(const string& theFileName)
 }
 // ----------------------------------------------------------------------
 /*!
- * Kuten ReadFile mutta tarkistaa samalla onko tekstiss‰ k‰ytetty theOptionText-
- * alkuisia sanoja, joita lehtiohjelmassa k‰ytet‰‰n ehdollisina direktiivein‰,
- * esim #ifConditionHour13. T‰st‰ kun saa tiedon mit‰ k‰ytˆss‰ on, ei tarvitse rasittaa
+ * Kuten ReadFile mutta tarkistaa samalla onko tekstiss√§ k√§ytetty theOptionText-
+ * alkuisia sanoja, joita lehtiohjelmassa k√§ytet√§√§n ehdollisina direktiivein√§,
+ * esim #ifConditionHour13. T√§st√§ kun saa tiedon mit√§ k√§yt√∂ss√§ on, ei tarvitse rasittaa
  * ohjelmaa raskaammilla varsinaisilla srippauksilla, joita tuntitapauksessa jo
  * saattaisi olla 24.
  *
@@ -157,11 +157,11 @@ bool NFmiCommentStripper::ReadFile(const string& theFileName)
  * tarkistettava sana, lehtiohjelman tapauksessa #ifCondition
  *
  * \param places
- * t‰h‰n annettuun settiin ne ker‰t‰‰n, lehtiohjelma aluksi #ifConditionHour1 -> 23
+ * t√§h√§n annettuun settiin ne ker√§t√§√§n, lehtiohjelma aluksi #ifConditionHour1 -> 23
  *
  * \return
- * false: tiedosto ei lˆydy
- *        itsMessage k‰ytett‰viss‰ virheilmoituksiin
+ * false: tiedosto ei l√∂ydy
+ *        itsMessage k√§ytett√§viss√§ virheilmoituksiin
  */
 // ----------------------------------------------------------------------
 
@@ -169,7 +169,7 @@ bool NFmiCommentStripper::ReadFileCheckingOptions(const string& theFileName,
                                                   const string& theOptionText,
                                                   set<string>& theOptionTexts)
 {
-  ifstream in(theFileName.c_str());
+  ifstream in(theFileName.c_str(), std::ios::binary);
 #ifndef UNIX
   itsFileName = theFileName.substr(theFileName.rfind("\\") + 1);
 #else
@@ -183,7 +183,7 @@ bool NFmiCommentStripper::ReadFileCheckingOptions(const string& theFileName,
     string filt_elem1("//");
     string rowbuffer, bigstring;
 
-    // luetaan tiedostoa rivi kerrallaan ja testataan lˆytyykˆ yhden rivin kommentteja
+    // luetaan tiedostoa rivi kerrallaan ja testataan l√∂ytyyk√∂ yhden rivin kommentteja
 
     while (getline(in, rowbuffer))
     {
@@ -229,7 +229,7 @@ bool NFmiCommentStripper::ReadAndStripFile(const string& theFileName)
 // ----------------------------------------------------------------------
 /*!
  * Feature/minor bug: Jos rivin lopussa on space ennen rivinvaihtoa, se
- * siivotaan pois. En muuta toimintaa ainakaan nyt kun sain korjattua t‰st‰
+ * siivotaan pois. En muuta toimintaa ainakaan nyt kun sain korjattua t√§st√§
  * aiheutuneen ongelman toisaalla (SmartMetin viewMacrojen tallennus ja luku).
  * \return Undocumented
  */
@@ -262,8 +262,8 @@ bool NFmiCommentStripper::Strip(void)
   {
     // Mika: 07.02.2002:
     // Lopuksi poistetaan tarpeeton whitespace:
-    // Kun tulee \n vastaan, peruutetaan spacet pois ja j‰tet‰‰n korkeintaan
-    // 3 per‰kk‰ist‰ \n merkki‰
+    // Kun tulee \n vastaan, peruutetaan spacet pois ja j√§tet√§√§n korkeintaan
+    // 3 per√§kk√§ist√§ \n merkki√§
     unsigned int j = 2;
 
     for (unsigned int i = 2; i < itsString.size(); i++)

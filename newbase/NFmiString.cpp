@@ -13,7 +13,7 @@
 // ======================================================================
 
 #ifdef _MSC_VER
-#pragma warning(disable : 4996)  // poistaa MSVC++2008 k‰‰nt‰j‰n tekemi‰ varoituksia: "warning
+#pragma warning(disable : 4996)  // poistaa MSVC++2008 k√§√§nt√§j√§n tekemi√§ varoituksia: "warning
                                  // C4996: 'sprintf': This function or variable may be unsafe.
                                  // Consider using sprintf_s instead"
 #endif
@@ -203,7 +203,7 @@ void NFmiString::Set(const unsigned char *aText,
     fReservedLength = fLength + 1;
   }
   strncpy(reinterpret_cast<char *>(fChar), reinterpret_cast<const char *>(aText), fLength);
-  fChar[fReservedLength - 1] = '\0';  // Kun rivi‰ ei ollut j‰tti joskus roskaa
+  fChar[fReservedLength - 1] = '\0';  // Kun rivi√§ ei ollut j√§tti joskus roskaa
 }
 
 // ----------------------------------------------------------------------
@@ -286,7 +286,7 @@ void NFmiString::TrimL(unsigned char theChar)
 
 void NFmiString::FillR(long theSize, unsigned char theChar)
 {
-  // Mika: Jostain syyst‰ g++ k‰‰nt‰‰ v‰‰rin ilman castia
+  // Mika: Jostain syyst√§ g++ k√§√§nt√§√§ v√§√§rin ilman castia
   if (theSize > static_cast<long>(fLength))
   {
     unsigned char *theCharBuffer;
@@ -514,13 +514,13 @@ unsigned long NFmiString::SearchLast(const unsigned char *searChar) const
 
 // ----------------------------------------------------------------------
 /*!
- * Toimii kuten SearchLast(unsigned char*), mutta k‰ytt‰j‰ voi rajoittaa
- * haun antamalla limit-arvon, jota pidemm‰lle hakua ei uloteta.
+ * Toimii kuten SearchLast(unsigned char*), mutta k√§ytt√§j√§ voi rajoittaa
+ * haun antamalla limit-arvon, jota pidemm√§lle hakua ei uloteta.
  *
  * \param unsigned char *searchChar, haettava merkki
- * \param unsigned long limit, tutkittavien merkkien m‰‰r‰ eli rajoitus,
- *  jota pitemm‰lle hakua ei uloteta
- * \return lˆydetyn merkin indeksi, 0 ellei annettua merkki‰ lˆydet‰
+ * \param unsigned long limit, tutkittavien merkkien m√§√§r√§ eli rajoitus,
+ *  jota pitemm√§lle hakua ei uloteta
+ * \return l√∂ydetyn merkin indeksi, 0 ellei annettua merkki√§ l√∂ydet√§
  */
 // ----------------------------------------------------------------------
 unsigned long NFmiString::SearchLast(const unsigned char *searchChar, unsigned long limit) const
@@ -713,7 +713,7 @@ void NFmiString::FirstCharToUpper(unsigned long theUpperIndex)
 bool NFmiString::FirstCharIsUpper(void) const
 {
   char c = fChar[0];
-  if ((c >= 'A' && c <= 'Z') || c == 'ƒ' || c == '÷' || c == '≈') return true;
+  if ((c >= 'A' && c <= 'Z') || c == '\304' || c == '\326' || c == '\305') return true;
 
   return false;
 }

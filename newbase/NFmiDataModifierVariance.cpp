@@ -52,7 +52,7 @@ NFmiDataModifierVariance::NFmiDataModifierVariance(NFmiDataIdent* theDataIdent,
       itsVarianceLevel(theVarianceLevel)
 {
   srand(static_cast<unsigned int>(time(NULL)));
-  // AddSubModifier(&NFmiRegressionItem);//Vain testi‰ varten
+  // AddSubModifier(&NFmiRegressionItem);//Vain testi√§ varten
 }
 
 // ----------------------------------------------------------------------

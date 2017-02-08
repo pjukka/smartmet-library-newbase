@@ -10,8 +10,8 @@
 
 #include "NFmiDataModifier.h"
 
-// tallettaa vain arvon. Voidaan k‰ytt‰‰ windChill-modifierista jos ei
-// mit‰‰n varsinaista modifieria/Lasse
+// tallettaa vain arvon. Voidaan k√§ytt√§√§ windChill-modifierista jos ei
+// mit√§√§n varsinaista modifieria/Lasse
 
 //! Undocumented
 class _FMI_DLL NFmiDataModifierDummy : public NFmiDataModifier
@@ -22,7 +22,7 @@ class _FMI_DLL NFmiDataModifierDummy : public NFmiDataModifier
   using NFmiDataModifier::Calculate;
   virtual void Calculate(float theValue);
 
-  // Lasse ei kutsuta mist‰‰n, aikaisemmat kutsut QI::CalcInterpolatedTimeData ja
+  // Lasse ei kutsuta mist√§√§n, aikaisemmat kutsut QI::CalcInterpolatedTimeData ja
   // QI::CalcTimeData:sta jouduttu poistamaan
 
   virtual void Calculate(NFmiQueryInfo* theQI);

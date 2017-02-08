@@ -9,7 +9,7 @@
 #define NFMISUPERSMARTINFO_H
 
 #ifdef _MSC_VER
-#pragma warning(disable : 4251)  // poistaa VC++ k‰‰nt‰j‰n varoituksen dll k‰‰nnˆksiss‰
+#pragma warning(disable : 4251)  // poistaa VC++ k√§√§nt√§j√§n varoituksen dll k√§√§nn√∂ksiss√§
 #endif
 
 #include "NFmiFastQueryInfo.h"
@@ -24,16 +24,16 @@ class NFmiBitmapAreaMask;
 class _FMI_DLL NFmiSuperSmartInfo : public NFmiFastQueryInfo
 {
  public:
-  // Accesslevel m‰‰r‰‰ mill‰ tasolla dataa haetaan kulloisellakin hetkell‰ SSInfosta.
+  // Accesslevel m√§√§r√§√§ mill√§ tasolla dataa haetaan kulloisellakin hetkell√§ SSInfosta.
   enum DataAccessLevel
   {
-    kNormalAccess = 0,     // == 'raaka' yhteys dataan eli k‰yt‰ suoraan fastinfon FloatValue:ta
-    kVarianceAccess = 1,   // varianssi tason k‰yttˆ
-    kVariationAccess = 2,  // ep‰varmuus tason k‰yttˆ
-    kTimeIntegrationAccess = 3,  // aikaintegraatio tason k‰yttˆ esim. sateen 12h yhteenlaskeminen
+    kNormalAccess = 0,     // == 'raaka' yhteys dataan eli k√§yt√§ suoraan fastinfon FloatValue:ta
+    kVarianceAccess = 1,   // varianssi tason k√§ytt√∂
+    kVariationAccess = 2,  // ep√§varmuus tason k√§ytt√∂
+    kTimeIntegrationAccess = 3,  // aikaintegraatio tason k√§ytt√∂ esim. sateen 12h yhteenlaskeminen
     kCalculatorAccess = 4        // korkeimman tason yhteys dataan (== laskee mukaan mahdollisesti
-                                 // calculatorin ja todenn‰kˆisyyden ja varianssin, jos ne ovat
-                                 // olemassa ja k‰ytˆss‰)
+                                 // calculatorin ja todenn√§k√∂isyyden ja varianssin, jos ne ovat
+                                 // olemassa ja k√§yt√∂ss√§)
   };
 
   ~NFmiSuperSmartInfo(void);
@@ -53,8 +53,8 @@ class _FMI_DLL NFmiSuperSmartInfo : public NFmiFastQueryInfo
                      NFmiHPlaceDescriptor* theHPlaceDescriptor = 0,
                      NFmiVPlaceDescriptor* theVPlaceDescriptor = 0);
 
-  // paikan-asetus-funktiot pit‰‰ kirjoittaa uudestaan areamaskien takia, koska
-  // nyt liikutaan maskeja k‰ytett‰ess‰ vain maskattuihin kohtiin ja muut hyp‰t‰‰n yli!!!!
+  // paikan-asetus-funktiot pit√§√§ kirjoittaa uudestaan areamaskien takia, koska
+  // nyt liikutaan maskeja k√§ytett√§ess√§ vain maskattuihin kohtiin ja muut hyp√§t√§√§n yli!!!!
 
   bool FirstLocation(void);
   bool NextLocation(void);
@@ -65,7 +65,7 @@ class _FMI_DLL NFmiSuperSmartInfo : public NFmiFastQueryInfo
 
   bool NearestPoint(const NFmiPoint& theLatLonPoint);
 
-  // Parametrin-asetus-funktiot pit‰‰ kirjoittaa uudestaan varianssi-calculaattorien takia!!!!!
+  // Parametrin-asetus-funktiot pit√§√§ kirjoittaa uudestaan varianssi-calculaattorien takia!!!!!
 
   bool FirstParam(bool fIgnoreSubParam = true);
   bool NextParam(bool fIgnoreSubParam = true);
@@ -73,10 +73,10 @@ class _FMI_DLL NFmiSuperSmartInfo : public NFmiFastQueryInfo
   bool LastParam(bool fIgnoreSubParam = true);
 
 #ifndef UNIX
-  using NFmiFastQueryInfo::Param;  // nyt voi k‰ytt‰‰ suoraan SSInfosta muitakin Param-funktioita
+  using NFmiFastQueryInfo::Param;  // nyt voi k√§ytt√§√§ suoraan SSInfosta muitakin Param-funktioita
 #else
-  // oli pakko kirjoittaa, koska muuten en voi kutsua SSInfo:lta t‰t‰,
-  // koska muitakin Param-metodeja on peitt‰m‰ss‰ t‰t‰
+  // oli pakko kirjoittaa, koska muuten en voi kutsua SSInfo:lta t√§t√§,
+  // koska muitakin Param-metodeja on peitt√§m√§ss√§ t√§t√§
   NFmiDataIdent& Param(void) const { return NFmiFastQueryInfo::Param(); };
 #endif
 
@@ -85,7 +85,7 @@ class _FMI_DLL NFmiSuperSmartInfo : public NFmiFastQueryInfo
   bool Param(const NFmiDataIdent& theDataIdent);
   bool Param(FmiParameterName theParam);
 
-  // ajan-asetus-funktiot pit‰‰ kirjoittaa uudestaan areamaskin takia,
+  // ajan-asetus-funktiot pit√§√§ kirjoittaa uudestaan areamaskin takia,
   // jos sattuu olemaan dynaamisia ajassa muuttuvia!!!!
 
   bool FirstTime(void);
@@ -94,8 +94,8 @@ class _FMI_DLL NFmiSuperSmartInfo : public NFmiFastQueryInfo
   bool PreviousTime(void);
 
 #ifndef UNIX
-  using NFmiFastQueryInfo::Time;       // nyt voi k‰ytt‰‰ suoraan SSInfosta muitakin Time-funktioita
-  using NFmiFastQueryInfo::TimeIndex;  // nyt voi k‰ytt‰‰ suoraan SSInfosta muitakin
+  using NFmiFastQueryInfo::Time;       // nyt voi k√§ytt√§√§ suoraan SSInfosta muitakin Time-funktioita
+  using NFmiFastQueryInfo::TimeIndex;  // nyt voi k√§ytt√§√§ suoraan SSInfosta muitakin
                                        // TimeIndex-funktioita
 #else
   const NFmiMetTime& Time(void) const { return NFmiFastQueryInfo::Time(); }
@@ -170,8 +170,8 @@ class _FMI_DLL NFmiSuperSmartInfo : public NFmiFastQueryInfo
   bool LocationIndex2XYPosition(
       unsigned long theIndex,
       int* theXOffset,
-      int* theYOffset);                // t‰m‰ kannattaa testien j‰lkeen laittaa privateksi
-  void UpdateHelperBinaryMasks(void);  // kutsu t‰t‰ kun haluat p‰ivitt‰‰ apuharvennusmaskeja
+      int* theYOffset);                // t√§m√§ kannattaa testien j√§lkeen laittaa privateksi
+  void UpdateHelperBinaryMasks(void);  // kutsu t√§t√§ kun haluat p√§ivitt√§√§ apuharvennusmaskeja
   void InitEmptyAreaMask(void);
   bool SetNearestPointMask(const NFmiPoint& theLatLonPoint, bool newValue, bool fClearFirst);
 
@@ -203,16 +203,16 @@ class _FMI_DLL NFmiSuperSmartInfo : public NFmiFastQueryInfo
   NFmiCombinedParam* CalculationCombinedValue(void);
 
  private:
-  // kutsu t‰t‰ aina kun aika muuttuu SSInfossa!!!!
+  // kutsu t√§t√§ aina kun aika muuttuu SSInfossa!!!!
   void TimeChanged(unsigned long theOldTimeIndex);
 
-  // kopioi helperbinarymaskit omaan k‰yttˆˆns‰
+  // kopioi helperbinarymaskit omaan k√§ytt√∂√∂ns√§
   void CopyHelperBinaryMasksAndInfo(const NFmiSuperSmartInfo& theSSInfo);
 
-  // alustaa kaikki tarvittavat harvennusapu maskit(eli kaikille ep‰varmuuksille 0-n)
+  // alustaa kaikki tarvittavat harvennusapu maskit(eli kaikille ep√§varmuuksille 0-n)
   bool InitHelperBinaryMasks(void);
 
-  // luo aina tietylle ep‰varmuuskertoimelle harvennusmaskin
+  // luo aina tietylle ep√§varmuuskertoimelle harvennusmaskin
   NFmiBitmapAreaMask* CreateHelperBinaryMask(int theUsedVariationFactor);
 
   NFmiBitmapAreaMask* CreateZeroVariationHelperBinaryMask(void);
@@ -220,39 +220,39 @@ class _FMI_DLL NFmiSuperSmartInfo : public NFmiFastQueryInfo
   // tuhoaa maskit
   void ClearHelperBinaryMasks(void);
 
-  // laskee k‰ytetyn maskin xy-indeksi-boundingboxin
+  // laskee k√§ytetyn maskin xy-indeksi-boundingboxin
   void CalcXYMaskBoundingBox(void);
 
   NFmiBitmapAreaMask* HelperBinaryMask(int theUsedVariationFactor);
   void SetCurrentHelperBinaryMask(void);
 
-  // Vaikuttaa mm. FloatValue-metodin toimintaan. Mill‰ tasolla dataa haetaan:
-  // raakana, varianssia, todenn‰kˆisyytt‰, vai Calculaattori tasolla laskettua.
-  // 0 = raaka data k‰yttˆ eli sama kuin FastInfo:n FloatValue.
+  // Vaikuttaa mm. FloatValue-metodin toimintaan. Mill√§ tasolla dataa haetaan:
+  // raakana, varianssia, todenn√§k√∂isyytt√§, vai Calculaattori tasolla laskettua.
+  // 0 = raaka data k√§ytt√∂ eli sama kuin FastInfo:n FloatValue.
   mutable DataAccessLevel itsFloatValueAccessLevel;
 
-  // K‰ytet‰‰nkˆ calculaattoria laskuissa. Jos ei ole kyseist‰ calculaattoria, arvon pit‰‰ olla
+  // K√§ytet√§√§nk√∂ calculaattoria laskuissa. Jos ei ole kyseist√§ calculaattoria, arvon pit√§√§ olla
   // false.
   bool fUseCalculator;
 
-  // K‰ytet‰‰nkˆ varianssi calculaattoria laskuissa. Jos ei ole kyseist‰ calculaattoria, arvon pit‰‰
+  // K√§ytet√§√§nk√∂ varianssi calculaattoria laskuissa. Jos ei ole kyseist√§ calculaattoria, arvon pit√§√§
   // olla false.
   bool fUseVarianceCalculator;
   bool fUseVariationCalculator;
   bool fUseTimeIntegrationCalculator;
 
-  // t‰h‰n laitetaan mm. integraatio calculaattorit // ei omista, ei tuhoa!!!
+  // t√§h√§n laitetaan mm. integraatio calculaattorit // ei omista, ei tuhoa!!!
   NFmiCalculator* itsCalculator;
 
-  // ep‰varmuuslaatikko calculaattori // ei omista, ei tuhoaa!!!
+  // ep√§varmuuslaatikko calculaattori // ei omista, ei tuhoaa!!!
   NFmiCalculator* itsVariationCalculator;
 
-  // t‰m‰ laskee vesiputouksen 3. portaassa halutunlaisen aikaintegroinnin, esim. 12h
+  // t√§m√§ laskee vesiputouksen 3. portaassa halutunlaisen aikaintegroinnin, esim. 12h
   // sade summa. ei omista, ei tuhoa!!!
   NFmiCalculator* itsTimeIntegrationCalculator;
 
-  // T‰h‰n SSInfo hakee aina kulloisenkin parametrin varianssi-modifierin
-  // parametrikohtaisesta varianssi-modifier-listasta, jonka k‰ytt‰j‰ on
+  // T√§h√§n SSInfo hakee aina kulloisenkin parametrin varianssi-modifierin
+  // parametrikohtaisesta varianssi-modifier-listasta, jonka k√§ytt√§j√§ on
   // antanut. omistaa, tuhoaa!!!
   NFmiCalculator* itsCurrentVarianceCalculator;
 
@@ -260,27 +260,27 @@ class _FMI_DLL NFmiSuperSmartInfo : public NFmiFastQueryInfo
   // v-calculator puuttuu, ei lasketa varianssia! ei omista, ei tuhoa!!!
   NFmiDataModifierDescriptor* itsDataModifierDescriptor;
 
-  // t‰m‰ vaikuttaa SSInfon paikka juoksutukseen, vain maskatut paikat
-  // k‰yd‰‰n l‰pi!!! // ei omista, ei tuhoa!!!
+  // t√§m√§ vaikuttaa SSInfon paikka juoksutukseen, vain maskatut paikat
+  // k√§yd√§√§n l√§pi!!! // ei omista, ei tuhoa!!!
   NFmiAreaMask* itsAreaMask;
 
   bool fUseAreaMask;
 
-  // T‰m‰ on optimointi vipu: Harvennetaan k‰yt‰vi‰ maskattuja pisteit‰ t‰m‰n
-  // avulla, jotta ep‰varmuusalue ei hidasta liikaa laskentoja.
+  // T√§m√§ on optimointi vipu: Harvennetaan k√§yt√§vi√§ maskattuja pisteit√§ t√§m√§n
+  // avulla, jotta ep√§varmuusalue ei hidasta liikaa laskentoja.
   bool fUseHelperBinaryMasks;
 
-  // Optimoinnissa k‰ytetty bin‰‰ri maski. vectorista haetaan aina t‰h‰n
+  // Optimoinnissa k√§ytetty bin√§√§ri maski. vectorista haetaan aina t√§h√§n
   // sopiva maski(ei omista ei tuhoa)
   NFmiBitmapAreaMask* itsCurrentHelperBinaryMask;
 
-  // t‰t‰ k‰ytet‰‰n apuna laskettaessa harvennusmaskeja
+  // t√§t√§ k√§ytet√§√§n apuna laskettaessa harvennusmaskeja
   NFmiRect itsXYMaskBoundingBox;
 
-  // t‰h‰n talletetaan eri ep‰varmuus kertoimilla lasketut apumaskit (omistaa, tuhoaa)
+  // t√§h√§n talletetaan eri ep√§varmuus kertoimilla lasketut apumaskit (omistaa, tuhoaa)
   checkedVector<NFmiBitmapAreaMask*> itsHelperBinaryMaskList;
 
-  // T‰m‰ osaa luoda k‰ytt‰j‰n pyyt‰mi‰ speciaali maskeja ja osaa mm.
+  // T√§m√§ osaa luoda k√§ytt√§j√§n pyyt√§mi√§ speciaali maskeja ja osaa mm.
   // hoitaa optimoinnin binaarimaskin rakentamisen.
 
 };  // class NFmiSuperSmartInfo
@@ -421,7 +421,7 @@ inline NFmiCalculator* NFmiSuperSmartInfo::Calculator(void) const { return itsCa
  */
 // ----------------------------------------------------------------------
 
-// huom! ei asetus funktiota, koska t‰m‰ haetaan aina parametrikohtaisesta listasta!!!
+// huom! ei asetus funktiota, koska t√§m√§ haetaan aina parametrikohtaisesta listasta!!!
 inline NFmiCalculator* NFmiSuperSmartInfo::CurrentVarianceCalculator(void) const
 {
   return itsCurrentVarianceCalculator;

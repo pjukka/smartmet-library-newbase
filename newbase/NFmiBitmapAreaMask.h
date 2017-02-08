@@ -25,7 +25,7 @@ class _FMI_DLL NFmiBitmapAreaMask : public NFmiAreaMaskImpl
 
   NFmiBitmapAreaMask(const NFmiBitmapAreaMask& theMask);
 
-  // t‰t‰ konstruktoria k‰ytett‰ess‰ asetetaan maskien arvot k‰sipelill‰ ulkoa p‰in
+  // t√§t√§ konstruktoria k√§ytett√§ess√§ asetetaan maskien arvot k√§sipelill√§ ulkoa p√§in
   NFmiBitmapAreaMask(int theXSize,
                      int theYSize,
                      const NFmiArea* theArea,
@@ -50,9 +50,9 @@ class _FMI_DLL NFmiBitmapAreaMask : public NFmiAreaMaskImpl
 
   bool IsMasked(const NFmiPoint& theLatLon) const;
   bool IsMasked(int theIndex)
-      const;  // erikoistapaus optimoituun k‰yttˆˆn (ei voi k‰ytt‰‰ kaikille luokille!!!!)
+      const;  // erikoistapaus optimoituun k√§ytt√∂√∂n (ei voi k√§ytt√§√§ kaikille luokille!!!!)
   void Mask(int theIndex, bool newStatus);
-  double MaskValue(const NFmiPoint& theLatLon) const;  // palauttaa kertoimen 0:n ja 1:n v‰lilt
+  double MaskValue(const NFmiPoint& theLatLon) const;  // palauttaa kertoimen 0:n ja 1:n v√§lilt
   void SetAll(bool theNewState);  // HUOM! toimii vain NFmiBinaryMask:in kanssa. Asettaa koko maskin
                                   // kaikki arvot halutuksi.
 
@@ -61,9 +61,9 @@ class _FMI_DLL NFmiBitmapAreaMask : public NFmiAreaMaskImpl
   using NFmiAreaMaskImpl::Level;
   const NFmiLevel* Level(void) const { return itsLevel; }
  protected:
-  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t‰m‰ lapsiin!!!
+  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t√§m√§ lapsiin!!!
   const NFmiString MakeSubMaskString(
-      void) const;  // tekee  param nimi tai vastaavan stringin p‰tk‰n
+      void) const;  // tekee  param nimi tai vastaavan stringin p√§tk√§n
 
  private:
   NFmiBitmapAreaMask& operator=(const NFmiBitmapAreaMask& theMask);

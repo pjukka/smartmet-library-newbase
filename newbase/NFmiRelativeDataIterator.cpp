@@ -89,19 +89,19 @@ void NFmiRelativeDataIterator::DoForEach(NFmiDataModifier* theDataModifier)
 {
   if (!theDataModifier) return;
 
-  CheckIfMaskIsUsed();  // käy asettamassa fMaskInUse-flagin päälle (optimointia, jos ei ole maskia
-                        // käytössä)
+  CheckIfMaskIsUsed();  // kÃ¤y asettamassa fMaskInUse-flagin pÃ¤Ã¤lle (optimointia, jos ei ole maskia
+                        // kÃ¤ytÃ¶ssÃ¤)
   theDataModifier->Clear();
 
   for (long t = itsDtStart; t <= itsDtEnd; t++)
     for (long y = itsDyStart; y <= itsDyEnd; y++)
       for (long x = itsDxStart; x <= itsDxEnd; x++)
       {
-        if ((!fMaskInUse) || IsMasked(itsData->PeekLocationLatLon(x, y)))  // tehdään laskut, jos
-                                                                           // maski ei ole käytössä
+        if ((!fMaskInUse) || IsMasked(itsData->PeekLocationLatLon(x, y)))  // tehdÃ¤Ã¤n laskut, jos
+                                                                           // maski ei ole kÃ¤ytÃ¶ssÃ¤
                                                                            // tai sitten jos maski
-                                                                           // on käytössä ja
-                                                                           // 'päällä'
+                                                                           // on kÃ¤ytÃ¶ssÃ¤ ja
+                                                                           // 'pÃ¤Ã¤llÃ¤'
           theDataModifier->Calculate(itsData->PeekValue(t, x, y));
       }
 }

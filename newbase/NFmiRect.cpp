@@ -130,8 +130,8 @@ const NFmiPoint NFmiRect::NearestCorner(const NFmiPoint &thePoint) const
  */
 // ----------------------------------------------------------------------
 
-// S‰‰t‰‰ rectin aspect ration halutuksi. fKeepX ollessa tosi ei muuteta
-// x:n arvoja. Korjaukset tehd‰‰n halutun nurkan ('theDirection') suhteen
+// S√§√§t√§√§ rectin aspect ration halutuksi. fKeepX ollessa tosi ei muuteta
+// x:n arvoja. Korjaukset tehd√§√§n halutun nurkan ('theDirection') suhteen
 // eli valittu nurkka "pysyy paikallaan". Jos muutos on mahdoton (esim.
 // aspectratio=0), palauttaa funktio false:n muuten true:n.
 
@@ -149,9 +149,9 @@ bool NFmiRect::AdjustAspectRatio(double theRatioXperY, bool fKeepX, FmiDirection
   double newWidth = Width();
   double newHeight = Height();
 
-  // Origona on nurkka 'kTopLeft' miss‰ (X,Y) = TopLeft()
+  // Origona on nurkka 'kTopLeft' miss√§ (X,Y) = TopLeft()
   // X kasvaa "vasemmalta oikealle"
-  // Y kasvaa "ylh‰‰lt‰ alas"
+  // Y kasvaa "ylh√§√§lt√§ alas"
 
   switch (theDirection)
   {
@@ -182,10 +182,10 @@ bool NFmiRect::AdjustAspectRatio(double theRatioXperY, bool fKeepX, FmiDirection
 
 // ----------------------------------------------------------------------
 /*!
- * Projisoi annetun maailma koordinaatin siten ett‰ jos piste on rectin
- * sis‰ll‰, palautettu rect saa arvon 0,0 - 1,1 sen mukaan miten se rectin
- * sis‰‰n osui. Origo on top-left ja 1,1 on bottom-right kulma. Jos se on
- * ruudun ulkona, tulee mukaan mahdolliset negatiiviset ja 1:st‰ suuremmat arvot.
+ * Projisoi annetun maailma koordinaatin siten ett√§ jos piste on rectin
+ * sis√§ll√§, palautettu rect saa arvon 0,0 - 1,1 sen mukaan miten se rectin
+ * sis√§√§n osui. Origo on top-left ja 1,1 on bottom-right kulma. Jos se on
+ * ruudun ulkona, tulee mukaan mahdolliset negatiiviset ja 1:st√§ suuremmat arvot.
  *
  * \param thePoint The relative world point that is projected to rect dimensions.
  * \return The given point in rect's world coordinates.
@@ -280,7 +280,7 @@ void NFmiRect::Center(const NFmiPoint &newCenter)
 
 // ----------------------------------------------------------------------
 /*!
- * Palauttaa kahta recti‰ ymp‰rˆiv‰n rectin.
+ * Palauttaa kahta recti√§ ymp√§r√∂iv√§n rectin.
  * \param theRect Undocumented
  * \result Undocumented
  */
@@ -297,7 +297,7 @@ const NFmiRect NFmiRect::SmallestEnclosing(const NFmiRect &theRect) const
 
 // ----------------------------------------------------------------------
 /*!
- * Palauttaa pienimm‰n rect:in, mik‰ pit‰‰ sis‰ll‰‰n this-rect:in ja
+ * Palauttaa pienimm√§n rect:in, mik√§ pit√§√§ sis√§ll√§√§n this-rect:in ja
  * parametrina annetun rect:in eli leikkaus.
  * \param theRect Undocumented
  * \result Undocumented

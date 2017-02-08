@@ -46,8 +46,8 @@ enum FmiTiesaaAlueet
   kTieAlueV4 = 604,
   kTieAlueV5 = 605,
 
-  // oulunl‰‰niss‰ nimet ja numerot menev‰t hieman hassusti
-  kTieAlueO1e = 701,  // alunperin ilman O:ta, mutta laitoin O=oulunl‰‰ni merkin enumiin
+  // oulunl√§√§niss√§ nimet ja numerot menev√§t hieman hassusti
+  kTieAlueO1e = 701,  // alunperin ilman O:ta, mutta laitoin O=oulunl√§√§ni merkin enumiin
   kTieAlueO2 = 702,
   kTieAlueO1p = 703,
   kTieAlueO4 = 704,

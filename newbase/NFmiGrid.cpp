@@ -30,24 +30,24 @@ NFmiLocationCache::NFmiLocationCache(void)
 NFmiLocationCache::~NFmiLocationCache(void) {}
 static const double gGridPointEpsilon =
     0.0000001;  // kuinka paljon interpolointi hila-piste saa poiketa maksimissaan tasaluvuista,
-// ett‰ erotus tulkitaan interpolaatiossa turhaksi ja indeksi pyˆristet‰‰n vain l‰hint‰
-// pistett‰ vastaavaksi. HUOM! x- ja y-suunnat pyˆristet‰‰n erikseen!!!
+// ett√§ erotus tulkitaan interpolaatiossa turhaksi ja indeksi py√∂ristet√§√§n vain l√§hint√§
+// pistett√§ vastaavaksi. HUOM! x- ja y-suunnat py√∂ristet√§√§n erikseen!!!
 static const double gOutlineGridPointEpsilon =
-    gGridPointEpsilon * 10;  // viel‰ on toinen raja, jota k‰ytet‰‰n vain jos ep‰tarkkuus vie
-// tietyn hilan indeksi rajojen yli, t‰llˆin pyˆrittet‰‰n aina alas/ylˆs rajalle.
+    gGridPointEpsilon * 10;  // viel√§ on toinen raja, jota k√§ytet√§√§n vain jos ep√§tarkkuus vie
+// tietyn hilan indeksi rajojen yli, t√§ll√∂in py√∂rittet√§√§n aina alas/yl√∂s rajalle.
 void NFmiLocationCache::CalcIsInterpolationNeeded(int theGridSizeX, int theGridSizeY)
 {
   double xDiff = ::fabs(itsGridPoint.X() - ::round(itsGridPoint.X()));
   double yDiff = ::fabs(itsGridPoint.Y() - ::round(itsGridPoint.Y()));
   fNoInterpolation = (xDiff < gGridPointEpsilon) && (yDiff < gGridPointEpsilon);
 
-  // Lis‰ksi tarpeeksi l‰hell‰ olevat x/y arvot pit‰‰ pyˆrist‰‰ l‰himp‰‰n tasalukuun.
-  // T‰m‰ siksi ett‰ mm. reunoilla tulee ongelmia, kun cache laskee hilapisteen hivenen yli reunan
+  // Lis√§ksi tarpeeksi l√§hell√§ olevat x/y arvot pit√§√§ py√∂rist√§√§ l√§himp√§√§n tasalukuun.
+  // T√§m√§ siksi ett√§ mm. reunoilla tulee ongelmia, kun cache laskee hilapisteen hivenen yli reunan
   // (tarkkuus virhe)
   if (xDiff < gGridPointEpsilon) itsGridPoint.X(::round(itsGridPoint.X()));
   if (yDiff < gGridPointEpsilon) itsGridPoint.Y(::round(itsGridPoint.Y()));
 
-  // Jos indeksit menev‰t laskenta tarkkuuden takia halutun hila koon alle/yli v‰h‰sen, pyˆristet‰‰n
+  // Jos indeksit menev√§t laskenta tarkkuuden takia halutun hila koon alle/yli v√§h√§sen, py√∂ristet√§√§n
   // rajalle
   if (itsGridPoint.X() < 0 && ::fabs(itsGridPoint.X()) < gOutlineGridPointEpsilon)
     itsGridPoint.X(0);
@@ -77,7 +77,7 @@ NFmiLocationCache NFmiLocationCache::MakePeekedLocation(const NFmiLocationCache 
     else
     {
       peekedLocation.itsLocationIndex = gMissingIndex;
-      return peekedLocation;  // voidaan lopettaa jo, koska kurkkaus meni jo 'mets‰‰n'
+      return peekedLocation;  // voidaan lopettaa jo, koska kurkkaus meni jo 'mets√§√§n'
     }
   }
 
@@ -90,16 +90,16 @@ NFmiLocationCache NFmiLocationCache::MakePeekedLocation(const NFmiLocationCache 
     else
     {
       peekedLocation.itsLocationIndex = gMissingIndex;
-      return peekedLocation;  // voidaan lopettaa jo, koska kurkkaus meni jo 'mets‰‰n'
+      return peekedLocation;  // voidaan lopettaa jo, koska kurkkaus meni jo 'mets√§√§n'
     }
   }
 
   return peekedLocation;
 }
 
-// Pyˆristet‰‰n hilapiste l‰himp‰‰n kokonaislukuun. X- ja Y-s‰‰dˆt erikseen.
-// HUOM! T‰m‰ ei mielest‰ni vaikuta itsLocationIndex:in arvoon, koska se on osoittamassa jo
-// l‰himp‰‰n hilapisteeseen, mihin t‰m‰ pyˆristys johtaa.
+// Py√∂ristet√§√§n hilapiste l√§himp√§√§n kokonaislukuun. X- ja Y-s√§√§d√∂t erikseen.
+// HUOM! T√§m√§ ei mielest√§ni vaikuta itsLocationIndex:in arvoon, koska se on osoittamassa jo
+// l√§himp√§√§n hilapisteeseen, mihin t√§m√§ py√∂ristys johtaa.
 void NFmiLocationCache::SetToNearestGridPoint(bool fDoX,
                                               bool fDoY,
                                               int theGridSizeX,
@@ -122,7 +122,7 @@ void NFmiTimeCache::CalcIsInterpolationNeeded(void)
 {
   double diff = ::fabs(itsOffset - ::round(itsOffset));
 
-  if (diff < gGridPointEpsilon)  // k‰ytet‰‰n t‰ss‰ samaa epsilonia
+  if (diff < gGridPointEpsilon)  // k√§ytet√§√§n t√§ss√§ samaa epsilonia
   {
     itsOffset = static_cast<float>(::round(itsOffset));
     if (itsOffset == 0)
@@ -237,7 +237,7 @@ bool NFmiGrid::Init(NFmiGrid &theGrid,
   itsData = new NFmiDataPool();
   itsData->Init(Size(), values);
 
-  // HUOM! Puuttuvien arvojen lista otetaan "p‰‰gridin" datapoolista
+  // HUOM! Puuttuvien arvojen lista otetaan "p√§√§gridin" datapoolista
   itsData->InitMissingValues(*theGrid.DataPool());
   delete[] values;
 
@@ -398,9 +398,9 @@ std::istream &NFmiGrid::Read(std::istream &file)
 
 // ----------------------------------------------------------------------
 /*!
- * Metodin nimi ei tarkoita gridien sis‰ltˆ‰ vaan rakennetta.
- * Metodi tarkistaa, onko area:t vertailtavissa grideiss‰ samat ja onko
- * hilojen m‰‰r‰t x- ja y-suunnassa samat. Tietoa voidaan k‰ytt‰‰ mm. optimoinnissa.
+ * Metodin nimi ei tarkoita gridien sis√§lt√∂√§ vaan rakennetta.
+ * Metodi tarkistaa, onko area:t vertailtavissa grideiss√§ samat ja onko
+ * hilojen m√§√§r√§t x- ja y-suunnassa samat. Tietoa voidaan k√§ytt√§√§ mm. optimoinnissa.
  *
  * \param theOtherGrid Undocumented
  * \return Undocumented
@@ -411,7 +411,7 @@ bool NFmiGrid::AreGridsIdentical(const NFmiGrid &theOtherGrid) const
 {
   if ((itsXNumber == theOtherGrid.itsXNumber) && (itsYNumber == theOtherGrid.itsYNumber))
   {
-    // areoiden tarkastelu on hankalaa ja t‰m‰ j‰‰ mahdollisesti vaillinaiseksi
+    // areoiden tarkastelu on hankalaa ja t√§m√§ j√§√§ mahdollisesti vaillinaiseksi
     // miksi ClassId()-metodi ei voi olla const:i???
     if (const_cast<NFmiGrid *>(this)->ClassId() == const_cast<NFmiGrid &>(theOtherGrid).ClassId())
     {
@@ -440,7 +440,7 @@ const NFmiPoint NFmiGrid::RelativePoint(void) const
 // ----------------------------------------------------------------------
 /*!
  * Palauttaa currentin paikan suhteellisen sijainnin
- * Huom!!! t‰m‰ ei toimi ainakaan viel‰, eik‰ ehk‰ tarvitakaan ollenkaan (Marko).
+ * Huom!!! t√§m√§ ei toimi ainakaan viel√§, eik√§ ehk√§ tarvitakaan ollenkaan (Marko).
  *
  * \param theIndex Undocumented, unused
  * \return Undocumented
@@ -482,8 +482,8 @@ bool NFmiGrid::NearestLatLon(double newLon,
 }
 
 //***********************************************************************************
-//************** T‰st‰ alkaa raakainteger dataan erikoistunut koodiosa **************
-//************** Pit‰‰ testata, uudelleen muokata hieman helppotajuisemmaksi ********
+//************** T√§st√§ alkaa raakainteger dataan erikoistunut koodiosa **************
+//************** Pit√§√§ testata, uudelleen muokata hieman helppotajuisemmaksi ********
 //************** Kunhan saadaan testatuksi ja mietityksi loppuun asti ***************
 //***********************************************************************************
 
@@ -507,8 +507,8 @@ static bool SeekStartingPoint(ifstream &in,
   }
   else if (!theDataStartsAfterString.empty())
   {
-    // int maxIgnoredCount = std::numeric_limits<double>::max(); // ei piru k‰‰nny!!!???!!!!
-    int maxIgnoredCount = 2000000000;  // t‰h‰n iso luku
+    // int maxIgnoredCount = std::numeric_limits<double>::max(); // ei piru k√§√§nny!!!???!!!!
+    int maxIgnoredCount = 2000000000;  // t√§h√§n iso luku
     int firstChar = theDataStartsAfterString[0];
     do
     {
@@ -549,7 +549,7 @@ bool NFmiGrid::SwapData(FmiDirection theStartingCorner, bool walkXDimFirst)
     return NFmiGridBase::Swap(theStartingCorner);
   else
   {
-    // ei ole viel‰ toteutettu!!!!!!!
+    // ei ole viel√§ toteutettu!!!!!!!
   }
   return false;
 }
@@ -558,7 +558,7 @@ bool NFmiGrid::SwapData(FmiDirection theStartingCorner, bool walkXDimFirst)
 /*!
  * Gridin alustus integertyyppisen raakadata-tiedostosta (kirjoitettu
  * tiedostoon raakataulukkona, ei formatoitua dataa). Lukee datan
- * 'raaka'-integerein‰, mutta muuttaa ne lennossa float muotoon.
+ * 'raaka'-integerein√§, mutta muuttaa ne lennossa float muotoon.
  *
  * \param theFileName Name of the file containing the raw data
  * \param nx Number of raw data elements in X-direction
@@ -567,7 +567,7 @@ bool NFmiGrid::SwapData(FmiDirection theStartingCorner, bool walkXDimFirst)
  * \param isLittleEndian True, if the raw data is in little endian mode
  * \param theStartOffsetInBytes How many initial bytes to skip.
  *        If zero, one can use theDataStartsAfterString
- *†\param theDataStartsAfterString If theStartOffsetInBytes is zero, this
+ *¬†\param theDataStartsAfterString If theStartOffsetInBytes is zero, this
  *        string is the start marker for the actual data.
  * \param theStartingCorner The grid corner where the raw data starts.
  * \param walkXDimFirst Whether to advance first in X- or Y-direction.
@@ -596,11 +596,11 @@ bool NFmiGrid::Init(const std::string &theFileName,
                     float theConversionScale,
                     float theConversionBase)
 {
-  assert(walkXDimFirst);  // Juoksutusta ensin y-dimensio suuntaan ei ole viel‰ toteutettu!
-  assert(theElementSizeInBytes > 0);  // DataElementin tavukoon pit‰‰ olla suurempi kuin 0!
-  assert(theElementSizeInBytes < 5);  // Ei ole viel‰ toteutettu yli 4 tavun integerien k‰sittely‰!
+  assert(walkXDimFirst);  // Juoksutusta ensin y-dimensio suuntaan ei ole viel√§ toteutettu!
+  assert(theElementSizeInBytes > 0);  // DataElementin tavukoon pit√§√§ olla suurempi kuin 0!
+  assert(theElementSizeInBytes < 5);  // Ei ole viel√§ toteutettu yli 4 tavun integerien k√§sittely√§!
   assert(theDataStartsAfterString.size() <=
-         2);  // Ei ole viel‰ toteutettu yli 2 merkin mittaisia datan alku merkkijonoja!
+         2);  // Ei ole viel√§ toteutettu yli 2 merkin mittaisia datan alku merkkijonoja!
 
   bool status = NFmiGridBase::Init(nx, ny);
   ifstream in(theFileName.c_str(), ios::in | ios::binary);
@@ -608,7 +608,7 @@ bool NFmiGrid::Init(const std::string &theFileName,
   {
     unsigned long rowByteSize = nx * theElementSizeInBytes;
     checkedVector<char> buffer(rowByteSize);
-    checkedVector<float> floatData(nx);  // tehd‰‰n float taulu, johon mahtuu rivin arvot
+    checkedVector<float> floatData(nx);  // tehd√§√§n float taulu, johon mahtuu rivin arvot
     if ((status = SeekStartingPoint(in, theStartOffsetInBytes, theDataStartsAfterString)) == true)
     {
       for (unsigned long i = 0; i < ny; i++)
@@ -665,26 +665,26 @@ bool NFmiGrid::Init(const std::string &theFileName,
 }
 
 //***********************************************************************************
-//************** T‰h‰n loppuu raakainteger dataan erikoistunut koodiosa *************
-//************** Pit‰‰ testata, uudelleen muokata hieman helppotajuisemmaksi ********
+//************** T√§h√§n loppuu raakainteger dataan erikoistunut koodiosa *************
+//************** Pit√§√§ testata, uudelleen muokata hieman helppotajuisemmaksi ********
 //************** Kunhan saadaan testatuksi ja mietityksi loppuun asti ***************
 //***********************************************************************************
 
 typedef pair<int, double> IndDistPari;
 
 // ----------------------------------------------------------------------
-/*! HUOM!!! EI OLE VIELƒ TOTEUTETTU, t‰h‰n on vain kopioitu komentteihin
+/*! HUOM!!! EI OLE VIEL√Ñ TOTEUTETTU, t√§h√§n on vain kopioitu komentteihin
  *  locationbagin koodi
  *
- *	Hakee listan paikkaindeksi/et‰isyys metrein‰ pareja.
+ *	Hakee listan paikkaindeksi/et√§isyys metrein√§ pareja.
  *
- *	Listaan haetaan annettua paikkaa l‰himmat datapisteet j‰rjestyksess‰
- *  l‰himm‰st‰ kauimpaan. Listaan haetaan joko haluttu m‰‰r‰ l‰himpi‰
- *  pisteit‰ tai hakua voi myˆs rajoittaa maksimi et‰isyydell‰.
- *	Jos maksimi m‰‰r‰ksi laitetaan -1, haetaan paikkoja niin paljon kuin
- *  lˆytyy (maxEt‰isyys rajoitus huomiooon ottaen).
+ *	Listaan haetaan annettua paikkaa l√§himmat datapisteet j√§rjestyksess√§
+ *  l√§himm√§st√§ kauimpaan. Listaan haetaan joko haluttu m√§√§r√§ l√§himpi√§
+ *  pisteit√§ tai hakua voi my√∂s rajoittaa maksimi et√§isyydell√§.
+ *	Jos maksimi m√§√§r√§ksi laitetaan -1, haetaan paikkoja niin paljon kuin
+ *  l√∂ytyy (maxEt√§isyys rajoitus huomiooon ottaen).
  *
- *	Huom! maxWantedLocations ohittaa maxDistance m‰‰rityksen (jos molemmat annettu)
+ *	Huom! maxWantedLocations ohittaa maxDistance m√§√§rityksen (jos molemmat annettu)
  *
  *	Erilaisia kombinaatioita haun rajoituksessa:
  *
@@ -693,9 +693,9 @@ typedef pair<int, double> IndDistPari;
  *	\li theMaxWantedLocations = 5 ja theMaxDistance = kFloatMissing =>
  *      palauttaa 5 sortattuna.
  *	\li theMaxWantedLocations = -1 ja theMaxDistance = 45678.9m =>
- *      palauttaa kaikki annetun s‰teen sis‰lt‰ sortattuna.
+ *      palauttaa kaikki annetun s√§teen sis√§lt√§ sortattuna.
  *	\li theMaxWantedLocations = 5 ja theMaxDistance = 45678.9m =>
- *      palauttaa max 5 annetun s‰teen sis‰lt‰ sortattuna.
+ *      palauttaa max 5 annetun s√§teen sis√§lt√§ sortattuna.
  */
 // ----------------------------------------------------------------------
 
@@ -718,7 +718,7 @@ checkedVector<pair<int, double> > NFmiGrid::NearestLocations(const NFmiLocation 
     return tempValues;
   }
   else if (theMaxWantedLocations != -1 &&
-           theMaxDistance == kFloatMissing)  // halutaan n kpl lahimpi‰ paikkoja
+           theMaxDistance == kFloatMissing)  // halutaan n kpl lahimpi√§ paikkoja
   {
     nth_element(tempValues.begin(),
                 tempValues.begin() + theMaxWantedLocations,
@@ -726,9 +726,9 @@ checkedVector<pair<int, double> > NFmiGrid::NearestLocations(const NFmiLocation 
                 LocationIndexDistanceLess<IndDistPari>());
     return checkedVector<IndDistPari>(
         tempValues.begin(),
-        tempValues.begin() + theMaxWantedLocations);  // palautetaan haluttu m‰‰r‰ locatioita
+        tempValues.begin() + theMaxWantedLocations);  // palautetaan haluttu m√§√§r√§ locatioita
   }
-  else  // theMaxDistance != kFloatMissing) // haetaan kaikki annetun s‰teen sis‰ll‰ olevat paikat
+  else  // theMaxDistance != kFloatMissing) // haetaan kaikki annetun s√§teen sis√§ll√§ olevat paikat
   {
     sort(tempValues.begin(), tempValues.end(), LocationIndexDistanceLess<IndDistPari>());
     checkedVector<IndDistPari>::iterator pos =
@@ -771,11 +771,11 @@ bool NFmiGrid::operator==(const NFmiGrid &theGrid) const
   }
 }
 
-// Halutaan laskea this-gridin avulla interpoloituja arvoja theTargetGrid:lle. Sit‰ varten lasketaan
+// Halutaan laskea this-gridin avulla interpoloituja arvoja theTargetGrid:lle. Sit√§ varten lasketaan
 // kerran
-// halutut hilapisteet (targetin hilan pisteet this-hilassa). Sis‰lt‰‰ myˆs tiedon hilapisteen
-// indeksist‰.
-// T‰t‰ voidaan k‰ytt‰‰ apuna kun interpolidaan monta kertaan hilasta toiseen arvoja (esim. eri
+// halutut hilapisteet (targetin hilan pisteet this-hilassa). Sis√§lt√§√§ my√∂s tiedon hilapisteen
+// indeksist√§.
+// T√§t√§ voidaan k√§ytt√§√§ apuna kun interpolidaan monta kertaan hilasta toiseen arvoja (esim. eri
 // ajoille,
 // leveleille ja parametreille), cache lasketaan vain kerran. Cache-pisteet voidaan sitten antaa eri
 // InterpolatedValue-metodeille. Ks. mallia NFmiQueryDataUtil::FillGridData-metodista.
@@ -812,15 +812,15 @@ bool NFmiGrid::IsInside(const NFmiPoint &theLatLon) const
   return IsInsideGrid(LatLonToGrid(theLatLon));
 }
 
-// Maailma datoja annetaan latlon- projektioissa, niin ett‰
+// Maailma datoja annetaan latlon- projektioissa, niin ett√§
 // alue menee esim. (0, -90) -> (359.5, 90) hilana, eli hila ei mene 360:een
-// vaan jaa yht‰ hila saraketta vajaaksi, koska siin‰ olisi sama data
-// kuin mit‰ olisi 1. sarakkeessa 0-pituuspiirill‰.
-// T‰st‰ seuraa ongelmia kun dataa interpoloideen erilaisiin alueisiin,
-// jotka menev‰t Atlanti keskeisill‰ alueilla ja 0-pituuspiirin ylitse.
-// T‰llˆin tarvitaan tietoa onko data levitett‰viss‰, eli voidaanko 1.
-// sarake ottaa k‰yttˆˆn interpolaatioissa myˆs uudeksi viimeiseksi sarakkeeksi.
-// TODO ei ole tehty tutkimaan Atlantikeskeist‰ hilaa joka menee esim.
+// vaan jaa yht√§ hila saraketta vajaaksi, koska siin√§ olisi sama data
+// kuin mit√§ olisi 1. sarakkeessa 0-pituuspiirill√§.
+// T√§st√§ seuraa ongelmia kun dataa interpoloideen erilaisiin alueisiin,
+// jotka menev√§t Atlanti keskeisill√§ alueilla ja 0-pituuspiirin ylitse.
+// T√§ll√∂in tarvitaan tietoa onko data levitett√§viss√§, eli voidaanko 1.
+// sarake ottaa k√§ytt√∂√∂n interpolaatioissa my√∂s uudeksi viimeiseksi sarakkeeksi.
+// TODO ei ole tehty tutkimaan Atlantikeskeist√§ hilaa joka menee esim.
 // (-180, -90) -> (179.5, 90)
 bool NFmiGrid::IsStrechableGlobalGrid(const NFmiGrid &theGrid)
 {

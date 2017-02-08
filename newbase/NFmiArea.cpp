@@ -170,7 +170,7 @@ double NFmiArea::WorldXYAspectRatio() const { return WorldXYWidth() / WorldXYHei
 // ----------------------------------------------------------------------
 
 NFmiArea *NFmiArea::CreateNewArea(const NFmiPoint &theBottomLeftLatLon,
-                                  const NFmiPoint &theTopRightLatLon)
+                                  const NFmiPoint &theTopRightLatLon) const
 {
   return NewArea(theBottomLeftLatLon, theTopRightLatLon);
 }
@@ -391,11 +391,11 @@ double NFmiArea::FixLongitude(double theLon) const
 {
   if (!fPacificView)
   {
-    if (theLon > 180.00000001)  // T‰m‰ ei voi olla tasan 180, koska SmartMet maailman rajaviivat
+    if (theLon > 180.00000001)  // T√§m√§ ei voi olla tasan 180, koska SmartMet maailman rajaviivat
                                 // shapessa (maps\\shapes\\ne_10m_admin_0_countries) ja niiden
                                 // piirto imagine-kirjastolla menee jossain kohdissa sekaisin
-      // reunoilla, koska siell‰ on k‰ytetty v‰h‰n yli 180-pituuspiirin
-      // menevi‰ arvoja Tyynenmeren 180 asteen pituuspiirin reunoilla
+      // reunoilla, koska siell√§ on k√§ytetty v√§h√§n yli 180-pituuspiirin
+      // menevi√§ arvoja Tyynenmeren 180 asteen pituuspiirin reunoilla
       return theLon - 360;
     else
       return theLon;
@@ -408,7 +408,7 @@ double NFmiArea::FixLongitude(double theLon) const
 
 NFmiArea *NFmiArea::DoPossiblePacificFix(void) const
 {
-  // On olemassa pari erikoistapausta, mitk‰ halutaan eri areoissa korjata, ett‰ alueet toimisivat
+  // On olemassa pari erikoistapausta, mitk√§ halutaan eri areoissa korjata, ett√§ alueet toimisivat
   // paremmin newbase:ssa.
   if (fPacificView)
   {
@@ -433,7 +433,7 @@ NFmiArea *NFmiArea::DoPossiblePacificFix(void) const
 
 NFmiArea *NFmiArea::DoForcePacificFix(void) const
 {
-  // Joskus on pakko muuttaa atlantic-area pacific tyyppiseksi vaikka v‰kisin
+  // Joskus on pakko muuttaa atlantic-area pacific tyyppiseksi vaikka v√§kisin
   if (!fPacificView)
   {
     NFmiPoint bottomleftLatlon = BottomLeftLatLon();

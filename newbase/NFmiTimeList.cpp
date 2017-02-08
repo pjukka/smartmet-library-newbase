@@ -80,7 +80,7 @@ NFmiTimeList::NFmiTimeList(const NFmiTimeBag &theTimes)
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
-// Marko: en ole testannut funktiota, enk‰ tajua mihin sit‰ voisi tarvita, joten varokaa.
+// Marko: en ole testannut funktiota, enk√§ tajua mihin sit√§ voisi tarvita, joten varokaa.
 bool NFmiTimeList::Next(NFmiMetTime **theItem) const
 {
   *theItem = Current();
@@ -95,12 +95,12 @@ bool NFmiTimeList::Next(NFmiMetTime **theItem) const
   *theItem=Current();
   if(*theItem)
 	{						// VAROITUS !
-	  itsIter->Next();		// Viimeisen alkion j‰lkeen menn‰‰n listan ulkopuolelle true:lla;
-	  return true;			// vasta seuraavalla kerralla t‰m‰ Next palauttaa false !!	
-	  // return Next();		<-- N‰in kursori j‰‰si osoittamaan viimeist‰ itemi‰, mutta toisaalta nyt
-	}						// return false on harhaan johtava, sill‰ onhan saatu mielek‰s theItem.
+	  itsIter->Next();		// Viimeisen alkion j√§lkeen menn√§√§n listan ulkopuolelle true:lla;
+	  return true;			// vasta seuraavalla kerralla t√§m√§ Next palauttaa false !!	
+	  // return Next();		<-- N√§in kursori j√§√§si osoittamaan viimeist√§ itemi√§, mutta toisaalta nyt
+	}						// return false on harhaan johtava, sill√§ onhan saatu mielek√§s theItem.
 
-	return false;			// Suosittelen metodien Next(void) & Current() k‰yttˆ‰, jolloin ei voi joutua ulos listalta
+	return false;			// Suosittelen metodien Next(void) & Current() k√§ytt√∂√§, jolloin ei voi joutua ulos listalta
 */  // viljo 12.05.-97
 }
 
@@ -192,38 +192,38 @@ bool NFmiTimeList::First(void) const
 
 // ----------------------------------------------------------------------
 /*!
- * \brief Lis‰‰ uusi kellonaika aikalistaan
+ * \brief Lis√§√§ uusi kellonaika aikalistaan
  *
- * Oletusarvoisesti aikalista on sortattu kasvavaan j‰rjestykseen.
+ * Oletusarvoisesti aikalista on sortattu kasvavaan j√§rjestykseen.
  *
- * Add ei lis‰‰ annettua aikaa, jos se lˆytyy jo listasta ennest‰‰n.
- * Lis‰ksi objekti deletoidaan, kuten destruktorikin tekisi.
+ * Add ei lis√§√§ annettua aikaa, jos se l√∂ytyy jo listasta ennest√§√§n.
+ * Lis√§ksi objekti deletoidaan, kuten destruktorikin tekisi.
  *
- * Jos aikaa ei ole lis‰tty aiemmin, lis‰t‰‰n se aikaj‰rjestyksess‰
+ * Jos aikaa ei ole lis√§tty aiemmin, lis√§t√§√§n se aikaj√§rjestyksess√§
  * oikeaan kohtaan.
  *
- * \param theItem Pointteri lis‰tt‰v‰‰n aikaan
+ * \param theItem Pointteri lis√§tt√§v√§√§n aikaan
  */
 // ----------------------------------------------------------------------
 
 void NFmiTimeList::Add(NFmiMetTime *theItem, bool fAllowDuplicates, bool fAddEnd)
 {
-  // etsit‰‰n ensimm‰inen kohta, jossa vanha aika >= uusi aika
+  // etsit√§√§n ensimm√§inen kohta, jossa vanha aika >= uusi aika
 
   checkedVector<NFmiMetTime *>::iterator it(itsVectorList.begin());
 
   if (fAddEnd)  // pakko optimoida, koska salamadatassa on jumalattomasti aikoja ja ne ovat jo
-                // j‰rjestyksess‰!!!
+                // j√§rjestyksess√§!!!
     itsVectorList.push_back(theItem);
   else
   {
     for (; it != itsVectorList.end(); ++it)
       if (**it >= *theItem) break;
 
-    // jos kaikki ajat olivat pienempi‰, liitet‰‰n vain per‰‰n
+    // jos kaikki ajat olivat pienempi√§, liitet√§√§n vain per√§√§n
     if (it == itsVectorList.end()) itsVectorList.push_back(theItem);
 
-    // jos lˆytyi sama aika, ei insertoida vaan deletoidaan pois (paitsi jos duplikaatit sallitaan)
+    // jos l√∂ytyi sama aika, ei insertoida vaan deletoidaan pois (paitsi jos duplikaatit sallitaan)
     else if ((**it == *theItem) && (!fAllowDuplicates))
       delete theItem;
 
@@ -260,7 +260,7 @@ void NFmiTimeList::Add(NFmiTimeList *theList)
   int vecSize = theList->itsVectorList.size();
   for (int i = 0; i < vecSize; i++)
     itsVectorList.push_back(new NFmiMetTime(*theList->itsVectorList[i]));
-  // vanha versio resetoi lopuksi, en n‰e mit‰‰ syyt‰ moiseen/Marko
+  // vanha versio resetoi lopuksi, en n√§e mit√§√§ syyt√§ moiseen/Marko
 
   /*
     *itsList+=(*theList->itsList);
@@ -285,7 +285,7 @@ void NFmiTimeList::Clear(bool fDeleteData)
       delete itsVectorList[i];
   }
   checkedVector<NFmiMetTime *>().swap(itsVectorList);
-  Reset();  // vanha laittoi tyhjennyksen j‰lkeen Firstiin, miss‰ ei ole j‰rke‰
+  Reset();  // vanha laittoi tyhjennyksen j√§lkeen Firstiin, miss√§ ei ole j√§rke√§
 
   /*
     if( fDeleteData )
@@ -313,7 +313,7 @@ void NFmiTimeList::Clear(bool fDeleteData)
 NFmiTimeList &NFmiTimeList::operator=(const NFmiTimeList &theList)
 {
   Clear(true);  // vanha vuoti, koska ei tuhonnut metTimeja listasta, saattaa kaataa ohjelmia, jotka
-                // luottavat t‰h‰n ominaisuuteen
+                // luottavat t√§h√§n ominaisuuteen
   int vecSize = theList.itsVectorList.size();
   for (int i = 0; i < vecSize; i++)
     itsVectorList.push_back(new NFmiMetTime(*theList.itsVectorList[i]));
@@ -444,7 +444,7 @@ bool NFmiTimeList::Find(const NFmiMetTime &theTime)
       itsVectorList.begin(), itsVectorList.end(), &theTime, ComparePtrs<NFmiMetTime>());
   if (pos != itsVectorList.end())
   {
-    if (theTime == *(*pos))  // t‰ss‰ pit‰‰ viel‰ tarkistaa lˆytyikˆ varmasti oikea aika!
+    if (theTime == *(*pos))  // t√§ss√§ pit√§√§ viel√§ tarkistaa l√∂ytyik√∂ varmasti oikea aika!
     {
       itsIndex = std::distance(itsVectorList.begin(), pos);
       return true;
@@ -468,64 +468,119 @@ bool NFmiTimeList::Find(const NFmiMetTime &theTime)
 
 // ----------------------------------------------------------------------
 /*!
- * \param theTime Undocumented
- * \param theDirection Undocumented
- * \param theTimeRangeInMinutes Undocumented
+ * \param theTime is searched time
+ * \param theDirection tells which direction search is done. If its kBackward, search
+ *  only backwards from theTime. If kCenter, search in both directions and if kForward,
+ *  search only forward from theTime.
+ * \param theTimeRangeInMinutes tells how far you are allowed to search in wanted direction.
+ * If theTimeRangeInMinutes value is kUnsignedLongMissing, there is no time limit in search.
  * \return Undocumented
+ * Assumption: times in the itsVectorList are in rising order.
  */
 // ----------------------------------------------------------------------
 
-// 01102001/Marko
-// Huom!! Oletus: ajat on aikaj‰rjestyksess‰ listassa!
 bool NFmiTimeList::FindNearestTime(const NFmiMetTime &theTime,
-                                   FmiDirection theDirection,
-                                   unsigned long theTimeRangeInMinutes)
+    FmiDirection theDirection,
+    unsigned long theTimeRangeInMinutes)
 {
-  checkedVector<NFmiMetTime *>::iterator overPos = std::lower_bound(
-      itsVectorList.begin(), itsVectorList.end(), &theTime, ComparePtrs<NFmiMetTime>());
-  if (overPos != itsVectorList.end())
-  {
-    if (theDirection == kBackward && theTime < *(*overPos))
-    {
-      if (overPos != itsVectorList.begin())  // pit‰‰ tarkistaa ollaanko alussa, muuten 64-bit
-                                             // MSVC++2008 koodi menee pieleen
-      {
-        --overPos;
-        if (overPos ==
-            itsVectorList
-                .end())  // en tied‰ toimiiko siten, ett‰ jos tekee startissa --, menee ohi vectorin
-          ++overPos;
-      }
-    }
-    else if (theDirection == kCenter)
-    {
-      int index = std::distance(itsVectorList.begin(), overPos);
-      if (index > 0)
-      {
-        double diff1 = theTime.DifferenceInMinutes(*itsVectorList[index]);
-        double diff2 = theTime.DifferenceInMinutes(*itsVectorList[index - 1]);
-        if (fabs(diff2) < fabs(diff1)) --overPos;
-      }
-    }
-    // HUOM! else eli muuten tai theDirection == kForward vaihtoehto puuttuu!!!!
+    if(itsVectorList.empty())
+        return false;
 
-    int indexFinal = std::distance(itsVectorList.begin(), overPos);
-    if (indexFinal != -1 && theTimeRangeInMinutes != kUnsignedLongMissing)
+    checkedVector<NFmiMetTime *>::iterator firstNotLess = std::lower_bound(
+        itsVectorList.begin(), itsVectorList.end(), &theTime, ComparePtrs<NFmiMetTime>());
+    if(firstNotLess != itsVectorList.end() && *(*firstNotLess) == theTime)
     {
-      double diffFinal = theTime.DifferenceInMinutes(*itsVectorList[indexFinal]);
-      if (fabs(diffFinal) > theTimeRangeInMinutes) return false;
+        // Searched time was found from time-vector
+        itsIndex = CalcTimeListIndex(firstNotLess);
+        return true;
     }
-    itsIndex = indexFinal;
-    return true;
-  }
-  if (theTimeRangeInMinutes == kUnsignedLongMissing)
-  {
-    itsIndex = itsVectorList.size() - 1;
-    return true;
-  }
-  // t‰ss‰ pit‰isi olla viel‰ else haara, joka tarkistaa kelpaako aika jos se on listan
-  // ulkopuolˆella, mutta tarpeeksi l‰hell‰
-  return false;
+
+    if(theDirection == kBackward)
+        return FindNearestBackwardTime(firstNotLess, theTime, theTimeRangeInMinutes);
+    else if(theDirection == kForward)
+        return FindNearestForwardTime(firstNotLess, theTime, theTimeRangeInMinutes);
+    else
+        return FindNearestTime(firstNotLess, theTime, theTimeRangeInMinutes);
+}
+
+// Assumption: firstNotLess -iterator is from the itsVectorList.
+bool NFmiTimeList::FindNearestBackwardTime(checkedVector<NFmiMetTime *>::iterator &firstNotLess, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes)
+{
+    if(firstNotLess == itsVectorList.begin())
+        return false; // All times in itsVectorList were bigger than theTime
+    else
+    {
+        firstNotLess--; // Lets move to previous time which is what we are searching here (parameter's descriptive name false after this)
+        return CheckFoundTimeIter(firstNotLess, theTime, theTimeRangeInMinutes);
+    }
+}
+
+// Assumption: firstNotLess -iterator is from the itsVectorList.
+bool NFmiTimeList::FindNearestForwardTime(checkedVector<NFmiMetTime *>::iterator &firstNotLess, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes)
+{
+    if(firstNotLess == itsVectorList.end())
+        return false; // All times in itsVectorList were less than theTime
+    else
+    {
+        return CheckFoundTimeIter(firstNotLess, theTime, theTimeRangeInMinutes);
+    }
+}
+
+// Assumption: firstNotLess -iterator is from the itsVectorList.
+bool NFmiTimeList::FindNearestTime(checkedVector<NFmiMetTime *>::iterator &firstNotLess, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes)
+{
+    if(firstNotLess == itsVectorList.begin())
+    {
+        // Only list's first time is possible
+        return CheckFoundTimeIter(firstNotLess, theTime, theTimeRangeInMinutes);
+    }
+    else if(firstNotLess == itsVectorList.end())
+    {
+        // Only list's last time is possible
+        firstNotLess--;
+        return CheckFoundTimeIter(firstNotLess, theTime, theTimeRangeInMinutes);
+    }
+    else
+    {
+        // Must check the first not-less time and the previous time
+        checkedVector<NFmiMetTime *>::iterator timeIter2 = firstNotLess;
+        double diff2 = std::fabs(theTime.DifferenceInMinutes(*(*timeIter2)));
+        firstNotLess--;
+        checkedVector<NFmiMetTime *>::iterator timeIter1 = firstNotLess;
+        double diff1 = std::fabs(theTime.DifferenceInMinutes(*(*timeIter1)));
+        // first time in the list has precedence if difference is equal
+        if(diff1 <= diff2)
+            return CheckFoundTimeIter(timeIter1, theTime, theTimeRangeInMinutes);
+        else
+            return CheckFoundTimeIter(timeIter2, theTime, theTimeRangeInMinutes);
+    }
+}
+
+// Assumption: theIter -iterator is from the itsVectorList.
+int NFmiTimeList::CalcTimeListIndex(const checkedVector<NFmiMetTime *>::iterator &theIter)
+{
+    return static_cast<int>(std::distance(itsVectorList.begin(), theIter));
+}
+
+bool NFmiTimeList::IsSearchedTimeInRange(checkedVector<NFmiMetTime *>::iterator &foundTimeIter, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes)
+{
+    if(theTimeRangeInMinutes == kUnsignedLongMissing)
+        return true;
+    else if(theTimeRangeInMinutes >= std::fabs(theTime.DifferenceInMinutes(*(*foundTimeIter))))
+        return true;
+    else
+        return false;
+}
+
+bool NFmiTimeList::CheckFoundTimeIter(checkedVector<NFmiMetTime *>::iterator &foundTimeIter, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes)
+{
+    if(IsSearchedTimeInRange(foundTimeIter, theTime, theTimeRangeInMinutes))
+    {
+        itsIndex = CalcTimeListIndex(foundTimeIter);
+        return true;
+    }
+    else
+        return false;
 }
 
 // ----------------------------------------------------------------------
@@ -537,7 +592,7 @@ bool NFmiTimeList::FindNearestTime(const NFmiMetTime &theTime,
 // ----------------------------------------------------------------------
 
 // apu funktio nearestTime:en
-// onko annettu aika tietyn rajan sis‰ll‰ currentista ajasta?
+// onko annettu aika tietyn rajan sis√§ll√§ currentista ajasta?
 
 bool NFmiTimeList::TimeInSearchRange(const NFmiMetTime &theTime,
                                      unsigned long theTimeRangeInMinutes)
@@ -551,11 +606,11 @@ bool NFmiTimeList::TimeInSearchRange(const NFmiMetTime &theTime,
 
 // ----------------------------------------------------------------------
 /*!
- * \param theList This-otus ja theList yhdistet‰‰n halutulla tavalla.
- * \param theStartTimeFunction Mist‰ otetaan alkuaika, jos 0, pienempi,
- *				jos 1 otetaan this:ist‰ ja jos 2 otetaan theBag:ista.
- * \param theEndTimeFunction Mist‰ otetaan loppuaika, jos 0, suurempi,
- *				jos 1 otetaan this:ist‰ ja jos 2 otetaan theBag:ista.
+ * \param theList This-otus ja theList yhdistet√§√§n halutulla tavalla.
+ * \param theStartTimeFunction Mist√§ otetaan alkuaika, jos 0, pienempi,
+ *				jos 1 otetaan this:ist√§ ja jos 2 otetaan theBag:ista.
+ * \param theEndTimeFunction Mist√§ otetaan loppuaika, jos 0, suurempi,
+ *				jos 1 otetaan this:ist√§ ja jos 2 otetaan theBag:ista.
  * \return Palautetaan yhdistetty timelist.
  */
 // ----------------------------------------------------------------------
@@ -573,13 +628,13 @@ const NFmiTimeList NFmiTimeList::Combine(NFmiTimeList &theList,
   }
   if (theStartTimeFunction == 0 && theEndTimeFunction == 0) return combinedList;
 
-  // pit‰‰ mahdollisesti karsia aikoja, en optimoinut ollenkaan
+  // pit√§√§ mahdollisesti karsia aikoja, en optimoinut ollenkaan
   NFmiMetTime startTime;
   if (theStartTimeFunction == 0)
     startTime = FirstTime() < theList.FirstTime() ? FirstTime() : theList.FirstTime();
   else if (theStartTimeFunction == 1)
     startTime = FirstTime();
-  else  // t‰ss‰ pit‰isi olla 2, mutta en jaksa tarkistaa, ettei tarvitse tehd‰ virhe k‰sittely‰
+  else  // t√§ss√§ pit√§isi olla 2, mutta en jaksa tarkistaa, ettei tarvitse tehd√§ virhe k√§sittely√§
     startTime = theList.FirstTime();
 
   NFmiMetTime endTime;
@@ -587,7 +642,7 @@ const NFmiTimeList NFmiTimeList::Combine(NFmiTimeList &theList,
     endTime = LastTime() > theList.LastTime() ? LastTime() : theList.LastTime();
   else if (theEndTimeFunction == 1)
     endTime = LastTime();
-  else  // t‰ss‰ pit‰isi olla 2, mutta en jaksa tarkistaa, ettei tarvitse tehd‰ virhe k‰sittely‰
+  else  // t√§ss√§ pit√§isi olla 2, mutta en jaksa tarkistaa, ettei tarvitse tehd√§ virhe k√§sittely√§
     endTime = theList.LastTime();
 
   return combinedList.GetIntersection(startTime, endTime);
@@ -616,20 +671,20 @@ int NFmiTimeList::CurrentResolution(void) const
     return itsVectorList[itsIndex]->DifferenceInMinutes(*itsVectorList[itsIndex - 1]);
   else if (itsIndex == 0 && itsVectorList.size() > 1)
     return itsVectorList[itsIndex + 1]->DifferenceInMinutes(*itsVectorList[itsIndex]);
-  // HUOM! loppu osa koodia on poikeus tapausten tarkastelua ja pit‰isi heitt‰‰ esim. poikkeus.
+  // HUOM! loppu osa koodia on poikeus tapausten tarkastelua ja pit√§isi heitt√§√§ esim. poikkeus.
   // Mutta laitoin koodin toimimaan kuten timebag:in Resolution-metodi toimisi
   // (palauttaa aina arvon), ettei tule ongelmia erilaisissa koodeissa nyt kun
-  // k‰ytet‰‰n enemm‰n timelist-dataa.
+  // k√§ytet√§√§n enemm√§n timelist-dataa.
   else if (itsVectorList.size() >
-           1)  // jos esim reset-tilassa, palauttaa 1. ja 2. ajan v‰lisen resoluution
+           1)  // jos esim reset-tilassa, palauttaa 1. ja 2. ajan v√§lisen resoluution
     return itsVectorList[1]->DifferenceInMinutes(*itsVectorList[0]);
   else
     return 60;  // jos listassa on vain yksi tai nolla aikaa palautetaan 60 minuuttia
 }
 
-// etsii annettuun aikaan l‰himm‰n edellisen ja l‰himm‰n seuraavan ajan ja palauttaa ne
+// etsii annettuun aikaan l√§himm√§n edellisen ja l√§himm√§n seuraavan ajan ja palauttaa ne
 // parametreina.
-// Palauttaa ensimm‰isen ajan indeksin jos lˆytyi. Oletus on ett‰ seuraavan ajan indeksi on
+// Palauttaa ensimm√§isen ajan indeksin jos l√∂ytyi. Oletus on ett√§ seuraavan ajan indeksi on
 // palautettu arvo + 1.
 // Jos homma ei onnistunut, palauttaa -1.
 int NFmiTimeList::FindNearestTimes(const NFmiMetTime &theTime,
@@ -660,11 +715,11 @@ const NFmiMetTime *NFmiTimeList::Time(int theIndex) const
 
 // ----------------------------------------------------------------------
 /*!
- * Laskee this timelistasta leikkauksen siten, ett‰ otetaan this-listasta
- * ne ajat jotka ovat annettujen rajojen sis‰lt‰/rajalta ja laitetaan ne
+ * Laskee this timelistasta leikkauksen siten, ett√§ otetaan this-listasta
+ * ne ajat jotka ovat annettujen rajojen sis√§lt√§/rajalta ja laitetaan ne
  * uuteen timelistiin joka palautetaan ulos.
- * Jos rajat ovat ohi kokonaan timelistist‰ ja viel‰ samaan suuntaan,
- * palautetaan tyhj‰ timebagi. Samoin k‰y jos rajojen sis‰‰n ei sovi yht‰‰n
+ * Jos rajat ovat ohi kokonaan timelistist√§ ja viel√§ samaan suuntaan,
+ * palautetaan tyhj√§ timebagi. Samoin k√§y jos rajojen sis√§√§n ei sovi yht√§√§n
  * timelistin aikaa.
  * \param theStartLimit Leikkausta rajoittava alkuaika.
  * \param theEndLimit Leikkausta rajoittava loppuaika.
@@ -688,10 +743,10 @@ const NFmiTimeList NFmiTimeList::GetIntersection(const NFmiMetTime &theStartLimi
 
 // ----------------------------------------------------------------------
 /*!
- * Tarkistaa onko annettu aika aikalistan sis‰ll‰. Oletus: aika-
- * listassa olevat ajat ovat j‰rjestyksess‰
+ * Tarkistaa onko annettu aika aikalistan sis√§ll√§. Oletus: aika-
+ * listassa olevat ajat ovat j√§rjestyksess√§
  * \param theTime Tarkistettava aika.
- * \return Palauttaa true jos theTime on listan sis‰ll‰ tai reunalla, muuten false.
+ * \return Palauttaa true jos theTime on listan sis√§ll√§ tai reunalla, muuten false.
  */
 // ----------------------------------------------------------------------
 bool NFmiTimeList::IsInside(const NFmiMetTime &theTime) const
@@ -719,9 +774,9 @@ struct PointerDestroyer
 
 // ----------------------------------------------------------------------
 /*!
- * Karsii halutut ylim‰‰r‰iset ajat pois
+ * Karsii halutut ylim√§√§r√§iset ajat pois
  * \param theMaxTimeCount Kertoo kuinka monta aikaa saa olla maksimissaan.
- * \param fFromEnd kertoo, mist‰ p‰‰st‰ karsitaan ylim‰‰r‰iset pois.
+ * \param fFromEnd kertoo, mist√§ p√§√§st√§ karsitaan ylim√§√§r√§iset pois.
  * \todo EN OLE SITTEN TESTANNUT T:Marko
  */
 // ----------------------------------------------------------------------
@@ -750,10 +805,10 @@ void NFmiTimeList::PruneTimes(int theMaxTimeCount, bool fFromEnd)
 
 // ----------------------------------------------------------------------
 /*!
- * Muuttaa timelistin aikoja niin ett‰ annettu aika laitetaan ensimm‰iseksi,
- * ja kaikille muille arvoille lasketaan siirtym‰, ett‰ ajat ovat toisiinsa n‰hden
- * yht‰ et‰‰ll‰ kuin aiemminkin. Timebagin rakenne ja 'resoluutio' s‰ilyv‰t.
- * Lis‰ksi timelisti laitetaan osoittamaan 1. aikaa.
+ * Muuttaa timelistin aikoja niin ett√§ annettu aika laitetaan ensimm√§iseksi,
+ * ja kaikille muille arvoille lasketaan siirtym√§, ett√§ ajat ovat toisiinsa n√§hden
+ * yht√§ et√§√§ll√§ kuin aiemminkin. Timebagin rakenne ja 'resoluutio' s√§ilyv√§t.
+ * Lis√§ksi timelisti laitetaan osoittamaan 1. aikaa.
  * \param theTime on timebagin uusi firstTime.
  */
 // ----------------------------------------------------------------------

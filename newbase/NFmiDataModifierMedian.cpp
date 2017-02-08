@@ -49,7 +49,7 @@ NFmiDataModifier* NFmiDataModifierMedian::Clone(void) const
 float NFmiDataModifierMedian::Median(void)
 {
   if (itsMedianArray.empty())
-    return kFloatMissing;  // mielest‰ni t‰m‰n pit‰‰ palauttaa missing value eik‰ heitt‰‰ poikkeusta
+    return kFloatMissing;  // mielest√§ni t√§m√§n pit√§√§ palauttaa missing value eik√§ heitt√§√§ poikkeusta
                            // (Marko)
                            //	throw std::runtime_error("Cannot calculate median of an empty array");
   std::sort(itsMedianArray.begin(), itsMedianArray.end());

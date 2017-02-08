@@ -5,7 +5,7 @@
  */
 // ======================================================================
 /*!
- * \namespace NFmiGeoTools
+ *Â \namespace NFmiGeoTools
  *
  * \brief Various geographic utility functions
  */

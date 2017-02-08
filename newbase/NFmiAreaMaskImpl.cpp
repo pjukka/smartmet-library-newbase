@@ -60,7 +60,7 @@ NFmiAreaMaskImpl::NFmiAreaMaskImpl(const NFmiCalculationCondition &theOperation,
     : itsMaskCondition(theOperation),
       itsMaskType(theMaskType),
       itsDataType(theDataType),
-      itsCalculationOperationType(NoType)  // t‰m‰ pit‰‰ asettaa erikseen funktiosta!
+      itsCalculationOperationType(NoType)  // t√§m√§ pit√§√§ asettaa erikseen funktiosta!
       ,
       itsCalculationOperator(NotOperation),
       itsPostBinaryOperator(thePostBinaryOperator),
@@ -110,7 +110,7 @@ NFmiAreaMaskImpl::~NFmiAreaMaskImpl(void) {}
 bool NFmiAreaMaskImpl::IsMasked(const NFmiPoint &theLatLon) const
 {
   if (!fEnabled)
-    return true;  // jos maski ei ole k‰ytˆss‰, on maski aina 'p‰‰ll‰'
+    return true;  // jos maski ei ole k√§yt√∂ss√§, on maski aina 'p√§√§ll√§'
   else
   {
     double testValue = CalcValueFromLocation(theLatLon);  // CalcValueFromLocation on virtuaalinen
@@ -120,8 +120,8 @@ bool NFmiAreaMaskImpl::IsMasked(const NFmiPoint &theLatLon) const
 
 // ----------------------------------------------------------------------
 /*!
- * Laskee arvon 0:n ja 1:n v‰lille riippuen maskista (tarkoitettu
- * laskemaan liukuvia maskeja ja niist‰ johtuvia kertoimia)
+ * Laskee arvon 0:n ja 1:n v√§lille riippuen maskista (tarkoitettu
+ * laskemaan liukuvia maskeja ja niist√§ johtuvia kertoimia)
  *
  * \param theLatLon Undocumented
  * \return Undocumented
@@ -150,7 +150,7 @@ double NFmiAreaMaskImpl::MaskValue(const NFmiPoint &theLatLon) const
 double NFmiAreaMaskImpl::Value(const NFmiCalculationParams &theCalculationParams,
                                bool /* fUseTimeInterpolationAlways */)
 {
-  // useimmille maskiluokille t‰m‰ riitt‰‰, koska ne eiv‰t
+  // useimmille maskiluokille t√§m√§ riitt√§√§, koska ne eiv√§t
   // ole riippuvaisia ajasta.
   return CalcValueFromLocation(theCalculationParams.itsLatlon);
 }
@@ -233,7 +233,7 @@ void NFmiAreaMaskImpl::UsedPressureLevelValue(double /* newValue */) {}
 bool NFmiAreaMaskImpl::AddMask(NFmiAreaMask * /* theMask */) { return false; }
 // ----------------------------------------------------------------------
 /*!
- * Palauttaa joko this:in jos index = 1 ja muuten indeksill‰
+ * Palauttaa joko this:in jos index = 1 ja muuten indeksill√§
  * osoitetun 'ali'-maskin, tai 0:n.
  *
  * \param theIndex Unused, undocumented

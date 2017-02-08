@@ -38,9 +38,9 @@ class _FMI_DLL NFmiDataModifierMedian : public NFmiDataModifier
 
  protected:
   checkedVector<float> itsMedianArray;
-  float itsLimitProsent;  // ok median filter nimens‰ puolesta palauttaa puoliv‰list‰, mutta lis‰sin
+  float itsLimitProsent;  // ok median filter nimens√§ puolesta palauttaa puoliv√§list√§, mutta lis√§sin
                           // kuitenkin
-  // s‰‰dett‰v‰n rajan, jonka mukaan arvo palautetaan. Defaulttina raja on 50% eli juuri puoliv‰li
+  // s√§√§dett√§v√§n rajan, jonka mukaan arvo palautetaan. Defaulttina raja on 50% eli juuri puoliv√§li
 
 };  // class NFmiDataModifierMedian
 

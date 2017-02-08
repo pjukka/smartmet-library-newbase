@@ -1,7 +1,7 @@
 // ======================================================================
 /*!
  * \file
- *†\brief Interface of class NFmiIndexMask
+ *¬†\brief Interface of class NFmiIndexMask
  */
 // ======================================================================
 
@@ -54,14 +54,14 @@ class NFmiIndexMask
   size_type YSize(void) const { return itsYSize; }
   void XSize(size_type newSize) { itsXSize = newSize; }
   void YSize(size_type newSize) { itsYSize = newSize; }
-  void Move(int theXMove, int theYMove);  //! raaka hila m‰‰r‰inen siirto maskille
+  void Move(int theXMove, int theYMove);  //! raaka hila m√§√§r√§inen siirto maskille
  private:
   mutable storage_type itsData;
   mutable bool itsSorted;
 
   void require_sorted() const;
 
-  // HUOM! En ole ottanut koko m‰‰reit‰ huomioon miss‰‰n vertailu tai yhdistely operaatioissa.
+  // HUOM! En ole ottanut koko m√§√§reit√§ huomioon miss√§√§n vertailu tai yhdistely operaatioissa.
   size_type itsXSize;  //! gridin koko x-suunnassa (jos maski on tehty hiladatasta)
   size_type itsYSize;  //! gridin koko y-suunnassa (jos maski on tehty hiladatasta)
 

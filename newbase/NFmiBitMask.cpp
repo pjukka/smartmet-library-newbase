@@ -350,11 +350,11 @@ void NFmiBitMask::Init(NFmiQueryInfo* theData, NFmiDataModifier* theMaskMethod)
   }
 }
 
-// Kaikki maskin bitit k‰‰nnet‰‰n vastakkaisiksi.
+// Kaikki maskin bitit k√§√§nnet√§√§n vastakkaisiksi.
 void NFmiBitMask::InverseMask(void)
 {
   for (int i = 0; i < itsNumberOfLongsInMask; i++)
-    itsMaskData[i] = ~itsMaskData[i];  // bitwise not k‰‰nt‰‰ bitit vastakkain
+    itsMaskData[i] = ~itsMaskData[i];  // bitwise not k√§√§nt√§√§ bitit vastakkain
 }
 
 // ======================================================================

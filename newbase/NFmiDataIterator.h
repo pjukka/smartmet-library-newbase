@@ -29,12 +29,12 @@ class _FMI_DLL NFmiDataIterator
   bool MaskInUse(void) const;
 
  protected:
-  void CheckIfMaskIsUsed(void);  // tarkistaa k‰ytet‰‰nkˆ maskia ja asetetaan fMaskInUse arvo
+  void CheckIfMaskIsUsed(void);  // tarkistaa k√§ytet√§√§nk√∂ maskia ja asetetaan fMaskInUse arvo
   bool IsMasked(const NFmiPoint& theLatLonPoint);
   NFmiQueryInfo* itsData;  // ei omista, ei tuhoa!
-  NFmiAreaMask* itsMask;   // ei omista, ei tuhoa! // jos iterointia halutaan rajata maskilla, t‰h‰n
+  NFmiAreaMask* itsMask;   // ei omista, ei tuhoa! // jos iterointia halutaan rajata maskilla, t√§h√§n
                            // talletetaan maski
-  bool fMaskInUse;  // ennen maskin k‰yttˆ‰ optimoinnin vuoksi on tarkastettu, onko maski k‰ytˆss‰
+  bool fMaskInUse;  // ennen maskin k√§ytt√∂√§ optimoinnin vuoksi on tarkastettu, onko maski k√§yt√∂ss√§
                     // vai ei (onko maski olemassa ja onko se enbloitu)
 
  private:
@@ -45,7 +45,7 @@ class _FMI_DLL NFmiDataIterator
 
 // ----------------------------------------------------------------------
 /*!
- * Marko: Laitoin t‰m‰n t‰nne, ett‰ voi s‰‰t‰‰ relatiivisen iteraattorin asetuksia
+ * Marko: Laitoin t√§m√§n t√§nne, ett√§ voi s√§√§t√§√§ relatiivisen iteraattorin asetuksia
  */
 // ----------------------------------------------------------------------
 
@@ -60,7 +60,7 @@ inline void NFmiDataIterator::SetDimensions(long /* dx */, long /* dy */, long /
 inline NFmiAreaMask* NFmiDataIterator::Mask(void) { return itsMask; }
 // ----------------------------------------------------------------------
 /*!
- * Anna 0-pointteri, jos haluat lopettaa maskin k‰ytˆn
+ * Anna 0-pointteri, jos haluat lopettaa maskin k√§yt√∂n
  *
  * \param newMask Undocumented
  */
@@ -69,7 +69,7 @@ inline NFmiAreaMask* NFmiDataIterator::Mask(void) { return itsMask; }
 inline void NFmiDataIterator::Mask(NFmiAreaMask* newMask) { itsMask = newMask; }
 // ----------------------------------------------------------------------
 /*!
- * T‰t‰ ei aseteta, vaan se tarkistetaan
+ * T√§t√§ ei aseteta, vaan se tarkistetaan
  *
  * \return Undocumented
  */

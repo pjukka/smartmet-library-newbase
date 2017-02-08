@@ -97,14 +97,14 @@ bool NFmiCalculationCondition::IsMasked(double theValue) const
       case kFmiMaskAll:
         return true;
       case kFmiMaskRisingRamp:
-        return (theValue > itsLowerLimit);  // t‰h‰n ei ole oikeastaan kunnon tarkastelua,
-                                            // todellinen k‰yttˆ kun lasketaan maskikertoimia!
+        return (theValue > itsLowerLimit);  // t√§h√§n ei ole oikeastaan kunnon tarkastelua,
+                                            // todellinen k√§ytt√∂ kun lasketaan maskikertoimia!
       case kFmiMaskLoweringRamp:
-        return (theValue < itsLowerLimit);  // t‰h‰n ei ole oikeastaan kunnon tarkastelua,
-                                            // todellinen k‰yttˆ kun lasketaan maskikertoimia!
+        return (theValue < itsLowerLimit);  // t√§h√§n ei ole oikeastaan kunnon tarkastelua,
+                                            // todellinen k√§ytt√∂ kun lasketaan maskikertoimia!
       case kFmiMaskDoubleRamp:
-        return (theValue < itsLowerLimit);  // t‰h‰n ei ole oikeastaan kunnon tarkastelua,
-                                            // todellinen k‰yttˆ kun lasketaan maskikertoimia!
+        return (theValue < itsLowerLimit);  // t√§h√§n ei ole oikeastaan kunnon tarkastelua,
+                                            // todellinen k√§ytt√∂ kun lasketaan maskikertoimia!
     }
   }
 
@@ -118,7 +118,7 @@ bool NFmiCalculationCondition::IsMasked(double theValue) const
  */
 // ----------------------------------------------------------------------
 
-// palauttaa kertoimen 0:n ja 1:n v‰lilt‰
+// palauttaa kertoimen 0:n ja 1:n v√§lilt√§
 
 double NFmiCalculationCondition::MaskValue(double theValue) const
 {
@@ -193,7 +193,7 @@ double NFmiCalculationCondition::MaskValue(double theValue) const
  */
 // ----------------------------------------------------------------------
 
-// annetaan k‰ytetyn parametrin nimi, valmistaa stringin, miss‰ on ehdot n‰kyviss‰
+// annetaan k√§ytetyn parametrin nimi, valmistaa stringin, miss√§ on ehdot n√§kyviss√§
 
 const NFmiString NFmiCalculationCondition::MaskString(const NFmiString& theParamName) const
 {

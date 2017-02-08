@@ -40,13 +40,13 @@ const char *weekdays[] = {
     "Perjantai",
     "Lauantai",
     "Sunnuntai",
-    "M�ndag",
+    "M\345ndag",
     "Tisdag",
     "Onsdag",
     "Torsdag",
     "Fredag",
-    "L�rdag",
-    "S�ndag",
+    "L\366rdag",
+    "S\366ndag",
     "Monday",
     "Tuesday",
     "Wednesday",
@@ -56,10 +56,10 @@ const char *weekdays[] = {
     "Sunday",
     "Lunes",
     "Martes",
-    "Mi�rcoles",
+    "Mi\351rcoles",
     "Jueves",
     "Viernes",
-    "S�bado",
+    "S\341bado",
     "Domingo",
     "Montag",
     "Dienstag",
@@ -78,12 +78,12 @@ const char *weekdays[] = {
 
     //! The special characters of Saame language will work only with the Saame font
 
-    "Vuoss�rga",
-    "Ma\271\271eb�rga",
+    "Vuoss\341rga",
+    "Ma\271\271eb\341rga",
     "Gaskavahkku",
     "Duorastat",
     "Bearjadat",
-    "L�vvardat",
+    "L\341vvardat",
     "Sotnabeaivi",
     "Pirmdiena",
     "Otrdiena",
@@ -101,8 +101,8 @@ const char *months[] = {
     "Maaliskuu",
     "Huhtikuu",
     "Toukokuu",
-    "Kes�kuu",
-    "Hein�kuu",
+    "Kes\344kuu",
+    "Hein\344kuu",
     "Elokuu",
     "Syyskuu",
     "Lokakuu",
@@ -150,7 +150,7 @@ const char *months[] = {
 
     "Januar",
     "Februar",
-    "M�rz",
+    "M\344rz",
     "April",
     "Mai",
     "Juni",
@@ -176,23 +176,23 @@ const char *months[] = {
 
     //! The special characters of Saame language will work only with the Saame font
 
-    "Oddajagem�nnu",
-    "Guovvam�nnu",
-    "Njukcam�nnu",
-    "Cuo\271om�nnu",
-    "Miessem�nnu",
-    "Geassem�nnu",
-    "Suoidnem�nnu",
-    "Borgem�nnu",
-    "Cakcam�nnu",
-    "Golggotm�nnu",
-    "Sk�bmam�nnu",
-    "Juovlam�nnu",
+    "Oddajagem\341nnu",
+    "Guovvam\341nnu",
+    "Njukcam\341nnu",
+    "Cuo\271om\341nnu",
+    "Miessem\341nnu",
+    "Geassem\341nnu",
+    "Suoidnem\341nnu",
+    "Borgem\341nnu",
+    "Cakcam\341nnu",
+    "Golggotm\341nnu",
+    "Sk\341bmam\341nnu",
+    "Juovlam\341nnu",
 
     "Janvaris",
     "Februaris",
     "Marts",
-    "Aprilis",  // p�ivit� latvia
+    "Aprilis",  // päivitä latvia
     "Maijs",
     "Birzelis",
     "Julijs",
@@ -204,24 +204,24 @@ const char *months[] = {
 
 std::string monthStrings[12];
 
-const char *atNotation[] =  // latvia?
-    {"klo", "kl.", "at", "a las", "??", "um?", "dmu"};  //, "zvans"};
+const char *atNotation[] =                              // latvia?
+    {"klo", "kl.", "at", "a las", "??", "um?", "dmu", "zvans"};
 
 const char *reldays[] =  // OBS also in NFmiPressTime ??
     {"alivuoto",
-     "Toissap�iv�n�",
+     "Toissap\344iv\344n\344",
      "Eilen",
-     "T�n��n",
+     "T\344n\344\344n",
      "Huomenna",
      "Ylihuomenna",
      "ylivuoto",
 
      "alivuoto",
-     "I f�rrg�r",
-     "I g�r",
+     "I f\366rrg\345r",
+     "I g\345r",
      "I dag",
      "I morgon",
-     "I �vermorgon",
+     "I \366vermorgon",
      "ylivuoto",
 
      "alivuoto",
@@ -244,7 +244,7 @@ const char *reldays[] =  // OBS also in NFmiPressTime ??
      "Gestern",
      "Heute",
      "Morgen",
-     "�bermorgen",
+     "\334bermorgen",
      "ylivuoto",
      "alivuoto",
      "The day before yesterday",
@@ -256,7 +256,7 @@ const char *reldays[] =  // OBS also in NFmiPressTime ??
      "alivuoto",
      "The day before yesterday",
      "ikte",
-     "�dne",
+     "\345dne",
      "Tomorrow",
      "The day after tomorrow",
      "ylivuoto",
@@ -289,7 +289,7 @@ NFmiTime::NFmiTime(const long datePart, const long timePart)
 
   if (datePart <= 10)
     ChangeByDays(static_cast<short>(
-        datePart));  // Persa lisäsi shortin jottei tulisi varoituksia kääntäessä
+        datePart));  // Persa lisÃ¤si shortin jottei tulisi varoituksia kÃ¤Ã¤ntÃ¤essÃ¤
   else
   {
     if (datePart > 101)
@@ -530,7 +530,7 @@ const NFmiString NFmiTime::MonthName(const FmiLanguage theLanguage) const
 
 const NFmiString NFmiTime::Weekday(const FmiLanguage theLanguage) const
 {
-  // TODO JL: tätä käytetään datan latauksessa
+  // TODO JL: tÃ¤tÃ¤ kÃ¤ytetÃ¤Ã¤n datan latauksessa
   return NFmiString(weekdays[(theLanguage - 1) * 7 + GetWeekday() - 1]);
 }
 
@@ -661,8 +661,8 @@ short NFmiTime::DaysInMonth(const short aMonth, const short aYear)
 
 short NFmiTime::GetJulianDay() const
 {
-  // Juliaaninen päivä on päivän järjestysnumero kuluvana vuonna,
-  // esim. tammikuun 1:nä palautetaan 1, helmikuun 1:nä 32
+  // Juliaaninen pÃ¤ivÃ¤ on pÃ¤ivÃ¤n jÃ¤rjestysnumero kuluvana vuonna,
+  // esim. tammikuun 1:nÃ¤ palautetaan 1, helmikuun 1:nÃ¤ 32
 
   long days = 0;
   for (short month = 1; month < GetMonth(); month++)
@@ -678,8 +678,8 @@ short NFmiTime::GetJulianDay() const
  */
 // ----------------------------------------------------------------------
 // 6.9.2001/Marko Muutin metodin const:iksi ja poistin this-otuksen muokkauksen,
-// kun käytettiin SetLocalPlace:a, että saatiin laskettua ZoneDifferenceHour. Nyt
-// metodi käyttää uutta CalcZoneDifferenceHour-metodia, joka laskee ZoneDifferenceHour:in
+// kun kÃ¤ytettiin SetLocalPlace:a, ettÃ¤ saatiin laskettua ZoneDifferenceHour. Nyt
+// metodi kÃ¤yttÃ¤Ã¤ uutta CalcZoneDifferenceHour-metodia, joka laskee ZoneDifferenceHour:in
 
 const NFmiTime NFmiTime::UTCTime(const float theLongitude) const
 {
@@ -734,11 +734,11 @@ const NFmiTime NFmiTime::LocalTime(const NFmiLocation &theLocation) const
  */
 // ----------------------------------------------------------------------
 
-// Suomessa talvella -2, kesällä -3
+// Suomessa talvella -2, kesÃ¤llÃ¤ -3
 
 void NFmiTime::SetZoneDifferenceHour(void)
 {
-  // time  returns the time since the Epoch (00:00:00 UTC, Jan­
+  // time  returns the time since the Epoch (00:00:00 UTC, JanÂ­
   // uary 1, 1970), measured in seconds.
 
   const time_t now = time(NULL);
@@ -746,8 +746,8 @@ void NFmiTime::SetZoneDifferenceHour(void)
   // The localtime() function converts the calendar time  timep
   // to  broken-time  representation, expressed relative to the
   // user's specified  time  zone.     The  function  sets  the
-  // external  variables tzname with information about the cur­
-  // rent time zone, timezone with the difference between Coor­
+  // external  variables tzname with information about the curÂ­
+  // rent time zone, timezone with the difference between CoorÂ­
   // dinated  Universal  Time  (UTC) and local standard time in
   // seconds, and daylight to a non-zero value if  standard  US
   // daylight savings time rules apply.
@@ -767,7 +767,14 @@ void NFmiTime::SetZoneDifferenceHour(void)
   ::localtime_r(&now, &nowparts);
 #endif
 
+#ifdef _MSC_VER
+  itsZoneDifferenceHour = static_cast<short>(
+      _timezone / 3600 - nowparts.tm_isdst);  // Visual C++ 2015 ei enää tye epäturvallista globaali
+// muuttujaa timezone:a, siksi pitää käyttää _timezone
+// makroa (löytyy myös vanhemmista VC++ versioista)
+#else
   itsZoneDifferenceHour = static_cast<short>(timezone / 3600 - nowparts.tm_isdst);
+#endif
 }
 
 // ----------------------------------------------------------------------
@@ -778,8 +785,8 @@ void NFmiTime::SetZoneDifferenceHour(void)
 
 void NFmiTime::SetLocalPlace(float theLongitude)
 {
-  // virhetuilanteessä palauttaa nollan  // 6.9.2001/Marko Muutin funktion käyttämään
-  // uutta CalcZoneDifferenceHour-metodia, joka on const-metodi ja sitä voi käyttää
+  // virhetuilanteessÃ¤ palauttaa nollan  // 6.9.2001/Marko Muutin funktion kÃ¤yttÃ¤mÃ¤Ã¤n
+  // uutta CalcZoneDifferenceHour-metodia, joka on const-metodi ja sitÃ¤ voi kÃ¤yttÃ¤Ã¤
   // mm. constiksi muutetussa UTCTime-metodissa
   itsZoneDifferenceHour = CalcZoneDifferenceHour(theLongitude);
 }
@@ -794,7 +801,7 @@ void NFmiTime::SetLocalPlace(float theLongitude)
 short NFmiTime::CalcZoneDifferenceHour(float theLongitude) const
 {
   if (theLongitude == kFloatMissing)
-    return itsZoneDifferenceHour;  // tämä on virhetilanne, mutta ei tehdä muuta kuin palautetaan
+    return itsZoneDifferenceHour;  // tÃ¤mÃ¤ on virhetilanne, mutta ei tehdÃ¤ muuta kuin palautetaan
                                    // vanha arvo
 
   struct tm newtime;
@@ -863,7 +870,7 @@ bool NFmiTime::IsNight(const NFmiLocation &theLocation, unsigned short theResolu
  *
  *
  * \code
- * sallittuja formaattiosia vapaassa järjestyksessä (aika olkoon pe 5.8.99
+ * sallittuja formaattiosia vapaassa jÃ¤rjestyksessÃ¤ (aika olkoon pe 5.8.99
  *               kello 7:31:23):
  *		YYYY ->	        1999
  *		YY		        99
@@ -880,23 +887,23 @@ bool NFmiTime::IsNight(const NFmiLocation &theLocation, unsigned short theResolu
  *		Ww ww WW	  *	Pe pe PE
  *		Nnnn nnnn NNNN*	Maaliskuu maaliskuu MAALISKUU
  *		Nnn nnn NNN	  *	Maa maa MAA
- *		Tttt tttt TTTT* aika nykyhetkestä: Eilen tänään HUOMENNA jne
- *		Tttt±n jne    * edellinen kun ensin nykyhetkeä muutetaan n päivää
+ *		Tttt tttt TTTT* aika nykyhetkestÃ¤: Eilen tÃ¤nÃ¤Ã¤n HUOMENNA jne
+ *		TtttÂ±n jne    * edellinen kun ensin nykyhetkeÃ¤ muutetaan n pÃ¤ivÃ¤Ã¤
  *		I		        5 (perjantai)
- *		%abc%           abc (jos lopussa päättävää %:a ei tarvita)
+ *		%abc%           abc (jos lopussa pÃ¤Ã¤ttÃ¤vÃ¤Ã¤ %:a ei tarvita)
  *		%%				%
  * *= kieliriippuva(suomi,ruotsi,engl.,saksa,esp.,ranska,saame)
- * osat voidaan antaa mielivaltaisessa järjestyksessä
+ * osat voidaan antaa mielivaltaisessa jÃ¤rjestyksessÃ¤
  *
  * Normaalille seassa olevalle tekstille suositellaan siis sijoittamista
- * %-merkkien väliin vaikka tuleekin toistaiseksi tekstinä jos ei kuulu
- * yllä lueteltuihin formaatteihin. Tulevat laajennukset kun saattavat koodata
- * ne joksikin aikamerkinnäksi. Kuitenkin taataan että välimerkit: . , : välilyönti
+ * %-merkkien vÃ¤liin vaikka tuleekin toistaiseksi tekstinÃ¤ jos ei kuulu
+ * yllÃ¤ lueteltuihin formaatteihin. Tulevat laajennukset kun saattavat koodata
+ * ne joksikin aikamerkinnÃ¤ksi. Kuitenkin taataan ettÃ¤ vÃ¤limerkit: . , : vÃ¤lilyÃ¶nti
  * jne aina toimivat sellaisenaan.
  *		esim:
  *		"H:mm:SS" ->	7:31:23
- *		"%Sää% D.M.YY kk HH:mm" -> Sää 5.8.99 klo 07:31
- *                                 (käy myös "%Sää% D.M.YY %klo% HH:mm")
+ *		"%SÃ¤Ã¤% D.M.YY kk HH:mm" -> SÃ¤Ã¤ 5.8.99 klo 07:31
+ *                                 (kÃ¤y myÃ¶s "%SÃ¤Ã¤% D.M.YY %klo% HH:mm")
  *		"YYMMDD" -> 990805
  *      "Tttt wwww%na%"  ->  Huomenna perjantaina  (jos nyt on torstai)
  *      "tttt+1 Ww"  ->  i morgon Fr  (kieli=ruotsi, nyt keskiviikko (tuote
@@ -922,11 +929,11 @@ const NFmiString NFmiTime::ToStr(const NFmiString theTimeCode, const FmiLanguage
   while (ind <= len)
   {
     str1 = theTimeCode.GetChars(ind, 1);
-    // %:ien väliset merkit sellaisenaan
+    // %:ien vÃ¤liset merkit sellaisenaan
     if (str1 == NFmiString("%"))
     {
       str1 = theTimeCode.GetChars(ind + 1, 1);
-      // kahdella peräkkäisellä prosentilla saadaan prosentti
+      // kahdella perÃ¤kkÃ¤isellÃ¤ prosentilla saadaan prosentti
       if (str1 == NFmiString("%"))
       {
         theString += NFmiString("%");
@@ -1062,7 +1069,7 @@ const NFmiString NFmiTime::ToStr(const NFmiString theTimeCode, const FmiLanguage
             theString += NFmiValueString(GetWeekday(), "%01d");
           else
             theString += str1;
-          // pitäisi ottaa ruotsista päivän jälkeinen piste pois
+          // pitÃ¤isi ottaa ruotsista pÃ¤ivÃ¤n jÃ¤lkeinen piste pois
         }
       }
     }
@@ -1091,7 +1098,7 @@ const NFmiString NFmiTime::RelativeDay(FmiLanguage theLanguage,
   thePlusInd = 0;
 
   int diff = GetJulianDay() - currentTime.GetJulianDay();
-  if (diff < -100)  // vuodenvaihde ja karkausvuosi hoidettu, voisi viedä NFmiTime:een; ei tastattu
+  if (diff < -100)  // vuodenvaihde ja karkausvuosi hoidettu, voisi viedÃ¤ NFmiTime:een; ei tastattu
     diff += DaysInYear(currentTime.GetYear());
   if (diff > 100) diff -= DaysInYear(GetYear());
 
@@ -1103,14 +1110,14 @@ const NFmiString NFmiTime::RelativeDay(FmiLanguage theLanguage,
     diff += -addDiff;
     thePlusInd = 2;
   }
-  diff = std::min(std::max(diff, -3), 3);  // pysäytetään ali/ylivuotoon
+  diff = std::min(std::max(diff, -3), 3);  // pysÃ¤ytetÃ¤Ã¤n ali/ylivuotoon
   retString = NFmiString(reldays[(theLanguage - 1) * 7 + diff + 3]);
   if (theFormat.GetChars(1, 4) == NFmiString("tttt")) retString.LowerCase();
   if (theFormat.GetChars(1, 4) == NFmiString("TTTT")) retString.UpperCase();
   return retString;
 }
 
-// HUOM! Tämä on kopio NFmiEditMapGeneralDataDoc-luokan metodista, kun en voinut antaa tänne
+// HUOM! TÃ¤mÃ¤ on kopio NFmiEditMapGeneralDataDoc-luokan metodista, kun en voinut antaa tÃ¤nne
 // dokumenttia
 std::string NFmiTime::GetDictionaryString(const char *theMagicWord)
 {

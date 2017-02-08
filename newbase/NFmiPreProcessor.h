@@ -100,7 +100,7 @@ class _FMI_DLL NFmiPreProcessor : public NFmiCommentStripper
 
   bool fUseReplace;
 
-  int itsCurNumOfIncludes;  // est‰‰ mm. rekursiivisen includen k‰‰don ohjelmassa
+  int itsCurNumOfIncludes;  // est√§√§ mm. rekursiivisen includen k√§√§don ohjelmassa
 
 };  // class NFmiPreProcessor
 

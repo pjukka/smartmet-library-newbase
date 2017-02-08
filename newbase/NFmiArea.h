@@ -89,7 +89,7 @@ class _FMI_DLL NFmiArea
                             const NFmiPoint &theTopRightLatLon,
                             bool allowPacificFix = true) const = 0;
   virtual NFmiArea *CreateNewArea(const NFmiPoint &theBottomLeftLatLon,
-                                  const NFmiPoint &theTopRightLatLon);
+                                  const NFmiPoint &theTopRightLatLon) const;
   //  virtual NFmiArea * CreateNewArea(const NFmiRect & theRect);
   virtual NFmiArea *CreateNewAreaByWorldRect(const NFmiRect &theWorldRect);
   virtual NFmiArea *CreateNewArea(double theNewAspectRatioXperY,
@@ -260,7 +260,12 @@ inline NFmiArea &NFmiArea::operator=(const NFmiArea &theArea)
 
 inline bool NFmiArea::IsInside(const NFmiPoint &theLatLonPoint) const
 {
-  return itsXYRectArea.IsInside(ToXY(theLatLonPoint));
+  NFmiPoint xyPoint = ToXY(theLatLonPoint);
+  if (xyPoint == NFmiPoint::gMissingLatlon)
+  {
+    return false;
+  }
+  return itsXYRectArea.IsInside(ToXY(xyPoint));
 }
 
 // ----------------------------------------------------------------------
@@ -300,10 +305,8 @@ inline const NFmiPoint NFmiArea::BottomRightLatLon() const { return ToLatLon(Bot
 
 inline bool NFmiArea::IsInside(const NFmiArea &theArea) const
 {
-  return itsXYRectArea.IsInside(ToXY(theArea.TopLeftLatLon())) &&
-         itsXYRectArea.IsInside(ToXY(theArea.TopRightLatLon())) &&
-         itsXYRectArea.IsInside(ToXY(theArea.BottomLeftLatLon())) &&
-         itsXYRectArea.IsInside(ToXY(theArea.BottomRightLatLon()));
+  return IsInside(theArea.TopLeftLatLon()) && IsInside(theArea.TopRightLatLon()) &&
+         IsInside(theArea.BottomLeftLatLon()) && IsInside(theArea.BottomRightLatLon());
 }
 
 // ----------------------------------------------------------------------
@@ -441,7 +444,7 @@ inline std::ostream &operator<<(std::ostream &file, const NFmiArea &ob) { return
 /*!
  * Input operator for class NFmiArea
  *
- * \param file The input stream to read from
+ *Â \param file The input stream to read from
  * \param ob The object into which to read the new contents
  * \return The input stream read from
  */

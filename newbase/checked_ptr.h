@@ -2,35 +2,35 @@
  *
  *
 
-> Olen etsimässä juuri editori kirjastoista mahdollisia pointteri virhe
-> kaato mahdollisuuksia. Monissa luokissa mitä käytän on pointtereitä
-> toisiin olioihin ja nämä pointterit alustetaan usein konstruktorissa.
-> Niitä ei tarkasteta myöhemmin kun rakennettua oliota käytetään
-> myöhemmin. Tuli vain mieleen, pitäisikö tehdä joku 0-pointteri
-> poikkeusluokka (vaikka newbase:een), jota voisi heitellä eri luokkien
-> konstruktoreista tälläisissä tapauksissa. Silloin tulisi tarkastettua
-> pointterit ja ongelmat voisi voisi käsitellä ylempänä ja luokkia voisi
-> käyttää turvallisemmin kun niiden dataosien pointterit olisi
+> Olen etsimÃ¤ssÃ¤ juuri editori kirjastoista mahdollisia pointteri virhe
+> kaato mahdollisuuksia. Monissa luokissa mitÃ¤ kÃ¤ytÃ¤n on pointtereitÃ¤
+> toisiin olioihin ja nÃ¤mÃ¤ pointterit alustetaan usein konstruktorissa.
+> NiitÃ¤ ei tarkasteta myÃ¶hemmin kun rakennettua oliota kÃ¤ytetÃ¤Ã¤n
+> myÃ¶hemmin. Tuli vain mieleen, pitÃ¤isikÃ¶ tehdÃ¤ joku 0-pointteri
+> poikkeusluokka (vaikka newbase:een), jota voisi heitellÃ¤ eri luokkien
+> konstruktoreista tÃ¤llÃ¤isissÃ¤ tapauksissa. Silloin tulisi tarkastettua
+> pointterit ja ongelmat voisi voisi kÃ¤sitellÃ¤ ylempÃ¤nÃ¤ ja luokkia voisi
+> kÃ¤yttÃ¤Ã¤ turvallisemmin kun niiden dataosien pointterit olisi
 > tarkastettu.
 
 Miten olisi checked_ptr templaatti, joka olisi kuten auto_ptr, mutta
-ei omistaisi dataa, ja nollapointterin dereferointi heittäisi aina
+ei omistaisi dataa, ja nollapointterin dereferointi heittÃ¤isi aina
 poikkeuksen? Parempi saattaisi olla smart_ptr, jolla olisi vastaava
-policy, mutta se taitaa vaatia enemmän muutoksia kuin checked_ptr.
+policy, mutta se taitaa vaatia enemmÃ¤n muutoksia kuin checked_ptr.
 
-Ehkä voisi yrittää ensin siirtyä checked_ptr luokkaan, ja sitten siirtyä
+EhkÃ¤ voisi yrittÃ¤Ã¤ ensin siirtyÃ¤ checked_ptr luokkaan, ja sitten siirtyÃ¤
 asteittain smart_ptr luokkaan?
 
-Käytin mallina g++:n auto_ptr luokkaa, ja yksinkertaistin hieman asioita,
-alla on (kääntämätön) lopputulos.
+KÃ¤ytin mallina g++:n auto_ptr luokkaa, ja yksinkertaistin hieman asioita,
+alla on (kÃ¤Ã¤ntÃ¤mÃ¤tÃ¶n) lopputulos.
 
   *ptr ja
   ptr->metodi
 
-heittäisivät veivin, jos pointteri on nolla. get() kuitenkin toimisi ihan
-normaalisti, sitä kautta saa testattua sisällön. Myöskin delete lakkaa
-toimimasta, koska objekti ei olekaan enää pointteri, eli mahdolliset
-deallokointi virheet löytyvät tätä kautta.
+heittÃ¤isivÃ¤t veivin, jos pointteri on nolla. get() kuitenkin toimisi ihan
+normaalisti, sitÃ¤ kautta saa testattua sisÃ¤llÃ¶n. MyÃ¶skin delete lakkaa
+toimimasta, koska objekti ei olekaan enÃ¤Ã¤ pointteri, eli mahdolliset
+deallokointi virheet lÃ¶ytyvÃ¤t tÃ¤tÃ¤ kautta.
  */
 
 #ifndef CHECKED_PTR_H

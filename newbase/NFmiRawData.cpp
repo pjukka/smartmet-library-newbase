@@ -6,11 +6,11 @@
 // ======================================================================
 
 #ifdef _MSC_VER
-#pragma warning(disable : 4503)  // VC++ 2012 kääntäjällä tulee paljon ruman näköistä varoitusta
-                                 // ilman tätä (decorated name length exceeded (4096 bytes), name
+#pragma warning(disable : 4503)  // VC++ 2012 kÃ¤Ã¤ntÃ¤jÃ¤llÃ¤ tulee paljon ruman nÃ¤kÃ¶istÃ¤ varoitusta
+                                 // ilman tÃ¤tÃ¤ (decorated name length exceeded (4096 bytes), name
                                  // was truncated)
-#pragma warning(disable : 4101)  // VC++ 2012 kääntäjällä tulee paljon 'lock' unreferenced
-                                 // -varoitusta ilman tätä.  Scoped variableen ei ole
+#pragma warning(disable : 4101)  // VC++ 2012 kÃ¤Ã¤ntÃ¤jÃ¤llÃ¤ tulee paljon 'lock' unreferenced
+                                 // -varoitusta ilman tÃ¤tÃ¤.  Scoped variableen ei ole
                                  // tarkoitustakaan viitata, sen tarkoitus on purkaa jotain scopen
                                  // loppuessa.
 #endif
@@ -583,7 +583,7 @@ NFmiRawData::~NFmiRawData() { delete itsPimple; }
 NFmiRawData::NFmiRawData() : itsPimple(new Pimple()) {}
 // ----------------------------------------------------------------------
 /*!
- * \brief Copy constructor
+ *Â \brief Copy constructor
  */
 // ----------------------------------------------------------------------
 
@@ -675,7 +675,7 @@ bool NFmiRawData::IsBinaryStorageUsed() const { return itsPimple->IsBinaryStorag
 ostream &NFmiRawData::Write(ostream &file) const { return itsPimple->Write(file); }
 // ----------------------------------------------------------------------
 /*!
- * \brief Backup data to given pointer
+ *Â \brief Backup data to given pointer
  */
 // ----------------------------------------------------------------------
 

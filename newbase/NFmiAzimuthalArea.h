@@ -160,7 +160,7 @@ inline double NFmiAzimuthalArea::CentralLatitude(void) const { return itsCentral
 inline double NFmiAzimuthalArea::TrueLatitude(void) const { return itsTrueLatitude.Value(); }
 // ----------------------------------------------------------------------
 /*!
- * Tarvitaan kun m‰‰ritell‰‰n hilav‰li‰ metreiss‰
+ * Tarvitaan kun m√§√§ritell√§√§n hilav√§li√§ metreiss√§
  *
  * \return Undocumented
  */
@@ -169,7 +169,7 @@ inline double NFmiAzimuthalArea::TrueLatitude(void) const { return itsTrueLatitu
 inline double NFmiAzimuthalArea::XScaleFactor(void) const { return itsXScaleFactor; }
 // ----------------------------------------------------------------------
 /*!
- * Tarvitaan kun m‰‰ritell‰‰n hilav‰li‰ metreiss‰
+ * Tarvitaan kun m√§√§ritell√§√§n hilav√§li√§ metreiss√§
  *
  * \return Undocumented
  */

@@ -6,7 +6,7 @@
 // ======================================================================
 
 #ifdef _MSC_VER
-#pragma warning(disable : 4309)  // poistaa VC++ k‰‰nt‰j‰n varoituksia (256 kpl) kun alustetaan
+#pragma warning(disable : 4309)  // poistaa VC++ k√§√§nt√§j√§n varoituksia (256 kpl) kun alustetaan
                                  // iso_8859_1_upper-taulukkoa (warning C4309: 'initializing' :
                                  // truncation of constant value)
 #endif
@@ -174,17 +174,17 @@ std::string &ReplaceAll(std::string &theString,
                         const std::string &fromStr,
                         const std::string &toStr)
 {
-  // Jos fromStr on tyhj‰ ja toStr ei, lis‰‰ replace-komento stringin alkuun aina toStr:n.
-  // Sitten found-indeksi kasvaa yhdell‰ ja indeksin 1 kohdalle lis‰t‰‰n toStr. Ja t‰m‰ jatkuu
+  // Jos fromStr on tyhj√§ ja toStr ei, lis√§√§ replace-komento stringin alkuun aina toStr:n.
+  // Sitten found-indeksi kasvaa yhdell√§ ja indeksin 1 kohdalle lis√§t√§√§n toStr. Ja t√§m√§ jatkuu
   // ikuisesti...
-  // Siksi jos fromStr on tyhj‰, ei tehd‰ mit‰‰n.
+  // Siksi jos fromStr on tyhj√§, ei tehd√§ mit√§√§n.
   if (fromStr.empty() == false)
   {
-    string::size_type advanceThis = toStr.length();  // etsinn‰ss‰ pit‰‰ edet‰ korvaus stringin
-                                                     // verran eteenp‰in, muuten voi j‰‰d‰
+    string::size_type advanceThis = toStr.length();  // etsinn√§ss√§ pit√§√§ edet√§ korvaus stringin
+                                                     // verran eteenp√§in, muuten voi j√§√§d√§
                                                      // ikilooppiin (esim. '%' -> '%C4%')
     if (advanceThis == 0)
-      advanceThis++;  // paitsi jos korvaus stringi oli tyhj‰, pit‰‰ edet‰ 1:ll‰, muuten voi j‰‰d‰
+      advanceThis++;  // paitsi jos korvaus stringi oli tyhj√§, pit√§√§ edet√§ 1:ll√§, muuten voi j√§√§d√§
                       // ikilooppiin
     string::size_type found = theString.find(fromStr);
     while (found != string::npos)
@@ -275,10 +275,10 @@ std::string &Trim(std::string &theString, char theChar)
 
 // ----------------------------------------------------------------------
 /*!
- * Poistaa stringist‰ alku+loppu whitespacet.
- * Sanojen v‰list‰ poistetaan spacet ja tabit paitsi j‰tt‰‰/lis‰‰ yhden spacen.
- * Jos sanojen v‰lill‰ on ainoastaan tabulaattoreita, korvaa ne yhdell‰ spacella.
- * <cr> ja <lf> ei poisteta sanojen v‰list‰ (paitsi alusta ja lopusta).
+ * Poistaa stringist√§ alku+loppu whitespacet.
+ * Sanojen v√§list√§ poistetaan spacet ja tabit paitsi j√§tt√§√§/lis√§√§ yhden spacen.
+ * Jos sanojen v√§lill√§ on ainoastaan tabulaattoreita, korvaa ne yhdell√§ spacella.
+ * <cr> ja <lf> ei poisteta sanojen v√§list√§ (paitsi alusta ja lopusta).
  */
 // ----------------------------------------------------------------------
 
@@ -302,7 +302,7 @@ std::string TrimAll(std::string &theString, bool replaceInsideNewlinesWithSpace)
       if (wordBreak == false)
       {
         wordBreak = true;
-        result.push_back(' ');  // laitetaan aina sanan per‰‰n yksi space
+        result.push_back(' ');  // laitetaan aina sanan per√§√§n yksi space
       }
     }
     else

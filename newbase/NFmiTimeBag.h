@@ -35,9 +35,9 @@ class _FMI_DLL NFmiTimeBag : public NFmiSize
   void PruneTimes(int theMaxTimeCount, bool fFromEnd = true);
 
   virtual unsigned long GetSize(
-      void) const;           //??? Tarvitaanko t‰‰ll‰? //should be const. Look at .cpp
-  bool IsEmpty(void) const;  // Jouduin tekem‰‰n IsEmpty -metodin, NFmiTimeBag palauttaa tyhj‰n‰ 1:n
-                             // kun resolution on 0 jostain historiallisista v. 1998 syist‰
+      void) const;           //??? Tarvitaanko t√§√§ll√§? //should be const. Look at .cpp
+  bool IsEmpty(void) const;  // Jouduin tekem√§√§n IsEmpty -metodin, NFmiTimeBag palauttaa tyhj√§n√§ 1:n
+                             // kun resolution on 0 jostain historiallisista v. 1998 syist√§
   virtual bool Next(void);
   virtual bool Previous(void);
   virtual void Reset(FmiDirection directionToIter = kForward);

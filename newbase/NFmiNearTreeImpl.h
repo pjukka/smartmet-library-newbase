@@ -429,7 +429,7 @@ unsigned long NFmiNearTreeImpl<T, F>::NearestOnes(std::vector<value_type>& theCl
  *
  * \param theClosest The found closest point
  * \param thePoint The probe point
- * \param theRadius The smallest currently known distance of an object from
+ *Â \param theRadius The smallest currently known distance of an object from
  *                  the probe point.
  * \return True only if a point was found within theRadius
  */

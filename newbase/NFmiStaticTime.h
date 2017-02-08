@@ -151,7 +151,7 @@ inline short NFmiStaticTime::GetMin(void) const { return fMin; }
 inline short NFmiStaticTime::GetSec(void) const { return fSec; }
 // ----------------------------------------------------------------------
 /*!
- * \return Meneill‰‰n olevan vuorokauden tunti desimaalilukuna
+ * \return Meneill√§√§n olevan vuorokauden tunti desimaalilukuna
  */
 // ----------------------------------------------------------------------
 

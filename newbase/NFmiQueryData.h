@@ -112,8 +112,8 @@ class _FMI_DLL NFmiQueryData
   virtual unsigned long ClassId() const;
 
   // Avain systeemi sijoitetaan NFmiQueryData:n omistamaan NFmiQueryInfo:on.
-  // N‰m‰ on vain datan omistaman sis‰isen infon k‰skytt‰mist‰ varten
-  // tehtyj‰ v‰litys funktioita.
+  // N√§m√§ on vain datan omistaman sis√§isen infon k√§skytt√§mist√§ varten
+  // tehtyj√§ v√§litys funktioita.
 
   bool FindFirstKey(const NFmiString &theKey);
   bool FindNextKey(const NFmiString &theKey);
@@ -141,23 +141,23 @@ class _FMI_DLL NFmiQueryData
   // Unique value for unique grids
   std::size_t GridHashValue() const;
 
-  // T‰m‰ HPlaceDescriptorin asetus funktio on spesiaali funktio.
-  // Sill‰ on tarkoitus muuttaa iteraattori-infon hilan aluetta
-  // eik‰ muuta siten, ett‰ datan koko ei kasva. Jos alkuper‰isess‰
-  // descriptorissa hilan koko oli esim. 30 x 40 ja yritt‰‰ asettaa
-  // hplaceDescriptoria miss‰ on hilana vaikka 50 x 60, lent‰‰ POIKKEUS!
-  // Muiden descriptorien asetus funktioita ei tarvinnut tehd‰ queryData
-  // -luokkaan, mutta t‰m‰ piti tehd‰, koska muuten itsLatLonCache
-  // ei p‰ivity.
-  // Itse (Marko) k‰yt‰n t‰t‰ systeemi‰ Metkun editorissa
-  // 'huijaamaan' qinfoa, ett‰ voin laskea makroparametreja
-  // karttan‰ytˆlle (smarttool-skriptej‰, joita visualisoidaan).
+  // T√§m√§ HPlaceDescriptorin asetus funktio on spesiaali funktio.
+  // Sill√§ on tarkoitus muuttaa iteraattori-infon hilan aluetta
+  // eik√§ muuta siten, ett√§ datan koko ei kasva. Jos alkuper√§isess√§
+  // descriptorissa hilan koko oli esim. 30 x 40 ja yritt√§√§ asettaa
+  // hplaceDescriptoria miss√§ on hilana vaikka 50 x 60, lent√§√§ POIKKEUS!
+  // Muiden descriptorien asetus funktioita ei tarvinnut tehd√§ queryData
+  // -luokkaan, mutta t√§m√§ piti tehd√§, koska muuten itsLatLonCache
+  // ei p√§ivity.
+  // Itse (Marko) k√§yt√§n t√§t√§ systeemi√§ Metkun editorissa
+  // 'huijaamaan' qinfoa, ett√§ voin laskea makroparametreja
+  // karttan√§yt√∂lle (smarttool-skriptej√§, joita visualisoidaan).
 
   // THIS IS NOT THREAD SAFE!!
   void SetHPlaceDescriptor(const NFmiHPlaceDescriptor &newDesc);
 
   //#ifndef  NDEBUG
-  static int itsConstructorCalls;  // t‰m‰ on yritys tutkia mahdollisia vuotoja ohjelmiss‰
+  static int itsConstructorCalls;  // t√§m√§ on yritys tutkia mahdollisia vuotoja ohjelmiss√§
   static int itsDestructorCalls;   // kuinka monta oliota on luotu ja tuhottu
                                    //#endif // NDEBUG
 

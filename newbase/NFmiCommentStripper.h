@@ -65,7 +65,7 @@ class _FMI_DLL NFmiCommentStripper
   bool fStripNested;
   bool fStripDoubleSlash;
   bool fStripSlashAst;
-  bool fStripEndOfLineSpaces;  // Marko Lis‰sin falgin, koska oli ongelmia joissain tapauksissa, jos
+  bool fStripEndOfLineSpaces;  // Marko Lis√§sin falgin, koska oli ongelmia joissain tapauksissa, jos
                                // spacet poistetaan.
 
 };  // class NFmiCommentStripper

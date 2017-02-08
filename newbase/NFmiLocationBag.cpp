@@ -496,7 +496,7 @@ typedef pair<int, double> IndDistPari;
 
 // ----------------------------------------------------------------------
 /*!
- * Huom! T:n pit‰‰ olla pair<>-tyyppinen!!!!
+ * Huom! T:n pit√§√§ olla pair<>-tyyppinen!!!!
  */
 // ----------------------------------------------------------------------
 
@@ -508,7 +508,7 @@ struct LocationIndexDistanceLess
 
 // ----------------------------------------------------------------------
 /*!
- * Huom! T:n pit‰‰ olla pair<>-tyyppinen!!!!
+ * Huom! T:n pit√§√§ olla pair<>-tyyppinen!!!!
  */
 // ----------------------------------------------------------------------
 template <typename T>
@@ -521,14 +521,14 @@ struct LocationIndexDistanceGreater
 
 // ----------------------------------------------------------------------
 /*!
- * Hakee listan paikkaindeksi/et‰isyys metrein‰ pareja.
- * Listaan haetaan annettua paikkaa l‰himmat datapisteet j‰rjestyksess‰
- * l‰himm‰st‰ kauimpaan. Listaan haetaan joko haluttu m‰‰r‰ l‰himpi‰ pisteit‰
- * tai hakua voi myˆs rajoittaa maksimi et‰isyydell‰. Jos maksimi m‰‰r‰ksi
- * laitetaan -1, haetaan paikkoja niin paljon kuin lˆytyy (maxEt‰isyys rajoitus
+ * Hakee listan paikkaindeksi/et√§isyys metrein√§ pareja.
+ * Listaan haetaan annettua paikkaa l√§himmat datapisteet j√§rjestyksess√§
+ * l√§himm√§st√§ kauimpaan. Listaan haetaan joko haluttu m√§√§r√§ l√§himpi√§ pisteit√§
+ * tai hakua voi my√∂s rajoittaa maksimi et√§isyydell√§. Jos maksimi m√§√§r√§ksi
+ * laitetaan -1, haetaan paikkoja niin paljon kuin l√∂ytyy (maxEt√§isyys rajoitus
  * huomiooon ottaen).
  *
- * Huom! maxWantedLocations ohittaa maxDistance m‰‰rityksen (jos molemmat
+ * Huom! maxWantedLocations ohittaa maxDistance m√§√§rityksen (jos molemmat
  * annettu).
  *
  * Erilaisia kombinaatioita haun rajoituksessa:
@@ -538,9 +538,9 @@ struct LocationIndexDistanceGreater
  * \li theMaxWantedLocations = 5 ja theMaxDistance = kFloatMissing =>
  *     palauttaa 5 sortattuna.
  * \li theMaxWantedLocations = -1 ja theMaxDistance = 45678.9m =>
- *     palauttaa kaikki annetun s‰teen sis‰lt‰ sortattuna.
+ *     palauttaa kaikki annetun s√§teen sis√§lt√§ sortattuna.
  * \li theMaxWantedLocations = 5 ja theMaxDistance = 45678.9m =>
- *     palauttaa max 5 annetun s‰teen sis‰lt‰ sortattuna.
+ *     palauttaa max 5 annetun s√§teen sis√§lt√§ sortattuna.
  *
  * \param theLocation The center location for the search
  * \param theMaxWantedLocations Maximum number of locations to return, or -1
@@ -570,7 +570,7 @@ const checkedVector<pair<int, double> > NFmiLocationBag::NearestLocations(
       return checkedVector<pair<int, double> >();
     else
     {
-      // halutaan n kpl lahimpi‰ paikkoja
+      // halutaan n kpl lahimpi√§ paikkoja
       int usedCount = theMaxWantedLocations;
       if (usedCount > static_cast<int>(tempValues.size()))
         usedCount =
@@ -579,14 +579,14 @@ const checkedVector<pair<int, double> > NFmiLocationBag::NearestLocations(
                         tempValues.begin() + usedCount,
                         tempValues.end(),
                         LocationIndexDistanceLess<IndDistPari>());
-      // palautetaan haluttu m‰‰r‰ locatioita
+      // palautetaan haluttu m√§√§r√§ locatioita
       return checkedVector<IndDistPari>(tempValues.begin(), tempValues.begin() + usedCount);
     }
   }
 
   // theMaxDistance != kFloatMissing)
 
-  // haetaan kaikki annetun s‰teen sis‰ll‰ olevat paikat
+  // haetaan kaikki annetun s√§teen sis√§ll√§ olevat paikat
   std::sort(tempValues.begin(), tempValues.end(), LocationIndexDistanceLess<IndDistPari>());
   checkedVector<IndDistPari>::iterator pos =
       std::find_if(tempValues.begin(),

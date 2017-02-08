@@ -84,10 +84,10 @@ bool NFmiGridBase::Init(NFmiDataPool *theData)
 
 // ----------------------------------------------------------------------
 /*!
- * Muuttaa parametrina annetun gridin halutessa tiheämpään/väljempään
+ * Muuttaa parametrina annetun gridin halutessa tiheÃ¤mpÃ¤Ã¤n/vÃ¤ljempÃ¤Ã¤n
  * hilaan lineaarisesti interpoloiden, alueiden oletetaan olevan samoja.
  *
- * \param theData Lähtödata, josta initialisoidaan uusi hila (=this olio).
+ * \param theData LÃ¤htÃ¶data, josta initialisoidaan uusi hila (=this olio).
  * \return True jos ei ongelmia, muuten false.
  */
 // ----------------------------------------------------------------------
@@ -119,7 +119,7 @@ bool NFmiGridBase::Init(NFmiGridBase *theData)
 
   if ((theData->itsInterpolationMethod == kLinearlyFast))
   {
-    // HUOM! - ei ota huomioon "croppausta", ts. toimii aina KOKO gridille, ei pelkästään sen
+    // HUOM! - ei ota huomioon "croppausta", ts. toimii aina KOKO gridille, ei pelkÃ¤stÃ¤Ã¤n sen
     // osagridille.
     //		 - interpoloitavan gridin datatyypiksi oletetaan ainoastaan float
 
@@ -403,7 +403,7 @@ void NFmiGridBase::CalcY(unsigned long theIndex)
 
 const NFmiPoint NFmiGridBase::GridPoint(unsigned long theLocationIndex) const
 {
-  // HUOM!!! En tiedä varmana, miten croppaus pitäisi ottaa huomioon tässä laskussa!!! Marko
+  // HUOM!!! En tiedÃ¤ varmana, miten croppaus pitÃ¤isi ottaa huomioon tÃ¤ssÃ¤ laskussa!!! Marko
   //  long theX = CalcFirstX() + ((theLocationIndex-itsBase) % XNumber() + itsBase);
   long theX = CalcFirstX() + (theLocationIndex % XNumber());
   //  long theY = CalcFirstY() + ((theLocationIndex-itsBase) / XNumber() + itsBase);
@@ -605,7 +605,7 @@ bool NFmiGridBase::NearestGridPoint(double &x_, double &y_) const
  * \param y_ Undocumented
  * \param theValue Undocumented
  * \param method Undocumented
- * \return Undocumented
+ *Â \return Undocumented
  */
 // ----------------------------------------------------------------------
 
@@ -614,7 +614,7 @@ bool NFmiGridBase::InterpolateToGridPoint(double x_,
                                           double &theValue,
                                           FmiInterpolationMethod method)
 {
-  // Testaa alueen, onko sisällä
+  // Testaa alueen, onko sisÃ¤llÃ¤
   if (x_ > itsXNumber - 1 || y_ > itsYNumber - 1)
   {
     theValue = kFloatMissing;
@@ -1162,7 +1162,7 @@ std::ostream &NFmiGridBase::Write(std::ostream &file) const
     file << *itsData;
   else
   {
-    NFmiDataPool pool;  // Salla teki pidemmän kaavan kautta välttääkseen varoituksen..
+    NFmiDataPool pool;  // Salla teki pidemmÃ¤n kaavan kautta vÃ¤lttÃ¤Ã¤kseen varoituksen..
     file << pool;
   }
 
@@ -1224,7 +1224,7 @@ bool NFmiGridBase::Index(unsigned long theIndex)
 
 // ----------------------------------------------------------------------
 /*!
- * \param theXNumber Undocumented
+ *Â \param theXNumber Undocumented
  * \param theYNumber Undocumented
  * \return Undocumented
  */
@@ -1260,12 +1260,12 @@ bool NFmiGridBase::Init(unsigned long theXNumber, unsigned long theYNumber)
 
 // ----------------------------------------------------------------------
 /*!
- * Tein tämän Swap-funktion , alkuperäinen on outo siinä mielessä, että
- * sillä on joku startincorner olemassa. Jos se ei ole bottomleft, tehdään
- * swappiä, mutta startingcorner jää kuitenkin sellaiseksi kuin se oli.
- * Nyt haluan kertoa gridille, että koska sinä olet väärin päin,
- * muuta datasi seuraavasti, mutta lopuksi startingcorner pitää olla
- * bottomleft, mihin muotoon lopuksi data jää.
+ * Tein tÃ¤mÃ¤n Swap-funktion , alkuperÃ¤inen on outo siinÃ¤ mielessÃ¤, ettÃ¤
+ * sillÃ¤ on joku startincorner olemassa. Jos se ei ole bottomleft, tehdÃ¤Ã¤n
+ * swappiÃ¤, mutta startingcorner jÃ¤Ã¤ kuitenkin sellaiseksi kuin se oli.
+ * Nyt haluan kertoa gridille, ettÃ¤ koska sinÃ¤ olet vÃ¤Ã¤rin pÃ¤in,
+ * muuta datasi seuraavasti, mutta lopuksi startingcorner pitÃ¤Ã¤ olla
+ * bottomleft, mihin muotoon lopuksi data jÃ¤Ã¤.
  *
  * \param theCurrentDirection Undocumented
  * \return Undocumented
@@ -1275,7 +1275,7 @@ bool NFmiGridBase::Init(unsigned long theXNumber, unsigned long theYNumber)
 bool NFmiGridBase::Swap(FmiDirection theCurrentDirection)
 {
   FmiDirection oldDirection =
-      itsStartingCorner;  // itsStartingCorner pitäisi pitää sisällään bottomleft:in
+      itsStartingCorner;  // itsStartingCorner pitÃ¤isi pitÃ¤Ã¤ sisÃ¤llÃ¤Ã¤n bottomleft:in
   itsStartingCorner = theCurrentDirection;
   bool status = Swap() == true;
   itsStartingCorner =
@@ -1319,7 +1319,7 @@ NFmiGridBase &NFmiGridBase::operator=(const NFmiGridBase &theBase)
   return *this;
 }
 
-// gridbasen yhtäläisyydestä ei oikeastaan muuta dataosiot kiinnosta kuin hilan x- ja y-koot.
+// gridbasen yhtÃ¤lÃ¤isyydestÃ¤ ei oikeastaan muuta dataosiot kiinnosta kuin hilan x- ja y-koot.
 bool NFmiGridBase::operator==(const NFmiGridBase &theGrid) const
 {
   if (this == &theGrid)

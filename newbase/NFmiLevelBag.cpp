@@ -91,7 +91,7 @@ NFmiLevelBag::NFmiLevelBag(const NFmiLevelBag &theBag)
 // ----------------------------------------------------------------------
 /*!
  * \param theBag Undocumented
- * \todo Toimiiko vai eikˆ? Oli Markon ep‰ilev‰ kommentti
+ * \todo Toimiiko vai eik√∂? Oli Markon ep√§ilev√§ kommentti
  */
 // ----------------------------------------------------------------------
 
@@ -149,7 +149,7 @@ bool NFmiLevelBag::AddLevel(const NFmiLevel &theLevel)
     for (j = 0; j < static_cast<int>(GetSize()); j++)
       itsLevels[j] = tempLevels[j];
 
-    itsStep = 0ul;  // askel ei v‰ltt‰m‰tt‰ en‰‰ vakio
+    itsStep = 0ul;  // askel ei v√§ltt√§m√§tt√§ en√§√§ vakio
 
     delete[] tempLevels;
 

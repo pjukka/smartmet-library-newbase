@@ -19,7 +19,7 @@
 #include "NFmiHPlaceDescriptor.h"
 #include "NFmiVPlaceDescriptor.h"
 
-// ÄLÄ KÄYTÄ TÄTÄ, TESTI LUOKKA/18.2.2000/Marko
+// Ã„LÃ„ KÃ„YTÃ„ TÃ„TÃ„, TESTI LUOKKA/18.2.2000/Marko
 
 //! Undocumented
 class _FMI_DLL NFmiSpaceDescriptor : public NFmiDataDescriptor

@@ -124,7 +124,7 @@ inline NFmiSvgPath::iterator NFmiSvgPath::end(void)
 
 // ----------------------------------------------------------------------
 /*!
- * \brief Palauttaa ensimm‰isen elementin
+ * \brief Palauttaa ensimm√§isen elementin
  */
 // ----------------------------------------------------------------------
 

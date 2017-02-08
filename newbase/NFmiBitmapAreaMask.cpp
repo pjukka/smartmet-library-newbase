@@ -223,8 +223,8 @@ bool NFmiBitmapAreaMask::IsMasked(int theIndex) const
  */
 // ----------------------------------------------------------------------.
 
-// Maskin luonteesta johtuen t‰m‰ ei k‰yt‰ laskuissaan normaaleja suurempi tai pienempi ehtoja,
-// vaan jos maski on p‰‰ll‰, arvo on yksi ja muuten nolla.
+// Maskin luonteesta johtuen t√§m√§ ei k√§yt√§ laskuissaan normaaleja suurempi tai pienempi ehtoja,
+// vaan jos maski on p√§√§ll√§, arvo on yksi ja muuten nolla.
 
 double NFmiBitmapAreaMask::MaskValue(const NFmiPoint& theLatLon) const
 {
@@ -241,9 +241,9 @@ double NFmiBitmapAreaMask::MaskValue(const NFmiPoint& theLatLon) const
  */
 // ----------------------------------------------------------------------
 
-// Maskin luonteesta johtuen t‰m‰ ei k‰yt‰ laskuissaan normaaleja suurempi tai pienempi ehtoja,
-// vaan jos maski on p‰‰ll‰, arvo on yksi ja muuten nolla.
-// Huom!! t‰ss‰ ei tarvitse tarkistaa onko enabloitu, koska se tehd‰‰n ylemp‰n‰.
+// Maskin luonteesta johtuen t√§m√§ ei k√§yt√§ laskuissaan normaaleja suurempi tai pienempi ehtoja,
+// vaan jos maski on p√§√§ll√§, arvo on yksi ja muuten nolla.
+// Huom!! t√§ss√§ ei tarvitse tarkistaa onko enabloitu, koska se tehd√§√§n ylemp√§n√§.
 
 double NFmiBitmapAreaMask::CalcValueFromLocation(const NFmiPoint& theLatLon) const
 {
@@ -285,10 +285,10 @@ int NFmiBitmapAreaMask::LatLon2Index(const NFmiPoint& theLatLon) const
 {
   if (itsArea)
   {
-    NFmiPoint xyPoint(itsArea->ToXY(theLatLon));  // t‰m‰ on 'suhteellisessa' 0,0 - 1,1 maailmassa
+    NFmiPoint xyPoint(itsArea->ToXY(theLatLon));  // t√§m√§ on 'suhteellisessa' 0,0 - 1,1 maailmassa
     int x = static_cast<int>(round((itsGridXSize - 1) * itsArea->Width() * xyPoint.X()));
     int y = static_cast<int>(round((itsGridYSize - 1) * itsArea->Height() * xyPoint.Y()));
-    // pit‰‰ viel‰ k‰‰nt‰‰
+    // pit√§√§ viel√§ k√§√§nt√§√§
     y = static_cast<int>(round((itsGridYSize - 1) * itsArea->Height() - y));
     int finalIndex = y * itsGridXSize + x;
     return finalIndex;

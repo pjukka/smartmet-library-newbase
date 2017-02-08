@@ -11,8 +11,8 @@
  *
  *
  * 19.9.2000/Lasse; puolittaa alku- ja loppuhetken arvot
- * soveltuu esim sadesumman llskemiseen kun lähdetään hetkellisistä intensiteeteistä
- * AllValid= vaatii että kaikki arvot ovat käypiä
+ * soveltuu esim sadesumman llskemiseen kun lÃ¤hdetÃ¤Ã¤n hetkellisistÃ¤ intensiteeteistÃ¤
+ * AllValid= vaatii ettÃ¤ kaikki arvot ovat kÃ¤ypiÃ¤
  */
 // ======================================================================
 
@@ -45,7 +45,7 @@ NFmiDataModifierAllValidClipSum::NFmiDataModifierAllValidClipSum(void)
 
 void NFmiDataModifierAllValidClipSum::Calculate(NFmiQueryInfo* theQI)
 {
-  // PITÄIS TARKISTAA VOIKO TOIMIA NÄIN ja tässähän ei ole arvovälin tsekkausta
+  // PITÃ„IS TARKISTAA VOIKO TOIMIA NÃ„IN ja tÃ¤ssÃ¤hÃ¤n ei ole arvovÃ¤lin tsekkausta
   float value = theQI->FloatValue();
   float halfValue = 0;
   if (CheckMissingValues(value))

@@ -9,8 +9,8 @@
  *
  * NFmiDataMatrix on 2D datamatriisi, joka tukee [x][y] notaatiota.
  *
- * Datalla ei oleteta olevan mink‰‰n laisia matemaattisia ominaisuuksia,
- * tarkoitus on ainoastaan s‰ilytt‰‰ dataa 2-ulotteisesti.
+ * Datalla ei oleteta olevan mink√§√§n laisia matemaattisia ominaisuuksia,
+ * tarkoitus on ainoastaan s√§ilytt√§√§ dataa 2-ulotteisesti.
  *
  * Mallilausekkeita:
  *
@@ -44,19 +44,19 @@
 #ifndef NFMIDATAMATRIX_H
 #define NFMIDATAMATRIX_H
 
-// Jos t‰m‰ on m‰‰ritelty, checkedVector tarkistaa aina rajat ja heitt‰‰ aina poikkeuksen
+// Jos t√§m√§ on m√§√§ritelty, checkedVector tarkistaa aina rajat ja heitt√§√§ aina poikkeuksen
 // virhetilanteessa
-// (virheraportin mukana viel‰ MSVC k‰‰nt‰j‰n kanssa call stack).
-// Jos t‰m‰ (FMI_USE_SECURE_CHECKED_VECTOR) on kommentoitu, toimii checkedVector-luokka (ja
+// (virheraportin mukana viel√§ MSVC k√§√§nt√§j√§n kanssa call stack).
+// Jos t√§m√§ (FMI_USE_SECURE_CHECKED_VECTOR) on kommentoitu, toimii checkedVector-luokka (ja
 // NFmiDataMatrix
-// joka k‰ytt‰‰ sit‰) siten kuin se olisi normaali std::vector (nopea ja 'vaarallinen').
+// joka k√§ytt√§√§ sit√§) siten kuin se olisi normaali std::vector (nopea ja 'vaarallinen').
 
 // #define FMI_USE_SECURE_CHECKED_VECTOR 1
 
 #ifdef FMI_USE_SECURE_CHECKED_VECTOR
 #ifdef _MSC_VER
 //#include "stdafx.h" // call stack juttuihin tarvitaan windows headereita
-//#include "sym_engine.h" // t‰‰lt‰ tulee call stack virhe tarkasteluihin
+//#include "sym_engine.h" // t√§√§lt√§ tulee call stack virhe tarkasteluihin
 #endif  // _MSC_VER
 #endif  // FMI_USE_SECURE_CHECKED_VECTOR
 
@@ -71,8 +71,8 @@
 #include <vector>
 #include <sstream>
 
-// Laitoin checkedvectorin t‰h‰n debuggaus avuksi, koska ei ollu
-// boundcheckeri‰ asennettuna. Koodi on pˆllitty muistaakseni
+// Laitoin checkedvectorin t√§h√§n debuggaus avuksi, koska ei ollu
+// boundcheckeri√§ asennettuna. Koodi on p√∂llitty muistaakseni
 // Breyn??? STL-kirjasta.
 #ifndef CHECKVEC_H
 #define CHECKVEC_H
@@ -108,7 +108,7 @@ class checkedVector : public std::vector<T>  // inherit from std::vector<T>
       DoErrorReporting(e, index);
     }
     throw std::runtime_error(
-        "Ei pit‰isi menn‰ t‰h‰n, mutta muuten k‰‰nt‰j‰ valittaa ett‰ funktion pit‰‰ palauttaa");
+        "Ei pit√§isi menn√§ t√§h√§n, mutta muuten k√§√§nt√§j√§ valittaa ett√§ funktion pit√§√§ palauttaa");
   }
 
   const_reference operator[](size_type index) const
@@ -122,7 +122,7 @@ class checkedVector : public std::vector<T>  // inherit from std::vector<T>
       DoErrorReporting(e, index);
     }
     throw std::runtime_error(
-        "Ei pit‰isi menn‰ t‰h‰n, mutta muuten k‰‰nt‰j‰ valittaa ett‰ funktion pit‰‰ palauttaa");
+        "Ei pit√§isi menn√§ t√§h√§n, mutta muuten k√§√§nt√§j√§ valittaa ett√§ funktion pit√§√§ palauttaa");
   }
 
   const_reference at(size_type index) const
@@ -136,7 +136,7 @@ class checkedVector : public std::vector<T>  // inherit from std::vector<T>
       DoErrorReporting(e, index);
     }
     throw std::runtime_error(
-        "Ei pit‰isi menn‰ t‰h‰n, mutta muuten k‰‰nt‰j‰ valittaa ett‰ funktion pit‰‰ palauttaa");
+        "Ei pit√§isi menn√§ t√§h√§n, mutta muuten k√§√§nt√§j√§ valittaa ett√§ funktion pit√§√§ palauttaa");
   }
 
   reference at(size_type index)
@@ -150,7 +150,7 @@ class checkedVector : public std::vector<T>  // inherit from std::vector<T>
       DoErrorReporting(e, index);
     }
     throw std::runtime_error(
-        "Ei pit‰isi menn‰ t‰h‰n, mutta muuten k‰‰nt‰j‰ valittaa ett‰ funktion pit‰‰ palauttaa");
+        "Ei pit√§isi menn√§ t√§h√§n, mutta muuten k√§√§nt√§j√§ valittaa ett√§ funktion pit√§√§ palauttaa");
   }
 #endif  // FMI_USE_SECURE_CHECKED_VECTOR
 
@@ -172,7 +172,7 @@ static const NFmiRect g_defaultCoordinates(0, 0, 1, 1);
 template <class T>  // miten annetaan containeri template parametrina??????
 // class _FMI_DLL NFmiDataMatrix : public std::vector<std::vector<T> >
 class _FMI_DLL NFmiDataMatrix
-    : public checkedVector<checkedVector<T> >  // t‰m‰ on ns. debug versio, jos tarvetta
+    : public checkedVector<checkedVector<T> >  // t√§m√§ on ns. debug versio, jos tarvetta
 {
  public:
   typedef typename checkedVector<T>::size_type size_type;
@@ -191,7 +191,7 @@ class _FMI_DLL NFmiDataMatrix
   NFmiDataMatrix(size_type nx = 0, size_type ny = 0, const T& theValue = T())
       //    : std::vector<std::vector<T> >(nx, std::vector<T>(ny,theValue))
       : checkedVector<checkedVector<T> >(
-            nx, checkedVector<T>(ny, theValue))  // t‰m‰ on ns. debug versio, jos tarvetta
+            nx, checkedVector<T>(ny, theValue))  // t√§m√§ on ns. debug versio, jos tarvetta
         ,
         itsNX(nx),
         itsNY(ny),
@@ -251,7 +251,7 @@ class _FMI_DLL NFmiDataMatrix
       DoErrorReporting(e, i, j);
     }
     throw std::runtime_error(
-        "Ei pit‰isi menn‰ t‰h‰n, mutta muuten k‰‰nt‰j‰ valittaa ett‰ funktion pit‰‰ palauttaa");
+        "Ei pit√§isi menn√§ t√§h√§n, mutta muuten k√§√§nt√§j√§ valittaa ett√§ funktion pit√§√§ palauttaa");
   }
 
   //! Matrix value at given location, it returns reference so you can modify it, or if out-of-bounds
@@ -268,11 +268,11 @@ class _FMI_DLL NFmiDataMatrix
       DoErrorReporting(e, i, j);
     }
     throw std::runtime_error(
-        "Ei pit‰isi menn‰ t‰h‰n, mutta muuten k‰‰nt‰j‰ valittaa ett‰ funktion pit‰‰ palauttaa");
+        "Ei pit√§isi menn√§ t√§h√§n, mutta muuten k√§√§nt√§j√§ valittaa ett√§ funktion pit√§√§ palauttaa");
   }
 
-  // T‰m‰ IsEqualEnough-funktio piti kopsata NFmiQueryDataUtil.h -luokasta, koska sen includointi
-  // menee ristiin t‰m‰n headerin kanssa
+  // T√§m√§ IsEqualEnough-funktio piti kopsata NFmiQueryDataUtil.h -luokasta, koska sen includointi
+  // menee ristiin t√§m√§n headerin kanssa
   template <typename X>
   static bool IsEqualEnough(X value1, X value2, X usedEpsilon)
   {
@@ -294,10 +294,10 @@ class _FMI_DLL NFmiDataMatrix
     return index;
   }
 
-  // T‰m‰ funktio laskee interpoloidun arvon matriisin datasta.
+  // T√§m√§ funktio laskee interpoloidun arvon matriisin datasta.
   // Annettu piste on halutussa suhteellisessa koordinaatistossa (esim. 0,0  -  1,1 maailmassa)
-  // ja kyseinen koordinaatisto (rect-olio) pit‰‰ antaa parametrina.
-  // HUOM! rect-olio ja matriisi ovat y-akselin suhteen k‰‰nteisi‰!
+  // ja kyseinen koordinaatisto (rect-olio) pit√§√§ antaa parametrina.
+  // HUOM! rect-olio ja matriisi ovat y-akselin suhteen k√§√§nteisi√§!
   T InterpolatedValue(const NFmiPoint& thePoint,
                       const NFmiRect& theRelativeCoords,
                       FmiParameterName theParamId,
@@ -307,16 +307,16 @@ class _FMI_DLL NFmiDataMatrix
     T value = kFloatMissing;
     double xInd =
         ((NX() - 1) * (thePoint.X() - theRelativeCoords.Left())) / theRelativeCoords.Width();
-    // yInd-laskussa pit‰‰ y-akseli k‰‰nt‰‰
+    // yInd-laskussa pit√§√§ y-akseli k√§√§nt√§√§
     double yInd =
         fDontInvertY
             ? ((NY() - 1) * (thePoint.Y() - theRelativeCoords.Top())) / theRelativeCoords.Height()
             : ((NY() - 1) *
                (theRelativeCoords.Height() - (thePoint.Y() - theRelativeCoords.Top()))) /
                   theRelativeCoords.Height();
-    // xInd ja yInd voivat menn‰ juuri pikkuisen yli rajojen ja laskut menev‰t muuten pieleen, mutta
-    // t‰ss‰ korjataan indeksej‰ juuri pikkuisen, ett‰ laskut menev‰t n‰iss‰ tapauksissa l‰pi ja
-    // riitt‰v‰n oikein arvoin.
+    // xInd ja yInd voivat menn√§ juuri pikkuisen yli rajojen ja laskut menev√§t muuten pieleen, mutta
+    // t√§ss√§ korjataan indeksej√§ juuri pikkuisen, ett√§ laskut menev√§t n√§iss√§ tapauksissa l√§pi ja
+    // riitt√§v√§n oikein arvoin.
     xInd = FixIndexOnEdges(xInd, NX());
     yInd = FixIndexOnEdges(yInd, NY());
 
@@ -325,7 +325,7 @@ class _FMI_DLL NFmiDataMatrix
     int x2 = x1 + 1;
     int y2 = y1 + 1;
     if (x1 >= 0 && x2 < static_cast<int>(NX()) && y1 >= 0 && y2 < static_cast<int>(NY()))
-    {  // lasketaan tulos vain jos ollaan matriisin sis‰ll‰, t‰h‰n voisi reunoille laskea erikois
+    {  // lasketaan tulos vain jos ollaan matriisin sis√§ll√§, t√§h√§n voisi reunoille laskea erikois
        // arvoja jos haluaa
       double xFraction = xInd - x1;
       double yFraction = yInd - y1;
@@ -347,7 +347,7 @@ class _FMI_DLL NFmiDataMatrix
     return value;
   }
 
-  // T‰m‰ funktio laskee interpoloidun arvon matriisin datasta.
+  // T√§m√§ funktio laskee interpoloidun arvon matriisin datasta.
   // Oletus annettu piste on aina 0,0  -  1,1 maailmassa ja lasketaan siihen halutut indeksit.
   T InterpolatedValue(const NFmiPoint& thePoint,
                       FmiParameterName theParamId,
@@ -358,14 +358,14 @@ class _FMI_DLL NFmiDataMatrix
     /*
                     T value = kFloatMissing;
                     double xInd = (NX()-1) * thePoint.X();
-                    double yInd = (NY()-1) * (1. - thePoint.Y()); // y-koordinaatin k‰‰ntˆ!
+                    double yInd = (NY()-1) * (1. - thePoint.Y()); // y-koordinaatin k√§√§nt√∂!
                     int x1 = static_cast<int>(std::floor(xInd));
                     int y1 = static_cast<int>(std::floor(yInd));
                     int x2 = x1 + 1;
                     int y2 = y1 + 1;
                     if(x1 >= 0 && x2 < static_cast<int>(NX()) && y1 >= 0 && y2 <
        static_cast<int>(NY()))
-                    { // lasketaan tulos vain jos ollaan matriisin sis‰ll‰, t‰h‰n voisi reunoille
+                    { // lasketaan tulos vain jos ollaan matriisin sis√§ll√§, t√§h√§n voisi reunoille
        laskea erikois arvoja jos haluaa
                             double xFraction = xInd - x1;
                             double yFraction = yInd - y1;
@@ -567,8 +567,8 @@ class _FMI_DLL NFmiDataMatrix
   float FloatAdd(float a, float b) const
   {
     if (a == kFloatMissing || b == kFloatMissing ||
-        b == -kFloatMissing)  // HUOM! pit‰‰ ottaa huomioon myˆs negatiivinen puuttuva, koska esim.
-                              // NFmiDataMatrix operator-= antaa b-arvot t‰nne negatiivisina
+        b == -kFloatMissing)  // HUOM! pit√§√§ ottaa huomioon my√∂s negatiivinen puuttuva, koska esim.
+                              // NFmiDataMatrix operator-= antaa b-arvot t√§nne negatiivisina
       return kFloatMissing;
     else
       return a + b;
@@ -637,7 +637,7 @@ inline std::ostream& operator<<(std::ostream& s, const NFmiDataMatrix<T>& m)
     }
   }
   else
-  {  // tulostus k‰‰nteisess‰ rivi-j‰rjestyksess‰
+  {  // tulostus k√§√§nteisess√§ rivi-j√§rjestyksess√§
     for (sz_type j = rows - 1; j >= 0; j--)
     {
       if (m.PrintIndexAxies()) s << j << "\t";
@@ -645,9 +645,9 @@ inline std::ostream& operator<<(std::ostream& s, const NFmiDataMatrix<T>& m)
         s << m[i][j] << " ";
       s << std::endl;
 
-      if (j == 0)  // luulen ett‰ koska j on unsigned tyyppinen, pit‰‰ t‰ss‰ tarkastella 0-rivi‰,
-                   // koska for-loopissa j-- lauseke ei ikin‰ vie j:n arvoa negatiiviseksi
-                   // (kier‰ht‰‰ 0:sta tosi isoksi luvuksi)
+      if (j == 0)  // luulen ett√§ koska j on unsigned tyyppinen, pit√§√§ t√§ss√§ tarkastella 0-rivi√§,
+                   // koska for-loopissa j-- lauseke ei ikin√§ vie j:n arvoa negatiiviseksi
+                   // (kier√§ht√§√§ 0:sta tosi isoksi luvuksi)
       {
         if (m.PrintIndexAxies())
         {

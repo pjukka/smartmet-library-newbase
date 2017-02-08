@@ -19,10 +19,26 @@
 #include <stdexcept>
 #include <cctype>  // for isalpha
 
-#include <boost/filesystem/operations.hpp>  // uusi FileSize toteutus tarvitsee t‰t‰
+#include <boost/filesystem/operations.hpp>  // uusi FileSize toteutus tarvitsee t√§t√§
 
 #ifndef _MSC_VER
 #include <dirent.h>
+#else
+// Must use MoveFileExA -funktion on Windows and this is how you have to include and do required stuff
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0600   // Specifies that the minimum required platform is Windows Vista.
+#endif
+#define _AFXDLL
+#include <afx.h>
+#ifdef min
+#undef min // have to remove min -macro defined by win32 system
+#endif
+#ifdef CreateDirectory
+#undef CreateDirectory // have to remove CreateDirectory -macro defined by win32 system
+#endif
+#ifdef CopyFile
+#undef CopyFile // have to remove CopyFile -macro defined by win32 system
+#endif
 #endif
 
 #include <assert.h>
@@ -70,12 +86,12 @@ static bool IsWinDir(const struct _finddata_t &fileinfo)
 }
 #endif
 
-// Tuli ongelmia Winkkarissa isojen tiedostojen (> 2-4 GB) kanssa, joille pit‰‰ k‰ytt‰‰ __stat64
+// Tuli ongelmia Winkkarissa isojen tiedostojen (> 2-4 GB) kanssa, joille pit√§√§ k√§ytt√§√§ __stat64
 // -tructia ja _stat64 -funktiota.
-// Linux ja gcc hanskaa jutut ilman 64-virityksi‰, koska siell‰ on k‰ytetty mm. tiedosto koon
+// Linux ja gcc hanskaa jutut ilman 64-virityksi√§, koska siell√§ on k√§ytetty mm. tiedosto koon
 // kertomiseen
 // _off_t     st_size
-// ja _off_t on tyyppi‰ long tai long long. 64-bit ymp‰ristˆss‰ se on gcc:ss‰ 64-bit integer, kun
+// ja _off_t on tyyppi√§ long tai long long. 64-bit ymp√§rist√∂ss√§ se on gcc:ss√§ 64-bit integer, kun
 // VC++:lla long on 32-bit.
 #if defined _MSC_VER && defined _WIN64
 #define FMI_stat struct __stat64
@@ -163,7 +179,7 @@ string regex_of_msdos_pattern(const string &theMsPattern)
 #ifndef UNIX
 // Tein winkkari puolelle FMI-versiot findfirst, findnext ja findclose -funktioista, koska
 // haluan napata kaikki mahdolliset poikkeukset kiinni ja jatkaa kuten virhetilanteessa normaalisti.
-// Nyt olen tˆrm‰nnyt monesti SmartMetin kanssa ett‰ ohjelma on vain kaatunut k‰ydess‰‰n l‰pi jotain
+// Nyt olen t√∂rm√§nnyt monesti SmartMetin kanssa ett√§ ohjelma on vain kaatunut k√§ydess√§√§n l√§pi jotain
 // hakemistoa.
 intptr_t FmiFindFirst(const char *filespec, struct _finddata_t *fileinfo)
 {
@@ -499,7 +515,7 @@ bool DirectoryExists(const string &theFile)
 
   char ch = theFile[theFile.size() - 1];
   if (ch == '/' || ch == '\\')
-  {  // ainakin VC71 ei tunnista hakemistoa olevaksi jos polku p‰‰ttyy '/' tai '\' merkkiin,
+  {  // ainakin VC71 ei tunnista hakemistoa olevaksi jos polku p√§√§ttyy '/' tai '\' merkkiin,
      // joten poistan sen lopusta ja kutsun rekursiivisesti funktiota uudestaan.
     string file2(theFile.begin(), theFile.begin() + theFile.size() - 1);
     return DirectoryExists(file2);
@@ -660,7 +676,7 @@ std::time_t NewestFileTime(const std::string &thePath)
   return NewestFileTime(files, thePath);
 }
 
-// filelist:issa o nvain pelk‰t tiedosto nimet ilman polkua, siksi polku on annettava toisena
+// filelist:issa o nvain pelk√§t tiedosto nimet ilman polkua, siksi polku on annettava toisena
 // parametrina
 std::time_t NewestFileTime(const std::list<std::string> &theFileList, const std::string &thePath)
 {
@@ -713,7 +729,7 @@ std::string NewestPatternFileName(const std::string &thePattern)
   return NewestFileName(files, PathFromPattern(thePattern));
 }
 
-// Joskus on tarvetta saada vain ensimm‰inen patterniin sopiva tiedoston nimi
+// Joskus on tarvetta saada vain ensimm√§inen patterniin sopiva tiedoston nimi
 std::string FirstPatternFileName(const std::string &thePattern)
 {
   std::string firstFileName;
@@ -729,7 +745,7 @@ std::string FirstPatternFileName(const std::string &thePattern)
     if (!::IsWinDir(fileinfo))  // ei ole hakemisto
       firstFileName = fileinfo.name;
   }
-  else  // jos find_first ei lˆyt‰nyt mit‰‰n ja mentiin silti find_next:iin, k‰‰tui XP:ss‰
+  else  // jos find_first ei l√∂yt√§nyt mit√§√§n ja mentiin silti find_next:iin, k√§√§tui XP:ss√§
         // rakennettu juttu NT4:ssa
     return firstFileName;
 
@@ -837,7 +853,7 @@ const std::list<std::string> PatternFiles(const std::string &thePattern)
     if (!::IsWinDir(fileinfo))  // ei ole hakemisto
       out.push_back(string(fileinfo.name));
   }
-  else  // jos find_first ei lˆyt‰nyt mit‰‰n ja mentiin silti find_next:iin, k‰‰tui XP:ss‰
+  else  // jos find_first ei l√∂yt√§nyt mit√§√§n ja mentiin silti find_next:iin, k√§√§tui XP:ss√§
         // rakennettu juttu NT4:ssa
     return out;
   while (!FmiFindNext(handle, &fileinfo))
@@ -853,7 +869,7 @@ const std::list<std::string> PatternFiles(const std::string &thePattern)
 std::string PathFromPattern(const std::string &thePattern)
 {
   NFmiFileString fileString(thePattern);
-  fileString.NormalizeDelimiter();  // varmistetaan ett‰ kenoviivat on oikein p‰in
+  fileString.NormalizeDelimiter();  // varmistetaan ett√§ kenoviivat on oikein p√§in
   std::string pathStr;
   if (fileString.IsAbsolutePath()) pathStr += fileString.Device();
   pathStr += fileString.Path();
@@ -863,7 +879,7 @@ std::string PathFromPattern(const std::string &thePattern)
 std::string FileNameFromPath(const std::string &theTotalPathAndFileStr)
 {
   NFmiFileString fileString(theTotalPathAndFileStr);
-  fileString.NormalizeDelimiter();  // varmistetaan ett‰ kenoviivat on oikein p‰in
+  fileString.NormalizeDelimiter();  // varmistetaan ett√§ kenoviivat on oikein p√§in
   std::string fileNameStr = fileString.FileName().CharPtr();
   return fileNameStr;
 }
@@ -904,7 +920,7 @@ const std::list<std::pair<std::string, std::time_t> > PatternFiles(const std::st
       if (timeLimit < fileinfo.time_write)
         out.push_back(make_pair(pathStr + fileinfo.name, fileinfo.time_write));
   }
-  else  // jos find_first ei lˆyt‰nyt mit‰‰n ja mentiin silti find_next:iin, k‰‰tui XP:ss‰
+  else  // jos find_first ei l√∂yt√§nyt mit√§√§n ja mentiin silti find_next:iin, k√§√§tui XP:ss√§
         // rakennettu juttu NT4:ssa
     return out;
   while (!FmiFindNext(handle, &fileinfo))
@@ -967,7 +983,7 @@ const std::list<std::string> Directories(const std::string &thePath)
     if (::IsWinDir(fileinfo))  // jos on hakemisto
       out.push_back(string(fileinfo.name));
   }
-  else  // jos find_first ei lˆyt‰nyt mit‰‰n ja mentiin silti find_next:iin, k‰‰tui XP:ss‰
+  else  // jos find_first ei l√∂yt√§nyt mit√§√§n ja mentiin silti find_next:iin, k√§√§tui XP:ss√§
         // rakennettu juttu NT4:ssa
     return out;
   while (!FmiFindNext(handle, &fileinfo))
@@ -982,12 +998,12 @@ const std::list<std::string> Directories(const std::string &thePath)
 
 // ----------------------------------------------------------------------
 /*!
- * Palauttaa filtterin‰ m‰‰r‰tyn tiedostojoukon uusimman/vanhimman
+ * Palauttaa filtterin√§ m√§√§r√§tyn tiedostojoukon uusimman/vanhimman
  * muokatun tiedoston nimen eli jos filtteri on
- * "c:\\weto\\wrk\\data\\in\\data*.*" ja kyseisest‰ hakemistosta lˆytyy
+ * "c:\\weto\\wrk\\data\\in\\data*.*" ja kyseisest√§ hakemistosta l√∂ytyy
  * data-alkuinen tiedostoja, palautetaan uusimman/vanhimman tiedoston
  * nimi, mutta vain tiedoston nimi eli esim. "data_hirlam_2606.sqd" (ei
- * polkua!)  Huom! jos tiedostoa ei lˆydy, on palautetun time_t:n
+ * polkua!)  Huom! jos tiedostoa ei l√∂ydy, on palautetun time_t:n
  * (aikaleima) arvo 0.
  *
  * \param theFileFilter Undocumented
@@ -1125,7 +1141,7 @@ bool RenameFile(const string &theOldFileName, const string &theNewFileName)
   return false;
 #else
   // MSVC rename ei suostu toimimaan jos on jo olemassa theNewFileName-tiedosto
-  // Siksi ett‰ saadaan homma toimimaan kuten linuxissa, pit‰‰ deletoida mahd.
+  // Siksi ett√§ saadaan homma toimimaan kuten linuxissa, pit√§√§ deletoida mahd.
   // olemassa oleva tiedosto.
   if (NFmiFileSystem::FileExists(theNewFileName)) NFmiFileSystem::RemoveFile(theNewFileName);
   return ::rename(theOldFileName.c_str(), theNewFileName.c_str()) == 0;
@@ -1155,19 +1171,19 @@ bool ReadFile2String(const std::string &theFileName,
     {
       vector<char> buffer(fileSize);
       // Luetaan vectoriin mieluummin kuin suoraan stringiin, koska standardi ei
-      // takaa ett‰ string-otus pit‰isi merkkipuskuriaan yhten‰isen‰ muistissa.
+      // takaa ett√§ string-otus pit√§isi merkkipuskuriaan yhten√§isen√§ muistissa.
       in.read(&buffer[0], fileSize);
       theFileContent.resize(buffer.size());
-      memcpy(&theFileContent[0], &buffer[0], buffer.size());  // sijoitus pit‰‰ tehd‰ memcpy:ll‰,
-                                                              // muuten 0-merkit bin‰‰ri tiedostossa
-                                                              // lopettaa kopioinnin
+      memcpy(&theFileContent[0], &buffer[0], buffer.size());  // sijoitus pit√§√§ tehd√§ memcpy:ll√§,
+      // muuten 0-merkit bin√§√§ri tiedostossa
+      // lopettaa kopioinnin
       in.close();
       return in.good();
     }
     else if (FileExists(theFileName) && fileSize == 0)
     {
-      theFileContent = "";  // pit‰‰ tyhjent‰‰ stringi, koska tiedosto oli tyhj‰
-      return true;          // tiedoston luku onnistui, vaikka se olikin tyhj‰
+      theFileContent = "";  // pit√§√§ tyhjent√§√§ stringi, koska tiedosto oli tyhj√§
+      return true;          // tiedoston luku onnistui, vaikka se olikin tyhj√§
     }
   }
   return false;
@@ -1186,20 +1202,20 @@ bool ReadFileStart2String(const std::string &theFileName,
       size_t readBytes = std::min(static_cast<long>(fileSize), theBytesFromStart);
       vector<char> buffer(readBytes + 1);  // +1 tekee tilaa 0-merkille
       // Luetaan vectoriin mieluummin kuin suoraan stringiin, koska standardi ei
-      // takaa ett‰ string-otus pit‰isi merkkipuskuriaan yhten‰isen‰ muistissa.
+      // takaa ett√§ string-otus pit√§isi merkkipuskuriaan yhten√§isen√§ muistissa.
       in.read(&buffer[0], readBytes);
-      buffer[readBytes] = '\0';  // p‰‰tet‰‰n 'stringi' loppumerkill‰, ett‰ kopiointi onnistuu
+      buffer[readBytes] = '\0';  // p√§√§tet√§√§n 'stringi' loppumerkill√§, ett√§ kopiointi onnistuu
       theFileContent.resize(buffer.size());
-      memcpy(&theFileContent[0], &buffer[0], buffer.size());  // sijoitus pit‰‰ tehd‰ memcpy:ll‰,
-                                                              // muuten 0-merkit bin‰‰ri tiedostossa
-                                                              // lopettaa kopioinnin
+      memcpy(&theFileContent[0], &buffer[0], buffer.size());  // sijoitus pit√§√§ tehd√§ memcpy:ll√§,
+      // muuten 0-merkit bin√§√§ri tiedostossa
+      // lopettaa kopioinnin
       in.close();
       return in.good();
     }
     else if (FileExists(theFileName) && fileSize == 0)
     {
-      theFileContent = "";  // pit‰‰ tyhjent‰‰ stringi, koska tiedosto oli tyhj‰
-      return true;          // tiedoston luku onnistui, vaikka se olikin tyhj‰
+      theFileContent = "";  // pit√§√§ tyhjent√§√§ stringi, koska tiedosto oli tyhj√§
+      return true;          // tiedoston luku onnistui, vaikka se olikin tyhj√§
     }
   }
   return false;
@@ -1530,8 +1546,8 @@ bool IsCompressed(const string &theName)
 #endif
 }
 
-// Tarkoitus on tehd‰ annetusta theOrigPath-parametrista absoluuttinen polku.
-// Jos se oli jo sit‰, palautetaan se.
+// Tarkoitus on tehd√§ annetusta theOrigPath-parametrista absoluuttinen polku.
+// Jos se oli jo sit√§, palautetaan se.
 // Jos se oli suhteellinen palku, liitetaan se annettuun theWorkingDirectory-parametriin,
 // joka oletetaan olevan absoluuttinen polku.
 // theOrigPath -parametri voi olla polku tai polku tiedostoon.
@@ -1560,7 +1576,7 @@ std::string MakeAbsolutePath(const std::string &theOrigPath, const std::string &
 // Polku on absoluuttinen jos:
 // 1. Sen 1. kirjain on '\\'
 // 2. Sen 1. kirjain on '/'
-// 3. Siin‰ on kirjain, ':' ja joko '\\' tai '/' eli windows device esim. C:/tmp
+// 3. Siin√§ on kirjain, ':' ja joko '\\' tai '/' eli windows device esim. C:/tmp
 bool IsAbsolutePath(const std::string &thePath)
 {
   if (thePath.size())
@@ -1577,14 +1593,14 @@ bool IsAbsolutePath(const std::string &thePath)
   return false;
 }
 
-// T‰m‰ on olevinaan turvallinen tiedostoon talletus:
-// 1. Luodaan tmp tiedosto ja kirjoitetaan sis‰ltˆ siihen.
+// T√§m√§ on olevinaan turvallinen tiedostoon talletus:
+// 1. Luodaan tmp tiedosto ja kirjoitetaan sis√§lt√∂ siihen.
 // 2. Rename:taan tmp-tiedosto lopulliseen muotoon.
 void SafeFileSave(const std::string &theFileName, const std::string &theContents)
 {
   const std::string tmpHelpStr = "_TMP";
   std::string tmpFileName = theFileName + tmpHelpStr;
-  std::ofstream out(tmpFileName.c_str(), std::ios::out);
+  std::ofstream out(tmpFileName.c_str(), std::ios::binary);
   if (!out)
     throw runtime_error("Failed to open temporary file '" + tmpFileName +
                         "' for writing. No changes to original file '" + theFileName +
@@ -1592,18 +1608,31 @@ void SafeFileSave(const std::string &theFileName, const std::string &theContents
   out << theContents;
   if (!out)
   {
-    out.close();  // pit‰‰ sulkea, muuten ei voi poistaa
+    out.close();  // pit√§√§ sulkea, muuten ei voi poistaa
     RemoveFile(tmpFileName);
     throw runtime_error("Error while writing to temporary file: '" + tmpFileName +
                         "'. No changes to original file '" + theFileName + "' was made.");
   }
   out.close();
 
-  // RenameFile -funktio tuhoaa vanhan tiedoston uuden tielt‰. En tied‰ mit‰ pit‰isi tehd‰,
-  // jos t‰m‰ ep‰onnistuu (vanha tiedosto on ehk‰ tuhoutunut ja uusi on ehk‰ tmp-tiedostona).
+#ifdef _MSC_VER
+  // NFmiFileSystem::RenameFile doesn't work allways desired way on Windows, in some cases
+  // people have noticed that only the TMP-file was left after execution. That's is why I try 
+  // to solve this with Windows own win32 functionality.
+  // Using the ascii version of MoveFileEx -function (A -letter as last character), because we 
+  // are operating with ascii file paths.
+  if(!::MoveFileExA(tmpFileName.c_str(), theFileName.c_str(), MOVEFILE_REPLACE_EXISTING))
+  {
+      throw std::runtime_error("Error while moving temporary file: '" + tmpFileName +
+          "' to replace the original file '" + theFileName + "' was made.");
+  }
+#else
+  // RenameFile -funktio tuhoaa vanhan tiedoston uuden tielt√§. En tied√§ mit√§ pit√§isi tehd√§,
+  // jos t√§m√§ ep√§onnistuu (vanha tiedosto on ehk√§ tuhoutunut ja uusi on ehk√§ tmp-tiedostona).
   if (!RenameFile(tmpFileName, theFileName))
     throw runtime_error("Error while renaming temporary file: '" + tmpFileName +
                         "' to final file: '" + theFileName + "'. Results unknown.");
+#endif
 }
 
 }  // namespace NFmiFileSystem

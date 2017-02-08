@@ -14,7 +14,7 @@ class NFmiDataIdent;
 class NFmiLevel;
 class NFmiDataModifierList;
 
-//! T‰m‰ modifier on tehty parametri ja level kohtaiseksi. Match-metodilla kysyt‰‰n onko haluttu
+//! T√§m√§ modifier on tehty parametri ja level kohtaiseksi. Match-metodilla kysyt√§√§n onko haluttu
 //! modifier.
 
 class _FMI_DLL NFmiParamDataModifier : public NFmiDataModifier
@@ -47,7 +47,7 @@ class _FMI_DLL NFmiParamDataModifier : public NFmiDataModifier
  protected:
   NFmiDataIdent* itsParam;           // Omistaa/tuhoaa
   NFmiLevel* itsLevel;               // Omistaa/tuhoaa
-  NFmiDataModifierList* itsSubList;  // t‰ss‰ voi olla mit‰ tahansa modifiereita esim. max tai min
+  NFmiDataModifierList* itsSubList;  // t√§ss√§ voi olla mit√§ tahansa modifiereita esim. max tai min
                                      // jne. // Omistaa/tuhoaa
 
  private:

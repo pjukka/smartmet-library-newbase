@@ -15,7 +15,7 @@
 
 class NFmiFastQueryInfo;
 
-//! Tarkoitus on tehd‰ t‰st‰ mm. auringonnousukulman ja lat/lon arvojen maskien esiluokka.
+//! Tarkoitus on tehd√§ t√§st√§ mm. auringonnousukulman ja lat/lon arvojen maskien esiluokka.
 
 class _FMI_DLL NFmiCalculatedAreaMask : public NFmiAreaMaskImpl
 {
@@ -48,7 +48,7 @@ class _FMI_DLL NFmiLatLonAreaMask : public NFmiCalculatedAreaMask
   NFmiAreaMask* Clone(void) const;
 
  protected:
-  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t‰m‰ lapsiin!!!
+  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t√§m√§ lapsiin!!!
   const NFmiString MakeSubMaskString(void) const;
 
  private:
@@ -68,9 +68,9 @@ class _FMI_DLL NFmiElevationAngleAreaMask : public NFmiLatLonAreaMask
   double Value(const NFmiCalculationParams& theCalculationParams, bool fUseTimeInterpolationAlways);
 
  protected:
-  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t‰m‰ lapsiin!!!
+  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t√§m√§ lapsiin!!!
   const NFmiString MakeSubMaskString(void) const;
-  NFmiMetTime itsTime;  // t‰h‰n aikaaan lasketaan nousukulma
+  NFmiMetTime itsTime;  // t√§h√§n aikaaan lasketaan nousukulma
 
 };  // class NFmiElevationAngleAreaMask
 
@@ -87,9 +87,9 @@ class _FMI_DLL NFmiJulianDayAreaMask : public NFmiElevationAngleAreaMask
   NFmiAreaMask* Clone(void) const;
 
  protected:
-  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t‰m‰ lapsiin!!!
+  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t√§m√§ lapsiin!!!
   const NFmiString MakeSubMaskString(void) const;
-  double itsJulianDay;  // t‰h‰n lasketaan Time-metodissa haluttu julian day
+  double itsJulianDay;  // t√§h√§n lasketaan Time-metodissa haluttu julian day
 
 };  // class NFmiJulianDayAreaMask
 
@@ -105,7 +105,7 @@ class _FMI_DLL NFmiLocalHourAreaMask : public NFmiElevationAngleAreaMask
   NFmiAreaMask* Clone(void) const;
 
  protected:
-  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t‰m‰ lapsiin!!!
+  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t√§m√§ lapsiin!!!
   const NFmiString MakeSubMaskString(void) const;
 
 };  // class NFmiLocalHourAreaMask
@@ -121,10 +121,26 @@ class _FMI_DLL NFmiUtcHourAreaMask : public NFmiElevationAngleAreaMask
   NFmiAreaMask* Clone(void) const;
 
  protected:
-  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t‰m‰ lapsiin!!!
+  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t√§m√§ lapsiin!!!
   const NFmiString MakeSubMaskString(void) const;
 
 };  // class NFmiUtcHourAreaMask
+
+// class NFmiMinuteAreaMask
+class _FMI_DLL NFmiMinuteAreaMask : public NFmiElevationAngleAreaMask
+{
+public:
+    ~NFmiMinuteAreaMask(void);
+    NFmiMinuteAreaMask(void);
+    NFmiMinuteAreaMask(const NFmiMinuteAreaMask& theMask);
+    NFmiMinuteAreaMask(const NFmiDataIdent& theParam, const NFmiCalculationCondition& theOperation);
+    NFmiAreaMask* Clone(void) const;
+
+protected:
+    double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t√§m√§ lapsiin!!!
+    const NFmiString MakeSubMaskString(void) const;
+
+};
 
 //! Undocumented
 class _FMI_DLL NFmiForecastHourAreaMask : public NFmiElevationAngleAreaMask
@@ -140,7 +156,7 @@ class _FMI_DLL NFmiForecastHourAreaMask : public NFmiElevationAngleAreaMask
   NFmiAreaMask* Clone(void) const;
 
  protected:
-  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t‰m‰ lapsiin!!!
+  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t√§m√§ lapsiin!!!
   const NFmiString MakeSubMaskString(void) const;
 
  private:
@@ -163,7 +179,7 @@ class _FMI_DLL NFmiTimeStepAreaMask : public NFmiElevationAngleAreaMask
   double Value(const NFmiCalculationParams& theCalculationParams, bool fUseTimeInterpolationAlways);
 
  protected:
-  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t‰m‰ lapsiin!!!
+  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee t√§m√§ lapsiin!!!
   const NFmiString MakeSubMaskString(void) const;
 
  private:
@@ -172,7 +188,7 @@ class _FMI_DLL NFmiTimeStepAreaMask : public NFmiElevationAngleAreaMask
 
 };  // class NFmiForecastHourAreaMask
 
-//! Luokka palauttaa (CalcValueFromLocation) datan hilan x tai y suuntaisen koon metreiss‰.
+//! Luokka palauttaa (CalcValueFromLocation) datan hilan x tai y suuntaisen koon metreiss√§.
 class _FMI_DLL NFmiGridSizeAreaMask : public NFmiElevationAngleAreaMask
 {
  public:
@@ -193,7 +209,7 @@ class _FMI_DLL NFmiGridSizeAreaMask : public NFmiElevationAngleAreaMask
  private:
   boost::shared_ptr<NFmiFastQueryInfo>
       itsInfo;       // kysyy vain editoitavan datan currentin ajan aika-askeleen tunneissa
-  bool fCalcXValue;  // siis jos true, laskee et‰isyyden x-suunnassa, muuten y-suunnassa
+  bool fCalcXValue;  // siis jos true, laskee et√§isyyden x-suunnassa, muuten y-suunnassa
 
   NFmiGridSizeAreaMask& operator=(const NFmiGridSizeAreaMask& theMask);
 };  // class NFmiGridSizeAreaMask

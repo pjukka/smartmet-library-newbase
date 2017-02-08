@@ -5,12 +5,12 @@
  */
 // ======================================================================
 /*!
- *†\class NFmiLogger
+ *¬†\class NFmiLogger
  *
- * Luokka joka tallettaa aikaleimattuja viestej‰ esim. tiedostoon. Voidaan
- * myˆs k‰ytt‰‰ muitakin muotoja, esim. email ja gsm-viesti. Loggerille
- * voidaan asettaa halutunlainen status  filtteri, joka m‰‰rittelee,
- * tarvitseeko kulloistakin viesti‰ logata. Asetustiedot luetaa Init
+ * Luokka joka tallettaa aikaleimattuja viestej√§ esim. tiedostoon. Voidaan
+ * my√∂s k√§ytt√§√§ muitakin muotoja, esim. email ja gsm-viesti. Loggerille
+ * voidaan asettaa halutunlainen status  filtteri, joka m√§√§rittelee,
+ * tarvitseeko kulloistakin viesti√§ logata. Asetustiedot luetaa Init
  * komennossa ja talletetaan Store komennolla tiedostoon.
  *
  */
@@ -130,7 +130,7 @@ void NFmiLogger::InitFromSettings(const std::string &theBaseNameSpace)
   itsLogFileBaseName = NFmiSettings::Require<string>(itsBaseNameSpace + "::LogFileBaseName");
   itsTimeStampStringFormat =
       NFmiSettings::Require<string>(itsBaseNameSpace + "::TimeStampStringFormat");
-  TimeStampStringFormat(itsTimeStampStringFormat);  // t‰m‰ pit‰‰ kutsua!
+  TimeStampStringFormat(itsTimeStampStringFormat);  // t√§m√§ pit√§√§ kutsua!
   itsLogFileBackupTimePeriod = static_cast<Period>(
       NFmiSettings::Require<int>(itsBaseNameSpace + "::LogFileBackupTimePeriod"));
   itsUsedLoggingDevices = NFmiSettings::Require<int>(itsBaseNameSpace + "::UsedLoggingDevices");
@@ -148,8 +148,8 @@ void NFmiLogger::InitFromSettings(const std::string &theBaseNameSpace)
   itsErrorLabel = NFmiSettings::Require<string>(itsBaseNameSpace + "::ErrorLabel");
   itsFatalErrorLabel = NFmiSettings::Require<string>(itsBaseNameSpace + "::FatalErrorLabel");
 
-  UpdateFileNamesAndPaths(true);  // t‰m‰ pit‰‰ kutsua!
-  fLoggerInitialized = true;      // t‰m‰ pit‰‰ asettaa!
+  UpdateFileNamesAndPaths(true);  // t√§m√§ pit√§√§ kutsua!
+  fLoggerInitialized = true;      // t√§m√§ pit√§√§ asettaa!
 }
 
 void NFmiLogger::StoreToSettings(void)
@@ -221,7 +221,7 @@ bool NFmiLogger::Init(const string & theFileName)
           char tmpStr[maxLineSize+1] = "";
           int tmp=0;
           in >> itsUsedLoggingLevels;
-          in.getline(tmpStr, maxLineSize); // pit‰‰ lukea edellinen rivi 'loppuun'
+          in.getline(tmpStr, maxLineSize); // pit√§√§ lukea edellinen rivi 'loppuun'
           in.getline(tmpStr, maxLineSize);
           itsLogFilePath = tmpStr;
           in.getline(tmpStr, maxLineSize);
@@ -237,7 +237,7 @@ bool NFmiLogger::Init(const string & theFileName)
           in >> fUseBackupSystem;
           in >> fCleanBackupFiles;
           in >> itsKeepFilesDays;
-          in.getline(tmpStr, maxLineSize); // pit‰‰ lukea edellinen rivi 'loppuun'
+          in.getline(tmpStr, maxLineSize); // pit√§√§ lukea edellinen rivi 'loppuun'
           in.getline(tmpStr, maxLineSize);
           itsNoLevelLabel = tmpStr;
           in.getline(tmpStr, maxLineSize);
@@ -339,7 +339,7 @@ bool NFmiLogger::LogMessage(const string &theMessage, Level theMessageLevel, int
   else
     finalString = MakeFinalMessage(theMessage, theMessageLevel);
 
-  bool status = true;  // Huom! jos yksikin l‰hetyksist‰ ep‰onnistuu, palautuu false
+  bool status = true;  // Huom! jos yksikin l√§hetyksist√§ ep√§onnistuu, palautuu false
   if (theDevices & kFile) status &= Log2File(finalString);
   if (theDevices & kGsm) status &= Log2Gsm(finalString);
   if (theDevices & kEmail) status &= Log2Email(finalString);
@@ -381,8 +381,8 @@ bool NFmiLogger::ForceLogMessage(const string &theMessage, Level theMessageLevel
  */
 // ----------------------------------------------------------------------
 
-// T‰m‰ vaikuttaa k‰ytettyyn message leveliin siten, ett‰ voit lis‰t‰
-// k‰yttˆˆn esim warning tason (muitten k‰ytettyjen tasojen lis‰ksi).
+// T√§m√§ vaikuttaa k√§ytettyyn message leveliin siten, ett√§ voit lis√§t√§
+// k√§ytt√∂√∂n esim warning tason (muitten k√§ytettyjen tasojen lis√§ksi).
 
 void NFmiLogger::AddLevel(Level theAddedLevel) { itsUsedLoggingLevels |= theAddedLevel; }
 // ----------------------------------------------------------------------
@@ -391,8 +391,8 @@ void NFmiLogger::AddLevel(Level theAddedLevel) { itsUsedLoggingLevels |= theAdde
  */
 // ----------------------------------------------------------------------
 
-// T‰ll‰ voit poistaa k‰ytˆst‰ tietyn sanoma tason talletuksen, siten
-// ett‰ muut k‰ytetyt tasot j‰‰v‰t voimaan.
+// T√§ll√§ voit poistaa k√§yt√∂st√§ tietyn sanoma tason talletuksen, siten
+// ett√§ muut k√§ytetyt tasot j√§√§v√§t voimaan.
 
 void NFmiLogger::RemoveLevel(Level theRemovedLevel) { itsUsedLoggingLevels ^= theRemovedLevel; }
 // ----------------------------------------------------------------------
@@ -410,7 +410,7 @@ string NFmiLogger::MakeFinalMessage(const string &theMessage, Level theMessageLe
   returnVal += ": ";
   switch (theMessageLevel)
   {
-    case kNoLevel:  // t‰h‰n ei kyll‰ ikin‰ pit‰isi menn‰!!!
+    case kNoLevel:  // t√§h√§n ei kyll√§ ikin√§ pit√§isi menn√§!!!
       returnVal += itsNoLevelLabel;
       break;
     case kImportantInfo:
@@ -450,7 +450,7 @@ string NFmiLogger::MakeFinalMessage(const string &theMessage, Level theMessageLe
 
 bool NFmiLogger::Log2File(const string &theFinalMessage)
 {
-  CheckBackupSystem();  // tekee kaiken backup-tiedostoihin liittyv‰n
+  CheckBackupSystem();  // tekee kaiken backup-tiedostoihin liittyv√§n
   ofstream out;
   if (OpenFile(itsCurrentLogFileName, itsAbsolutLogFilePath, out))
   {
@@ -468,7 +468,7 @@ bool NFmiLogger::Log2File(const string &theFinalMessage)
  */
 // ----------------------------------------------------------------------
 
-// Vili tai joku osaa varmaan toteuttaa t‰m‰n!!!
+// Vili tai joku osaa varmaan toteuttaa t√§m√§n!!!
 
 bool NFmiLogger::Log2Gsm(const string & /* theFinalMessage */) { return false; }
 // ----------------------------------------------------------------------
@@ -478,7 +478,7 @@ bool NFmiLogger::Log2Gsm(const string & /* theFinalMessage */) { return false; }
  */
 // ----------------------------------------------------------------------
 
-// Vili tai joku osaa varmaan toteuttaa t‰m‰n!!!
+// Vili tai joku osaa varmaan toteuttaa t√§m√§n!!!
 bool NFmiLogger::Log2Email(const string & /* theFinalMessage */) { return false; }
 // ----------------------------------------------------------------------
 /*!
@@ -515,7 +515,7 @@ bool NFmiLogger::Log2StdErr(const std::string &theFinalMessage)
  */
 // ----------------------------------------------------------------------
 
-// Avaa/luo loki-tiedoston, ett‰ siihen voidaan lis‰t‰ sanoma.
+// Avaa/luo loki-tiedoston, ett√§ siihen voidaan lis√§t√§ sanoma.
 // Jos tiedostoa+hakemistoa ei ole, luo molemmat. Jos ei onnistu,
 // palauttaa false, muuten true.
 
@@ -527,17 +527,17 @@ bool NFmiLogger::OpenFile(const string &theFullFileName, const string &thePath, 
   else if (DirectoryExist(
                thePath))  // hakemisto on, mutta tiedostoa ei voi luoda/avata, palauta false
     return false;
-  else  // muuten yrit‰ luoda hakemisto ja sitten tiedosto
+  else  // muuten yrit√§ luoda hakemisto ja sitten tiedosto
   {
     if (NFmiFileSystem::CreateDirectory(thePath))
     {
-      theFile.clear();  // asettaa bad-bitin pois p‰‰lt‰, ett‰ voidaan yritt‰‰ tiedoston luomista
-                        // uudestaan (ja kysy‰ onnistuiko)
+      theFile.clear();  // asettaa bad-bitin pois p√§√§lt√§, ett√§ voidaan yritt√§√§ tiedoston luomista
+                        // uudestaan (ja kysy√§ onnistuiko)
       theFile.open(theFullFileName.c_str(), ios::out | ios::app);
       if (theFile)
         return true;
       else
-        return false;  // edelleenk‰‰n tiedostoa ei saatu luotua
+        return false;  // edelleenk√§√§n tiedostoa ei saatu luotua
     }
     else
       return false;  // hakemistoa ei saatu luotua
@@ -563,10 +563,10 @@ bool NFmiLogger::DirectoryExist(const std::string &thePath)
  */
 // ----------------------------------------------------------------------
 
-// kun polku annetaan, otetaan siit‰ fullpath talteen, ett‰ loki osoittaa
-// aina samaan paikkaan ajon aikana kun t‰t‰ muutetaan pit‰‰ paivitt‰‰
-// myˆs itsCurrentLogFileName:a
-// HUOM!! T‰ss‰ pit‰‰ ottaa huomioon, ett‰ currentti working directory
+// kun polku annetaan, otetaan siit√§ fullpath talteen, ett√§ loki osoittaa
+// aina samaan paikkaan ajon aikana kun t√§t√§ muutetaan pit√§√§ paivitt√§√§
+// my√∂s itsCurrentLogFileName:a
+// HUOM!! T√§ss√§ pit√§√§ ottaa huomioon, ett√§ currentti working directory
 // on oikeassa paikassa.
 
 void NFmiLogger::LogFilePath(const string &value)
@@ -584,7 +584,7 @@ void NFmiLogger::LogFilePath(const string &value)
 void NFmiLogger::LogFileBaseName(const string &value)
 {
   itsLogFileBaseName = value;
-  UpdateFileNamesAndPaths(false);  // false=‰l‰ updeittaa absoluutti polkua
+  UpdateFileNamesAndPaths(false);  // false=√§l√§ updeittaa absoluutti polkua
 }
 
 // ----------------------------------------------------------------------
@@ -598,7 +598,7 @@ void NFmiLogger::TimeStampStringFormat(const string &newFormat)
   itsTimeStampStringFormat = newFormat;
   itsTimeStampStringIntegerFormat =
       atoi(itsTimeStampStringFormat
-               .c_str());  // t‰ss‰ vaiheessa viel‰ k‰ytet‰‰n t‰t‰ simppeli‰ formatointia
+               .c_str());  // t√§ss√§ vaiheessa viel√§ k√§ytet√§√§n t√§t√§ simppeli√§ formatointia
 }
 
 // ----------------------------------------------------------------------
@@ -647,7 +647,7 @@ bool NFmiLogger::CleanBackupFiles(void)
         removeFileFullName += foundFileName;
         bool removeStatus = NFmiFileSystem::RemoveFile(removeFileFullName);
         if (!removeStatus)
-          break;  // breakataan t‰ss‰, ettei j‰‰ iki-looppiin, jos ei esim oikeuksia tiedoston
+          break;  // breakataan t√§ss√§, ettei j√§√§ iki-looppiin, jos ei esim oikeuksia tiedoston
                   // poistoon
       }
       else
@@ -663,7 +663,7 @@ bool NFmiLogger::CleanBackupFiles(void)
  */
 // ----------------------------------------------------------------------
 
-// Tarkistaa, onko aika tehd‰ nykyisest‰ log-filest‰ aikaleimattu backup-file
+// Tarkistaa, onko aika tehd√§ nykyisest√§ log-filest√§ aikaleimattu backup-file
 
 bool NFmiLogger::IsFileBackUpTime(void)
 {
@@ -719,7 +719,7 @@ bool NFmiLogger::IsFileBackUpTime(void)
  */
 // ----------------------------------------------------------------------
 
-// tehd‰‰n siivousta vain kerran p‰iv‰ss‰ (p‰iv‰n vaihtuessa)
+// tehd√§√§n siivousta vain kerran p√§iv√§ss√§ (p√§iv√§n vaihtuessa)
 
 bool NFmiLogger::IsCleaningTime(void)
 {
@@ -782,11 +782,11 @@ bool NFmiLogger::MakeBackupFile(void)
   fileName += MakeBackupFileNameTimeStamp();
   if (NFmiFileSystem::FileExists(fileName))
     fileName +=
-        "_2";  // t‰m‰ on sit‰ varten ett‰ jos on useita Metkun editoreita yht‰aikaa k‰ynniss‰,
-  // on toinen editori voinut jo tehd‰ backupin ja aloittaa uuden loki tiedoston t‰ytˆn.
-  // Sitten toinen haluaa tehd‰ saman jo kopioi tehdyn backupin p‰‰lle uuden vasta aletun loki
+        "_2";  // t√§m√§ on sit√§ varten ett√§ jos on useita Metkun editoreita yht√§aikaa k√§ynniss√§,
+  // on toinen editori voinut jo tehd√§ backupin ja aloittaa uuden loki tiedoston t√§yt√∂n.
+  // Sitten toinen haluaa tehd√§ saman jo kopioi tehdyn backupin p√§√§lle uuden vasta aletun loki
   // tiedoston.
-  // Nyt alkuper‰inen j‰‰ talteen, koska t‰m‰ mahdollinen tynk‰ talletetaan _2 nimi jatkeella.
+  // Nyt alkuper√§inen j√§√§ talteen, koska t√§m√§ mahdollinen tynk√§ talletetaan _2 nimi jatkeella.
   return NFmiFileSystem::RenameFile(itsCurrentLogFileName, fileName);
 }
 
@@ -795,12 +795,12 @@ bool NFmiLogger::MakeBackupFile(void)
  */
 // ----------------------------------------------------------------------
 
-// kun logger k‰ynnistyy, katsotaan loki-tiedostosta, milloin on viimeksi tehty lokia
+// kun logger k√§ynnistyy, katsotaan loki-tiedostosta, milloin on viimeksi tehty lokia
 void NFmiLogger::GetLastLoggetTimeFromLogFile(void)
 {
   string tmp;
   time_t fileTimeStamp = NFmiFileSystem::FindFile(
-      itsCurrentLogFileName, true, &tmp);  // true=etsi uusin tiedosto (samantekev‰‰ t‰ss‰)
+      itsCurrentLogFileName, true, &tmp);  // true=etsi uusin tiedosto (samantekev√§√§ t√§ss√§)
   NFmiTime t(fileTimeStamp);
   itsLastLoggedTime = t;
 }
@@ -872,10 +872,10 @@ const string NFmiLogger::MakeBackupFileNameTimeStamp(void)
  */
 // ----------------------------------------------------------------------
 
-// t‰m‰ p‰ivitt‰‰ itsAbsolutLogFilePath:in ja itsCurrentLogFileName:n
-// HUOM!! T‰ss‰ pit‰‰ ottaa huomioon, ett‰ currentti working directory on oikeassa paikassa.
+// t√§m√§ p√§ivitt√§√§ itsAbsolutLogFilePath:in ja itsCurrentLogFileName:n
+// HUOM!! T√§ss√§ pit√§√§ ottaa huomioon, ett√§ currentti working directory on oikeassa paikassa.
 // UNIX yhteensopivuus ???
-// Pit‰isikˆ fullpath-funktio tehd‰ NFmiFileSystem:iin??????????
+// Pit√§isik√∂ fullpath-funktio tehd√§ NFmiFileSystem:iin??????????
 
 void NFmiLogger::UpdateFileNamesAndPaths(bool updatePath)
 {

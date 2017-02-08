@@ -85,7 +85,7 @@ const NFmiString NFmiFileString::Extension(void) const
   if (last)
     return GetChars(last + 1, GetLen() - last);
   else
-    return "";  // jos last oli 0, ei lˆytynyt .-merkki‰  ja ei ole extensiota
+    return "";  // jos last oli 0, ei l√∂ytynyt .-merkki√§  ja ei ole extensiota
 }
 
 // ----------------------------------------------------------------------
@@ -129,7 +129,7 @@ const NFmiString NFmiFileString::Header(void) const
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
- * \todo Ei hoida tilannetta jos filestringin sis‰ltˆ on:
+ * \todo Ei hoida tilannetta jos filestringin sis√§lt√∂ on:
  *  polku/tiedosto.ext (ilman ./ alkua)
  */
 // ----------------------------------------------------------------------
@@ -143,7 +143,7 @@ const NFmiString NFmiFileString::Path(void) const
   first = Search(find);
   last = SearchLast(find);
 
-  if (first == 0 && last == 0)  // kokeillaan viel‰ kenoja toisin p‰in
+  if (first == 0 && last == 0)  // kokeillaan viel√§ kenoja toisin p√§in
   {
     first = Search(find2);
     last = SearchLast(find2);
@@ -153,7 +153,7 @@ const NFmiString NFmiFileString::Path(void) const
   {
     if (fChar[0] == '.')  // Lasse 23.9.98 suht polku
       return GetChars(1, last);
-    else if (IsAbsolutePath() == false)  // suhteellinen polku ilman .-merkki‰ alussa
+    else if (IsAbsolutePath() == false)  // suhteellinen polku ilman .-merkki√§ alussa
       return GetChars(1, last);
     else
       return GetChars(first, (last + 1) - first);
@@ -171,7 +171,7 @@ const NFmiString NFmiFileString::Path(void) const
 const NFmiString NFmiFileString::Device(void) const
 {
 #ifdef UNIX
-  return NFmiString();  // linux/unix/mac ei ole devicea, joten palautetaan tyhj‰
+  return NFmiString();  // linux/unix/mac ei ole devicea, joten palautetaan tyhj√§
 #else                   // windowsissa on device
   unsigned long last;
   unsigned char find[2] = ":";
@@ -438,7 +438,7 @@ void NFmiFileString::Device(const NFmiString &theExtension) { Device(theExtensio
 
 void NFmiFileString::ChangeScandinavian(void)
 {
-  NFmiString skand("‰ˆÂƒ÷≈");
+  NFmiString skand("√§√∂√•√Ñ√ñ√Ö");
   NFmiString notSkand("aoaAOA");
   for (unsigned int ind = 1; ind <= skand.GetLen(); ind++)
     ReplaceChars(reinterpret_cast<unsigned char *>(skand.GetCharsPtr(ind, 1)),

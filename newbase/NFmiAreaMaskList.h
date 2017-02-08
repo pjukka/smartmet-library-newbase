@@ -36,9 +36,9 @@ class _FMI_DLL NFmiAreaMaskList
   bool CheckIfMaskUsed(void);
   bool SyncronizeMaskTime(const NFmiMetTime &theTime);
 
-  bool Index(unsigned long index);    // 1:sta alkava indeksi, sis‰inen muuttuja itsCurrentIndex on
+  bool Index(unsigned long index);    // 1:sta alkava indeksi, sis√§inen muuttuja itsCurrentIndex on
                                       // taas 0:sta alkava
-  bool Find(unsigned long theIndex);  // 1:sta alkava indeksi, sis‰inen muuttuja itsCurrentIndex on
+  bool Find(unsigned long theIndex);  // 1:sta alkava indeksi, sis√§inen muuttuja itsCurrentIndex on
                                       // taas 0:sta alkava
   bool Find(const NFmiDataIdent &theParam);
   bool Find(const NFmiDataIdent &theParam, const NFmiLevel *theLevel);
@@ -47,8 +47,8 @@ class _FMI_DLL NFmiAreaMaskList
   bool IsValidIndex(int theIndex);
 
   std::vector<boost::shared_ptr<NFmiAreaMask> > itsMaskVector;
-  int itsCurrentIndex;  // Reset laittaa t‰m‰n -1:ksi, 1. maski lˆytyy 0:sta ja viimeinen size-1:st‰
-  bool fMaskInUse;      // Arvo asetetaan kun tarkastetaan onko mik‰‰n
+  int itsCurrentIndex;  // Reset laittaa t√§m√§n -1:ksi, 1. maski l√∂ytyy 0:sta ja viimeinen size-1:st√§
+  bool fMaskInUse;      // Arvo asetetaan kun tarkastetaan onko mik√§√§n
 
 };  // class NFmiAreaMaskList
 

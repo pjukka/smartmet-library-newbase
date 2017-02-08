@@ -18,7 +18,7 @@ class _FMI_DLL NFmiDataModifierWindChill : public NFmiDataModifier
  public:
   virtual ~NFmiDataModifierWindChill(void);
 
-  // anna se queryinfo mist‰ halutaan laskea windchilli‰ konstruktorissa!
+  // anna se queryinfo mist√§ halutaan laskea windchilli√§ konstruktorissa!
   NFmiDataModifierWindChill(NFmiQueryInfo* theQueryInfo,
                             NFmiDataModifier* theDataModifier,
                             const NFmiPoint& theLatLonPoint,
@@ -41,8 +41,8 @@ class _FMI_DLL NFmiDataModifierWindChill : public NFmiDataModifier
 
   int itsTemperatureParamId;
   int itsWindSpeedParamId;
-  NFmiPoint itsLatLonPoint;           // luokka tekee kaiken interpoloituna t‰h‰n pisteeseen!!!!
-  NFmiQueryInfo* itsQueryInfo;        // ei omista!!!, k‰yt‰ 'juoksutettua' infoa
+  NFmiPoint itsLatLonPoint;           // luokka tekee kaiken interpoloituna t√§h√§n pisteeseen!!!!
+  NFmiQueryInfo* itsQueryInfo;        // ei omista!!!, k√§yt√§ 'juoksutettua' infoa
   NFmiDataModifier* itsDataModifier;  // ei omista!!!
 
 };  // class NFmiDataModifierWindChill

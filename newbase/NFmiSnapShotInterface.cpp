@@ -64,7 +64,7 @@ NFmiSnapShotInterface::NFmiSnapShotInterface(NFmiString theDataFileName,
   {
     itsDataFileName = "Kepa_LightBoy_Uusin.sqd";
   }
-  else if (theDataFileName == NFmiString("KEPAPITKÄ"))
+  else if (theDataFileName == NFmiString("KEPAPITKÃ„"))
   {
     itsDataFileName = "Kepa_FatBoy_Uusin.sqd";
   }
@@ -76,7 +76,7 @@ NFmiSnapShotInterface::NFmiSnapShotInterface(NFmiString theDataFileName,
   {
     itsDataFileName = "RadRain1h_ennuste4h10km.sqd";
   }
-  else if (theDataFileName == NFmiString("TUTKATIHEÄ"))
+  else if (theDataFileName == NFmiString("TUTKATIHEÃ„"))
   {
     itsDataFileName = "Sadekertyma-1_uusin.sqd";
   }

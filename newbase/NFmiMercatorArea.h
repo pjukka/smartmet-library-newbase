@@ -75,14 +75,14 @@ inline NFmiMercatorArea::~NFmiMercatorArea(void) {}
 inline const NFmiRect NFmiMercatorArea::WorldRect(void) const { return itsWorldRect; }
 // ----------------------------------------------------------------------
 /*!
- * \return Undocumented
+ *Â \return Undocumented
  */
 // ----------------------------------------------------------------------
 
 inline unsigned long NFmiMercatorArea::ClassId(void) const { return kNFmiMercatorArea; }
 // ----------------------------------------------------------------------
 /*!
- * \return Undocumented
+ *Â \return Undocumented
  */
 // ----------------------------------------------------------------------
 

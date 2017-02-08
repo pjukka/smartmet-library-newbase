@@ -19,6 +19,7 @@
 #include "NFmiInterpolation.h"
 #include "NFmiModMeanCalculator.h"
 #include "NFmiPoint.h"
+#include <set>
 
 namespace NFmiInterpolation
 {
@@ -307,6 +308,71 @@ double BiLinear(double theX,
   }
   else
     return kFloatMissing;
+}
+
+class PointData
+{
+ public:
+  PointData() : corner_(kNoDirection), value_(kFloatMissing), distance_(kFloatMissing) {}
+  PointData(FmiDirection corner, double value, double distance)
+      : corner_(corner), value_(value), distance_(distance)
+  {
+  }
+
+  FmiDirection corner_;  // Minkä kulman pisteestä on kyse (lähinnä debuggaus infoa)
+  double value_;         // Määrätyn kulman arvo
+  double distance_;      // Etäisyys referenssi pisteeseen
+};
+
+bool operator<(const PointData &p1, const PointData &p2) { return p1.distance_ < p2.distance_; }
+PointData CalcPointData(const NFmiPoint &referencePoint,
+                        const NFmiPoint &cornerPoint,
+                        FmiDirection corner,
+                        double value)
+{
+  double distX = referencePoint.X() - cornerPoint.X();
+  double distY = referencePoint.Y() - cornerPoint.Y();
+  double distance = ::sqrt(distX * distX + distY * distY);
+  return PointData(corner, value, distance);
+}
+
+// ----------------------------------------------------------------------
+/*!
+* \brief Seeking the nearest non-missing value.
+*
+* We assume all interpolation occurs in a rectilinear grid
+* and the given coordinates are relative within the grid cell.
+* The values must thus be in the range 0-1.
+*
+* \param theX The relative offset from the bottomleft X-coordinate
+* \param theY The relative offset from the bottomleft Y-coordinate
+* \param theTopLeft The top left value
+* \param theTopRight The top right value
+* \param theBottomLeft The bottom left value
+* \param theBottomRight The bottom right value
+* \return The nearest non-missing value
+*/
+// ----------------------------------------------------------------------
+double NearestNonMissing(double theX,
+                         double theY,
+                         double theTopLeft,
+                         double theTopRight,
+                         double theBottomLeft,
+                         double theBottomRight)
+{
+  NFmiPoint referencePoint(theX, theY);
+  std::multiset<PointData> sortedPointValues;
+  sortedPointValues.insert(
+      CalcPointData(referencePoint, NFmiPoint(0, 0), kBottomLeft, theBottomLeft));
+  sortedPointValues.insert(CalcPointData(referencePoint, NFmiPoint(0, 1), kTopLeft, theTopLeft));
+  sortedPointValues.insert(CalcPointData(referencePoint, NFmiPoint(1, 1), kTopRight, theTopRight));
+  sortedPointValues.insert(
+      CalcPointData(referencePoint, NFmiPoint(1, 0), kBottomRight, theBottomRight));
+  for (const auto &pointData : sortedPointValues)
+  {
+    if (pointData.value_ != kFloatMissing) return pointData.value_;
+  }
+  return kFloatMissing;
 }
 
 // ----------------------------------------------------------------------

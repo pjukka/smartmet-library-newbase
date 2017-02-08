@@ -26,7 +26,7 @@ class _FMI_DLL NFmiDataModifierDescriptor : public NFmiDataDescriptor
   NFmiParamDataModifierList* GetVarianceModifiers(void);
   void SetVarianceModifiers(NFmiParamDataModifierList* theList);
 
-  // seuraavat on pakko kirjoittaa, koska ne on m‰‰ritelty pure virtualiksi emossa
+  // seuraavat on pakko kirjoittaa, koska ne on m√§√§ritelty pure virtualiksi emossa
   virtual unsigned long Index(void) const;
   virtual unsigned long Size(void) const;
   virtual bool IsActive(void) const;

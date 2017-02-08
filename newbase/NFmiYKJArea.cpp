@@ -7,9 +7,9 @@
 /*!
  * \class NFmiYKJArea
  *
- * Implements transformation from rectangular YKJ (Yhten‰isKoordinaattiJ‰rjestelm‰)
+ * Implements transformation from rectangular YKJ (Yhten√§isKoordinaattiJ√§rjestelm√§)
  * coordinates into geodetic coordinates and vice versa for the Finnish National Grid
- * Coordinate System KKJ (KartastoKoordinaattiJ‰rjestelm‰).
+ * Coordinate System KKJ (KartastoKoordinaattiJ√§rjestelm√§).
  *
  * The rectangular YKJ coordinates are aligned to KKJ zone 3 only (central meridian 27
  * degrees) with easting and northing in meters.
@@ -121,7 +121,7 @@ NFmiYKJArea::NFmiYKJArea(const NFmiYKJArea &theYKJArea) : NFmiKKJArea(theYKJArea
  * \param theBottomLeftLatLon Undocumented
  * \param theTopRightLatLon Undocumented
  * \param theTopLeftXY Undocumented
- *†\param theBottomRightXY Undocumented
+ *¬†\param theBottomRightXY Undocumented
  */
 // ----------------------------------------------------------------------
 
@@ -156,9 +156,9 @@ NFmiYKJArea::NFmiYKJArea(double theRadialRangeInMeters,
                          const NFmiPoint &theBottomRightXY)
     : NFmiKKJArea(theRadialRangeInMeters, theCenterLatLon, theTopLeftXY, theBottomRightXY)
 {
-  // Muodostaa projektioalueen rajaamalla "world-xy"-tasossa 'theRadialRangeInMeters'-s‰teiselle
-  // ympyr‰lle
-  // "bounding-boxin", jonka keskipisteen‰ on maantiet. piste 'theCenterLatLon'
+  // Muodostaa projektioalueen rajaamalla "world-xy"-tasossa 'theRadialRangeInMeters'-s√§teiselle
+  // ympyr√§lle
+  // "bounding-boxin", jonka keskipisteen√§ on maantiet. piste 'theCenterLatLon'
 
   NFmiPoint centerWorldXY = LatLonToWorldXY(NFmiPoint(theCenterLatLon.X(), theCenterLatLon.Y()));
   NFmiPoint bottomLeftWorldXY = NFmiPoint(centerWorldXY.X() - theRadialRangeInMeters,
@@ -196,8 +196,8 @@ NFmiYKJArea::NFmiYKJArea(const NFmiPoint &theBottomLeftLatLon,
 
   Init(true);
 
-  // 28.8.2001/Marko&Esa itsWorldRect on laskettu sellaisilla argumenteilla t‰ss‰,
-  // mitk‰ eiv‰t ole dataosia, joten sit‰ ei saa laskea Init:iss‰ uudestaan
+  // 28.8.2001/Marko&Esa itsWorldRect on laskettu sellaisilla argumenteilla t√§ss√§,
+  // mitk√§ eiv√§t ole dataosia, joten sit√§ ei saa laskea Init:iss√§ uudestaan
 }
 
 // ----------------------------------------------------------------------
@@ -224,7 +224,7 @@ NFmiYKJArea::NFmiYKJArea(const NFmiPoint &theBottomLeftWorldXY,
   Init(true);
 
   // 28.8.2001/Marko&Esa itsWorldRect on laskettu sellaisilla argumenteilla
-  // t‰ss‰, mitk‰ eiv‰t ole dataosia, joten sit‰ ei saa laskea Init:iss‰ uudestaan
+  // t√§ss√§, mitk√§ eiv√§t ole dataosia, joten sit√§ ei saa laskea Init:iss√§ uudestaan
 }
 
 // ----------------------------------------------------------------------

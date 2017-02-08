@@ -120,7 +120,7 @@ class _FMI_DLL NFmiQueryInfo
                                double theMaxDistance = kFloatMissing * 1000.);
   virtual bool NearestPoint(const NFmiPoint &theLatLonPoint);
 
-  //! Hakee listan paikkaindeksi/et‰isyys metrein‰ pareja. Listaan haetaan annettua paikkaa l‰himmat
+  //! Hakee listan paikkaindeksi/et√§isyys metrein√§ pareja. Listaan haetaan annettua paikkaa l√§himmat
   //! datapisteet.
   checkedVector<std::pair<int, double> > NearestLocations(
       const NFmiLocation &theLocation,
@@ -157,12 +157,12 @@ class _FMI_DLL NFmiQueryInfo
   virtual const NFmiMetTime &OriginTime() const;
   virtual void OriginTime(const NFmiMetTime &newTime);
 
-  // HUOM! n‰m‰ on toistaiseksi tehty toimimaan vain NFmiFastQueryInfo:on (Marko)
+  // HUOM! n√§m√§ on toistaiseksi tehty toimimaan vain NFmiFastQueryInfo:on (Marko)
   virtual bool IsParamUsable() const;
   virtual bool IsLocationUsable() const;
   virtual bool IsLevelUsable() const;
   virtual bool IsTimeUsable() const;
-  // HUOM! n‰m‰ on toistaiseksi tehty toimimaan vain NFmiFastQueryInfo:on (Marko)
+  // HUOM! n√§m√§ on toistaiseksi tehty toimimaan vain NFmiFastQueryInfo:on (Marko)
 
   const NFmiTimeBag &ValidTimes() const;
   const NFmiParamBag &ParamBag() const;
@@ -174,14 +174,14 @@ class _FMI_DLL NFmiQueryInfo
 
   // ****** HUOM!!!! *******************************************
   // Descriptorien asetus funktiot ovat spesiaali funktioita
-  // Niill‰ on tarkoitus muuttaa iteraattori-infon aikoja/
-  // parametreja jne. hetkellisesti ja vain siten, ett‰ datan
-  // koko ei kasva. Jos alkuper‰isess‰ paramDescriptorissa
-  // oli esim. 2 parametria ja yritt‰‰ asettaa paramDescriptoria
-  // miss‰ on kolme parametri‰., lent‰‰ POIKKEUS!
-  // Itse (Marko) k‰yt‰n t‰t‰ systeemi‰ Metkun editorissa
-  // 'huijaamaan' qinfoa, ett‰ voin laskea makroparametreja
-  // karttan‰ytˆlle (smarttool-skriptej‰, joita visualisoidaan).
+  // Niill√§ on tarkoitus muuttaa iteraattori-infon aikoja/
+  // parametreja jne. hetkellisesti ja vain siten, ett√§ datan
+  // koko ei kasva. Jos alkuper√§isess√§ paramDescriptorissa
+  // oli esim. 2 parametria ja yritt√§√§ asettaa paramDescriptoria
+  // miss√§ on kolme parametri√§., lent√§√§ POIKKEUS!
+  // Itse (Marko) k√§yt√§n t√§t√§ systeemi√§ Metkun editorissa
+  // 'huijaamaan' qinfoa, ett√§ voin laskea makroparametreja
+  // karttan√§yt√∂lle (smarttool-skriptej√§, joita visualisoidaan).
   void SetHPlaceDescriptor(const NFmiHPlaceDescriptor &newDesc);
   void SetVPlaceDescriptor(const NFmiVPlaceDescriptor &newDesc);
   void SetTimeDescriptor(const NFmiTimeDescriptor &newDesc);
@@ -267,7 +267,7 @@ class _FMI_DLL NFmiQueryInfo
   virtual unsigned long SizeActiveLevels() const;
   virtual unsigned long SizeActiveTimes() const;
 
-  //  Edit, hakee viel‰ muotoaan
+  //  Edit, hakee viel√§ muotoaan
   NFmiDataIdent &EditParam();
   const NFmiLocation &EditLocation();
   NFmiStation &EditStation();
@@ -276,16 +276,15 @@ class _FMI_DLL NFmiQueryInfo
   // QueryData Read
   virtual float FloatValue() const;
   virtual float InterpolatedValue(const NFmiPoint &theLatLonPoint);
-  virtual float InterpolatedValue_old(const NFmiPoint &theLatLonPoint);
 
-  // Mikael lis‰si seuraavan metodin 4.10.1999, testik‰ytˆss‰
+  // Mikael lis√§si seuraavan metodin 4.10.1999, testik√§yt√∂ss√§
   virtual float InterpolatedValue(const NFmiMetTime &theTime, int theMaxMinuteRange = 0);
   virtual float InterpolatedValue(const NFmiPoint &theLatLonPoint,
                                   const NFmiMetTime &theTime,
                                   int theMaxMinuteRange = 0);
 
   virtual float PeekLocationValue(int theXOffset, int theYOffset) const;
-  // en toteuta t‰t‰ ainakaan viel‰ qinfoon, vaan vain fastinfoon
+  // en toteuta t√§t√§ ainakaan viel√§ qinfoon, vaan vain fastinfoon
   virtual float PeekLocationValue(int theXOffset, int theYOffset, const NFmiMetTime &theTime);
   virtual const NFmiPoint PeekLocationLatLon(int theXOffset, int theYOffset);
   virtual float PeekTimeValue(int theTimeOffset);
@@ -298,11 +297,11 @@ class _FMI_DLL NFmiQueryInfo
   // QueryData Write
   virtual bool FloatValue(float theFloatData);
 
-  // T‰h‰n tulee joukko funktioita, jotka palauttavat aktiivisen parametrin
-  // arvon haluttuun korkeuteen [m]. Metodeja on nej‰, jotka tekev‰t erilaisia
+  // T√§h√§n tulee joukko funktioita, jotka palauttavat aktiivisen parametrin
+  // arvon haluttuun korkeuteen [m]. Metodeja on nej√§, jotka tekev√§t erilaisia
   // interpolointeja parametreista riippuen.
-  // HUOM! N‰m‰ NFmiQueryInfo-metodit eiv‰t palauta kuin puuttuvaa, mutta lapsi-
-  // luokka NFmiFastQueryInfo:ssa metodit toimivat oikein. En aio toteuttaa metodeja t‰ss‰ luokassa.
+  // HUOM! N√§m√§ NFmiQueryInfo-metodit eiv√§t palauta kuin puuttuvaa, mutta lapsi-
+  // luokka NFmiFastQueryInfo:ssa metodit toimivat oikein. En aio toteuttaa metodeja t√§ss√§ luokassa.
   virtual float HeightValue(float /* theHeight */) { return kFloatMissing; };
   virtual float HeightValue(float /* theHeight */, const NFmiPoint & /* theLatlon */)
   {
@@ -319,11 +318,11 @@ class _FMI_DLL NFmiQueryInfo
     return kFloatMissing;
   };
 
-  // T‰h‰n tulee joukko funktioita, jotka palauttavat aktiivisen parametrin
+  // T√§h√§n tulee joukko funktioita, jotka palauttavat aktiivisen parametrin
   // arvon haluttuun paine pintaan interpoloituna (log(p) interpolointi).
-  // Metodeja on nelj‰, jotka tekev‰t erilaisia interpolointeja parametreista riippuen.
-  // HUOM! N‰m‰ NFmiQueryInfo-metodit eiv‰t palauta kuin puuttuvaa, mutta lapsi-
-  // luokka NFmiFastQueryInfo:ssa metodit toimivat oikein. En aio toteuttaa metodeja t‰ss‰ luokassa.
+  // Metodeja on nelj√§, jotka tekev√§t erilaisia interpolointeja parametreista riippuen.
+  // HUOM! N√§m√§ NFmiQueryInfo-metodit eiv√§t palauta kuin puuttuvaa, mutta lapsi-
+  // luokka NFmiFastQueryInfo:ssa metodit toimivat oikein. En aio toteuttaa metodeja t√§ss√§ luokassa.
   virtual float PressureLevelValue(float /* P */) { return kFloatMissing; };
   virtual float PressureLevelValue(float /* P */, const NFmiPoint & /* theLatlon */)
   {
@@ -355,7 +354,7 @@ class _FMI_DLL NFmiQueryInfo
   virtual NFmiQueryData *CreateCombinedData(NFmiQueryInfo *theOtherInfo);
 
   // ************************************************************
-  // Poistin CreateSubQueryData-metodin, KƒYTƒ QDPUTKET-FILTTEREITƒ!!!!!!!!
+  // Poistin CreateSubQueryData-metodin, K√ÑYT√Ñ QDPUTKET-FILTTEREIT√Ñ!!!!!!!!
   // ************************************************************
   //  virtual NFmiQueryData * CreateSubQueryData(NFmiQueryInfo * theSubInfo);
 
@@ -436,7 +435,7 @@ class _FMI_DLL NFmiQueryInfo
   virtual bool LevelIndex(unsigned long theIndex);
   virtual bool TimeIndex(unsigned long theIndex);
 
-  // Persa lis‰si joukon uusia metodeja 11022000
+  // Persa lis√§si joukon uusia metodeja 11022000
 
   long CalcTimeUnCertainty();
   long CalcAreaUnCertainty();
@@ -450,7 +449,7 @@ class _FMI_DLL NFmiQueryInfo
   void AreaUnCertaintyEnd(long newValue);
 
   // ***** 14.5.2001/MArko Uusia metodeja hilassa liikkumiseen ***************
-  // *** HUOM!!! NƒMƒ EIVƒT TOIMI VIELƒ NFmiQueryInfo:ssa, vain NFmiFastQueryInfo:ssa!!!!
+  // *** HUOM!!! N√ÑM√Ñ EIV√ÑT TOIMI VIEL√Ñ NFmiQueryInfo:ssa, vain NFmiFastQueryInfo:ssa!!!!
   // ****************
   // HUOM!! liikkumista ei voi sallia laatikon ulkopuolelle kuten esim. PeekValue-metodissa voi!!!
   // Move*** ovat liikkumista varten
@@ -460,23 +459,23 @@ class _FMI_DLL NFmiQueryInfo
   virtual bool MoveLeft(int moveBy = 1);   // toimii vain gridi datalle oikein!!!
   virtual bool MoveRight(int moveBy = 1);  // toimii vain gridi datalle oikein!!!
 
-  // n‰ill‰ asetetaan paikka suoraan johonkin laitaan (ei 'laatikon' ulkopuolelle!)
+  // n√§ill√§ asetetaan paikka suoraan johonkin laitaan (ei 'laatikon' ulkopuolelle!)
   virtual bool Top();     // toimii vain gridi datalle oikein!!!
   virtual bool Bottom();  // toimii vain gridi datalle oikein!!!
   virtual bool Left();    // toimii vain gridi datalle oikein!!!
   virtual bool Right();   // toimii vain gridi datalle oikein!!!
-  // *** HUOM!!! NƒMƒ EIVƒT TOIMI VIELƒ NFmiQueryInfo:ssa, vain NFmiFastQueryInfo:ssa!!!!
+  // *** HUOM!!! N√ÑM√Ñ EIV√ÑT TOIMI VIEL√Ñ NFmiQueryInfo:ssa, vain NFmiFastQueryInfo:ssa!!!!
   // ****************
   // ***** 14.5.2001/MArko Uusia metodeja hilassa liikkumiseen ***************
 
   // Avain systeemi sijoitetaan NFmiQueryData:n omistamaan NFmiQueryInfo:on.
-  // Jos QueryInfo on iteraattori, v‰litt‰‰ info k‰skyt osoittamaansa dataa, joka
-  // taas v‰litt‰‰ k‰skyt datan omistamaan infoon. N‰in avaimet j‰‰v‰t 'dataan' talteen.
+  // Jos QueryInfo on iteraattori, v√§litt√§√§ info k√§skyt osoittamaansa dataa, joka
+  // taas v√§litt√§√§ k√§skyt datan omistamaan infoon. N√§in avaimet j√§√§v√§t 'dataan' talteen.
   // Infoss on itsHeaderText, johon talletetaan avaimet. Avain on FMI_xxxx.
   // Avaimen arvo on jokin teksti esim. "marko" tai "555". Avain ja sen arvo
   // talletetaan itsHeaderText:iin yhdeksi NFmiStringiksi. Muoto on seuraava:
-  // FMI_AVAIN=ARVO. Kun k‰ytt‰j‰ etsii tai asettaa avaimia, ei pid‰ k‰ytt‰‰
-  // FMI_ -etuliitett‰. Koodi lis‰‰ ne sinne itse. Eli jos asetat avaimeksi
+  // FMI_AVAIN=ARVO. Kun k√§ytt√§j√§ etsii tai asettaa avaimia, ei pid√§ k√§ytt√§√§
+  // FMI_ -etuliitett√§. Koodi lis√§√§ ne sinne itse. Eli jos asetat avaimeksi
   // FMI_AVAIN ja sen arvoksi ARVO, tulee avaimeksi FMI_FMI_AVAIN.
 
   bool FindFirstKey(const NFmiString &theKey);
@@ -496,14 +495,14 @@ class _FMI_DLL NFmiQueryInfo
   double InfoVersion() const;
   void InfoVersion(double newValue) const;
 
-  // data tyyppien get- ja set-metodit liittyv‰t mm. maskeihin ja QInfon lapsi luokkiin.
+  // data tyyppien get- ja set-metodit liittyv√§t mm. maskeihin ja QInfon lapsi luokkiin.
   virtual NFmiInfoData::Type DataType() const { return NFmiInfoData::kNoDataType; }
   virtual void DataType(NFmiInfoData::Type /* newType */){};
-  // Lapsi luokat tarvitsevat t‰ll‰iset maski-metodit, t‰ss‰ toteutetaan vain dummyna.
+  // Lapsi luokat tarvitsevat t√§ll√§iset maski-metodit, t√§ss√§ toteutetaan vain dummyna.
   virtual void MaskType(unsigned long /* theMaskType */){};
   virtual unsigned long MaskType() { return 0; };
 #ifndef NDEBUG
-  static int itsConstructorCalls;  // t‰m‰ on yritys tutkia mahdollisia vuotoja ohjelmiss‰
+  static int itsConstructorCalls;  // t√§m√§ on yritys tutkia mahdollisia vuotoja ohjelmiss√§
   static int itsDestructorCalls;   // kuinka monta oliota on luotu ja tuhottu
 #endif                             // NDEBUG
 
@@ -546,9 +545,6 @@ class _FMI_DLL NFmiQueryInfo
                                                NFmiMetTime &theFoundTime,
                                                FmiDirection theDirection);
 
-  float InterpolatedValueForCombinedParam_old(const NFmiPoint &theGridPoint,
-                                              int theXShift,
-                                              int theYShift);
   float InterpolatedValueForCombinedParam(const NFmiPoint &theGridPoint);
   float InterpolatedSubValueForTotalWind(const NFmiPoint &theGridPoint,
                                          int theXShift,
@@ -599,11 +595,11 @@ class _FMI_DLL NFmiQueryInfo
       size_t theIndex) const;  // palauttaa suoraan arvon ilman aliparametri tarkasteluja
   virtual bool IndexFloatValue(
       size_t theIndex, float theValue);  // asettaa suoraan arvon ilman aliparametri tarkasteluja
-  virtual float PeekValue(size_t theIndex) const;  // k‰ytet‰‰n mm. PeekLocationValue():ss‰
+  virtual float PeekValue(size_t theIndex) const;  // k√§ytet√§√§n mm. PeekLocationValue():ss√§
   virtual bool PokeValue(size_t theIndex, float theFloatData);  // 25.9.2001/Marko Mahd. nopea arvon
                                                                 // asetus (jos indeksi on voitu
                                                                 // laskea toisaalla)
-  virtual float SubParamFloatValue(size_t theIndex) const;      // k‰ytet‰‰n ed. metodissa
+  virtual float SubParamFloatValue(size_t theIndex) const;      // k√§ytet√§√§n ed. metodissa
   bool FindSubParam(const NFmiDataIdent &theParam);
   bool FindSubParam(const NFmiParam &theParam);
   bool ChangeCombinedParamParser(const NFmiDataIdent &theParam);
@@ -619,8 +615,8 @@ class _FMI_DLL NFmiQueryInfo
                            NFmiLocationBag *theLocationBag);
 
   virtual bool IsSubParamUsed() const;
-  // HUOM! t‰m‰ on viritys funktio, joka toimii oikeasti vasta NFmiFastQueryInfo:ssa
-  // Siell‰kin t‰m‰n k‰yttˆ on vaarallista, ellei tied‰ mit‰ tekee.
+  // HUOM! t√§m√§ on viritys funktio, joka toimii oikeasti vasta NFmiFastQueryInfo:ssa
+  // Siell√§kin t√§m√§n k√§ytt√∂ on vaarallista, ellei tied√§ mit√§ tekee.
   virtual void SetIsSubParamUsed(bool /* newState */){};
 
   // QueryDataReference
@@ -629,8 +625,8 @@ class _FMI_DLL NFmiQueryInfo
   NFmiQueryData *itsRefQueryData;
 
  protected:
-  /* // 2012.1.19 Marko Poistetaan k‰ytˆst‰ itsStaticDataMask -luokka, koska se on ilmeisesti turhaa
-    (SuperSmartInfo k‰ytt‰‰ t‰t‰)
+  /* // 2012.1.19 Marko Poistetaan k√§yt√∂st√§ itsStaticDataMask -luokka, koska se on ilmeisesti turhaa
+    (SuperSmartInfo k√§ytt√§√§ t√§t√§)
     bool IsLocationMasked(unsigned long theLocationIndex) const;
     NFmiBitMask * itsStaticDataMask;
   */
@@ -645,15 +641,15 @@ class _FMI_DLL NFmiQueryInfo
 
   unsigned long itsNewClassIdent;
 
-  // jos k‰ytet‰‰n aliparametria, t‰m‰ purkaa datan haluttuun aliparametriin
+  // jos k√§ytet√§√§n aliparametria, t√§m√§ purkaa datan haluttuun aliparametriin
   NFmiCombinedParam *itsCombinedParamParser;
 
-  // t‰h‰n talletetaan tiedostosta luettu info version luku
-  // (k‰ytet‰‰n v. 6:n ja 7:n v‰lill‰, mm. weatherandcloudiness ja totalwind
-  // tarvitsevat niit‰)
-  // qdatan sis‰inen info pit‰‰ versio numeronsa ja iteraattori info pyyt‰‰
-  // sit‰ qdatalta, joka pyyt‰‰ sit‰ sis‰iselt‰ infolta.
-  // talletettiin varmuuden vuoksi double:na, jos haluaa k‰ytt‰‰ desimaaleja joskus
+  // t√§h√§n talletetaan tiedostosta luettu info version luku
+  // (k√§ytet√§√§n v. 6:n ja 7:n v√§lill√§, mm. weatherandcloudiness ja totalwind
+  // tarvitsevat niit√§)
+  // qdatan sis√§inen info pit√§√§ versio numeronsa ja iteraattori info pyyt√§√§
+  // sit√§ qdatalta, joka pyyt√§√§ sit√§ sis√§iselt√§ infolta.
+  // talletettiin varmuuden vuoksi double:na, jos haluaa k√§ytt√§√§ desimaaleja joskus
 
   mutable double itsInfoVersion;
 
@@ -661,7 +657,7 @@ class _FMI_DLL NFmiQueryInfo
   unsigned long itsGridYNumber;  // mahdollisen gridi datan y-dimensio
   bool fIsStrechableGlobalGrid;  // Jos kyse globaali datasta, jossa viimeinen sarake ei mene
                                  // maailman reunaan, koska sen arvot ovat samoja kuin 1.
-                                 // sarakkeessa, t‰llˆin t‰m‰ on true.
+                                 // sarakkeessa, t√§ll√∂in t√§m√§ on true.
   bool DoGlobalWrapFix(const NFmiPoint &theGridPoint) const;
 
   // friends
@@ -678,22 +674,22 @@ class _FMI_DLL NFmiQueryInfo
   friend class NFmiDBServer;
 
  private:
-  //  bool fUseStaticDataMask; // 2012.1.19 Marko Poistetaan k‰ytˆst‰ itsStaticDataMask -luokka,
-  //  koska se on ilmeisesti turhaa (SuperSmartInfo k‰ytt‰‰ t‰t‰)
+  //  bool fUseStaticDataMask; // 2012.1.19 Marko Poistetaan k√§yt√∂st√§ itsStaticDataMask -luokka,
+  //  koska se on ilmeisesti turhaa (SuperSmartInfo k√§ytt√§√§ t√§t√§)
   long itsTimeUnCertaintyStart;
   long itsTimeUnCertaintyEnd;
   long itsAreaUnCertaintyStart;
   long itsAreaUnCertaintyEnd;
 
-  // Kun luetaan infoa qdata-tiedostosta, voidaan p‰‰tell‰, pit‰‰kˆ bin‰‰ri datalle
-  // tehd‰ byte swap. Tieto talletetaan t‰h‰n ja sit‰ k‰ytet‰‰n kun datapool lukee
-  // bin‰‰ri datan. querydta-luokka v‰litt‰‰ tiedon qinfolta datapoolille read-metodissa.
+  // Kun luetaan infoa qdata-tiedostosta, voidaan p√§√§tell√§, pit√§√§k√∂ bin√§√§ri datalle
+  // tehd√§ byte swap. Tieto talletetaan t√§h√§n ja sit√§ k√§ytet√§√§n kun datapool lukee
+  // bin√§√§ri datan. querydta-luokka v√§litt√§√§ tiedon qinfolta datapoolille read-metodissa.
 
   bool fDoEndianByteSwap;
 
-  // NFmiQueryInfo::FloatValue(value) -metodi suojataan +-inf ja nan arvoilta, ett‰ sellaisia ei voi
-  // en‰‰ asettaa queryDataan.
-  // Jos sellainen arvo annetaan, asetetaan t‰m‰ lippu p‰‰le, eik‰ arvoa aseteta.
+  // NFmiQueryInfo::FloatValue(value) -metodi suojataan +-inf ja nan arvoilta, ett√§ sellaisia ei voi
+  // en√§√§ asettaa queryDataan.
+  // Jos sellainen arvo annetaan, asetetaan t√§m√§ lippu p√§√§le, eik√§ arvoa aseteta.
   bool fHasNonFiniteValueSet;
 
 };  // class NFmiQueryInfo
@@ -948,7 +944,7 @@ inline bool NFmiQueryInfo::Location(const NFmiPoint &theLonLatPoint, NFmiPoint *
 // ----------------------------------------------------------------------
 /*!
  * \param theLocation Undocumented
- *†\param theMaxDistance Undocumented
+ *¬†\param theMaxDistance Undocumented
  * \return Undocumented
  */
 // ----------------------------------------------------------------------

@@ -191,7 +191,7 @@ class _FMI_DLL NFmiGridBase
   unsigned long itsLastX;
   unsigned long itsLastY;
 
-  // Näiden datajäsenten tarkoitus: nopeuttaa gridin lineaarista interpolointia
+  // NÃ¤iden datajÃ¤senten tarkoitus: nopeuttaa gridin lineaarista interpolointia
   double itsPreviousX;
   double itsPreviousY;
   double itsTopLeftValue;
@@ -222,7 +222,7 @@ inline NFmiGridBase::~NFmiGridBase()
  *
  * \param theXNumber Undocumented
  * \param theYNumber Undocumented
- * \param theStartingCorner Undocumented
+ *Â \param theStartingCorner Undocumented
  * \param theInterpolationMethod Undocumented
  * \param theBase Undocumented
  */

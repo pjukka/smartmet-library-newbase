@@ -137,7 +137,7 @@ NFmiOrthographicArea::NFmiOrthographicArea(const NFmiPoint &theCentralLatLonPoin
   //  itsWorldRect = NFmiRect(NFmiPoint(-itsRadialRange,-itsRadialRange),
   // 						    NFmiPoint(itsRadialRange,itsRadialRange));
 
-  NFmiOrthographicArea::Init();  // Em.  'itsWorldRect' -lause korvattu t‰ll‰ Init():ll‰
+  NFmiOrthographicArea::Init();  // Em.  'itsWorldRect' -lause korvattu t√§ll√§ Init():ll√§
 
   NFmiAzimuthalArea::Init(true);
 }
@@ -146,9 +146,9 @@ NFmiOrthographicArea::NFmiOrthographicArea(const NFmiPoint &theCentralLatLonPoin
 
 /*
         HUOM! NFmiOrthographicArea -PROJEKTIOSSA NURKKAPISTEIDEN MUUNNOS
-        EI VƒLTTƒMƒTTƒ AINA OLE BIJEKTIO:
-        ESIM. JOILLEKIN SUORAKULMAISEN KOORDINAATISTON XY-PISTEILLE EI L÷YDY
-        VASTAAVIA MAANTIETEELLISIƒ LONLAT -PISTEITƒ (PISTEET OVAT "KARTTAPALLON" ULKOPUOLELLA)
+        EI V√ÑLTT√ÑM√ÑTT√Ñ AINA OLE BIJEKTIO:
+        ESIM. JOILLEKIN SUORAKULMAISEN KOORDINAATISTON XY-PISTEILLE EI L√ñYDY
+        VASTAAVIA MAANTIETEELLISI√Ñ LONLAT -PISTEIT√Ñ (PISTEET OVAT "KARTTAPALLON" ULKOPUOLELLA)
 */
 
 NFmiOrthographicArea::NFmiOrthographicArea(const NFmiPoint &theBottomLeftLatLon,
@@ -176,7 +176,7 @@ NFmiOrthographicArea::NFmiOrthographicArea(const NFmiPoint &theBottomLeftLatLon,
   itsCosLat0 = cos(itsLat0);
 
   // HUOM!
-  // T‰ss‰ konstruktorissa on tarkoitus k‰ytt‰‰ perinteisemp‰‰
+  // T√§ss√§ konstruktorissa on tarkoitus k√§ytt√§√§ perinteisemp√§√§
   // "nurkkapistekonstruktoria"
 
   NFmiPoint bottomLeftWorldXY = LatLonToWorldXY(itsBottomLeftLatLon);
@@ -248,9 +248,9 @@ void NFmiOrthographicArea::Init(bool /* fKeepWorldRect */)
 
 const NFmiPoint NFmiOrthographicArea::WorldXYToLatLon(const NFmiPoint &theXY) const
 {
-  // HUOM! T‰m‰ metodi on kirjoittu tarkoituksella  NFmiAzimuthalArea -emoluokan metodin
+  // HUOM! T√§m√§ metodi on kirjoittu tarkoituksella  NFmiAzimuthalArea -emoluokan metodin
   // WorldXYToLatLon()
-  // p‰‰lle (override) koska menettely yksinkertaistaa ja nopeuttaa jonkin verran koodia
+  // p√§√§lle (override) koska menettely yksinkertaistaa ja nopeuttaa jonkin verran koodia
 
   double xUnrotated = theXY.X();
   double yUnrotated = theXY.Y();
@@ -302,9 +302,9 @@ const NFmiPoint NFmiOrthographicArea::WorldXYToLatLon(const NFmiPoint &theXY) co
 
 const NFmiPoint NFmiOrthographicArea::LatLonToWorldXY(const NFmiPoint &theLatLonPoint) const
 {
-  // HUOM! T‰m‰ metodi on kirjoittu tarkoituksella  NFmiAzimuthalArea -emoluokan metodin
+  // HUOM! T√§m√§ metodi on kirjoittu tarkoituksella  NFmiAzimuthalArea -emoluokan metodin
   // LatLonToWorldXY()
-  // p‰‰lle (override) koska menettely yksinkertaistaa ja nopeuttaa jonkin verran koodia
+  // p√§√§lle (override) koska menettely yksinkertaistaa ja nopeuttaa jonkin verran koodia
 
   double lon = FmiRad(theLatLonPoint.X());
   double lat = FmiRad(theLatLonPoint.Y());

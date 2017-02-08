@@ -254,7 +254,7 @@ double CalcPressureFlightLevel(double hPa)
  * \brief Calculate pressure at given height in standard atmosphere
  *
  * Laskee annetun kilometri korkeuden vastaavan painepinnan
- * standardi ilmakehässä, käyttäen Hypsometric Equationia
+ * standardi ilmakehÃ¤ssÃ¤, kÃ¤yttÃ¤en Hypsometric Equationia
  * http://hurri.kean.edu/~yoh/calculations/hydrostatic/home.html
  * p2 = p1*exp(-g/RT*(z2-z1))
  */
@@ -269,11 +269,11 @@ double CalcPressureAtHeight(double z2)
   double R = 287.04;   // R is the dry air gas constant (=287.04 J kg-1 K-1)
   // mean layer temperature T is calculated so that it is 15 celsius at surface and drops by 6.5
   // c/km
-  double L = -6.5;     // standardiilmakehän lapserate eli lämpötilan muutos kilometreissa alhaalta
-                       // ylöspäin mentäessä.
+  double L = -6.5;     // standardiilmakehÃ¤n lapserate eli lÃ¤mpÃ¶tilan muutos kilometreissa alhaalta
+                       // ylÃ¶spÃ¤in mentÃ¤essÃ¤.
   double T0 = 273.15;  // muunnos siirto celsius -> kelvin
-  double Tg = 15;      // standardiilmakehän maanpinnan lämpötila celsiuksinä.
-  double T = (Tg + z2 * L) / 2.;  // siis keski arvo lämpötila välillä 0-z2 km
+  double Tg = 15;      // standardiilmakehÃ¤n maanpinnan lÃ¤mpÃ¶tila celsiuksinÃ¤.
+  double T = (Tg + z2 * L) / 2.;  // siis keski arvo lÃ¤mpÃ¶tila vÃ¤lillÃ¤ 0-z2 km
   T += T0;                        // muunto kelvineiksi
 
   double p1 = 1013;
@@ -286,7 +286,7 @@ double CalcPressureAtHeight(double z2)
 /*!
  * \brief Inverse of calculating standard pressure at given height
  *
- * KÃ¤Ã¤nteinen funktio CalcPressureAtHeight:lle. AlkuperÃ¤inen funktio
+ * KÃƒÂ¤ÃƒÂ¤nteinen funktio CalcPressureAtHeight:lle. AlkuperÃƒÂ¤inen funktio
  * on NFmiCrossSectionView.cpp -tiedostossa.
  */
 // ----------------------------------------------------------------------
@@ -295,11 +295,11 @@ double CalcHeightAtPressure(double p2)
 {
   double g = 9.80665;  // acceleration due to gravity (= 9.80665 m s-2)
   double R = 287.04;   // R is the dry air gas constant (=287.04 J kg-1 K-1)
-  double p1 = 1013;    // standardi ilmakehän maanpintapaine
+  double p1 = 1013;    // standardi ilmakehÃ¤n maanpintapaine
   double z1 = 0;
-  double L = -6.5;     // standardi ilmakehän lapsrate eli lämpötilan lasku kelvineinä/km
+  double L = -6.5;     // standardi ilmakehÃ¤n lapsrate eli lÃ¤mpÃ¶tilan lasku kelvineinÃ¤/km
   double T0 = 273.15;  // C -> kelvin muutos vakio
-  double Tg = 15;      // standardi ilmakehän pintalämpötila on 15 astetta celsiusta
+  double Tg = 15;      // standardi ilmakehÃ¤n pintalÃ¤mpÃ¶tila on 15 astetta celsiusta
 
   double alfa = (-R / (g * 1000)) * ::log(p2 / p1);
   double z2 = (2 * z1 + alfa * (Tg + 2 * T0)) / (2 - alfa * L);
@@ -316,7 +316,7 @@ double CalcHeightAtPressure(double p2)
 
 float FmiDegreeDays(float value, int month)
 {
-  // huom eri kynnysarvo alku/loppuvuodelle (sÃ¤teilyn vaikutus)
+  // huom eri kynnysarvo alku/loppuvuodelle (sÃƒÂ¤teilyn vaikutus)
   if (value == kFloatMissing)
     return kFloatMissing;
   else if ((value > 12.) || (value > 10. && month < 7))
@@ -368,8 +368,8 @@ float FmiSummerSimmerIndex(float rh, float t)
  *
  * Note that Canadian formula uses km/h:
  *
- * W = 13.12 + 0.6215 × Tair - 11.37 × V10^0.16 + 0.3965 × Tair × V10^0.16
- * W = Tair + [(-1.59 + 0.1345 × Tair)/5] × V10m, when V10m < 5 km/h
+ * W = 13.12 + 0.6215 Ã— Tair - 11.37 Ã— V10^0.16 + 0.3965 Ã— Tair Ã— V10^0.16
+ * W = Tair + [(-1.59 + 0.1345 Ã— Tair)/5] Ã— V10m, when V10m < 5 km/h
  *
  * \param wind The observed wind speed in m/s
  * \param temp The observed temperature in degrees Celsius
@@ -472,7 +472,7 @@ float FmiOldConvectiveHumanHeatFlux(float wind, float temp)
   float w = FmiMax(1.7f, wind);
 
   return (10.47f + 12.68f * static_cast<float>(sqrt(w)) - 1.163f * w) * (33.f - temp) -
-         112.5f;  // - sÃ¤teily;
+         112.5f;  // - sÃƒÂ¤teily;
 }
 
 // ----------------------------------------------------------------------

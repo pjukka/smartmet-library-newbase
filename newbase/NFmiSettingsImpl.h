@@ -28,7 +28,7 @@ class _FMI_DLL NFmiSettingsImpl
   const std::string Require(const std::string& theName) const;
   bool IsSet(const std::string& theName) const;
 
-#undef SearchPath  // win32 macro pit‰‰ undefinata
+#undef SearchPath  // win32 macro pit√§√§ undefinata
   void SearchPath(const std::string& thePath) const;
   void Set(const std::string& theName, const std::string& theValue, bool modifyOnlyExisting) const;
   void Save() const;

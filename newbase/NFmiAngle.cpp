@@ -1,16 +1,16 @@
 // ======================================================================
 /*!
  * \file NFmiAngle.cpp
- * \brief M‰‰rittelyt luokkien NFmiAngle, NFmiWindDirection, NFmiLatitude
+ * \brief M√§√§rittelyt luokkien NFmiAngle, NFmiWindDirection, NFmiLatitude
  *        ja NFmiLongitude metodeille.
  */
 // ======================================================================
 /*!
  * \class NFmiAngle
  *
- * M‰‰rittely yleiselle kulmasuureelle. Luokan keskeinen ominaisuus on, ett‰
- * luokan metodit huolehtivat automaattisesti, ett‰ kulma pysyy sallituissa
- * rajoissa jokaisen operaation j‰lkeen.
+ * M√§√§rittely yleiselle kulmasuureelle. Luokan keskeinen ominaisuus on, ett√§
+ * luokan metodit huolehtivat automaattisesti, ett√§ kulma pysyy sallituissa
+ * rajoissa jokaisen operaation j√§lkeen.
  */
 // ======================================================================
 
@@ -21,7 +21,7 @@ using namespace std;
 
 // ======================================================================
 /*!
- * Konstruktori luokalle NFmiAngle asettaa sis‰iset arvot k‰ytt‰en SetValue
+ * Konstruktori luokalle NFmiAngle asettaa sis√§iset arvot k√§ytt√§en SetValue
  * metodia, jotta mahdollinen kulmamuunnos tulee suoritetuksi, ja kulman
  * rajat tarkistetuiksi.
  *
@@ -39,12 +39,12 @@ NFmiAngle::NFmiAngle(double theValue, FmiAngleUnit theUnit)
 // ======================================================================
 /*!
  * Muutosmetodi yleiselle kulmalle. Asetettu arvo muutetaan asteiksi,
- * jos annettu yksikkˆ on radiaani. Asteille suoritetaan ainoastaan
- * negatiivisuus tarkistus, mink‰ voi olettaa bugiksi. Jostain syyst‰
- * korrekti koodi on vaan kommentoitu pois. Ei pit‰isi luottaa
- * k‰ytt‰j‰‰n n‰in paljon.
+ * jos annettu yksikk√∂ on radiaani. Asteille suoritetaan ainoastaan
+ * negatiivisuus tarkistus, mink√§ voi olettaa bugiksi. Jostain syyst√§
+ * korrekti koodi on vaan kommentoitu pois. Ei pit√§isi luottaa
+ * k√§ytt√§j√§√§n n√§in paljon.
  *
- * \bug Ei varmista kunnolla, ett‰ kulma on sallituissa rajoissa.
+ * \bug Ei varmista kunnolla, ett√§ kulma on sallituissa rajoissa.
  *
  * \param theValue Undocumented
  * \param theUnit Undocumented
@@ -69,9 +69,9 @@ void NFmiAngle::SetValue(double theValue, FmiAngleUnit theUnit)
 
 // ======================================================================
 /*!
- * Suurempi-kuin vertailuoperaattori kulmille. T‰m‰ on periaatteessa
- * v‰‰rin, standardi komposiitit vaativat nimenomaan < ja == operaattorien
- * m‰‰rittelyn. Eli, nyt kulmia ei saa esim. laitettua listaan.
+ * Suurempi-kuin vertailuoperaattori kulmille. T√§m√§ on periaatteessa
+ * v√§√§rin, standardi komposiitit vaativat nimenomaan < ja == operaattorien
+ * m√§√§rittelyn. Eli, nyt kulmia ei saa esim. laitettua listaan.
  *
  * \param theAngle Undocumented
  * \return Undocumented
@@ -85,9 +85,9 @@ bool NFmiAngle::operator>(const NFmiAngle& theAngle) const
 
 // ======================================================================
 /*!
- * Lis‰ysoperaattori.
+ * Lis√§ysoperaattori.
  *
- * \bug Toteutus vaikuttaa tyhm‰lt‰. Miksei k‰ytet‰ SetValue metodia,
+ * \bug Toteutus vaikuttaa tyhm√§lt√§. Miksei k√§ytet√§ SetValue metodia,
  * vaan luodaan turha temppi?
  *
  * \param theAngle Undocumented
@@ -103,9 +103,9 @@ NFmiAngle& NFmiAngle::operator+=(const NFmiAngle& theAngle)
 
 // ======================================================================
 /*!
- * V‰hennysoperaattori.
+ * V√§hennysoperaattori.
  *
- * \bug Toteutus vaikuttaa tyhm‰lt‰. Miksei k‰ytet‰ SetValue metodia,
+ * \bug Toteutus vaikuttaa tyhm√§lt√§. Miksei k√§ytet√§ SetValue metodia,
  * vaan luodaan turha temppi?
  *
  * \param theAngle Undocumented
@@ -121,7 +121,7 @@ NFmiAngle& NFmiAngle::operator-=(const NFmiAngle& theAngle)
 
 // ======================================================================
 /*!
- * Konstruktori luokalle NFmiWindDirection asettaa sis‰iset arvot k‰ytt‰en
+ * Konstruktori luokalle NFmiWindDirection asettaa sis√§iset arvot k√§ytt√§en
  * NFmiAngle luokan SetValue metodia, jotta mahdollinen kulmamuunnos tulee
  * suoritetuksi, ja kulman rajat tarkistetuiksi.
  *
@@ -137,9 +137,9 @@ NFmiWindDirection::NFmiWindDirection(double theValue, FmiAngleUnit theUnit)
 
 // ======================================================================
 /*!
- * Spesiaalikonstruktori luokalle NFmiWindDirection asettaa sis‰iset arvot
+ * Spesiaalikonstruktori luokalle NFmiWindDirection asettaa sis√§iset arvot
  * perustuen tuulen U- ja V-komponentteihin. Jos kumpi tahansa komponentti
- * on kFloatMissing, asetetaan myˆs kulma puuttuvaksi.
+ * on kFloatMissing, asetetaan my√∂s kulma puuttuvaksi.
  *
  * \param theU Undocumented
  * \param theV Undocumented
@@ -166,12 +166,12 @@ NFmiWindDirection::NFmiWindDirection(double theU, double theV) : NFmiAngle()
 
 // ======================================================================
 /*!
- * V‰hennysoperaattori.
+ * V√§hennysoperaattori.
  *
- * \bug Siis, jos suunta on operaation j‰lkeen > 180, esim. 200, niin
- * 360-200 = 160, uusi suunta. T‰m‰h‰n on peilausta eik‰ moduloa.
- * Mik‰ hiton logiikka t‰ss‰ on? Onkos n‰iss‰ luokissa kaikki vialla?
- * Itse toteutuskin on omituinen temppiluokkineen. Koko perint‰
+ * \bug Siis, jos suunta on operaation j√§lkeen > 180, esim. 200, niin
+ * 360-200 = 160, uusi suunta. T√§m√§h√§n on peilausta eik√§ moduloa.
+ * Mik√§ hiton logiikka t√§ss√§ on? Onkos n√§iss√§ luokissa kaikki vialla?
+ * Itse toteutuskin on omituinen temppiluokkineen. Koko perint√§
  * on hieman omituista, kaikki virtuaalimetodit puuttuvat.
  *
  * \param theAngle Undocumented
@@ -188,7 +188,7 @@ NFmiWindDirection& NFmiWindDirection::operator-=(const NFmiWindDirection& theAng
 
 // ======================================================================
 /*!
- * Konstruktori luokalle NFmiLatitude asettaa sis‰iset arvot k‰ytt‰en
+ * Konstruktori luokalle NFmiLatitude asettaa sis√§iset arvot k√§ytt√§en
  * NFmiLatitude luokan SetValue metodia, jotta mahdollinen kulmamuunnos tulee
  * suoritetuksi, ja kulman rajat tarkistetuiksi.
  *
@@ -200,13 +200,13 @@ NFmiWindDirection& NFmiWindDirection::operator-=(const NFmiWindDirection& theAng
 NFmiLatitude::NFmiLatitude(double theAngle, FmiAngleUnit theUnit) { SetValue(theAngle, theUnit); }
 // ======================================================================
 /*!
- * Asetusmetodi latitudille. Metodi varmistaa, ett‰ annettu arvo
- * rajoitetaan v‰lille -90 <= latitudi <= 90.
+ * Asetusmetodi latitudille. Metodi varmistaa, ett√§ annettu arvo
+ * rajoitetaan v√§lille -90 <= latitudi <= 90.
  *
- * \bug Annettu kulmayksikkˆ j‰tet‰‰n t‰ysin huomioimatta, selv‰stikin
- * oletetaan, ett‰ yksikkˆ on asteina. Lis‰ksi oletettujen
- * pyˆristysvirheiden korjailu on aina riskaabelia. Lis‰ksi SetValue
- * kutsuu joskus itse‰‰n uudelleen, mik‰ on v‰h‰n ihmeellist‰, kun
+ * \bug Annettu kulmayksikk√∂ j√§tet√§√§n t√§ysin huomioimatta, selv√§stikin
+ * oletetaan, ett√§ yksikk√∂ on asteina. Lis√§ksi oletettujen
+ * py√∂ristysvirheiden korjailu on aina riskaabelia. Lis√§ksi SetValue
+ * kutsuu joskus itse√§√§n uudelleen, mik√§ on v√§h√§n ihmeellist√§, kun
  * arvo kerran tunnetaan.
  *
  * \param theAngle Undocumented
@@ -230,7 +230,7 @@ void NFmiLatitude::SetValue(double theAngle, FmiAngleUnit theUnit)
 
 // ======================================================================
 /*!
- * V‰hennysoperaattori.
+ * V√§hennysoperaattori.
  *
  * \bug Ja taas luodaan turha temppi SetValue metodin kutsumisen sijaan.
  *
@@ -247,7 +247,7 @@ NFmiLatitude& NFmiLatitude::operator-=(const NFmiLatitude& theAngle)
 
 // ======================================================================
 /*!
- * Lis‰ysoperaattori
+ * Lis√§ysoperaattori
  *
  * \bug Ja taas luodaan turha temppi SetValue metodin kutsumisen sijaan.
  *
@@ -264,7 +264,7 @@ NFmiLatitude& NFmiLatitude::operator+=(const NFmiLatitude& theAngle)
 
 // ======================================================================
 /*!
- * V‰hennysoperaattori annetulla kulmalla.
+ * V√§hennysoperaattori annetulla kulmalla.
  *
  * \bug Ja taas luodaan turha temppi SetValue metodin kutsumisen sijaan.
  *
@@ -281,7 +281,7 @@ NFmiLatitude& NFmiLatitude::operator-=(const double& theAngle)
 
 // ======================================================================
 /*!
- * Lis‰ysoperaattori
+ * Lis√§ysoperaattori
  *
  * \bug Ja taas luodaan turha temppi SetValue metodin kutsumisen sijaan.
  *
@@ -298,7 +298,7 @@ NFmiLatitude& NFmiLatitude::operator+=(const double& theAngle)
 
 // ======================================================================
 /*!
- * Konstruktori luokalle NFmiLongitude asettaa sis‰iset arvot k‰ytt‰en
+ * Konstruktori luokalle NFmiLongitude asettaa sis√§iset arvot k√§ytt√§en
  * NFmiLongitude luokan SetValue metodia, jotta mahdollinen kulmamuunnos tulee
  * suoritetuksi, ja kulman rajat tarkistetuiksi.
  *
@@ -315,13 +315,13 @@ NFmiLongitude::NFmiLongitude(double theAngle, bool usePacificView, FmiAngleUnit 
 
 // ======================================================================
 /*!
- * Asetusmetodi longitudille. Metodi varmistaa, ett‰ annettu arvo
- * rajoitetaan v‰lille -180 <= latitudi <= 180.
+ * Asetusmetodi longitudille. Metodi varmistaa, ett√§ annettu arvo
+ * rajoitetaan v√§lille -180 <= latitudi <= 180.
  *
- * \bug Annettu kulmayksikkˆ j‰tet‰‰n t‰ysin huomioimatta, selv‰stikin
- * oletetaan, ett‰ yksikkˆ on asteina. Lis‰ksi k‰ytet‰‰n rekursiota
- * rajaehtojen toteuttamiseksi, kun pit‰isi k‰ytt‰‰ oikeata mod
- * k‰sky‰. Muuten k‰sky voi kest‰‰ tarpeettoman kauan. Mit‰ jos
+ * \bug Annettu kulmayksikk√∂ j√§tet√§√§n t√§ysin huomioimatta, selv√§stikin
+ * oletetaan, ett√§ yksikk√∂ on asteina. Lis√§ksi k√§ytet√§√§n rekursiota
+ * rajaehtojen toteuttamiseksi, kun pit√§isi k√§ytt√§√§ oikeata mod
+ * k√§sky√§. Muuten k√§sky voi kest√§√§ tarpeettoman kauan. Mit√§ jos
  * joku antaa arvon 100000? Monta iteraatiota menee...?
  *
  * \param theAngle Undocumented
@@ -361,7 +361,7 @@ void NFmiLongitude::SetValue(double theAngle, FmiAngleUnit theUnit)
 
 // ======================================================================
 /*!
- * V‰hennysoperaattori.
+ * V√§hennysoperaattori.
  *
  * \bug Ja taas luodaan turha temppi SetValue metodin kutsumisen sijaan.
  *
@@ -378,7 +378,7 @@ NFmiLongitude& NFmiLongitude::operator-=(const NFmiLongitude& theAngle)
 
 // ======================================================================
 /*!
- * Lis‰ysoperaattori
+ * Lis√§ysoperaattori
  *
  * \bug Ja taas luodaan turha temppi SetValue metodin kutsumisen sijaan.
  *
@@ -395,7 +395,7 @@ NFmiLongitude& NFmiLongitude::operator+=(const NFmiLongitude& theAngle)
 
 // ======================================================================
 /*!
- * V‰hennysoperaattori annetulla kulmalla.
+ * V√§hennysoperaattori annetulla kulmalla.
  *
  * \bug Ja taas luodaan turha temppi SetValue metodin kutsumisen sijaan.
  *
@@ -412,7 +412,7 @@ NFmiLongitude& NFmiLongitude::operator-=(const double& theAngle)
 
 // ======================================================================
 /*!
- * Lis‰ysoperaattori annetulla kulmalla.
+ * Lis√§ysoperaattori annetulla kulmalla.
  *
  * \bug Ja taas luodaan turha temppi SetValue metodin kutsumisen sijaan.
  *

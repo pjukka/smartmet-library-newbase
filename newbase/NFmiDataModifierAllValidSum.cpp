@@ -9,8 +9,8 @@
  *
  * Undocumented
  *
- * 2.5.2000/Lasse; k‰yt‰n sadesummiin
- * AllValid= vaatii ett‰ kaikki arvot ovat k‰ypi‰
+ * 2.5.2000/Lasse; k√§yt√§n sadesummiin
+ * AllValid= vaatii ett√§ kaikki arvot ovat k√§ypi√§
  *
  */
 // ======================================================================
@@ -63,7 +63,7 @@ void NFmiDataModifierAllValidSum::Calculate(float theValue)
 void NFmiDataModifierAllValidSum::Calculate(NFmiQueryInfo* theQI)
 {
   float value = theQI->FloatValue();
-  // kaikki pit‰‰ olla jotta ok
+  // kaikki pit√§√§ olla jotta ok
   if (CheckMissingValues(value))
   {
     if (itsCounter == 0) fCalculationResultOk = true;

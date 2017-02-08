@@ -31,13 +31,13 @@ class _FMI_DLL NFmiAreaMaskImpl : public NFmiAreaMask
   bool IsMasked(const NFmiPoint &theLatLon) const;
   double MaskValue(const NFmiPoint &theLatLon) const;
   double Value(const NFmiCalculationParams &theCalculationParams, bool fUseTimeInterpolationAlways);
-  // oletuksen‰ HeightValue palauttaa saman kuin Value-metodi, homma overridataan vain
+  // oletuksen√§ HeightValue palauttaa saman kuin Value-metodi, homma overridataan vain
   // NFmiInfoAreaMask-luokassa
   double HeightValue(double /* theHeight */, const NFmiCalculationParams &theCalculationParams)
   {
     return Value(theCalculationParams, false);
   };
-  // oletuksen‰ PressureValue palauttaa saman kuin Value-metodi, homma overridataan vain
+  // oletuksen√§ PressureValue palauttaa saman kuin Value-metodi, homma overridataan vain
   // NFmiInfoAreaMask-luokassa
   double PressureValue(double /* thePressure */, const NFmiCalculationParams &theCalculationParams)
   {
@@ -103,7 +103,7 @@ class _FMI_DLL NFmiAreaMaskImpl : public NFmiAreaMask
   void SetArguments(std::vector<float> & /* theArgumentVector */){};
   int FunctionArgumentCount(void) const { return itsFunctionArgumentCount; }
   void FunctionArgumentCount(int newValue) { itsFunctionArgumentCount = newValue; }
-  // HUOM! seuraavat toimivat oikeasti vain NFmiBinaryMask:in kanssa. T‰ss‰ vain tyhj‰t oletus
+  // HUOM! seuraavat toimivat oikeasti vain NFmiBinaryMask:in kanssa. T√§ss√§ vain tyhj√§t oletus
   // toteutukset.
   void SetAll(bool /* theNewState */){};
   void Mask(int /* theIndex */, bool /* newStatus */){};
@@ -117,18 +117,18 @@ class _FMI_DLL NFmiAreaMaskImpl : public NFmiAreaMask
   Type itsMaskType;
   NFmiInfoData::Type itsDataType;
   CalculationOperationType itsCalculationOperationType;
-  // Jos maskeja lista, t‰m‰n operaation mukaan lasketaan maskit yhteen esim. NOT, AND ja OR
+  // Jos maskeja lista, t√§m√§n operaation mukaan lasketaan maskit yhteen esim. NOT, AND ja OR
   CalculationOperator
-      itsCalculationOperator;  // myˆs smarttool systeemi, pit‰isi suunnitella uusiksi!
+      itsCalculationOperator;  // my√∂s smarttool systeemi, pit√§isi suunnitella uusiksi!
   BinaryOperator itsPostBinaryOperator;
   MathFunctionType itsMathFunctionType;
   FunctionType itsFunctionType;  // onko mahd. funktio esim. min, max jne. (ei matemaattisia
                                  // funktioita kuten sin, cos, pow, jne.)
-  FunctionType itsSecondaryFunctionType;  // t‰ss‰ on ainakin vertikaali funktioiden lasku tapa
-                                          // VertP, VertZ, VertFL ja VertHyb eli miss‰ vertikaali
+  FunctionType itsSecondaryFunctionType;  // t√§ss√§ on ainakin vertikaali funktioiden lasku tapa
+                                          // VertP, VertZ, VertFL ja VertHyb eli miss√§ vertikaali
                                           // asteikossa operoidaan
   MetFunctionDirection itsMetFunctionDirection;  // grad, adv, div rot ja lap -funktioille (ja
-                                                 // n‰iden 2-versioille) m‰‰r‰t‰‰n myˆs suunta, joka
+                                                 // n√§iden 2-versioille) m√§√§r√§t√§√§n my√∂s suunta, joka
                                                  // voi olla X, Y tai molemmat
   int itsIntegrationFunctionType;  // 1=SumT tyylinen ja 2=SumZ tyylinen ja 3=MinH tyylinen funktio
   int itsFunctionArgumentCount;
@@ -191,7 +191,7 @@ inline void NFmiAreaMaskImpl::UpdateInfo(boost::shared_ptr<NFmiFastQueryInfo> & 
 inline NFmiInfoData::Type NFmiAreaMaskImpl::GetDataType(void) const { return itsDataType; }
 // ----------------------------------------------------------------------
 /*!
- *†\param theType Undocumented
+ *¬†\param theType Undocumented
  */
 // ----------------------------------------------------------------------
 

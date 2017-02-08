@@ -67,7 +67,7 @@ NFmiCombinedParam::NFmiCombinedParam(double theInfoVersion)
 NFmiCombinedParam::NFmiCombinedParam(const NFmiCombinedParam &theParam)
     : itsSubParams(theParam.itsSubParams ? new NFmiParamBag(*theParam.itsSubParams) : 0),
       itsIntegrators(
-          0)  // T‰ss‰ pit‰isi k‰ytt‰‰ ParamModifierListin copy construktoria, vaan ei ole viel‰
+          0)  // T√§ss√§ pit√§isi k√§ytt√§√§ ParamModifierListin copy construktoria, vaan ei ole viel√§
       ,
       fIntegrationMode(theParam.fIntegrationMode),
       fIntegrationReady(theParam.fIntegrationReady),
@@ -83,7 +83,7 @@ NFmiCombinedParam::NFmiCombinedParam(const NFmiCombinedParam &theParam)
     for (int i = 0; i < size; i++)
       itsIntegrators[i] = new NFmiDataModifierCombi(*theParam.itsIntegrators[i]);
   }
-  //	InitIntegration();//T‰m‰ pit‰isi tehd‰ kopioimalla
+  //	InitIntegration();//T√§m√§ pit√§isi tehd√§ kopioimalla
   //	CreateIntegrators();
 }
 
@@ -100,7 +100,7 @@ NFmiCombinedParam &NFmiCombinedParam::operator=(const NFmiCombinedParam &thePara
   if (this != &theParam)
   {
     itsSubParams = (theParam.itsSubParams ? new NFmiParamBag(*theParam.itsSubParams) : 0);
-    itsIntegrators = 0;  // T‰ss‰ pit‰isi k‰ytt‰‰ ParamModifierListin operator=, vaan ei ole viel‰
+    itsIntegrators = 0;  // T√§ss√§ pit√§isi k√§ytt√§√§ ParamModifierListin operator=, vaan ei ole viel√§
     fIntegrationMode = theParam.fIntegrationMode;
     fIntegrationReady = theParam.fIntegrationReady;
     fIntegrationStarted = theParam.fIntegrationStarted;
@@ -115,7 +115,7 @@ NFmiCombinedParam &NFmiCombinedParam::operator=(const NFmiCombinedParam &thePara
       for (int i = 0; i < size; i++)
         itsIntegrators[i] = new NFmiDataModifierCombi(*theParam.itsIntegrators[i]);
     }
-    //	InitIntegration();//T‰m‰ pit‰isi tehd‰ kopioimalla
+    //	InitIntegration();//T√§m√§ pit√§isi tehd√§ kopioimalla
     //	CreateIntegrators();
   }
   return *this;
@@ -163,9 +163,9 @@ unsigned long NFmiCombinedParam::ConvertFloatToLong(float theValue)
 {
   // MSVC60:ssa on bugi ja ylempi rivi (if(theValue == kFloatMissing)) ei toimi oikein
   // TotalWind-arvoille,
-  // jotka tulkitaan jotenkin NaN:eiksi ja ylemm‰ss‰ versiossa tulee true vertailussa. Alempi joka
-  // on k‰yt‰nnˆss‰
-  // sama toimii oikein molemmissa k‰‰nt‰j‰ versioissa (MSVC60 ja MSVC71).
+  // jotka tulkitaan jotenkin NaN:eiksi ja ylemm√§ss√§ versiossa tulee true vertailussa. Alempi joka
+  // on k√§yt√§nn√∂ss√§
+  // sama toimii oikein molemmissa k√§√§nt√§j√§ versioissa (MSVC60 ja MSVC71).
 
   //  if(theValue == kFloatMissing)
   if (theValue == 32700.0F) return kTCombinedWeatherMissing;
@@ -244,7 +244,7 @@ void NFmiCombinedParam::EndIntegration(void)
       {
         //				SubValue(integrator->CalculationResult(),
         //itsSubParams->CurrentParam());
-        /////Persa poisti koska yritt‰‰ toisella tavalla tuloksia
+        /////Persa poisti koska yritt√§√§ toisella tavalla tuloksia
         ///				SubValue(integrator->CalcResult(kFmiMean),
         ///itsSubParams->CurrentParam());
       }

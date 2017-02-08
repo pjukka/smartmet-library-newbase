@@ -37,7 +37,7 @@ namespace NFmiDataIntegrator
  * \param theQI The query info
  * \param theStartTime The start time of the integration.
  * \param theEndTime The end time of the integration.
- * \param theTimeModifier The modifier for accumulating the result
+ *Â \param theTimeModifier The modifier for accumulating the result
  * \return The accumulation result
  */
 // ----------------------------------------------------------------------
@@ -79,7 +79,7 @@ float Integrate(NFmiFastQueryInfo& theQI,
  * \param theStartTime The start time of the integration.
  * \param theEndTime The end time of the integration.
  * \param theInterval The sub interval in hours
- * \param theSubTimeModifier The modifier for accumulating the subresult
+ *Â \param theSubTimeModifier The modifier for accumulating the subresult
  * \param theMainTimeModifier The modifier for subresults
  * \return The accumulation result
  */
@@ -135,7 +135,7 @@ float Integrate(NFmiFastQueryInfo& theQI,
  *
  * \param theQI The query info
  * \param theIndexMask The mask containing the space indices
- * \param theSpaceModifier The modifier for accumulating the result
+ *Â \param theSpaceModifier The modifier for accumulating the result
  * \return The accumulation result
  */
 // ----------------------------------------------------------------------
@@ -173,7 +173,7 @@ float Integrate(NFmiFastQueryInfo& theQI,
  * \param theSpaceModifier  The modifier for accumulating the space result
  * \param theStartTime The start time of the integration.
  * \param theEndTime The end time of the integration.
- * \param theTimeModifier The modifier for accumulating the time result
+ *Â \param theTimeModifier The modifier for accumulating the time result
  * \return The accumulation result
  */
 // ----------------------------------------------------------------------
@@ -214,7 +214,7 @@ float Integrate(NFmiFastQueryInfo& theQI,
  * \param theQI The query info
  * \param theStartTime The start time of the integration.
  * \param theEndTime The end time of the integration.
- * \param theTimeModifier The modifier for accumulating the time result
+ *Â \param theTimeModifier The modifier for accumulating the time result
  * \param theIndexMask The mask containing the space indices
  * \param theSpaceModifier The modifier for accumulating the space result
  * \return The accumulation result
@@ -270,7 +270,7 @@ float Integrate(NFmiFastQueryInfo& theQI,
  * \param theSpaceModifier  The modifier for accumulating the space result
  * \param theStartTime The start time of the integration.
  * \param theEndTime The end time of the integration.
- * \param theTimeModifier The modifier for accumulating the time result
+ *Â \param theTimeModifier The modifier for accumulating the time result
  * \return The accumulation result
  */
 // ----------------------------------------------------------------------
@@ -320,7 +320,7 @@ float Integrate(NFmiFastQueryInfo& theQI,
  * \param theStartTime The start time of the integration.
  * \param theEndTime The end time of the integration.
  * \param theInterval The number of hours in a single interval
- * \param theSubTimeModifier The modifier for accumulating sub periods
+ *Â \param theSubTimeModifier The modifier for accumulating sub periods
  * \param theMainTimeModifier The modifier for accumulating sub period results
  * \param theIndexMask The mask containing the space indices
  * \param theSpaceModifier The modifier for accumulating the space result

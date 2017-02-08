@@ -7,7 +7,7 @@
 /*!
  * \class NFmiIndexMaskSource
  *
- * \brief Provides masks for any desired time.
+ *Â \brief Provides masks for any desired time.
  *
  * A NFmiIndexMaskSource object stores NFmiIndexMask objects
  * for the user specified times. When requested a mask for

@@ -146,7 +146,7 @@ void NFmiVoidPtrList::Remove(NFmiVoidPtrData *removeValue)
 // ----------------------------------------------------------------------
 
 void NFmiVoidPtrList::Clear(
-    bool /* doDelete */)  // miksi ei tarkisteta t‰t‰ ja j‰tet‰ deletoimatta tarvittaessa?
+    bool /* doDelete */)  // miksi ei tarkisteta t√§t√§ ja j√§tet√§ deletoimatta tarvittaessa?
 {
   while (itsFirstItem)
   {

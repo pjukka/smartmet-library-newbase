@@ -67,7 +67,7 @@ void NFmiDataModifierExtremePlace::Calculate(float theValue, NFmiQueryInfo* theQ
     if (IsNewExtreme(theValue))
     {
       itsExtremeValue = theValue;
-      // TÄSSÄ SAA
+      // TÃ„SSÃ„ SAA
       SetLocation(theQI);
     }
   }

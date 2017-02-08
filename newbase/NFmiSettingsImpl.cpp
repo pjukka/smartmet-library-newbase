@@ -205,7 +205,7 @@ namespace
 
 string readfile(const std::string& filename)
 {
-  ifstream in(filename.c_str(), ios::in);
+  ifstream in(filename.c_str(), std::ios::binary);
   if (!in) throw runtime_error("Failed to open " + filename + " for reading");
   return NFmiStringTools::ReadFile(in);
 }
@@ -509,7 +509,7 @@ void NFmiSettingsImpl::Set(const std::string& theName,
   DataType::iterator foundIter = itsData.find(theName);
   if ((modifyOnlyExisting && foundIter == itsData.end()) ||
       (foundIter != itsData.end() && theValue == foundIter->second))
-    return;  // Jos asetettavaa arvoa ei löydy asetuksista TAI sen arvo ei muutu, ei tehdä mitään
+    return;  // Jos asetettavaa arvoa ei lÃ¶ydy asetuksista TAI sen arvo ei muutu, ei tehdÃ¤ mitÃ¤Ã¤n
 
   pair<DataType::iterator, bool> result = itsData.insert(make_pair(theName, expanded));
 
@@ -549,7 +549,7 @@ void NFmiSettingsImpl::InternalSet(const std::string& theName, const std::string
  */
 // ----------------------------------------------------------------------
 
-#undef SearchPath  // win32 macro pitää undefinata
+#undef SearchPath  // win32 macro pitÃ¤Ã¤ undefinata
 void NFmiSettingsImpl::SearchPath(const std::string& thePath) const
 {
   itsSearchPath.push_back(thePath);
@@ -768,7 +768,7 @@ void NFmiSettingsImpl::Save() const
     FileMap::iterator foundIter = itsFilenames.find(*it);
     if (foundIter != itsFilenames.end())
       modified_files.insert(foundIter->second);  // laitetaan vain niiden tiedostojen nimet mukaan,
-                                                 // missä oli muuttuneita muuttujia
+                                                 // missÃ¤ oli muuttuneita muuttujia
   }
   /*
     std::set<string> modified_files;

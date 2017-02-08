@@ -80,14 +80,14 @@ bool NFmiDataModifierMask::BoolOperation(float theValue)
     case kFmiMaskAll:
       return true;
     case kFmiMaskRisingRamp:
-      return (theValue > its1Limit);  // t‰h‰n ei ole oikeastaan kunnon tarkastelua, todellinen
-                                      // k‰yttˆ kun lasketaan maskikertoimia!
+      return (theValue > its1Limit);  // t√§h√§n ei ole oikeastaan kunnon tarkastelua, todellinen
+                                      // k√§ytt√∂ kun lasketaan maskikertoimia!
     case kFmiMaskLoweringRamp:
-      return (theValue < its1Limit);  // t‰h‰n ei ole oikeastaan kunnon tarkastelua, todellinen
-                                      // k‰yttˆ kun lasketaan maskikertoimia!
+      return (theValue < its1Limit);  // t√§h√§n ei ole oikeastaan kunnon tarkastelua, todellinen
+                                      // k√§ytt√∂ kun lasketaan maskikertoimia!
     case kFmiMaskDoubleRamp:
-      return (theValue < its1Limit);  // t‰h‰n ei ole oikeastaan kunnon tarkastelua, todellinen
-                                      // k‰yttˆ kun lasketaan maskikertoimia!
+      return (theValue < its1Limit);  // t√§h√§n ei ole oikeastaan kunnon tarkastelua, todellinen
+                                      // k√§ytt√∂ kun lasketaan maskikertoimia!
   }
   return false;
 }

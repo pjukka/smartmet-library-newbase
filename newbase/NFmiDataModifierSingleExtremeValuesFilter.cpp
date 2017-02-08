@@ -7,7 +7,7 @@
 /*!
  * \class NFmiDataModifierSingleExtremeValuesFilter
  *
- * Poistaa yksitt‰iset ‰‰rikaiut, jotka ylitt‰v‰t annetun raja-arvon (itsLimit),
+ * Poistaa yksitt√§iset √§√§rikaiut, jotka ylitt√§v√§t annetun raja-arvon (itsLimit),
  * mm. Tallinnan laivat
  *
  */

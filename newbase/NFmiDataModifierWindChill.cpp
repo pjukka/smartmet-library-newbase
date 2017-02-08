@@ -7,12 +7,12 @@
 /*!
  * \class NFmiDataModifierWindChill
  *
- * Luokka laskee wind chill arvon siten ett‰ pyyt‰‰ info:lta l‰pˆtilan
+ * Luokka laskee wind chill arvon siten ett√§ pyyt√§√§ info:lta l√§p√∂tilan
  * ja tuulen nopeuden arvon ja laskee wind chilin niiden avulla.
- * K‰ytet‰‰n esim. queryInfo->CalcTimeData:n yhteydess‰.
+ * K√§ytet√§√§n esim. queryInfo->CalcTimeData:n yhteydess√§.
  *
- * Modifier ottaa parametrina viel‰ toisen modifierin jonka avulla voidaan
- * laskea esim. max tai min arvo jonkin p‰iv‰n ajalta.
+ * Modifier ottaa parametrina viel√§ toisen modifierin jonka avulla voidaan
+ * laskea esim. max tai min arvo jonkin p√§iv√§n ajalta.
  *
  */
 // ======================================================================
@@ -71,10 +71,10 @@ void NFmiDataModifierWindChill::Calculate(float /* theValue */)
   {
     FmiParameterName oldParam = FmiParameterName(itsQueryInfo->Param().GetParamIdent());
 
-    // unsigned long oldPlaceIndex = itsQueryInfo->LocationIndex(); // t‰m‰ toimii vain uudessa
+    // unsigned long oldPlaceIndex = itsQueryInfo->LocationIndex(); // t√§m√§ toimii vain uudessa
     // newbase:ssa (parempi!)
     NFmiPoint oldLatlon(
-        itsQueryInfo->LatLon());  // kommentoi t‰m‰ kun uusi versio k‰ytˆss‰!!!!!!!!!
+        itsQueryInfo->LatLon());  // kommentoi t√§m√§ kun uusi versio k√§yt√∂ss√§!!!!!!!!!
 
     float T = kFloatMissing;
     if (itsQueryInfo->Param(FmiParameterName(itsTemperatureParamId)))
@@ -86,11 +86,11 @@ void NFmiDataModifierWindChill::Calculate(float /* theValue */)
     itsDataModifier->Calculate(FmiWindChill(WS, T));
     itsQueryInfo->Param(oldParam);  // palauta parametri alkutilaan!!
 
-    // itsQueryInfo->LocationIndex(oldPlaceIndex); // t‰m‰ toimii vain uudessa newbase:ssa
-    // (parempi!) // palauta vanha paikka myˆs (pit‰isikˆh‰n
-    // itsQueryInfo->InterpolatedValue(itsLatLonPoint); -metodi muuttaa niin ett‰ paikka ei
+    // itsQueryInfo->LocationIndex(oldPlaceIndex); // t√§m√§ toimii vain uudessa newbase:ssa
+    // (parempi!) // palauta vanha paikka my√∂s (pit√§isik√∂h√§n
+    // itsQueryInfo->InterpolatedValue(itsLatLonPoint); -metodi muuttaa niin ett√§ paikka ei
     // muutu???)
-    itsQueryInfo->Location(oldLatlon);  // kommentoi t‰m‰ kun uusi versio k‰ytˆss‰!!!!!!!!!
+    itsQueryInfo->Location(oldLatlon);  // kommentoi t√§m√§ kun uusi versio k√§yt√∂ss√§!!!!!!!!!
   }
   return;
 }

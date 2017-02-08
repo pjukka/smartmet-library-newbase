@@ -140,9 +140,9 @@ NFmiStereographicArea::NFmiStereographicArea(double theRadialRangeInMeters,
                                              const NFmiPoint &theBottomRightXY)
     : NFmiAzimuthalArea(theRadialRangeInMeters, theCenterLatLon, theTopLeftXY, theBottomRightXY)
 {
-  // Muodostaa projektioalueen rajaamalla "world-xy"-tasossa 'theRadialRangeInMeters'-s‰teiselle
-  // ympyr‰lle
-  // "bounding-boxin", jonka keskipisteen‰ on maantiet. piste 'theCenterLatLon'
+  // Muodostaa projektioalueen rajaamalla "world-xy"-tasossa 'theRadialRangeInMeters'-s√§teiselle
+  // ympyr√§lle
+  // "bounding-boxin", jonka keskipisteen√§ on maantiet. piste 'theCenterLatLon'
 
   itsTrueLatScaleFactor =
       (DistanceFromPerspectivePointToCenterOfEarth() + kRearth * itsTrueLatitude.Sin()) /
@@ -196,8 +196,8 @@ NFmiStereographicArea::NFmiStereographicArea(const NFmiPoint &theBottomLeftLatLo
                           itsBottomLeftWorldXY + NFmiPoint(theWidthInMeters, theHeightInMeters));
 
   Init(true);
-  // 28.8.2001/Marko&Esa itsWorldRect on laskettu sellaisilla argumenteilla t‰ss‰,
-  // mitk‰ eiv‰t ole dataosia, joten sit‰ ei saa laskea Init:iss‰ uudestaan
+  // 28.8.2001/Marko&Esa itsWorldRect on laskettu sellaisilla argumenteilla t√§ss√§,
+  // mitk√§ eiv√§t ole dataosia, joten sit√§ ei saa laskea Init:iss√§ uudestaan
 }
 
 // ----------------------------------------------------------------------
@@ -237,7 +237,7 @@ NFmiStereographicArea::NFmiStereographicArea(const double theRadialRange,
   NFmiAzimuthalArea::Init(true);
 
   // 28.8.2001/Marko&Esa itsWorldRect on laskettu sellaisilla argumenteilla
-  // t‰ss‰, mitk‰ eiv‰t ole dataosia, joten sit‰ ei saa laskea Init:iss‰ uudestaan
+  // t√§ss√§, mitk√§ eiv√§t ole dataosia, joten sit√§ ei saa laskea Init:iss√§ uudestaan
 }
 
 // ----------------------------------------------------------------------

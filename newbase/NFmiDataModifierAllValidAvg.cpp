@@ -9,7 +9,7 @@
  *
  * Undocumented
  *
- * AllValid= vaatii ett‰ kaikki arvot ovat k‰ypi‰
+ * AllValid= vaatii ett√§ kaikki arvot ovat k√§ypi√§
  *
  */
 // ======================================================================

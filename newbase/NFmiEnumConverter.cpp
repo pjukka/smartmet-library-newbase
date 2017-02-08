@@ -521,6 +521,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("GrowthPeriodPrecipitationSumDeviationInPrcnt",
               kFmiGrowthPeriodPrecipitationSumDeviationInPrcnt);
   PARAMINSERT("GrowthPeriodStarted", kFmiGrowthPeriodStarted);
+  PARAMINSERT("HakeMessageType", kFmiHakeMessageType);
   PARAMINSERT("HaKeTaskCode", kFmiHaKeTaskCode);
   PARAMINSERT("HeightMinus20C", kFmiHeightMinus20C);
   PARAMINSERT("Helicity", kFmiHelicity);

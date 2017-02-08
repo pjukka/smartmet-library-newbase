@@ -234,7 +234,7 @@ NFmiIndexMask::const_iterator NFmiIndexMask::end(void) const
  * \brief Equality comparison
  *
  * \param theMask The mask to compare with
- * \return True if the masks are equal
+ *Â \return True if the masks are equal
  */
 // ----------------------------------------------------------------------
 
@@ -251,7 +251,7 @@ bool NFmiIndexMask::operator==(const NFmiIndexMask& theMask) const
  * \brief Inequality comparison
  *
  * \param theMask The mask to compare with
- * \return True if the masks are not equal
+ *Â \return True if the masks are not equal
  */
 // ----------------------------------------------------------------------
 
@@ -267,7 +267,7 @@ bool NFmiIndexMask::operator!=(const NFmiIndexMask& theMask) const
  * \brief AND operation with given mask
  *
  * \param theMask The mask to AND with
- * \return This
+ *Â \return This
  */
 // ----------------------------------------------------------------------
 
@@ -293,7 +293,7 @@ NFmiIndexMask& NFmiIndexMask::operator&=(const NFmiIndexMask& theMask)
  * \brief OR operation with given mask
  *
  * \param theMask The mask to OR with
- * \return This
+ *Â \return This
  */
 // ----------------------------------------------------------------------
 
@@ -317,7 +317,7 @@ NFmiIndexMask& NFmiIndexMask::operator|=(const NFmiIndexMask& theMask)
  * \brief DIFFERENCE operation with given mask
  *
  * \param theMask The mask to DIFFERENCE with
- * \return This
+ *Â \return This
  */
 // ----------------------------------------------------------------------
 
@@ -341,7 +341,7 @@ NFmiIndexMask& NFmiIndexMask::operator-=(const NFmiIndexMask& theMask)
  * \brief SYMMETRIC DIFFERENCE operation with given mask
  *
  * \param theMask The mask to SYMMETRIC DIFFERENCE with
- * \return This
+ *Â \return This
  */
 // ----------------------------------------------------------------------
 
@@ -460,8 +460,8 @@ void NFmiIndexMask::Move(int theXMove, int theYMove)
   // Have to have knowledge about the original grid in able to operate
   if (itsXSize && itsYSize)
   {
-    // pitää täyttää uusi set-otus, koska ei voida editoida suoraan
-    // set:issä olevaa dataa
+    // pitÃ¤Ã¤ tÃ¤yttÃ¤Ã¤ uusi set-otus, koska ei voida editoida suoraan
+    // set:issÃ¤ olevaa dataa
     storage_type tmpData;
     value_type origIndex = 0;
     int xPos = 0;

@@ -10,13 +10,13 @@
  *
  * Implements transformation from rectangular PKJ or YKJ coordinates into geodetic
  * coordinates and vice versa for the Finnish National Grid Coordinate System KKJ
- * (KartastoKoordinaattiJ‰rjestelm‰). For details see e.g. Matti Ollikainen in:
+ * (KartastoKoordinaattiJ√§rjestelm√§). For details see e.g. Matti Ollikainen in:
  * Geodeettinen Laitos Tiedote 8, 1993.
  *
- * The rectangular PKJ (PerusKoordinaattiJ‰rjestelm‰) coordinates are located on KKJ
+ * The rectangular PKJ (PerusKoordinaattiJ√§rjestelm√§) coordinates are located on KKJ
  * zones 1-4 with easting and northing in meters.
  *
- * The rectangular YKJ (Yhten‰isKoordinaattiJ‰rjestelm‰) coordinates are aligned to KKJ
+ * The rectangular YKJ (Yhten√§isKoordinaattiJ√§rjestelm√§) coordinates are aligned to KKJ
  * zone 3 only (central meridian 27 degrees) with easting and northing in meters.
  *
  * Projection used is Gauss-Krueger projection with Hayford's International Reference ellipsoid.

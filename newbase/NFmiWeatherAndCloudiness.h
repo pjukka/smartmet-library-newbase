@@ -1,7 +1,7 @@
 // ======================================================================
 /*!
  * \file NFmiWeatherAndCloudiness.h
- *†\brief Interface of class NFmiWeatherAndCloudiness
+ *¬†\brief Interface of class NFmiWeatherAndCloudiness
  */
 // ======================================================================
 
@@ -14,7 +14,7 @@
 extern "C" {
 #if defined(_MSC_VER) && \
     (_MSC_VER <          \
-     1600)  // stdint.h -headeria ei ole MSVC++ k‰‰nt‰jiss‰ ennen VC++ 2010 eli _MSC_VER < 1600
+     1600)  // stdint.h -headeria ei ole MSVC++ k√§√§nt√§jiss√§ ennen VC++ 2010 eli _MSC_VER < 1600
 typedef unsigned long uint32_t;
 #else
 #include <stdint.h>
@@ -280,29 +280,29 @@ class _FMI_DLL NFmiWeatherAndCloudiness : public NFmiCombinedParam
 
   void CalcClouds(unsigned long theCloudSymbol);
 
-  //! HUOM!! T‰m‰ debuggaus strukti ei toimi kuin little-endian koneissa ja infoversiolle 7
+  //! HUOM!! T√§m√§ debuggaus strukti ei toimi kuin little-endian koneissa ja infoversiolle 7
   struct FmiWeatherStruct
   {
     unsigned long TotalCloudiness : 4;  // 0...10 (10%), 15 = missing
     unsigned long LowClouds : 4;        // 0...10 (10%), 15 = missing
     unsigned long MiddleClouds : 4;     // 0...10 (10%), 15 = missing
     unsigned long HighClouds : 3;       // Marko testaa
-    ///////bitti lis‰‰
+    ///////bitti lis√§√§
     unsigned long TotalPrecipitation : 6;  // Marko testaa
     // lauran ehdotus: y=0.6*value^1.5
     unsigned long PrecipitationType : 2;  // 1=LargeScale, 2=Convective, (3 = missing?)
     unsigned long PrecipitationForm : 3;  // 0=drizzle, 1=rain, 2=sleet, 3=snow, 4=freezing
     unsigned long FogIntensity : 2;       // 0=noFog, 1=moderateFog, 2=denseFog, 3=missing
 
-    // ukkosen missing-arvo on 14 eik‰ 15 siksi, ett‰ kaikki bitit
-    // eiv‰t saa olla ykkˆsi‰ long->float muunnoksissa, t‰m‰n parametrin
-    // on oltava viimeisen‰ tai muuten puuttuvat tiedot k‰sitell‰‰n v‰‰rin.
+    // ukkosen missing-arvo on 14 eik√§ 15 siksi, ett√§ kaikki bitit
+    // eiv√§t saa olla ykk√∂si√§ long->float muunnoksissa, t√§m√§n parametrin
+    // on oltava viimeisen√§ tai muuten puuttuvat tiedot k√§sitell√§√§n v√§√§rin.
 
     unsigned long ThunderProbability : 4;  // 0...10 (10%), 14 = missing
 
   };  // struct FmiWeatherStruct
 
-  // TƒMƒ pit‰isi olla private, mutta GSM-kirjasto k‰ytt‰‰ 4.9.2000/Marko
+  // T√ÑM√Ñ pit√§isi olla private, mutta GSM-kirjasto k√§ytt√§√§ 4.9.2000/Marko
 
  public:
   unsigned long TotalCloudiness(void) const;
@@ -328,8 +328,8 @@ class _FMI_DLL NFmiWeatherAndCloudiness : public NFmiCombinedParam
   unsigned long FogIntensity(void) const;
   unsigned long ThunderProbability(void) const;
 
-  // puuttuvan arvon testit on syyt‰ tehd‰ n‰iden funktioiden kautta muuttuneen version myˆt‰
-  // sateelle ja yl‰pilville
+  // puuttuvan arvon testit on syyt√§ tehd√§ n√§iden funktioiden kautta muuttuneen version my√∂t√§
+  // sateelle ja yl√§pilville
 
   unsigned long TotalPrecipitationMissingValue(void) const;
   unsigned long HighCloudsMissingValue(void) const;
@@ -351,7 +351,7 @@ class _FMI_DLL NFmiWeatherAndCloudiness : public NFmiCombinedParam
   void SetFogIntensity(unsigned long theValue);
   void SetThunderProbability(unsigned long theValue);
 
-  //! T‰m‰n structin avulla debuggaus on helpompaa (toimii ainoastaan little-endian koneissa)
+  //! T√§m√§n structin avulla debuggaus on helpompaa (toimii ainoastaan little-endian koneissa)
   union FmiWeatherUnion
   {
     uint32_t longType;
@@ -364,18 +364,18 @@ class _FMI_DLL NFmiWeatherAndCloudiness : public NFmiCombinedParam
   } itsData;
 
   // kertoo, saako esim sateen tyypille tai olomuodolle antaa arvon, jos
-  // intensiteetti‰ kasvatetaan 0:sta. Laura lis‰si 17.3
+  // intensiteetti√§ kasvatetaan 0:sta. Laura lis√§si 17.3
   // bool fAutoUpdate;
 
-  float itsTemperature;  // sateen olomuodon p‰‰ttelyyn
+  float itsTemperature;  // sateen olomuodon p√§√§ttelyyn
 
-  int itsCrossCheckIndex;  // Marko lis‰si myˆhemp‰‰n tarpeeseen, pit‰‰ sis‰ll‰‰n tiedon, mit‰
-                           // CrossCheck-funktio muutti (jos muutti mit‰‰n)
+  int itsCrossCheckIndex;  // Marko lis√§si my√∂hemp√§√§n tarpeeseen, pit√§√§ sis√§ll√§√§n tiedon, mit√§
+                           // CrossCheck-funktio muutti (jos muutti mit√§√§n)
 
-  // staattista muuttujaa k‰ytet‰‰n kun TotalPrecipitation():ssa arvotaan pilvi‰ ja sateen tyyppi‰
-  // kun lis‰t‰‰n sadetta 'tyhj‰‰n' paikkaan, t‰ll‰ m‰‰r‰t‰‰n tuleeko sateesta kuuroa vai tasaista
-  // ja tuleeko kokonaispilvisyydest‰ 50 vai 100 prosenttista.
-  // 27.2.2001/Marko Jouduin siirt‰m‰‰n parametrin cpp-tiedostoon DLL ongelmien takia
+  // staattista muuttujaa k√§ytet√§√§n kun TotalPrecipitation():ssa arvotaan pilvi√§ ja sateen tyyppi√§
+  // kun lis√§t√§√§n sadetta 'tyhj√§√§n' paikkaan, t√§ll√§ m√§√§r√§t√§√§n tuleeko sateesta kuuroa vai tasaista
+  // ja tuleeko kokonaispilvisyydest√§ 50 vai 100 prosenttista.
+  // 27.2.2001/Marko Jouduin siirt√§m√§√§n parametrin cpp-tiedostoon DLL ongelmien takia
   //	static bool fDefaultPrecipitationTypeIsLargeScale;
 
  protected:

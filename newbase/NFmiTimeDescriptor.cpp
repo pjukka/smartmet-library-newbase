@@ -294,7 +294,7 @@ void NFmiTimeDescriptor::ExtendTimeBag(void)
 
   theFirstTime.ChangeByHours(-12);
   theFirstTime.SetTimeStep(
-      static_cast<short>(theResolution));  // Siirt‰‰ ajan l‰himm‰ksi UTC-lokeroksi
+      static_cast<short>(theResolution));  // Siirt√§√§ ajan l√§himm√§ksi UTC-lokeroksi
   theLastTime.ChangeByHours(12);
   theLastTime.SetTimeStep(static_cast<short>(theResolution));
 
@@ -448,7 +448,7 @@ bool NFmiTimeDescriptor::Time(const NFmiMetTime &theTime)
   {
     if (itsOriginTimeBag) return itsOriginTimeBag->SetCurrent(theTime);
   }
-  return false;  // assert:in paikka, ei saisi menn‰ t‰h‰n ????
+  return false;  // assert:in paikka, ei saisi menn√§ t√§h√§n ????
 }
 
 // ----------------------------------------------------------------------
@@ -520,9 +520,9 @@ void NFmiTimeDescriptor::OriginTime(const NFmiMetTime &newTime)
 {
   if (!itsTimeBagIdent)
   {
-    // en tied‰ miten t‰m‰ pit‰isi oikeasti hoitaa, t‰t‰ 'origintimebag' featurea ei ole oikeasti
-    // k‰ytetty.
-    // siirr‰n kuitenkin koko origintimebagia niin ett‰ se alkaa annetusta origintimesta
+    // en tied√§ miten t√§m√§ pit√§isi oikeasti hoitaa, t√§t√§ 'origintimebag' featurea ei ole oikeasti
+    // k√§ytetty.
+    // siirr√§n kuitenkin koko origintimebagia niin ett√§ se alkaa annetusta origintimesta
     NFmiMetTime lastTime(newTime);
     lastTime.ChangeByMinutes(
         itsOriginTimeBag->LastTime().DifferenceInMinutes(itsOriginTimeBag->FirstTime()));
@@ -541,7 +541,7 @@ void NFmiTimeDescriptor::OriginTime(const NFmiMetTime &newTime)
 /*!
  * \return Undocumented
  *
- *†\bug Using a global static is risky in here, perhaps the return
+ *¬†\bug Using a global static is risky in here, perhaps the return
  *      value should be a value instead of a reference instead?
  *      What does the last else-branch do anyway?
  */
@@ -561,8 +561,8 @@ const NFmiMetTime &NFmiTimeDescriptor::ValidTime(void) const
     }
     else
     {
-      // Origintimebag systeemej‰ ei tiet‰‰kseni k‰ytet‰ miss‰‰n, joten t‰t‰ ei ole testattu.
-      // TƒMƒ ei ole thread safetya koodia!!!!
+      // Origintimebag systeemej√§ ei tiet√§√§kseni k√§ytet√§ miss√§√§n, joten t√§t√§ ei ole testattu.
+      // T√ÑM√Ñ ei ole thread safetya koodia!!!!
       static NFmiMetTime dummyTime;
       dummyTime = itsOriginTimeBag->CurrentTime();
       dummyTime.NextMetTime(static_cast<short int>(
@@ -598,7 +598,7 @@ unsigned long NFmiTimeDescriptor::Index(void) const
 
 // ----------------------------------------------------------------------
 /*!
- * \Æeturn Undocumented
+ * \¬Æeturn Undocumented
  */
 // ----------------------------------------------------------------------
 
@@ -636,7 +636,7 @@ bool NFmiTimeDescriptor::IsEmpty(void) const
   {
     if (itsOriginTimeBag && IsOriginTime()) return itsOriginTimeBag->IsEmpty();
   }
-  return true;  // Jos ei kerran ole mit‰‰n aikarakennetta, niin on t‰m‰ kait sitten tyhj‰
+  return true;  // Jos ei kerran ole mit√§√§n aikarakennetta, niin on t√§m√§ kait sitten tyhj√§
 }
 
 // ----------------------------------------------------------------------
@@ -691,7 +691,7 @@ NFmiTimeBag NFmiTimeDescriptor::GetActivePeriod(void)
 // ----------------------------------------------------------------------
 /*!
  * \param theActivityState Undocumented
- *†\param thePeriod Undocumented
+ *¬†\param thePeriod Undocumented
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
@@ -927,11 +927,11 @@ bool NFmiTimeDescriptor::operator==(const NFmiTimeDescriptor &theTimeDescriptor)
 
 // ----------------------------------------------------------------------
 /*!
- * \param theCombine This-otus ja theCombine yhdistet‰‰n halutulla tavalla.
- * \param theStartTimeFunction Mist‰ otetaan alkuaika, jos 0, pienempi,
- *				jos 1 otetaan this:ist‰ ja jos 2 otetaan theBag:ista.
- * \param theEndTimeFunction Mist‰ otetaan loppuaika, jos 0, suurempi,
- *				jos 1 otetaan this:ist‰ ja jos 2 otetaan theBag:ista.
+ * \param theCombine This-otus ja theCombine yhdistet√§√§n halutulla tavalla.
+ * \param theStartTimeFunction Mist√§ otetaan alkuaika, jos 0, pienempi,
+ *				jos 1 otetaan this:ist√§ ja jos 2 otetaan theBag:ista.
+ * \param theEndTimeFunction Mist√§ otetaan loppuaika, jos 0, suurempi,
+ *				jos 1 otetaan this:ist√§ ja jos 2 otetaan theBag:ista.
  * \return Palautetaan yhdistetty timedescriptor.
  */
 // ----------------------------------------------------------------------
@@ -951,15 +951,15 @@ NFmiTimeDescriptor NFmiTimeDescriptor::Combine(const NFmiTimeDescriptor &theComb
           itsIsLocalTime,
           itsIsInterpolation);
     }
-    else if (itsTimeList && theCombine.itsTimeList)  // yhdistet‰‰n aikalistat
+    else if (itsTimeList && theCombine.itsTimeList)  // yhdistet√§√§n aikalistat
     {
       NFmiTimeList timeList =
           itsTimeList->Combine(*(theCombine.itsTimeList), theStartTimeFunction, theEndTimeFunction);
       return NFmiTimeDescriptor(
           itsOriginTimeBag->FirstTime(), timeList, itsIsLocalTime, itsIsInterpolation);
     }
-    else             // timebagi ja timelist sekaisin, ei voi yhdist‰‰
-      return *this;  // h‰t‰ ratkaisu, palautetaan this:in kopio kun ei voi yhdist‰‰
+    else             // timebagi ja timelist sekaisin, ei voi yhdist√§√§
+      return *this;  // h√§t√§ ratkaisu, palautetaan this:in kopio kun ei voi yhdist√§√§
   }
 
   return NFmiTimeDescriptor(
@@ -978,12 +978,12 @@ NFmiTimeDescriptor NFmiTimeDescriptor::Combine(const NFmiTimeDescriptor &theComb
 // ----------------------------------------------------------------------
 
 // Aktiivisuustila:
-// Toistaiseksi lukemisen yhteydess‰ varataan dynaamisen muisti sit‰ varten ja alustetaan
+// Toistaiseksi lukemisen yhteydess√§ varataan dynaamisen muisti sit√§ varten ja alustetaan
 // vakioilla 'true'; edelleen aktiivisuustilaa ei kirjoiteta Write()-metodissa
 
 std::ostream &NFmiTimeDescriptor::Write(std::ostream &file) const
 {
-  // Jos aikaa kasitell‰‰ listatyyppisen‰, kirjoitetaan aikalista
+  // Jos aikaa kasitell√§√§ listatyyppisen√§, kirjoitetaan aikalista
   // Muussa tapauksessa kirjoitetaan TimeBag
 
   if (itsTimeList)
@@ -1001,7 +1001,7 @@ std::ostream &NFmiTimeDescriptor::Write(std::ostream &file) const
 
   file << static_cast<unsigned long>(itsIsLocalTime) << " "  // Onko paikallista aikaa
        << itsIsInterpolation << " "                          // Interpoloidaanko
-       << itsIsOriginLastest << " "  // Haetaanko viimeisimm‰n tuotteen perusteella
+       << itsIsOriginLastest << " "  // Haetaanko viimeisimm√§n tuotteen perusteella
        << itsTimeBagIdent << " "     // Hakutapa
        << itsLocalTimeStep << " "    // Varalla
        << 0 << " "                   // Varalla
@@ -1162,10 +1162,10 @@ void NFmiTimeDescriptor::SetLocalTimes(const float theLongitude)
 
 // ----------------------------------------------------------------------
 /*!
- * Tekee sellaisen timedescriptorin, jossa on ajat halutulta v‰lilt‰
+ * Tekee sellaisen timedescriptorin, jossa on ajat halutulta v√§lilt√§
  * reunat mukaan lukien, ja joka palautetaan ulos.
- * Jos rajat ovat ohi kokonaan timedescriptorista ja viel‰ samaan suuntaan,
- * palautetaan tyhj‰ timedescriptor. Samoin k‰y jos rajojen sis‰‰n ei sovi yht‰‰n
+ * Jos rajat ovat ohi kokonaan timedescriptorista ja viel√§ samaan suuntaan,
+ * palautetaan tyhj√§ timedescriptor. Samoin k√§y jos rajojen sis√§√§n ei sovi yht√§√§n
  * timedescriptor aikaa.
  * \param theStartLimit Leikkausta rajoittava alkuaika.
  * \param theEndLimit Leikkausta rajoittava loppuaika.
@@ -1242,9 +1242,9 @@ bool NFmiTimeDescriptor::FindNearestTime(const NFmiMetTime &theTime,
 
 // ----------------------------------------------------------------------
 /*!
- * Karsii halutut ylim‰‰r‰iset ajat pois
+ * Karsii halutut ylim√§√§r√§iset ajat pois
  * \param theMaxTimeCount Kertoo kuinka monta aikaa saa olla maksimissaan.
- * \param fFromEnd kertoo, mist‰ p‰‰st‰ karsitaan ylim‰‰r‰iset pois.
+ * \param fFromEnd kertoo, mist√§ p√§√§st√§ karsitaan ylim√§√§r√§iset pois.
  */
 // ----------------------------------------------------------------------
 void NFmiTimeDescriptor::PruneTimes(int theMaxTimeCount, bool fFromEnd)
@@ -1263,12 +1263,12 @@ void NFmiTimeDescriptor::PruneTimes(int theMaxTimeCount, bool fFromEnd)
 
 // ----------------------------------------------------------------------
 /*!
- * Muuttaa timedescriptoria niin ett‰ annettu aika laitetaan firstTimeksi,
- * ja lastTimeksi lasketaan uusi arvo, niin ett‰ erotus ensimm‰isen ja
- * viimeisen ajan v‰lill‰ pysyy samana.
- * Timebagin tai timelistin rakenne ja resoluutio s‰ilyv‰t.
- * Lis‰ksi currentTime:ksi asetetaan theTime arvo eli 1. aika.
- * Myˆs originTimeksi laitetaan theTime.
+ * Muuttaa timedescriptoria niin ett√§ annettu aika laitetaan firstTimeksi,
+ * ja lastTimeksi lasketaan uusi arvo, niin ett√§ erotus ensimm√§isen ja
+ * viimeisen ajan v√§lill√§ pysyy samana.
+ * Timebagin tai timelistin rakenne ja resoluutio s√§ilyv√§t.
+ * Lis√§ksi currentTime:ksi asetetaan theTime arvo eli 1. aika.
+ * My√∂s originTimeksi laitetaan theTime.
  * \param theTime on timeDescriptorin uusi firstTime.
  */
 // ----------------------------------------------------------------------

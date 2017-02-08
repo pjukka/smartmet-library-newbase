@@ -14,7 +14,7 @@
 extern "C" {
 #if defined(_MSC_VER) && \
     (_MSC_VER <          \
-     1600)  // stdint.h -headeria ei ole MSVC++ k‰‰nt‰jiss‰ ennen VC++ 2010 eli _MSC_VER < 1600
+     1600)  // stdint.h -headeria ei ole MSVC++ k√§√§nt√§jiss√§ ennen VC++ 2010 eli _MSC_VER < 1600
 typedef unsigned long uint32_t;
 #else
 #include <stdint.h>
@@ -55,8 +55,8 @@ class _FMI_DLL NFmiTotalWind : public NFmiCombinedParam
   virtual unsigned long LongValue(void) const;
   virtual bool LongValue(unsigned long theValue);
 
-  double CalcU(void);  // lasketaan myˆs tuuli komponentit u ja v
-  double CalcV(void);  // lasketaan myˆs tuuli komponentit u ja v
+  double CalcU(void);  // lasketaan my√∂s tuuli komponentit u ja v
+  double CalcV(void);  // lasketaan my√∂s tuuli komponentit u ja v
   bool SubValue(double theValue, FmiParameterName theParam);
   double SubValue(FmiParameterName theParam, NFmiIntegrationSelector* theSelector = 0);
   double RawSubValue(FmiParameterName theParam);
@@ -102,7 +102,7 @@ class _FMI_DLL NFmiTotalWind : public NFmiCombinedParam
   unsigned long WindDirectionFromWindVector(unsigned long theValue);
   unsigned long ToWindVector(void);
 
-  // puuttuvan arvon testit on syyt‰ tehd‰ t‰m‰n funktion kautta muuttuneen version myˆt‰
+  // puuttuvan arvon testit on syyt√§ tehd√§ t√§m√§n funktion kautta muuttuneen version my√∂t√§
   // tuulennopeudelle
   unsigned long WindSpeedMissingValue(void) const;
   unsigned long WindGustMissingValue(void) const;
@@ -127,7 +127,7 @@ class _FMI_DLL NFmiTotalWind : public NFmiCombinedParam
   inline bool WindSpeed(unsigned long theValue);
   inline bool WindGust(unsigned long theValue);
 
-  //! HUOM!! T‰m‰ debuggaus strukti ei toimi kuin little-endian koneissa ja versiolle 7
+  //! HUOM!! T√§m√§ debuggaus strukti ei toimi kuin little-endian koneissa ja versiolle 7
   struct FmiWindStruct
   {
     unsigned long WindDirection : 6;  // 0...36 (10 degrees), 63 = missing

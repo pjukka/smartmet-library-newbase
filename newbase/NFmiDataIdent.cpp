@@ -133,7 +133,7 @@ void NFmiDataIdent::Destroy(void)
 
 // ----------------------------------------------------------------------
 /*!
- * Etsii aliparametrilistasta annettua parametria ja palauttaa true jos lˆytyi
+ * Etsii aliparametrilistasta annettua parametria ja palauttaa true jos l√∂ytyi
  *
  * \param theParam Undocumented
  * \return Undocumented
@@ -154,7 +154,7 @@ bool NFmiDataIdent::IsDataParam(const FmiParameterName &theParam)
 
 // ----------------------------------------------------------------------
 /*!
- * Etsii aliparametrilistasta annettua parametria ja palauttaa true jos lˆytyi
+ * Etsii aliparametrilistasta annettua parametria ja palauttaa true jos l√∂ytyi
  *
  * \param theDataIdent Undocumented
  * \return Undocumented
@@ -223,8 +223,8 @@ NFmiDataIdent &NFmiDataIdent::operator=(const NFmiDataIdent &theDataIdent)
     itsSecondaryProducerIterator = new NFmiVoidPtrIterator(itsSecondaryProducers);
     itsCurrentSecondaryProducer = new NFmiVoidPtrData(itsSecondaryProducerIterator->Current());
   }
-  else  // 24.2.1999/Marko Lis‰sin else haaran, koska muuten kaatuu jos on ensin ollut
-        // dataparamsseja ja sitten sijoitetaan identti miss‰ ei ole dataparamsseja
+  else  // 24.2.1999/Marko Lis√§sin else haaran, koska muuten kaatuu jos on ensin ollut
+        // dataparamsseja ja sitten sijoitetaan identti miss√§ ei ole dataparamsseja
   {
     itsSecondaryProducers = 0;
     itsSecondaryProducerIterator = 0;
@@ -347,7 +347,7 @@ std::istream &NFmiDataIdent::Read(std::istream &file)
 // ----------------------------------------------------------------------
 
 // seuraavia metodeja ei saa inline:ksi, koska NFmiDataIdent ja NFmiParamBag
-// eiv‰t voi include:oida toisiaan ristiin ja NFmiParambag includoi jo NFmiDataIdent:in
+// eiv√§t voi include:oida toisiaan ristiin ja NFmiParambag includoi jo NFmiDataIdent:in
 
 const NFmiDataIdent &NFmiDataIdent::FirstDataParam(void) const
 {

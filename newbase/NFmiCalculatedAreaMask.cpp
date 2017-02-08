@@ -296,8 +296,8 @@ double NFmiElevationAngleAreaMask::Value(const NFmiCalculationParams& theCalcula
                                          bool fUseTimeInterpolationAlways)
 {
   if (fUseTimeInterpolationAlways)
-    itsTime = theCalculationParams.itsTime;  // tämä on pakko tehdä kun käytetään esim.
-                                             // SumT-tyyppisiä SmartTool-funktioita ja niiden
+    itsTime = theCalculationParams.itsTime;  // tÃ¤mÃ¤ on pakko tehdÃ¤ kun kÃ¤ytetÃ¤Ã¤n esim.
+                                             // SumT-tyyppisiÃ¤ SmartTool-funktioita ja niiden
                                              // argumentteina on annettu tietyt argumentit jotka
                                              // ovat ajasta riippuvia.
   return CalcValueFromLocation(theCalculationParams.itsLatlon);
@@ -403,7 +403,7 @@ NFmiAreaMask* NFmiJulianDayAreaMask::Clone(void) const { return new NFmiJulianDa
 
 double NFmiJulianDayAreaMask::CalcValueFromLocation(const NFmiPoint& /* theLatLon */) const
 {
-  return itsJulianDay;  // tämä on jo laskettu Time-metodissa
+  return itsJulianDay;  // tÃ¤mÃ¤ on jo laskettu Time-metodissa
 }
 
 // ----------------------------------------------------------------------
@@ -513,6 +513,32 @@ const NFmiString NFmiUtcHourAreaMask::MakeSubMaskString(void) const
 {
   return NFmiString("NFmiUtcHourAreaMask::MakeSubMaskString");
 }
+
+
+// ======================================================================
+
+NFmiMinuteAreaMask::~NFmiMinuteAreaMask(void) {}
+NFmiMinuteAreaMask::NFmiMinuteAreaMask(void) : NFmiElevationAngleAreaMask() {}
+NFmiMinuteAreaMask::NFmiMinuteAreaMask(const NFmiMinuteAreaMask& theMask)
+    : NFmiElevationAngleAreaMask(theMask)
+{
+}
+NFmiMinuteAreaMask::NFmiMinuteAreaMask(const NFmiDataIdent& theParam,
+    const NFmiCalculationCondition& theOperation)
+    : NFmiElevationAngleAreaMask(theParam, theOperation)
+{
+}
+NFmiAreaMask* NFmiMinuteAreaMask::Clone(void) const { return new NFmiMinuteAreaMask(*this); }
+double NFmiMinuteAreaMask::CalcValueFromLocation(const NFmiPoint& /* theLatLon */) const
+{
+    return itsTime.GetMin();
+}
+const NFmiString NFmiMinuteAreaMask::MakeSubMaskString(void) const
+{
+    return NFmiString("NFmiMinuteAreaMask::MakeSubMaskString");
+}
+
+// ======================================================================
 
 // ----------------------------------------------------------------------
 /*!
@@ -663,11 +689,11 @@ double NFmiTimeStepAreaMask::Value(const NFmiCalculationParams& theCalculationPa
 {
   if (fUseTimeInterpolationAlways)
     itsInfo->Time(
-        theCalculationParams.itsTime);  // asetetaan ensin aika kohdalleen ja sitten kysytään arvoa
+        theCalculationParams.itsTime);  // asetetaan ensin aika kohdalleen ja sitten kysytÃ¤Ã¤n arvoa
   else
     itsInfo->TimeIndex(
         theCalculationParams
-            .itsTimeIndex);  // asetetaan ensin aikaindeksi kohdalleen ja sitten kysytään arvoa
+            .itsTimeIndex);  // asetetaan ensin aikaindeksi kohdalleen ja sitten kysytÃ¤Ã¤n arvoa
   return CalcValueFromLocation(
       theCalculationParams.itsLatlon);  // ollaan jo oikeassa ajassa, ei aikainterpolointia
 }
@@ -702,7 +728,7 @@ NFmiAreaMask* NFmiGridSizeAreaMask::Clone(void) const { return new NFmiGridSizeA
 double NFmiGridSizeAreaMask::Value(const NFmiCalculationParams& theCalculationParams,
                                    bool /* fUseTimeInterpolationAlways */)
 {
-  return CalcValueFromLocation(theCalculationParams.itsLatlon);  // ajalla ei ole väliä
+  return CalcValueFromLocation(theCalculationParams.itsLatlon);  // ajalla ei ole vÃ¤liÃ¤
 }
 
 double NFmiGridSizeAreaMask::CalcValueFromLocation(const NFmiPoint& /* theLatLon */) const
@@ -717,7 +743,7 @@ double NFmiGridSizeAreaMask::CalcValueFromLocation(const NFmiPoint& /* theLatLon
   return kFloatMissing;
 
   /*
-          // Tämä saattaisi olla maantieteellisesti oikea lasku tapa, mutta teen simppelin
+          // TÃ¤mÃ¤ saattaisi olla maantieteellisesti oikea lasku tapa, mutta teen simppelin
      jakolaskun
           if(itsInfo->IsGrid() && itsInfo->Location(theLatLon))
           {

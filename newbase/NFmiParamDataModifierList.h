@@ -33,7 +33,7 @@ class _FMI_DLL NFmiParamDataModifierList
   bool Find(const NFmiDataIdent& theParam, const NFmiLevel* theLevel);
 
  private:
-  NFmiPtrList<NFmiParamDataModifier> itsList;  // omistaa/tuhoaa sisällön
+  NFmiPtrList<NFmiParamDataModifier> itsList;  // omistaa/tuhoaa sisÃ¤llÃ¶n
   NFmiPtrList<NFmiParamDataModifier>::Iterator itsIter;
 
 };  // class NFmiParamDataModifierList

@@ -72,7 +72,7 @@ class _FMI_DLL NFmiParamDescriptor : public NFmiDataDescriptor
 
  private:
   NFmiParamBag *itsParamBag;
-  bool *itsActivity;  // käyttö lopetettu, NFmiDataIdent hoitaa nyt homman
+  bool *itsActivity;  // kÃ¤yttÃ¶ lopetettu, NFmiDataIdent hoitaa nyt homman
   bool fInterpolate;
 
 };  // class NFmiParamDescriptor

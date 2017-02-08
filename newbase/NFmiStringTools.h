@@ -6,7 +6,7 @@
  * Functions to handle the transition from NFmiString to string.
  * These functions should be removed as soon as possible.
  *
- * HUOM!!! Kaikki NFmiStringTools-funktiot eiv‰t ole k‰ytˆss‰ MSVC60:lla.
+ * HUOM!!! Kaikki NFmiStringTools-funktiot eiv√§t ole k√§yt√∂ss√§ MSVC60:lla.
  *
  */
 // ======================================================================

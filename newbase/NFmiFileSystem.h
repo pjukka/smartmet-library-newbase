@@ -14,7 +14,7 @@
 #include <list>    // for ListDirectory
 
 // Koska Winkkari headerissa
-// on makro joka muuttaa funktion nime‰:
+// on makro joka muuttaa funktion nime√§:
 //
 // #ifdef UNICODE
 // #define CreateDirectory  CreateDirectoryW

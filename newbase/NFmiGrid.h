@@ -17,7 +17,7 @@
 
 class NFmiLocation;
 
-// NFmiLocationCache-luokka k‰ytet‰‰n kun halutaan optimoida paikkaan liittyvi‰ interpolaatioita.
+// NFmiLocationCache-luokka k√§ytet√§√§n kun halutaan optimoida paikkaan liittyvi√§ interpolaatioita.
 class NFmiLocationCache
 {
  public:
@@ -27,7 +27,7 @@ class NFmiLocationCache
   bool NoValue(void) const { return itsLocationIndex == gMissingIndex; }
   bool NoInterpolation(void) const { return fNoInterpolation; }
   void CalcIsInterpolationNeeded(
-      int theGridSizeX, int theGridSizeY);  // t‰m‰ lasketaan vain kerran kun cachea muodostetaan
+      int theGridSizeX, int theGridSizeY);  // t√§m√§ lasketaan vain kerran kun cachea muodostetaan
   static NFmiLocationCache MakePeekedLocation(const NFmiLocationCache &theOrigLocation,
                                               int theOffsetX,
                                               int theOffsetY,
@@ -37,11 +37,11 @@ class NFmiLocationCache
 
   NFmiPoint itsGridPoint;
   unsigned long itsLocationIndex;
-  bool fNoInterpolation;  // jos t‰m‰ on totta, ei tarvitse interpoloida paikan suhteen, arvot
-                          // locationIndex:ist‰ kelpaa suoraan
+  bool fNoInterpolation;  // jos t√§m√§ on totta, ei tarvitse interpoloida paikan suhteen, arvot
+                          // locationIndex:ist√§ kelpaa suoraan
 };
 
-// NFmiTimeCache-luokkaa k‰ytet‰‰n kun halutaan optimoida aikaan liittyvi‰ interpolaatioita.
+// NFmiTimeCache-luokkaa k√§ytet√§√§n kun halutaan optimoida aikaan liittyvi√§ interpolaatioita.
 class NFmiTimeCache
 {
  public:
@@ -50,7 +50,7 @@ class NFmiTimeCache
 
   bool NoValue(void) const { return itsTimeIndex1 == gMissingIndex; }
   bool NoInterpolation(void) const { return itsTimeIndex1 == itsTimeIndex2; }
-  void CalcIsInterpolationNeeded(void);  // t‰m‰ lasketaan vain kerran kun cachea muodostetaan
+  void CalcIsInterpolationNeeded(void);  // t√§m√§ lasketaan vain kerran kun cachea muodostetaan
 
   unsigned long itsTimeIndex1;
   unsigned long itsTimeIndex2;

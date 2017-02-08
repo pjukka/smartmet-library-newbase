@@ -160,7 +160,7 @@ double NFmiDataModifierList::FloatValue(void)
 /*!
  * \param file The output stream to write to
  * \return The output stream written to
- * \todo Pit‰‰ muuttaa const metodiksi, jos mielii saamaan toimimaan virtuaalisesti.
+ * \todo Pit√§√§ muuttaa const metodiksi, jos mielii saamaan toimimaan virtuaalisesti.
  */
 // ----------------------------------------------------------------------
 

@@ -169,10 +169,10 @@ NFmiArea* NFmiMercatorArea::Clone(void) const { return new NFmiMercatorArea(*thi
 void NFmiMercatorArea::Init(bool fKeepWorldRect)
 {
   // Sopimus:
-  // alueen oikean yl‰nurkan longitudin on oltava suurempi kuin vasemman alanurkan longitudin.
+  // alueen oikean yl√§nurkan longitudin on oltava suurempi kuin vasemman alanurkan longitudin.
   if (itsTopRightLatLon.X() < itsBottomLeftLatLon.X())
   {
-    // Em. sopimus ei toteudu ==> tehd‰‰n t‰ysi kierros l‰nnest‰ it‰‰n ==> oikean yl‰nurkan
+    // Em. sopimus ei toteudu ==> tehd√§√§n t√§ysi kierros l√§nnest√§ it√§√§n ==> oikean yl√§nurkan
     // longitudi on nyt suurempi kuin vasemman alanurkan longitudi
     itsTopRightLatLon += NFmiPoint(360., 0.);
   }
@@ -180,7 +180,7 @@ void NFmiMercatorArea::Init(bool fKeepWorldRect)
   if (!fKeepWorldRect)
     itsWorldRect =
         NFmiRect(LatLonToWorldXY(itsBottomLeftLatLon),
-                 LatLonToWorldXY(itsTopRightLatLon));  // 28.8.2001/Marko&Esa Lis‰tty laskuihin.
+                 LatLonToWorldXY(itsTopRightLatLon));  // 28.8.2001/Marko&Esa Lis√§tty laskuihin.
 
   itsXScaleFactor = Width() / itsWorldRect.Width();
   itsYScaleFactor = Height() / itsWorldRect.Height();
@@ -374,9 +374,9 @@ std::istream& NFmiMercatorArea::Read(std::istream& file)
 
   Init();
 
-  // 28.8.2001/Marko&Esa T‰t‰ kutsuttaessa kaikki dataosat p‰ivittyv‰t,
+  // 28.8.2001/Marko&Esa T√§t√§ kutsuttaessa kaikki dataosat p√§ivittyv√§t,
   // jolloin voidaan esim. editoida tiedostoissa olevia areoiden projektio
-  // parametreja siten (t‰t‰ ei voitu tehd‰ ennen koska skaalauskertoimet eiv‰t p‰ivittyneet)
+  // parametreja siten (t√§t√§ ei voitu tehd√§ ennen koska skaalauskertoimet eiv√§t p√§ivittyneet)
 
   return file;
 }

@@ -30,19 +30,19 @@
 //   laittaa tarvittaessa tuhoamaan oliot Clear-metodilla
 //   jos parametriksi
 //   annetaan true.
-//   Lista on kahteensuuntaan linkitetty ja siit‰
-//   voi peri‰ j‰rjestetyn listan.
-//   Lista m‰‰rittelee luokan sis‰isesti luokat
+//   Lista on kahteensuuntaan linkitetty ja siit√§
+//   voi peri√§ j√§rjestetyn listan.
+//   Lista m√§√§rittelee luokan sis√§isesti luokat
 //   Node ja Iterator, joista luokkaa
-//   Iterator k‰ytet‰‰n iteraattorina eli sen
-//   avulla voidaan listaa k‰yd‰ l‰pi.
+//   Iterator k√§ytet√§√§n iteraattorina eli sen
+//   avulla voidaan listaa k√§yd√§ l√§pi.
 //   Listassa on aina erikseen alku ja loppu node:t,
 //   joilla ei ole dataa, eli
-//   listan start nodesta pit‰‰ edet‰ kerran ennenkuin
-//   dataa on k‰ytˆss‰.
+//   listan start nodesta pit√§√§ edet√§ kerran ennenkuin
+//   dataa on k√§yt√∂ss√§.
 //
 //  Change Log:
-// Changed 1999.08.31/Marko	Lis‰sin listaan uuden metodin Find().
+// Changed 1999.08.31/Marko	Lis√§sin listaan uuden metodin Find().
 //
 //**********************************************************
 #ifndef NFMIPTRLIST_H
@@ -74,20 +74,20 @@ class _FMI_DLL NFmiPtrList
   };  // Node
   Node *itsStart;
   Node *itsEnd;
-  unsigned long itsCounter;  // Lis‰sin n‰m‰ 8.9.99 /Mikael
+  unsigned long itsCounter;  // Lis√§sin n√§m√§ 8.9.99 /Mikael
 
  public:
   class _FMI_DLL Iterator
   {
    private:
-    NFmiPtrList<Type> *itsList;  // Lis‰sin t‰m‰n 8.9.99 /Mikael
+    NFmiPtrList<Type> *itsList;  // Lis√§sin t√§m√§n 8.9.99 /Mikael
     Node *itsCurrent;
 
    public:
     friend class NFmiPtrList<Type>;
 
     Iterator(void) : itsList(0), itsCurrent(0) {}
-    // Lis‰sin seuraavaan iteraattoriin toisen parametrin 8.9.99 /Mikael
+    // Lis√§sin seuraavaan iteraattoriin toisen parametrin 8.9.99 /Mikael
     Iterator(Node *theNode, NFmiPtrList<Type> *theList) : itsList(theList), itsCurrent(theNode){};
     Iterator(const Iterator &theIter) : itsList(theIter.itsList), itsCurrent(theIter.itsCurrent){};
 
@@ -98,23 +98,23 @@ class _FMI_DLL NFmiPtrList
       return *this;
     }
     Node *GetNode(void) { return itsCurrent; }
-    bool Next(void)  // miten koodin saisi headerin h‰nnille?
+    bool Next(void)  // miten koodin saisi headerin h√§nnille?
     {
       if (itsCurrent && itsCurrent->itsNext)
       {
         itsCurrent = itsCurrent->itsNext;
-        if (itsCurrent->itsNext)  // t‰m‰ tarkistus on 'dummy end' -noden takia
+        if (itsCurrent->itsNext)  // t√§m√§ tarkistus on 'dummy end' -noden takia
           return true;
       }
       return false;
     };
 
-    bool Previous(void)  // miten koodin saisi headerin h‰nnille?
+    bool Previous(void)  // miten koodin saisi headerin h√§nnille?
     {
       if (itsCurrent && itsCurrent->itsPrevious)
       {
         itsCurrent = itsCurrent->itsPrevious;
-        if (itsCurrent->itsPrevious)  // t‰m‰ tarkistus on 'dummy end' -noden takia
+        if (itsCurrent->itsPrevious)  // t√§m√§ tarkistus on 'dummy end' -noden takia
           return true;
       }
       return false;
@@ -124,7 +124,7 @@ class _FMI_DLL NFmiPtrList
     Type &Current(void) { return *itsCurrent->itsData; };
     bool AddBefore(Type *theItem)
     {
-      if (!theItem)  // nolla-pointteria ei voi vied‰ listaan
+      if (!theItem)  // nolla-pointteria ei voi vied√§ listaan
         return false;
       Node *previousNode = itsCurrent->itsPrevious;
       if (previousNode)
@@ -140,13 +140,13 @@ class _FMI_DLL NFmiPtrList
         itsCurrent->itsNext = temp;
         nextNode->itsPrevious = temp;
       }
-      itsList->itsCounter++;  // Lis‰sin 8.9.99 Mikael
+      itsList->itsCounter++;  // Lis√§sin 8.9.99 Mikael
       return true;
     };
 
     bool AddAfter(Type *theItem)
     {
-      if (!theItem)  // nolla-pointteria ei voi vied‰ listaan
+      if (!theItem)  // nolla-pointteria ei voi vied√§ listaan
         return false;
       Node *nextNode = itsCurrent->itsNext;
       if (nextNode)
@@ -162,11 +162,11 @@ class _FMI_DLL NFmiPtrList
         itsCurrent->itsPrevious = temp;
         previousNode->itsNext = temp;
       }
-      itsList->itsCounter++;  // Lis‰sin 8.9.99 Mikael
+      itsList->itsCounter++;  // Lis√§sin 8.9.99 Mikael
       return true;
     };
 
-    bool Remove(bool fDeleteData)  // poiston j‰lkeen current tulee olemaan previous-node
+    bool Remove(bool fDeleteData)  // poiston j√§lkeen current tulee olemaan previous-node
     {
       if (itsCurrent->itsPrevious && itsCurrent->itsNext)
       {
@@ -177,14 +177,14 @@ class _FMI_DLL NFmiPtrList
         if (fDeleteData) delete itsCurrent->itsData;
         delete itsCurrent;
         itsCurrent = previousNode;
-        itsList->itsCounter--;  // Lis‰sin 8.9.99 Mikael
+        itsList->itsCounter--;  // Lis√§sin 8.9.99 Mikael
         return true;
       }
       return false;  // currentti oli start tai end!
     }
 
   };  // Iterator
-  friend class Iterator;  // Lis‰sin t‰m‰n ja kopiokonstruktorin 9.9.99 /Mikael
+  friend class Iterator;  // Lis√§sin t√§m√§n ja kopiokonstruktorin 9.9.99 /Mikael
   //	friend class NFmiPtrList<Type>::Iterator;
   NFmiPtrList(void);
   NFmiPtrList(NFmiPtrList<Type> &theList);
@@ -212,7 +212,7 @@ class _FMI_DLL NFmiPtrList
   NFmiPtrList &operator=(const NFmiPtrList &theList);
 };
 
-/* // En tied‰ oikeaa syntaksia, ett‰ Iterator-koodi saataisiin t‰nne!
+/* // En tied√§ oikeaa syntaksia, ett√§ Iterator-koodi saataisiin t√§nne!
 template <class Type>
 inline
 bool NFmiPtrList<Type>::Iterator::Next(void)
@@ -286,7 +286,7 @@ typename NFmiPtrList<Type>::Iterator NFmiPtrList<Type>::End()
 template <class Type>
 bool NFmiPtrList<Type>::AddStart(Type *theItem)
 {
-  if (!theItem)  // nolla-pointteria ei voi vied‰ listaan
+  if (!theItem)  // nolla-pointteria ei voi vied√§ listaan
     return false;
   Node *firstRealNode = itsStart->itsNext;
   Node *newNode = new Node(theItem, itsStart, firstRealNode);
@@ -300,7 +300,7 @@ bool NFmiPtrList<Type>::AddStart(Type *theItem)
 template <class Type>
 bool NFmiPtrList<Type>::AddEnd(Type *theItem)
 {
-  if (!theItem)  // nolla-pointteria ei voi vied‰ listaan
+  if (!theItem)  // nolla-pointteria ei voi vied√§ listaan
     return false;
   Node *lastRealNode = itsEnd->itsPrevious;
   Node *newNode = new Node(theItem, lastRealNode, itsEnd);
@@ -472,7 +472,7 @@ bool NFmiPtrList<Type>::Swap(unsigned long ind1, unsigned long ind2)
 {
   Iterator iter1 = Index(ind1);
   Iterator iter2 = Index(ind2);
-  //	return Swap(iter1,iter2); // t‰m‰ ei toiminut, tein uuden virityksen
+  //	return Swap(iter1,iter2); // t√§m√§ ei toiminut, tein uuden virityksen
   iter1.GetNode()->SwapData(*iter2.GetNode());
   return true;
 }

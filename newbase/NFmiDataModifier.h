@@ -44,16 +44,16 @@ class _FMI_DLL NFmiDataModifier : public NFmiDataModifierBase
   bool SetLimits(float theLowerLimit, float theUpperLimit);
   void SetMissingAllowed(bool OnOff);
 
-  // n‰m‰ fastInfojen indeksien asettaja metodit on sit‰ varten ett‰ jos muokattava data ja
-  // modifierin k‰ytt‰m‰t apuInfo ovat
-  // per‰isin samasta datasta, voidaan datoja juoksuttaa nopeasti ja helposti samaan tahtiin. N‰it‰
-  // k‰ytet‰‰n nyt vain
-  // multi-threaddausta k‰ytt‰v‰n NFmiQueryInfo::ModifyTimesLocationData_FullMT -metodin
+  // n√§m√§ fastInfojen indeksien asettaja metodit on sit√§ varten ett√§ jos muokattava data ja
+  // modifierin k√§ytt√§m√§t apuInfo ovat
+  // per√§isin samasta datasta, voidaan datoja juoksuttaa nopeasti ja helposti samaan tahtiin. N√§it√§
+  // k√§ytet√§√§n nyt vain
+  // multi-threaddausta k√§ytt√§v√§n NFmiQueryInfo::ModifyTimesLocationData_FullMT -metodin
   // alaisuudessa.
   virtual void SetLocationIndex(unsigned long theIndex);
   virtual void SetTimeIndex(unsigned long theIndex);
   virtual void InitLatlonCache(void);  // jos datamodifierissa on fastInfoja tai maskeja joissa on
-                                       // fastInfoja, niiden latlon-cache pit‰‰ alustaa ennen
+                                       // fastInfoja, niiden latlon-cache pit√§√§ alustaa ennen
                                        // multi-thread-ajoa
 
  protected:
@@ -61,8 +61,8 @@ class _FMI_DLL NFmiDataModifier : public NFmiDataModifierBase
   virtual bool IsAllowedValue(float theValue);
 
   NFmiCombinedParam* itsCombinedParam;
-  bool fCalculationResultOk;  // k‰ytet‰‰n mm. keskiarvon laskun tuloksen palautuksen tarkastelussa
-                              // eli jos ei ole ollut mit‰‰n laskettavaa, ei palauteta arvoa 0 vaan
+  bool fCalculationResultOk;  // k√§ytet√§√§n mm. keskiarvon laskun tuloksen palautuksen tarkastelussa
+                              // eli jos ei ole ollut mit√§√§n laskettavaa, ei palauteta arvoa 0 vaan
                               // kFloatMissing
   bool fMissingValuesAllowed;
 

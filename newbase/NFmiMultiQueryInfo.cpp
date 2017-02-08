@@ -15,7 +15,7 @@
 // ======================================================================
 
 #ifdef _MSC_VER
-#pragma warning(disable : 4512)  // poistaa MSVC++2008 k‰‰nt‰j‰n ik‰v‰n n‰kˆisen boost:ista tulevan
+#pragma warning(disable : 4512)  // poistaa MSVC++2008 k√§√§nt√§j√§n ik√§v√§n n√§k√∂isen boost:ista tulevan
                                  // varoituksen
 #endif
 
@@ -408,7 +408,7 @@ bool NFmiMultiQueryInfo::TimeToNearestStep(const NFmiMetTime &theTime,
         --pos;
         if (pos ==
             itsMultiIndexes
-                .end())  // en tied‰ toimiiko siten, ett‰ jos tekee startissa --, menee ohi vectorin
+                .end())  // en tied√§ toimiiko siten, ett√§ jos tekee startissa --, menee ohi vectorin
           ++pos;
       }
     }
@@ -439,8 +439,8 @@ bool NFmiMultiQueryInfo::TimeToNearestStep(const NFmiMetTime &theTime,
     return true;
   }
 
-  // t‰ss‰ pit‰isi olla viel‰ else haara, joka tarkistaa kelpaako aika jos se on listan
-  // ulkopuolˆella, mutta tarpeeksi l‰hell‰
+  // t√§ss√§ pit√§isi olla viel√§ else haara, joka tarkistaa kelpaako aika jos se on listan
+  // ulkopuol√∂ella, mutta tarpeeksi l√§hell√§
   return false;
 }
 
@@ -529,7 +529,7 @@ float NFmiMultiQueryInfo::InterpolatedValue(const NFmiMetTime &theTime,
   {
     case kFmiWindDirection:
     {
-      Param(kFmiWindSpeedMS);  // asetetaan parametriksi v‰liaikaisesti tuulennopeus
+      Param(kFmiWindSpeedMS);  // asetetaan parametriksi v√§liaikaisesti tuulennopeus
       TimeIndex(idx1);  // otetaan 1. tuulen nopeus samalta ajalta kuin vastaava tuulen suunta
       float ws1 = FloatValue();
       TimeIndex(idx2);  // otetaan 2. tuulen nopeus samalta ajalta kuin vastaava tuulen suunta

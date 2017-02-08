@@ -12,14 +12,14 @@
 #include "NFmiGlobals.h"
 #include <cmath>
 
-//! Tyyppim‰‰ritelm‰ kulmayksikˆille.
+//! Tyyppim√§√§ritelm√§ kulmayksik√∂ille.
 typedef enum
 {
   kDeg,
   kRad
 } FmiAngleUnit;
 
-//! Yleinen kulman m‰‰rittely perusluokka
+//! Yleinen kulman m√§√§rittely perusluokka
 
 class _FMI_DLL NFmiAngle
 {
@@ -29,7 +29,7 @@ class _FMI_DLL NFmiAngle
   //! Konstruktori
   NFmiAngle(double theAngle = 0.0, FmiAngleUnit theUnit = kDeg);
 
-  //! Kulman asetus optionaalisessa yksikˆss‰
+  //! Kulman asetus optionaalisessa yksik√∂ss√§
   void SetValue(double theValue, FmiAngleUnit theUnit = kDeg);
 
   //! Kulman palautus
@@ -37,17 +37,17 @@ class _FMI_DLL NFmiAngle
   //! Suurempi kuin vertailuoperaattori
   bool operator>(const NFmiAngle &theAngle) const;
 
-  //! Lis‰ysoperaattori
+  //! Lis√§ysoperaattori
   NFmiAngle &operator+=(const NFmiAngle &theAngle);
 
-  //! V‰hennysoperaattori
+  //! V√§hennysoperaattori
   NFmiAngle &operator-=(const NFmiAngle &theAngle);
 
   //! Muunnos radiaaneiksi
   double ToRad(void) const { return itsValue / 180.0 * kPii; }
   //! Muunnos asteiksi
   double ToDeg(void) const { return itsValue; }
-  // 14.5.2002/Marko+Mika MSVC++:ssa ei sin ja muut vastaavat ole std:ssa, siit‰ using viritys.
+  // 14.5.2002/Marko+Mika MSVC++:ssa ei sin ja muut vastaavat ole std:ssa, siit√§ using viritys.
 
   //! Kulman sini
   double Sin(void) const
@@ -86,9 +86,9 @@ class _FMI_DLL NFmiAngle
 /*!
  * \class NFmiWindDirection
  *
- * M‰‰rittely yleiselle kulmasuureelle. Luokan keskeinen ominaisuus on, ett‰
- * luokan metodit huolehtivat automaattisesti, ett‰ kulma pysyy sallituissa
- * rajoissa jokaisen operaation j‰lkeen, eli operaatiot toimivat modulo 360.
+ * M√§√§rittely yleiselle kulmasuureelle. Luokan keskeinen ominaisuus on, ett√§
+ * luokan metodit huolehtivat automaattisesti, ett√§ kulma pysyy sallituissa
+ * rajoissa jokaisen operaation j√§lkeen, eli operaatiot toimivat modulo 360.
  *
  * Suunnan vaihtelurajat ovat 0 <= arvo <= 360, jossa arvo=0 tarkoittaa
  * vaihtelevaa tuulta.
@@ -106,7 +106,7 @@ class _FMI_DLL NFmiWindDirection : public NFmiAngle
   //! Konstruktori suunnan U- ja V-komponenttien perusteella
   NFmiWindDirection(double theU, double theV);
 
-  //! Kulman v‰hennysoperaattori
+  //! Kulman v√§hennysoperaattori
   NFmiWindDirection &operator-=(const NFmiWindDirection &theAngle);
 };
 
@@ -114,9 +114,9 @@ class _FMI_DLL NFmiWindDirection : public NFmiAngle
 /*!
  * \class NFmiLatitude
  *
- * M‰‰rittely yleiselle latitudisuureelle. Luokan keskeinen ominaisuus on, ett‰
- * luokan metodit huolehtivat automaattisesti, ett‰ kulma pysyy sallituissa
- * rajoissa jokaisen operaation j‰lkeen, eli operaatiot toimivat symmetrisen‰
+ * M√§√§rittely yleiselle latitudisuureelle. Luokan keskeinen ominaisuus on, ett√§
+ * luokan metodit huolehtivat automaattisesti, ett√§ kulma pysyy sallituissa
+ * rajoissa jokaisen operaation j√§lkeen, eli operaatiot toimivat symmetrisen√§
  * modulona 180.
  *
  * Latitudin vaihtelurajat ovat -90 <= latitudi <= 90
@@ -135,14 +135,14 @@ class _FMI_DLL NFmiLatitude : public NFmiAngle
   //! Latitudin muutosmetodi
   void SetValue(double theAngle, FmiAngleUnit theUnit = kDeg);
 
-  //! Latitudin v‰hennysoperaattori
+  //! Latitudin v√§hennysoperaattori
   NFmiLatitude &operator-=(const NFmiLatitude &theAngle);
 
   //! Latitudin kasvatusoperaattori
   NFmiLatitude &operator+=(const NFmiLatitude &theAngle);
 
  private:
-  //! Latitudin v‰hennysoperaattori annetun kulman perusteella
+  //! Latitudin v√§hennysoperaattori annetun kulman perusteella
   NFmiLatitude &operator-=(const double &theAngle);
 
   //! Latitudin kasvatusoperaattori annetun kulman perusteella
@@ -153,9 +153,9 @@ class _FMI_DLL NFmiLatitude : public NFmiAngle
 /*!
  * \class NFmiLongitude
  *
- * M‰‰rittely yleiselle longitudisuureelle. Luokan keskeinen ominaisuus on, ett‰
- * luokan metodit huolehtivat automaattisesti, ett‰ kulma pysyy sallituissa
- * rajoissa jokaisen operaation j‰lkeen, eli operaatiot toimivat symmetrisen‰
+ * M√§√§rittely yleiselle longitudisuureelle. Luokan keskeinen ominaisuus on, ett√§
+ * luokan metodit huolehtivat automaattisesti, ett√§ kulma pysyy sallituissa
+ * rajoissa jokaisen operaation j√§lkeen, eli operaatiot toimivat symmetrisen√§
  * modulona 360.
  *
  * Longitudin vaihtelurajat ovat -180 <= latitudi <= 180
@@ -174,17 +174,17 @@ class _FMI_DLL NFmiLongitude : public NFmiAngle
   //! Longitudin muutosmetodi
   void SetValue(double theValue, FmiAngleUnit theUnit = kDeg);
 
-  //! Longitudin v‰hennysoperaattori
+  //! Longitudin v√§hennysoperaattori
   NFmiLongitude &operator-=(const NFmiLongitude &theAngle);
 
-  //! Longitudin lis‰ysoperaattori
+  //! Longitudin lis√§ysoperaattori
   NFmiLongitude &operator+=(const NFmiLongitude &theAngle);
 
  private:
-  //! Longitudin v‰hennysoperaattori annetulla kulmalla
+  //! Longitudin v√§hennysoperaattori annetulla kulmalla
   NFmiLongitude &operator-=(const double &theAngle);
 
-  //! Longitudin lis‰ysoperaattori annetulla kulmalla
+  //! Longitudin lis√§ysoperaattori annetulla kulmalla
   NFmiLongitude &operator+=(const double &theAngle);
 
   bool fPacificView;

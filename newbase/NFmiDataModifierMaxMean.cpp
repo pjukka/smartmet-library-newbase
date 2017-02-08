@@ -12,7 +12,7 @@
  * painokerroin (itsWeightFactor) 1 palauttaa keskiarvon, 0 palauttaa maksimin,
  * 0.5 palauttaa (max+avg):n keskiarvon
  * jos painokerrointa ei anneta erikseen, ohjelma palauttaa pistekohtaisesti
- * 'omasta mielest‰‰n' kuvaavimman arvon
+ * 'omasta mielest√§√§n' kuvaavimman arvon
  *
  */
 // ======================================================================

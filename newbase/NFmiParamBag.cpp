@@ -178,14 +178,14 @@ void NFmiParamBag::Destroy(void) { itsParamsVector.clear(); }
 
 const NFmiParamBag NFmiParamBag::Combine(const NFmiParamBag& theBag)
 {
-  NFmiParamBag combineBag(*this);  // täytetään ensin this-bagillä
-  NFmiParamBag otherBag(theBag);   // pakko tehdä kopio, että tätä voidaan loopata
+  NFmiParamBag combineBag(*this);  // tÃ¤ytetÃ¤Ã¤n ensin this-bagillÃ¤
+  NFmiParamBag otherBag(theBag);   // pakko tehdÃ¤ kopio, ettÃ¤ tÃ¤tÃ¤ voidaan loopata
   for (otherBag.Reset(); otherBag.Next();)
     combineBag.Add(*otherBag.Current(), true);
   return combineBag;
 
-  /* // tämä oli ihan kammottavaa koodia, yritän tehdä fiksumman ja nopeamman ja helpompi lukuisen
-    if(GetSize() == 0) // Marko, ei toiminut jos this oli tyhjä
+  /* // tÃ¤mÃ¤ oli ihan kammottavaa koodia, yritÃ¤n tehdÃ¤ fiksumman ja nopeamman ja helpompi lukuisen
+    if(GetSize() == 0) // Marko, ei toiminut jos this oli tyhjÃ¤
           return theBag;
 
     NFmiParamBag  theCombineBag(theBag);
@@ -195,7 +195,7 @@ const NFmiParamBag NFmiParamBag::Combine(const NFmiParamBag& theBag)
     unsigned long theSizeCountGroup=0;
     unsigned long theSizeCount=0;
 
-    Reset();//Alkuperäiset parametrit
+    Reset();//AlkuperÃ¤iset parametrit
     while(Next())
           {
             if(Current()->IsGroup())
@@ -204,7 +204,7 @@ const NFmiParamBag NFmiParamBag::Combine(const NFmiParamBag& theBag)
                   theDataIdent[theSizeCount++] = *Current();
           }
 
-    theCombineBag.Reset();//Lisä  Ryhmä Parametrit
+    theCombineBag.Reset();//LisÃ¤  RyhmÃ¤ Parametrit
     while(theCombineBag.Next())
           {
             theIsIdentExisting = false;
@@ -222,7 +222,7 @@ const NFmiParamBag NFmiParamBag::Combine(const NFmiParamBag& theBag)
           }
 
 
-    theCombineBag.Reset();//Lisä  Parametrit
+    theCombineBag.Reset();//LisÃ¤  Parametrit
     while(theCombineBag.Next())
           {
             theIsIdentExisting = false;
@@ -239,12 +239,12 @@ const NFmiParamBag NFmiParamBag::Combine(const NFmiParamBag& theBag)
                   }
           }
 
-    //Muutin tästä eteenpäin olevaa koodia siten, että yhdistetyssä paramBagissä
+    //Muutin tÃ¤stÃ¤ eteenpÃ¤in olevaa koodia siten, ettÃ¤ yhdistetyssÃ¤ paramBagissÃ¤
     //on kaikki parametrit yhteen kertaan, paitsi sama parametri on kahteen kertaan,
-    //jos toinen on ryhmäparametri ja toinen ei. Ennen paluuarvona olevassa param-
-    //bagissä oli ainoastaan yksi ryhmäparametri sellaisten parametrien lisäksi,
-    //jotka eivät ole ryhmäparametreja. Ryhmäparametrit ovat parambagissä ennen
-    //"ei-ryhmäparametreja". /Mikael 6.9.99
+    //jos toinen on ryhmÃ¤parametri ja toinen ei. Ennen paluuarvona olevassa param-
+    //bagissÃ¤ oli ainoastaan yksi ryhmÃ¤parametri sellaisten parametrien lisÃ¤ksi,
+    //jotka eivÃ¤t ole ryhmÃ¤parametreja. RyhmÃ¤parametrit ovat parambagissÃ¤ ennen
+    //"ei-ryhmÃ¤parametreja". /Mikael 6.9.99
 
     if (theSizeCount)
           {
@@ -546,9 +546,9 @@ enum BinaryOperator
 // ----------------------------------------------------------------------
 /*!
  * Asettaa parambagin kaikkien parametrien aktiviteetit samanlaisiksi kuin
- * parametrina annetun parambagin parametreilla on (jos löytyy samoja).
- * Käy asettamassa myös kaikki aliparametrit kohdalleen.
- * Jos parametrit ovata ristiriitaisia, asetetaan epäselvät tilanteet fDefaultActivity: mukaisesti.
+ * parametrina annetun parambagin parametreilla on (jos lÃ¶ytyy samoja).
+ * KÃ¤y asettamassa myÃ¶s kaikki aliparametrit kohdalleen.
+ * Jos parametrit ovata ristiriitaisia, asetetaan epÃ¤selvÃ¤t tilanteet fDefaultActivity: mukaisesti.
  *
  * \param theParams The other NFmiParamBag being partially copied
  * \param fDefaultActivity Undocumented
@@ -578,7 +578,7 @@ bool NFmiParamBag::SetActivities(NFmiParamBag& theParams,
               ->SetActive(this->Current(false)->IsActive() && theParams.Current(false)->IsActive());
           break;
         case kOr:  // eli jos kummassa tahansa on true, laitetaan true, muuten false (itse haluan
-                   // käyttää tätä siten, että theParams:issa on aktiivisina ne mitkä haluan lisäksi
+                   // kÃ¤yttÃ¤Ã¤ tÃ¤tÃ¤ siten, ettÃ¤ theParams:issa on aktiivisina ne mitkÃ¤ haluan lisÃ¤ksi
                    // aktivoida, mutta muita en halua deaktivoida)
           this->Current(false)
               ->SetActive(this->Current(false)->IsActive() || theParams.Current(false)->IsActive());
@@ -587,7 +587,7 @@ bool NFmiParamBag::SetActivities(NFmiParamBag& theParams,
           this->Current(false)
               ->SetActive(this->Current(false)->IsActive() ^ theParams.Current(false)->IsActive());
           break;
-        case kNot:  // eli asetetaan this:in aktiviteetti päinvastoin kuin se on theParamsissa
+        case kNot:  // eli asetetaan this:in aktiviteetti pÃ¤invastoin kuin se on theParamsissa
           this->Current(false)->SetActive(!theParams.Current(false)->IsActive());
           break;
       }
@@ -599,7 +599,7 @@ bool NFmiParamBag::SetActivities(NFmiParamBag& theParams,
 // ----------------------------------------------------------------------
 /*!
  *  Asettaa parambagin kaikkien parametrien aktiviteetit halutuksi.
- *  Käy asettamassa myös kaikki aliparametrit kohdalleen.
+ *  KÃ¤y asettamassa myÃ¶s kaikki aliparametrit kohdalleen.
  *
  * \param newState Undocumented
  */
@@ -624,7 +624,7 @@ void NFmiParamBag::SetActivities(bool newState)
 void NFmiParamBag::SetProducer(const NFmiProducer& newProducer)
 {
   for (Reset(); Next();)
-    Current()->SetProducer(newProducer);  // asettaa myös aliparametrit!
+    Current()->SetProducer(newProducer);  // asettaa myÃ¶s aliparametrit!
 }
 
 // ----------------------------------------------------------------------
@@ -806,7 +806,7 @@ bool NFmiParamBag::IsActive(unsigned long index, bool fIgnoreSubParam) const
 
 // ----------------------------------------------------------------------
 /*!
- * Katsoo, löytyykö minkään parametrin aliparametreistä annettua parametriä. Jos löytyy
+ * Katsoo, lÃ¶ytyykÃ¶ minkÃ¤Ã¤n parametrin aliparametreistÃ¤ annettua parametriÃ¤. Jos lÃ¶ytyy
  * palauttaa true
  *
  * \param theParam The parameter being searched from the bag.

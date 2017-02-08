@@ -78,7 +78,7 @@ void NFmiAreaMaskList::Add(boost::shared_ptr<NFmiAreaMask> &theMask)
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented, always false
- *†\todo Make this an abstract method?
+ *¬†\todo Make this an abstract method?
  */
 // ----------------------------------------------------------------------
 
@@ -104,7 +104,7 @@ bool NFmiAreaMaskList::Next(void)
     return false;
 }
 
-// T‰m‰ tarkistaa vektori-taulukkoon osoittavia indeksej‰, jotka alkavat 0:sta.
+// T√§m√§ tarkistaa vektori-taulukkoon osoittavia indeksej√§, jotka alkavat 0:sta.
 bool NFmiAreaMaskList::IsValidIndex(int theIndex)
 {
   if (theIndex >= 0 && static_cast<std::size_t>(theIndex) < itsMaskVector.size())
@@ -126,7 +126,7 @@ boost::shared_ptr<NFmiAreaMask> NFmiAreaMaskList::Current(void)
     return itsMaskVector[itsCurrentIndex];
   else
   {
-    // jos indeksi on vektorin ulkopuolella, palautetaan 0-pointteri (shared_ptr tyhj‰n‰)
+    // jos indeksi on vektorin ulkopuolella, palautetaan 0-pointteri (shared_ptr tyhj√§n√§)
     static boost::shared_ptr<NFmiAreaMask> dummy;
     return dummy;
   }
@@ -153,8 +153,8 @@ bool NFmiAreaMaskList::Remove(void)
 
 // ----------------------------------------------------------------------
 /*!
- *  K‰y l‰pi listassa olevat maski-oliot ja kysyy
- *  niilt‰ IsMasked ja tekee tulosta AND operaation kanssa.
+ *  K√§y l√§pi listassa olevat maski-oliot ja kysyy
+ *  niilt√§ IsMasked ja tekee tulosta AND operaation kanssa.
  * \param theLatLon Undocumented, unused
  * \return Undocumented, always false
  * \todo Make this an abstract method?
@@ -163,9 +163,9 @@ bool NFmiAreaMaskList::Remove(void)
 
 bool NFmiAreaMaskList::IsMasked(const NFmiPoint &theLatLon)
 {
-  if (fMaskInUse)  // 1999.09.24/Marko Muutin t‰m‰n katsomaan ensin onko maski k‰ytˆss‰
+  if (fMaskInUse)  // 1999.09.24/Marko Muutin t√§m√§n katsomaan ensin onko maski k√§yt√∂ss√§
   {                // jos on, katsotaan onko maskattu, muuten on aina maskattu
-                   // n‰in p‰‰see eroon muutamasta ik‰v‰st‰ if-lause testeist‰
+                   // n√§in p√§√§see eroon muutamasta ik√§v√§st√§ if-lause testeist√§
     for (int index = 0; index < static_cast<int>(itsMaskVector.size()); index++)
     {
       if (itsMaskVector[index]->IsEnabled())
@@ -184,9 +184,9 @@ bool NFmiAreaMaskList::IsMasked(const NFmiPoint &theLatLon)
 
 // ----------------------------------------------------------------------
 /*!
- * k‰y kaikki listan maskit l‰pi ja katsoo, ettei yhdenk‰‰n maskin kerroin ole 0,
- * t‰llˆin palautetaan 0. Jos ei ole yht‰‰n 0-kerrointa, lasketaan ramppimaskien
- * keskiarvo, joka palautetaan (tavallisia maskeja ei lasketa t‰ss‰ koska ne
+ * k√§y kaikki listan maskit l√§pi ja katsoo, ettei yhdenk√§√§n maskin kerroin ole 0,
+ * t√§ll√∂in palautetaan 0. Jos ei ole yht√§√§n 0-kerrointa, lasketaan ramppimaskien
+ * keskiarvo, joka palautetaan (tavallisia maskeja ei lasketa t√§ss√§ koska ne
  * mukaan lukien tulisi liian rankkoja muutoksia). Jos vain tavallisia maskeja, palautetaan arvo 1.
  * \param theLatLon Undocumented, unused
  * \return Undocumented, always kFloatMissing
@@ -196,9 +196,9 @@ bool NFmiAreaMaskList::IsMasked(const NFmiPoint &theLatLon)
 
 double NFmiAreaMaskList::MaskValue(const NFmiPoint &theLatLon)
 {
-  if (fMaskInUse)  // 1999.09.24/Marko Muutin t‰m‰n katsomaan ensin onko maski k‰ytˆss‰
+  if (fMaskInUse)  // 1999.09.24/Marko Muutin t√§m√§n katsomaan ensin onko maski k√§yt√∂ss√§
   {                // jos on, katsotaan onko maskattu, muuten on aina maskattu
-                   // n‰in p‰‰see eroon muutamasta ik‰v‰st‰ if-lause testeist‰
+                   // n√§in p√§√§see eroon muutamasta ik√§v√§st√§ if-lause testeist√§
     double sum = 0, tempValue = 0;
     int count = 0;
     for (int index = 0; index < static_cast<int>(itsMaskVector.size()); index++)
@@ -229,8 +229,8 @@ double NFmiAreaMaskList::MaskValue(const NFmiPoint &theLatLon)
 /*!
  *  Etsii annetun indeksin mukaisen otuksen listasta ja asettaa itsCurrentIndex:in osoittamaan
  * siihen.
- *  HUOM! theIndex on 1:sta alkava indeksi, sis‰inen muuttuja itsCurrentIndex on taas 0:sta alkava
- * \param theIndex 1:ll‰ alkava indeksi jota etsit‰‰n maski vektorista.
+ *  HUOM! theIndex on 1:sta alkava indeksi, sis√§inen muuttuja itsCurrentIndex on taas 0:sta alkava
+ * \param theIndex 1:ll√§ alkava indeksi jota etsit√§√§n maski vektorista.
  * \return Undocumented, always false
  * \todo Make this an abstract method?
  */
@@ -262,12 +262,12 @@ void NFmiAreaMaskList::Clear(void) { itsMaskVector.clear(); }
 // ----------------------------------------------------------------------
 /*!
  *  Tarkistaa listassa olevilta maskeilta, onko
- *  yht‰‰n maskia k‰ytˆss‰ (enabled). Jos on, asetetaan
+ *  yht√§√§n maskia k√§yt√∂ss√§ (enabled). Jos on, asetetaan
  *  fMaskInUse attribuutti true:ksi jos ei asetetaan
  *  se false:ksi. Funktio palauttaa fMaskInUse:in arvon.
- *  Jatkossa listalta voidaan kysy‰ metodilla UseMask
- *  fMaskInUse:n tilaa. (t‰m‰ on optimointia varten tehty
- *  viritelm‰)
+ *  Jatkossa listalta voidaan kysy√§ metodilla UseMask
+ *  fMaskInUse:n tilaa. (t√§m√§ on optimointia varten tehty
+ *  viritelm√§)
  * \return Undocumented, always false
  * \todo Make this an abstract method?
  */
@@ -288,7 +288,7 @@ bool NFmiAreaMaskList::CheckIfMaskUsed(void)
 
 // ----------------------------------------------------------------------
 /*!
- *  K‰y enabloidut maskit l‰pi antaa theTime:n
+ *  K√§y enabloidut maskit l√§pi antaa theTime:n
  *  niiden Time-metodille.
  * \param theTime Undocumented, unused
  * \return Undocumented, always false
@@ -307,9 +307,9 @@ bool NFmiAreaMaskList::SyncronizeMaskTime(const NFmiMetTime &theTime)
 
 // ----------------------------------------------------------------------
 /*!
- *  HUOM! theIndex on 1:sta alkava indeksi, sis‰inen muuttuja itsCurrentIndex on taas 0:sta alkava
- * \param theIndex theIndex alkaa 1:st‰
- * \return jos lˆytyi halutulla indeksill‰ oleva maski, palauttaa true
+ *  HUOM! theIndex on 1:sta alkava indeksi, sis√§inen muuttuja itsCurrentIndex on taas 0:sta alkava
+ * \param theIndex theIndex alkaa 1:st√§
+ * \return jos l√∂ytyi halutulla indeksill√§ oleva maski, palauttaa true
  */
 // ----------------------------------------------------------------------
 

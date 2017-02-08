@@ -7,15 +7,15 @@
 /*!
  * \class NFmiQueryDataUtil
  *
- * NFmiQueryDataUtil-luokka k‰sittelee/muokkaa funktioidensa avulla
+ * NFmiQueryDataUtil-luokka k√§sittelee/muokkaa funktioidensa avulla
  * querydta-otuksia.
  *
- * \todo Refaktoroi k‰ytt‰en namespacea ja anonyymi‰ namespacea
+ * \todo Refaktoroi k√§ytt√§en namespacea ja anonyymi√§ namespacea
  *       .cpp tiedostossa.
  */
 // ======================================================================
 
-// NFmiQueryDataUtil-luokka k‰sittelee/muokkaa funktioidensa avulla
+// NFmiQueryDataUtil-luokka k√§sittelee/muokkaa funktioidensa avulla
 // querydata-otuksia.
 
 #include "NFmiQueryDataUtil.h"
@@ -61,7 +61,7 @@ GridRecordData::GridRecordData(void)
       itsGrid(),
       fDoProjectionConversion(false),
       itsGridData(),
-      itsLatlonCropRect(gMissingCropRect)  // t‰m‰ pit‰‰ alustaa missing arvoksi aluksi
+      itsLatlonCropRect(gMissingCropRect)  // t√§m√§ pit√§√§ alustaa missing arvoksi aluksi
       ,
       itsGridPointCropOffset(0, 0),
       fParamChanged(false),
@@ -219,7 +219,7 @@ bool NFmiLocationIndexRangeCalculator::GetCurrentLocationRange(unsigned long &th
     fNoMoreWork = true;
   }
   theEndIndexOut = itsCurrentLocationIndex;
-  itsCurrentLocationIndex++;  // vied‰‰n indeksi yksi eteenp‰in seuraavan threadin alkua varten
+  itsCurrentLocationIndex++;  // vied√§√§n indeksi yksi eteenp√§in seuraavan threadin alkua varten
   return true;
 }
 
@@ -265,10 +265,10 @@ void AddProducerIds(NFmiFastQueryInfo &theDestInfo, NFmiFastQueryInfo &theSource
   }
 }
 
-//! esim. tuulen suunta on ympyr‰ arvoinen eli arvo menee keh‰ss‰ yl‰rajalta alarajalle.
+//! esim. tuulen suunta on ympyr√§ arvoinen eli arvo menee keh√§ss√§ yl√§rajalta alarajalle.
 static bool IsParamCircularValued(const NFmiParam *theParam)
 {
-  // circular toimii siis vain nyt tuulen suunnalle, lis‰‰ muita jos tarpeen
+  // circular toimii siis vain nyt tuulen suunnalle, lis√§√§ muita jos tarpeen
   if (theParam->GetIdent() == kFmiWindDirection) return true;
   return false;
 }
@@ -297,9 +297,9 @@ float NFmiQueryDataUtil::LimitChecker::GetInsideLimitsValue(float theValue) cons
   else
   {
     if (theValue < itsLowerLimit)
-    {  // ei ota huomioon jos arvo menee yli yl‰ ja alarajan erotuksen. Tuli ongelmia toteuttaa se
-      // ja oletan, ett‰ tapaus on harvinainen (lagrange tuskin pystyy tuottamaan niin
-      // isoja/pieni‰
+    {  // ei ota huomioon jos arvo menee yli yl√§ ja alarajan erotuksen. Tuli ongelmia toteuttaa se
+      // ja oletan, ett√§ tapaus on harvinainen (lagrange tuskin pystyy tuottamaan niin
+      // isoja/pieni√§
       // lukuja)
       float tmp = itsUpperLimit - (itsLowerLimit - theValue);
       return tmp;
@@ -321,7 +321,7 @@ void NFmiQueryDataUtil::LimitChecker::Update(void)
     {
       itsLimitDifference = itsUpperLimit - itsLowerLimit;
       if (itsLimitDifference) return;
-      throw runtime_error("Kiert‰v‰ arvoisen parametrin max ja min rajat olivat samat.");
+      throw runtime_error("Kiert√§v√§ arvoisen parametrin max ja min rajat olivat samat.");
     }
   }
 }
@@ -348,14 +348,14 @@ NFmiQueryInfo *CreateInfo(const NFmiQueryInfo *theSourceInfo, NFmiGrid *theWante
                              theSourceInfo->VPlaceDescriptor());
     info->InfoVersion(
         theSourceInfo
-            ->InfoVersion());  // pidet‰‰n infoversio samana, muuten menee interpoloinnit pieleen!
+            ->InfoVersion());  // pidet√§√§n infoversio samana, muuten menee interpoloinnit pieleen!
   }
   return info;
 }
 
 // ----------------------------------------------------------------------
 /*!
- * HUOM!!! datan rakenteen pit‰‰ olla muuten sama paitsi arean ja hilan osalta!!!!!!
+ * HUOM!!! datan rakenteen pit√§√§ olla muuten sama paitsi arean ja hilan osalta!!!!!!
  *
  * \param theSourceInfo Undocumented
  * \param theDestInfo Undocumented
@@ -391,7 +391,7 @@ bool GridInfo2NewGridInfo(NFmiFastQueryInfo &theSourceInfo, NFmiFastQueryInfo &t
 // ----------------------------------------------------------------------
 /*!
  * Konvertoi hilamuotoisen QDatan toiseen haluttuun hilaan
- * HUOM!!! datan rakenteen pit‰‰ olla muuten sama paitsi arean ja hilan osalta!!!!!!
+ * HUOM!!! datan rakenteen pit√§√§ olla muuten sama paitsi arean ja hilan osalta!!!!!!
  *
  * \param theSourceData Undocumented
  * \param theWantedGridFormat Undocumented
@@ -422,8 +422,8 @@ NFmiQueryData *NFmiQueryDataUtil::GridQD2NewGridQD(NFmiQueryData *theSourceData,
   return newData;
 }
 
-// optimoidaan ja tutkitaan mit‰ paikkoja todella tarvitaan
-// eli mitk‰ info2:n paikat ovat interpoloitavissa info1:sta.
+// optimoidaan ja tutkitaan mit√§ paikkoja todella tarvitaan
+// eli mitk√§ info2:n paikat ovat interpoloitavissa info1:sta.
 static void GetMatchingLocations(NFmiFastQueryInfo &theInfo1,
                                  NFmiFastQueryInfo &theInfo2,
                                  checkedVector<unsigned long> &theLocationIndexies,
@@ -449,15 +449,15 @@ static void GetMatchingLocations(NFmiFastQueryInfo &theInfo1,
 
 // ----------------------------------------------------------------------
 /*!
- * Kirjoittaa area/grid 1:st‰ area/grid 2:een p‰‰lle, jos lˆytyy dataa
- * Parametrien ei tarvitse olla samoja mutta leveleiden pit‰‰ olla samoja.
- * Aikojen ei viel‰ tarvitse olla t‰ysin samoja, alku ja loppu ajat voivat
- * vaihdella. Aika-askeleen pituus pit‰‰ olla sama ja aikojen pit‰‰ olla
- * yhteisiss‰ ajoissaan synkronissa (eli jos 6h resoluutio, tuntien pit‰‰
- * menne molemmisssa 0,6,12,...  eik‰ esim. niin, ett‰ toisessa 0, 6, 12..
+ * Kirjoittaa area/grid 1:st√§ area/grid 2:een p√§√§lle, jos l√∂ytyy dataa
+ * Parametrien ei tarvitse olla samoja mutta leveleiden pit√§√§ olla samoja.
+ * Aikojen ei viel√§ tarvitse olla t√§ysin samoja, alku ja loppu ajat voivat
+ * vaihdella. Aika-askeleen pituus pit√§√§ olla sama ja aikojen pit√§√§ olla
+ * yhteisiss√§ ajoissaan synkronissa (eli jos 6h resoluutio, tuntien pit√§√§
+ * menne molemmisssa 0,6,12,...  eik√§ esim. niin, ett√§ toisessa 0, 6, 12..
  * ja toisessa 2, 8, 14, ...).
  *
- * HUOM! Ei kirjoita data2:en p‰‰lle vaan luo uuden qdatan joka palautetaan.
+ * HUOM! Ei kirjoita data2:en p√§√§lle vaan luo uuden qdatan joka palautetaan.
  *
  * \param areaData1 Undocumented
  * \param areaData2 Undocumented
@@ -475,13 +475,13 @@ NFmiQueryData *NFmiQueryDataUtil::Area1QDOverArea2QD(NFmiQueryData *areaData1,
     NFmiFastQueryInfo area1Info(areaData1);
     NFmiFastQueryInfo area2Info(newData);
 
-    // optimoidaan ja tutkitaan mit‰ paikkoja todella tarvitaan eli mitk‰
+    // optimoidaan ja tutkitaan mit√§ paikkoja todella tarvitaan eli mitk√§
     // data2:n paikat ovat interpoloitavissa data1:sta
 
-    // t‰h‰n ker‰t‰‰n ne data1:n paikka-indeksit, jotk‰ todella tarvitaan
+    // t√§h√§n ker√§t√§√§n ne data1:n paikka-indeksit, jotk√§ todella tarvitaan
     checkedVector<unsigned long> locationIndexies;
 
-    // ja t‰h‰n niiden paikkojen lotlon-pisteet
+    // ja t√§h√§n niiden paikkojen lotlon-pisteet
     checkedVector<NFmiPoint> latlons;
 
     GetMatchingLocations(area1Info, area2Info, locationIndexies, latlons);
@@ -490,7 +490,7 @@ NFmiQueryData *NFmiQueryDataUtil::Area1QDOverArea2QD(NFmiQueryData *areaData1,
       if (area1Info.Param(FmiParameterName(area2Info.Param().GetParamIdent())))
       {
         for (area2Info.ResetTime();
-             area2Info.NextTime();)  // aikojen ei t‰ydy olla viel‰ samoja eri qdatoissa
+             area2Info.NextTime();)  // aikojen ei t√§ydy olla viel√§ samoja eri qdatoissa
         {
           if (area1Info.Time(area2Info.Time()))
           {
@@ -562,8 +562,8 @@ NFmiQueryData *NFmiQueryDataUtil::CreateEmptyData(NFmiQueryInfo &srcInfo,
 
 // ----------------------------------------------------------------------
 /*!
- * Luo uuden QDatan, jossa on vain halutut parametrit. Voidaan k‰ytt‰‰
- * myˆs irroittamaan yhdistelm‰ parametrien aliparametreja.
+ * Luo uuden QDatan, jossa on vain halutut parametrit. Voidaan k√§ytt√§√§
+ * my√∂s irroittamaan yhdistelm√§ parametrien aliparametreja.
  *
  * \param theSourceData Undocumented
  * \param theWantedParams Undocumented
@@ -581,7 +581,7 @@ NFmiQueryData *NFmiQueryDataUtil::ExtractParams(NFmiQueryData *theSourceData,
                         dataInfo->HPlaceDescriptor(),
                         dataInfo->VPlaceDescriptor());
   tmpInfo.InfoVersion(
-      dataInfo->InfoVersion());  // pidet‰‰n infoversio samana, muuten menee interpoloinnit pieleen!
+      dataInfo->InfoVersion());  // pidet√§√§n infoversio samana, muuten menee interpoloinnit pieleen!
   NFmiQueryData *destData = CreateEmptyData(tmpInfo);
   if (destData)
   {
@@ -589,11 +589,11 @@ NFmiQueryData *NFmiQueryDataUtil::ExtractParams(NFmiQueryData *theSourceData,
     NFmiFastQueryInfo destInfo(destData);
     for (destInfo.ResetParam(); destInfo.NextParam();)
     {
-      if (!sourceInfo.Param(*destInfo.Param().GetParam()))  // pyyt‰‰ infolta Param().GetParam(),
+      if (!sourceInfo.Param(*destInfo.Param().GetParam()))  // pyyt√§√§ infolta Param().GetParam(),
                                                             // jolloin palautetaan NFmiParam,
-                                                            // jolloin etsitt‰ess‰ parametria
-                                                            // tarkastellaan vain param-id:t‰
-        continue;  // t‰h‰n ei oikeasti saisi menn‰!!!!!!! assertin paikka?
+                                                            // jolloin etsitt√§ess√§ parametria
+                                                            // tarkastellaan vain param-id:t√§
+        continue;  // t√§h√§n ei oikeasti saisi menn√§!!!!!!! assertin paikka?
       for (destInfo.ResetLocation(), sourceInfo.ResetLocation();
            destInfo.NextLocation() && sourceInfo.NextLocation();)
       {
@@ -691,8 +691,8 @@ float LocationInterpolationValue(NFmiFastQueryInfo &theInfo,
     NFmiPoint gridPoint(theInfo.Grid()->LatLonToGrid(theLatlon));
     unsigned long zeroPointIndex =
         static_cast<int>(gridPoint.Y()) * gridXNumber +
-        static_cast<int>(gridPoint.X());  // nollapisteindeksi tarkoittaa sen hilapisteen indeksi‰,
-                                          // joka saadaan kun griPoint leikataan alas l‰himp‰‰n
+        static_cast<int>(gridPoint.X());  // nollapisteindeksi tarkoittaa sen hilapisteen indeksi√§,
+                                          // joka saadaan kun griPoint leikataan alas l√§himp√§√§n
                                           // kokonais hilapisteeseen
     if (!theInfo.LocationIndex(zeroPointIndex)) return value;
     if ((gridPoint.X() > 1) && (gridPoint.Y() > 1) && (gridPoint.X() < gridXNumber - 2) &&
@@ -708,7 +708,7 @@ float LocationInterpolationValue(NFmiFastQueryInfo &theInfo,
       }
       if (std::find_if(valueVec.begin(), valueVec.end(), ::IsMissingValue<double>(kFloatMissing)) !=
           valueVec.end())
-        return kFloatMissing;  // jos yksikin l‰htˆarvoista oli puuttuva, palauta puuttuva
+        return kFloatMissing;  // jos yksikin l√§ht√∂arvoista oli puuttuva, palauta puuttuva
       else
       {
         lagrange.Init(sVec, tVec, &valueVec[0], maxSize, maxSize);
@@ -717,7 +717,7 @@ float LocationInterpolationValue(NFmiFastQueryInfo &theInfo,
         return theLimitChecker.GetInsideLimitsValue(value);
       }
     }
-    else  // hilan reunoilla tehd‰‰n lineaarinen interpolointi, en jaksa tehd‰ erikoistapauksia
+    else  // hilan reunoilla tehd√§√§n lineaarinen interpolointi, en jaksa tehd√§ erikoistapauksia
           // reunoille ja kulmiin.
       return theInfo.InterpolatedValue(theLatlon);
     //	  return value;
@@ -772,7 +772,7 @@ void ExtractLocationsFromGridData(NFmiFastQueryInfo &theSourceInfo,
 /*!
  * Rakentaa muuten saman datan kuin sourceData, paitsi erottaa sourcesta
  * halutut locationit. Jos sourceData on jo location dataa, irrotetaan
- * sielt‰ vain halutut asemat, mutta jos source on hilamuotoista dataa,
+ * sielt√§ vain halutut asemat, mutta jos source on hilamuotoista dataa,
  * interpoloidaan arvot haluttuihin pisteisiin.
  *
  * \param theSourceData Undocumented
@@ -793,7 +793,7 @@ NFmiQueryData *NFmiQueryDataUtil::ExtractLocations(NFmiQueryData *theSourceData,
                         locDesc,
                         dataInfo->VPlaceDescriptor());
   tmpInfo.InfoVersion(
-      dataInfo->InfoVersion());  // pidet‰‰n infoversio samana, muuten menee interpoloinnit pieleen!
+      dataInfo->InfoVersion());  // pidet√§√§n infoversio samana, muuten menee interpoloinnit pieleen!
   NFmiQueryData *destData = CreateEmptyData(tmpInfo);
   if (destData)
   {
@@ -811,12 +811,12 @@ NFmiQueryData *NFmiQueryDataUtil::ExtractLocations(NFmiQueryData *theSourceData,
 
 // ----------------------------------------------------------------------
 /*!
- * Luo annetuista datoista uuden datan siten ett‰ parametrit ovat yhdistetty.
- * Jos samoja parametreja, valitaan toinen data l‰hteeksi, mutta loppu tulokseen
+ * Luo annetuista datoista uuden datan siten ett√§ parametrit ovat yhdistetty.
+ * Jos samoja parametreja, valitaan toinen data l√§hteeksi, mutta loppu tulokseen
  * tulee tietty parametri vain kerran.
- * Ajat otetaan data1:st‰. Alkuja loppuaikojen ei tarvitse olla siis samoja.
+ * Ajat otetaan data1:st√§. Alkuja loppuaikojen ei tarvitse olla siis samoja.
  * Oletuksia: levelit, hila, area ja aika-askel ovat samoja ja ajat synkronissa
- * (eli k‰y l‰pi samoja tunteja 0, 3, 6, ... eik‰ toinen menee 1, 4, 7,... ja
+ * (eli k√§y l√§pi samoja tunteja 0, 3, 6, ... eik√§ toinen menee 1, 4, 7,... ja
  * toinen 2, 5, 8,...)
  *
  * \param theSourceData1 Undocumented
@@ -838,7 +838,7 @@ NFmiQueryData *NFmiQueryDataUtil::CombineParams(NFmiQueryData *theSourceData1,
                         dataInfo1->VPlaceDescriptor());
   tmpInfo.InfoVersion(
       dataInfo1
-          ->InfoVersion());  // pidet‰‰n infoversio samana, muuten menee interpoloinnit pieleen!
+          ->InfoVersion());  // pidet√§√§n infoversio samana, muuten menee interpoloinnit pieleen!
   NFmiQueryData *destData = CreateEmptyData(tmpInfo);
   if (destData)
   {
@@ -849,18 +849,18 @@ NFmiQueryData *NFmiQueryDataUtil::CombineParams(NFmiQueryData *theSourceData1,
     bool useInfo2 = false;
     for (destInfo.ResetParam(); destInfo.NextParam();)
     {
-      if (sourceInfo1.Param(*destInfo.Param().GetParam()))  // pyyt‰‰ infolta Param().GetParam(),
+      if (sourceInfo1.Param(*destInfo.Param().GetParam()))  // pyyt√§√§ infolta Param().GetParam(),
                                                             // jolloin palautetaan NFmiParam,
-                                                            // jolloin etsitt‰ess‰ parametria
-                                                            // tarkastellaan vain param-id:t‰
+                                                            // jolloin etsitt√§ess√§ parametria
+                                                            // tarkastellaan vain param-id:t√§
         useInfo1 = true;
-      if (sourceInfo2.Param(*destInfo.Param().GetParam()))  // pyyt‰‰ infolta Param().GetParam(),
+      if (sourceInfo2.Param(*destInfo.Param().GetParam()))  // pyyt√§√§ infolta Param().GetParam(),
                                                             // jolloin palautetaan NFmiParam,
-                                                            // jolloin etsitt‰ess‰ parametria
-                                                            // tarkastellaan vain param-id:t‰
+                                                            // jolloin etsitt√§ess√§ parametria
+                                                            // tarkastellaan vain param-id:t√§
         useInfo2 = true;
-      if (!(useInfo1 || useInfo2))  // jos kummastakaan ei lˆytynyt parametria ei tehd‰ mit‰‰n
-        continue;                   // t‰h‰n ei oikeasti saisi menn‰!!!!!!! assertin paikka?
+      if (!(useInfo1 || useInfo2))  // jos kummastakaan ei l√∂ytynyt parametria ei tehd√§ mit√§√§n
+        continue;                   // t√§h√§n ei oikeasti saisi menn√§!!!!!!! assertin paikka?
 
       for (destInfo.ResetTime(); destInfo.NextTime();)
       {
@@ -868,8 +868,8 @@ NFmiQueryData *NFmiQueryDataUtil::CombineParams(NFmiQueryData *theSourceData1,
         if (useInfo1 && sourceInfo1.Time(destInfo.Time())) timeFound = true;
         if (useInfo2 && sourceInfo2.Time(destInfo.Time())) timeFound = true;
         if (!timeFound ||
-            !(useInfo1 || useInfo2))  // jos kummastakaan ei lˆytynyt parametria ei tehd‰ mit‰‰n
-          continue;                   // t‰h‰n ei oikeasti saisi menn‰!!!!!!! assertin paikka?
+            !(useInfo1 || useInfo2))  // jos kummastakaan ei l√∂ytynyt parametria ei tehd√§ mit√§√§n
+          continue;                   // t√§h√§n ei oikeasti saisi menn√§!!!!!!! assertin paikka?
 
         for (destInfo.ResetLocation(), sourceInfo1.ResetLocation(), sourceInfo2.ResetLocation();
              destInfo.NextLocation() && sourceInfo1.NextLocation() && sourceInfo2.NextLocation();)
@@ -897,12 +897,12 @@ NFmiQueryData *NFmiQueryDataUtil::CombineParams(NFmiQueryData *theSourceData1,
 
 // ----------------------------------------------------------------------
 /*!
- * Saa qdatan1:n ja qdata2:n ja luo niist‰ uuden datan siten ett‰ locationbagit
- * on yhdistetty. Jos samoja locationeja, valitaan qdata2:n l‰hteeksi, ja
- * lopputulokseen tulee tietty locationi vain kerran. Ajat otetaan qdata1:st‰.
+ * Saa qdatan1:n ja qdata2:n ja luo niist√§ uuden datan siten ett√§ locationbagit
+ * on yhdistetty. Jos samoja locationeja, valitaan qdata2:n l√§hteeksi, ja
+ * lopputulokseen tulee tietty locationi vain kerran. Ajat otetaan qdata1:st√§.
  * Alku- ja loppuaikojen ei tarvitse olla siis samoja. Oletuksia: levelit,
- * parametrit ja aika-askel ovat samoja ja ajat synkronissa (eli k‰y l‰pi samoja
- * tunteja 0, 3, 6, ... eik‰ toinen menee 1, 4, 7,... ja toinen 2, 5, 8,...).
+ * parametrit ja aika-askel ovat samoja ja ajat synkronissa (eli k√§y l√§pi samoja
+ * tunteja 0, 3, 6, ... eik√§ toinen menee 1, 4, 7,... ja toinen 2, 5, 8,...).
  *
  * \param theSourceData1 Undocumented
  * \param theSourceData2 Undocumented
@@ -925,7 +925,7 @@ NFmiQueryData *NFmiQueryDataUtil::CombineLocations(NFmiQueryData *theSourceData1
                         dataInfo1->VPlaceDescriptor());
   tmpInfo.InfoVersion(
       dataInfo1
-          ->InfoVersion());  // pidet‰‰n infoversio samana, muuten menee interpoloinnit pieleen!
+          ->InfoVersion());  // pidet√§√§n infoversio samana, muuten menee interpoloinnit pieleen!
   NFmiQueryData *destData = CreateEmptyData(tmpInfo);
   if (destData)
   {
@@ -939,29 +939,29 @@ NFmiQueryData *NFmiQueryDataUtil::CombineLocations(NFmiQueryData *theSourceData1
       // TODO Muuta latlon-hauksi?!?!
       if (sourceInfo1.Location(*destInfo.Location())) useInfo1 = true;
       if (sourceInfo2.Location(*destInfo.Location())) useInfo2 = true;
-      if (!(useInfo1 || useInfo2))  // jos kummastakaan ei lˆytynyt parametria ei tehd‰ mit‰‰n
-        continue;                   // t‰h‰n ei oikeasti saisi menn‰!!!!!!! assertin paikka?
+      if (!(useInfo1 || useInfo2))  // jos kummastakaan ei l√∂ytynyt parametria ei tehd√§ mit√§√§n
+        continue;                   // t√§h√§n ei oikeasti saisi menn√§!!!!!!! assertin paikka?
 
       //				for(destInfo.ResetParam(), sourceInfo1.ResetParam(),
       // sourceInfo2.ResetParam(); destInfo.NextParam() && sourceInfo1.NextParam() &&
       // sourceInfo2.NextParam();)
       for (destInfo.ResetParam(); destInfo.NextParam();)
       {
-        // asetetaan sourceinfot osoittamaan oikeaan parametriin, jos sellainen lˆytyy
+        // asetetaan sourceinfot osoittamaan oikeaan parametriin, jos sellainen l√∂ytyy
         sourceInfo1.Param(static_cast<FmiParameterName>(destInfo.Param().GetParamIdent()));
         sourceInfo2.Param(static_cast<FmiParameterName>(destInfo.Param().GetParamIdent()));
 
         for (destInfo.ResetTime(), sourceInfo1.ResetTime();
              destInfo.NextTime() && sourceInfo1.NextTime();)
-        {  // source1:st‰ voidaan juoksuttaa samalla aika loopilla koska timedesc on otettu
-           // sielt‰,
-           // mutta source2:lta pit‰‰ aina kysy‰!
+        {  // source1:st√§ voidaan juoksuttaa samalla aika loopilla koska timedesc on otettu
+           // sielt√§,
+           // mutta source2:lta pit√§√§ aina kysy√§!
           bool useInfo2Time = true;
           if (!sourceInfo2.Time(destInfo.Time())) useInfo2Time = false;
           if (!(useInfo1 ||
                 (useInfo2 &&
-                 useInfo2Time)))  // jos kummastakaan ei lˆytynyt parametria ei tehd‰ mit‰‰n
-            continue;             // t‰h‰n ei oikeasti saisi menn‰!!!!!!! assertin paikka?
+                 useInfo2Time)))  // jos kummastakaan ei l√∂ytynyt parametria ei tehd√§ mit√§√§n
+            continue;             // t√§h√§n ei oikeasti saisi menn√§!!!!!!! assertin paikka?
 
           for (destInfo.ResetLevel(), sourceInfo1.ResetLevel(), sourceInfo2.ResetLevel();
                destInfo.NextLevel() && sourceInfo1.NextLevel() && sourceInfo2.NextLevel();)
@@ -986,7 +986,7 @@ NFmiQueryData *NFmiQueryDataUtil::CombineLocations(NFmiQueryData *theSourceData1
 /*!
  *  Irroittaa halutut ajat querydatasta
  *  HUOM!! irroittaa vain saman aikaresoluution dataa.
- *  timebagin pit‰‰ olla samaa resoluutiota datan kanssa
+ *  timebagin pit√§√§ olla samaa resoluutiota datan kanssa
  *
  * \param theSourceData Undocumented
  * \param theWantedTimeDesc Undocumented
@@ -1003,7 +1003,7 @@ NFmiQueryData *NFmiQueryDataUtil::ExtractTimes(const NFmiQueryData *theSourceDat
                          tmpInfoPtr->HPlaceDescriptor(),
                          tmpInfoPtr->VPlaceDescriptor(),
                          tmpInfoPtr->InfoVersion());
-  //  dataInfo.InfoVersion(tmpInfoPtr->InfoVersion()); // pidet‰‰n infoversio samana, muuten menee
+  //  dataInfo.InfoVersion(tmpInfoPtr->InfoVersion()); // pidet√§√§n infoversio samana, muuten menee
   //  interpoloinnit pieleen!
   NFmiQueryData *destData = CreateEmptyData(dataInfo);
   if (destData)
@@ -1038,10 +1038,10 @@ NFmiQueryData *NFmiQueryDataUtil::ExtractTimes(const NFmiQueryData *theSourceDat
 
 // ----------------------------------------------------------------------
 /*!
- *  t‰ytt‰‰ kaiken mink‰ voi sourcesta dest:iin jos destiss‰ on puuttuvaa(!)
+ *  t√§ytt√§√§ kaiken mink√§ voi sourcesta dest:iin jos destiss√§ on puuttuvaa(!)
  *  Oletus infot muuten samanlaisia, paitsi alku ja loppuajat voivat poiketa.
- *  Palauttaa true jos t‰yttˆ oli kattava (tai dataa oli jo joka paikassa muuten) ja
- *  false jos joku paikka j‰i t‰ytt‰m‰tt‰.
+ *  Palauttaa true jos t√§ytt√∂ oli kattava (tai dataa oli jo joka paikassa muuten) ja
+ *  false jos joku paikka j√§i t√§ytt√§m√§tt√§.
  *
  * \param theDestination Undocumented
  * \param theSource Undocumented
@@ -1076,8 +1076,8 @@ bool FillSimilarDataWithDifferentTimeEnds(NFmiFastQueryInfo *theDestination,
               sourceValue = theSource->FloatValue();  // palauttaa puuttuvaa jos aika ei ollut
                                                       // kohdallaan vain fastqueryinfossa!!!
               if (sourceValue == kFloatMissing || sourceValue == kTCombinedWeatherFloatMissing)
-                fullFill = false;  // yhdenkin kerran kun menee t‰nne, tiedet‰‰n ett‰ jokin osa
-                                   // datasta puuttuu viel‰
+                fullFill = false;  // yhdenkin kerran kun menee t√§nne, tiedet√§√§n ett√§ jokin osa
+                                   // datasta puuttuu viel√§
               else
                 theDestination->FloatValue(sourceValue);
             }
@@ -1091,17 +1091,17 @@ bool FillSimilarDataWithDifferentTimeEnds(NFmiFastQueryInfo *theDestination,
 
 // ----------------------------------------------------------------------
 /*!
- *  Ottaa kaiken mink‰ voi sourcesta dest:iin, jos destiss‰ on puuttuvaa(!)
+ *  Ottaa kaiken mink√§ voi sourcesta dest:iin, jos destiss√§ on puuttuvaa(!)
  *  Oletus infot muuten samanlaisia, paitsi alku ja loppuajat  voivat poiketa.
  *  Sourcen aikaresoluutio on pienempi destinationin.
- *  Palauttaa true jos t‰yttˆ oli kattava (tai dataa oli jo joka paikassa muuten) ja
- *  false jos joku paikka j‰i t‰ytt‰m‰tt‰.
- *  Jos weatherandcloudiness otus ja siin‰ sadem‰‰r‰, lasketaan tarvittava sadesumma talteen
- *  13.6.2002/Marko Lis‰sin myˆs aikainterpolointiin maxSearchRange-parametrin,
+ *  Palauttaa true jos t√§ytt√∂ oli kattava (tai dataa oli jo joka paikassa muuten) ja
+ *  false jos joku paikka j√§i t√§ytt√§m√§tt√§.
+ *  Jos weatherandcloudiness otus ja siin√§ sadem√§√§r√§, lasketaan tarvittava sadesumma talteen
+ *  13.6.2002/Marko Lis√§sin my√∂s aikainterpolointiin maxSearchRange-parametrin,
  *  jolla rajoitetaan halutessa interpolointia ja extrapolointia. Eli jos arvot
- *  lˆytyv‰t liian kaukaa ajallisesti, laitetaan puuttuvaa arvoa tulokseksi.
+ *  l√∂ytyv√§t liian kaukaa ajallisesti, laitetaan puuttuvaa arvoa tulokseksi.
  *  Oletus arvo on 360 minuuttia jos parametrin arvoksi annetaan 0, ei ajallista rajaa ole.
- *  Lis‰ksi muutin toiminnon niin, ett‰ k‰ytet‰‰n aina queryinfon-aikainterpolointia.
+ *  Lis√§ksi muutin toiminnon niin, ett√§ k√§ytet√§√§n aina queryinfon-aikainterpolointia.
  *
  * \param theDestination Undocumented
  * \param theSource Undocumented
@@ -1143,8 +1143,8 @@ bool InterpolateSimilarDataToLargerTimeResolution(NFmiFastQueryInfo *theDestinat
             {
               sourceValue = theSource->InterpolatedValue(t, theMaxTimeSearchRangeInMinutes);
               if (sourceValue == kFloatMissing || sourceValue == kTCombinedWeatherFloatMissing)
-                fullFill = false;  // yhdenkin kerran kun menee t‰nne, tiedet‰‰n ett‰ jokin osa
-                                   // datasta puuttuu viel‰
+                fullFill = false;  // yhdenkin kerran kun menee t√§nne, tiedet√§√§n ett√§ jokin osa
+                                   // datasta puuttuu viel√§
               else
                 theDestination->FloatValue(sourceValue);
             }
@@ -1173,7 +1173,7 @@ float GetLagrangeValue(checkedVector<double> &theValueVec,
   if (std::find_if(theValueVec.begin(),
                    theValueVec.end(),
                    ::IsMissingValue<double>(kFloatMissing)) != theValueVec.end())
-    return kFloatMissing;  // jos yksikin l‰htˆarvoista oli puuttuva, palauta puuttuva
+    return kFloatMissing;  // jos yksikin l√§ht√∂arvoista oli puuttuva, palauta puuttuva
   else
   {
     lagrange.Init(&theTimeVec[0], &theValueVec[0], static_cast<int>(theValueVec.size()));
@@ -1184,8 +1184,8 @@ float GetLagrangeValue(checkedVector<double> &theValueVec,
 // ----------------------------------------------------------------------
 /*!
  * TheInterpolatedTimePlace on interpoloitavan ajan paikka 0 - 1 avaruudessa
- * niiden kahden aikapisteen v‰liss‰, jotka ovat l‰hinn‰ interpoloitavaa
- * pistett‰ l‰hdedatassa.
+ * niiden kahden aikapisteen v√§liss√§, jotka ovat l√§hinn√§ interpoloitavaa
+ * pistett√§ l√§hdedatassa.
  *
  * \param theInfo Undocumented
  * \param theTime Undocumented
@@ -1217,11 +1217,11 @@ float TimeInterpolationValue(NFmiFastQueryInfo &theInfo,
     unsigned long oldTimeIndex = theInfo.TimeIndex();
     theInfo.TimeIndex(theOneStepBeforeTimeIndex);
     if (theOneStepBeforeTimeIndex ==
-        0)  // case: annettu index timebagin alku rajalla, eli tehd‰‰n interpolointi 3:lla arvolla
+        0)  // case: annettu index timebagin alku rajalla, eli tehd√§√§n interpolointi 3:lla arvolla
     {
       checkedVector<double> valueVec(3);
       checkedVector<double> timeVec(
-          3);  // yll‰ olevien arvojen suhteelliset paikat aika-avaruudessa (0 - 1)
+          3);  // yll√§ olevien arvojen suhteelliset paikat aika-avaruudessa (0 - 1)
       timeVec[0] = 0;
       timeVec[1] = 1;
       timeVec[2] = 2;
@@ -1231,12 +1231,12 @@ float TimeInterpolationValue(NFmiFastQueryInfo &theInfo,
       value = GetLagrangeValue(valueVec, timeVec, theInterpolatedTimePlace);
     }
     else if (theOneStepBeforeTimeIndex == theInfo.SizeTimes() - 2)  // case: annettu index timebagin
-                                                                    // loppu rajalla, eli tehd‰‰n
+                                                                    // loppu rajalla, eli tehd√§√§n
                                                                     // interpolointi 3:lla arvolla
     {
       checkedVector<double> valueVec(3);
       checkedVector<double> timeVec(
-          3);  // yll‰ olevien arvojen suhteelliset paikat aika-avaruudessa (0 - 1)
+          3);  // yll√§ olevien arvojen suhteelliset paikat aika-avaruudessa (0 - 1)
       timeVec[0] = -1;
       timeVec[1] = 0;
       timeVec[2] = 1;
@@ -1246,13 +1246,13 @@ float TimeInterpolationValue(NFmiFastQueryInfo &theInfo,
       value = GetLagrangeValue(valueVec, timeVec, theInterpolatedTimePlace);
     }
     else if (theOneStepBeforeTimeIndex >
-             theInfo.SizeTimes() - 2)  // ei voi interpoloida, annettu indeksi v‰‰rin?
+             theInfo.SizeTimes() - 2)  // ei voi interpoloida, annettu indeksi v√§√§rin?
       value = kFloatMissing;
-    else  // muuten tehd‰‰n normaali 4:n pisteen interpolointi
+    else  // muuten tehd√§√§n normaali 4:n pisteen interpolointi
     {
       checkedVector<double> valueVec(4);
       checkedVector<double> timeVec(
-          4);  // yll‰ olevien arvojen suhteelliset paikat aika-avaruudessa (0 - 1)
+          4);  // yll√§ olevien arvojen suhteelliset paikat aika-avaruudessa (0 - 1)
       timeVec[0] = -1;
       timeVec[1] = 0;
       timeVec[2] = 1;
@@ -1272,7 +1272,7 @@ float TimeInterpolationValue(NFmiFastQueryInfo &theInfo,
 // ----------------------------------------------------------------------
 /*!
  *  Laskee muutuva aikaresoluutioiselle datalle aikainterpoloinnin.
- *	K‰ytt‰‰ lagrangea jos on niin haluttu tai se on mahdollista.
+ *	K√§ytt√§√§ lagrangea jos on niin haluttu tai se on mahdollista.
  *
  * \param theInfo Undocumented
  * \param theTime Undocumented
@@ -1303,13 +1303,13 @@ float TimeInterpolationValueWCTR(NFmiFastQueryInfo &theInfo,
     return theInfo.InterpolatedValue(theTime, theMaxTimeSearchRangeInMinutes);
   else
   {
-    //	  checkedVector<double> timeVec(4); // yll‰ olevien arvojen suhteelliset paikat
+    //	  checkedVector<double> timeVec(4); // yll√§ olevien arvojen suhteelliset paikat
     // aika-avaruudessa (0 - 1)
     float value = kFloatMissing;
     unsigned long oldTimeIndex = theInfo.TimeIndex();
     theInfo.TimeIndex(theOneStepBeforeTimeIndex);
     if (theOneStepBeforeTimeIndex ==
-        0)  // case: annettu index timebagin alku rajalla, eli tehd‰‰n interpolointi 3:lla arvolla
+        0)  // case: annettu index timebagin alku rajalla, eli tehd√§√§n interpolointi 3:lla arvolla
     {
       checkedVector<double> valueVec(3);
       valueVec[0] = theInfo.PeekTimeValue(0);
@@ -1318,7 +1318,7 @@ float TimeInterpolationValueWCTR(NFmiFastQueryInfo &theInfo,
       value = GetLagrangeValue(valueVec, theTimeFactors, theInterpolatedTimePlace);
     }
     else if (theOneStepBeforeTimeIndex == theInfo.SizeTimes() - 2)  // case: annettu index timebagin
-                                                                    // loppu rajalla, eli tehd‰‰n
+                                                                    // loppu rajalla, eli tehd√§√§n
                                                                     // interpolointi 3:lla arvolla
     {
       checkedVector<double> valueVec(3);
@@ -1328,9 +1328,9 @@ float TimeInterpolationValueWCTR(NFmiFastQueryInfo &theInfo,
       value = GetLagrangeValue(valueVec, theTimeFactors, theInterpolatedTimePlace);
     }
     else if (theOneStepBeforeTimeIndex >
-             theInfo.SizeTimes() - 2)  // ei voi interpoloida, annettu indeksi v‰‰rin?
+             theInfo.SizeTimes() - 2)  // ei voi interpoloida, annettu indeksi v√§√§rin?
       value = kFloatMissing;
-    else  // muuten tehd‰‰n normaali 4:n pisteen interpolointi
+    else  // muuten tehd√§√§n normaali 4:n pisteen interpolointi
     {
       checkedVector<double> valueVec(4);
       valueVec[0] = theInfo.PeekTimeValue(-1);
@@ -1347,14 +1347,14 @@ float TimeInterpolationValueWCTR(NFmiFastQueryInfo &theInfo,
 
 // ----------------------------------------------------------------------
 /*!
- *  Interpoloi kaiken mink‰ voi sourcesta dest:iin.
+ *  Interpoloi kaiken mink√§ voi sourcesta dest:iin.
  *  Oletus infot muuten samanlaisia, paitsi alku ja loppuajat  voivat poiketa.
  *  Sourcen aikaresoluutio on suurempi destinationin.
- *  Palauttaa true jos t‰yttˆ oli kattava (tai dataa oli jo joka paikassa muuten) ja
- *  false jos joku paikka j‰i t‰ytt‰m‰tt‰.
- *  13.6.2002/Marko Lis‰sin myˆs aikainterpolointiin maxSearchRange-parametrin,
+ *  Palauttaa true jos t√§ytt√∂ oli kattava (tai dataa oli jo joka paikassa muuten) ja
+ *  false jos joku paikka j√§i t√§ytt√§m√§tt√§.
+ *  13.6.2002/Marko Lis√§sin my√∂s aikainterpolointiin maxSearchRange-parametrin,
  *  jolla rajoitetaan halutessa interpolointia ja extrapolointia. Eli jos arvot
- *  lˆytyv‰t liian kaukaa ajallisesti, laitetaan puuttuvaa arvoa tulokseksi.
+ *  l√∂ytyv√§t liian kaukaa ajallisesti, laitetaan puuttuvaa arvoa tulokseksi.
  *  Oletus arvo on 360 minuuttia jos parametrin arvoksi annetaan 0, ei ajallista rajaa ole.
  *
  * \param theDestination Undocumented
@@ -1377,18 +1377,18 @@ bool InterpolateSimilarDataToSmallerTimeResolution(NFmiFastQueryInfo *theDestina
   {
     float sourceValue = kFloatMissing;
     bool useLagrange = theInterpolationMethod == kLagrange;
-    unsigned long lagrangeTimeIndex = 0;  // t‰h‰n laitetaan interpoloitavaa aikaa l‰hin edelt‰v‰n
-                                          // ajan aikaindeksi, joka lˆytyy l‰hdedatasta
-    double lagrangeTimePosition = 0;      // t‰h‰n laitetaan interpoloitavan ajan paikka 0 - 1
-    // avaruudessa niiden kahden aikapisteen v‰liss‰, jotka ovat
-    // l‰hinn‰ interpoloitavaa pistett‰ l‰hdedatassa.
+    unsigned long lagrangeTimeIndex = 0;  // t√§h√§n laitetaan interpoloitavaa aikaa l√§hin edelt√§v√§n
+                                          // ajan aikaindeksi, joka l√∂ytyy l√§hdedatasta
+    double lagrangeTimePosition = 0;      // t√§h√§n laitetaan interpoloitavan ajan paikka 0 - 1
+    // avaruudessa niiden kahden aikapisteen v√§liss√§, jotka ovat
+    // l√§hinn√§ interpoloitavaa pistett√§ l√§hdedatassa.
     fullFill = true;
     for (theDestination->ResetTime(); theDestination->NextTime();)
     {
       NFmiMetTime t(theDestination->Time());
       bool timeStatus = theSource->Time(t);
       if (useLagrange && (!timeStatus))
-      {  // tehd‰‰n lagrange intepolointia varten tarvittavat laskut
+      {  // tehd√§√§n lagrange intepolointia varten tarvittavat laskut
         theSource->TimeToNearestStep(t, kBackward, theMaxTimeSearchRangeInMinutes);
         lagrangeTimeIndex = theSource->TimeIndex();
         NFmiMetTime time1(theSource->Time());
@@ -1420,7 +1420,7 @@ bool InterpolateSimilarDataToSmallerTimeResolution(NFmiFastQueryInfo *theDestina
             {
               theDestination->FloatValue(sourceValue);
             }
-            else  // pit‰‰ interpoloida
+            else  // pit√§√§ interpoloida
             {
               float tempV = TimeInterpolationValue(*theSource,
                                                    t,
@@ -1440,7 +1440,7 @@ bool InterpolateSimilarDataToSmallerTimeResolution(NFmiFastQueryInfo *theDestina
   return fullFill;
 }
 
-// luo vaihtuva aikaresoluutioisesta (WCTR=With Changing Time Resolution) datasta tasav‰liaikaista
+// luo vaihtuva aikaresoluutioisesta (WCTR=With Changing Time Resolution) datasta tasav√§liaikaista
 // dataa
 bool MakeSimilarTimeBagDataFromWCTRData(NFmiFastQueryInfo &theDestination,
                                         NFmiFastQueryInfo &theSource,
@@ -1457,17 +1457,17 @@ bool MakeSimilarTimeBagDataFromWCTRData(NFmiFastQueryInfo &theDestination,
   NFmiDataModifierSum sumModifier;
   NFmiDataModifierMode modeModifier;
   bool useLagrange = theInterpolationMethod == kLagrange;
-  unsigned long lagrangeTimeIndex = 0;  // t‰h‰n laitetaan interpoloitavaa aikaa l‰hin edelt‰v‰n
-                                        // ajan aikaindeksi, joka lˆytyy l‰hdedatasta
-  double lagrangeTimePosition = 0;  // t‰h‰n laitetaan interpoloitavan ajan paikka 0 - 1 avaruudessa
-                                    // niiden kahden aikapisteen v‰liss‰, jotka ovat l‰hinn‰
-                                    // interpoloitavaa pistett‰ l‰hdedatassa.
-  checkedVector<double> timeFactors;  // t‰h‰n lasketaan joka aika-askeleella mahdolliset lagrange
+  unsigned long lagrangeTimeIndex = 0;  // t√§h√§n laitetaan interpoloitavaa aikaa l√§hin edelt√§v√§n
+                                        // ajan aikaindeksi, joka l√∂ytyy l√§hdedatasta
+  double lagrangeTimePosition = 0;  // t√§h√§n laitetaan interpoloitavan ajan paikka 0 - 1 avaruudessa
+                                    // niiden kahden aikapisteen v√§liss√§, jotka ovat l√§hinn√§
+                                    // interpoloitavaa pistett√§ l√§hdedatassa.
+  checkedVector<double> timeFactors;  // t√§h√§n lasketaan joka aika-askeleella mahdolliset lagrange
                                       // laskuissa tarvittavat aikakertoimet
 
   int i = 0;
   for (theDestination.ResetTime(); theDestination.NextTime() && i < timeSize;
-       i++)  // juoksutetaan ajat l‰pi
+       i++)  // juoksutetaan ajat l√§pi
   {
     if (i == 0)
       time1 = time2 = theDestination.Time();
@@ -1484,16 +1484,16 @@ bool MakeSimilarTimeBagDataFromWCTRData(NFmiFastQueryInfo &theDestination,
     if (!timeFound) theSource.TimeToNearestStep(currentTime, kForward);
 
     if (useLagrange && (!timeFound))
-    {  // tehd‰‰n lagrange intepolointia varten tarvittavat laskut
+    {  // tehd√§√§n lagrange intepolointia varten tarvittavat laskut
       theSource.TimeToNearestStep(currentTime, kBackward, theMaxTimeSearchRangeInMinutes);
       lagrangeTimeIndex = theSource.TimeIndex();
       NFmiMetTime timeLagrange1(theSource.Time());
       theSource.NextTime();
       lagrangeTimePosition = currentTime.DifferenceInMinutes(timeLagrange1);
 
-      theSource.TimeIndex(lagrangeTimeIndex);  // source pit‰‰ asettaa viel‰ oikeaan aikaan, ett‰
+      theSource.TimeIndex(lagrangeTimeIndex);  // source pit√§√§ asettaa viel√§ oikeaan aikaan, ett√§
                                                // timeFactorit voidaan laskea
-      if (lagrangeTimeIndex == 0)  // case: annettu index timebagin alku rajalla, eli tehd‰‰n
+      if (lagrangeTimeIndex == 0)  // case: annettu index timebagin alku rajalla, eli tehd√§√§n
                                    // interpolointi 3:lla arvolla
       {
         timeFactors.resize(3);
@@ -1507,7 +1507,7 @@ bool MakeSimilarTimeBagDataFromWCTRData(NFmiFastQueryInfo &theDestination,
         timeFactors[2] = time_2.DifferenceInMinutes(time_0);
       }
       else if (lagrangeTimeIndex == theSource.SizeTimes() - 2)  // case: annettu index timebagin
-                                                                // loppu rajalla, eli tehd‰‰n
+                                                                // loppu rajalla, eli tehd√§√§n
                                                                 // interpolointi 3:lla arvolla
       {
         timeFactors.resize(3);
@@ -1521,7 +1521,7 @@ bool MakeSimilarTimeBagDataFromWCTRData(NFmiFastQueryInfo &theDestination,
         timeFactors[1] = 0;
         timeFactors[2] = time_1.DifferenceInMinutes(time_0);
       }
-      else  // muuten tehd‰‰n normaali 4:n pisteen interpolointi
+      else  // muuten tehd√§√§n normaali 4:n pisteen interpolointi
       {
         timeFactors.resize(4);
         NFmiMetTime time_0(theSource.Time());
@@ -1539,7 +1539,7 @@ bool MakeSimilarTimeBagDataFromWCTRData(NFmiFastQueryInfo &theDestination,
       }
     }
 
-    for (theDestination.ResetParam(); theDestination.NextParam();)  // juoksutetaan parametrit l‰pi
+    for (theDestination.ResetParam(); theDestination.NextParam();)  // juoksutetaan parametrit l√§pi
     {
       const NFmiParam *tmpParam = theDestination.Param().GetParam();
       NFmiQueryDataUtil::LimitChecker checkerWithLagrangeInterpolation(
@@ -1576,20 +1576,20 @@ bool MakeSimilarTimeBagDataFromWCTRData(NFmiFastQueryInfo &theDestination,
       }
       //				else // HUOM! ei vakava virhe (joten kommentissa)
       //					status = false; // parametrilista ei ollut
-      // t‰ydellinen sourcedatassa (pit‰‰ varautua moiseen!)
+      // t√§ydellinen sourcedatassa (pit√§√§ varautua moiseen!)
     }
     //		else // HUOM! ei vakava virhe (joten kommentissa)
-    //			status = false; // ei saisi tulla t‰h‰n!!!!
+    //			status = false; // ei saisi tulla t√§h√§n!!!!
   }
   return status;
 }
 
 // ----------------------------------------------------------------------
 /*!
- * T‰m‰ funktio tekee pienen siirron ja muokkauksen annettuun timebagiin
- * riippuen referenssi bagist‰. Eli mahdollinen siirto tunti juoksutuksesta
+ * T√§m√§ funktio tekee pienen siirron ja muokkauksen annettuun timebagiin
+ * riippuen referenssi bagist√§. Eli mahdollinen siirto tunti juoksutuksesta
  * (3h resoluutio) 1, 4, 7, 10, ... vaikka seuraavanlaiseen  0, 3, 6, 9, ...
- * HUOM!!! TimeBAgeilla pit‰‰ olla sama resoluutio!!!
+ * HUOM!!! TimeBAgeilla pit√§√§ olla sama resoluutio!!!
  *
  * \param theTimeBag Undocumented
  * \param thePossibleReferenceTimeBag Undocumented
@@ -1621,10 +1621,10 @@ NFmiTimeBag MakeReferenceTimeBagCheck(const NFmiTimeBag &theTimeBag,
 /*!
  * Jos timebag pointteri on 0, otetaan timebagi smartista ja resoluutio
  * annetusta parametrista, mutta jos timebag pointteri osoittaa johonkin,
- * otetaan se suoraan k‰yttˆˆn. thePossibleReferenceTimeBag:ia k‰ytet‰‰n
+ * otetaan se suoraan k√§ytt√∂√∂n. thePossibleReferenceTimeBag:ia k√§ytet√§√§n
  * asettamaan tulosdatan timebagi oikeaan aika-jaksotukseen. Eli
- * jos halutaan esim., ett‰ tunnit juoksevat 3 tunnin
- * v‰lein 1, 4, 7, 10, ... tai 0, 3, 6, 9, ...
+ * jos halutaan esim., ett√§ tunnit juoksevat 3 tunnin
+ * v√§lein 1, 4, 7, 10, ... tai 0, 3, 6, 9, ...
  *
  * \param theSourceInfo Undocumented
  * \param theResolutionInMinutes Undocumented
@@ -1647,8 +1647,8 @@ NFmiQueryData *CreateSimilarDataWithTimeInterpolation(NFmiFastQueryInfo *theSour
   NFmiQueryData *newData = 0;
   if (theSourceInfo)
   {
-    theSourceInfo->FirstTime();  // Varmistetaan ett‰ ollaan 1. aika-askeleessa, jotta
-    // aikaresoluutio on aina sama samalle datalle (eik‰ satunnainen,
+    theSourceInfo->FirstTime();  // Varmistetaan ett√§ ollaan 1. aika-askeleessa, jotta
+    // aikaresoluutio on aina sama samalle datalle (eik√§ satunnainen,
     // jos vaihtuva resoluutioinen data ja aika-indeksi on joku muu
     // kuin 0)
     bool sourceDataIsWCTR =
@@ -1688,7 +1688,7 @@ NFmiQueryData *CreateSimilarDataWithTimeInterpolation(NFmiFastQueryInfo *theSour
                                       kUTC,
                                       theSourceInfo->TimeDescriptor().IsInterpolation());
 
-    // pidet‰‰n infoversio samana, muuten menee interpoloinnit pieleen!
+    // pidet√§√§n infoversio samana, muuten menee interpoloinnit pieleen!
     NFmiQueryInfo newInnerInfo(theSourceInfo->ParamDescriptor(),
                                timeDescriptor,
                                theSourceInfo->HPlaceDescriptor(),
@@ -1725,12 +1725,12 @@ NFmiQueryData *CreateSimilarDataWithTimeInterpolation(NFmiFastQueryInfo *theSour
 
 // ----------------------------------------------------------------------
 /*!
- * Parametrit,levelit ja hila/asemat pit‰‰ olla samat!
- * Pit‰‰ olla timeBag (ei timelist, tulee muuttumaan?)
+ * Parametrit,levelit ja hila/asemat pit√§√§ olla samat!
+ * Pit√§√§ olla timeBag (ei timelist, tulee muuttumaan?)
  * Interpolationmethod uutena parametrina. Ei oteta datasta
- * ja niiden parametreista, vaan annetaan erillisen‰ parametrina
- * (tiettyj‰ parametreja mm. yhdistel‰parametreja, ei voi hoitaa lagrange
- * metodilla ja ne tehd‰‰n lineaarisesti tai nearest metodilla.).
+ * ja niiden parametreista, vaan annetaan erillisen√§ parametrina
+ * (tiettyj√§ parametreja mm. yhdistel√§parametreja, ei voi hoitaa lagrange
+ * metodilla ja ne tehd√§√§n lineaarisesti tai nearest metodilla.).
  *
  * \param theSourceData Undocumented
  * \param theTimeResolutionInMinutes Undocumented
@@ -1750,7 +1750,7 @@ NFmiQueryData *NFmiQueryDataUtil::InterpolateTimes(NFmiQueryData *theSourceData,
                                                    FmiInterpolationMethod theInterpolationMethod)
 {
   NFmiFastQueryInfo sourceInfo(theSourceData);
-  NFmiTimeBag *wantedTimeBag = 0;  // tulevaisuudessa erilainen k‰yttˆ?
+  NFmiTimeBag *wantedTimeBag = 0;  // tulevaisuudessa erilainen k√§ytt√∂?
   NFmiQueryData *data = CreateSimilarDataWithTimeInterpolation(&sourceInfo,
                                                                theTimeResolutionInMinutes,
                                                                theStartTimeResolutionInMinutes,
@@ -1769,8 +1769,8 @@ NFmiQueryData *NFmiQueryDataUtil::InterpolateTimes(NFmiQueryData *theSourceData,
 
 // ----------------------------------------------------------------------
 /*!
- * Luodaan uusi TimeDescriptori: alkuper‰iselt‰ datalta otetaan alku-
- * ja loppuajat, aikaresoluutio integerin‰ komentorivilt‰
+ * Luodaan uusi TimeDescriptori: alkuper√§iselt√§ datalta otetaan alku-
+ * ja loppuajat, aikaresoluutio integerin√§ komentorivilt√§
  *
  * \param theSourceData Undocumented
  * \param theTimeResolutionInMinutes Undocumented
@@ -1793,8 +1793,8 @@ NFmiTimeDescriptor NFmiQueryDataUtil::NewTimeDescriptor(NFmiQueryData *theSource
 
 // ----------------------------------------------------------------------
 /*!
- *  Kirjoitetaan lyhyemm‰n aikav‰lin data pidemm‰n aikav‰lin datan alun p‰‰lle
- *  Oletus: datoilla sama aikaresoluutio (+ Parametrit,levelit ja hila/asemat pit‰‰ olla samat!)
+ *  Kirjoitetaan lyhyemm√§n aikav√§lin data pidemm√§n aikav√§lin datan alun p√§√§lle
+ *  Oletus: datoilla sama aikaresoluutio (+ Parametrit,levelit ja hila/asemat pit√§√§ olla samat!)
  *
  * \param theLongerInfo Undocumented
  * \param theShorterInfo Undocumented
@@ -1809,20 +1809,20 @@ bool NFmiQueryDataUtil::OverWriteTimesFromFile(NFmiFastQueryInfo &theLongerInfo,
   theShorterInfo.Reset();
   float value = kFloatMissing;
 
-  // Etsit‰‰n pienin yhteinen aika
+  // Etsit√§√§n pienin yhteinen aika
   do
   {
     if (!theShorterInfo.NextTime()) break;
   } while (!theLongerInfo.Time(theShorterInfo.Time()));
 
-  // Siirret‰‰n ajassa yksi pyk‰l‰ taaksep‰in, ett‰ ei j‰‰ yht‰‰n aikaa v‰liin
-  // Ent‰, jos ensimm‰inen aika m‰ts‰‰ --> siirt‰‰kˆ resettiin?
+  // Siirret√§√§n ajassa yksi pyk√§l√§ taaksep√§in, ett√§ ei j√§√§ yht√§√§n aikaa v√§liin
+  // Ent√§, jos ensimm√§inen aika m√§ts√§√§ --> siirt√§√§k√∂ resettiin?
   theShorterInfo.PreviousTime();
   theLongerInfo.PreviousTime();
 
-  // Kirjoitetaan lyhyemm‰n datan tiedot pidemm‰n p‰‰lle
+  // Kirjoitetaan lyhyemm√§n datan tiedot pidemm√§n p√§√§lle
   for (; theShorterInfo.NextTime() &&
-         theLongerInfo.NextTime();)  // k‰yd‰‰n l‰pi niin kauan kuin lyhyemm‰ss‰ datassa on aikoja
+         theLongerInfo.NextTime();)  // k√§yd√§√§n l√§pi niin kauan kuin lyhyemm√§ss√§ datassa on aikoja
   {
     for (theLongerInfo.ResetParam(), theShorterInfo.ResetParam();
          theLongerInfo.NextParam() && theShorterInfo.NextParam();)
@@ -1835,18 +1835,18 @@ bool NFmiQueryDataUtil::OverWriteTimesFromFile(NFmiFastQueryInfo &theLongerInfo,
         {
           value = theShorterInfo.FloatValue();
           if (value == kFloatMissing || value == kTCombinedWeatherFloatMissing)
-            ;  // ei tehd‰ mit‰‰n jos puuttuvaa
+            ;  // ei tehd√§ mit√§√§n jos puuttuvaa
           else
             theLongerInfo.FloatValue(value);
 
-          // HUOM! muutin puuttuva arvo k‰sittely‰ siten, ett‰ vain ei puuttuvat
+          // HUOM! muutin puuttuva arvo k√§sittely√§ siten, ett√§ vain ei puuttuvat
           // arvot sijoitetaan kohdedataan, mutta toimintaa ei lopeteta kuitenkaan.
 
-          // VAARA!!!! Marko joutui tekem‰‰n pikavirityksen!!!
-          // Jos lˆytyy yksikin puuttuva arvo, lopetetaan funktion suoritus.
-          // T‰m‰ sen takia, ett‰ ECMWF-jutussa tulee lopussa joka toisessa aika-askeleessa
-          // puuttuvaa ja siit‰ eteenp‰in datan syˆtˆn on loputtava!!
-          // T‰m‰ pit‰‰ kuitenkin hoitaa joskus tyylikk‰‰mmin.
+          // VAARA!!!! Marko joutui tekem√§√§n pikavirityksen!!!
+          // Jos l√∂ytyy yksikin puuttuva arvo, lopetetaan funktion suoritus.
+          // T√§m√§ sen takia, ett√§ ECMWF-jutussa tulee lopussa joka toisessa aika-askeleessa
+          // puuttuvaa ja siit√§ eteenp√§in datan sy√∂t√∂n on loputtava!!
+          // T√§m√§ pit√§√§ kuitenkin hoitaa joskus tyylikk√§√§mmin.
           /*
                                             if(value == kFloatMissing)
                                                   return true;
@@ -1863,7 +1863,7 @@ bool NFmiQueryDataUtil::OverWriteTimesFromFile(NFmiFastQueryInfo &theLongerInfo,
 // ----------------------------------------------------------------------
 /*!
  * Funktio luo qdata:sta uuden qdatan, jossa on uusi haluttu hila.
- * Uudessa qdatassa on muut systeemit otettu alkuper‰isesta qdatasta
+ * Uudessa qdatassa on muut systeemit otettu alkuper√§isesta qdatasta
  * (time, param ja level).
  *
  * \param theSourceData Undocumented
@@ -1915,16 +1915,16 @@ void SpaceOutDataWithSmoother(NFmiFastQueryInfo & /* theSourceInfo */,
 
 // ----------------------------------------------------------------------
 /*!
- * Laskee saadusta datasta uuden (haluttuun hilav‰liin). K‰ytt‰‰ annettua
+ * Laskee saadusta datasta uuden (haluttuun hilav√§liin). K√§ytt√§√§ annettua
  * datamodifieria (esim. avg) laskeakseen uuteen hilaa/dataan arvoja.
  * Datamodifier saa laskuunsa datat aina annetusta datanhakulaatikosta.
- * Jos sinulla on esim. jokin data 200x300 hilassa ja haluat laskea siit‰
+ * Jos sinulla on esim. jokin data 200x300 hilassa ja haluat laskea siit√§
  * uudet arvot esim. 30x50 hilaan laskien samalla tasoitusta (keskiarvoa)
  * vaikka 5x7 hilalaatikko-alueen yli: anna originaali data, pointti
  * jossa arvot 30 ja 50, NFmiDataModifierAvg-pointteri ja recti, jossa
  * arvot l=-2, t=3, r=2, b=-3. Paluuarvona tulee NFmiQueryData-otus,
  * jossa on tulos (tai 0-pointteri, jos virhe). Parametrit, Levelit ja
- * Aikasysteemit pysyv‰t samoina.
+ * Aikasysteemit pysyv√§t samoina.
  *
  * \param theSourceInfo Undocumented
  * \param newGridSize Undocumented
@@ -1960,7 +1960,7 @@ NFmiQueryData *NFmiQueryDataUtil::SpaceOutData(NFmiFastQueryInfo &theSourceInfo,
                                theSourceInfo.VPlaceDescriptor());
     newInnerInfo.InfoVersion(
         theSourceInfo
-            .InfoVersion());  // pidet‰‰n infoversio samana, muuten menee interpoloinnit pieleen!
+            .InfoVersion());  // pidet√§√§n infoversio samana, muuten menee interpoloinnit pieleen!
     newData = CreateEmptyData(newInnerInfo);
     if (newData)
     {
@@ -1998,8 +1998,8 @@ NFmiQueryData *NFmiQueryDataUtil::SpaceOutData(NFmiFastQueryInfo &theSourceInfo,
                      theSourceInfo.NextTime() && destInfo.NextTime();)
                 {
                   if (combinedParam)
-                  {  // ********* t‰m‰ haara viel‰ toteuttamatta, eli yhdistelm‰ parametreja ei
-                     // viel‰ hoideta!!! *******
+                  {  // ********* t√§m√§ haara viel√§ toteuttamatta, eli yhdistelm√§ parametreja ei
+                     // viel√§ hoideta!!! *******
                     value = kFloatMissing;
                   }
                   else
@@ -2054,7 +2054,7 @@ static NFmiTimeDescriptor MakeWantedTimeDescriptor(const NFmiTimeDescriptor &the
   bool is2TimeBag = !theTimeDescriptor2.UseTimeList();
   if (is1TimeBag ^ is2TimeBag)
     throw runtime_error(
-        "NFmiQueryDataUtil::MakeWantedTimeDescriptor: Ei osaa yhdist‰‰ timeList- ja "
+        "NFmiQueryDataUtil::MakeWantedTimeDescriptor: Ei osaa yhdist√§√§ timeList- ja "
         "timeBag-dataa.");
 
   NFmiMetTime origTime(theOriginTimeFunction == 1 ? theTimeDescriptor1.OriginTime()
@@ -2078,30 +2078,30 @@ static NFmiTimeDescriptor MakeWantedTimeDescriptor(const NFmiTimeDescriptor &the
 // ----------------------------------------------------------------------
 /*!
  * Ohjelma luo kahdesta annetusta datasta uuden qdatan, jossa on alku ja
- * loppu aika valittu kahdesta annetusta qdatasta, niin ett‰ uuden aikav‰li
+ * loppu aika valittu kahdesta annetusta qdatasta, niin ett√§ uuden aikav√§li
  * on maksimaalinen (kahdesta qdatasta valitaan pienin aika alkuajaksi ja
  * suurin aika loppuajaksi). Datoista numero 1 on priorisoitu korkeammalle
- * eli siit‰ otetaan arvot, jos sama aika lˆytyy molemmista. Tulosdataan j‰‰
- * ajallinen aukko, jos uuden datan timebagiss‰ on aikoja, joita ei lˆydy
- * kummastakaan l‰hdedatasta. Tuotosta voi rajoittaa siten, ett‰
- * theMaxTimeBagSizeInNewData m‰‰r‰‰ suurimman uuden timebagin koon, jos
- * uudesta timebagist‰ tulee suurempi kuin t‰m‰ luku on, palautetaan 0-pointteri.
- * Kahden datan aikaresoluutioiden pit‰‰ olla samat ja niiden pit‰‰ olla
- * synkronissa (eli tunti ajat menev‰t molemmissa 0, 3, 6, 9, ... eik‰ toisessa
+ * eli siit√§ otetaan arvot, jos sama aika l√∂ytyy molemmista. Tulosdataan j√§√§
+ * ajallinen aukko, jos uuden datan timebagiss√§ on aikoja, joita ei l√∂ydy
+ * kummastakaan l√§hdedatasta. Tuotosta voi rajoittaa siten, ett√§
+ * theMaxTimeBagSizeInNewData m√§√§r√§√§ suurimman uuden timebagin koon, jos
+ * uudesta timebagist√§ tulee suurempi kuin t√§m√§ luku on, palautetaan 0-pointteri.
+ * Kahden datan aikaresoluutioiden pit√§√§ olla samat ja niiden pit√§√§ olla
+ * synkronissa (eli tunti ajat menev√§t molemmissa 0, 3, 6, 9, ... eik√§ toisessa
  * esim. 1, 4, 7, 10,... ja  toisessa 0, 3, 6, 9, ...) Muuten kahdessa annetussa
- * qdatassa pit‰‰ olla samat leveli, paramit ja paikat (hila/asemat). Uudessa
- * qdatassa on muut systeemit otettu alkuper‰isesta qdatasta (hila/asemat,
+ * qdatassa pit√§√§ olla samat leveli, paramit ja paikat (hila/asemat). Uudessa
+ * qdatassa on muut systeemit otettu alkuper√§isesta qdatasta (hila/asemat,
  * param ja level).
  *
  * \param theSourceInfo1 Dominoiva data.
- * \param theSourceInfo2 t‰ll‰ t‰ytet‰‰n ne arvot, mit‰ ei saata ykkˆs datasta.
- * \param theMaxTimeBagSizeInNewData Ei tehd‰ t‰m‰n suurempaa timebagia (vahinkojen varalle).
- * \param theStartTimeFunction Mist‰ alkuaika otetaan, jos 0, otetaan pienempi ajoista, jos
- *							   1, otetaan data1:st‰ alkuaika, jos 2,
+ * \param theSourceInfo2 t√§ll√§ t√§ytet√§√§n ne arvot, mit√§ ei saata ykk√∂s datasta.
+ * \param theMaxTimeBagSizeInNewData Ei tehd√§ t√§m√§n suurempaa timebagia (vahinkojen varalle).
+ * \param theStartTimeFunction Mist√§ alkuaika otetaan, jos 0, otetaan pienempi ajoista, jos
+ *							   1, otetaan data1:st√§ alkuaika, jos 2,
  *data2:sta
  *alkuaika.
- * \param theEndTimeFunction Mist‰ loppu aika otetaan. Jos 0, otetaan suurempi, muutoin sama kuin
- *yll‰.
+ * \param theEndTimeFunction Mist√§ loppu aika otetaan. Jos 0, otetaan suurempi, muutoin sama kuin
+ *yll√§.
  * \return Palauttaa nyt luodun querydatan pointterin, jos jokin meni pieleen, 0-pointteri
  *palautetaan.
  */
@@ -2125,7 +2125,7 @@ NFmiQueryData *NFmiQueryDataUtil::CombineTimes(NFmiFastQueryInfo &theSourceInfo1
                                                               fMakeChangingTimeResolution);
   if (newTimeDesc.Resolution() == 0)
     throw runtime_error(
-        "NFmiQueryDataUtil::CombineTimes: Aikaresoluutioksi tuli 0, tarkista onko alkuper‰isiss‰ "
+        "NFmiQueryDataUtil::CombineTimes: Aikaresoluutioksi tuli 0, tarkista onko alkuper√§isiss√§ "
         "datoissa aikaresoluutiota.");
 
   unsigned long oldSize = newTimeDesc.Size();
@@ -2142,7 +2142,7 @@ NFmiQueryData *NFmiQueryDataUtil::CombineTimes(NFmiFastQueryInfo &theSourceInfo1
                           theSourceInfo1.VPlaceDescriptor());
     tmpInfo.InfoVersion(
         theSourceInfo1
-            .InfoVersion());  // pidet‰‰n infoversio samana, muuten menee interpoloinnit pieleen!
+            .InfoVersion());  // pidet√§√§n infoversio samana, muuten menee interpoloinnit pieleen!
     destData = CreateEmptyData(tmpInfo);
     if (destData)
     {
@@ -2153,8 +2153,8 @@ NFmiQueryData *NFmiQueryDataUtil::CombineTimes(NFmiFastQueryInfo &theSourceInfo1
         bool useInfo2 = true;
         if (!theSourceInfo1.Time(destInfo.Time())) useInfo1 = false;
         if (!theSourceInfo2.Time(destInfo.Time())) useInfo2 = false;
-        if (!(useInfo1 || useInfo2))  // jos kummastakaan ei lˆytynyt parametria ei tehd‰ mit‰‰n
-          continue;                   // t‰h‰n ei oikeasti saisi menn‰!!!!!!! assertin paikka?
+        if (!(useInfo1 || useInfo2))  // jos kummastakaan ei l√∂ytynyt parametria ei tehd√§ mit√§√§n
+          continue;                   // t√§h√§n ei oikeasti saisi menn√§!!!!!!! assertin paikka?
 
         for (destInfo.ResetParam(), theSourceInfo1.ResetParam(), theSourceInfo2.ResetParam();
              destInfo.NextParam() && theSourceInfo1.NextParam() && theSourceInfo2.NextParam();)
@@ -2262,8 +2262,8 @@ static NFmiParamDescriptor GetParamDesc(NFmiQueryDataUtil::GridDataVector &theGr
 
 static bool ConvertTimeList2TimeBag(NFmiTimeList &theTimeList, NFmiTimeBag &theTimeBag)
 {                                       // tutkitaan onko mahdollista tehda listasta bagi
-                                        // eli ajat ovat per‰kk‰isi‰ ja tasav‰lisi‰
-  if (theTimeList.NumberOfItems() > 1)  // ei  tehd‰ yhdest‰ ajasta bagi‰ vaikka se on mahdollista
+                                        // eli ajat ovat per√§kk√§isi√§ ja tasav√§lisi√§
+  if (theTimeList.NumberOfItems() > 1)  // ei  tehd√§ yhdest√§ ajasta bagi√§ vaikka se on mahdollista
   {
     theTimeList.First();
     theTimeList.Next();
@@ -2271,7 +2271,7 @@ static bool ConvertTimeList2TimeBag(NFmiTimeList &theTimeList, NFmiTimeBag &theT
     for (; theTimeList.Next();)
     {
       if (resolution != theTimeList.CurrentResolution())
-        return false;  // jos yhdenkin aikav‰lin resoluutio poikkeaa, ei voida tehd‰ bagia
+        return false;  // jos yhdenkin aikav√§lin resoluutio poikkeaa, ei voida tehd√§ bagia
     }
     theTimeBag = NFmiTimeBag(theTimeList.FirstTime(), theTimeList.LastTime(), resolution);
     return true;
@@ -2288,7 +2288,7 @@ static NFmiHPlaceDescriptor GetHPlaceDesc(NFmiQueryDataUtil::GridDataVector &the
   size_t gribCount = theGridRecordDatas.size();
   for (size_t i = 1; i < gribCount; i++)
     if (!(tmpGrid == theGridRecordDatas[i]->itsGrid))
-      throw runtime_error("Kaikki grid-m‰‰ritykset eiv‰t olleet samanlaisia! Lopetetaan...");
+      throw runtime_error("Kaikki grid-m√§√§ritykset eiv√§t olleet samanlaisia! Lopetetaan...");
 
   NFmiGrid grid(tmpGrid.itsArea, tmpGrid.itsNX, tmpGrid.itsNY);
 
@@ -2332,11 +2332,11 @@ static void FillQDataWithGribRecords(NFmiQueryData &theQData,
     if (info.Time(tmp->itsValidTime) && info.Level(tmp->itsLevel) && info.Param(tmp->itsParam))
     {
       if (!info.SetValues(tmp->itsGridData))
-        throw runtime_error("qdatan t‰yttˆ gribi datalla ep‰onnistui, lopetetaan...");
+        throw runtime_error("qdatan t√§ytt√∂ gribi datalla ep√§onnistui, lopetetaan...");
     }
     else
       throw runtime_error(
-          "qdatan t‰yttˆ ohjelma ei saanut asetettua aikaa/paikkaa/leveli‰, lopetetaan...");
+          "qdatan t√§ytt√∂ ohjelma ei saanut asetettua aikaa/paikkaa/leveli√§, lopetetaan...");
   }
 }
 
@@ -2365,12 +2365,12 @@ static NFmiQueryData *CreateQueryData(NFmiQueryDataUtil::GridDataVector &theGrid
 /*!
  * Ohjelma luo tiedosto nimilistan datoista yhden uuden querydatan
  * johon on otettu jokaisen annetun tiedoston datat.
- * Ainakin aluksi funktio on yksinkertaistettu siten, ett‰ jokaisesta
+ * Ainakin aluksi funktio on yksinkertaistettu siten, ett√§ jokaisesta
  * datasta otetaan mukaan vain 1. aika, parametri ja leveli. Koska
  * Sellaista tarkoitusta varten funktio on alunperin tehty.
  *
- * \param theFileNames Lista tiedostoja, jotka on tarkoitus yhdist‰‰.
- * \param theMaxTimesInNewData Ei tehd‰ t‰m‰n suurempaa timebagia/listaa (vahinkojen varalle).
+ * \param theFileNames Lista tiedostoja, jotka on tarkoitus yhdist√§√§.
+ * \param theMaxTimesInNewData Ei tehd√§ t√§m√§n suurempaa timebagia/listaa (vahinkojen varalle).
  * \return Palauttaa nyt luodun querydatan pointterin, jos jokin meni pieleen, 0-pointteri
  * palautetaan.
  */
@@ -2447,7 +2447,7 @@ static void SetPrecipitationFormValue(
   for (size_t i = 0; i < thePrecipFormParamIndexVector.size(); i++)
   {
     theSourceInfo.ParamIndex(
-        thePrecipFormParamIndexVector[i]);  // asetetaan hetkeksi precipForm parametri p‰‰lle
+        thePrecipFormParamIndexVector[i]);  // asetetaan hetkeksi precipForm parametri p√§√§lle
     if (theSourceInfo.FloatValue() != kFloatMissing)
     {
       precipFormValue = theSourceInfo.FloatValue();
@@ -2518,7 +2518,7 @@ void WeatherAndCloudinessFromManyParams(NFmiFastQueryInfo &theSourceInfo,
     precipFormParamIndexVector.push_back(theSourceInfo.ParamIndex());
   }
 
-  // k‰yd‰‰n l‰pi infon Paramit kFmiWeatherSymbol1, kFmiCloudSymbol, kFmiFogSymbol ja
+  // k√§yd√§√§n l√§pi infon Paramit kFmiWeatherSymbol1, kFmiCloudSymbol, kFmiFogSymbol ja
   // kFmiTotalCloudCover
   if (theDestInfo.ParamIndex(destWeatherAndcloudinessParIndex))
   {
@@ -2561,7 +2561,7 @@ void WeatherAndCloudinessFromManyParams(NFmiFastQueryInfo &theSourceInfo,
           precipitation3h =
               (tmp == kFloatMissing)
                   ? kFloatMissing
-                  : tmp / 3.f;  // nyky‰‰n halutaan tuntisateita siksi jaetaan tuntien m‰‰r‰ll‰
+                  : tmp / 3.f;  // nyky√§√§n halutaan tuntisateita siksi jaetaan tuntien m√§√§r√§ll√§
         }
         if (theSourceInfo.ParamIndex(precipitation6hIndex))
         {
@@ -2569,10 +2569,10 @@ void WeatherAndCloudinessFromManyParams(NFmiFastQueryInfo &theSourceInfo,
           precipitation6h =
               (tmp == kFloatMissing)
                   ? kFloatMissing
-                  : tmp / 6.f;  // nyky‰‰n halutaan tuntisateita siksi jaetaan tuntien m‰‰r‰ll‰
+                  : tmp / 6.f;  // nyky√§√§n halutaan tuntisateita siksi jaetaan tuntien m√§√§r√§ll√§
         }
 
-        if (precipitation1h != kFloatMissing)  // kFmiPrecipitation1h on ykkˆs prioriteetilla
+        if (precipitation1h != kFloatMissing)  // kFmiPrecipitation1h on ykk√∂s prioriteetilla
           precipitation = precipitation1h;
         else if (precipitation == kFloatMissing)  // kFmiPrecipitationRate on kakkos prioriteetilla
         {
@@ -2599,12 +2599,12 @@ void WeatherAndCloudinessFromManyParams(NFmiFastQueryInfo &theSourceInfo,
         if (hSade == 0 && precipitation > 0) doHSade1ZeroOnRainFix = true;
 
         if (fAllowLessParamsWhenCreatingWeather || doHSade1Fix || doHSade1ZeroOnRainFix)
-        {  // nyt pit‰‰ s‰velt‰‰ muutamat parametrit, jos on sallittu tehd‰ w&C parametri
-           // v‰hemmist‰
+        {  // nyt pit√§√§ s√§velt√§√§ muutamat parametrit, jos on sallittu tehd√§ w&C parametri
+           // v√§hemmist√§
           // aineksista
           if (clouds == kFloatMissing && totalClouds != kFloatMissing)
           {
-            const int defaultCloudType = 302;  // t‰m‰ on alapilve‰ pilvityyppi‰ 2 (kumpupilvi?)
+            const int defaultCloudType = 302;  // t√§m√§ on alapilve√§ pilvityyppi√§ 2 (kumpupilvi?)
             if (totalClouds <= 30)
               clouds = 1000 + defaultCloudType;
             else if (totalClouds <= 70)
@@ -2613,7 +2613,7 @@ void WeatherAndCloudinessFromManyParams(NFmiFastQueryInfo &theSourceInfo,
               clouds = 3000 + defaultCloudType;
           }
 
-          // lasketaan tarvittaessa sateenolomuoto tutkaryhm‰n k‰ytt‰m‰sta T ja RH kaavasta
+          // lasketaan tarvittaessa sateenolomuoto tutkaryhm√§n k√§ytt√§m√§sta T ja RH kaavasta
           if (hSade == kFloatMissing || doHSade1ZeroOnRainFix)
           {
             if (precipitation <= 0)
@@ -2632,7 +2632,7 @@ void WeatherAndCloudinessFromManyParams(NFmiFastQueryInfo &theSourceInfo,
                 if (xFactor >= 0.8f)
                   hSade = 72;  // 72 = lumisadetta
                 else if (xFactor >= 0.2f && xFactor < 0.8f)
-                  hSade = 68;  // 68 = r‰nt‰‰
+                  hSade = 68;  // 68 = r√§nt√§√§
               }
             }
           }
@@ -2640,7 +2640,7 @@ void WeatherAndCloudinessFromManyParams(NFmiFastQueryInfo &theSourceInfo,
         }
         if (hSade == kFloatMissing && clouds != kFloatMissing && totalClouds != kFloatMissing)
           hSade = 0;  // pika fixi, en korjaa weatherandcloudiness konstruktoria, vaan korjaan
-                      // parametreja t‰ss‰
+                      // parametreja t√§ss√§
         weather = NFmiWeatherAndCloudiness(clouds,
                                            hSade,
                                            temperature,
@@ -2649,7 +2649,7 @@ void WeatherAndCloudinessFromManyParams(NFmiFastQueryInfo &theSourceInfo,
                                            precipitation,
                                            destInfoVersion);  //, true);
 
-        // asetetaan viel‰ mahdolliset ala-, keski- ja yl‰pilvet
+        // asetetaan viel√§ mahdolliset ala-, keski- ja yl√§pilvet
         if (clParIndex != gMissingIndex)
         {
           theSourceInfo.ParamIndex(clParIndex);
@@ -2666,7 +2666,7 @@ void WeatherAndCloudinessFromManyParams(NFmiFastQueryInfo &theSourceInfo,
           weather.SubValue(theSourceInfo.FloatValue(), kFmiHighCloudCover);
         }
         if (precipFormParamIndexVector
-                .size())  // t‰ss‰ on optimoitu mahd. sateen olomuoto arvojen hakua
+                .size())  // t√§ss√§ on optimoitu mahd. sateen olomuoto arvojen hakua
           ::SetPrecipitationFormValue(theSourceInfo, weather, precipFormParamIndexVector);
 
         theDestInfo.FloatValue(weather.TransformedFloatValue());
@@ -2709,12 +2709,12 @@ void TotalWindFromWindVector(NFmiFastQueryInfo &theSourceInfo,
            theSourceInfo.NextLevel() && theDestInfo.NextLevel();)
       {
         float f1 = theSourceInfo.FloatValue();
-        if (windGustFound)  // t‰ss‰ on optimoitu mahd. puuska arvojen hakua
+        if (windGustFound)  // t√§ss√§ on optimoitu mahd. puuska arvojen hakua
         {
-          theSourceInfo.ParamIndex(gustParamIndex);  // asetetaan hetkeksi puuska parametri p‰‰lle
+          theSourceInfo.ParamIndex(gustParamIndex);  // asetetaan hetkeksi puuska parametri p√§√§lle
           windGustValue = theSourceInfo.FloatValue();
           theSourceInfo.ParamIndex(
-              windVectorParamIndex);  // laitetaan sitten tuulivektori takaisin p‰‰lle
+              windVectorParamIndex);  // laitetaan sitten tuulivektori takaisin p√§√§lle
         }
 
         wind = NFmiTotalWind(f1, kFmiWindVector, destInfoVersion, windGustValue);
@@ -2740,10 +2740,10 @@ void TotalWindFromWindSpeedAndDirection(NFmiFastQueryInfo &theSourceInfo,
   bool windGustFound = theSourceInfo.Param(theWindGustParId);
   unsigned long gustParamIndex = theSourceInfo.ParamIndex();
   theSourceInfo.Param(
-      kFmiWindSpeedMS);  // oletus, ett‰ t‰m‰ lˆytyy, muuten t‰t‰ funktiota ei kutsuta
+      kFmiWindSpeedMS);  // oletus, ett√§ t√§m√§ l√∂ytyy, muuten t√§t√§ funktiota ei kutsuta
   unsigned long WSParamIndex = theSourceInfo.ParamIndex();
   theSourceInfo.Param(
-      kFmiWindDirection);  // oletus, ett‰ t‰m‰ lˆytyy, muuten t‰t‰ funktiota ei kutsuta
+      kFmiWindDirection);  // oletus, ett√§ t√§m√§ l√∂ytyy, muuten t√§t√§ funktiota ei kutsuta
   unsigned long WDParamIndex = theSourceInfo.ParamIndex();
   float windGustValue = kFloatMissing;
 
@@ -2760,9 +2760,9 @@ void TotalWindFromWindSpeedAndDirection(NFmiFastQueryInfo &theSourceInfo,
         theSourceInfo.ParamIndex(WDParamIndex);
         float f2 = theSourceInfo.FloatValue();
 
-        if (windGustFound)  // t‰ss‰ on optimoitu mahd. puuska arvojen hakua
+        if (windGustFound)  // t√§ss√§ on optimoitu mahd. puuska arvojen hakua
         {
-          theSourceInfo.ParamIndex(gustParamIndex);  // asetetaan hetkeksi puuska parametri p‰‰lle
+          theSourceInfo.ParamIndex(gustParamIndex);  // asetetaan hetkeksi puuska parametri p√§√§lle
           windGustValue = theSourceInfo.FloatValue();
         }
 
@@ -2788,9 +2788,9 @@ void TotalWindFromUandVcomponents(NFmiFastQueryInfo &theSourceInfo,
   NFmiTotalWind wind(destInfoVersion);
   bool windGustFound = theSourceInfo.Param(theWindGustParId);
   unsigned long gustParamIndex = theSourceInfo.ParamIndex();
-  theSourceInfo.Param(kFmiWindUMS);  // oletus, ett‰ t‰m‰ lˆytyy, muuten t‰t‰ funktiota ei kutsuta
+  theSourceInfo.Param(kFmiWindUMS);  // oletus, ett√§ t√§m√§ l√∂ytyy, muuten t√§t√§ funktiota ei kutsuta
   unsigned long uParamIndex = theSourceInfo.ParamIndex();
-  theSourceInfo.Param(kFmiWindVMS);  // oletus, ett‰ t‰m‰ lˆytyy, muuten t‰t‰ funktiota ei kutsuta
+  theSourceInfo.Param(kFmiWindVMS);  // oletus, ett√§ t√§m√§ l√∂ytyy, muuten t√§t√§ funktiota ei kutsuta
   unsigned long vParamIndex = theSourceInfo.ParamIndex();
   float windGustValue = kFloatMissing;
 
@@ -2813,9 +2813,9 @@ void TotalWindFromUandVcomponents(NFmiFastQueryInfo &theSourceInfo,
         float u = theSourceInfo.FloatValue();
         theSourceInfo.ParamIndex(vParamIndex);
         float v = theSourceInfo.FloatValue();
-        if (windGustFound)  // t‰ss‰ on optimoitu mahd. puuska arvojen hakua
+        if (windGustFound)  // t√§ss√§ on optimoitu mahd. puuska arvojen hakua
         {
-          theSourceInfo.ParamIndex(gustParamIndex);  // asetetaan hetkeksi puuska parametri p‰‰lle
+          theSourceInfo.ParamIndex(gustParamIndex);  // asetetaan hetkeksi puuska parametri p√§√§lle
           windGustValue = theSourceInfo.FloatValue();
         }
 
@@ -2963,7 +2963,7 @@ NFmiParamBag CheckAndMakeCombinedParamBag(NFmiFastQueryInfo &theSourceInfo,
     {
       *theWind1 = true;
 
-      // poista seuraavat parametrit uudesta parambagist‰, koska niill‰ rakennetaan totalwind
+      // poista seuraavat parametrit uudesta parambagist√§, koska niill√§ rakennetaan totalwind
       if (bag.SetCurrent(kFmiWindVectorMS)) bag.Remove();
 
       NFmiTotalWind tmp;
@@ -2975,7 +2975,7 @@ NFmiParamBag CheckAndMakeCombinedParamBag(NFmiFastQueryInfo &theSourceInfo,
     {
       *theWind2 = true;
 
-      // poista seuraavat parametrit uudesta parambagist‰, koska niill‰ rakennetaan totalwind
+      // poista seuraavat parametrit uudesta parambagist√§, koska niill√§ rakennetaan totalwind
       if (bag.SetCurrent(kFmiWindDirection)) bag.Remove();
       if (bag.SetCurrent(kFmiWindSpeedMS)) bag.Remove();
 
@@ -2988,7 +2988,7 @@ NFmiParamBag CheckAndMakeCombinedParamBag(NFmiFastQueryInfo &theSourceInfo,
     {
       *theWind3 = true;
 
-      // poista seuraavat parametrit uudesta parambagist‰, koska niill‰ rakennetaan totalwind
+      // poista seuraavat parametrit uudesta parambagist√§, koska niill√§ rakennetaan totalwind
       if (bag.SetCurrent(kFmiWindUMS)) bag.Remove();
       if (bag.SetCurrent(kFmiWindVMS)) bag.Remove();
 
@@ -2998,12 +2998,12 @@ NFmiParamBag CheckAndMakeCombinedParamBag(NFmiFastQueryInfo &theSourceInfo,
       delete saaParam;
     }
 
-    // katsotaan viel‰ windGust tilanne
+    // katsotaan viel√§ windGust tilanne
     if (theWindGustParId != kFmiBadParameter && (*theWind1 || *theWind2 || *theWind3))
     {
       if (theSourceInfo.Param(theWindGustParId))
       {
-        // poista windgust parametri uudesta parambagist‰, koska sill‰ rakennetaan totalwindia
+        // poista windgust parametri uudesta parambagist√§, koska sill√§ rakennetaan totalwindia
         if (bag.SetCurrent(theWindGustParId)) bag.Remove();
       }
     }
@@ -3014,25 +3014,25 @@ NFmiParamBag CheckAndMakeCombinedParamBag(NFmiFastQueryInfo &theSourceInfo,
     {
       *theWeather1 = true;
 
-      // poista seuraavat parametrit uudesta parambagist‰, koska niill‰ rakennetaan
+      // poista seuraavat parametrit uudesta parambagist√§, koska niill√§ rakennetaan
       // weatherandcloudiness
       if (bag.SetCurrent(kFmiWeatherSymbol1)) bag.Remove();
       if (bag.SetCurrent(kFmiTotalCloudCover)) bag.Remove();
       if ((!fKeepCloudSymbolParameter) && bag.SetCurrent(kFmiCloudSymbol)) bag.Remove();
       if (bag.SetCurrent(kFmiFogSymbol)) bag.Remove();
 
-      // n‰m‰ poistetaan myˆs, koska niit‰ k‰ytet‰‰n rakennettaessa w&c:t‰
+      // n√§m√§ poistetaan my√∂s, koska niit√§ k√§ytet√§√§n rakennettaessa w&c:t√§
       if (bag.SetCurrent(kFmiWeatherSymbol2)) bag.Remove();
       if (bag.SetCurrent(kFmiPrecipitationRate)) bag.Remove();
       if (bag.SetCurrent(kFmiPrecipitation1h)) bag.Remove();
       if (bag.SetCurrent(kFmiPrecipitation3h)) bag.Remove();
       if (bag.SetCurrent(kFmiPrecipitation6h)) bag.Remove();
-      // n‰m‰ poistetaan myˆs, koska niit‰ k‰ytet‰‰n rakennettaessa w&c:t‰
+      // n√§m√§ poistetaan my√∂s, koska niit√§ k√§ytet√§√§n rakennettaessa w&c:t√§
       if (bag.SetCurrent(kFmiLowCloudCover)) bag.Remove();
       if (bag.SetCurrent(kFmiMediumCloudCover)) bag.Remove();
       if (bag.SetCurrent(kFmiHighCloudCover)) bag.Remove();
 
-      NFmiWeatherAndCloudiness tmp;  // t‰ss‰ ei ole infoversiosta v‰li‰!
+      NFmiWeatherAndCloudiness tmp;  // t√§ss√§ ei ole infoversiosta v√§li√§!
       NFmiDataIdent *saaParam = tmp.CreateParam(*theSourceInfo.Producer());
       bag.Add(*saaParam);
       delete saaParam;
@@ -3049,19 +3049,19 @@ NFmiParamBag CheckAndMakeCombinedParamBag(NFmiFastQueryInfo &theSourceInfo,
     {
       *theWeather2 = true;
 
-      // poista seuraavat parametrit uudesta parambagist‰, koska niill‰ rakennetaan
+      // poista seuraavat parametrit uudesta parambagist√§, koska niill√§ rakennetaan
       // weatherandcloudiness
       if (bag.SetCurrent(kFmiWeatherSymbol3)) bag.Remove();
 
-      NFmiWeatherAndCloudiness tmp;  // t‰ss‰ ei ole infoversiosta v‰li‰!
+      NFmiWeatherAndCloudiness tmp;  // t√§ss√§ ei ole infoversiosta v√§li√§!
       NFmiDataIdent *saaParam = tmp.CreateParam(*theSourceInfo.Producer());
       bag.Add(*saaParam);
       delete saaParam;
     }
 
-    // katsotaan viel‰ precipitation form parametrin tilanne, onko niit‰ vektorissa ja
+    // katsotaan viel√§ precipitation form parametrin tilanne, onko niit√§ vektorissa ja
     // poistetaanko
-    // niit‰ (positiiviset arvot) vai ei (negatiiviset arvot)
+    // niit√§ (positiiviset arvot) vai ei (negatiiviset arvot)
     if (thePrecipFormParIds.size() && (*theWeather1 || *theWeather2))
     {
       for (size_t i = 0; i < thePrecipFormParIds.size(); i++)
@@ -3071,7 +3071,7 @@ NFmiParamBag CheckAndMakeCombinedParamBag(NFmiFastQueryInfo &theSourceInfo,
           FmiParameterName precipFormParId = static_cast<FmiParameterName>(thePrecipFormParIds[i]);
           if (theSourceInfo.Param(precipFormParId))
           {
-            // poista precipForm parametri uudesta parambagist‰, koska sill‰ rakennetaan Weatheria
+            // poista precipForm parametri uudesta parambagist√§, koska sill√§ rakennetaan Weatheria
             if (bag.SetCurrent(precipFormParId)) bag.Remove();
           }
         }
@@ -3086,18 +3086,18 @@ NFmiParamBag CheckAndMakeCombinedParamBag(NFmiFastQueryInfo &theSourceInfo,
 /*!
  * Funktio saa parametrina queryinfon ja luo uuden qdatan, jossa on
  * mahdollisesti luotu uudet combinedparamas parametrit mukana (totalwind
- * + weatherAndCloudiness). N‰m‰ on mukana sill‰ ehdolla, ett‰ niihin lˆytyy
- * rakennuspalikat (esim. totalwind:i‰ varten pit‰‰ lˆyty‰ joko tuulen suunta
+ * + weatherAndCloudiness). N√§m√§ on mukana sill√§ ehdolla, ett√§ niihin l√∂ytyy
+ * rakennuspalikat (esim. totalwind:i√§ varten pit√§√§ l√∂yty√§ joko tuulen suunta
  * ja nopeus tai windvector (tai u ja v komponentit?)). Jos rakennus palikat
- * lˆytyv‰t, filtteri tekee uuden datan niin, ett‰ se lis‰‰ parametri listaan
+ * l√∂ytyv√§t, filtteri tekee uuden datan niin, ett√§ se lis√§√§ parametri listaan
  * combineparamin ja poistaa listasta combineparamiin tarvittavat
  * rakennuspalikat (ettei toisteta dataa).
  *
- * Poikkeus, halutessa kFmiCloudSymbol voidaan pit‰‰ parametrilistassa.
- * Uudessa qdatassa on muut systeemit otettu alkuper‰isesta datasta
+ * Poikkeus, halutessa kFmiCloudSymbol voidaan pit√§√§ parametrilistassa.
+ * Uudessa qdatassa on muut systeemit otettu alkuper√§isesta datasta
  * (hila/asemat, time ja level).
  *
- * infoVersion 6 on pienin tunnettu versio numero, mik‰ sallitaan.
+ * infoVersion 6 on pienin tunnettu versio numero, mik√§ sallitaan.
  *
  * \param theSourceInfo Undocumented
  * \param theWantedInfoVersion Undocumented
@@ -3188,9 +3188,9 @@ NFmiQueryData *NFmiQueryDataUtil::MakeCombineParams(NFmiFastQueryInfo &theSource
     if (usedThreadCount > destInfo.SizeTimes()) usedThreadCount = destInfo.SizeTimes();
 
     NFmiPoint dummyPoint =
-        destInfo.LatLon();  // Varmistetaan ett‰ NFmiQueryDatan itsLatLonCache on alustettu!!
+        destInfo.LatLon();  // Varmistetaan ett√§ NFmiQueryDatan itsLatLonCache on alustettu!!
     dummyPoint =
-        theSourceInfo.LatLon();  // Varmistetaan ett‰ NFmiQueryDatan itsLatLonCache on alustettu!!
+        theSourceInfo.LatLon();  // Varmistetaan ett√§ NFmiQueryDatan itsLatLonCache on alustettu!!
 
     if (usedThreadCount <= 1)
     {
@@ -3232,28 +3232,28 @@ NFmiQueryData *NFmiQueryDataUtil::MakeCombineParams(NFmiFastQueryInfo &theSource
                                                boost::ref(timeIndexCalculator),
                                                fDoaccuratePrecip,
                                                thePrecipFormParIds));
-      calcParts.join_all();  // odotetaan ett‰ threadit lopettavat
+      calcParts.join_all();  // odotetaan ett√§ threadit lopettavat
     }
   }
   return destData;
 }
 
 // ********************************************************************************
-// ***************  NowcastFilter osuus on nyt t‰‰ll‰!  ***************************
+// ***************  NowcastFilter osuus on nyt t√§√§ll√§!  ***************************
 // ********************************************************************************
 
 // ----------------------------------------------------------------------
 /*!
- * Luetaan fqd-tiedostot data1 ja data2 ja liitet‰‰n ne yhteen ja
- * talletetaan output-tiedostoon. K‰ytet‰‰n NowCastFilter:iss‰.
+ * Luetaan fqd-tiedostot data1 ja data2 ja liitet√§√§n ne yhteen ja
+ * talletetaan output-tiedostoon. K√§ytet√§√§n NowCastFilter:iss√§.
  *
  * Tietokannassa oleva viralliene Kepa-data on pohja. Siihen halutaan liimata
- * p‰‰lle viimeisin aluetoimistosta tuleva ShortRange-data. Virallisen datan
+ * p√§√§lle viimeisin aluetoimistosta tuleva ShortRange-data. Virallisen datan
  * uusi alkuaika tulee olemaan sama kuin ShortRange-datassa. Aluetoimistossa
- * oletetaan olevan minimiss‰‰n tietty m‰‰r‰ dataa, mik‰ liimataan uuden datan
- * alkuun. 12 tuntia on minimi t‰ll‰ hetkell‰. Aluetoimiston metku voi kuitenkin
- * l‰hett‰ess‰‰n sanoa ett‰ dataa tulee enemm‰nkin aina 48 tuntiin asti. Jos on
- * ilmoitettu enemm‰n kuin  12 tuntia, otetaan sen mukaan enemm‰n dataa
+ * oletetaan olevan minimiss√§√§n tietty m√§√§r√§ dataa, mik√§ liimataan uuden datan
+ * alkuun. 12 tuntia on minimi t√§ll√§ hetkell√§. Aluetoimiston metku voi kuitenkin
+ * l√§hett√§ess√§√§n sanoa ett√§ dataa tulee enemm√§nkin aina 48 tuntiin asti. Jos on
+ * ilmoitettu enemm√§n kuin  12 tuntia, otetaan sen mukaan enemm√§n dataa
  * ShortRange-datasta.
  *
  * \param theData1FileName Undocumented
@@ -3293,7 +3293,7 @@ bool NFmiQueryDataUtil::DoNowCastFiltering(const NFmiString &theData1FileName,
                       }
                       else
                       {
-                              cerr << "Yhdist‰minen ei onnistu, koska datoissa on oudot versiot:
+                              cerr << "Yhdist√§minen ei onnistu, koska datoissa on oudot versiot:
        kepa = " << kepaDataVersionNumber << " ja shortRange = " << shortRangeDataVersionNumber <<
        endl;
                               cerr << "Lopetetaan ohjelma." << endl;
@@ -3307,9 +3307,9 @@ bool NFmiQueryDataUtil::DoNowCastFiltering(const NFmiString &theData1FileName,
     // Tulos tiedostoon
     if (newQueryData)
     {
-      NFmiString realOutFileName(theOutputFileName);  // otetaan toistaiseksi k‰yttˆˆn haluttu
+      NFmiString realOutFileName(theOutputFileName);  // otetaan toistaiseksi k√§ytt√∂√∂n haluttu
                                                       // outputFileName koska jakelija ei osaa
-      // hoitaa muuttunutta tiedoston nime‰ viel‰
+      // hoitaa muuttunutta tiedoston nime√§ viel√§
       ofstream out(realOutFileName, ios::binary);
       if (out)
       {
@@ -3325,12 +3325,12 @@ bool NFmiQueryDataUtil::DoNowCastFiltering(const NFmiString &theData1FileName,
 
 // ----------------------------------------------------------------------
 /*!
- *  Kopioi tavaran data/info1:st‰ data/info2:een.
+ *  Kopioi tavaran data/info1:st√§ data/info2:een.
  *
  *  Oletuksia: Levelit ja locationit samoja. Paramit voivat olla erilaisia.
- *  Ajat luultavasti erilaisia, sit‰ varten funktio on tehty, ett‰ lyhyt
- *  shortrange data heitet‰‰n pitk‰n kepadatan p‰‰lle.  Ajoissa aikaresoluution
- *  pit‰‰ olla sama ja ajat alkavat samasta hetkest‰ ett‰ niit‰ voidaan
+ *  Ajat luultavasti erilaisia, sit√§ varten funktio on tehty, ett√§ lyhyt
+ *  shortrange data heitet√§√§n pitk√§n kepadatan p√§√§lle.  Ajoissa aikaresoluution
+ *  pit√§√§ olla sama ja ajat alkavat samasta hetkest√§ ett√§ niit√§ voidaan
  *  juoksuttaa haluttuun pisteeseen asti (theWantedHoursFromStart).
  *
  * \param theInfo1 Undocumented
@@ -3349,14 +3349,14 @@ bool CopyData1OverData2(NFmiFastQueryInfo &theInfo1,
   for (theInfo2.ResetParam(); theInfo2.NextParam();)
   {
     if (!theInfo1.Param(*theInfo2.Param().GetParam()))
-      continue;  // jos parametria ei lˆydy, jatketaan seuraavalla
+      continue;  // jos parametria ei l√∂ydy, jatketaan seuraavalla
     int timeCounter = 0;
     for (theInfo2.ResetTime(), theInfo1.ResetTime(); theInfo2.NextTime() && theInfo1.NextTime();
          timeCounter++)
     {
       if (timeCounter >= wantedTimeSteps)  // esim. jos halutaan 15 tuntia alusta, ehto ottaa mukaan
                                            // ajat 0-15 eli periaatteessa 16 tunnin datan, mutta se
-                                           // on sama kuin 15 tuntia alusta eteenp‰in.
+                                           // on sama kuin 15 tuntia alusta eteenp√§in.
         continue;                          // kopioidaan dataa vain haluttu aikajakso alusta
       for (theInfo2.ResetLocation(), theInfo1.ResetLocation();
            theInfo2.NextLocation() && theInfo1.NextLocation();)
@@ -3391,8 +3391,8 @@ NFmiQueryData *NFmiQueryDataUtil::DoNowCastFiltering(NFmiFastQueryInfo &theInfo1
   theInfo1.First();
   theInfo2.First();
 
-  // 31.5.2001/Marko Uusi versio tarkistaa datasta, lˆytyykˆ avainta SHORTRANGE_DATAHOURS2DB.
-  // T‰llˆin aluetoimisto on tehnyt editointia halutun m‰‰r‰n ja sen verran t‰ytet‰‰n
+  // 31.5.2001/Marko Uusi versio tarkistaa datasta, l√∂ytyyk√∂ avainta SHORTRANGE_DATAHOURS2DB.
+  // T√§ll√∂in aluetoimisto on tehnyt editointia halutun m√§√§r√§n ja sen verran t√§ytet√§√§n
   // tietokantaan dataa.
 
   NFmiString key("SHORTRANGE_DATAHOURS2DB");
@@ -3402,7 +3402,7 @@ NFmiQueryData *NFmiQueryDataUtil::DoNowCastFiltering(NFmiFastQueryInfo &theInfo1
     if (keyValueStr.IsNumeric())
     {
       theTimeRangeForPureData =
-          long(keyValueStr) + 1;  // todellisuudessa pituuteen lis‰t‰‰n yksi tunti
+          long(keyValueStr) + 1;  // todellisuudessa pituuteen lis√§t√§√§n yksi tunti
 
       int maxHours =
           theInfo2.ValidTimes().LastTime().DifferenceInHours(theInfo2.ValidTimes().FirstTime());
@@ -3410,7 +3410,7 @@ NFmiQueryData *NFmiQueryDataUtil::DoNowCastFiltering(NFmiFastQueryInfo &theInfo1
     }
   }
 
-  // Penan lis‰ykset
+  // Penan lis√§ykset
   NFmiTimePerioid period(theInfo1.TimeResolution());
   NFmiMetTime originTime = theInfo2.OriginTime();
   NFmiMetTime firstTime = theInfo2.ValidTime();
@@ -3423,7 +3423,7 @@ NFmiQueryData *NFmiQueryDataUtil::DoNowCastFiltering(NFmiFastQueryInfo &theInfo1
 
   NFmiQueryData *newQueryData = NFmiQueryDataUtil::ExtractTimes(
       theInfo1.RefQueryData(),
-      timeDescriptor);  // t‰m‰ on nopeampi ja toimii varmemmin kuin CreateSubQueryData
+      timeDescriptor);  // t√§m√§ on nopeampi ja toimii varmemmin kuin CreateSubQueryData
 
   NFmiFastQueryInfo newFastInfo(newQueryData);
   newFastInfo.First();
@@ -3457,7 +3457,7 @@ bool FqdV6ToV7WeatherAndCloudinessModification(NFmiFastQueryInfo &theSourceInfoV
                                                NFmiFastQueryInfo &theDestInfoV7)
 {
   if (theDestInfoV7.Param(
-          kFmiWeatherAndCloudiness))  // tarkistetaan viel‰ onko mit‰‰n konvertoitavaa
+          kFmiWeatherAndCloudiness))  // tarkistetaan viel√§ onko mit√§√§n konvertoitavaa
   {
     for (theSourceInfoV6.ResetLocation(), theDestInfoV7.ResetLocation();
          theSourceInfoV6.NextLocation() && theDestInfoV7.NextLocation();)
@@ -3468,20 +3468,20 @@ bool FqdV6ToV7WeatherAndCloudinessModification(NFmiFastQueryInfo &theSourceInfoV
         for (theSourceInfoV6.ResetTime(), theDestInfoV7.ResetTime();
              theSourceInfoV6.NextTime() && theDestInfoV7.NextTime();)
         {
-          // jouduin laittamaan t‰h‰n totalclouds quickfixin, koska muuten
-          // kun asetellaan yl‰pilvi‰, totalcloudiness lasketaan ja se voi
-          // muuttaa haluttua dataa (muutos pit‰‰ tehd‰, koska metkut eiv‰t
-          // editoi muuta kuin kok. pilvisyytt‰)
+          // jouduin laittamaan t√§h√§n totalclouds quickfixin, koska muuten
+          // kun asetellaan yl√§pilvi√§, totalcloudiness lasketaan ja se voi
+          // muuttaa haluttua dataa (muutos pit√§√§ tehd√§, koska metkut eiv√§t
+          // editoi muuta kuin kok. pilvisyytt√§)
           theSourceInfoV6.Param(kFmiTotalCloudCover);
           float totalClouds = theSourceInfoV6.FloatValue();
 
-          // asetetaan ensin v6:sta yl‰ pilvet v7:aan
+          // asetetaan ensin v6:sta yl√§ pilvet v7:aan
           theSourceInfoV6.Param(kFmiHighCloudCover);
           float highClouds = theSourceInfoV6.FloatValue();
           theDestInfoV7.Param(kFmiHighCloudCover);
           theDestInfoV7.FloatValue(highClouds);
 
-          // sitten asetetaan sadem‰‰r‰ v6:sta v7:‰‰n
+          // sitten asetetaan sadem√§√§r√§ v6:sta v7:√§√§n
           theSourceInfoV6.Param(kFmiPrecipitation1h);
           float precipitation = theSourceInfoV6.FloatValue();
           theDestInfoV7.Param(kFmiPrecipitation1h);
@@ -3511,7 +3511,7 @@ bool FqdV7ToV6WeatherAndCloudinessModification(NFmiFastQueryInfo &theSourceInfoV
                                                NFmiFastQueryInfo &theDestInfoV6)
 {
   if (theDestInfoV6.Param(
-          kFmiWeatherAndCloudiness))  // tarkistetaan viel‰ onko mit‰‰n konvertoitavaa
+          kFmiWeatherAndCloudiness))  // tarkistetaan viel√§ onko mit√§√§n konvertoitavaa
   {
     for (theSourceInfoV7.ResetLocation(), theDestInfoV6.ResetLocation();
          theSourceInfoV7.NextLocation() && theDestInfoV6.NextLocation();)
@@ -3522,20 +3522,20 @@ bool FqdV7ToV6WeatherAndCloudinessModification(NFmiFastQueryInfo &theSourceInfoV
         for (theSourceInfoV7.ResetTime(), theDestInfoV6.ResetTime();
              theSourceInfoV7.NextTime() && theDestInfoV6.NextTime();)
         {
-          // jouduin laittamaan t‰h‰n totalclouds quickfixin, koska muuten
-          // kun asetellaan yl‰pilvi‰, totalcloudiness lasketaan ja se voi
-          // muuttaa haluttua dataa (muutos pit‰‰ tehd‰, koska metkut eiv‰t
-          // editoi muuta kuin kok. pilvisyytt‰)
+          // jouduin laittamaan t√§h√§n totalclouds quickfixin, koska muuten
+          // kun asetellaan yl√§pilvi√§, totalcloudiness lasketaan ja se voi
+          // muuttaa haluttua dataa (muutos pit√§√§ tehd√§, koska metkut eiv√§t
+          // editoi muuta kuin kok. pilvisyytt√§)
           theSourceInfoV7.Param(kFmiTotalCloudCover);
           float totalClouds = theSourceInfoV7.FloatValue();
 
-          // asetetaan ensin v7:sta yl‰ pilvet v6:aan
+          // asetetaan ensin v7:sta yl√§ pilvet v6:aan
           theSourceInfoV7.Param(kFmiHighCloudCover);
           float highClouds = theSourceInfoV7.FloatValue();
           theDestInfoV6.Param(kFmiHighCloudCover);
           theDestInfoV6.FloatValue(highClouds);
 
-          // sitten asetetaan sadem‰‰r‰ v7:sta v6:een
+          // sitten asetetaan sadem√§√§r√§ v7:sta v6:een
           theSourceInfoV7.Param(kFmiPrecipitation1h);
           float precipitation = theSourceInfoV7.FloatValue();
           theDestInfoV6.Param(kFmiPrecipitation1h);
@@ -3564,7 +3564,7 @@ bool FqdV7ToV6WeatherAndCloudinessModification(NFmiFastQueryInfo &theSourceInfoV
 bool FqdV6ToV7TotalWindModification(NFmiFastQueryInfo &theSourceInfoV6,
                                     NFmiFastQueryInfo &theDestInfoV7)
 {
-  if (theDestInfoV7.Param(kFmiTotalWindMS))  // tarkistetaan viel‰ onko mit‰‰n konvertoitavaa
+  if (theDestInfoV7.Param(kFmiTotalWindMS))  // tarkistetaan viel√§ onko mit√§√§n konvertoitavaa
   {
     for (theSourceInfoV6.ResetLocation(), theDestInfoV7.ResetLocation();
          theSourceInfoV6.NextLocation() && theDestInfoV7.NextLocation();)
@@ -3606,7 +3606,7 @@ bool FqdV6ToV7TotalWindModification(NFmiFastQueryInfo &theSourceInfoV6,
 bool FqdV7ToV6TotalWindModification(NFmiFastQueryInfo &theSourceInfoV7,
                                     NFmiFastQueryInfo &theDestInfoV6)
 {
-  if (theDestInfoV6.Param(kFmiTotalWindMS))  // tarkistetaan viel‰ onko mit‰‰n konvertoitavaa
+  if (theDestInfoV6.Param(kFmiTotalWindMS))  // tarkistetaan viel√§ onko mit√§√§n konvertoitavaa
   {
     for (theSourceInfoV7.ResetLevel(), theDestInfoV6.ResetLevel();
          theSourceInfoV7.NextLevel() && theDestInfoV6.NextLevel();)
@@ -3639,7 +3639,7 @@ bool FqdV7ToV6TotalWindModification(NFmiFastQueryInfo &theSourceInfoV7,
 
 // ----------------------------------------------------------------------
 /*!
- * Suorittavat datan konversiot 6:sta 7:aan tai p‰in vastoin
+ * Suorittavat datan konversiot 6:sta 7:aan tai p√§in vastoin
  *
  * \param theSourceInfo Undocumented
  * \return Undocumented
@@ -3651,13 +3651,13 @@ NFmiQueryData *NFmiQueryDataUtil::FqdV6ToV7(NFmiFastQueryInfo &theSourceInfo)
   NFmiQueryData *data = 0;
   if (theSourceInfo.RefQueryData())
   {
-    data = new NFmiQueryData(*theSourceInfo.RefQueryData());  // tehd‰‰n ensin kopio datasta
-    data->InfoVersion(7);  // vaihdetaan viel‰ destination datan versio 7:ksi
+    data = new NFmiQueryData(*theSourceInfo.RefQueryData());  // tehd√§√§n ensin kopio datasta
+    data->InfoVersion(7);  // vaihdetaan viel√§ destination datan versio 7:ksi
     NFmiFastQueryInfo destInfo(data);
     FqdV6ToV7WeatherAndCloudinessModification(
-        theSourceInfo, destInfo);  // tehd‰‰n tarpeelliset weatherandCloudiness-muutokset
+        theSourceInfo, destInfo);  // tehd√§√§n tarpeelliset weatherandCloudiness-muutokset
     FqdV6ToV7TotalWindModification(theSourceInfo,
-                                   destInfo);  // tehd‰‰n tarpeelliset totalwind-muutokset
+                                   destInfo);  // tehd√§√§n tarpeelliset totalwind-muutokset
   }
   return data;
 }
@@ -3674,31 +3674,31 @@ NFmiQueryData *NFmiQueryDataUtil::FqdV7ToV6(NFmiFastQueryInfo &theSourceInfo)
   NFmiQueryData *data = 0;
   if (theSourceInfo.RefQueryData())
   {
-    data = new NFmiQueryData(*theSourceInfo.RefQueryData());  // tehd‰‰n ensin kopio datasta
-    data->InfoVersion(6);  // vaihdetaan viel‰ destination datan versio 6:ksi
+    data = new NFmiQueryData(*theSourceInfo.RefQueryData());  // tehd√§√§n ensin kopio datasta
+    data->InfoVersion(6);  // vaihdetaan viel√§ destination datan versio 6:ksi
     NFmiFastQueryInfo destInfo(data);
     FqdV7ToV6WeatherAndCloudinessModification(
-        theSourceInfo, destInfo);  // tehd‰‰n tarpeelliset weatherandCloudiness-muutokset
+        theSourceInfo, destInfo);  // tehd√§√§n tarpeelliset weatherandCloudiness-muutokset
     FqdV7ToV6TotalWindModification(theSourceInfo,
-                                   destInfo);  // tehd‰‰n tarpeelliset totalwind-muutokset
+                                   destInfo);  // tehd√§√§n tarpeelliset totalwind-muutokset
   }
   return data;
 }
 
 // ----------------------------------------------------------------------
 /*!
- * T‰m‰ funktio luo uuden datan jossa sama rakenne kuin annetussa datassa
+ * T√§m√§ funktio luo uuden datan jossa sama rakenne kuin annetussa datassa
  * (params, times, levels, jne.). Filtteri laskee sourceDatasta tulosDataan
- * arvot k‰ytt‰en haluttua NFmiSmoother-luokan tasoitus filtteri‰. Esim.
+ * arvot k√§ytt√§en haluttua NFmiSmoother-luokan tasoitus filtteri√§. Esim.
  * laskee +-3 tunnin tasoituksen kaikkialle.
- * Offsetit pyˆristet‰‰n l‰himpiin sourceDatan aika-askeleisiin.
+ * Offsetit py√∂ristet√§√§n l√§himpiin sourceDatan aika-askeleisiin.
  *
  * \param theSourceData Undocumented
  * \param theTimeOffsetStartInMinutes Undocumented
  * \param theTimeOffsetEndInMinutes Undocumented
  * \param theSmootherMethod ks. NFmiSmoother-konstruktori.
  * \param theFactor kertoo tasoituksen voimakkuuden 1 on voimakas ja
- *  suuremmat luvut heikent‰v‰t tasoitusta.
+ *  suuremmat luvut heikent√§v√§t tasoitusta.
  * \return Metodissa luotu NFmiQueryData olio, jota on tasoitettu.
  */
 // ----------------------------------------------------------------------
@@ -3720,17 +3720,17 @@ NFmiQueryData *DoTimeFilteringWithSmoother(NFmiQueryData *theSourceData,
                                sourceInfo.TimeResolution())) +
         1;
 
-    // HUOM! ei osaa hoitaa hommaa oikein jos datassa on aikalista jossa erilaiset aikav‰lit
+    // HUOM! ei osaa hoitaa hommaa oikein jos datassa on aikalista jossa erilaiset aikav√§lit
     int sizeTimes = sourceInfo.SizeTimes();
     checkedVector<float> relTimeLocation(
         sizeTimes);  // x on aika eli eri aika-askelten suhteelliset sijainnit (0, 1, 2, 3, ...)
                      //		std::accumulate(relTimeLocation.begin(), relTimeLocation.end(), 0); // 0
     // tarkoittaa
-    // ett‰
-    // t‰ytet‰‰n vektori luvuilla jotka alkavat 0:sta ja kasvavat aina yhdell‰
+    // ett√§
+    // t√§ytet√§√§n vektori luvuilla jotka alkavat 0:sta ja kasvavat aina yhdell√§
     for (int j = 0; j < sizeTimes; j++)
-      relTimeLocation[j] = static_cast<float>(j);  // tarkoittaa ett‰ t‰ytet‰‰n vektori luvuilla
-    // jotka alkavat 0:sta ja kasvavat aina yhdell‰
+      relTimeLocation[j] = static_cast<float>(j);  // tarkoittaa ett√§ t√§ytet√§√§n vektori luvuilla
+    // jotka alkavat 0:sta ja kasvavat aina yhdell√§
 
     checkedVector<float> values(sizeTimes);
     checkedVector<float> result;
@@ -3753,12 +3753,12 @@ NFmiQueryData *DoTimeFilteringWithSmoother(NFmiQueryData *theSourceData,
         {
           int i = 0;
           for (sourceInfo.ResetTime(); sourceInfo.NextTime(); i++)
-            values[i] = sourceInfo.FloatValue();  // t‰ytet‰‰n ensin aikasarjavektori datalla
+            values[i] = sourceInfo.FloatValue();  // t√§ytet√§√§n ensin aikasarjavektori datalla
 
           result = smoother.Smoothen(relTimeLocation, values);
           i = 0;
           for (destInfo.ResetTime(); destInfo.NextTime(); i++)
-            destInfo.FloatValue(result[i]);  // t‰ytet‰‰n tulosdata tasoitetulla aikasarjalla
+            destInfo.FloatValue(result[i]);  // t√§ytet√§√§n tulosdata tasoitetulla aikasarjalla
         }
       }
     }
@@ -3786,9 +3786,9 @@ NFmiDataModifier *CreateModifier(int theFilterId)
       return new NFmiDataModifierMin;
     case 5:
       return new NFmiDataModifierSum;
-    case 4:  // jouduin laittamaan id:ksi 4:n, koska editorin filtterˆinti funktion valinta on
+    case 4:  // jouduin laittamaan id:ksi 4:n, koska editorin filtter√∂inti funktion valinta on
              // tehty
-             // niin kˆpˆsti ja siell‰ t‰m‰n on pakko olla 4
+             // niin k√∂p√∂sti ja siell√§ t√§m√§n on pakko olla 4
       return new NFmiDataModifierMedian;
     default:
       return 0;
@@ -3797,33 +3797,33 @@ NFmiDataModifier *CreateModifier(int theFilterId)
 
 // ----------------------------------------------------------------------
 /*!
- *  T‰m‰ ohjelma lukee stdin:in annetun qdatan, luo uuden datan jossa sama
+ *  T√§m√§ ohjelma lukee stdin:in annetun qdatan, luo uuden datan jossa sama
  *  rakenne. Filtteri laskee sourceDatasta tulosDataan arvot halutulla
- *  suhteellisella aikav‰lill‰ arvot halutulla filtterill‰. Esim. laskee
+ *  suhteellisella aikav√§lill√§ arvot halutulla filtterill√§. Esim. laskee
  *  +-3 tunnin keskiarvot kaikkialle eli tasoittaa dataa jonkin verran. \par
- *  K‰yttˆ: \par
+ *  K√§ytt√∂: \par
  *  type sourceData | doTimeFiltering.exe filterId relTimeOffsetStartInMinutes
  *relTimeOffsetEndInMinutes > tulosData \par
  *
- *  Offsetit pyˆristet‰‰n l‰himpiin sourceDatan aika-askeleisiin. Filtteri
- *  funktiot: 0 = avg, 1 = max, 2 = min (EI VIELƒ KƒYT÷SSƒ! 3 = wavg), 4=NFmiSmoother tasoitus,
+ *  Offsetit py√∂ristet√§√§n l√§himpiin sourceDatan aika-askeleisiin. Filtteri
+ *  funktiot: 0 = avg, 1 = max, 2 = min (EI VIEL√Ñ K√ÑYT√ñSS√Ñ! 3 = wavg), 4=NFmiSmoother tasoitus,
  *  5 = sum filtterit. Jos haluat tasoittaa tuntidataa laskien keskiarvon yli 7
  *  tunnin (+-3h), anna arvot seuraavasti: \par
- *  type sourceData | doTimeFiltering.exe 0 -180 180 [lis‰_argumentti1=3] [lis‰_argumentti2=2] ...
+ *  type sourceData | doTimeFiltering.exe 0 -180 180 [lis√§_argumentti1=3] [lis√§_argumentti2=2] ...
  *>
  *tulosData \par
- *  Lis‰ argumentteja saa antaa k‰ytetyst‰ funktiosta riippuen. \par
- *  NFmiSmoother tasoituksen lis‰ argumentit:
- *			1=smoother menetelm‰ (2=kFmiSmootherNeighbourhood,
+ *  Lis√§ argumentteja saa antaa k√§ytetyst√§ funktiosta riippuen. \par
+ *  NFmiSmoother tasoituksen lis√§ argumentit:
+ *			1=smoother menetelm√§ (2=kFmiSmootherNeighbourhood,
  *3=kFmiSmootherPseudoGaussian)
- *			2=smootherFactor (1=voimakas ja mit‰ suurempi luku sit‰ heikompi)
+ *			2=smootherFactor (1=voimakas ja mit√§ suurempi luku sit√§ heikompi)
  *
  * \param theSourceData Undocumented
  * \param theFilterId Undocumented
  * \param theTimeOffsetStartInMinutes Undocumented
  * \param theTimeOffsetEndInMinutes Undocumented
- * \param theAdditionalParam1 Mahdollinen k‰ytettyyn filter-funktioon liittyv‰ parametri.
- * \param theAdditionalParam2 Mahdollinen k‰ytettyyn filter-funktioon liittyv‰ parametri.
+ * \param theAdditionalParam1 Mahdollinen k√§ytettyyn filter-funktioon liittyv√§ parametri.
+ * \param theAdditionalParam2 Mahdollinen k√§ytettyyn filter-funktioon liittyv√§ parametri.
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
@@ -3836,7 +3836,7 @@ NFmiQueryData *NFmiQueryDataUtil::DoTimeFiltering(NFmiQueryData *theSourceData,
                                                   double theAdditionalParam2)
 {
   if (theFilterId ==
-      4)  // 4= tehd‰‰n operaatiot NFmiSmootherluokan avulla esim. pseudogaussian-tasoitus jne.
+      4)  // 4= tehd√§√§n operaatiot NFmiSmootherluokan avulla esim. pseudogaussian-tasoitus jne.
     return DoTimeFilteringWithSmoother(theSourceData,
                                        theTimeOffsetStartInMinutes,
                                        theTimeOffsetEndInMinutes,
@@ -3888,27 +3888,27 @@ NFmiQueryData *NFmiQueryDataUtil::DoTimeFiltering(NFmiQueryData *theSourceData,
 
 // ----------------------------------------------------------------------
 /*!
- *  T‰m‰ ohjelma lukee stdin:in annetun qdatan, luo uuden datan jossa sama
+ *  T√§m√§ ohjelma lukee stdin:in annetun qdatan, luo uuden datan jossa sama
  *  rakenne. Filtteri laskee sourceDatasta tulosDataan arvot halutuilla
- *  alueille ‰lill‰ arvot halutulla filtterill‰. Esim. laskee
- *  keskiarvot tietyn kokoisen ympyr‰n sis‰lt‰ kaikkialle eli tasoittaa dataa
+ *  alueille √§lill√§ arvot halutulla filtterill√§. Esim. laskee
+ *  keskiarvot tietyn kokoisen ympyr√§n sis√§lt√§ kaikkialle eli tasoittaa dataa
  *  jonkin verran. \par
- *  K‰yttˆ: \par
- *  type sourceData | doAreaFiltering.exe filterId areaType [lis‰_argumentti1=1]
- * [lis‰_argumentti2=1] > tulosData \par
+ *  K√§ytt√∂: \par
+ *  type sourceData | doAreaFiltering.exe filterId areaType [lis√§_argumentti1=1]
+ * [lis√§_argumentti2=1] > tulosData \par
  *
- *  Lis‰argumentteja annetaan riippuen k‰ytetyst‰ areaType:st‰:
- *  0 = all  (Ei ole toteutettu!)    (laske arvo l‰pi kaikkien (hila)pisteiden), ei lis‰
+ *  Lis√§argumentteja annetaan riippuen k√§ytetyst√§ areaType:st√§:
+ *  0 = all  (Ei ole toteutettu!)    (laske arvo l√§pi kaikkien (hila)pisteiden), ei lis√§
  * argumentteja. \par
- *  1 = ympyr‰  (Ei ole toteutettu!) (laske arvo tietynkokoisen ympyr‰n sis‰lt‰), lis‰_argumentti1
- * on s‰de kilometreissa. \par
- *  2 = hilalaatikko (laske arvo tietynkokoisen hilalaatikon sis‰lt‰), lis‰_argumentti1 on
- *  hilam‰‰r‰ x-suunnassa (keskitettyn‰ laskettavaan pisteeseen) ja lis‰_argumentti2 on
+ *  1 = ympyr√§  (Ei ole toteutettu!) (laske arvo tietynkokoisen ympyr√§n sis√§lt√§), lis√§_argumentti1
+ * on s√§de kilometreissa. \par
+ *  2 = hilalaatikko (laske arvo tietynkokoisen hilalaatikon sis√§lt√§), lis√§_argumentti1 on
+ *  hilam√§√§r√§ x-suunnassa (keskitettyn√§ laskettavaan pisteeseen) ja lis√§_argumentti2 on
  *  vastaava luku y-suunnassa. \par
  *
- *  Filtteri funktiot: 0 = avg, 1 = max, 2 = min (3 = wavg EI VIELƒ KƒYT÷SSƒ!), (4=NFmiSmoother
+ *  Filtteri funktiot: 0 = avg, 1 = max, 2 = min (3 = wavg EI VIEL√Ñ K√ÑYT√ñSS√Ñ!), (4=NFmiSmoother
  * tasoitus
- *  EI VIELƒ KƒYT÷SSƒ!), 5 = sum. Jos haluat tasoittaa dataa laskien keskiarvon yli 5x7
+ *  EI VIEL√Ñ K√ÑYT√ñSS√Ñ!), 5 = sum. Jos haluat tasoittaa dataa laskien keskiarvon yli 5x7
  * hilalaatikon
  * yli,
  *  anna arvot seuraavasti: \par
@@ -3917,8 +3917,8 @@ NFmiQueryData *NFmiQueryDataUtil::DoTimeFiltering(NFmiQueryData *theSourceData,
  * \param theSourceData Undocumented
  * \param theFilterId Undocumented
  * \param theAreaType Undocumented
- * \param theAdditionalParam1 Mahdollinen k‰ytettyyn filter-funktioon liittyv‰ parametri.
- * \param theAdditionalParam2 Mahdollinen k‰ytettyyn filter-funktioon liittyv‰ parametri.
+ * \param theAdditionalParam1 Mahdollinen k√§ytettyyn filter-funktioon liittyv√§ parametri.
+ * \param theAdditionalParam2 Mahdollinen k√§ytettyyn filter-funktioon liittyv√§ parametri.
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
@@ -3980,7 +3980,7 @@ const NFmiString &NFmiQueryDataUtil::GetOfficialQueryDataProdIdsKey(void)
 
 static void CheckCropLimits(int nx, int ny, int theLeft, int theTop, int theRight, int theBottom)
 {
-  // Tarkastellaan, ett‰ annetut croppi rajat olivat j‰rkevi‰.
+  // Tarkastellaan, ett√§ annetut croppi rajat olivat j√§rkevi√§.
   if (theLeft < 0 || theLeft >= nx)
     throw runtime_error("cropin vasen-reuna oli yli originaali hilan rajojen.");
   if (theRight < 0 || theRight >= nx)
@@ -3988,9 +3988,9 @@ static void CheckCropLimits(int nx, int ny, int theLeft, int theTop, int theRigh
   if (theBottom < 0 || theBottom >= ny)
     throw runtime_error("cropin ala-reuna oli yli originaali hilan rajojen.");
   if (theTop < 0 || theTop >= ny)
-    throw runtime_error("cropin yl‰-reuna oli yli originaali hilan rajojen.");
+    throw runtime_error("cropin yl√§-reuna oli yli originaali hilan rajojen.");
   if (theLeft > theRight) throw runtime_error("cropin vasen-reuna oli yli oikean reunan.");
-  if (theBottom > theTop) throw runtime_error("cropin ala-reuna oli yli yl‰-reunan.");
+  if (theBottom > theTop) throw runtime_error("cropin ala-reuna oli yli yl√§-reunan.");
 }
 
 static NFmiArea *CreateCropArea(const NFmiGrid *theGrid,
@@ -4004,7 +4004,7 @@ static NFmiArea *CreateCropArea(const NFmiGrid *theGrid,
   return area;
 }
 
-// sitten p‰‰st‰‰n itse croppaukseen!!!!
+// sitten p√§√§st√§√§n itse croppaukseen!!!!
 static void CropData(NFmiFastQueryInfo &theSource,
                      NFmiFastQueryInfo &theResult,
                      int theLeft,
@@ -4039,23 +4039,23 @@ static void CropData(NFmiFastQueryInfo &theSource,
 
 // ----------------------------------------------------------------------
 /*!
- * T‰m‰ funktio luo uuden datan joka on cropattu halutulla tavalla
+ * T√§m√§ funktio luo uuden datan joka on cropattu halutulla tavalla
  * annetusta datasta. Uudessa datassa on muuten sama rakenne
  * (params, times, levels).
  *
  * Haluttu croppi alue annetaan hila-indeksi laatikkona. Kyseiseen
- * laatikkoon myˆs lasketaan uusi area.
- * Croppaus aluetta ei voi 'venytt‰‰' ali eik‰ yli alkuper‰isen rajojen.
- * Jos joku haluaa t‰ll‰isen efektin, pit‰‰ k‰ytt‰‰ vaikka
- * Interpolate2OtherArea-filtteri‰.
+ * laatikkoon my√∂s lasketaan uusi area.
+ * Croppaus aluetta ei voi 'venytt√§√§' ali eik√§ yli alkuper√§isen rajojen.
+ * Jos joku haluaa t√§ll√§isen efektin, pit√§√§ k√§ytt√§√§ vaikka
+ * Interpolate2OtherArea-filtteri√§.
  *
- * Hila piste indeksi alkavat 0:sta ja p‰‰ttyv‰t hilaruudukon koon size-1:een.
+ * Hila piste indeksi alkavat 0:sta ja p√§√§ttyv√§t hilaruudukon koon size-1:een.
  *
- * \param theInfo data, josta halutaan croppi tehd‰.
- * \param theLeft Cropin vasen reuna hilapiste indeksin‰ (left < right).
- * \param theTop Cropin yl‰ reuna hilapiste indeksin‰ (bottom < top).
- * \param theRight Cropin oikea reuna hilapiste indeksin‰.
- * \param theBottom Cropin ala reuna hilapiste indeksin‰.
+ * \param theInfo data, josta halutaan croppi tehd√§.
+ * \param theLeft Cropin vasen reuna hilapiste indeksin√§ (left < right).
+ * \param theTop Cropin yl√§ reuna hilapiste indeksin√§ (bottom < top).
+ * \param theRight Cropin oikea reuna hilapiste indeksin√§.
+ * \param theBottom Cropin ala reuna hilapiste indeksin√§.
  * \return Metodissa luotu NFmiQueryData olio, tai 0-pointteri jos jokin meni pieleen.
  */
 // ----------------------------------------------------------------------
@@ -4068,9 +4068,9 @@ NFmiQueryData *NFmiQueryDataUtil::QDCrop(
   {
     int nx = theInfo.Grid()->XNumber();
     int ny = theInfo.Grid()->YNumber();
-    if (theRight == kShortMissing)  // t‰m‰ oli defaultti arvo
+    if (theRight == kShortMissing)  // t√§m√§ oli defaultti arvo
       theRight = nx - 1;
-    if (theTop == kShortMissing)  // t‰m‰ oli defaultti arvo
+    if (theTop == kShortMissing)  // t√§m√§ oli defaultti arvo
       theTop = ny - 1;
     CheckCropLimits(nx, ny, theLeft, theTop, theRight, theBottom);
     NFmiPoint blXY(theLeft, theBottom);
@@ -4094,21 +4094,21 @@ NFmiQueryData *NFmiQueryDataUtil::QDCrop(
   return data;
 }
 
-// t‰m‰ on ulkopuolisen callback-olion tarkistus. Eli jos toisesta s‰ikeest‰ on
-// tullut lopetus k‰sky, t‰m‰ heitt‰‰ poikkeuksen, jolloin datan rakentelu loppuu siihen.
-// Kaikki dynaamiset datat pit‰‰ siis tehd‰ niin ett‰ ne osaavat tuhota itsens‰ automaattisesti.
-void NFmiQueryDataUtil::CheckIfStopped(NFmiStopFunctor *theStopFunctor)  // t‰m‰ versio on pelk‰lle
+// t√§m√§ on ulkopuolisen callback-olion tarkistus. Eli jos toisesta s√§ikeest√§ on
+// tullut lopetus k√§sky, t√§m√§ heitt√§√§ poikkeuksen, jolloin datan rakentelu loppuu siihen.
+// Kaikki dynaamiset datat pit√§√§ siis tehd√§ niin ett√§ ne osaavat tuhota itsens√§ automaattisesti.
+void NFmiQueryDataUtil::CheckIfStopped(NFmiStopFunctor *theStopFunctor)  // t√§m√§ versio on pelk√§lle
                                                                          // tausta threadille, jolle
                                                                          // on annettu vain
                                                                          // NFmiStopFunctor-otus
 {
   if (theStopFunctor && theStopFunctor->Stop()) throw NFmiStopThreadException();
 }
-void NFmiQueryDataUtil::CheckIfStopped(NFmiThreadCallBacks *theThreadCallBacks)  // t‰m‰ versio on
+void NFmiQueryDataUtil::CheckIfStopped(NFmiThreadCallBacks *theThreadCallBacks)  // t√§m√§ versio on
                                                                                  // GUI ohjelman
                                                                                  // funktiolle,
                                                                                  // jossa tulee
-                                                                                 // n‰kyviin
+                                                                                 // n√§kyviin
                                                                                  // progressbar ja
                                                                                  // cancel
                                                                                  // mahdollisuus
@@ -4116,13 +4116,13 @@ void NFmiQueryDataUtil::CheckIfStopped(NFmiThreadCallBacks *theThreadCallBacks) 
   if (theThreadCallBacks && theThreadCallBacks->Stop()) throw NFmiStopThreadException();
 }
 
-// T‰ll‰ juoksutetaan mahdollisen ulkopuolisen callback-olion edistymist‰.
+// T√§ll√§ juoksutetaan mahdollisen ulkopuolisen callback-olion edistymist√§.
 void NFmiQueryDataUtil::DoStepIt(NFmiThreadCallBacks *theThreadCallBacks)
 {
   if (theThreadCallBacks) theThreadCallBacks->StepIt();
 }
 
-// T‰ll‰ asetetaan mahdollisen ulkopuolisen callback-olion edistymisrajat ja steppi.
+// T√§ll√§ asetetaan mahdollisen ulkopuolisen callback-olion edistymisrajat ja steppi.
 void NFmiQueryDataUtil::SetRange(NFmiThreadCallBacks *theThreadCallBacks,
                                  int low,
                                  int high,
@@ -4131,15 +4131,15 @@ void NFmiQueryDataUtil::SetRange(NFmiThreadCallBacks *theThreadCallBacks,
   if (theThreadCallBacks) theThreadCallBacks->SetRange(low, high, stepCount);
 }
 
-// T‰ll‰ lis‰t‰‰n mahdollisen ulkopuolisen callback-olion edistymisrajaan loppuarvoa.
+// T√§ll√§ lis√§t√§√§n mahdollisen ulkopuolisen callback-olion edistymisrajaan loppuarvoa.
 void NFmiQueryDataUtil::AddRange(NFmiThreadCallBacks *theThreadCallBacks, int value)
 {
   if (theThreadCallBacks) theThreadCallBacks->AddRange(value);
 }
 
-// Oletuksia: theFilesIn on tiedostojen uutuus j‰rjestyksess‰.
-// Jos theBaseQData:ssa on data, haetaan vain sen viimeist‰ dataa uudemmat queryDatat,
-// eli loopin voi lopettaa 1. miss‰ ajat vanhempia (tiedostojen aika j‰rjestys)
+// Oletuksia: theFilesIn on tiedostojen uutuus j√§rjestyksess√§.
+// Jos theBaseQData:ssa on data, haetaan vain sen viimeist√§ dataa uudemmat queryDatat,
+// eli loopin voi lopettaa 1. miss√§ ajat vanhempia (tiedostojen aika j√§rjestys)
 static void ReadQueryDataFiles(boost::shared_ptr<NFmiQueryData> theBaseQData,
                                const std::string &theDirName,
                                std::vector<std::string> &theFilesIn,
@@ -4168,7 +4168,7 @@ static void ReadQueryDataFiles(boost::shared_ptr<NFmiQueryData> theBaseQData,
       }
       catch (...)
       {
-        // pakkko tehd‰ try-catch -blokki korruptoituneiden tiedostojen varalle
+        // pakkko tehd√§ try-catch -blokki korruptoituneiden tiedostojen varalle
       }
 
       if (qDataPtr)
@@ -4195,8 +4195,8 @@ static void MakeFastInfos(std::vector<boost::shared_ptr<NFmiQueryData> > &theQDa
 
 // Tekee uniikki listan validTimeista, jotka on annetussa fastInfo vektorissa. sorttaa ne
 // laskevaan
-// j‰rjestykseen (uusimmat ensin) ja leikkaa tarvittaessa listan koon haluttuun m‰‰r‰‰n
-// theMaxTimeStepsInData-parametrin mukaan. Jos se on <= 0, t‰llˆin otetaan kaiiki ajat mukaan.
+// j√§rjestykseen (uusimmat ensin) ja leikkaa tarvittaessa listan koon haluttuun m√§√§r√§√§n
+// theMaxTimeStepsInData-parametrin mukaan. Jos se on <= 0, t√§ll√∂in otetaan kaiiki ajat mukaan.
 static std::vector<NFmiMetTime> MakeValidTimesList(
     std::vector<boost::shared_ptr<NFmiFastQueryInfo> > &theFInfoVectorIn, int theMaxTimeStepsInData)
 {
@@ -4216,11 +4216,11 @@ static std::vector<NFmiMetTime> MakeValidTimesList(
   if (uniqueValidTimes.empty()) return std::vector<NFmiMetTime>();
 
   std::list<NFmiMetTime> selectedTimes(uniqueValidTimes.begin(), uniqueValidTimes.end());
-  selectedTimes.reverse();  // k‰‰nnet‰‰n j‰rjestys, ett‰ uusimmat on ensin
+  selectedTimes.reverse();  // k√§√§nnet√§√§n j√§rjestys, ett√§ uusimmat on ensin
   if (theMaxTimeStepsInData > 0 && static_cast<int>(selectedTimes.size()) > theMaxTimeStepsInData)
     selectedTimes.resize(theMaxTimeStepsInData);
-  selectedTimes.reverse();  // k‰‰nnet‰‰n taas j‰rjestys, ett‰ lopullinen m‰‰r‰ aikoja nousevaan
-                            // j‰rjestykseen
+  selectedTimes.reverse();  // k√§√§nnet√§√§n taas j√§rjestys, ett√§ lopullinen m√§√§r√§ aikoja nousevaan
+                            // j√§rjestykseen
   return std::vector<NFmiMetTime>(selectedTimes.begin(), selectedTimes.end());
 }
 
@@ -4295,13 +4295,13 @@ static NFmiVPlaceDescriptor MakeVPlaceDesc(
   return levDesc;
 }
 
-// T‰ss‰ rakennetaan yhdistelm‰ dataa varten meta-info.
+// T√§ss√§ rakennetaan yhdistelm√§ dataa varten meta-info.
 // Jos fFirstInfoDefines = true, otetaan 1. fInfosta (tuorein)  hila+alue, levelit ja parametri
 // lista.
 // Jos se oli false, rakennetaan level ja parametri listat kaikista annetuista infoista, hila
 // otetaan aina 1. infosta.
-// Validtime-vektorista tehd‰‰n timeDescriptori.
-// HUOM! T‰m‰ toimii nyt vain hiladatoille. Muuttuu tulevaisuudessa...
+// Validtime-vektorista tehd√§√§n timeDescriptori.
+// HUOM! T√§m√§ toimii nyt vain hiladatoille. Muuttuu tulevaisuudessa...
 static NFmiQueryInfo MakeCombinedDatasMetaInfo(
     std::vector<boost::shared_ptr<NFmiFastQueryInfo> > &theFInfoVectorIn,
     std::vector<NFmiMetTime> &theValidTimesIn,
@@ -4342,7 +4342,7 @@ static NFmiFastQueryInfo *FindWantedInfo(
   {
     if (theFInfoVectorIn[i]->Time(theTime)) return theFInfoVectorIn[i].get();
   }
-  return 0;  // t‰nne ei pit‰isi menn‰, pit‰isikˆ heitt‰‰ poikkeus?
+  return 0;  // t√§nne ei pit√§isi menn√§, pit√§isik√∂ heitt√§√§ poikkeus?
 }
 
 static void FillDataToCurrentTime(
@@ -4351,7 +4351,7 @@ static void FillDataToCurrentTime(
     NFmiStopFunctor *theStopFunctor)
 {
   NFmiFastQueryInfo *sourceInfo = ::FindWantedInfo(theFilledInfo.Time(), theFInfoVectorIn);
-  if (sourceInfo)  // aina pit‰isi lˆyty‰ sourceInfo, mutta tarkistetaan kuitenkin
+  if (sourceInfo)  // aina pit√§isi l√∂yty√§ sourceInfo, mutta tarkistetaan kuitenkin
   {
     if (theFilledInfo.Grid() && sourceInfo->Grid() &&
         *(theFilledInfo.Grid()) == *(sourceInfo->Grid()))
@@ -4365,9 +4365,9 @@ static void FillDataToCurrentTime(
             if (sourceInfo->Param(theFilledInfo.Param()))
             {
               NFmiQueryDataUtil::CheckIfStopped(theStopFunctor);  // tarkistetaan lopetus ehtoa
-                                                                  // aina yhden kent‰n t‰ytˆn
-                                                                  // v‰lein...
-              // oletus viel‰ nyt ett‰ hpalceDesc:it samanlaisia
+                                                                  // aina yhden kent√§n t√§yt√∂n
+                                                                  // v√§lein...
+              // oletus viel√§ nyt ett√§ hpalceDesc:it samanlaisia
               NFmiDataMatrix<float> values;
               sourceInfo->Values(values);
               theFilledInfo.SetValues(values);
@@ -4407,17 +4407,17 @@ static void CombineSliceDatas(NFmiQueryData &theData,
                               NFmiStopFunctor *theStopFunctor)
 {
   NFmiFastQueryInfo combFastInfo(&theData);
-  // k‰yd‰‰n kaikki fInfot l‰pi ja katsotaan mihin rakoihin data saadaan tungettua
+  // k√§yd√§√§n kaikki fInfot l√§pi ja katsotaan mihin rakoihin data saadaan tungettua
   for (size_t i = 0; i < theFInfoVector.size(); i++)
   {
     NFmiFastQueryInfo &fInfo = *(theFInfoVector[i].get());
 
-    // ainakin aluksi pit‰‰ olla hila dataa ja hilojenkin samanlaisia, TODO t‰m‰n voisi muuttaa
+    // ainakin aluksi pit√§√§ olla hila dataa ja hilojenkin samanlaisia, TODO t√§m√§n voisi muuttaa
     // tulevaisuudessa
     if (fInfo.Grid() && combFastInfo.Grid() && *(fInfo.Grid()) == *(combFastInfo.Grid()))
     {
       // luultavasti fInfo on vain yksi slice (= yksi aika,level,param), mutta joudumme
-      // k‰ym‰‰n sen l‰pi varmuuden vuoksi kokonaan ja katsomaan jokaisen slicen kohdalla meneekˆ
+      // k√§ym√§√§n sen l√§pi varmuuden vuoksi kokonaan ja katsomaan jokaisen slicen kohdalla meneek√∂
       // se
       // tulos dataan
       for (fInfo.ResetTime(); fInfo.NextTime();)
@@ -4435,7 +4435,7 @@ static void CombineSliceDatas(NFmiQueryData &theData,
                         static_cast<FmiParameterName>(fInfo.Param().GetParamIdent())))
                 {
                   NFmiQueryDataUtil::CheckIfStopped(theStopFunctor);
-                  // oletus viel‰ nyt ett‰ hpalceDesc:it samanlaisia
+                  // oletus viel√§ nyt ett√§ hpalceDesc:it samanlaisia
                   NFmiDataMatrix<float> values;
                   fInfo.Values(values);
                   combFastInfo.SetValues(values);
@@ -4449,12 +4449,12 @@ static void CombineSliceDatas(NFmiQueryData &theData,
   }
 }
 
-// fFirstInfoDefines m‰‰r‰‰ sek‰ rakennetaanko 'metaInfo' ensimm‰isen infon avulla,
-// ett‰ miten lopullinen data t‰ytet‰‰n.
-// Jos fDoTimeStepCombine on true, on tarkoitus liitt‰‰ samanlaisista aika-askel-datoista
-// yksi pitk‰ aikajakso. Mutta jos se on false, on tarkoitus vain liitt‰‰ joukko
+// fFirstInfoDefines m√§√§r√§√§ sek√§ rakennetaanko 'metaInfo' ensimm√§isen infon avulla,
+// ett√§ miten lopullinen data t√§ytet√§√§n.
+// Jos fDoTimeStepCombine on true, on tarkoitus liitt√§√§ samanlaisista aika-askel-datoista
+// yksi pitk√§ aikajakso. Mutta jos se on false, on tarkoitus vain liitt√§√§ joukko
 // 'sliceja' yhdeksi isoksi dataksi eli viipaleita 3D-dataksi.
-// Jos theBaseQData sis‰lt‰‰ dataa, k‰ytet‰‰n se ensin pohjaksi uudelle datalle.
+// Jos theBaseQData sis√§lt√§√§ dataa, k√§ytet√§√§n se ensin pohjaksi uudelle datalle.
 NFmiQueryData *NFmiQueryDataUtil::CombineQueryDatas(
     bool fDoRebuild,
     boost::shared_ptr<NFmiQueryData> &theBaseQData,
@@ -4477,14 +4477,14 @@ NFmiQueryData *NFmiQueryDataUtil::CombineQueryDatas(
     NFmiQueryInfo combinedDataMetaInfo =
         ::MakeCombinedDatasMetaInfo(fInfoVector, foundValidTimes, fDoTimeStepCombine);
     NFmiQueryDataUtil::CheckIfStopped(theStopFunctor);
-    NFmiQueryData *data = CreateEmptyData(combinedDataMetaInfo);
+    std::unique_ptr<NFmiQueryData> data(CreateEmptyData(combinedDataMetaInfo));
     if (data)
     {
       if (fDoTimeStepCombine)
         ::CombineTimeStepDatas(*data, fInfoVector, theStopFunctor);
       else
         ::CombineSliceDatas(*data, fInfoVector, theStopFunctor);
-      return data;
+      return data.release();
     }
   }
   return 0;
@@ -4505,25 +4505,25 @@ static boost::shared_ptr<NFmiQueryData> GetNewestQueryData(const std::string &th
   return qDataPtr;
 }
 
-// Luo queryDatan annetun filefilterin avulla. Niist‰ tiedostoista mit‰ tulee annetulla
-// filefilterill‰
+// Luo queryDatan annetun filefilterin avulla. Niist√§ tiedostoista mit√§ tulee annetulla
+// filefilterill√§
 // luodaan yksi kokooma qData. theMaxTimeStepsInData-parametrilla voidaan rajoittaa luodun datan
 // koko
-// Siten ett‰ lopulliseen dataan otetaan vain niin monta uusinta aika-askelta kun on sanottu. Jos
+// Siten ett√§ lopulliseen dataan otetaan vain niin monta uusinta aika-askelta kun on sanottu. Jos
 // sen arvo on 0, otetaan kaikki aika-askeleet lopulliseen dataan.
-// HUOM! vaatimuksia datoille, ensimm‰isest‰ datasta (=uusimmasta) otetaan pohjat
+// HUOM! vaatimuksia datoille, ensimm√§isest√§ datasta (=uusimmasta) otetaan pohjat
 // (hila,parametrit,levelit):
-// 1. Datoissa pit‰‰ olla sama hila ja alue, eli sama NFmiGrid.
-// 2. Ei saa olla asemadataa (T‰m‰ pit‰‰ muuttaa viel‰)
-// 3. Pit‰‰ olla samat parametrit (T‰m‰ pit‰‰ muuttaa viel‰)
-// 4. Pit‰‰ olla samat levelit (T‰m‰ pit‰‰ muuttaa viel‰)
-// 5. Muutos: annettua theBaseDataFileFilter:ist‰ etsit‰‰n uusin tiedosto.
-//   jos se lˆytyy, otetaan siit‰ pohjaksi niin paljon dataa kuin mahdollista ja luetaan
+// 1. Datoissa pit√§√§ olla sama hila ja alue, eli sama NFmiGrid.
+// 2. Ei saa olla asemadataa (T√§m√§ pit√§√§ muuttaa viel√§)
+// 3. Pit√§√§ olla samat parametrit (T√§m√§ pit√§√§ muuttaa viel√§)
+// 4. Pit√§√§ olla samat levelit (T√§m√§ pit√§√§ muuttaa viel√§)
+// 5. Muutos: annettua theBaseDataFileFilter:ist√§ etsit√§√§n uusin tiedosto.
+//   jos se l√∂ytyy, otetaan siit√§ pohjaksi niin paljon dataa kuin mahdollista ja luetaan
 //   theFileFilter
-//  datoja vain niin paljon kuin tarpeen eli vain data, miss‰ on uudempaa dataa kuin base-datassa.
-//  T‰m‰ siksi ett‰ n‰in tarvitsee k‰yd‰ levypalvelimella mahdollisimman v‰h‰n kun base-data on
+//  datoja vain niin paljon kuin tarpeen eli vain data, miss√§ on uudempaa dataa kuin base-datassa.
+//  T√§m√§ siksi ett√§ n√§in tarvitsee k√§yd√§ levypalvelimella mahdollisimman v√§h√§n kun base-data on
 //  omalla
-//  kovalevyll‰ ja sen kanssa ei ole verkko ongelmia.
+//  kovalevyll√§ ja sen kanssa ei ole verkko ongelmia.
 NFmiQueryData *NFmiQueryDataUtil::CombineQueryDatas(bool fDoRebuildCheck,
                                                     const std::string &theBaseDataFileFilter,
                                                     const std::string &theFileFilter,
@@ -4538,21 +4538,21 @@ NFmiQueryData *NFmiQueryDataUtil::CombineQueryDatas(bool fDoRebuildCheck,
   }
   catch (...)
   {
-    // ei tehd‰ mit‰‰n ylim‰‰r‰ist‰ poikkeuksen tapahtuessa (esim. korruptoitunut pohja-data
+    // ei tehd√§ mit√§√§n ylim√§√§r√§ist√§ poikkeuksen tapahtuessa (esim. korruptoitunut pohja-data
     // tiedosto)
   }
 
   std::list<std::string> fileList = NFmiFileSystem::PatternFiles(theFileFilter);
   fileList.sort();     // sortataan
-  fileList.reverse();  // k‰‰nnet‰‰n j‰rjestys, jolloin jos k‰ytetty YYYYMMDDHHmmss aikaleimaa
+  fileList.reverse();  // k√§√§nnet√§√§n j√§rjestys, jolloin jos k√§ytetty YYYYMMDDHHmmss aikaleimaa
                        // tiedoston alussa, tulee uusimmat tiedostot alkuun
 
-  // Oletus, jokaisessa tiedostossa on yksi aika, ja tiedostot ovat oikeassa aikaj‰rjestyksess‰.
-  // Tehd‰‰n tiedosto-lista vektoriksi.
+  // Oletus, jokaisessa tiedostossa on yksi aika, ja tiedostot ovat oikeassa aikaj√§rjestyksess√§.
+  // Tehd√§√§n tiedosto-lista vektoriksi.
   std::vector<std::string> files(fileList.begin(), fileList.end());
 
   std::string dirName =
-      GetFileFilterDirectory(theFileFilter);  // fileFilterist‰ pit‰‰ ottaa hakemisto irti, koska
+      GetFileFilterDirectory(theFileFilter);  // fileFilterist√§ pit√§√§ ottaa hakemisto irti, koska
                                               // PatternFiles-funktio palautta vain tiedostojen
                                               // nimet, ei polkua mukana
   std::vector<boost::shared_ptr<NFmiQueryData> > qDataVector;
@@ -4590,7 +4590,7 @@ static void FillGridDataInThread(NFmiFastQueryInfo &theSourceInfo,
   bool doGroundData =
       (theSourceInfo.SizeLevels() == 1) &&
       (theTargetInfo.SizeLevels() ==
-       1);  // jos molemmissa datoissa vain yksi leveli, se voidaan j‰tt‰‰ tarkastamatta
+       1);  // jos molemmissa datoissa vain yksi leveli, se voidaan j√§tt√§√§ tarkastamatta
   bool doLocationInterpolation =
       (NFmiQueryDataUtil::AreGridsEqual(theSourceInfo.Grid(), theTargetInfo.Grid()) == false);
 
@@ -4620,7 +4620,7 @@ static void FillGridDataInThread(NFmiFastQueryInfo &theSourceInfo,
             if (theTargetInfo.TimeIndex(i) == false) continue;
             NFmiMetTime targetTime = theTargetInfo.Time();
             bool doTimeInterpolation =
-                false;  // jos aikaa ei lˆydy suoraan, tarvittaessa tehd‰‰n aikainterpolaatio
+                false;  // jos aikaa ei l√∂ydy suoraan, tarvittaessa tehd√§√§n aikainterpolaatio
             if (theSourceInfo.Time(theTargetInfo.Time()) ||
                 (doTimeInterpolation =
                      theSourceInfo.TimeDescriptor().IsInside(theTargetInfo.Time())) == true)
@@ -4672,7 +4672,7 @@ static void FillGridDataInThread(NFmiFastQueryInfo &theSourceInfo,
   }
 }
 
-// Kun joku rutiini jaetaan kolmeen tyˆ-threadi osioon ajan-suhteen, t‰m‰ laskee
+// Kun joku rutiini jaetaan kolmeen ty√∂-threadi osioon ajan-suhteen, t√§m√§ laskee
 // kullekin threadille alkuaika ja loppuaika indeksit.
 void CalcTimeIndexiesForThreeThreads(unsigned long theStartInd,
                                      unsigned long theEndInd,
@@ -4690,7 +4690,7 @@ void CalcTimeIndexiesForThreeThreads(unsigned long theStartInd,
 
   unsigned long totalSize =
       theEndInd - theStartInd +
-      1;  // pit‰‰ lis‰t‰ lukuun yksi, jos alku ja loppu indeksi ovat samoja, on lukum‰‰r‰ 1 jne.
+      1;  // pit√§√§ lis√§t√§ lukuun yksi, jos alku ja loppu indeksi ovat samoja, on lukum√§√§r√§ 1 jne.
   unsigned long partSize = totalSize / 3;
 
   if (totalSize == 0)
@@ -4723,15 +4723,15 @@ void CalcTimeIndexiesForThreeThreads(unsigned long theStartInd,
     theStartInd1 = theStartInd;
     theStartInd2 = theStartInd + partSize;
     theStartInd3 =
-        theStartInd + partSize * 2;  // viimeinen threadi saa tehd‰ yhden ylim‰‰r‰isen aika-askeleen
+        theStartInd + partSize * 2;  // viimeinen threadi saa tehd√§ yhden ylim√§√§r√§isen aika-askeleen
   }
   else if (totalSize % 3 == 2)
   {
     theStartInd1 = theStartInd;
     theStartInd2 =
-        theStartInd + partSize;  // toinen threadi saa tehd‰ yhden ylim‰‰r‰isen aika-askeleen
+        theStartInd + partSize;  // toinen threadi saa tehd√§ yhden ylim√§√§r√§isen aika-askeleen
     theStartInd3 = theStartInd + partSize * 2 +
-                   1;  // viimeinen threadi saa tehd‰ yhden ylim‰‰r‰isen aika-askeleen
+                   1;  // viimeinen threadi saa tehd√§ yhden ylim√§√§r√§isen aika-askeleen
   }
   theEndInd1 = theStartInd2 - 1;
   theEndInd2 = theStartInd3 - 1;
@@ -4740,12 +4740,12 @@ void CalcTimeIndexiesForThreeThreads(unsigned long theStartInd,
 
 //#define BOOST_DISABLE_THREADS 1
 
-// Funktio t‰ytt‰‰ l‰hdedatasta mahdollisimman hyvin kohde-dataa.
-// Tarkistaa aikoja, parametreja ja leveleit‰.
-// Datojen pit‰‰ olla viel‰ hilamuotoisia, tarvittaessa tehd‰‰n interpolaatiota
+// Funktio t√§ytt√§√§ l√§hdedatasta mahdollisimman hyvin kohde-dataa.
+// Tarkistaa aikoja, parametreja ja leveleit√§.
+// Datojen pit√§√§ olla viel√§ hilamuotoisia, tarvittaessa tehd√§√§n interpolaatiota
 // ajan ja paikan suhteen.
 // Yritetty optimoida joka suhteessa.
-// Kokeiltu (1) latlon interpolaation kanssa ett‰ jos t‰ytt‰‰ matriisiin datan ja lopuksi
+// Kokeiltu (1) latlon interpolaation kanssa ett√§ jos t√§ytt√§√§ matriisiin datan ja lopuksi
 // SetValues
 // target:ille, niin se onkin hitaampaa!
 void NFmiQueryDataUtil::FillGridData(NFmiQueryData *theSource,
@@ -4793,7 +4793,7 @@ void NFmiQueryDataUtil::FillGridData(NFmiQueryData *theSource,
 #else   // DISABLE_THIS_THREAD
 
     if (fUseOnlyOneThread || target1.SizeTimes() < 3)
-    {  // jos aikoja oli alle kolme, tai ei haluta jakaa tyˆt‰, lasketaan data yhdess‰ s‰ikeess‰
+    {  // jos aikoja oli alle kolme, tai ei haluta jakaa ty√∂t√§, lasketaan data yhdess√§ s√§ikeess√§
       ::FillGridDataInThread(source1,
                              target1,
                              locationCacheMatrix,
@@ -4811,7 +4811,7 @@ void NFmiQueryDataUtil::FillGridData(NFmiQueryData *theSource,
       unsigned long timeEnd1 = gMissingIndex;
       unsigned long timeEnd2 = gMissingIndex;
       unsigned long timeEnd3 = gMissingIndex;
-      // jaetaan aika indeksi kolmeen osaa ja k‰ynnistet‰‰n kolme worker threadia, jotka laskevat
+      // jaetaan aika indeksi kolmeen osaa ja k√§ynnistet√§√§n kolme worker threadia, jotka laskevat
       // eri osia datasta
       CalcTimeIndexiesForThreeThreads(usedStartTimeIndex,
                                       usedEndTimeIndex,
@@ -4828,22 +4828,22 @@ void NFmiQueryDataUtil::FillGridData(NFmiQueryData *theSource,
       NFmiFastQueryInfo target3(theTarget);
 
       // HUOM! multi threaddauksessa otettava huomioon!!!!
-      // NFmiQueryData-luokassa on itsLatLonCache, joka on samalla k‰ytˆss‰ kaikilla
-      // erillisill‰ Info-iteraattoreilla. T‰m‰ on ns. lazy-init dataa, joka initialisoidaan
+      // NFmiQueryData-luokassa on itsLatLonCache, joka on samalla k√§yt√∂ss√§ kaikilla
+      // erillisill√§ Info-iteraattoreilla. T√§m√§ on ns. lazy-init dataa, joka initialisoidaan
       // kerran
-      // tarvittaessa. Nyt samoihin datoihin tehd‰‰n kolme info-iteraattoria ja t‰ss‰ kutsumalla
-      // yhdelle niist‰
-      // LatLon-metodia, varmistetaan ett‰ itsLatLonCache on initialisoitu, ennen kuin menn‰‰n
-      // suorittamaan kolmea threadia yht‰aikaa. T‰m‰ oli kaato bugi, kun kolme thtreadia kutsui
+      // tarvittaessa. Nyt samoihin datoihin tehd√§√§n kolme info-iteraattoria ja t√§ss√§ kutsumalla
+      // yhdelle niist√§
+      // LatLon-metodia, varmistetaan ett√§ itsLatLonCache on initialisoitu, ennen kuin menn√§√§n
+      // suorittamaan kolmea threadia yht√§aikaa. T√§m√§ oli kaato bugi, kun kolme thtreadia kutsui
       // Latlon:ia
-      // ja cache-data ei oltu viel‰ initialisoitu, jolloin sit‰ initialisoitiin kolme kertaa
-      // p‰‰llekk‰in.
+      // ja cache-data ei oltu viel√§ initialisoitu, jolloin sit√§ initialisoitiin kolme kertaa
+      // p√§√§llekk√§in.
       // Ongelma oli varsinkin isommille datoille (esim. mbe), joille kyseisen cachen rakentaminen
-      // kest‰‰ kauemmin.
+      // kest√§√§ kauemmin.
       NFmiPoint dummyPoint =
-          target3.LatLon();  // Varmistetaan ett‰ NFmiQueryDatan itsLatLonCache on alustettu!!
+          target3.LatLon();  // Varmistetaan ett√§ NFmiQueryDatan itsLatLonCache on alustettu!!
       dummyPoint =
-          source3.LatLon();  // Varmistetaan ett‰ NFmiQueryDatan itsLatLonCache on alustettu!!
+          source3.LatLon();  // Varmistetaan ett√§ NFmiQueryDatan itsLatLonCache on alustettu!!
 
       boost::thread_group calcParts;
       calcParts.add_thread(new boost::thread(::FillGridDataInThread,
@@ -4873,7 +4873,7 @@ void NFmiQueryDataUtil::FillGridData(NFmiQueryData *theSource,
                                              timeEnd1,
                                              1,
                                              theLogger));
-      calcParts.join_all();  // odotetaan ett‰ threadit lopettavat
+      calcParts.join_all();  // odotetaan ett√§ threadit lopettavat
     }
 #endif  // BOOST_DISABLE_THREADS
   }
@@ -4893,7 +4893,7 @@ static void FillSingleTimeGridDataInThread(
   bool doGroundData =
       (theSourceInfo.SizeLevels() == 1) &&
       (theTargetInfo.SizeLevels() ==
-       1);  // jos molemmissa datoissa vain yksi leveli, se voidaan j‰tt‰‰ tarkastamatta
+       1);  // jos molemmissa datoissa vain yksi leveli, se voidaan j√§tt√§√§ tarkastamatta
   unsigned long targetXSize = theTargetInfo.GridXNumber();
   unsigned long workedTimeIndex = 0;
   for (; theTimeIndexCalculator.GetCurrentTimeIndex(workedTimeIndex);)
@@ -4910,7 +4910,7 @@ static void FillSingleTimeGridDataInThread(
     if (theTargetInfo.TimeIndex(workedTimeIndex) == false) continue;
     NFmiMetTime targetTime = theTargetInfo.Time();
     bool doTimeInterpolation =
-        false;  // jos aikaa ei lˆydy suoraan, tarvittaessa tehd‰‰n aikainterpolaatio
+        false;  // jos aikaa ei l√∂ydy suoraan, tarvittaessa tehd√§√§n aikainterpolaatio
     if (theSourceInfo.Time(theTargetInfo.Time()) ||
         (doTimeInterpolation = theSourceInfo.TimeDescriptor().IsInside(theTargetInfo.Time())) ==
             true)
@@ -4958,11 +4958,11 @@ static void FillSingleTimeGridDataInThread(
   }
 }
 
-// T‰m‰ on FillGridData-funktion viritetty versio, joka tekee tyˆt‰ koneen kaikilla
+// T√§m√§ on FillGridData-funktion viritetty versio, joka tekee ty√∂t√§ koneen kaikilla
 // kone-threadeilla.
-// Luodaan tarvittavat threadit jotka sitten pyyt‰v‰t aina seuraavan k‰sitelt‰v‰n ajan indeksin.
-// Tyˆstˆ tapahtuu siis iksi aika kerrallaa omissa threadeissaan.
-// Optimoitu myˆs niin ett‰ lasketaan valmiiksi kaikki tarvittavat location ja time interpolaatio
+// Luodaan tarvittavat threadit jotka sitten pyyt√§v√§t aina seuraavan k√§sitelt√§v√§n ajan indeksin.
+// Ty√∂st√∂ tapahtuu siis iksi aika kerrallaa omissa threadeissaan.
+// Optimoitu my√∂s niin ett√§ lasketaan valmiiksi kaikki tarvittavat location ja time interpolaatio
 // cachet.
 void NFmiQueryDataUtil::FillGridDataFullMT(NFmiQueryData *theSource,
                                            NFmiQueryData *theTarget,
@@ -4997,7 +4997,7 @@ void NFmiQueryDataUtil::FillGridDataFullMT(NFmiQueryData *theSource,
     if (usedThreadCount > target1.SizeTimes()) usedThreadCount = target1.SizeTimes();
 
     if (usedThreadCount <= 1)
-    {  // k‰ytet‰‰n vanhaa simppelimp‰‰ funktiota kun threadauksesta ei ole hyˆty‰
+    {  // k√§ytet√§√§n vanhaa simppelimp√§√§ funktiota kun threadauksesta ei ole hy√∂ty√§
       ::FillGridDataInThread(source1,
                              target1,
                              locationCacheMatrix,
@@ -5010,22 +5010,22 @@ void NFmiQueryDataUtil::FillGridDataFullMT(NFmiQueryData *theSource,
     else
     {
       // HUOM! multi threaddauksessa otettava huomioon!!!!
-      // NFmiQueryData-luokassa on itsLatLonCache, joka on samalla k‰ytˆss‰ kaikilla
-      // erillisill‰ Info-iteraattoreilla. T‰m‰ on ns. lazy-init dataa, joka initialisoidaan
+      // NFmiQueryData-luokassa on itsLatLonCache, joka on samalla k√§yt√∂ss√§ kaikilla
+      // erillisill√§ Info-iteraattoreilla. T√§m√§ on ns. lazy-init dataa, joka initialisoidaan
       // kerran
-      // tarvittaessa. Nyt samoihin datoihin tehd‰‰n kolme info-iteraattoria ja t‰ss‰ kutsumalla
-      // yhdelle niist‰
-      // LatLon-metodia, varmistetaan ett‰ itsLatLonCache on initialisoitu, ennen kuin menn‰‰n
-      // suorittamaan kolmea threadia yht‰aikaa. T‰m‰ oli kaato bugi, kun kolme thtreadia kutsui
+      // tarvittaessa. Nyt samoihin datoihin tehd√§√§n kolme info-iteraattoria ja t√§ss√§ kutsumalla
+      // yhdelle niist√§
+      // LatLon-metodia, varmistetaan ett√§ itsLatLonCache on initialisoitu, ennen kuin menn√§√§n
+      // suorittamaan kolmea threadia yht√§aikaa. T√§m√§ oli kaato bugi, kun kolme thtreadia kutsui
       // Latlon:ia
-      // ja cache-data ei oltu viel‰ initialisoitu, jolloin sit‰ initialisoitiin kolme kertaa
-      // p‰‰llekk‰in.
+      // ja cache-data ei oltu viel√§ initialisoitu, jolloin sit√§ initialisoitiin kolme kertaa
+      // p√§√§llekk√§in.
       // Ongelma oli varsinkin isommille datoille (esim. mbe), joille kyseisen cachen rakentaminen
-      // kest‰‰ kauemmin.
+      // kest√§√§ kauemmin.
       NFmiPoint dummyPoint =
-          target1.LatLon();  // Varmistetaan ett‰ NFmiQueryDatan itsLatLonCache on alustettu!!
+          target1.LatLon();  // Varmistetaan ett√§ NFmiQueryDatan itsLatLonCache on alustettu!!
       dummyPoint =
-          source1.LatLon();  // Varmistetaan ett‰ NFmiQueryDatan itsLatLonCache on alustettu!!
+          source1.LatLon();  // Varmistetaan ett√§ NFmiQueryDatan itsLatLonCache on alustettu!!
 
       // pakko luoda dynaamisesti eri threadeille tarvittavat kopiot source ja target datoista
       std::vector<boost::shared_ptr<NFmiFastQueryInfo> > targetInfos(usedThreadCount);
@@ -5048,7 +5048,7 @@ void NFmiQueryDataUtil::FillGridDataFullMT(NFmiQueryData *theSource,
                                                boost::ref(timeIndexCalculator),
                                                i,
                                                theDebugLogger));
-      calcParts.join_all();  // odotetaan ett‰ threadit lopettavat
+      calcParts.join_all();  // odotetaan ett√§ threadit lopettavat
     }
   }
 }
@@ -5067,14 +5067,14 @@ bool NFmiQueryDataUtil::AreGridsEqual(const NFmiGrid *theGrid1, const NFmiGrid *
 }
 
 // tutkii onko area-tyypit samoja, ovatko nurkka pisteet samoja ja
-// viel‰ erikoistapauksena onko orientaatio sama
+// viel√§ erikoistapauksena onko orientaatio sama
 bool NFmiQueryDataUtil::AreAreasEqual(const NFmiArea *theArea1, const NFmiArea *theArea2)
 {
   if (theArea1 && theArea2)
   {
     if (theArea1->ClassId() == theArea2->ClassId())
     {
-      // pit‰‰kˆ pisteille antaa liikkuma varaa ep‰tarkkuuden takia?
+      // pit√§√§k√∂ pisteille antaa liikkuma varaa ep√§tarkkuuden takia?
       if (theArea1->BottomLeftLatLon() == theArea2->BottomLeftLatLon() &&
           theArea1->TopRightLatLon() == theArea2->TopRightLatLon())
       {
@@ -5095,6 +5095,25 @@ bool NFmiQueryDataUtil::AreAreasEqual(const NFmiArea *theArea1, const NFmiArea *
   return false;
 }
 
+bool NFmiQueryDataUtil::AreAreasSameKind(const NFmiArea *theArea1, const NFmiArea *theArea2)
+{
+  if (theArea1 && theArea2)
+  {
+    if (theArea1->ClassId() == kNFmiStereographicArea || theArea1->ClassId() == kNFmiEquiDistArea ||
+        theArea1->ClassId() == kNFmiGnomonicArea)
+    {
+      if (static_cast<const NFmiAzimuthalArea *>(theArea1)->Orientation() ==
+          static_cast<const NFmiAzimuthalArea *>(theArea2)->Orientation())
+        return true;
+      else
+        return false;
+    }
+    else if (theArea1->ClassId() == theArea2->ClassId())
+      return true;
+  }
+  return false;
+}
+
 NFmiQueryData *NFmiQueryDataUtil::ReadNewestData(const std::string &theFileFilter)
 {
   std::string tmpFileName;
@@ -5107,35 +5126,35 @@ NFmiQueryData *NFmiQueryDataUtil::ReadNewestData(const std::string &theFileFilte
   return data;
 }
 
-// Halutaan laskea eri teht‰vi‰ varten optimaalinen threadien k‰yttˆ.
-// Esim. soundingIndex laskut tehd‰‰n haluttaessa niin ett‰ otetaan k‰yttˆˆn n kpl
-// tyˆthreadeja jotka laskevat kerrallaa yksitt‰isen aika-askeleen.
-// Jos k‰ytˆss‰ olisi esim. 8 threadia ja aika-askelia olisi 17 tapahtuisi
+// Halutaan laskea eri teht√§vi√§ varten optimaalinen threadien k√§ytt√∂.
+// Esim. soundingIndex laskut tehd√§√§n haluttaessa niin ett√§ otetaan k√§ytt√∂√∂n n kpl
+// ty√∂threadeja jotka laskevat kerrallaa yksitt√§isen aika-askeleen.
+// Jos k√§yt√∂ss√§ olisi esim. 8 threadia ja aika-askelia olisi 17 tapahtuisi
 // normaalisti seuraavaa:
-// 8 threadia laskisisvat ensin 8 ensimm‰ist‰ aika-askelta, sitten 8 seuraavaa
-// aika-askelta ja lopuksi yksi threadi laskisi viimeist‰ aika-askelta.
-// T‰m‰ on tuhlausta, koska tyˆskentely kest‰isi 3-tyˆskentely yksikkˆ‰, mutta
-// kaksi ensimm‰ist‰ veisi CPU:n rehut 100% ja lopuksi 1/8 osan.
-// Jos tyˆhˆn valjastettaisiin 6 threadia, tyˆn kesto olisi sama 3 yksikkˆ‰
-// mutta CPU:ta k‰ytett‰isiin 6/8, 6/8 ja 5/8 tyˆskentelyn aikana, jolloin
-// CPU:lla ei olisi yli kuormitettu turhaa kahden ensimm‰isen tyˆskentely syklin aikana.
+// 8 threadia laskisisvat ensin 8 ensimm√§ist√§ aika-askelta, sitten 8 seuraavaa
+// aika-askelta ja lopuksi yksi threadi laskisi viimeist√§ aika-askelta.
+// T√§m√§ on tuhlausta, koska ty√∂skentely kest√§isi 3-ty√∂skentely yksikk√∂√§, mutta
+// kaksi ensimm√§ist√§ veisi CPU:n rehut 100% ja lopuksi 1/8 osan.
+// Jos ty√∂h√∂n valjastettaisiin 6 threadia, ty√∂n kesto olisi sama 3 yksikk√∂√§
+// mutta CPU:ta k√§ytett√§isiin 6/8, 6/8 ja 5/8 ty√∂skentelyn aikana, jolloin
+// CPU:lla ei olisi yli kuormitettu turhaa kahden ensimm√§isen ty√∂skentely syklin aikana.
 int NFmiQueryDataUtil::CalcOptimalThreadCount(int maxAvailableThreads, int separateTaskCount)
 {
   if (maxAvailableThreads <= 1)
-    return 1;  // Esim. jos k‰ytt‰j‰ on pyyt‰nyt maxthread-1::lla arvoa ja CPU:ssa on vain 1
+    return 1;  // Esim. jos k√§ytt√§j√§ on pyyt√§nyt maxthread-1::lla arvoa ja CPU:ssa on vain 1
                // threadi
-               // k‰ytˆss‰
+               // k√§yt√∂ss√§
   if (maxAvailableThreads >= separateTaskCount) return separateTaskCount;
-  if (maxAvailableThreads == 2) return 2;  // turha t‰lle oikeastaan laskea mit‰‰n
+  if (maxAvailableThreads == 2) return 2;  // turha t√§lle oikeastaan laskea mit√§√§n
 
   double ratio = static_cast<double>(separateTaskCount) / maxAvailableThreads;
   int wantedIntegerPart = static_cast<int>(ratio);
   if (ratio == wantedIntegerPart)
-    return maxAvailableThreads;  // jos jakosuhteeksi tuli kokonaisluku, k‰ytet‰‰n kaikkia
+    return maxAvailableThreads;  // jos jakosuhteeksi tuli kokonaisluku, k√§ytet√§√§n kaikkia
                                  // annettuja
                                  // threadeja
 
-  // Jos ei lˆytynyt tasalukuja, pit‰‰ iteroida semmoinen ratio, jolla saadaan mahdollisimman iso
+  // Jos ei l√∂ytynyt tasalukuja, pit√§√§ iteroida semmoinen ratio, jolla saadaan mahdollisimman iso
   // kokonaisluku,
   // jossa on mahdollisimman iso murto-osa siis esim. 6.92 (6.92 on parempi kuin vaikka 6.34)
   // double maxRatio = ratio;
@@ -5150,8 +5169,8 @@ int NFmiQueryDataUtil::CalcOptimalThreadCount(int maxAvailableThreads, int separ
       maxRatioThreadcount = threadCount;
     }
     if (wantedIntegerPart2 == wantedIntegerPart + 1 && ratio2 == wantedIntegerPart2)
-    {  // lˆydettiin jakosuhde, joka k‰ytt‰‰ vajaata threadi m‰‰r‰‰ t‰ysill‰ esim. maxThread = 4,
-      // taskcount = 6, t‰llˆin optimaali on 3 threadia
+    {  // l√∂ydettiin jakosuhde, joka k√§ytt√§√§ vajaata threadi m√§√§r√§√§ t√§ysill√§ esim. maxThread = 4,
+      // taskcount = 6, t√§ll√∂in optimaali on 3 threadia
       // maxRatio = ratio2;
       maxRatioThreadcount = threadCount;
       break;

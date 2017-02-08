@@ -369,12 +369,12 @@ bool NFmiTransformList::Allocate(int theMaxPairNumber)
 
   if (itsCurrentIndex >= itsMaxPairNumber)
   {
-    /* TÄÄ PITÄS TEHDÄ REMALLOCILLA TAI JOLLAIN!!!!
+    /* TÃ„Ã„ PITÃ„S TEHDÃ„ REMALLOCILLA TAI JOLLAIN!!!!
 
     // Allocate space for more pair data
     **/
 
-    return false;  // Lisämuistin varausta ei ole toteutettu
+    return false;  // LisÃ¤muistin varausta ei ole toteutettu
   }
   else
   {

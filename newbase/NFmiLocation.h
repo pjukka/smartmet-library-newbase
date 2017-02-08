@@ -123,7 +123,7 @@ class _FMI_DLL NFmiLocation : public NFmiIndividual
  */
 // ----------------------------------------------------------------------
 
-// HUOM!! Pit‰isi tehd‰ yll‰ tehdyt korjaukset varmaan t‰h‰nkin metodiin/Marko
+// HUOM!! Pit√§isi tehd√§ yll√§ tehdyt korjaukset varmaan t√§h√§nkin metodiin/Marko
 
 inline double NFmiLocation::Distance(const NFmiPoint& theLonLat) const
 {

@@ -151,7 +151,7 @@ class _FMI_DLL NFmiVoidPtrIterator
   virtual NFmiVoidPtrData* NextPtr(void);
   virtual NFmiVoidPtrData* CurrentPtr(void);
   virtual bool Next(void*& theItem);
-  virtual void NextPreviousPtr(void);  // t‰m‰ on todella tyhm‰‰
+  virtual void NextPreviousPtr(void);  // t√§m√§ on todella tyhm√§√§
   virtual bool NextPtr(NFmiVoidPtrData*& theItem);
   long Index(void) const;
   bool Index(long theNewValue);

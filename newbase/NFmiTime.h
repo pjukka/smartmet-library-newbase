@@ -54,8 +54,8 @@ class _FMI_DLL NFmiTime : public NFmiStaticTime
 
   static void Init(const FmiLanguage theLanguage);
 
-  // HUOM! t‰m‰ voi olla h‰m‰‰v‰, koska time_t on integer,
-  // (pit‰isikˆ thehd‰ SetTime-metodi konstruktorin sijaan?)
+  // HUOM! t√§m√§ voi olla h√§m√§√§v√§, koska time_t on integer,
+  // (pit√§isik√∂ thehd√§ SetTime-metodi konstruktorin sijaan?)
 
   explicit NFmiTime(std::time_t theTime);
 
@@ -173,7 +173,7 @@ inline NFmiTime::NFmiTime(short year, short month, short day)
  * \param day Undocumented
  * \param hour Undocumented
  * \param minute Undocumented
- *†\param sec Undocumented
+ *¬†\param sec Undocumented
  */
 // ----------------------------------------------------------------------
 

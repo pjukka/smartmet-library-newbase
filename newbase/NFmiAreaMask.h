@@ -115,18 +115,18 @@ class _FMI_DLL NFmiAreaMask
     FunctionAreaIntergration,  //!< An area dependent function such as min and max
     FunctionPeekXY,            //!< Peek infodata with wanted grid offset
     FunctionPeekXY2,  //!< Peek infodata with wanted modified/macroData grid offset (this works with
-                      //!GridSizeX and Y functions)
-    FunctionPeekXY3,  //!< Peek infodata with wanted kilometers x and y direction
+    //! GridSizeX and Y functions)
+    FunctionPeekXY3,             //!< Peek infodata with wanted kilometers x and y direction
     MathFunctionStart,           //!< For example cos(...
     ThreeArgumentFunctionStart,  //!< For example SUMT(-6, 0, RR) eli tuossa on kolme argumenttia,
-                                 //   ja ne voivat sis‰lt‰‰ mit‰ tahansa kaavoja/laskuja
+                                 //   ja ne voivat sis√§lt√§√§ mit√§ tahansa kaavoja/laskuja
     MetFunction,  //!< For example adv(T_Hir) eli tuossa voi olla erilaisia meteorologisia
-                  //!funktioita (mm. grad, adv, div. lap, rot, jne.), joilla on erilainen m‰‰r‰
-                  //!argumentteja.
+    //! funktioita (mm. grad, adv, div. lap, rot, jne.), joilla on erilainen m√§√§r√§
+    //! argumentteja.
     VertFunctionStart,  //!< For example vertp_max(WS_hir, p1, p2), which seeks max WS-value between
-                        //!p1 and p2 pressure levels
+    //! p1 and p2 pressure levels
     DeltaZFunction,  //!< Can be used with SumZ and MinH type functions, know current delta-height
-                     //!of z-calculations as height axel is divided to smaller parts.
+    //! of z-calculations as height axel is divided to smaller parts.
     SoundingIndexFunction,  //!< Luotaus-index funktioita esim. CAPESUR_HIR, CIN500M_EC jne.
     RampFunction,           //!< A ramp function such as RU, RD and DD
     Comparison,             //!< Mask comparison: >, <, >=, = etc
@@ -134,7 +134,7 @@ class _FMI_DLL NFmiAreaMask
     CalculationMask,        //!< A calculatable mask such as sunangle>0, lat>65 etc
     StartParenthesis,       //!< Beginning of expression parenthesis
     EndParenthesis,         //!< End of expression parenthesis
-    CommaOperator,   //!< ','-merkki joka toimii argumenttien erottimena tietyiss‰ funktioissa
+    CommaOperator,   //!< ','-merkki joka toimii argumenttien erottimena tietyiss√§ funktioissa
     EndOfOperations  //!< End of operators marker
   };
 
@@ -168,46 +168,53 @@ class _FMI_DLL NFmiAreaMask
     // Seuraaavt ovat ns. 'meteorologisia' funktioita
     Grad,        //!< Gradientti
     Adv,         //!< Advektio
-    Divergence,  //!< Divergence en uskaltanut laittaa Div:ia, koska se on jo m‰‰ritelty
-                 //!CalculationOperator-kohdassa
-    Lap,         //!< Laplace
-    Rot,         //!< Rotor
-    // Seuraaavt ovat edell‰ olevien funktioiden kakkos versiot, miss‰ peek-xy kurkkaukset tehd‰‰n
+    Divergence,  //!< Divergence en uskaltanut laittaa Div:ia, koska se on jo m√§√§ritelty
+    //! CalculationOperator-kohdassa
+    Lap,  //!< Laplace
+    Rot,  //!< Rotor
+    // Seuraaavt ovat edell√§ olevien funktioiden kakkos versiot, miss√§ peek-xy kurkkaukset tehd√§√§n
     // aina leveys- ja pituuspiirien suuntaisesti
     Grad2,        //!< Gradientti
     Adv2,         //!< Advektio
-    Divergence2,  //!< Divergence en uskaltanut laittaa Div:ia, koska se on jo m‰‰ritelty
-                  //!CalculationOperator-kohdassa
-    Lap2,         //!< Laplace
-    Rot2,         //!< Rotor
+    Divergence2,  //!< Divergence en uskaltanut laittaa Div:ia, koska se on jo m√§√§ritelty
+    //! CalculationOperator-kohdassa
+    Lap2,  //!< Laplace
+    Rot2,  //!< Rotor
     // Seuraavat ovat vertikaaliset met-funktion haku tavat
     VertP,    //!< vertikaali-hakua paine-rajoissa hakien
     VertZ,    //!< vertikaali-hakua korkeus[m]-rajoissa hakien
     VertFL,   //!< vertikaali-hakua lentopinta rajoissa hakien
     VertHyb,  //!< vertikaali-hakua hybrid-pintojen mukaan hakien
-    // Seuraavat ovat Probability laskujen alue m‰‰ritys
-    ProbRect,    //!< Todenn‰kˆisyys laskut laatikon sis‰lt‰
-    ProbCircle,  //!< Todenn‰kˆisyys laskut ympyr‰n sis‰lt‰
+    // Seuraavat ovat Probability laskujen alue m√§√§ritys
+    ProbRect,    //!< Todenn√§k√∂isyys laskut laatikon sis√§lt√§
+    ProbCircle,  //!< Todenn√§k√∂isyys laskut ympyr√§n sis√§lt√§
     // Seuraavat ovat Probability laskujen ehtoja
-    ProbOver,       //!< Todenn‰kˆisyys ehto: arvo on alle rajan (value < limit)
-    ProbOverEq,     //!< Todenn‰kˆisyys ehto: arvo on alle rajan (value <= limit)
-    ProbUnder,      //!< Todenn‰kˆisyys ehto: arvo on yli rajan (value > limit)
-    ProbUnderEq,    //!< Todenn‰kˆisyys ehto: arvo on yli rajan (value >= limit)
-    ProbEqual,      //!< Todenn‰kˆisyys ehto: arvo on sama kuin raja (value == limit)
-    ProbBetween,    //!< Todenn‰kˆisyys ehto: arvo on rajojen v‰liss‰ (limit1 < value < limit2)
-    ProbBetweenEq,  //!< Todenn‰kˆisyys ehto: arvo on rajojen v‰liss‰ (limit1 <= value <= limit2)
-    // Seuraavat ovat l‰hin asema data arvo laskujen funktioita
-    ClosestObsValue,  //!< Todenn‰kˆisyys ehto: arvo on alle rajan (value < limit)
-    // Seuraavat ovat l‰hin asema data arvo laskujen ehtoja (ei ole viel‰ oikeasti kuin yksi)
-    ClosestObsTimeOffset,  //!< Todenn‰kˆisyys ehto: arvo on alle rajan (value < limit)
-    // TimeRange funktiot k‰yv‰t dataa l‰pi aina datan originaali aika-stepeill‰
-    TimeRange,  //!< Esim. Laske maksimi arvo aikav‰lill‰ -3 - +3 h, datan omassa aikaresoluutiossa
-    // Seuraavat ovat aika + vertikaalitasojen v‰liset hakufunktiot (hae esim. maksimi tietylt‰
-    // aika- ja level-v‰leilt‰)
+    ProbOver,       //!< Todenn√§k√∂isyys ehto: arvo on alle rajan (value < limit)
+    ProbOverEq,     //!< Todenn√§k√∂isyys ehto: arvo on alle rajan (value <= limit)
+    ProbUnder,      //!< Todenn√§k√∂isyys ehto: arvo on yli rajan (value > limit)
+    ProbUnderEq,    //!< Todenn√§k√∂isyys ehto: arvo on yli rajan (value >= limit)
+    ProbEqual,      //!< Todenn√§k√∂isyys ehto: arvo on sama kuin raja (value == limit)
+    ProbNotEqual,   //!< Todenn√§k√∂isyys ehto: arvo on erisuuri kuin raja (value != limit)
+    ProbBetween,    //!< Todenn√§k√∂isyys ehto: arvo on rajojen v√§liss√§ (limit1 < value < limit2)
+    ProbBetweenEq,  //!< Todenn√§k√∂isyys ehto: arvo on rajojen v√§liss√§ (limit1 <= value <= limit2)
+    // Seuraavat ovat l√§hin asema data arvo laskujen funktioita
+    ClosestObsValue,  //!< Todenn√§k√∂isyys ehto: arvo on alle rajan (value < limit)
+    // Seuraavat ovat l√§hin asema data arvo laskujen ehtoja (ei ole viel√§ oikeasti kuin yksi)
+    ClosestObsTimeOffset,  //!< Todenn√§k√∂isyys ehto: arvo on alle rajan (value < limit)
+    // TimeRange funktiot k√§yv√§t dataa l√§pi aina datan originaali aika-stepeill√§
+    TimeRange,  //!< Esim. Laske maksimi arvo aikav√§lill√§ -3 - +3 h, datan omassa aikaresoluutiossa
+    // Seuraavat ovat aika + vertikaalitasojen v√§liset hakufunktiot (hae esim. maksimi tietylt√§
+    // aika- ja level-v√§leilt√§)
     TimeVertP,    //!< aika+vertikaali-hakua paine-rajoissa hakien
     TimeVertZ,    //!< aika+vertikaali-hakua korkeus[m]-rajoissa hakien
     TimeVertFL,   //!< aika+vertikaali-hakua lentopinta rajoissa hakien
     TimeVertHyb,  //!< aika+vertikaali-hakua hybrid-pintojen mukaan hakien
+    Occurrence,  //!< aika-v√§li + aluehaku datasta, laskee kuinka monta kertaa tarkastelupisteess√§
+    PeekT,      //!< 'Kurkistetaan' arvo halutun aikahypyn [h] p√§√§st√§
+    Resolution,      //!< T√§ll√§ asetetaan macroParamin lasketun hilan toive resoluutio, joko jostain datasta tai suoraan kilometrein√§.
+    CalculationPoint, //!< T√§ll√§ asetetaan macroParamin laskentapiste (lat,lon). Laskut saavat muissa hilapisteiss√§ puuttuvaa.
+    ObservationRadius, //!< T√§ll√§ m√§√§r√§t√§√§n ett√§ laskuissa otetaan huomioon havainnoista vain x [km] s√§teell√§ olevat arvot.
+    //! joku ehto toteutuu
   };
 
   //! Function direction, e.g. with 'met'-functions x- and/or y-direction
@@ -245,7 +252,7 @@ class _FMI_DLL NFmiAreaMask
 
   virtual ~NFmiAreaMask(void);
   NFmiAreaMask() {}
-  virtual void Initialize(void) = 0;  // t‰m‰ on konstruktorin j‰lkeen kutsuttava virtuaalinen
+  virtual void Initialize(void) = 0;  // t√§m√§ on konstruktorin j√§lkeen kutsuttava virtuaalinen
                                       // initialisointi (koska konstruktorissa ei voi kutsua
                                       // virtuaali funktioita)
 
@@ -260,9 +267,9 @@ class _FMI_DLL NFmiAreaMask
   virtual double MaskValue(const NFmiPoint &theLatLon) const = 0;
 
   // fUseTimeInterpolationAlways-parametri on SmartTool-kielen MaxT, SumT jne. funktioita varten ja
-  // tarkemmin niiss‰ laskettavia argumenttien toimivuuden takia.
-  // T‰ll‰ virityksell‰ varmistetaan ett‰ uudet funktiot toimivat ja olemassa olevat toimivat
-  // nykyisill‰ optimoinneilla mahdollisimman nopeasti.
+  // tarkemmin niiss√§ laskettavia argumenttien toimivuuden takia.
+  // T√§ll√§ virityksell√§ varmistetaan ett√§ uudet funktiot toimivat ja olemassa olevat toimivat
+  // nykyisill√§ optimoinneilla mahdollisimman nopeasti.
   virtual double Value(const NFmiCalculationParams &theCalculationParams,
                        bool fUseTimeInterpolationAlways) = 0;
   virtual double HeightValue(double theHeight,
@@ -322,17 +329,17 @@ class _FMI_DLL NFmiAreaMask
   virtual void GetMetFunctionDirection(MetFunctionDirection newValue) = 0;
   virtual int IntegrationFunctionType(void) const = 0;
   virtual void IntegrationFunctionType(int newValue) = 0;
-  virtual void SetArguments(std::vector<float> &theArgumentVector) = 0;  // t‰m‰n avulla annetaan
+  virtual void SetArguments(std::vector<float> &theArgumentVector) = 0;  // t√§m√§n avulla annetaan
                                                                          // laskuissa tarvittavia
                                                                          // eri pituisia
                                                                          // argumenttilistaja
-                                                                         // (k‰ytˆss‰ ainakin
+                                                                         // (k√§yt√∂ss√§ ainakin
                                                                          // uusille vertikaali
                                                                          // funktioille)
   virtual int FunctionArgumentCount(
-      void) const = 0;  // k‰ytˆss‰ ainakin uusille vertikaali funktioille
+      void) const = 0;  // k√§yt√∂ss√§ ainakin uusille vertikaali funktioille
   virtual void FunctionArgumentCount(
-      int newValue) = 0;  // k‰ytˆss‰ ainakin uusille vertikaali funktioille
+      int newValue) = 0;  // k√§yt√∂ss√§ ainakin uusille vertikaali funktioille
 
   // HUOM! seuraavat toimivat oikeasti vain NFmiBinaryMask:in kanssa.
   virtual void SetAll(bool theNewState) = 0;  // Asettaa koko maskin kaikki arvot halutuksi.

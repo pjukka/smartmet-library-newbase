@@ -7,7 +7,7 @@
 /*!
  * \class NFmiMilliSecondTimer
  *
- * M‰‰rittely luokalle, jolla pystyy mittaamaan aikaa ainakin teoreettisesti
+ * M√§√§rittely luokalle, jolla pystyy mittaamaan aikaa ainakin teoreettisesti
  * millisekunnin tarkkuudella. Todellisuudessa tarkkuus kai rajoittuu
  * muistaakseni 18 Hz:n tarkkuuteen eli n. 0.0555... sekunnin tarkkuuteen.
  */
@@ -34,7 +34,7 @@ class _FMI_DLL NFmiMilliSecondTimer
   void StopTimer();
   int TimeDiffInMSeconds() const;
   int CurrentTimeDiffInMSeconds()
-      const;  // alkuajan ja nykyhetken erotus milli sekunneissa (eli kelloa ei pys‰ytet‰)
+      const;  // alkuajan ja nykyhetken erotus milli sekunneissa (eli kelloa ei pys√§ytet√§)
   std::string EasyTimeDiffStr(bool fIgnoreMilliSeconds = false) const;
   static std::string EasyTimeDiffStr(int theDiffInMS, bool fIgnoreMilliSeconds = false);
 

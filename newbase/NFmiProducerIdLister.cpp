@@ -9,12 +9,12 @@
  *
  *  Author         : pietarin
  *  Creation Date  : Wed - Nov 27, 2002
- *  Editoituun QueryDataan on tarkoitus laitta tieto, mit‰ alkuper‰isi‰ tuottajia
- *  on k‰ytetty kunkin ajanhetken pohjana. Tieto talletetaan QDatan QInfon
+ *  Editoituun QueryDataan on tarkoitus laitta tieto, mit√§ alkuper√§isi√§ tuottajia
+ *  on k√§ytetty kunkin ajanhetken pohjana. Tieto talletetaan QDatan QInfon
  *  stringlist:aan itsHeaderText jonkin 'avaimen' alle.
- *  T‰m‰ luokka joka osaa tehd‰ tuottaja ID:eill‰ t‰ytetyn stringin, jossa
- *  on myˆs tiedot alkuajasta ja aikaaskeleesta ja aika-askelten lukum‰‰r‰st‰
- *  ja lis‰ksi viel‰ list‰ tuottaja ID:t‰.
+ *  T√§m√§ luokka joka osaa tehd√§ tuottaja ID:eill√§ t√§ytetyn stringin, jossa
+ *  on my√∂s tiedot alkuajasta ja aikaaskeleesta ja aika-askelten lukum√§√§r√§st√§
+ *  ja lis√§ksi viel√§ list√§ tuottaja ID:t√§.
  */
 // ======================================================================
 
@@ -57,7 +57,7 @@ NFmiProducerIdLister::NFmiProducerIdLister(const std::string &theProducersString
       itsDefaultProducerId(-1)
 {
   IntepretProducerIdString(theProducersString);
-  // pit‰isikˆ paluuarvo tarkistaa ja jos ep‰onnistui, heitt‰‰ poikkeus?
+  // pit√§isik√∂ paluuarvo tarkistaa ja jos ep√§onnistui, heitt√§√§ poikkeus?
 }
 
 NFmiProducerIdLister::NFmiProducerIdLister(const NFmiProducerIdLister &theOther)
@@ -69,7 +69,7 @@ NFmiProducerIdLister::NFmiProducerIdLister(const NFmiProducerIdLister &theOther)
 {
 }
 
-// Huom! pit‰isi olla const info, mutta pari metodia pit‰‰ muuttaa ensin
+// Huom! pit√§isi olla const info, mutta pari metodia pit√§√§ muuttaa ensin
 NFmiProducerIdLister::NFmiProducerIdLister(NFmiQueryInfo &theInfo)
     : itsTimes(),
       itsProducerString(),
@@ -86,14 +86,14 @@ NFmiProducerIdLister::NFmiProducerIdLister(NFmiQueryInfo &theInfo)
 /*!
  * Rakentaa timebagin ja producerId vectorin mukaisen stringin,
  * tallettaa sen dataosaksi ja palauttaa kopion siihen. Jos ei voinut
- * rakentaa stringi‰ jostain syyst‰, palauttaa tyhj‰n stringin.
+ * rakentaa stringi√§ jostain syyst√§, palauttaa tyhj√§n stringin.
  */
 const std::string NFmiProducerIdLister::MakeProducerIdString(void)
 {
   if (itsProducerIds.size() != itsTimes.Size()) return "";
   ostringstream out;
   out << itsTimes.FirstTime() << " ";
-  int vsize = itsTimes.Size();  // t‰m‰ on myˆs id ja origintime vektoreiden koko
+  int vsize = itsTimes.Size();  // t√§m√§ on my√∂s id ja origintime vektoreiden koko
   out << vsize << " ";
   if (itsTimes.UseTimeList())
   {
@@ -110,13 +110,13 @@ const std::string NFmiProducerIdLister::MakeProducerIdString(void)
   for (i = 0; i < vsize; i++)
   {
     out << itsProducerIds[i];
-    out << " ";  // t‰ss‰ laitetaan myˆs viimeisen per‰‰n space, koska jatketaan t‰m‰n per‰‰n
+    out << " ";  // t√§ss√§ laitetaan my√∂s viimeisen per√§√§n space, koska jatketaan t√§m√§n per√§√§n
                  // origintimeilla
   }
   for (i = 0; i < vsize; i++)
   {
     out << itsModelOriginTimes[i];
-    if (i < vsize - 1)  // viimeiseen ei en‰‰ laiteta spacea v‰liin
+    if (i < vsize - 1)  // viimeiseen ei en√§√§ laiteta spacea v√§liin
       out << " ";
   }
   itsProducerString = out.str();
@@ -126,9 +126,9 @@ const std::string NFmiProducerIdLister::MakeProducerIdString(void)
 // IntepretProducerIdString
 //--------------------------------------------------------
 /*!
- * Purkaa annetun stringin jos mahdollista ja muodostaa siit‰ timebagi, ja producer id vectorin.
+ * Purkaa annetun stringin jos mahdollista ja muodostaa siit√§ timebagi, ja producer id vectorin.
  * Palauttaa false, jos ei voinut purkaa/tulkata
- * annettua stringi‰.
+ * annettua stringi√§.
  */
 bool NFmiProducerIdLister::IntepretProducerIdString(const std::string &theString)
 {
@@ -204,13 +204,13 @@ bool NFmiProducerIdLister::IntepretProducerIdString(const std::string &theString
 //--------------------------------------------------------
 /*!
  * Muuttaa esim. 3h resoluutioisen olion tunti resoluutioiseksi.
- * Tekee uuden timebagin ja tuottaja id vektorin ja t‰ytt‰‰ sen niin,
- * ett‰ ID:t levi‰v‰t taaksep‰in, eli eiv‰t interpoloidu v‰lille.
- * Uuden ja vanhan resoluution pit‰‰ olla toistens‰ suhteen tasa
- * jaollisia. Tarkoittaen sit‰, ett‰ jos vanha oli 60 ja uusi on 180,
- * t‰m‰ sallittua, koska 180 on jaollinen 60:ll‰. Mutta jos vanha on
- * 60 ja uusi on 150, se ei k‰y, koska 150/60=2.5. Isomman luvun pit‰‰
- * olla jaollinen tasan pienemm‰ll‰.
+ * Tekee uuden timebagin ja tuottaja id vektorin ja t√§ytt√§√§ sen niin,
+ * ett√§ ID:t levi√§v√§t taaksep√§in, eli eiv√§t interpoloidu v√§lille.
+ * Uuden ja vanhan resoluution pit√§√§ olla toistens√§ suhteen tasa
+ * jaollisia. Tarkoittaen sit√§, ett√§ jos vanha oli 60 ja uusi on 180,
+ * t√§m√§ sallittua, koska 180 on jaollinen 60:ll√§. Mutta jos vanha on
+ * 60 ja uusi on 150, se ei k√§y, koska 150/60=2.5. Isomman luvun pit√§√§
+ * olla jaollinen tasan pienemm√§ll√§.
  */
 bool NFmiProducerIdLister::ChangeTimeResolution(int theNewResolutionInMinutes)
 {
@@ -221,7 +221,7 @@ bool NFmiProducerIdLister::ChangeTimeResolution(int theNewResolutionInMinutes)
   if (ratio == 0)
     return false;
   else if (ratio == 1)
-    return true;  // ei tarvitse tehd‰ mit‰‰n!
+    return true;  // ei tarvitse tehd√§ mit√§√§n!
   else if (ratio > 1 && currentRes % theNewResolutionInMinutes != 0)
     return false;
   else if (ratio < 1 && theNewResolutionInMinutes % currentRes != 0)
@@ -274,7 +274,7 @@ void NFmiProducerIdLister::ProducerId(int theIndex, int theProducerId)
   if (theIndex >= 0 && static_cast<unsigned int>(theIndex) < itsProducerIds.size())
     itsProducerIds[theIndex] = theProducerId;
   //	else
-  // pit‰isikˆ heitt‰‰ poikkeus?
+  // pit√§isik√∂ heitt√§√§ poikkeus?
 }
 
 //--------------------------------------------------------
@@ -284,7 +284,7 @@ void NFmiProducerIdLister::ProducerId(const NFmiMetTime &theTime, int theProduce
 {
   if (itsTimes.Time(theTime)) itsProducerIds[itsTimes.Index()] = theProducerId;
   //	else
-  // pit‰isikˆ heitt‰‰ poikkeus?
+  // pit√§isik√∂ heitt√§√§ poikkeus?
 }
 
 const NFmiMetTime &NFmiProducerIdLister::ModelOriginTime(const NFmiMetTime &theTime,

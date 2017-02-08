@@ -91,6 +91,15 @@ NFmiMetTime::NFmiMetTime(const boost::local_time::local_date_time &theLocalTime)
   ConstructMetTime(1);
 }
 
+NFmiMetTime NFmiMetTime::now()
+{
+  NFmiTime wallClock;
+  NFmiMetTime timeStamp(wallClock.UTCTime());
+  timeStamp.SetMin(wallClock.GetMin());
+  timeStamp.SetSec(wallClock.GetSec());
+  return timeStamp;
+}
+
 // ----------------------------------------------------------------------
 /*!
  * \param aFmiTest Undocumented
@@ -123,7 +132,7 @@ NFmiMetTime &NFmiMetTime::operator=(const NFmiMetTime &aTime)
 {
   if (&aTime != this)
   {
-    NFmiTime::operator=(aTime);  // retain present time step
+    NFmiTime::operator=(aTime);                     // retain present time step
     fTimeStepInMinutes = aTime.fTimeStepInMinutes;  // Persa korjasi Bug'in
     itsNegativeRange = aTime.itsNegativeRange;
     itsPositiveRange = aTime.itsPositiveRange;
@@ -385,8 +394,8 @@ void NFmiMetTime::NearestMetTime(const long deltaInMinutes, FmiDirection theDire
 void NFmiMetTime::SetTimeStep(const long timeStepInMinutes, bool fSetTime, FmiDirection theDirect)
 {
   fTimeStepInMinutes = timeStepInMinutes;
-  // timestepin voi muuttaa ilman, ett‰ aikaa ruvetaan s‰‰t‰m‰‰n,
-  // oletusarvoisesti aika s‰‰det‰‰n kuten ennenkin
+  // timestepin voi muuttaa ilman, ett√§ aikaa ruvetaan s√§√§t√§m√§√§n,
+  // oletusarvoisesti aika s√§√§det√§√§n kuten ennenkin
   if (fSetTime) ConstructMetTime(fTimeStepInMinutes, theDirect);
 }
 

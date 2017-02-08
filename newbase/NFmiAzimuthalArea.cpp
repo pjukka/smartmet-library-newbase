@@ -55,7 +55,8 @@
  *								 latitude-longitude coordinates
  *
  * theTopRightLatLon =	 upper right corner point of the rectangle in GEODETIC
- *								 latitude-longitude coordinates for the
+ *								 latitude-longitude coordinates for
+ *the
  *rectangle
  *
  * theCentralLongitude = central longitude (also called central meridian)
@@ -73,7 +74,9 @@
  *					 a polar (or normal case of) projection.
  *
  * theTrueLatitude = latitude, where the Earth globe intersects the rectangular world
- *					 XY plane. For true angle 90 degrees North the intersecting XY plane
+ *					 XY plane. For true angle 90 degrees North the intersecting
+ *XY
+ *plane
  *gently
  *					 touches the north pole. For details, see ref [2].
  *
@@ -454,7 +457,7 @@ const NFmiPoint NFmiAzimuthalArea::WorldXYToLatLon(const NFmiPoint &theXYPoint) 
   }
   else
   {
-    // HUOM! HUOM! Tätä "ei-polaaria" tapausta ei ole testattu!
+    // HUOM! HUOM! TÃ¤tÃ¤ "ei-polaaria" tapausta ei ole testattu!
 
     // NON-POLAR case
 
@@ -477,7 +480,7 @@ const NFmiPoint NFmiAzimuthalArea::WorldXYToLatLon(const NFmiPoint &theXYPoint) 
     dlonDeg = FmiDeg(dlon);
 
     // Quadrant check
-    // VOI OLLA ETTEI TÄMÄ TARKASTELU OLE RIITTÄVÄ!
+    // VOI OLLA ETTEI TÃ„MÃ„ TARKASTELU OLE RIITTÃ„VÃ„!
     if (xWorld > 0.0)
       lonDeg = NFmiLongitude(centralLon + dlonDeg, PacificView()).Value();
     else
@@ -524,14 +527,13 @@ const NFmiPoint NFmiAzimuthalArea::LatLonToWorldXY(const NFmiPoint &theLatLonPoi
   trueLat = itsTrueLatitude.Value();
   centralLat = itsCentralLatitude.Value();
   centralLon = itsCentralLongitude;
-
-  if ((trueLat != 90.) && (centralLat != 90.))
-  {
-    // Jos tullaan tähän, projektion parametrit eivät ole sallittuja, muuta centralLat arvoon
-    // 90!!!!!!!
-    assert(!((trueLat != 90.) && (centralLat != 90.)));
-    return NFmiPoint(kFloatMissing, kFloatMissing);
-  }
+  
+  if((trueLat != 90.) && (centralLat != 90.))
+	{
+	  // Jos tullaan tähän, projektion parametrit eivät ole sallittuja, muuta centralLat arvoon 90!!!!!!!
+		assert(!((trueLat != 90.) && (centralLat != 90.)));
+		return NFmiPoint::gMissingLatlon;
+	}
 
   lat0 = FmiRad(centralLat);
   lat = FmiRad(theLatLonPoint.Y());
@@ -546,39 +548,41 @@ const NFmiPoint NFmiAzimuthalArea::LatLonToWorldXY(const NFmiPoint &theLatLonPoi
   // Transform geodetic coordinates into world coordinates on a xy-plane tangential to
   // the surface of Earth globe.
   // ----------------------------------------------------------------------
-
-  if (centralLat == 90.)
-  {
-    // Polar (=normal) case, that is, lat0 = FmiRad(90 deg).
-    // NOTE! This polar case COULD be computed just the way non-polar case is computed
-    // by just assigning lat0 = FmiRad(90).
-    // Howewer, since sin(lat0) == 1 and cos(lat0) == 0,
-    // this is the reduced and somewhat faster way of computing the normal case:
-
-    delta = sinlat;
-    k = K(delta);
-    if (k == kFloatMissing) return NFmiPoint(kFloatMissing, kFloatMissing);
-
-    // Fakta:  k*coslat*sin(dlon) = 2*kRearth*tan(0.5*(kPii/2 - lat))*sin(dlon)
-    xWorldTangential = k * coslat * sin(dlon);
-    // Fakta:  k*(-coslat*cos(dlon)) = -2*kRearth*tan(0.5*(kPii/2 - lat))*cos(dlon)
-    yWorldTangential = k * (-coslat * cos(dlon));
-  }
+  
+  if(centralLat == 90.)
+	{
+	  // Polar (=normal) case, that is, lat0 = FmiRad(90 deg).
+	  // NOTE! This polar case COULD be computed just the way non-polar case is computed 
+	  // by just assigning lat0 = FmiRad(90).
+	  // Howewer, since sin(lat0) == 1 and cos(lat0) == 0,
+	  // this is the reduced and somewhat faster way of computing the normal case:
+	  
+	  delta = sinlat;
+	  k = K(delta);
+	  if(k == kFloatMissing)
+		return NFmiPoint::gMissingLatlon;
+	  
+	  // Fakta:  k*coslat*sin(dlon) = 2*kRearth*tan(0.5*(kPii/2 - lat))*sin(dlon)
+	  xWorldTangential = k*coslat*sin(dlon);
+	  // Fakta:  k*(-coslat*cos(dlon)) = -2*kRearth*tan(0.5*(kPii/2 - lat))*cos(dlon)
+	  yWorldTangential = k*(-coslat*cos(dlon));
+	}
   else
-  {
-    // Non-polar case
-
-    sinlat0 = sin(lat0);
-    coslat0 = cos(lat0);
-
-    delta = sinlat0 * sinlat + coslat0 * coslat * cos(dlon);
-    k = K(delta);
-    if (k == kFloatMissing) return NFmiPoint(kFloatMissing, kFloatMissing);
-
-    xWorldTangential = k * coslat * sin(dlon);
-    yWorldTangential = k * (coslat0 * sinlat - sinlat0 * coslat * cos(dlon));
-  }
-
+	{
+	  // Non-polar case
+	  
+	  sinlat0 = sin(lat0);
+	  coslat0 = cos(lat0);
+	  
+	  delta = sinlat0*sinlat + coslat0*coslat*cos(dlon);
+	  k = K(delta);
+      if(k == kFloatMissing)
+          return NFmiPoint::gMissingLatlon;
+	  
+	  xWorldTangential = k*coslat*sin(dlon);
+	  yWorldTangential = k*(coslat0*sinlat - sinlat0*coslat*cos(dlon));
+	}
+  
   // ----------------------------------------------------------------------
   // STEP 2.
   // Transform tangential world xy-coordinates onto the xy-plane cutting Earth
@@ -625,6 +629,11 @@ const NFmiPoint NFmiAzimuthalArea::ToXY(const NFmiPoint &theLatLonPoint) const
   // Transform input geodetic coordinates into world coordinates (meters) on xy-plane.
   NFmiPoint latlon(FixLongitude(theLatLonPoint.X()), theLatLonPoint.Y());
   NFmiPoint xyWorld(LatLonToWorldXY(latlon));
+
+  if(xyWorld == NFmiPoint::gMissingLatlon)
+  {
+      return xyWorld;
+  }
 
   // Finally, transform world xy-coordinates into local xy-coordinates
   xLocal = Left() + itsXScaleFactor * (xyWorld.X() - itsWorldRect.Left());

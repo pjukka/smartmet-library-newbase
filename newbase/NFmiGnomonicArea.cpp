@@ -165,8 +165,8 @@ NFmiGnomonicArea::NFmiGnomonicArea(const NFmiPoint &theBottomLeftLatLon,
 
   Init(true);
 
-  // 28.8.2001/Marko&Esa itsWorldRect on laskettu sellaisilla argumenteilla t‰ss‰,
-  // mitk‰ eiv‰t ole dataosia, joten sit‰ ei saa laskea Init:iss‰ uudestaan
+  // 28.8.2001/Marko&Esa itsWorldRect on laskettu sellaisilla argumenteilla t√§ss√§,
+  // mitk√§ eiv√§t ole dataosia, joten sit√§ ei saa laskea Init:iss√§ uudestaan
 }
 
 // ----------------------------------------------------------------------
@@ -205,8 +205,8 @@ NFmiGnomonicArea::NFmiGnomonicArea(const double theRadialRange,
                           NFmiPoint(itsRadialRange, itsRadialRange));
 
   Init(true);
-  // 28.8.2001/Marko&Esa itsWorldRect on laskettu sellaisilla argumenteilla t‰ss‰,
-  // mitk‰ eiv‰t ole dataosia, joten sit‰ ei saa laskea Init:iss‰ uudestaan
+  // 28.8.2001/Marko&Esa itsWorldRect on laskettu sellaisilla argumenteilla t√§ss√§,
+  // mitk√§ eiv√§t ole dataosia, joten sit√§ ei saa laskea Init:iss√§ uudestaan
 }
 
 // ----------------------------------------------------------------------

@@ -123,7 +123,7 @@ void NFmiLocation::SetLocation(const NFmiLocation &theLocation)
 
 // ----------------------------------------------------------------------
 /*!
- * [Ven‰l‰inen: lisenssiaattitutkimus ANNEX (A4)]
+ * [Ven√§l√§inen: lisenssiaattitutkimus ANNEX (A4)]
  * The time given as a parameter must be a local solar time.
  * These calculations of a declination angle of the Sun does not give very accurate
  * estimations. May be the inaccuracy is mostly caused because of inaccurate
@@ -157,7 +157,7 @@ double NFmiLocation::CalcDeclinationAngle(const NFmiTime &theSolarTime)
 /*!
  * The time given as a parameter must be a local solar time. Here the
  * atzimuth angle = 0 when the Sun is in the North.
- * There's also an odd correction term anEqualizerTerm (Laura Thˆlix:
+ * There's also an odd correction term anEqualizerTerm (Laura Th√∂lix:
  * pro gradu, page 16), which perhaps somehow compensates the inaccurate
  * calculation of the yearAngle (a measure to the Earths circulaton around the Sun).
  * See also comments of the method NFmiLocation::CalcDeclinationAngle().
@@ -180,14 +180,14 @@ double NFmiLocation::CalcAtzimuthAngle(const NFmiTime &theSolarTime)
 
 // ----------------------------------------------------------------------
 /*!
- * [Ven‰l‰inen: lisenssiaattitutkimus ANNEX (A3)]
+ * [Ven√§l√§inen: lisenssiaattitutkimus ANNEX (A3)]
  * These calculations of a elevation angle of the Sun does not give very
  * accurate estimations. This inaccuracy is partly caused by
  * the inaccurate calculations of declination angle.
  * The time given as a parameter must be a local solar time.
  *
  * \param theSolarTime a local solar time
- *†\return a elevation angle in radians
+ *¬†\return a elevation angle in radians
  */
 // ----------------------------------------------------------------------
 
@@ -729,18 +729,18 @@ NFmiLocation NFmiLocation::ComputeLocation(double theAzimuthInDegrees,
                                            double theDistanceInMeters,
                                            bool usePacificView) const
 {
-  // Palauttaa maantieteellisen paikan nykysijainnin suhteen azimuutin (asteissa) ja et‰isyyden
-  // (metreiss‰) avulla.
-  // Azimuutti kasvaa myˆt‰p‰iv‰‰n pohjoisesta, pohjoinen = 0 astetta
+  // Palauttaa maantieteellisen paikan nykysijainnin suhteen azimuutin (asteissa) ja et√§isyyden
+  // (metreiss√§) avulla.
+  // Azimuutti kasvaa my√∂t√§p√§iv√§√§n pohjoisesta, pohjoinen = 0 astetta
   //
-  // L‰hde:
+  // L√§hde:
   //
   // "Ask Dr. Math - Questions and Answers from our Archive"
   // Date: 02/13/97 at 12:59:12
   // From: Doctor Mitteldorf
   // Subject: Re: Calculating new position and heading after a walk around the world
 
-  // Alkuper‰inen pseudokoodi:
+  // Alkuper√§inen pseudokoodi:
 
   /*
 
@@ -785,12 +785,12 @@ NFmiLocation NFmiLocation::ComputeLocation(double theAzimuthInDegrees,
   point 1 to point 2 and continuing on from there.
   */
 
-  // T‰m‰ metodi laskee uuden maantiet. sijainnin (long2, lat2),
+  // T√§m√§ metodi laskee uuden maantiet. sijainnin (long2, lat2),
   // muttei kuitenkaan uutta "kompassisuuntaa" 'hdng2'.
-  // min() ja max() -funktioilla estet‰‰n mahd. pyˆristysvirheiden vaikutus:
+  // min() ja max() -funktioilla estet√§√§n mahd. py√∂ristysvirheiden vaikutus:
 
   double azimuthInDegrees =
-      theAzimuthInDegrees - int(theAzimuthInDegrees / 360) * 360;  // Kulma v‰lille [-360..360]
+      theAzimuthInDegrees - int(theAzimuthInDegrees / 360) * 360;  // Kulma v√§lille [-360..360]
   double alpha = theDistanceInMeters / kRearth;
   double lat1 = FmiRad(itsLatlon.Y());
   double value = cos(FmiRad(azimuthInDegrees)) * cos(lat1) * sin(alpha) + sin(lat1) * cos(alpha);
@@ -819,11 +819,11 @@ void NFmiLocation::SetLocation(double theAzimuthInDegrees,
                                double theDistanceInMeters,
                                bool usePacificView)
 {
-  // Laskee maantieteellisen paikan nykysijainnin suhteen azimuutin (asteissa) ja et‰isyyden
-  // (metreiss‰) avulla.
-  // Azimuutti kasvaa myˆt‰p‰iv‰‰n pohjoisesta, pohjoinen = 0 astetta
-  // HUOM! T‰m‰ metodi muuttaa olion dataj‰seni‰ (*this) eli
-  // k‰yt‰nnˆss‰ muuttaa olion maant. sijainnin argumentteja vastaavaksi sijainniksi
+  // Laskee maantieteellisen paikan nykysijainnin suhteen azimuutin (asteissa) ja et√§isyyden
+  // (metreiss√§) avulla.
+  // Azimuutti kasvaa my√∂t√§p√§iv√§√§n pohjoisesta, pohjoinen = 0 astetta
+  // HUOM! T√§m√§ metodi muuttaa olion dataj√§seni√§ (*this) eli
+  // k√§yt√§nn√∂ss√§ muuttaa olion maant. sijainnin argumentteja vastaavaksi sijainniksi
 
   *this = ComputeLocation(theAzimuthInDegrees, theDistanceInMeters, usePacificView);
 }
@@ -832,10 +832,10 @@ const NFmiLocation NFmiLocation::GetLocation(double theAzimuthInDegrees,
                                              double theDistanceInMeters,
                                              bool usePacificView) const
 {
-  // Laskee maantieteellisen paikan nykysijainnin suhteen azimuutin (asteissa) ja et‰isyyden
-  // (metreiss‰) avulla.
-  // Azimuutti kasvaa myˆt‰p‰iv‰‰n pohjoisesta, pohjoinen = 0 astetta
-  // Metodi EI muuta dataj‰seni‰‰n; ainoastaan palauttaa argumentteja vastaavan maant. sijainnin
+  // Laskee maantieteellisen paikan nykysijainnin suhteen azimuutin (asteissa) ja et√§isyyden
+  // (metreiss√§) avulla.
+  // Azimuutti kasvaa my√∂t√§p√§iv√§√§n pohjoisesta, pohjoinen = 0 astetta
+  // Metodi EI muuta dataj√§seni√§√§n; ainoastaan palauttaa argumentteja vastaavan maant. sijainnin
 
   return ComputeLocation(theAzimuthInDegrees, theDistanceInMeters, usePacificView);
 }

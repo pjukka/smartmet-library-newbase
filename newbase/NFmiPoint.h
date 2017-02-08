@@ -11,14 +11,14 @@
 #include "NFmiGlobals.h"
 
 #include <cmath>
-#include <iosfwd>  // esittelee ostream ja istream (mutta niit‰ ei voi viel‰ k‰ytt‰‰!)
+#include <iosfwd>  // esittelee ostream ja istream (mutta niit√§ ei voi viel√§ k√§ytt√§√§!)
 //_________________________________________________________ NFmiPoint
-//! NFmiPoint-luokka pit‰‰ sis‰ll‰‰n tiedon kaksiulotteisesta pisteest‰.
+//! NFmiPoint-luokka pit√§√§ sis√§ll√§√§n tiedon kaksiulotteisesta pisteest√§.
 class _FMI_DLL NFmiPoint
 {
  public:
-  static const NFmiPoint gMissingLatlon;  // T‰t‰ missing latlon-pistett‰ voi k‰ytt‰‰, jos haluaa
-                                          // ilmaista ett‰ jokin latlon-piste ei mahdollisesti ole
+  static const NFmiPoint gMissingLatlon;  // T√§t√§ missing latlon-pistett√§ voi k√§ytt√§√§, jos haluaa
+                                          // ilmaista ett√§ jokin latlon-piste ei mahdollisesti ole
                                           // initialisoitu
 
   NFmiPoint(void);

@@ -29,22 +29,22 @@ enum FmiWindParamType
   kFmiUVComponents
 };
 
-// TƒRKEƒƒ!!! T‰ss‰ selontekoa virheest‰, jota ei voi en‰‰ inhimillisin ponnistuksin korjata.
-// Aluperin tarkoitus olisi ollut ett‰ kTCombinedWeatherMissing olisi 0xFFFFFFFF, eli kaikki
-// bitit olisivat 1:i‰. T‰st‰ seurasi ongelma, koska 0xFFFFFFFF on myˆs NaN. Tarkoitus oli
-// korjata se niin ett‰ puuttuvaksi arvoksi tulisi luku miss‰ kaikki muut olisivat 1:i‰ paitsi
-// merkitsevin olisi 0. Virheellisesti t‰t‰ lukua luultiin 0xEFFFFFFF:ksi. Vasta myˆhemmin paljastui
-// ett‰ ykkˆseksi menikin 3. merkitsevin bitti. Oikea haluttu puuttuva arvo olisi ollut 0x7FFFFFFF.
-// T‰t‰ ei voi en‰‰ j‰lkik‰teen korjata, koska siit‰ seuraisi vanhojen ohjelmien ja arkisto datojen
-// kanssa potentiaalisesti vaikka mink‰laisia ongelmia. Siksi on k‰ytˆss‰ kWindGustV7Missing
-// joka yritt‰‰ hanskata ongelma bitteja oikein, mutta sit‰ pit‰‰ k‰ytt‰‰ yhdess‰ kT12BitMissing
+// T√ÑRKE√Ñ√Ñ!!! T√§ss√§ selontekoa virheest√§, jota ei voi en√§√§ inhimillisin ponnistuksin korjata.
+// Aluperin tarkoitus olisi ollut ett√§ kTCombinedWeatherMissing olisi 0xFFFFFFFF, eli kaikki
+// bitit olisivat 1:i√§. T√§st√§ seurasi ongelma, koska 0xFFFFFFFF on my√∂s NaN. Tarkoitus oli
+// korjata se niin ett√§ puuttuvaksi arvoksi tulisi luku miss√§ kaikki muut olisivat 1:i√§ paitsi
+// merkitsevin olisi 0. Virheellisesti t√§t√§ lukua luultiin 0xEFFFFFFF:ksi. Vasta my√∂hemmin paljastui
+// ett√§ ykk√∂seksi menikin 3. merkitsevin bitti. Oikea haluttu puuttuva arvo olisi ollut 0x7FFFFFFF.
+// T√§t√§ ei voi en√§√§ j√§lkik√§teen korjata, koska siit√§ seuraisi vanhojen ohjelmien ja arkisto datojen
+// kanssa potentiaalisesti vaikka mink√§laisia ongelmia. Siksi on k√§yt√∂ss√§ kWindGustV7Missing
+// joka yritt√§√§ hanskata ongelma bitteja oikein, mutta sit√§ pit√§√§ k√§ytt√§√§ yhdess√§ kT12BitMissing
 // kanssa.
 
 const unsigned long kTCombinedWeatherMissing = 0xefffffff;
 
-// g++ herjaa tuosta castista. Laskin vastaavan desimaaliluvun k‰ytt‰en
+// g++ herjaa tuosta castista. Laskin vastaavan desimaaliluvun k√§ytt√§en
 // osoitetta http://babbage.cs.qc.edu/IEEE-754/32bit.html
-// monissa paikoissa pit‰‰ tarkistaa, onko queryinfolta saatu arvo t‰m‰ puuttuva arvo
+// monissa paikoissa pit√§√§ tarkistaa, onko queryinfolta saatu arvo t√§m√§ puuttuva arvo
 #if 0
   const float kTCombinedWeatherFloatMissing = *reinterpret_cast<const float*>(&kTCombinedWeatherMissing);
 #else
@@ -57,9 +57,9 @@ const unsigned long kT4BitMissing = 15;
 const unsigned long kT5BitMissing = 31;
 const unsigned long kT6BitMissing = 63;
 const unsigned long kT9BitMissing = 511;
-const unsigned long kWindGustV7Missing = 3071;  // t‰m‰ ei voinut olla 12-bit missing, koska
-// ylimm‰isen hexan viimeinen arvo ei voi olla f vaan se pit‰‰ laittaa e:ksi
-// ja t‰llˆin windgust missingiksi pit‰‰ laittaa 3071. Yst. Terv. Marko
+const unsigned long kWindGustV7Missing = 3071;  // t√§m√§ ei voinut olla 12-bit missing, koska
+// ylimm√§isen hexan viimeinen arvo ei voi olla f vaan se pit√§√§ laittaa e:ksi
+// ja t√§ll√∂in windgust missingiksi pit√§√§ laittaa 3071. Yst. Terv. Marko
 const unsigned long kT12BitMissing = 4095;
 const unsigned long kTThunderProbabilityMissing = 14;
 
@@ -178,9 +178,9 @@ class _FMI_DLL NFmiCombinedParam
   bool fDataOk;
   bool fAutoUpdate;
 
-  // info version pit‰‰ ottaa myˆs t‰nne, koska totalwind ja weatherandcloudiness
+  // info version pit√§√§ ottaa my√∂s t√§nne, koska totalwind ja weatherandcloudiness
   // tarvitsevat tietoa kun kaavat muuttuivat
-  // talletettiin varmuuden vuoksi double:na, jos haluaa k‰ytt‰‰ desimaaleja joskus
+  // talletettiin varmuuden vuoksi double:na, jos haluaa k√§ytt√§√§ desimaaleja joskus
 
   double itsInfoVersion;
 

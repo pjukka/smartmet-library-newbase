@@ -38,11 +38,11 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo(void)
       fUseVariationCalculator(false),
       fUseTimeIntegrationCalculator(false),
       itsCalculator(0),
-      itsVariationCalculator(0)  // laitetaan t‰‰ll‰ tyhj‰t calculaattorit valmiiksi
+      itsVariationCalculator(0)  // laitetaan t√§√§ll√§ tyhj√§t calculaattorit valmiiksi
       ,
       itsTimeIntegrationCalculator(0),
       itsCurrentVarianceCalculator(new NFmiCalculator(
-          static_cast<NFmiQueryInfo*>(0), 0))  // laitetaan t‰‰ll‰ tyhj‰t calculaattorit valmiiksi
+          static_cast<NFmiQueryInfo*>(0), 0))  // laitetaan t√§√§ll√§ tyhj√§t calculaattorit valmiiksi
       ,
       itsDataModifierDescriptor(0),
       itsAreaMask(0),
@@ -77,11 +77,11 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo(const NFmiParamDescriptor& theParamDescri
       fUseVariationCalculator(false),
       fUseTimeIntegrationCalculator(false),
       itsCalculator(0),
-      itsVariationCalculator(0)  // laitetaan t‰‰ll‰ tyhj‰t calculaattorit valmiiksi
+      itsVariationCalculator(0)  // laitetaan t√§√§ll√§ tyhj√§t calculaattorit valmiiksi
       ,
       itsTimeIntegrationCalculator(0),
       itsCurrentVarianceCalculator(new NFmiCalculator(
-          static_cast<NFmiQueryInfo*>(0), 0))  // laitetaan t‰‰ll‰ tyhj‰t calculaattorit valmiiksi
+          static_cast<NFmiQueryInfo*>(0), 0))  // laitetaan t√§√§ll√§ tyhj√§t calculaattorit valmiiksi
       ,
       itsDataModifierDescriptor(0),
       itsAreaMask(0),
@@ -118,11 +118,11 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo(NFmiQueryData* data,
       fUseVariationCalculator(false),
       fUseTimeIntegrationCalculator(false),
       itsCalculator(0),
-      itsVariationCalculator(0)  // laitetaan t‰‰ll‰ tyhj‰t calculaattorit valmiiksi
+      itsVariationCalculator(0)  // laitetaan t√§√§ll√§ tyhj√§t calculaattorit valmiiksi
       ,
       itsTimeIntegrationCalculator(0),
       itsCurrentVarianceCalculator(new NFmiCalculator(
-          static_cast<NFmiQueryInfo*>(0), 0))  // laitetaan t‰‰ll‰ tyhj‰t calculaattorit valmiiksi
+          static_cast<NFmiQueryInfo*>(0), 0))  // laitetaan t√§√§ll√§ tyhj√§t calculaattorit valmiiksi
       ,
       itsDataModifierDescriptor(0),
       itsAreaMask(0),
@@ -150,11 +150,11 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo(const NFmiQueryInfo& theInfo)
       fUseVariationCalculator(false),
       fUseTimeIntegrationCalculator(false),
       itsCalculator(0),
-      itsVariationCalculator(0)  // laitetaan t‰‰ll‰ tyhj‰t calculaattorit valmiiksi
+      itsVariationCalculator(0)  // laitetaan t√§√§ll√§ tyhj√§t calculaattorit valmiiksi
       ,
       itsTimeIntegrationCalculator(0),
       itsCurrentVarianceCalculator(new NFmiCalculator(
-          static_cast<NFmiQueryInfo*>(0), 0))  // laitetaan t‰‰ll‰ tyhj‰t calculaattorit valmiiksi
+          static_cast<NFmiQueryInfo*>(0), 0))  // laitetaan t√§√§ll√§ tyhj√§t calculaattorit valmiiksi
       ,
       itsDataModifierDescriptor(0),
       itsAreaMask(0),
@@ -182,12 +182,12 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo(const NFmiSuperSmartInfo& theInfo)
       fUseTimeIntegrationCalculator(theInfo.fUseTimeIntegrationCalculator),
       itsCalculator(theInfo.itsCalculator),
       itsVariationCalculator(
-          theInfo.itsVariationCalculator)  // laitetaan t‰‰ll‰ tyhj‰t calculaattorit valmiiksi
+          theInfo.itsVariationCalculator)  // laitetaan t√§√§ll√§ tyhj√§t calculaattorit valmiiksi
       ,
       itsTimeIntegrationCalculator(0)
-      // HUOM!!!! TƒMƒ PITƒƒ HOITAA SITTEN KUNTOON (itsCurrentVarianceCalculator)
-      //,itsCurrentVarianceCalculator(new NFmiCalculator((NFmiQueryInfo *)0, 0)) // laitetaan t‰‰ll‰
-      //tyhj‰t calculaattorit valmiiksi
+      // HUOM!!!! T√ÑM√Ñ PIT√Ñ√Ñ HOITAA SITTEN KUNTOON (itsCurrentVarianceCalculator)
+      //,itsCurrentVarianceCalculator(new NFmiCalculator((NFmiQueryInfo *)0, 0)) // laitetaan t√§√§ll√§
+      //tyhj√§t calculaattorit valmiiksi
       ,
       itsCurrentVarianceCalculator(0),
       itsDataModifierDescriptor(theInfo.itsDataModifierDescriptor),
@@ -195,15 +195,15 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo(const NFmiSuperSmartInfo& theInfo)
       fUseAreaMask(theInfo.fUseAreaMask),
       fUseHelperBinaryMasks(theInfo.fUseHelperBinaryMasks),
       itsCurrentHelperBinaryMask(
-          0)  // t‰m‰ alustetaan (virheellisesti) CopyHelperBinaryMasksAndInfo:issa
+          0)  // t√§m√§ alustetaan (virheellisesti) CopyHelperBinaryMasksAndInfo:issa
       ,
-      itsXYMaskBoundingBox()  // t‰m‰ alustetaan (virheellisesti) CopyHelperBinaryMasksAndInfo:issa
+      itsXYMaskBoundingBox()  // t√§m√§ alustetaan (virheellisesti) CopyHelperBinaryMasksAndInfo:issa
       ,
-      itsHelperBinaryMaskList()  // t‰m‰ alustetaan (virheellisesti)
+      itsHelperBinaryMaskList()  // t√§m√§ alustetaan (virheellisesti)
                                  // CopyHelperBinaryMasksAndInfo:issa
 {
-  //	InitHelperBinaryMasks(); // t‰m‰ on v‰‰rin kopi-konstruktorissa, mutta
-  //  en jaksa tehd‰ todellista kopiota itsHelperBinaryMaskList:ta ja muista
+  //	InitHelperBinaryMasks(); // t√§m√§ on v√§√§rin kopi-konstruktorissa, mutta
+  //  en jaksa tehd√§ todellista kopiota itsHelperBinaryMaskList:ta ja muista
   CopyHelperBinaryMasksAndInfo(theInfo);
 }
 
@@ -216,7 +216,7 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo(const NFmiSuperSmartInfo& theInfo)
 NFmiSuperSmartInfo::~NFmiSuperSmartInfo(void) { Destroy(); }
 // ----------------------------------------------------------------------
 /*!
- * Kopioi helperbinarymaskit omaan k‰yttˆˆns‰
+ * Kopioi helperbinarymaskit omaan k√§ytt√∂√∂ns√§
  *
  * \param theSSInfo Undocumented
  */
@@ -232,7 +232,7 @@ void NFmiSuperSmartInfo::CopyHelperBinaryMasksAndInfo(const NFmiSuperSmartInfo& 
   size_t size = helperBinaryMaskList.size();
   itsHelperBinaryMaskList.resize(size);
 
-  // poikkeustapauksessa voi olla 0-pointteri, pit‰‰ tarkistaa kloonattaessa
+  // poikkeustapauksessa voi olla 0-pointteri, pit√§√§ tarkistaa kloonattaessa
   for (size_t i = 0; i < size; i++)
     if (helperBinaryMaskList[i])
       itsHelperBinaryMaskList[i] =
@@ -254,7 +254,7 @@ bool NFmiSuperSmartInfo::FirstLocation(void)
 
 // ----------------------------------------------------------------------
 /*!
- * NextLocation hypp‰‰ seuraavaa maskattuun locationiin
+ * NextLocation hypp√§√§ seuraavaa maskattuun locationiin
  * (jos ei maskia, kaikki on maskattu!)
  *
  * \return Undocumented
@@ -274,7 +274,7 @@ bool NFmiSuperSmartInfo::NextLocation(void)
 
 // ----------------------------------------------------------------------
 /*!
- * PreviousLocation hypp‰‰ edelliseen maskattuun locationiin
+ * PreviousLocation hypp√§√§ edelliseen maskattuun locationiin
  * (jos ei maskia, kaikki on maskattu!)
  *
  * \return Undocumented
@@ -294,8 +294,8 @@ bool NFmiSuperSmartInfo::PreviousLocation(void)
 
 // ----------------------------------------------------------------------
 /*!
- * HUOM! ei etsi l‰hint‰ maskattua paikkaa viel‰ vaan vain paikan
- * (pit‰isikˆ toteuttaa?!?!?!?)
+ * HUOM! ei etsi l√§hint√§ maskattua paikkaa viel√§ vaan vain paikan
+ * (pit√§isik√∂ toteuttaa?!?!?!?)
  *
  * \param theLocation Undocumented
  * \param theMaxDistance Undocumented
@@ -310,8 +310,8 @@ bool NFmiSuperSmartInfo::NearestLocation(const NFmiLocation& theLocation, double
 
 // ----------------------------------------------------------------------
 /*!
- * HUOM! ei etsi l‰hint‰ maskattua paikkaa viel‰ vaan vain paikan
- * (pit‰isikˆ toteuttaa?!?!?!?)
+ * HUOM! ei etsi l√§hint√§ maskattua paikkaa viel√§ vaan vain paikan
+ * (pit√§isik√∂ toteuttaa?!?!?!?)
  *
  * \param theLatLonPoint Undocumented
  * \return Undocumented
@@ -325,7 +325,7 @@ bool NFmiSuperSmartInfo::NearestPoint(const NFmiPoint& theLatLonPoint)
 
 // ----------------------------------------------------------------------
 /*!
- * HUOM! En tied‰ pit‰isikˆ ottaa huomioon vain maskatut paikat?!?!?
+ * HUOM! En tied√§ pit√§isik√∂ ottaa huomioon vain maskatut paikat?!?!?
  *
  * \return Undocumented
  */
@@ -338,7 +338,7 @@ unsigned long NFmiSuperSmartInfo::SizeLocations(void) const
 
 // ----------------------------------------------------------------------
 /*!
- * HUOM! En tied‰ pit‰isikˆ ottaa huomioon vain maskatut paikat?!?!?
+ * HUOM! En tied√§ pit√§isik√∂ ottaa huomioon vain maskatut paikat?!?!?
  *
  * \return Undocumented
  */
@@ -357,21 +357,21 @@ unsigned long NFmiSuperSmartInfo::SizeActiveLocations(void) const
 
 float NFmiSuperSmartInfo::FloatValue(void) const
 {
-  // K‰ytt‰j‰ on etuk‰teen m‰‰r‰nnyt mill‰ tasolla haluaa dataa
-  // m‰‰r‰m‰ll‰ itsFloatValueAccessLevel.
-  // HUOM!! t‰t‰ ei kannata optimoida switch-lauseella, koska
-  // eniten p‰‰dyt‰‰n kuitenkin normalaccessiin!!!
+  // K√§ytt√§j√§ on etuk√§teen m√§√§r√§nnyt mill√§ tasolla haluaa dataa
+  // m√§√§r√§m√§ll√§ itsFloatValueAccessLevel.
+  // HUOM!! t√§t√§ ei kannata optimoida switch-lauseella, koska
+  // eniten p√§√§dyt√§√§n kuitenkin normalaccessiin!!!
 
   // 'normal' == raw-access eli FastInfo:n vastaava
   if (itsFloatValueAccessLevel == kNormalAccess) return RawFloatValue();
 
-  // pyydet‰‰n varianssia
+  // pyydet√§√§n varianssia
   if (itsFloatValueAccessLevel == kVarianceAccess) return VarianceFloatValue();
 
-  // pyydet‰‰n aikaintegraatiota
+  // pyydet√§√§n aikaintegraatiota
   if (itsFloatValueAccessLevel == kTimeIntegrationAccess) return TimeIntegrationFloatValue();
 
-  // ep‰varmuus laatikko laskut
+  // ep√§varmuus laatikko laskut
   if (itsFloatValueAccessLevel == kVariationAccess) return VariationFloatValue();
 
   // 'integraattori'/calculaattori (korkeimman tason kutsu)
@@ -388,11 +388,11 @@ float NFmiSuperSmartInfo::FloatValue(void) const
 
 NFmiCombinedParam* NFmiSuperSmartInfo::CombinedValue(void)
 {
-// K‰ytt‰j‰ on etuk‰teen m‰‰r‰nnyt mill‰ tasolla haluaa dataa
-// m‰‰r‰m‰ll‰ itsFloatValueAccessLevel.
-// kommenteissa on oikea k‰yntij‰rjestys. Jos joku lis‰‰ jonkun
-// haaran k‰yttˆˆn (esim. TimeIntegrationCombinedValue:n), pit‰‰
-// se kommentoida esiin ett‰ 'vesiputous' toimisi oikeassa j‰rjestyksess‰.
+// K√§ytt√§j√§ on etuk√§teen m√§√§r√§nnyt mill√§ tasolla haluaa dataa
+// m√§√§r√§m√§ll√§ itsFloatValueAccessLevel.
+// kommenteissa on oikea k√§yntij√§rjestys. Jos joku lis√§√§ jonkun
+// haaran k√§ytt√∂√∂n (esim. TimeIntegrationCombinedValue:n), pit√§√§
+// se kommentoida esiin ett√§ 'vesiputous' toimisi oikeassa j√§rjestyksess√§.
 
 #if 0
   if(itsFloatValueAccessLevel == kNormalAccess)
@@ -507,11 +507,11 @@ NFmiCombinedParam* NFmiSuperSmartInfo::CombinedValue(bool doVariationCalculation
 
 float NFmiSuperSmartInfo::PeekLocationValue(int theXOffset, int theYOffset) const
 {
-  // Peek...Value()-metodit pit‰‰ tehd‰ niin, ett‰ alkuper‰iset
-  // indeksit otetaan talteen, ett‰ tilanne voidaan palauttaa
-  // datan kyselyn j‰lkeen.
-  // Eri access-tasoisia Calculaattoreita varten paikka pit‰‰
-  // asettaa ensin kohdalleen, ett‰ Calculaattorit toimisivat oikein.
+  // Peek...Value()-metodit pit√§√§ tehd√§ niin, ett√§ alkuper√§iset
+  // indeksit otetaan talteen, ett√§ tilanne voidaan palauttaa
+  // datan kyselyn j√§lkeen.
+  // Eri access-tasoisia Calculaattoreita varten paikka pit√§√§
+  // asettaa ensin kohdalleen, ett√§ Calculaattorit toimisivat oikein.
 
   unsigned long oldLocationIndex = LocationIndex();
   int wantedIndex = CalcPeekLocationIndex(oldLocationIndex, theXOffset, theYOffset);
@@ -525,22 +525,22 @@ float NFmiSuperSmartInfo::PeekLocationValue(int theXOffset, int theYOffset) cons
 
 // ----------------------------------------------------------------------
 /*!
- *†\param theTimeOffset Undocumented
+ *¬†\param theTimeOffset Undocumented
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
 float NFmiSuperSmartInfo::PeekTimeValue(int theTimeOffset)
 {
-  // Peek...Value()-metodit pit‰‰ tehd‰ niin, ett‰ alkuper‰iset
-  // indeksit otetaan talteen, ett‰ tilanne voidaan palauttaa datan
-  // kyselyn j‰lkeen. Eri access-tasoisia Calculaattoreita varten
-  // paikka pit‰‰ asettaa ensin kohdalleen, ett‰ Calculaattorit
+  // Peek...Value()-metodit pit√§√§ tehd√§ niin, ett√§ alkuper√§iset
+  // indeksit otetaan talteen, ett√§ tilanne voidaan palauttaa datan
+  // kyselyn j√§lkeen. Eri access-tasoisia Calculaattoreita varten
+  // paikka pit√§√§ asettaa ensin kohdalleen, ett√§ Calculaattorit
   // toimisivat oikein.
 
   unsigned long oldTimeIndex = TimeIndex();
 
-  // jos ep‰onnistui, palauta missing arvo, ei tarvitse asettaa oldTimeIndex:i‰
+  // jos ep√§onnistui, palauta missing arvo, ei tarvitse asettaa oldTimeIndex:i√§
   if (!TimeIndex(oldTimeIndex + theTimeOffset))
   {
     TimeIndex(oldTimeIndex);  // aseta vanhat indeksit paikoilleen
@@ -562,10 +562,10 @@ float NFmiSuperSmartInfo::PeekTimeValue(int theTimeOffset)
 
 float NFmiSuperSmartInfo::PeekValue(int theTimeOffset, int theXOffset, int theYOffset)
 {
-  // Peek...Value()-metodit pit‰‰ tehd‰ niin, ett‰ alkuper‰iset
-  // indeksit otetaan talteen,ett‰ tilanne voidaan palauttaa datan
-  // kyselyn j‰lkeen. Eri access-tasoisia Calculaattoreita varten
-  // paikka pit‰‰ asettaa ensin kohdalleen, ett‰ Calculaattorit
+  // Peek...Value()-metodit pit√§√§ tehd√§ niin, ett√§ alkuper√§iset
+  // indeksit otetaan talteen,ett√§ tilanne voidaan palauttaa datan
+  // kyselyn j√§lkeen. Eri access-tasoisia Calculaattoreita varten
+  // paikka pit√§√§ asettaa ensin kohdalleen, ett√§ Calculaattorit
   // toimisivat oikein.
 
   unsigned long oldLocationIndex = LocationIndex();
@@ -598,10 +598,10 @@ unsigned long NFmiSuperSmartInfo::CalcPeekLocationIndex(unsigned long currentInd
   int currentXIndex = (currentIndex % itsGridXNumber) + theXOffset;
   int currentYIndex = (currentIndex / itsGridXNumber) + theYOffset;
 
-  // voiko t‰m‰n seuraavan tarkistuksen poistaa, kun indeksi
+  // voiko t√§m√§n seuraavan tarkistuksen poistaa, kun indeksi
   // tarkistetaan kuitenkin Index-metodissa??
 
-  // x- ja y-indeksien pit‰‰ pysy‰ gridin sis‰ll‰ offsettien kera!
+  // x- ja y-indeksien pit√§√§ pysy√§ gridin sis√§ll√§ offsettien kera!
   if (currentXIndex >= 0 && currentYIndex >= 0 && currentXIndex < int(itsGridXNumber) &&
       currentYIndex < int(itsGridYNumber))
     return (currentYIndex * itsGridXNumber + currentXIndex);
@@ -612,9 +612,9 @@ unsigned long NFmiSuperSmartInfo::CalcPeekLocationIndex(unsigned long currentInd
 
 // ----------------------------------------------------------------------
 /*!
- * Laskee kurrentista location indeksist‰ (1-ulotteinen) kaksi
+ * Laskee kurrentista location indeksist√§ (1-ulotteinen) kaksi
  * ulotteiseksi x ja y-indeksiksi. Indeksit alkavat 0:sta, virhetilanteessa
- * x ja y on -1:i‰
+ * x ja y on -1:i√§
  *
  * \param theIndex Undocumented
  * \param theXOffset Undocumented
@@ -707,14 +707,14 @@ NFmiSuperSmartInfo& NFmiSuperSmartInfo::operator=(const NFmiSuperSmartInfo& theI
     itsCalculator = theInfo.itsCalculator;
     itsVariationCalculator = theInfo.itsVariationCalculator;
 
-    // HUOM!!!! TƒMƒ PITƒƒ HOITAA SITTEN KUNTOON
+    // HUOM!!!! T√ÑM√Ñ PIT√Ñ√Ñ HOITAA SITTEN KUNTOON
     // itsCurrentVarianceCalculator = theInfo.itsCurrentVarianceCalculator;
 
     itsDataModifierDescriptor = theInfo.itsDataModifierDescriptor;
     itsAreaMask = theInfo.itsAreaMask;
     fUseAreaMask = theInfo.fUseAreaMask;
 
-    // t‰m‰ alustetaan (virheellisesti) CopyHelperBinaryMasksAndInfo:issa
+    // t√§m√§ alustetaan (virheellisesti) CopyHelperBinaryMasksAndInfo:issa
     itsCurrentHelperBinaryMask = 0;
     CopyHelperBinaryMasksAndInfo(theInfo);
   }
@@ -723,7 +723,7 @@ NFmiSuperSmartInfo& NFmiSuperSmartInfo::operator=(const NFmiSuperSmartInfo& theI
 
 // ----------------------------------------------------------------------
 /*!
- * \brief Tuhoa sis‰iset dynaamiset muuttujat
+ * \brief Tuhoa sis√§iset dynaamiset muuttujat
  */
 // ----------------------------------------------------------------------
 
@@ -743,8 +743,8 @@ void NFmiSuperSmartInfo::Destroy(void)
 
 size_t NFmiSuperSmartInfo::Index(void) const
 {
-  // t‰m‰ saattaa muuttua, jos datan j‰rjestyst‰ muutetaan
-  // (locationit sisimm‰iseen looppiin!)
+  // t√§m√§ saattaa muuttua, jos datan j√§rjestyst√§ muutetaan
+  // (locationit sisimm√§iseen looppiin!)
 
   return NFmiFastQueryInfo::Index();
 }
@@ -766,7 +766,7 @@ bool NFmiSuperSmartInfo::IsLocationMasked(unsigned long theLocationIndex) const
       return itsAreaMask->IsMasked(HPlaceDescriptor().LatLon(theLocationIndex));
   }
 
-  return true;  // jos ei maskia k‰ytˆss‰, on maski aina p‰‰ll‰!!!
+  return true;  // jos ei maskia k√§yt√∂ss√§, on maski aina p√§√§ll√§!!!
 }
 
 // ----------------------------------------------------------------------
@@ -779,8 +779,8 @@ float NFmiSuperSmartInfo::VarianceFloatValue(void) const
 {
   if (fUseVarianceCalculator && itsCurrentVarianceCalculator)
   {
-    // accessleveli‰ pit‰‰ s‰‰t‰‰ t‰ss‰ v‰liaikaisesti, ett‰
-    // calculator p‰‰see k‰siksi 'alemman' tason dataan
+    // accessleveli√§ pit√§√§ s√§√§t√§√§ t√§ss√§ v√§liaikaisesti, ett√§
+    // calculator p√§√§see k√§siksi 'alemman' tason dataan
     DataAccessLevel oldAccessLevel = itsFloatValueAccessLevel;
     itsFloatValueAccessLevel = kNormalAccess;
 
@@ -804,8 +804,8 @@ float NFmiSuperSmartInfo::VariationFloatValue(void) const
 {
   if (fUseVariationCalculator && itsVariationCalculator)
   {
-    // accessleveli‰ pit‰‰ s‰‰t‰‰ t‰ss‰ v‰liaikaisesti, ett‰
-    // calculator p‰‰see k‰siksi 'alemman' tason dataan
+    // accessleveli√§ pit√§√§ s√§√§t√§√§ t√§ss√§ v√§liaikaisesti, ett√§
+    // calculator p√§√§see k√§siksi 'alemman' tason dataan
     DataAccessLevel oldAccessLevel = itsFloatValueAccessLevel;
     itsFloatValueAccessLevel = kTimeIntegrationAccess;
 
@@ -816,8 +816,8 @@ float NFmiSuperSmartInfo::VariationFloatValue(void) const
     return value;
   }
 
-  // mielest‰ni pit‰‰ kutsua seuraavaa tasoa, jos t‰lt‰ tasolta
-  // ei lˆydy calculaattoria
+  // mielest√§ni pit√§√§ kutsua seuraavaa tasoa, jos t√§lt√§ tasolta
+  // ei l√∂ydy calculaattoria
   return TimeIntegrationFloatValue();
 }
 
@@ -831,8 +831,8 @@ float NFmiSuperSmartInfo::TimeIntegrationFloatValue(void) const
 {
   if (fUseTimeIntegrationCalculator && itsTimeIntegrationCalculator)
   {
-    // accessleveli‰ pit‰‰ s‰‰t‰‰ t‰ss‰ v‰liaikaisesti, ett‰
-    // calculator p‰‰see k‰siksi 'alemman' tason dataan
+    // accessleveli√§ pit√§√§ s√§√§t√§√§ t√§ss√§ v√§liaikaisesti, ett√§
+    // calculator p√§√§see k√§siksi 'alemman' tason dataan
     DataAccessLevel oldAccessLevel = itsFloatValueAccessLevel;
     itsFloatValueAccessLevel = kVarianceAccess;
 
@@ -842,8 +842,8 @@ float NFmiSuperSmartInfo::TimeIntegrationFloatValue(void) const
     return value;
   }
 
-  // mielest‰ni pit‰‰ kutsua seuraavaa tasoa, jos t‰lt‰ tasolta
-  // ei lˆydy calculaattoria
+  // mielest√§ni pit√§√§ kutsua seuraavaa tasoa, jos t√§lt√§ tasolta
+  // ei l√∂ydy calculaattoria
   return VarianceFloatValue();
 }
 
@@ -857,8 +857,8 @@ NFmiCombinedParam* NFmiSuperSmartInfo::VariationCombinedValue(void)
 {
   if (fUseVariationCalculator && itsVariationCalculator)
   {
-    // accessleveli‰ pit‰‰ s‰‰t‰‰ t‰ss‰ v‰liaikaisesti, ett‰
-    // calculator p‰‰see k‰siksi 'alemman' tason dataan
+    // accessleveli√§ pit√§√§ s√§√§t√§√§ t√§ss√§ v√§liaikaisesti, ett√§
+    // calculator p√§√§see k√§siksi 'alemman' tason dataan
     DataAccessLevel oldAccessLevel = itsFloatValueAccessLevel;
     itsFloatValueAccessLevel = kVarianceAccess;
 
@@ -868,8 +868,8 @@ NFmiCombinedParam* NFmiSuperSmartInfo::VariationCombinedValue(void)
     return value;
   }
 
-  // mielest‰ni pit‰‰ kutsua seuraavaa tasoa, jos t‰lt‰ tasolta
-  // ei lˆydy calculaattoria
+  // mielest√§ni pit√§√§ kutsua seuraavaa tasoa, jos t√§lt√§ tasolta
+  // ei l√∂ydy calculaattoria
 
   return 0;  // VarianceFloatValue();
 }
@@ -884,8 +884,8 @@ NFmiCombinedParam* NFmiSuperSmartInfo::CalculationCombinedValue(void)
 {
   if (fUseCalculator && itsCalculator)
   {
-    // accessleveli‰ pit‰‰ s‰‰t‰‰ t‰ss‰ v‰liaikaisesti, ett‰
-    // calculator p‰‰see k‰siksi 'alemman' tason dataan
+    // accessleveli√§ pit√§√§ s√§√§t√§√§ t√§ss√§ v√§liaikaisesti, ett√§
+    // calculator p√§√§see k√§siksi 'alemman' tason dataan
     DataAccessLevel oldAccessLevel = itsFloatValueAccessLevel;
     itsFloatValueAccessLevel = kVariationAccess;
 
@@ -895,8 +895,8 @@ NFmiCombinedParam* NFmiSuperSmartInfo::CalculationCombinedValue(void)
     return value;
   }
 
-  // mielest‰ni pit‰‰ kutsua seuraavaa tasoa, jos t‰lt‰ tasolta
-  // ei lˆydy calculaattoria
+  // mielest√§ni pit√§√§ kutsua seuraavaa tasoa, jos t√§lt√§ tasolta
+  // ei l√∂ydy calculaattoria
 
   return VariationCombinedValue();  // VarianceFloatValue();
 }
@@ -911,8 +911,8 @@ float NFmiSuperSmartInfo::CalculationFloatValue(void) const
 {
   if (fUseCalculator && itsCalculator)
   {
-    // accessleveli‰ pit‰‰ s‰‰t‰‰ t‰ss‰ v‰liaikaisesti, ett‰
-    // calculator p‰‰see k‰siksi 'alemman' tason dataan
+    // accessleveli√§ pit√§√§ s√§√§t√§√§ t√§ss√§ v√§liaikaisesti, ett√§
+    // calculator p√§√§see k√§siksi 'alemman' tason dataan
     DataAccessLevel oldAccessLevel = itsFloatValueAccessLevel;
     itsFloatValueAccessLevel = kVariationAccess;
 
@@ -922,8 +922,8 @@ float NFmiSuperSmartInfo::CalculationFloatValue(void) const
     return value;
   }
 
-  // mielest‰ni pit‰‰ kutsua seuraavaa tasoa, jos t‰lt‰ tasolta
-  // ei lˆydy calculaattoria
+  // mielest√§ni pit√§√§ kutsua seuraavaa tasoa, jos t√§lt√§ tasolta
+  // ei l√∂ydy calculaattoria
 
   return VariationFloatValue();
 }
@@ -940,7 +940,7 @@ void NFmiSuperSmartInfo::SetCalculator(NFmiCalculator* theCalculator, bool useCa
   itsCalculator = theCalculator;
   if (theCalculator)
     fUseCalculator = useCalculator;
-  else  // jos 0-pointteri, otetaan pois k‰ytˆst‰!!!
+  else  // jos 0-pointteri, otetaan pois k√§yt√∂st√§!!!
     fUseCalculator = false;
 }
 
@@ -952,7 +952,7 @@ void NFmiSuperSmartInfo::SetCalculator(NFmiCalculator* theCalculator, bool useCa
 
 void NFmiSuperSmartInfo::SetDataModifierDescriptor(NFmiDataModifierDescriptor* theDescriptor)
 {
-  itsDataModifierDescriptor = theDescriptor;  // HUOM!! Ei omista, pit‰isikˆ???
+  itsDataModifierDescriptor = theDescriptor;  // HUOM!! Ei omista, pit√§isik√∂???
   UpdateVarianceCalculator();
 }
 
@@ -1073,7 +1073,7 @@ bool NFmiSuperSmartInfo::Param(const NFmiDataIdent& theDataIdent)
 
 bool NFmiSuperSmartInfo::FirstTime(void)
 {
-  // Ajansiirto-funktioissa pit‰‰ p‰ivitt‰‰ myˆs maskin aikaa
+  // Ajansiirto-funktioissa pit√§√§ p√§ivitt√§√§ my√∂s maskin aikaa
   unsigned long oldTimeIndex = itsTimeIndex;
   bool status = NFmiFastQueryInfo::FirstTime();
   TimeChanged(oldTimeIndex);
@@ -1220,13 +1220,13 @@ NFmiBitmapAreaMask* NFmiSuperSmartInfo::HelperBinaryMask(int theUsedVariationFac
 void NFmiSuperSmartInfo::UseHelperBinaryMasks(bool newStatus)
 {
   fUseHelperBinaryMasks = newStatus;
-  InitHelperBinaryMasks();  // pit‰‰ varmuuden vuoksi aina alustaa (voisi optimoida)
+  InitHelperBinaryMasks();  // pit√§√§ varmuuden vuoksi aina alustaa (voisi optimoida)
 }
 
 // ----------------------------------------------------------------------
 /*!
  * Alustaa kaikki tarvittavat harvennusapu maskit
- * (eli kaikille ep‰varmuuksille 0-n).
+ * (eli kaikille ep√§varmuuksille 0-n).
  *
  * \return  Undocumented
  */
@@ -1271,7 +1271,7 @@ NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateHelperBinaryMask(int theUsedVariat
   int moveXFromStart = 0;
   int moveXFactor = (right - left) % (moveByX);
   bool specialXCase = ((moveByX > 3) && ((moveByX - moveXFactor) ==
-                                         1));  // jos totta, tihennet‰‰n harvennushilaa yhdell‰
+                                         1));  // jos totta, tihennet√§√§n harvennushilaa yhdell√§
   if (specialXCase)
     moveByX--;
   else if (moveXFactor > 1)
@@ -1299,8 +1299,8 @@ NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateHelperBinaryMask(int theUsedVariat
 
 // ----------------------------------------------------------------------
 /*!
- * T‰m‰ luo itseasiassa maskin muotoisen bin‰‰rimaskin, kun ei ole
- * ep‰varmuutta mukana
+ * T√§m√§ luo itseasiassa maskin muotoisen bin√§√§rimaskin, kun ei ole
+ * ep√§varmuutta mukana
  */
 // ----------------------------------------------------------------------
 
@@ -1312,7 +1312,7 @@ NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateZeroVariationHelperBinaryMask(void
   {
     unsigned int oldLocationIndex = LocationIndex();
     bool oldUseAreaMaskStatus = UseAreaMask();
-    // laitetaan maski pois p‰‰lt‰, niin bitmapmaski voi tehd‰ hommansa
+    // laitetaan maski pois p√§√§lt√§, niin bitmapmaski voi tehd√§ hommansa
     UseAreaMask(false);
 
     helperMask->Init(mask->Info(), AreaMask()->Condition());
@@ -1341,7 +1341,7 @@ void NFmiSuperSmartInfo::ClearHelperBinaryMasks(void)
 
 // ----------------------------------------------------------------------
 /*!
- * Laskee k‰ytetyn maskin xy-indeksi-boundingboxin
+ * Laskee k√§ytetyn maskin xy-indeksi-boundingboxin
  *
  * \return Undocumented
  */
@@ -1351,7 +1351,7 @@ void NFmiSuperSmartInfo::CalcXYMaskBoundingBox(void)
 {
   unsigned int oldLocationIndex = LocationIndex();
   bool oldUseAreaMaskStatus = UseAreaMask();
-  // laitetaan maski p‰‰lle, niin liikutaan vain maskatuissa paikoissa
+  // laitetaan maski p√§√§lle, niin liikutaan vain maskatuissa paikoissa
   UseAreaMask(true);
   bool oldUseHelperBinaryMasksState = fUseHelperBinaryMasks;
   fUseHelperBinaryMasks = false;
@@ -1360,7 +1360,7 @@ void NFmiSuperSmartInfo::CalcXYMaskBoundingBox(void)
   int xOffset = -1, yOffset = -1;
   for (ResetLocation(); NextLocation();)
   {
-    // t‰m‰n pit‰isi olla turha testi
+    // t√§m√§n pit√§isi olla turha testi
     if (LocationIndex2XYPosition(LocationIndex(), &xOffset, &yOffset))
     {
       xMinMax.Calculate(static_cast<float>(xOffset));
@@ -1377,14 +1377,14 @@ void NFmiSuperSmartInfo::CalcXYMaskBoundingBox(void)
 
 // ----------------------------------------------------------------------
 /*!
- * Testi funktio. Tekee stringin tietylle ep‰varmuudelle tehdyst‰
+ * Testi funktio. Tekee stringin tietylle ep√§varmuudelle tehdyst√§
  * harvennusmaskista
  *
- * Sis‰lt‰‰ seuraavaa:
+ * Sis√§lt√§√§ seuraavaa:
  *
- *  - n x m merkki‰ (eli kuvaa hilaa)
- *  - '-' = ei maskia, ei harvennuspistett‰
- *  - 'a' = maski, ei harvennuspistett‰
+ *  - n x m merkki√§ (eli kuvaa hilaa)
+ *  - '-' = ei maskia, ei harvennuspistett√§
+ *  - 'a' = maski, ei harvennuspistett√§
  *  - '@' = maski ja harvennuspiste
  *  - 'C' = ei maskia, harvennuspiste
  *
@@ -1402,7 +1402,7 @@ NFmiString NFmiSuperSmartInfo::HelperBinaryMaskTestString(int theUsedVariationFa
   {
     unsigned int oldLocationIndex = LocationIndex();
     bool oldUseAreaMaskStatus = UseAreaMask();
-    UseAreaMask(false);  // laitetaan maski pois p‰‰lt‰, niin liikutaan kaikissa paikoissa
+    UseAreaMask(false);  // laitetaan maski pois p√§√§lt√§, niin liikutaan kaikissa paikoissa
 
     int locIndex = 0;
     int i = 0;
@@ -1444,17 +1444,17 @@ NFmiString NFmiSuperSmartInfo::HelperBinaryMaskTestString(int theUsedVariationFa
         rowStr = "";
       }
     }
-    rowStr += "\n";  // lis‰t‰‰n viel‰ viimeinen rivi vectoriin
+    rowStr += "\n";  // lis√§t√§√§n viel√§ viimeinen rivi vectoriin
     lines.push_back(rowStr);
 
     LocationIndex(oldLocationIndex);
     UseAreaMask(oldUseAreaMaskStatus);
     for (i = lines.size() - 1; i >= 0;
-         i--)  // laitetaan rivit k‰‰nteisess‰ j‰rjestyksess‰, ett‰ 'kuva' tulee oikein p‰in
+         i--)  // laitetaan rivit k√§√§nteisess√§ j√§rjestyksess√§, ett√§ 'kuva' tulee oikein p√§in
       returnStr += lines[i];
   }
   else
-    returnStr += "Ei ollut maskia tai harvennusmaskia k‰ytett‰viss‰";
+    returnStr += "Ei ollut maskia tai harvennusmaskia k√§ytett√§viss√§";
 
   return returnStr;
 }
@@ -1473,8 +1473,8 @@ void NFmiSuperSmartInfo::UpdateHelperBinaryMasks(void)
 
 // ----------------------------------------------------------------------
 /*!
- * Kutsu t‰t‰ aina kun aika mahdollisesti muuttuu SSInfossa!!!!
- * Pit‰‰ ottaa vanha timeindex talteen ennen muutosta ja antaa parametrina.
+ * Kutsu t√§t√§ aina kun aika mahdollisesti muuttuu SSInfossa!!!!
+ * Pit√§√§ ottaa vanha timeindex talteen ennen muutosta ja antaa parametrina.
  *
  * \param theOldTimeIndex Undocumented
  */
@@ -1483,7 +1483,7 @@ void NFmiSuperSmartInfo::UpdateHelperBinaryMasks(void)
 void NFmiSuperSmartInfo::TimeChanged(unsigned long theOldTimeIndex)
 {
   if (theOldTimeIndex != itsTimeIndex)
-    UpdateAreaMaskTime();  // hoitaa myˆs SetCurrentHelperBinaryMask-kutsun
+    UpdateAreaMaskTime();  // hoitaa my√∂s SetCurrentHelperBinaryMask-kutsun
   if (itsVariationCalculator)
   {
     int uncertainty = CalcAreaUnCertainty();

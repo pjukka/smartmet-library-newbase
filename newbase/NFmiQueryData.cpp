@@ -44,23 +44,23 @@ int NFmiQueryData::itsDestructorCalls = 0;
 
 using namespace std;
 
-// Staattiset versiot querydatan luku/kirjoituksesta, ottavat huomioon mm. VC++:n bin‰‰ri
+// Staattiset versiot querydatan luku/kirjoituksesta, ottavat huomioon mm. VC++:n bin√§√§ri
 // asetuksista.
-// Voivat heitt‰‰ poikkeuksia.
+// Voivat heitt√§√§ poikkeuksia.
 
 static void ForceBinaryFormatWrite(const NFmiQueryData &queryData)
 {
-  // binaryformat tarkoittaa queryDatan talletus formaattia, k‰yt‰ aina bin‰‰ri formaattia tehokkuus
-  // syist‰, jos mahdollista.
+  // binaryformat tarkoittaa queryDatan talletus formaattia, k√§yt√§ aina bin√§√§ri formaattia tehokkuus
+  // syist√§, jos mahdollista.
   queryData.UseBinaryStorage(true);
-  if (queryData.InfoVersion() < 6.)  // jos datan infoversio on alle 6, pit‰‰ muuttaa 6:ksi
-    queryData.InfoVersion(6.);       // Huom! ei voi muuttaa 7:ksi tai ylemm‰ksi, koska se saattaa
-                                     // sekoittaaa yhdistelm‰parametrien (W&C ja TotWind) arvot
+  if (queryData.InfoVersion() < 6.)  // jos datan infoversio on alle 6, pit√§√§ muuttaa 6:ksi
+    queryData.InfoVersion(6.);       // Huom! ei voi muuttaa 7:ksi tai ylemm√§ksi, koska se saattaa
+                                     // sekoittaaa yhdistelm√§parametrien (W&C ja TotWind) arvot
 }
 
 void NFmiQueryData::Read()
 {
-// Muunnetaan "stdin" bin‰‰ri moodiin --> pystyy lukemaan bin‰‰ri‰
+// Muunnetaan "stdin" bin√§√§ri moodiin --> pystyy lukemaan bin√§√§ri√§
 #ifdef _MSC_VER
   int result = ::_setmode(_fileno(stdin), _O_BINARY);
   if (result == -1)
@@ -77,7 +77,7 @@ void NFmiQueryData::Write(bool forceBinaryFormat) const
 {
   if (forceBinaryFormat) ::ForceBinaryFormatWrite(*this);
 
-// Asetetaan 'stdout' bin‰‰ri moodiin --> kirjoittaa bin‰‰ri‰
+// Asetetaan 'stdout' bin√§√§ri moodiin --> kirjoittaa bin√§√§ri√§
 #ifdef _MSC_VER
   int result = ::_setmode(_fileno(stdout), _O_BINARY);
   if (result == -1)
@@ -203,8 +203,8 @@ NFmiQueryData::NFmiQueryData(const string &thePath, bool theMemoryMapFlag)
 
   if (thePath == "-")
   {
-    // Laitetaan yleinen infoversio numero talteen, ett‰ se
-    // voidaan palauttaa luvun j‰lkeen voimaan taas
+    // Laitetaan yleinen infoversio numero talteen, ett√§ se
+    // voidaan palauttaa luvun j√§lkeen voimaan taas
     unsigned short oldInfoVersion = FmiInfoVersion;
     Read();
     // palautetaan yleinen infoversion takaisen ennalleen
@@ -216,8 +216,8 @@ NFmiQueryData::NFmiQueryData(const string &thePath, bool theMemoryMapFlag)
 
     const string filename = NFmiFileSystem::FindQueryData(thePath);
 
-    // Laitetaan yleinen infoversio numero talteen, ett‰ se
-    // voidaan palauttaa luvun j‰lkeen voimaan taas
+    // Laitetaan yleinen infoversio numero talteen, ett√§ se
+    // voidaan palauttaa luvun j√§lkeen voimaan taas
     unsigned short oldInfoVersion = FmiInfoVersion;
 
     try
@@ -246,7 +246,7 @@ NFmiQueryData::NFmiQueryData(const string &thePath, bool theMemoryMapFlag)
       else
 #endif
       {
-        // Olion sis‰inen infoversio numero j‰‰ itsQueryInfo:on talteen.
+        // Olion sis√§inen infoversio numero j√§√§ itsQueryInfo:on talteen.
 
         file >> *itsQueryInfo;
 
@@ -575,8 +575,8 @@ bool NFmiQueryData::IsEqual(const NFmiQueryData &theQueryData) const
 
 std::ostream &NFmiQueryData::Write(std::ostream &file) const
 {
-  double oldInfoVersion = FmiInfoVersion;  // Laitetaan yleinen infoversio numero talteen, ett‰ se
-                                           // voidaan palauttaa luvun j‰lkeen voimaan taas
+  double oldInfoVersion = FmiInfoVersion;  // Laitetaan yleinen infoversio numero talteen, ett√§ se
+                                           // voidaan palauttaa luvun j√§lkeen voimaan taas
   FmiInfoVersion = static_cast<unsigned short>(InfoVersion());
 
   if (InfoVersion() >= 6) UseBinaryStorage(true);
@@ -600,11 +600,11 @@ std::ostream &NFmiQueryData::Write(std::ostream &file) const
 
 std::istream &NFmiQueryData::Read(std::istream &file)
 {
-  // Laitetaan yleinen infoversio numero talteen, ett‰ se
-  // voidaan palauttaa luvun j‰lkeen voimaan taas
+  // Laitetaan yleinen infoversio numero talteen, ett√§ se
+  // voidaan palauttaa luvun j√§lkeen voimaan taas
   unsigned short oldInfoVersion = FmiInfoVersion;
 
-  // Olion sis‰inen infoversio numero j‰‰ itsQueryInfo:on talteen.
+  // Olion sis√§inen infoversio numero j√§√§ itsQueryInfo:on talteen.
   itsQueryInfo = new NFmiQueryInfo();
   file >> *itsQueryInfo;
 
@@ -622,7 +622,7 @@ void NFmiQueryData::SetHPlaceDescriptor(const NFmiHPlaceDescriptor &newDesc)
   if ((Info()->HPlaceDescriptor() == newDesc) == false)
   {
     itsQueryInfo->SetHPlaceDescriptor(newDesc);
-    MakeLatLonCache();  // t‰m‰ alustaa latlon cachen uudestaan
+    MakeLatLonCache();  // t√§m√§ alustaa latlon cachen uudestaan
   }
 }
 

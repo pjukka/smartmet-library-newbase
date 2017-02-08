@@ -81,7 +81,7 @@ void NFmiDataModifierExtreme::Calculate(float theValue)
     if (IsNewExtreme(theValue))
     {
       itsExtremeValue = theValue;
-      // EI ENÄÄ SAA AIKAA TALTEEN, EI TAIDA OLLA MISSÄÄN KÄYTÖSSÄ
+      // EI ENÃ„Ã„ SAA AIKAA TALTEEN, EI TAIDA OLLA MISSÃ„Ã„N KÃ„YTÃ–SSÃ„
       //	SetTime(theQI);
     }
   }
@@ -101,7 +101,7 @@ void NFmiDataModifierExtreme::Calculate(float theValue, NFmiQueryInfo *theQI)
     if (IsNewExtreme(theValue))
     {
       itsExtremeValue = theValue;
-      // TÄSSÄ SAA
+      // TÃ„SSÃ„ SAA
       SetTime(theQI);
     }
   }

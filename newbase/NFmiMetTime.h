@@ -17,8 +17,8 @@ class NFmiLocation;
 class _FMI_DLL NFmiMetTime : public NFmiTime
 {
  public:
-  static const NFmiMetTime gMissingTime;  // T‰t‰ missing aikaa voi k‰ytt‰‰, jos haluaa ilmaista
-                                          // ett‰ jokin aika ei mahdollisesti ole initialisoitu
+  static const NFmiMetTime gMissingTime;  // T√§t√§ missing aikaa voi k√§ytt√§√§, jos haluaa ilmaista
+                                          // ett√§ jokin aika ei mahdollisesti ole initialisoitu
 
   explicit NFmiMetTime(const long timeStepInMinutes = 60);
   NFmiMetTime(const NFmiMetTime& aMetTime);
@@ -38,6 +38,9 @@ class _FMI_DLL NFmiMetTime : public NFmiTime
               long timeStep = 60,
               short negRange = 0,
               short posRange = 0);
+
+  // NfmiMetTime timestamp with seconds and minutes
+  static NFmiMetTime now();
 
   // Explicit conversion to boost::posix_time::ptime
   boost::posix_time::ptime PosixTime() const;
@@ -66,9 +69,9 @@ class _FMI_DLL NFmiMetTime : public NFmiTime
   void NearestMetTime(const long deltaInMinutes, FmiDirection theDirect = kNoDirection);
   void NearestMetTime(const NFmiTimePerioid& perioid, FmiDirection theDirect = kNoDirection);
 
-  // N‰iden pit‰isi mielest‰ni muuttaa olion sis‰ist‰ arvoa, vaan n‰m‰p‰
-  // palauttavatkin uuden arvon j‰tt‰en olion arvot entiselleen!
-  // Eli selkeyden vuoksi pit‰isi olla GetNextObservation(), Get...
+  // N√§iden pit√§isi mielest√§ni muuttaa olion sis√§ist√§ arvoa, vaan n√§m√§p√§
+  // palauttavatkin uuden arvon j√§tt√§en olion arvot entiselleen!
+  // Eli selkeyden vuoksi pit√§isi olla GetNextObservation(), Get...
   //    NFmiMetTime NextObservation( const short deltaInMinutes ) const;
   //    NFmiMetTime PreviousObservation( const short deltaInMinutes ) const;
   //    NFmiMetTime NearestObservation( const short deltaInMinutes ) const;
@@ -176,8 +179,8 @@ inline long NFmiMetTime::GetTimeStep(void) const { return fTimeStepInMinutes; }
 inline void NFmiMetTime::NearestMetTime(FmiDirection theDirect)
 {
   NearestMetTime(GetTimeStep(), theDirect);
-  SetSec(0);  // t‰m‰ korjaa sekunti bugin NerarestMetTime(step)-metodista. Olisin laittanut
-              // korjauksen kyseiseen metodiin, mutta MSVC++ 7.1 k‰‰nt‰j‰ ei ota jostain syyst‰
+  SetSec(0);  // t√§m√§ korjaa sekunti bugin NerarestMetTime(step)-metodista. Olisin laittanut
+              // korjauksen kyseiseen metodiin, mutta MSVC++ 7.1 k√§√§nt√§j√§ ei ota jostain syyst√§
               // koodi muutoksia huomioon!!!
 }
 

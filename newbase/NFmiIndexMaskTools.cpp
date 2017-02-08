@@ -1,7 +1,7 @@
 // ======================================================================
 /*!
  * \file
- * \brief Implementation of namespace NFmiIndexMaskTools
+ *Â \brief Implementation of namespace NFmiIndexMaskTools
  *
  * \section sec_NFmiIndexMaskTools_details Implementation details
  *
@@ -1222,7 +1222,7 @@ const std::string MaskString(const NFmiIndexMask &theMask,
 // ----------------------------------------------------------------------
 /*!
  * Makes mask to wanted grid from info-grid and calculated by given
- * condition in info's current time, param and level.´The return
+ * condition in info's current time, param and level.Â´The return
  * mask can be in different grid than the source-info grid.
  * If condition return missing-value, mask to the current point is not set.
  *

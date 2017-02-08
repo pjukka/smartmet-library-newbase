@@ -35,11 +35,11 @@ enum FmiParamType
   kWindBarbParam = 8,
   kIncrementalParam = 100
 
-  // parametri voi olla yht‰aikaa jatkuva ja kasvava (100 + 1 = 101)
-  // K‰yttˆ: Normaalit param tyypit kysyt‰‰n edelleen Type()-metodilla
+  // parametri voi olla yht√§aikaa jatkuva ja kasvava (100 + 1 = 101)
+  // K√§ytt√∂: Normaalit param tyypit kysyt√§√§n edelleen Type()-metodilla
   // mutta se ei palauta 100-osaa. IsIncremental() palauttaa true:n jos
   // inkrementaalinen parametri ja SetIncrementalType(bool)-metodilla asetetaan
-  // parametri myˆs inkrementaaliseksi, edellisen arvon lis‰ksi.
+  // parametri my√∂s inkrementaaliseksi, edellisen arvon lis√§ksi.
 
 };
 

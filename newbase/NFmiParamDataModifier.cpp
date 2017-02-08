@@ -61,12 +61,12 @@ NFmiParamDataModifier::NFmiParamDataModifier(NFmiDataIdent* theParam,
 
 bool NFmiParamDataModifier::Match(const NFmiDataIdent& theParam, const NFmiLevel* theLevel)
 {
-  // HUOM!!! Tarkistus tehdään ainakin aluksi parId tasolla ja levelID tasolla!!!!!!
+  // HUOM!!! Tarkistus tehdÃ¤Ã¤n ainakin aluksi parId tasolla ja levelID tasolla!!!!!!
   if (*itsParam->GetParam() == *theParam.GetParam())
   {
     if (itsLevel && theLevel && (*itsLevel == *theLevel))
       return true;
-    else if (!(itsLevel && theLevel))  // jos molemmat ovat 0-pointtereita myös true
+    else if (!(itsLevel && theLevel))  // jos molemmat ovat 0-pointtereita myÃ¶s true
       return true;
   }
   return false;

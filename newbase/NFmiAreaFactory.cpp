@@ -231,12 +231,12 @@ bool DoPossiblePacificFix(NFmiPoint &bottomLeftLatlon, NFmiPoint &topRightLatlon
     }
     else if (bottomLeftLatlon.X() < topRightLatlon.X() && bottomLeftLatlon.X() >= 180 &&
              topRightLatlon.X() > 180)
-    {  // molemmat nurkkapisteet ovat pacific-alueella (180 - 360), tehd‰‰n niist‰ molemmista
+    {  // molemmat nurkkapisteet ovat pacific-alueella (180 - 360), tehd√§√§n niist√§ molemmista
        // atlantisia koordinaatteja
-      // koska SmartMet toimii paremmin t‰ll‰isissa tilanteissa, jos kyseinen muutos tehd‰‰n. En
-      // tied‰ tarkemmin miksi, koska
-      // debug-versio SmartMetista n‰ytti toimivan t‰ysin oikein joka tapauksessa oli data miten
-      // hyv‰ns‰.
+      // koska SmartMet toimii paremmin t√§ll√§isissa tilanteissa, jos kyseinen muutos tehd√§√§n. En
+      // tied√§ tarkemmin miksi, koska
+      // debug-versio SmartMetista n√§ytti toimivan t√§ysin oikein joka tapauksessa oli data miten
+      // hyv√§ns√§.
       bottomLeftLatlon.X(bottomLeftLatlon.X() - 360);
       topRightLatlon.X(topRightLatlon.X() - 360);
       pacificView = false;

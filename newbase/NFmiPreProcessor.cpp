@@ -79,7 +79,7 @@
  * 22 /_* // *_/take
  * #ifWinter Inc2WINTER #else Inc2SUMMER #endif
  * INSIDE INCLUDE2 end
- *†\endcode
+ *¬†\endcode
  *
  * Resulting stripped file is:
  * ===========================
@@ -278,7 +278,7 @@ bool NFmiPreProcessor::IncludeFiles(const string &theIncludeDirective,
   return Include();
 }
 
-// t‰m‰ poistaa halutun merkin stringin alusta ja lopusta, jos merkki on molemmissa p‰iss‰
+// t√§m√§ poistaa halutun merkin stringin alusta ja lopusta, jos merkki on molemmissa p√§iss√§
 static void RemovePossibleCharactersFromStartAndEnd(std::string &theString, char theChar)
 {
   if (theString.size() < 2) return;
@@ -317,9 +317,9 @@ bool NFmiPreProcessor::Include(void)
     newString += oldString.substr(0, pos);
     posHelp = oldString.find_first_of("\n", pos + lenDef + 1);
     fileName = oldString.substr(pos + lenDef + 1, posHelp - pos - lenDef - 1);
-    NFmiStringTools::TrimR(fileName);  // t‰m‰ viritys johtuu metkun editorin smarttool dialogista,
+    NFmiStringTools::TrimR(fileName);  // t√§m√§ viritys johtuu metkun editorin smarttool dialogista,
                                        // poistetaan mahd. white spacet nimen lopusta
-    RemovePossibleCharactersFromStartAndEnd(fileName, '"');  // t‰m‰ poistaa nimest‰ ""-merkit jos
+    RemovePossibleCharactersFromStartAndEnd(fileName, '"');  // t√§m√§ poistaa nimest√§ ""-merkit jos
                                                              // include:ssa on laitettu tiedoston
                                                              // nimi heittomerkkeihin
     CompleteFileName(fileName);
@@ -336,8 +336,8 @@ bool NFmiPreProcessor::Include(void)
     {
       itsString = newString;
       return true;
-      // ollaan tultu jo loppuun, lopetetaan, muuten j‰‰ ikilooppiin, jos include-lauseen j‰lkeen
-      // ei ole newline‰
+      // ollaan tultu jo loppuun, lopetetaan, muuten j√§√§ ikilooppiin, jos include-lauseen j√§lkeen
+      // ei ole newline√§
     }
     oldString = oldString.substr(posHelp + 1);
     pos = oldString.find(itsIncludeDirective);

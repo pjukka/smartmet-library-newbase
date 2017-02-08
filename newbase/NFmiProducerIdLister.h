@@ -20,8 +20,8 @@ class NFmiProducerIdLister
   NFmiProducerIdLister(const NFmiTimeDescriptor &theTimes, int theDefaultProducerId);
   NFmiProducerIdLister(const std::string &theProducersString);
   NFmiProducerIdLister(const NFmiProducerIdLister &theOther);
-  NFmiProducerIdLister(NFmiQueryInfo &theInfo);  // Huom! pit‰isi olla const info, mutta pari
-                                                 // metodia pit‰‰ muuttaa ensin
+  NFmiProducerIdLister(NFmiQueryInfo &theInfo);  // Huom! pit√§isi olla const info, mutta pari
+                                                 // metodia pit√§√§ muuttaa ensin
   const std::string MakeProducerIdString(void);
   bool IntepretProducerIdString(const std::string &theString);
   bool ChangeTimeResolution(int theNewResolutionInMinutes);
@@ -47,9 +47,9 @@ class NFmiProducerIdLister
  private:
   NFmiTimeDescriptor itsTimes;
   std::string itsProducerString;
-  checkedVector<int> itsProducerIds;  // t‰h‰n talletetaan kunkin ajan tuottaja id
+  checkedVector<int> itsProducerIds;  // t√§h√§n talletetaan kunkin ajan tuottaja id
   checkedVector<NFmiMetTime>
-      itsModelOriginTimes;  // t‰h‰n talletetaan kunkin ajan mallin origin aika
+      itsModelOriginTimes;  // t√§h√§n talletetaan kunkin ajan mallin origin aika
   int itsDefaultProducerId;
 };
 #endif

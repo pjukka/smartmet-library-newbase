@@ -68,11 +68,11 @@ class _FMI_DLL NFmiValueString : public NFmiString
   operator long() const;
   operator double() const;
 
-  // palauttaa stringin, jossa on maksimissaan haluttu m‰‰r‰ desimaaleja. Mutta jos per‰‰n tulisi
-  // jostain alkaen vain nollia, ne j‰tet‰‰n pois stringist‰.
-  // HUOM! static funktio eli k‰yttˆ koodissa: NFmiString str =
+  // palauttaa stringin, jossa on maksimissaan haluttu m√§√§r√§ desimaaleja. Mutta jos per√§√§n tulisi
+  // jostain alkaen vain nollia, ne j√§tet√§√§n pois stringist√§.
+  // HUOM! static funktio eli k√§ytt√∂ koodissa: NFmiString str =
   // NFmiValueString::GetStringWithMaxDecimalsSmartWay(12.54, 4);
-  // Palauttaa "12.54" eik‰ "12.5400"
+  // Palauttaa "12.54" eik√§ "12.5400"
 
   static const NFmiString GetStringWithMaxDecimalsSmartWay(double value, int maxDecimals);
 

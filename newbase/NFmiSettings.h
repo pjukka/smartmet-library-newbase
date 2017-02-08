@@ -24,7 +24,7 @@ void Save();
 
 std::string ToString();
 
-// modifyOnlyExisting -parametri: Jos false, lis‰t‰‰n/muokataan parametria. Jos true, vain
+// modifyOnlyExisting -parametri: Jos false, lis√§t√§√§n/muokataan parametria. Jos true, vain
 // olemassaolevan asetuksen muokkaus onnistuu.
 void Set(const std::string& theName, const std::string& theValue, bool modifyOnlyExisting = false);
 bool IsSet(const std::string& theName);

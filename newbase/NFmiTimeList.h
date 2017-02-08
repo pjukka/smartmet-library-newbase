@@ -70,8 +70,14 @@ class _FMI_DLL NFmiTimeList
   bool TimeInSearchRange(const NFmiMetTime &theTime,
                          unsigned long theTimeRangeInMinutes);  // apu funktio nearestTime:en
   bool IndexOk(int theIndex) const;
+  bool FindNearestBackwardTime(checkedVector<NFmiMetTime *>::iterator &firstNotLess, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes);
+  bool FindNearestForwardTime(checkedVector<NFmiMetTime *>::iterator &firstNotLess, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes);
+  bool FindNearestTime(checkedVector<NFmiMetTime *>::iterator &firstNotLess, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes);
+  int CalcTimeListIndex(const checkedVector<NFmiMetTime *>::iterator &theIter);
+  bool IsSearchedTimeInRange(checkedVector<NFmiMetTime *>::iterator &foundTimeIter, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes);
+  bool CheckFoundTimeIter(checkedVector<NFmiMetTime *>::iterator &foundTimeIter, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes);
 
-  checkedVector<NFmiMetTime *> itsVectorList;  // muutin nimen, ett‰ se erottuu vanhasta
+  checkedVector<NFmiMetTime *> itsVectorList;  // muutin nimen, ett√§ se erottuu vanhasta
                                                //  NFmiVoidPtrList *	itsList;
   mutable int itsIndex;
 

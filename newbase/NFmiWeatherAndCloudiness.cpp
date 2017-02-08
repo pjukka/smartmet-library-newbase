@@ -30,13 +30,13 @@ using namespace std;
 
 namespace
 {
-// Marko: Jouduin siirt‰m‰‰n parametrin t‰nne DLL ongelmien takia
-// (gsm-lib + WeatherAndCloudiness ei linkkaantunut jostain syyst‰
+// Marko: Jouduin siirt√§m√§√§n parametrin t√§nne DLL ongelmien takia
+// (gsm-lib + WeatherAndCloudiness ei linkkaantunut jostain syyst√§
 // DLL versiona)
 
 bool fDefaultPrecipitationTypeIsLargeScale = false;
 
-// n‰it‰ lukuja k‰ytet‰‰n eri versioissa vertailussa, onko sadetta vai ei
+// n√§it√§ lukuja k√§ytet√§√§n eri versioissa vertailussa, onko sadetta vai ei
 
 const float gMinimumPrecipitationForV6 = 0.1f;
 const float gMinimumPrecipitationForV7 = 0.015f;
@@ -129,10 +129,10 @@ NFmiWeatherAndCloudiness::NFmiWeatherAndCloudiness(unsigned long theValue,
       itsPrecipitationProbabilityLimit1(),
       itsPrecipitationProbabilityLimit2()
 {
-  if (theParamType == kFmiPackedWeather)  // tekee mist‰ tahansa luvusta kiltisti s‰‰t‰
+  if (theParamType == kFmiPackedWeather)  // tekee mist√§ tahansa luvusta kiltisti s√§√§t√§
   {                                       // tarkistettava ulkopuolella!!!!
     itsData.longType = theValue;
-    fDataOk = true;  // pit‰isi tarkistaa?!
+    fDataOk = true;  // pit√§isi tarkistaa?!
   }
   else
   {
@@ -165,10 +165,10 @@ NFmiWeatherAndCloudiness::NFmiWeatherAndCloudiness(float theValue,
       itsPrecipitationProbabilityLimit1(),
       itsPrecipitationProbabilityLimit2()
 {
-  if (theParamType == kFmiPackedWeather)  // tekee mist‰ tahansa luvusta kiltisti s‰‰t‰
+  if (theParamType == kFmiPackedWeather)  // tekee mist√§ tahansa luvusta kiltisti s√§√§t√§
   {                                       // tarkistettava ulkopuolella!!!!
     itsData.longType = ConvertFloatToLong(theValue);
-    fDataOk = true;  // pit‰isi tarkistaa?!
+    fDataOk = true;  // pit√§isi tarkistaa?!
   }
   else
   {
@@ -200,7 +200,7 @@ NFmiWeatherAndCloudiness::NFmiWeatherAndCloudiness(unsigned long theSynopCloudVa
       itsPrecipitationProbabilityLimit2()
 {
   // konstruktoriin kaikki pilvet oletusarvoilla
-  // PITƒƒK÷ ALUSTAA TYHJƒKSI=k4BitMissing, JOS theSynopWeatherValue=PUUTTUVA
+  // PIT√Ñ√ÑK√ñ ALUSTAA TYHJ√ÑKSI=k4BitMissing, JOS theSynopWeatherValue=PUUTTUVA
   // (=k4BitMissing VAI 32700?)
 
   itsData.longType = kTCombinedWeatherMissing;
@@ -295,7 +295,7 @@ NFmiWeatherAndCloudiness::NFmiWeatherAndCloudiness(float theCloudSymbol,
   {
     fDataOk = true;
     SetTotalCloudiness(static_cast<unsigned long>(round(theTotalCloudiness / 10)));
-    CalcClouds(static_cast<unsigned long>(theCloudSymbol));  // arvot ala-, keski- ja yl‰pilville
+    CalcClouds(static_cast<unsigned long>(theCloudSymbol));  // arvot ala-, keski- ja yl√§pilville
 
     if (theFogSymbol != kFloatMissing)
       SetFogIntensity(CalcFogIntensity(static_cast<unsigned long>(theFogSymbol)));
@@ -404,7 +404,7 @@ void NFmiWeatherAndCloudiness::CalcClouds(unsigned long theCloudSymbol)
       SetLowClouds(TotalCloudiness());
       SetMiddleClouds(TotalCloudiness());
     }
-    // viimeisenkin luvun voisi k‰sitell‰!
+    // viimeisenkin luvun voisi k√§sitell√§!
   }
 }
 
@@ -565,7 +565,7 @@ float NFmiWeatherAndCloudiness::PrecipitationWeightedMean(unsigned long missingV
                                                           unsigned long value4,
                                                           float factor4) const
 {
-  // suora keskiarvo milleiss‰
+  // suora keskiarvo milleiss√§
   // tai kohti maksimia hilattu (considerMax asetettu) joka soveltuu aikaintegrointiin
 
   bool any = false;
@@ -861,9 +861,9 @@ bool NFmiWeatherAndCloudiness::SetToWeightedMean(NFmiCombinedParam *theCombinedP
                                                  NFmiCombinedParam *theCombinedParam4,
                                                  float fac4)
 {
-  // suora keskiarvo paitsi sateen olomuoto pit‰isi saada erikoisk‰sittelyn
-  // k‰ytet‰‰n qinfosta painotettujen keskiarvojen laskemiseen
-  // (latlon:n ymp‰rˆivist‰ 4:st‰ pisteest‰)
+  // suora keskiarvo paitsi sateen olomuoto pit√§isi saada erikoisk√§sittelyn
+  // k√§ytet√§√§n qinfosta painotettujen keskiarvojen laskemiseen
+  // (latlon:n ymp√§r√∂ivist√§ 4:st√§ pisteest√§)
 
   NFmiWeatherAndCloudiness *theWeatherAndCloudiness1 =
       static_cast<NFmiWeatherAndCloudiness *>(theCombinedParam1);
@@ -919,7 +919,7 @@ bool NFmiWeatherAndCloudiness::SetToWeightedMean(NFmiCombinedParam *theCombinedP
                              theWeatherAndCloudiness4->HighClouds(),
                              factor4));
 
-  // pit‰‰kˆ t‰m‰ ollenkaan laskea
+  // pit√§√§k√∂ t√§m√§ ollenkaan laskea
   SetTotalCloudiness(WeightedMean(kT4BitMissing,
                                   theWeatherAndCloudiness1->TotalCloudiness(),
                                   factor1,
@@ -1018,7 +1018,7 @@ unsigned long NFmiWeatherAndCloudiness::PrecipitationFormWeightedMean(unsigned l
                                                                       unsigned long amount4,
                                                                       float factor4) const
 {
-  // painotus sadem‰‰r‰n mukaan
+  // painotus sadem√§√§r√§n mukaan
 
   double sums[FmiNumberOfPrecipitationForms];
   for (unsigned int i = 0; i < FmiNumberOfPrecipitationForms; i++)
@@ -1048,7 +1048,7 @@ unsigned long NFmiWeatherAndCloudiness::PrecipitationFormWeightedMean(unsigned l
 // ----------------------------------------------------------------------
 /*!
  * \param formTable Undocumented
- *†\return Undocumented
+ *¬†\return Undocumented
  */
 // ----------------------------------------------------------------------
 
@@ -1058,7 +1058,7 @@ unsigned long NFmiWeatherAndCloudiness::PrecipitationFormFromWeightTable(double 
   for (unsigned int i = 0; i < FmiNumberOfPrecipitationForms; i++)
     sum += formTable[i];
 
-  // toimiiko vaikka n‰in
+  // toimiiko vaikka n√§in
   if (sum <= 0.)
     return kT3BitMissing;
   else if ((formTable[5] + formTable[4]) / sum > .3)
@@ -1070,17 +1070,17 @@ unsigned long NFmiWeatherAndCloudiness::PrecipitationFormFromWeightTable(double 
   }
   else if (formTable[6] / sum > .3)
     return kTHail;
-  else if ((formTable[0] + formTable[4]) / sum > .7)  // 5.11.99 +j‰‰tav‰ //25.5.00 oli .8
+  else if ((formTable[0] + formTable[4]) / sum > .7)  // 5.11.99 +j√§√§tav√§ //25.5.00 oli .8
     return kTDrizzle;
   else
-  {  // 6.2.03 tihkut pois jotta tihku+lumi ei ->r‰nt‰‰
+  {  // 6.2.03 tihkut pois jotta tihku+lumi ei ->r√§nt√§√§
     double rainSum = formTable[1] + .5 * formTable[2] + formTable[5];
-    double snowSum = formTable[3] + .5 * formTable[2];  // ei rakeita t‰nne
+    double snowSum = formTable[3] + .5 * formTable[2];  // ei rakeita t√§nne
     double rainSnowRelation;
     if (snowSum > 0.)
       rainSnowRelation = rainSum / snowSum;
     else
-      rainSnowRelation = 100.;  // oikeastaan ‰‰retˆn
+      rainSnowRelation = 100.;  // oikeastaan √§√§ret√∂n
 
     if (rainSnowRelation > 9.)  // rajat oli 20/80, nyt 10/90%
       return kTRain;
@@ -1115,7 +1115,7 @@ unsigned long NFmiWeatherAndCloudiness::TimeIntegratedHessaa(
     const NFmiWeatherAndCloudiness &theWeatherAndCloudiness4,
     float fac4)
 {
-  // EI PƒIVITETTY
+  // EI P√ÑIVITETTY
   NFmiWeatherAndCloudiness newWeatherAndCloudiness(itsInfoVersion);
 
   float factorSum = fac1 + fac2;  //+fac3;
@@ -1552,7 +1552,7 @@ unsigned long NFmiWeatherAndCloudiness::CalcSynopPrecipitationForm(
     case 24:
     case 66:
     case 67:
-      return kTFreezingRain;  // Tarkista Kaisalta t‰m‰n ja seuraavan suhteeet
+      return kTFreezingRain;  // Tarkista Kaisalta t√§m√§n ja seuraavan suhteeet
     case 56:
     case 57:
       return kTFreezingDrizzle;  // Tarkista Kaisalta (vrt. ed.)
@@ -1593,7 +1593,7 @@ unsigned long NFmiWeatherAndCloudiness::CalcSynopPrecipitationForm(
     case 95:
     case 97:
       return kTRain;
-    // 	case 20:     //Sensuroitu=tihkusadetta (ei j‰‰t‰v‰‰) tai lumijyv‰si‰
+    // 	case 20:     //Sensuroitu=tihkusadetta (ei j√§√§t√§v√§√§) tai lumijyv√§si√§
     case 50:
     case 51:
     case 52:
@@ -1634,9 +1634,9 @@ unsigned long NFmiWeatherAndCloudiness::CalcSynopPrecipitationForm(
     case 88:
     case 89:
     case 90:
-    case 93:  // N‰it‰ koodeja 93 ja 94 ei mielest‰mme voi m‰‰ritell‰ rakeiksi Mikael J. ja Mikael
+    case 93:  // N√§it√§ koodeja 93 ja 94 ei mielest√§mme voi m√§√§ritell√§ rakeiksi Mikael J. ja Mikael
               // F. 12.10.2000
-    case 94:  // Mutta Kukkonen m‰‰ritteli ne rakeiksi
+    case 94:  // Mutta Kukkonen m√§√§ritteli ne rakeiksi
     case 96:
     case 99:
       return kTHail;
@@ -1767,7 +1767,7 @@ unsigned long NFmiWeatherAndCloudiness::CalcSynopPrecipitationForm(
       else
         return kTSleet;
     }
-    // 	case 20:     //Sensuroitu=tihkusadetta (ei j‰‰t‰v‰‰) tai lumijyv‰si‰
+    // 	case 20:     //Sensuroitu=tihkusadetta (ei j√§√§t√§v√§√§) tai lumijyv√§si√§
     case 50:
     case 51:
     case 52:
@@ -1807,7 +1807,7 @@ unsigned long NFmiWeatherAndCloudiness::CalcPrecipitationForm(
     case 24:
     case 66:
     case 67:
-      return kTFreezingRain;  // Tarkista Kaisalta t‰m‰n ja seuraavan suhteeet
+      return kTFreezingRain;  // Tarkista Kaisalta t√§m√§n ja seuraavan suhteeet
     case 56:
     case 57:
       return kTFreezingDrizzle;  // Tarkista Kaisalta (vrt. ed.)
@@ -1833,7 +1833,7 @@ unsigned long NFmiWeatherAndCloudiness::CalcPrecipitationForm(
     case 84:
       return kTSleet;
     case 21:
-    case 25:  // Mikael J. ja Mikael F. lis‰siv‰t vesikuuron
+    case 25:  // Mikael J. ja Mikael F. lis√§siv√§t vesikuuron
     case 60:
     case 61:
     case 62:
@@ -1849,7 +1849,7 @@ unsigned long NFmiWeatherAndCloudiness::CalcPrecipitationForm(
     case 97:
       return kTRain;
 
-    // 	case 20:     //Sensuroitu=tihkusadetta (ei j‰‰t‰v‰‰) tai lumijyv‰si‰
+    // 	case 20:     //Sensuroitu=tihkusadetta (ei j√§√§t√§v√§√§) tai lumijyv√§si√§
     case 50:
     case 51:
     case 52:
@@ -2004,7 +2004,7 @@ bool NFmiWeatherAndCloudiness::SetToWeightedPeriod(NFmiQueryInfo *info,
   while (newInfo->Time() <= theEndTime)
   {
     {
-      // jos lonlat annettu  pit‰‰ ottaa paikan mukaan interpoloitu
+      // jos lonlat annettu  pit√§√§ ottaa paikan mukaan interpoloitu
       if (!locationMissing) newInfo->InterpolatedValue(theLonLat);
 
       const NFmiWeatherAndCloudiness *weather =
@@ -2058,7 +2058,7 @@ bool NFmiWeatherAndCloudiness::SetToWeightedPeriod(NFmiQueryInfo *info,
         }
         if (weather->PrecipitationForm() != kT3BitMissing &&
             weather->TotalPrecipitation() != TotalPrecipitationMissingValue())
-        {  // painotus sadem‰‰r‰n mukaan
+        {  // painotus sadem√§√§r√§n mukaan
           precipitationForms[weather->PrecipitationForm()] +=
               PrecipitationScale(weather->TotalPrecipitation()) * factor;
         }
@@ -2079,8 +2079,8 @@ bool NFmiWeatherAndCloudiness::SetToWeightedPeriod(NFmiQueryInfo *info,
     if (!newInfo->NextTime()) break;
   }
 
-  //	pit‰isi olla joku resetointi ensin
-  itsData.longType = kTCombinedWeatherMissing;  // riitt‰‰kˆ?
+  //	pit√§isi olla joku resetointi ensin
+  itsData.longType = kTCombinedWeatherMissing;  // riitt√§√§k√∂?
 
   if (lowCloudsFactorSum > 0.)
     SetLowClouds(static_cast<unsigned long>(lowCloudsSum / lowCloudsFactorSum + .5));
@@ -2190,7 +2190,7 @@ bool NFmiWeatherAndCloudiness::SetToWeightedPeriod(NFmiQueryInfo *info,
   while (newInfo->Time() <= endTime)
   {
     {
-      // jos lonlat annettu  pit‰‰ ottaa paikan mukaan interpoloitu
+      // jos lonlat annettu  pit√§√§ ottaa paikan mukaan interpoloitu
       if (!locationMissing) newInfo->InterpolatedValue(theLonLat);
 
       const NFmiWeatherAndCloudiness *weather =
@@ -2244,7 +2244,7 @@ bool NFmiWeatherAndCloudiness::SetToWeightedPeriod(NFmiQueryInfo *info,
         }
         if (weather->PrecipitationForm() != kT3BitMissing &&
             weather->TotalPrecipitation() != TotalPrecipitationMissingValue())
-        {  // painotus sadem‰‰r‰n mukaan
+        {  // painotus sadem√§√§r√§n mukaan
           precipitationForms[weather->PrecipitationForm()] +=
               PrecipitationScale(weather->TotalPrecipitation()) * factor;
         }
@@ -2265,8 +2265,8 @@ bool NFmiWeatherAndCloudiness::SetToWeightedPeriod(NFmiQueryInfo *info,
     if (!newInfo->NextTime()) break;
   }
 
-  //	pit‰isi olla joku resetointi ensin
-  itsData.longType = kTCombinedWeatherMissing;  // riitt‰‰kˆ?
+  //	pit√§isi olla joku resetointi ensin
+  itsData.longType = kTCombinedWeatherMissing;  // riitt√§√§k√∂?
 
   if (lowCloudsFactorSum > 0.)
     SetLowClouds(static_cast<unsigned long>(lowCloudsSum / lowCloudsFactorSum + .5));
@@ -2289,7 +2289,7 @@ bool NFmiWeatherAndCloudiness::SetToWeightedPeriod(NFmiQueryInfo *info,
     else
       mmWithMax = totalPrecipitationSum / totalPrecipitationFactorSum;  // 16.11.99 oli maxPr.. !!!
 
-    SubValue(mmWithMax + 0.01, kFmiPrecipitation1h);  // 25.5.00 pieni pyˆristyslis‰
+    SubValue(mmWithMax + 0.01, kFmiPrecipitation1h);  // 25.5.00 pieni py√∂ristyslis√§
   }
 
   SetPrecipitationForm(PrecipitationFormFromWeightTable(precipitationForms));
@@ -2370,12 +2370,12 @@ unsigned long NFmiWeatherAndCloudiness::PartlyCloudyHessaa(void)
     }
     else if (IsSleet())
     {
-      hessaa = 70;  // sataa, konv, r‰nt‰‰
+      hessaa = 70;  // sataa, konv, r√§nt√§√§
       fDataOk = true;
     }
     else if (PrecipitationForm() != kT3BitMissing)
     {
-      hessaa = 20;  // sataa, konv, vett‰ tai tihkua
+      hessaa = 20;  // sataa, konv, vett√§ tai tihkua
       fDataOk = true;
     }
     else if (fAutoUpdate)  // olomuoto puuttuva
@@ -2395,7 +2395,7 @@ unsigned long NFmiWeatherAndCloudiness::PartlyCloudyHessaa(void)
     else
       fDataOk = false;  // sateen olomuoto puuttuu
   }
-  // seuraavan voisi yhdist‰‰ edelliseen
+  // seuraavan voisi yhdist√§√§ edelliseen
   else if (PrecipitationType() == kTLargeScalePrecipitation)
   {
     if (IsSnow())
@@ -2405,12 +2405,12 @@ unsigned long NFmiWeatherAndCloudiness::PartlyCloudyHessaa(void)
     }
     else if (IsSleet())
     {
-      hessaa = 70;  // r‰nt‰‰
+      hessaa = 70;  // r√§nt√§√§
       fDataOk = true;
     }
     else if (PrecipitationForm() != kT3BitMissing)
     {
-      hessaa = 20;  // 30;  //sataa, konv, vett‰ tai tihkua
+      hessaa = 20;  // 30;  //sataa, konv, vett√§ tai tihkua
       fDataOk = true;
     }
     else if (fAutoUpdate)  // olomuoto puuttuva
@@ -2455,7 +2455,7 @@ unsigned long NFmiWeatherAndCloudiness::PartlyCloudyHessaa(void)
     fDataOk = true;
   }
   else
-    fDataOk = false;  // sateen tyyppi v‰‰rin noille pilville
+    fDataOk = false;  // sateen tyyppi v√§√§rin noille pilville
   long temp = TotalPrecipitationToHessaa();
   if (temp != kLongMissing)
     hessaa += temp;
@@ -2475,7 +2475,7 @@ unsigned long NFmiWeatherAndCloudiness::HalfCloudyHessaa(void)
 {
   unsigned long hessaa = kUnsignedLongMissing;
   unsigned long preci = TotalPrecipitationToHessaa();
-  if (preci == kUnsignedLongMissing)  // ei sada sittenk‰‰n
+  if (preci == kUnsignedLongMissing)  // ei sada sittenk√§√§n
     fDataOk = false;
   else if (IsConvective())
   {
@@ -2514,17 +2514,17 @@ unsigned long NFmiWeatherAndCloudiness::HalfCloudyHessaa(void)
     else
       fDataOk = false;  // sateen olomuoto puuttuu
   }
-  // yhdist‰ seuraava edelliseen
+  // yhdist√§ seuraava edelliseen
   else if (PrecipitationType() == kTLargeScalePrecipitation)
   {
-    if (IsSnow())  // ent‰s r‰nt‰??
+    if (IsSnow())  // ent√§s r√§nt√§??
     {
       hessaa = 40 + preci;  // 50+preci; //sataa lunta
       fDataOk = true;
     }
     else if (IsSleet())
     {
-      hessaa = 70 + preci;  // 50+preci; //sataa r‰nt‰‰
+      hessaa = 70 + preci;  // 50+preci; //sataa r√§nt√§√§
       fDataOk = true;
     }
     else if (PrecipitationForm() != kT3BitMissing)
@@ -2579,7 +2579,7 @@ unsigned long NFmiWeatherAndCloudiness::HalfCloudyHessaa(void)
       hessaa = 40 + preci;  // olomuoto on jo lumi
     fDataOk = true;
   }
-  else  // jatkuvaa sadetta ja puolipilvist‰
+  else  // jatkuvaa sadetta ja puolipilvist√§
     fDataOk = false;
 
   return hessaa;
@@ -2595,7 +2595,7 @@ unsigned long NFmiWeatherAndCloudiness::OverCastHessaa(void)
 {
   unsigned long hessaa = kUnsignedLongMissing;
   unsigned long preci = TotalPrecipitationToHessaa();
-  if (preci == kUnsignedLongMissing)  // ei sada sittenk‰‰n
+  if (preci == kUnsignedLongMissing)  // ei sada sittenk√§√§n
   {
     fDataOk = false;
     return hessaa;
@@ -2617,7 +2617,7 @@ unsigned long NFmiWeatherAndCloudiness::OverCastHessaa(void)
       hessaa = 30 + preci;  // sataa muuta kuin lunta
       fDataOk = true;
     }
-    else if (fAutoUpdate)  // ja olomuotoa ei ole m‰‰ritetty
+    else if (fAutoUpdate)  // ja olomuotoa ei ole m√§√§ritetty
     {
       SetPrecipitationType(kTLargeScalePrecipitation);
 
@@ -2656,7 +2656,7 @@ unsigned long NFmiWeatherAndCloudiness::OverCastHessaa(void)
       hessaa = 30 + preci;  // 20+preci; //sataa muuta kuin lunta
       fDataOk = true;
     }
-    else if (fAutoUpdate)  // ja olomuotoa ei ole m‰‰ritetty
+    else if (fAutoUpdate)  // ja olomuotoa ei ole m√§√§ritetty
     {
       if (itsTemperature > -1)
       {
@@ -2689,7 +2689,7 @@ unsigned long NFmiWeatherAndCloudiness::OverCastHessaa(void)
       hessaa = 50 + preci;  // olomuoto on jo lumi
   }
   else
-    fDataOk = false;  // konvektiivista sadetta ja t‰yspilvist‰ tai tyyppi puuttuu
+    fDataOk = false;  // konvektiivista sadetta ja t√§yspilvist√§ tai tyyppi puuttuu
   return hessaa;
 }
 
@@ -2700,13 +2700,13 @@ unsigned long NFmiWeatherAndCloudiness::OverCastHessaa(void)
 // ----------------------------------------------------------------------
 
 /*
-        Seuraava ukkos-hessaa m‰‰ritys on otettu Lassen lehtis‰‰ spekseist‰:
+        Seuraava ukkos-hessaa m√§√§ritys on otettu Lassen lehtis√§√§ spekseist√§:
         Hessaa koodit 61 - 64
-        Oletus: T‰h‰n metodiin (ThunderToHessaa) tullaan vain jos ukkosen tn >= 30.
-        Koodi rajat m‰‰ritelty seuraavasti:
-        T‰ys pilvisyyden raja (63 ja 64) on N >= 85, muuten puolipilvist‰ (vaikka ei olisi pilve‰
+        Oletus: T√§h√§n metodiin (ThunderToHessaa) tullaan vain jos ukkosen tn >= 30.
+        Koodi rajat m√§√§ritelty seuraavasti:
+        T√§ys pilvisyyden raja (63 ja 64) on N >= 85, muuten puolipilvist√§ (vaikka ei olisi pilve√§
    ollenkaan)
-        Voimakkaan ukkosen rajat (62 ja 64) on ett‰ ukkosen tn >= 60 %
+        Voimakkaan ukkosen rajat (62 ja 64) on ett√§ ukkosen tn >= 60 %
         Oletus arvo jos ukkosen tn >= 30 , jos muut arvot (rr ja N) ei puuttuvia on 61
 */
 
@@ -2732,7 +2732,7 @@ unsigned long NFmiWeatherAndCloudiness::ThunderToHessaa(void) const
         return 61;
     }
   }
-  // oletus oli ett‰ t‰h‰n metodiin tullaan vain jos ukkosen tn >= 30, joten tarkastetaan t‰m‰ viel‰
+  // oletus oli ett√§ t√§h√§n metodiin tullaan vain jos ukkosen tn >= 30, joten tarkastetaan t√§m√§ viel√§
   // erikseen
   if (thunderProb != kFloatMissing && thunderProb >= 30) return 61;
   // jos jokin arvoista oli puuttuvaa, palautetaan puuttuva arvo
@@ -2751,7 +2751,7 @@ unsigned long NFmiWeatherAndCloudiness::ToHessaa(void)
   if (itsData.longType == kTCombinedWeatherMissing) return hessaa;
   if (ThunderProbability() >= 3 &&
       ThunderProbability() != kTThunderProbabilityMissing)  // ukkonen otetaan huomioon, jos sen tn
-                                                            // on >= 30 (Lassen lehtis‰‰ speksien
+                                                            // on >= 30 (Lassen lehtis√§√§ speksien
                                                             // mukaiseksi muutettu)
     return ThunderToHessaa();
   if (IsFair())  // ei sada
@@ -2768,7 +2768,7 @@ unsigned long NFmiWeatherAndCloudiness::ToHessaa(void)
     else  // pilvet puuttuu
     {
       fDataOk = false;                     // pilvet puuttuu, vaikka sataa
-      hessaa = TotalCloudinessToHessaa();  // koemieless‰ t‰‰ll‰ (laura 051099)
+      hessaa = TotalCloudinessToHessaa();  // koemieless√§ t√§√§ll√§ (laura 051099)
     }
   }
   return hessaa;
@@ -2789,7 +2789,7 @@ bool NFmiWeatherAndCloudiness::CheckHessaa(unsigned long theValue) const
     if (theValue >= 1 &&
         (theValue < 4 || (theValue / 10 <= 8 && theValue % 10 <= 3)))  // muutin tarkastelussa
                                                                        // (theValue/10 <= 8) 6:n
-                                                                       // 8:ksi, koska r‰nn‰t
+                                                                       // 8:ksi, koska r√§nn√§t
                                                                        // tulivat kuvioihin
       retVal = true;
   }
@@ -2817,11 +2817,11 @@ unsigned long NFmiWeatherAndCloudiness::ToHsade(void) const
   {
     if (IsLargeScale())
     {
-      if (IsRain())  // vett‰
+      if (IsRain())  // vett√§
       {
         hsade = hsade;
       }
-      else if (IsSleet())  // r‰nt‰‰
+      else if (IsSleet())  // r√§nt√§√§
       {
         hsade = 68;
       }
@@ -2829,7 +2829,7 @@ unsigned long NFmiWeatherAndCloudiness::ToHsade(void) const
       {
         hsade += 10;
       }
-      // ukkoset myˆs t‰nne ainakin toistaiseksi (laura 23091999)
+      // ukkoset my√∂s t√§nne ainakin toistaiseksi (laura 23091999)
       if (IsThunder() && ThunderProbability() >= 8)
         hsade = 97;
       else if (IsThunder() && ThunderProbability() >= 4)
@@ -2891,7 +2891,7 @@ unsigned long NFmiWeatherAndCloudiness::ToHsade(void) const
           // 82     Rain shower(s), violent
           // 02.10.2002/Viljo and Marko made the change
           if (hsade == 63)
-            hsade = 81;         // lis‰sin uuden 'kohtalaista' kuuroa koodin
+            hsade = 81;         // lis√§sin uuden 'kohtalaista' kuuroa koodin
           else if (hsade > 63)  // 31.10.2002/Viljo adds missing else
             hsade = 82;
           else
@@ -2901,7 +2901,7 @@ unsigned long NFmiWeatherAndCloudiness::ToHsade(void) const
     }
     if (PrecipitationForm() == kTDrizzle)
     {
-      // lumijyv‰set puuttuu!!
+      // lumijyv√§set puuttuu!!
       if (hsade <= 61)
         hsade -= 10;
       else if (itsTemperature < -1)  // suuret tihkut kuuroiksi
@@ -2909,7 +2909,7 @@ unsigned long NFmiWeatherAndCloudiness::ToHsade(void) const
       else
         hsade = 80;
     }
-    if (hsade >= 60 && hsade <= 65)  // 18.1.2000/Marko lis‰si j‰‰t‰mis jutut
+    if (hsade >= 60 && hsade <= 65)  // 18.1.2000/Marko lis√§si j√§√§t√§mis jutut
     {
       if (PrecipitationForm() == kTFreezingRain)
       {
@@ -2925,7 +2925,7 @@ unsigned long NFmiWeatherAndCloudiness::ToHsade(void) const
         else
           hsade = 57;
       }
-    }  // 18.1.2000/Marko lis‰si j‰‰t‰mis jutut
+    }  // 18.1.2000/Marko lis√§si j√§√§t√§mis jutut
   }
   return hsade;
 }
@@ -3059,7 +3059,7 @@ unsigned long NFmiWeatherAndCloudiness::TotalPrecipitationFromHessaa(unsigned lo
 
 unsigned long NFmiWeatherAndCloudiness::CalcPrecipitationFromHessaa(unsigned long theValue)
 {
-  // t‰‰ll‰ pit‰isi varmaan huomioida precipitaionType mm-rajoissa
+  // t√§√§ll√§ pit√§isi varmaan huomioida precipitaionType mm-rajoissa
   double mmValue = kFloatMissing;
   switch (theValue)
   {
@@ -3223,7 +3223,7 @@ static const double gNoPrecipitationLimitV7 = 0.05;
 static const double gNoPrecipitationLimitV6 = 0.1;
 unsigned long NFmiWeatherAndCloudiness::CalcTotalPrecipitation(void) const
 {
-  // t‰nne sateen intensiteettirajat!!!!
+  // t√§nne sateen intensiteettirajat!!!!
   if (TotalPrecipitation() != TotalPrecipitationMissingValue())
   {
     if (TotalPrecipitation() < PrecipitationScale(itsInfoVersion >= 7. ? gNoPrecipitationLimitV7
@@ -3847,7 +3847,7 @@ bool NFmiWeatherAndCloudiness::OnlySomePrecipitation(void) const
 
 bool NFmiWeatherAndCloudiness::IsSnow(void) const
 {
-  //  Huom! T‰ss‰ tutkitaan vain sateen olomuoto ja sadem‰‰r‰
+  //  Huom! T√§ss√§ tutkitaan vain sateen olomuoto ja sadem√§√§r√§
   return PrecipitationForm() == kTSnow && !IsFair();
 }
 
@@ -3859,7 +3859,7 @@ bool NFmiWeatherAndCloudiness::IsSnow(void) const
 
 bool NFmiWeatherAndCloudiness::IsSleet(void) const
 {
-  //  Huom! T‰ss‰ tutkitaan vain sateen olomuoto ja sadem‰‰r‰
+  //  Huom! T√§ss√§ tutkitaan vain sateen olomuoto ja sadem√§√§r√§
   return PrecipitationForm() == kTSleet && !IsFair();
 }
 
@@ -3871,7 +3871,7 @@ bool NFmiWeatherAndCloudiness::IsSleet(void) const
 
 bool NFmiWeatherAndCloudiness::IsRain(void) const
 {
-  //  Huom! T‰ss‰ tutkitaan vain sateen olomuoto ja sadem‰‰r‰
+  //  Huom! T√§ss√§ tutkitaan vain sateen olomuoto ja sadem√§√§r√§
   return PrecipitationForm() == kTRain && !IsFair();
 }
 
@@ -3883,7 +3883,7 @@ bool NFmiWeatherAndCloudiness::IsRain(void) const
 
 bool NFmiWeatherAndCloudiness::IsDrizzle(void) const
 {
-  //  Huom! T‰ss‰ tutkitaan vain sateen olomuoto ja sadem‰‰r‰
+  //  Huom! T√§ss√§ tutkitaan vain sateen olomuoto ja sadem√§√§r√§
   return PrecipitationForm() == kTDrizzle && !IsFair();
 }
 
@@ -3895,7 +3895,7 @@ bool NFmiWeatherAndCloudiness::IsDrizzle(void) const
 
 bool NFmiWeatherAndCloudiness::IsFreezingDrizzle(void) const
 {
-  //  Huom! T‰ss‰ tutkitaan vain sateen olomuoto ja sadem‰‰r‰
+  //  Huom! T√§ss√§ tutkitaan vain sateen olomuoto ja sadem√§√§r√§
   return PrecipitationForm() == kTFreezingDrizzle && !IsFair();
 }
 
@@ -3907,7 +3907,7 @@ bool NFmiWeatherAndCloudiness::IsFreezingDrizzle(void) const
 
 bool NFmiWeatherAndCloudiness::IsFreezingRain(void) const
 {
-  //  Huom! T‰ss‰ tutkitaan vain sateen olomuoto ja sadem‰‰r‰
+  //  Huom! T√§ss√§ tutkitaan vain sateen olomuoto ja sadem√§√§r√§
   return PrecipitationForm() == kTFreezingRain && !IsFair();
 }
 
@@ -3919,7 +3919,7 @@ bool NFmiWeatherAndCloudiness::IsFreezingRain(void) const
 
 bool NFmiWeatherAndCloudiness::IsHail(void) const
 {
-  //  Huom! T‰ss‰ tutkitaan vain sateen olomuoto ja sadem‰‰r‰
+  //  Huom! T√§ss√§ tutkitaan vain sateen olomuoto ja sadem√§√§r√§
   return PrecipitationForm() == kTHail && !IsFair();
 }
 
@@ -3931,7 +3931,7 @@ bool NFmiWeatherAndCloudiness::IsHail(void) const
 
 bool NFmiWeatherAndCloudiness::IsConvective(void) const
 {
-  //  Huom! T‰ss‰ tutkitaan vain sateen tyyppi ja sadem‰‰r‰
+  //  Huom! T√§ss√§ tutkitaan vain sateen tyyppi ja sadem√§√§r√§
   return PrecipitationType() == kTConvectivePrecipitation && !IsFair();
 }
 
@@ -3943,7 +3943,7 @@ bool NFmiWeatherAndCloudiness::IsConvective(void) const
 
 bool NFmiWeatherAndCloudiness::IsLargeScale(void) const
 {
-  //  Huom! T‰ss‰ tutkitaan vain sateen tyyppi ja sadem‰‰r‰
+  //  Huom! T√§ss√§ tutkitaan vain sateen tyyppi ja sadem√§√§r√§
   return PrecipitationType() == kTLargeScalePrecipitation && !IsFair();
 }
 
@@ -3992,8 +3992,8 @@ unsigned long NFmiWeatherAndCloudiness::PrecipitationScaleV6(double theValue) co
   if (theValue == kFloatMissing) return kUnsignedLongMissing;
   if (theValue < 0.03) return 0;
 
-  // Marko lis‰si t‰m‰n, ettei sateet haihdu esim. tasoittaessa tai
-  // interpoloitaessa tihe‰mp‰‰n aikaan
+  // Marko lis√§si t√§m√§n, ettei sateet haihdu esim. tasoittaessa tai
+  // interpoloitaessa tihe√§mp√§√§n aikaan
   if (theValue >= 0.03 && theValue < gMinimumPrecipitationForV6) return 1;
 
   if (theValue > 100) theValue = 100;
@@ -4091,8 +4091,8 @@ bool NFmiWeatherAndCloudiness::TotalCloudiness(unsigned long theValue)
         SetTotalPrecipitation(kTNoPrecipitation);
         CheckIfPrecipZeroAndCleanTypeAndForm();
       }
-      // Marko Lis‰sin s‰‰nnˆn, ett‰ jos asetetaan kokonaispilvisyytt‰,
-      // mik‰‰n osa pilvisyys ei voi olla yli kokonaispilvisyyden
+      // Marko Lis√§sin s√§√§nn√∂n, ett√§ jos asetetaan kokonaispilvisyytt√§,
+      // mik√§√§n osa pilvisyys ei voi olla yli kokonaispilvisyyden
       if (LowClouds() != kT4BitMissing && LowClouds() > theValue) SetLowClouds(theValue);
       if (MiddleClouds() != kT4BitMissing && MiddleClouds() > theValue) SetMiddleClouds(theValue);
       if (HighClouds() != HighCloudsMissingValue() && HighClouds() > theValue)
@@ -4117,7 +4117,7 @@ bool NFmiWeatherAndCloudiness::LowClouds(unsigned long theValue)
   {
     if (theValue > 10) theValue = 10;
     SetLowClouds(theValue);
-    //	  SetTotalCloudiness(0); // t‰m‰ aiheutti ongelmi fqgV7ToV6-filtterin kanssa, joten laitoin
+    //	  SetTotalCloudiness(0); // t√§m√§ aiheutti ongelmi fqgV7ToV6-filtterin kanssa, joten laitoin
     // kaikkien kerrosten asetuksissa N:n nollauksen pois
     SetTotalCloudiness(CalcTotalCloudiness());
     return true;
@@ -4139,7 +4139,7 @@ bool NFmiWeatherAndCloudiness::MiddleClouds(unsigned long theValue)
   {
     if (theValue > 10) theValue = 10;
     SetMiddleClouds(theValue);
-    //	  SetTotalCloudiness(0); // t‰m‰ aiheutti ongelmi fqgV7ToV6-filtterin kanssa, joten laitoin
+    //	  SetTotalCloudiness(0); // t√§m√§ aiheutti ongelmi fqgV7ToV6-filtterin kanssa, joten laitoin
     // kaikkien kerrosten asetuksissa N:n nollauksen pois
     SetTotalCloudiness(CalcTotalCloudiness());
     return true;
@@ -4162,7 +4162,7 @@ bool NFmiWeatherAndCloudiness::HighClouds(unsigned long theValue)
     unsigned long maxHighCloudValue = (itsInfoVersion >= 7.) ? 6 : 10;
     if (theValue > maxHighCloudValue) theValue = maxHighCloudValue;
     SetHighClouds(theValue);
-    //	  SetTotalCloudiness(0); // t‰m‰ aiheutti ongelmi fqgV7ToV6-filtterin kanssa, joten laitoin
+    //	  SetTotalCloudiness(0); // t√§m√§ aiheutti ongelmi fqgV7ToV6-filtterin kanssa, joten laitoin
     // kaikkien kerrosten asetuksissa N:n nollauksen pois
     SetTotalCloudiness(CalcTotalCloudiness());
     return true;
@@ -4182,11 +4182,11 @@ bool NFmiWeatherAndCloudiness::TotalPrecipitation(unsigned long theValue)
 {
   bool newRain = (TotalPrecipitation() == 0) && (theValue > 0) &&
                  (theValue != TotalPrecipitationMissingValue());
-  // t‰‰ll‰ on k‰ytetty fAutoUpdatea
+  // t√§√§ll√§ on k√§ytetty fAutoUpdatea
   if (theValue != TotalPrecipitationMissingValue())
   {
     SetTotalPrecipitation(theValue);
-    CheckIfPrecipZeroAndCleanTypeAndForm();  // Onko t‰m‰ oikea kohta?????
+    CheckIfPrecipZeroAndCleanTypeAndForm();  // Onko t√§m√§ oikea kohta?????
     if (TotalPrecipitation() == 0 && PrecipitationType() == kT2BitMissing &&
         PrecipitationForm() == kT3BitMissing)  // ei sada
       fDataOk = true;
@@ -4194,15 +4194,15 @@ bool NFmiWeatherAndCloudiness::TotalPrecipitation(unsigned long theValue)
              PrecipitationType() != kT2BitMissing && PrecipitationForm() != kT3BitMissing)  // sataa
       fDataOk = true;  // autoUpdatea ei tarvita
 
-    else if (fAutoUpdate)  // tarvittaessa p‰ivitet‰‰n muita parametreja
+    else if (fAutoUpdate)  // tarvittaessa p√§ivitet√§√§n muita parametreja
     {
       if (TotalPrecipitation() > 0)
       {
         if (TotalCloudiness() == 0)
         {
-          // Huom! 1.2.2000/Marko Laitoin s‰‰tˆmahdollisuuden kun luodaan sadetta,
-          // tuleeko pilvist‰ puolipilvist‰ vai t‰yspilve‰ ja tuleeko sateesta kuuroa vai tasaista
-          if (PrecipitationType() == kT2BitMissing)  // ei ole tyyppi‰
+          // Huom! 1.2.2000/Marko Laitoin s√§√§t√∂mahdollisuuden kun luodaan sadetta,
+          // tuleeko pilvist√§ puolipilvist√§ vai t√§yspilve√§ ja tuleeko sateesta kuuroa vai tasaista
+          if (PrecipitationType() == kT2BitMissing)  // ei ole tyyppi√§
           {
             if (fDefaultPrecipitationTypeIsLargeScale)
               SetPrecipitationType(kTLargeScalePrecipitation);
@@ -4211,7 +4211,7 @@ bool NFmiWeatherAndCloudiness::TotalPrecipitation(unsigned long theValue)
           }
           if (PrecipitationForm() == kT3BitMissing)  // ei ole olomuotoa
           {
-            if (itsTemperature > 0)  // puuttuva T -> vett‰
+            if (itsTemperature > 0)  // puuttuva T -> vett√§
               SetPrecipitationForm(kTRain);
             if (itsTemperature <= 0) SetPrecipitationForm(kTSnow);
           }
@@ -4221,9 +4221,9 @@ bool NFmiWeatherAndCloudiness::TotalPrecipitation(unsigned long theValue)
             SetTotalCloudiness(5);
         }
 
-        if (TotalCloudiness() >= 8)  // t‰yspilvist‰
+        if (TotalCloudiness() >= 8)  // t√§yspilvist√§
         {
-          if (PrecipitationType() == kT2BitMissing)  // ei ole tyyppi‰
+          if (PrecipitationType() == kT2BitMissing)  // ei ole tyyppi√§
             SetPrecipitationType(kTLargeScalePrecipitation);
           if (PrecipitationForm() == kT3BitMissing)  // oletus vesisade
           {
@@ -4234,7 +4234,7 @@ bool NFmiWeatherAndCloudiness::TotalPrecipitation(unsigned long theValue)
 
         else if (TotalCloudiness() < 8 && TotalCloudiness() > 0)
         {
-          if (PrecipitationType() == kT2BitMissing)  // ei ole tyyppi‰
+          if (PrecipitationType() == kT2BitMissing)  // ei ole tyyppi√§
             SetPrecipitationType(kTConvectivePrecipitation);
           if (PrecipitationForm() == kT3BitMissing)  // oletus vesisade
           {
@@ -4242,10 +4242,10 @@ bool NFmiWeatherAndCloudiness::TotalPrecipitation(unsigned long theValue)
             if (itsTemperature <= 0) SetPrecipitationForm(kTSnow);
           }
 
-          // Marko Laitoin t‰m‰n , jott‰ pilvi‰ saadaan lis‰‰ kun
-          // sadetta lis‰t‰‰n jos N alle 50 tai 100% riippuen asetuksesta
+          // Marko Laitoin t√§m√§n , jott√§ pilvi√§ saadaan lis√§√§ kun
+          // sadetta lis√§t√§√§n jos N alle 50 tai 100% riippuen asetuksesta
           if (newRain)  // HUOM! nyt vain uuden sateen tapuksessa, mutta ei esim. jos orig sade oli
-                        // puuttuvaa eli ollaan esim. interpolointia tekem‰ss‰
+                        // puuttuvaa eli ollaan esim. interpolointia tekem√§ss√§
           {
             if (fDefaultPrecipitationTypeIsLargeScale)
               SetTotalCloudiness(FmiMax(10ul, TotalCloudiness()));
@@ -4282,7 +4282,7 @@ bool NFmiWeatherAndCloudiness::PrecipitationType(unsigned long theValue)
 
     if (TotalPrecipitation() == TotalPrecipitationMissingValue())
     {
-      // jos ei ole sateen intensiteetti‰
+      // jos ei ole sateen intensiteetti√§
       fDataOk = false;
       return true;
     }
@@ -4290,7 +4290,7 @@ bool NFmiWeatherAndCloudiness::PrecipitationType(unsigned long theValue)
 
     if (fAutoUpdate)
     {
-      // oletustyyppi on vett‰
+      // oletustyyppi on vett√§
       if (TotalCloudiness() > 0 && PrecipitationForm() == kT3BitMissing)
       {
         if (itsTemperature > 0) SetPrecipitationForm(kTRain);
@@ -4298,7 +4298,7 @@ bool NFmiWeatherAndCloudiness::PrecipitationType(unsigned long theValue)
         fDataOk = true;
       }
       else if (TotalCloudiness() == 0)
-        fDataOk = false;  // t‰ss‰ ei arvata pilvien m‰‰r‰‰
+        fDataOk = false;  // t√§ss√§ ei arvata pilvien m√§√§r√§√§
     }
     else
       fDataOk = false;
@@ -4323,12 +4323,12 @@ bool NFmiWeatherAndCloudiness::PrecipitationForm(unsigned long theValue)
 
     if (TotalPrecipitation() == TotalPrecipitationMissingValue() || TotalPrecipitation() == 0)
     {
-      // jos ei ole sateen intensitetti‰
+      // jos ei ole sateen intensitetti√§
       fDataOk = false;
       return true;
     }
     // on sadetta
-    if (PrecipitationType() != kT2BitMissing)  // kokeilulis‰ys
+    if (PrecipitationType() != kT2BitMissing)  // kokeilulis√§ys
     {
       fDataOk = true;
       return true;
@@ -4336,12 +4336,12 @@ bool NFmiWeatherAndCloudiness::PrecipitationForm(unsigned long theValue)
 
     if (fAutoUpdate)
     {
-      if (PrecipitationType() == kT2BitMissing && TotalCloudiness() >= 8)  // t‰yspilvist‰
+      if (PrecipitationType() == kT2BitMissing && TotalCloudiness() >= 8)  // t√§yspilvist√§
         SetPrecipitationType(kTLargeScalePrecipitation);
       else if (PrecipitationType() == kT2BitMissing && TotalCloudiness() > 0 &&
-               TotalCloudiness() < 8)  // vain osa taivaasta pilvess‰
+               TotalCloudiness() < 8)  // vain osa taivaasta pilvess√§
         SetPrecipitationType(kTConvectivePrecipitation);
-      // onko j‰rkev‰‰ lis‰t‰ pilvi‰??
+      // onko j√§rkev√§√§ lis√§t√§ pilvi√§??
       else if (TotalCloudiness() == 0 && PrecipitationType() == kTLargeScalePrecipitation)
         SetTotalCloudiness(10);
       else if (TotalCloudiness() == 0 && PrecipitationType() == kTConvectivePrecipitation)
@@ -4411,15 +4411,15 @@ bool NFmiWeatherAndCloudiness::LongValue(unsigned long theValue)
  */
 // ----------------------------------------------------------------------
 
-// weatherandcloudiness-luokan ristiin tarkastukset pit‰isi laittaa kaikki
-// t‰nne yhteen paikkaa. Parametrina annetaan muokattu parametri ja
-// sitten tehd‰‰n tarvittavat muutokset muihin parametreihin kollektiivisesti
-// t‰‰ll‰. Kutsutaan SubParam()-metodin lopuksi.
-// HUOM!! Pit‰‰ tehd‰ sellainen case, miss‰ tehd‰‰n kaikki mahdolliset
+// weatherandcloudiness-luokan ristiin tarkastukset pit√§isi laittaa kaikki
+// t√§nne yhteen paikkaa. Parametrina annetaan muokattu parametri ja
+// sitten tehd√§√§n tarvittavat muutokset muihin parametreihin kollektiivisesti
+// t√§√§ll√§. Kutsutaan SubParam()-metodin lopuksi.
+// HUOM!! Pit√§√§ tehd√§ sellainen case, miss√§ tehd√§√§n kaikki mahdolliset
 // tarkastelut (esim. konstruktori kutsuu).
-// HUOM!! Ei toimi viel‰ kuin kokonaispilvisyyden nollaus tapauksissa.
-// HUOM!! Kun t‰m‰ saadaan kuntoon, voidaan erilliset viritykset
-// eri parametrien asetusten yhteydess‰ poistaa.
+// HUOM!! Ei toimi viel√§ kuin kokonaispilvisyyden nollaus tapauksissa.
+// HUOM!! Kun t√§m√§ saadaan kuntoon, voidaan erilliset viritykset
+// eri parametrien asetusten yhteydess√§ poistaa.
 
 void NFmiWeatherAndCloudiness::CrossCheck(FmiParameterName theParam)
 {
@@ -4429,7 +4429,7 @@ void NFmiWeatherAndCloudiness::CrossCheck(FmiParameterName theParam)
     case kFmiLowCloudCover:
     case kFmiMediumCloudCover:
     case kFmiHighCloudCover:
-      if (TotalCloudiness() == 0)  // h‰t‰ viritys t‰ss‰ vaiheessa
+      if (TotalCloudiness() == 0)  // h√§t√§ viritys t√§ss√§ vaiheessa
       {
         SetLowClouds(0);
         SetMiddleClouds(0);

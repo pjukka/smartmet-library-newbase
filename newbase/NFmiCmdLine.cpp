@@ -270,7 +270,7 @@ void NFmiCmdLine::Init(int argc, const char **argv, const char *optallow)
 #else
       ::snprintf(e, sizeof(e) - 1, "NFmiCmdLine::NFmiCmdLine: Illegal option %s\n", itsArgv[i]);
 #endif
-      e[sizeof(e) - 1] = 0;  // pit‰‰ varmistaa ett‰ p‰‰ttyy 0-merkkiin!!!!
+      e[sizeof(e) - 1] = 0;  // pit√§√§ varmistaa ett√§ p√§√§ttyy 0-merkkiin!!!!
       itsStatus.ErrorLog(e);
       return;
     }

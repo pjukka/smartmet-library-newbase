@@ -74,7 +74,7 @@ class _FMI_DLL NFmiHPlaceDescriptor : public NFmiDataDescriptor
                        double theMaxDistance = kFloatMissing * 1000.);
   bool NearestPoint(const NFmiPoint &theLatLonPoint);
 
-  //! Hakee listan paikkaindeksi/et‰isyys metrein‰ pareja. Listaan haetaan annettua paikkaa l‰himmat
+  //! Hakee listan paikkaindeksi/et√§isyys metrein√§ pareja. Listaan haetaan annettua paikkaa l√§himmat
   //! datapisteet.
   const checkedVector<std::pair<int, double> > NearestLocations(
       const NFmiLocation &theLocation,
@@ -256,7 +256,7 @@ inline std::ostream &operator<<(std::ostream &file, const NFmiHPlaceDescriptor &
 /*!
  * Input operator for class NFmiHPlaceDescriptor
  *
- *†\param file The input stream to read from
+ *¬†\param file The input stream to read from
  * \param ob The object into which to read the new contents
  * \return The input stream read from
  */

@@ -79,7 +79,7 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
   bool PreviousLevel(void);
   bool PreviousTime(void);
 
-  // HUOM!!! N‰m‰ seuraavat metodit ovat todellisuudessa samaa luokkaa nopeudessa
+  // HUOM!!! N√§m√§ seuraavat metodit ovat todellisuudessa samaa luokkaa nopeudessa
   // kuin NFmiQueryInfo:nkin vastaavat metodit.
 
   bool Param(const NFmiParam &theParam);
@@ -102,10 +102,10 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
 
   const NFmiLocation *Location(void) const;
   NFmiPoint LatLon(void) const;
-  const NFmiPoint &LatLonFast(void) const;  // Lis‰sin nopean Latlon-metodin, joka ei ole
+  const NFmiPoint &LatLonFast(void) const;  // Lis√§sin nopean Latlon-metodin, joka ei ole
                                             // virtuaalinen. NFmiQueryInfo:n Latlon ei voi palauttaa
-  // const referenssi‰, koska se pyyt‰‰ NFmiGrid-luokalta
-  // latlon-pistett‰ ja se rakennetaan lennossa.
+  // const referenssi√§, koska se pyyt√§√§ NFmiGrid-luokalta
+  // latlon-pistett√§ ja se rakennetaan lennossa.
   const NFmiPoint &LatLon(unsigned long index) const;
   const NFmiPoint RelativePoint(void) const;
   const NFmiLevel *Level(void) const;
@@ -114,11 +114,11 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
   const NFmiProducer &FirstParamProducer(void);
 
   NFmiDataIdent &Param(void) const;
-  // *** vastaavan nopeuksiset loppuvat t‰h‰n *********************
+  // *** vastaavan nopeuksiset loppuvat t√§h√§n *********************
 
-  // HUOM!!! N‰m‰ seuraavat metodit ovat todellisuudessa hitaita ja
-  // niiden k‰yttˆ‰ pit‰isi v‰ltt‰‰!
-  // N‰ist‰ voisi varmaan tehd‰ nopeampia!!!!
+  // HUOM!!! N√§m√§ seuraavat metodit ovat todellisuudessa hitaita ja
+  // niiden k√§ytt√∂√§ pit√§isi v√§ltt√§√§!
+  // N√§ist√§ voisi varmaan tehd√§ nopeampia!!!!
 
   const NFmiMetTime &Time(void) const;
   bool TimeToNearestStep(const NFmiMetTime &theTime,
@@ -127,7 +127,7 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
   const NFmiMetTime &ValidTime(void) const;
   using NFmiQueryInfo::OriginTime;
   const NFmiMetTime &OriginTime(void) const;
-  // ****** hitaat loppuvat t‰h‰n ********************************
+  // ****** hitaat loppuvat t√§h√§n ********************************
 
   unsigned long TimeResolution(void);
 
@@ -154,7 +154,7 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
   bool IsTimeUsable(void) const;
 
   unsigned long PeekLocationIndex(int theXOffset, int theYOffset) const;
-  float PeekLocationValue(int theXOffset, int theYOffset) const;  // l‰hinn‰ gridi-datan tutkimiseen
+  float PeekLocationValue(int theXOffset, int theYOffset) const;  // l√§hinn√§ gridi-datan tutkimiseen
   float PeekLocationValue(int theXOffset, int theYOffset, const NFmiMetTime &theTime);
   const NFmiPoint PeekLocationLatLon(int theXOffset, int theYOffset);
   float PeekTimeValue(int theTimeIndexOffset);
@@ -226,26 +226,26 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
   void LocationsWorldXY(NFmiDataMatrix<NFmiPoint> &theMatrix, const NFmiArea &theArea) const;
   void LocationsXY(NFmiDataMatrix<NFmiPoint> &theMatrix, const NFmiArea &theArea) const;
 
-  // T‰h‰n tulee joukko funktioita, jotka palauttavat aktiivisen parametrin
-  // arvon haluttuun korkeuteen [m]. Metodeja on nelj‰, jotka tekev‰t erilaisia
+  // T√§h√§n tulee joukko funktioita, jotka palauttavat aktiivisen parametrin
+  // arvon haluttuun korkeuteen [m]. Metodeja on nelj√§, jotka tekev√§t erilaisia
   // interpolointeja parametreista riippuen.
   float HeightValue(float theHeight);
   float HeightValue(float theHeight, const NFmiPoint &theLatlon);
   float HeightValue(float theHeight, const NFmiPoint &theLatlon, const NFmiMetTime &theTime);
   float HeightValue(float theHeight, const NFmiMetTime &theTime);
 
-  // T‰h‰n tulee joukko funktioita, jotka palauttavat aktiivisen parametrin
+  // T√§h√§n tulee joukko funktioita, jotka palauttavat aktiivisen parametrin
   // arvon haluttuun paine pintaan interpoloituna (log(p) interpolointi).
-  // Metodeja on nelj‰, jotka tekev‰t erilaisia interpolointeja parametreista riippuen.
+  // Metodeja on nelj√§, jotka tekev√§t erilaisia interpolointeja parametreista riippuen.
   float PressureLevelValue(float P);
   float PressureLevelValue(float P, const NFmiPoint &theLatlon);
   float PressureLevelValue(float P, const NFmiPoint &theLatlon, const NFmiMetTime &theTime);
   float PressureLevelValue(float P, const NFmiMetTime &theTime);
 
-  // T‰ss‰ metodit mill‰ saadaan dataan nopeita osoitus indeksej‰, mit‰ voidaan hyˆdynt‰‰ kun
-  // tehd‰‰n
+  // T√§ss√§ metodit mill√§ saadaan dataan nopeita osoitus indeksej√§, mit√§ voidaan hy√∂dynt√§√§ kun
+  // tehd√§√§n
   // Nopeita 4D interpolointeja (useita samaan paikkaan ja aikaa ja korkeuteen).
-  // Kaikki double & parametrit (out-parametreja) ovat reaali lukuja joiden avulla voidaan p‰‰tell‰
+  // Kaikki double & parametrit (out-parametreja) ovat reaali lukuja joiden avulla voidaan p√§√§tell√§
   // fastqueryinfosta
   // nopeasti laskuissa halutut arvot. Palauttaa false, jos ollaan datan ulkopuolella.
   bool GetLocationIndex(const NFmiPoint &theLatlon, double &xInd, double &yInd);
@@ -320,16 +320,16 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
                   const NFmiMetTime &theInterpolatedTime);
 
   // 12.09.2013 Anssi.R changed methods to virtual to be able to override in NFmiMultiQueryInfo
-  // T‰m‰ hakee hilan sellaisenaan (datan originaali hila ja alue) halutulle painepinnalle.
+  // T√§m√§ hakee hilan sellaisenaan (datan originaali hila ja alue) halutulle painepinnalle.
   virtual void PressureValues(NFmiDataMatrix<float> &theValues,
                               const NFmiMetTime &theInterpolatedTime,
                               float wantedPressureLevel);
-  // T‰m‰ hakee haluttuun hilaan ja alueeseen dataa.
+  // T√§m√§ hakee haluttuun hilaan ja alueeseen dataa.
   virtual void PressureValues(NFmiDataMatrix<float> &theValues,
                               const NFmiGrid &theWantedGrid,
                               const NFmiMetTime &theInterpolatedTime,
                               float wantedPressureLevel);
-  // T‰m‰ hakee hilan sellaisenaan (datan originaali hila ja alue) halutulle korkeudelle [m].
+  // T√§m√§ hakee hilan sellaisenaan (datan originaali hila ja alue) halutulle korkeudelle [m].
   // Jos haluat lentopinnoille dataa (Flight Level) on lentopinta -> metri kerroin = 30.5
   // eli esim. lentopinta 50 saadaan laskulla 50 * 30.5 eli 1525 [m].
   void HeightValues(NFmiDataMatrix<float> &theValues,
@@ -344,8 +344,8 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
   bool HeightDataAvailable(void) const
   {
     return fHeightValueAvailable || fHeightLevelDataAvailable;
-  }  // t‰m‰ on uusi yleisfunktio, jota pit‰isi k‰ytt‰‰ kun halutaan tiet‰‰ onko heightlevel-dataa
-     // k‰ytˆss‰
+  }  // t√§m√§ on uusi yleisfunktio, jota pit√§isi k√§ytt√§√§ kun halutaan tiet√§√§ onko heightlevel-dataa
+     // k√§yt√∂ss√§
   bool HeightValueAvailable(void) const { return fHeightValueAvailable; }
   bool HeightLevelDataAvailable(void) const { return fHeightLevelDataAvailable; }
   bool HeightParamIsRising(void) const { return fHeightParamIsRising; }
@@ -354,16 +354,16 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
   bool PressureDataAvailable(void) const
   {
     return fPressureValueAvailable || fPressureLevelDataAvailable;
-  }  // t‰m‰ on uusi yleisfunktio, jota pit‰isi k‰ytt‰‰ kun halutaan tiet‰‰ onko painelevel-dataa
-  // k‰ytˆss‰
+  }  // t√§m√§ on uusi yleisfunktio, jota pit√§isi k√§ytt√§√§ kun halutaan tiet√§√§ onko painelevel-dataa
+  // k√§yt√∂ss√§
   bool PressureValueAvailable(void) const
   {
     return fPressureValueAvailable;
-  }  // Katso voiko PressureDataAvailable -funktiota k‰ytt‰‰ mieluummin
+  }  // Katso voiko PressureDataAvailable -funktiota k√§ytt√§√§ mieluummin
   bool PressureLevelDataAvailable(void) const
   {
     return fPressureLevelDataAvailable;
-  }  // Katso voiko PressureDataAvailable -funktiota k‰ytt‰‰ mieluummin
+  }  // Katso voiko PressureDataAvailable -funktiota k√§ytt√§√§ mieluummin
   bool PressureParamIsRising(void) const { return fPressureParamIsRising; }
   bool FindNearestTime(const NFmiMetTime &theTime,
                        FmiDirection theDirection = kCenter,
@@ -385,7 +385,7 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
   bool MoveLeft(int moveBy = 1);   // toimii vain gridi datalle oikein!!!
   bool MoveRight(int moveBy = 1);  // toimii vain gridi datalle oikein!!!
 
-  // n‰ill‰ asetetaan paikka suoraan johonkin laitaan (ei 'laatikon' ulkopuolelle!)
+  // n√§ill√§ asetetaan paikka suoraan johonkin laitaan (ei 'laatikon' ulkopuolelle!)
 
   bool Top(void);     // toimii vain gridi datalle oikein!!!
   bool Bottom(void);  // toimii vain gridi datalle oikein!!!
@@ -400,19 +400,20 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
 
   virtual float GetFloatValue(size_t theIndex) const;
 
-  // HUOM! t‰m‰ on viritys funktio, joka toimii oikeasti vain NFmiFastQueryInfo:ssa
-  // T‰‰ll‰kin t‰m‰n k‰yttˆ on vaarallista, ellei tied‰ mit‰ tekee.
-  // K‰ytetty InterpolatedValue-metodien viritt‰miseen W&C parametrin ali parametrien kanssa.
+  // HUOM! t√§m√§ on viritys funktio, joka toimii oikeasti vain NFmiFastQueryInfo:ssa
+  // T√§√§ll√§kin t√§m√§n k√§ytt√∂ on vaarallista, ellei tied√§ mit√§ tekee.
+  // K√§ytetty InterpolatedValue-metodien viritt√§miseen W&C parametrin ali parametrien kanssa.
   void SetIsSubParamUsed(bool newState) { fUseSubParam = newState; }
+  bool HasLatlonInfoInData() const;
   NFmiPoint GetLatlonFromData(void);  // jos datassa on kFmiLongitude ja kFmiLatitude parametrit,
                                       // lasketaan sijanti asetetun ajan ja paikan suhteen niiden
                                       // avulla
-  float PeekParamValue(unsigned long theParamIndex);  // jos tiedet‰‰n jonkin parametrin indeksi,
-                                                      // t‰m‰n avulla voidaan kurkata
+  float PeekParamValue(unsigned long theParamIndex);  // jos tiedet√§√§n jonkin parametrin indeksi,
+                                                      // t√§m√§n avulla voidaan kurkata
   // sen parametrin arvoa (aika,paikka ja leveli jo asetettuja)
   // HUOM! Ei toimi aliparametrien (TotalWind ja WeatherAndCloudiness) kanssa!!!!
 
-  // N‰m‰ metodit m‰‰r‰t‰‰n fastInfossa koska lapsiluokissa k‰ytet‰‰n n‰it‰ sitten.
+  // N√§m√§ metodit m√§√§r√§t√§√§n fastInfossa koska lapsiluokissa k√§ytet√§√§n n√§it√§ sitten.
   virtual const std::string &DataFileName(void) const
   {
     static std::string dummy;
@@ -429,18 +430,18 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
   {
     return boost::shared_ptr<NFmiQueryData>();
   }  // HUOM! ei saa palauttaa itsRefQueryData -data osaa shared-pointterissa, koska se deletoisi
-     // lopuksi datan (TƒMƒ siis overridataan lapsessa!)
+     // lopuksi datan (T√ÑM√Ñ siis overridataan lapsessa!)
   NFmiInfoData::Type DataType(void) const { return itsDataType; };
   void DataType(NFmiInfoData::Type newType) { itsDataType = newType; };
-  // N‰ill‰ Start/Restore -funktioilla otetaan nykyinen parametri tila talteen ja otetaan k‰yttˆˆn
-  // 'erikois' korkeus-parametri. Ja k‰ytˆn j‰lkeen palautus.
-  // HUOM! Jos Start-funktio palauttaa true:n, on kyseisen korkeus parametrin k‰yttˆ mahdollista ja
-  // t‰llˆin pit‰‰ kutsua jossain vaiheessa vastaavaa Restore-funktiota!
+  // N√§ill√§ Start/Restore -funktioilla otetaan nykyinen parametri tila talteen ja otetaan k√§ytt√∂√∂n
+  // 'erikois' korkeus-parametri. Ja k√§yt√∂n j√§lkeen palautus.
+  // HUOM! Jos Start-funktio palauttaa true:n, on kyseisen korkeus parametrin k√§ytt√∂ mahdollista ja
+  // t√§ll√∂in pit√§√§ kutsua jossain vaiheessa vastaavaa Restore-funktiota!
   bool StartUsingPressureParam(void);
   void RestoreAfterUsingPressureParam(void);
   bool StartUsingHeightParam(void);
   void RestoreAfterUsingHeightParam(void);
-  // Universaali funktio, jolla saa halutunlaisen korkeus parametrin kyseiselt‰ levelilt‰ haluttuun
+  // Universaali funktio, jolla saa halutunlaisen korkeus parametrin kyseiselt√§ levelilt√§ haluttuun
   // kohtaan ja aikaa interpoloituna
   float GetLevelHeightValue(FmiParameterName theParId,
                             const NFmiPoint &theLatlon,
@@ -514,79 +515,79 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
   unsigned long itsParamIndex;  // indeksit 'resetoidaan' antamalla arvoksi -1, joka on isoin
                                 // unsigned long, arvo on 4294967295
   unsigned long
-      itsLocationIndex;  // toivotaan, ett‰ datan todellinen koko ei tule koskaan l‰helle t‰t‰ arvoa
-  unsigned long itsLevelIndex;  // tee ensin unsigned long versio (queryinfon peruja), ja yrit‰
-                                // sitten konvertoida n‰m‰ pelkiksi int:eiksi
+      itsLocationIndex;  // toivotaan, ett√§ datan todellinen koko ei tule koskaan l√§helle t√§t√§ arvoa
+  unsigned long itsLevelIndex;  // tee ensin unsigned long versio (queryinfon peruja), ja yrit√§
+                                // sitten konvertoida n√§m√§ pelkiksi int:eiksi
   unsigned long itsTimeIndex;
   unsigned long itsParamSize;
   unsigned long itsLocationSize;
   unsigned long itsLevelSize;
   unsigned long itsTimeSize;
   //  unsigned long itsDataArraySize;
-  //  float * itsDataArray; // luokka ei omista t‰t‰, taulun osoite on otettu suoraan queryinfon
+  //  float * itsDataArray; // luokka ei omista t√§t√§, taulun osoite on otettu suoraan queryinfon
   //  datapoolilta (oletus: data on float arvoida)
-  NFmiGrid *itsTemporaryGridData;  // jos k‰ytt‰j‰ pyyt‰‰ gridi dataa, se talletetaan t‰h‰n
+  NFmiGrid *itsTemporaryGridData;  // jos k√§ytt√§j√§ pyyt√§√§ gridi dataa, se talletetaan t√§h√§n
 
   // This declaration is needed or NFmiMultiQueryInfo::TimeIndex will not compile
   friend class NFmiMultiQueryInfo;
-  size_t itsLocLevTimSize;  // location*level*time size (k‰ytet‰‰n FastIndex-metodissa)
-  size_t itsLevTimSize;     // level*time size (k‰ytet‰‰n FastIndex-metodissa)
+  size_t itsLocLevTimSize;  // location*level*time size (k√§ytet√§√§n FastIndex-metodissa)
+  size_t itsLevTimSize;     // level*time size (k√§ytet√§√§n FastIndex-metodissa)
 
-  bool fUseSubParam;  // k‰ytet‰‰nkˆ parhaillaan yhdistelm‰ parametrin aliparametria
+  bool fUseSubParam;  // k√§ytet√§√§nk√∂ parhaillaan yhdistelm√§ parametrin aliparametria
 
-  // N‰m‰ datat ovat tarkoitettu HeightValue-metodien optimointia varten.
-  // N‰m‰ alustetaan InitFastInfo-metodissa.
-  bool fHeightValueAvailable;  // voidaanko datalta pyyt‰‰ arvoja HeightValue-metodeilla (leveleit‰
-                               // pit‰‰ olla useita ja pit‰‰ olla korkeus parametri datassa)
+  // N√§m√§ datat ovat tarkoitettu HeightValue-metodien optimointia varten.
+  // N√§m√§ alustetaan InitFastInfo-metodissa.
+  bool fHeightValueAvailable;  // voidaanko datalta pyyt√§√§ arvoja HeightValue-metodeilla (leveleit√§
+                               // pit√§√§ olla useita ja pit√§√§ olla korkeus parametri datassa)
   bool fHeightLevelDataAvailable;  // Jos level datassa ei ollut height parametria, oliko se kenties
                                    // heightlevel dataa, jolloin eri kerrosten korkeus tiedot
-                                   // saadaan levelbagist‰
-  std::vector<float> itsHeightLevelDataHeights;  // optimointia kun data on heightlevel dataa, t‰h‰n
+                                   // saadaan levelbagist√§
+  std::vector<float> itsHeightLevelDataHeights;  // optimointia kun data on heightlevel dataa, t√§h√§n
                                                  // on talletettu eri korkeustasot
-  bool fHeightParamIsRising;  // kun menn‰‰n leveleit‰ NextLevel:eill‰ l‰pi, nouseeko vai laskeeko
+  bool fHeightParamIsRising;  // kun menn√§√§n leveleit√§ NextLevel:eill√§ l√§pi, nouseeko vai laskeeko
                               // korkeus arvot
-  unsigned long itsHeightParamIndex;  // Optimointia kun asetetaan v‰lill‰ height parametri p‰‰lle,
-                                      // kun tehd‰‰n korkeus interpolointia.
-  // N‰m‰ datat ovat tarkoitettu PressureLevelValue-metodien optimointia varten.(ja niihin liittyv‰t
+  unsigned long itsHeightParamIndex;  // Optimointia kun asetetaan v√§lill√§ height parametri p√§√§lle,
+                                      // kun tehd√§√§n korkeus interpolointia.
+  // N√§m√§ datat ovat tarkoitettu PressureLevelValue-metodien optimointia varten.(ja niihin liittyv√§t
   // poikkileikkaus funktiot)
-  // N‰m‰ alustetaan InitFastInfo-metodissa.
-  bool fPressureValueAvailable;  // voidaanko datalta pyyt‰‰ arvoja PressureLevelValue-metodeilla
-  // (leveleit‰ pit‰‰ olla useita ja pit‰‰ olla korkeus parametri
+  // N√§m√§ alustetaan InitFastInfo-metodissa.
+  bool fPressureValueAvailable;  // voidaanko datalta pyyt√§√§ arvoja PressureLevelValue-metodeilla
+  // (leveleit√§ pit√§√§ olla useita ja pit√§√§ olla korkeus parametri
   // datassa)
   bool fPressureLevelDataAvailable;  // Jos level datassa ei ollut paine parametria, oliko se
                                      // kenties painepinta dataa, jolloin eri kerrosten paine tiedot
-                                     // saadaan levelbagist‰
-  bool fPressureParamIsRising;  // kun menn‰‰n leveleit‰ NextLevel:eill‰ l‰pi, nouseeko vai laskeeko
+                                     // saadaan levelbagist√§
+  bool fPressureParamIsRising;  // kun menn√§√§n leveleit√§ NextLevel:eill√§ l√§pi, nouseeko vai laskeeko
                                 // korkeus arvot
-  unsigned long itsPressureParamIndex;  // Optimointia kun asetetaan v‰lill‰ height parametri
-                                        // p‰‰lle, kun tehd‰‰n korkeus interpolointia.
-  unsigned long itsOldParamIndex;  // n‰m‰ Old-valuet ovat tarpeen kun k‰ytet‰‰n v‰lill‰ eri korkeus
+  unsigned long itsPressureParamIndex;  // Optimointia kun asetetaan v√§lill√§ height parametri
+                                        // p√§√§lle, kun tehd√§√§n korkeus interpolointia.
+  unsigned long itsOldParamIndex;  // n√§m√§ Old-valuet ovat tarpeen kun k√§ytet√§√§n v√§lill√§ eri korkeus
                                    // parametreja StartUsingPressureParam- ja Height -funktioita.
-  bool fOldFSubParamUsed;  // N‰ist‰ palautetaan arvot sitten vastaavissa RestoreUsingPressureParam-
+  bool fOldFSubParamUsed;  // N√§ist√§ palautetaan arvot sitten vastaavissa RestoreUsingPressureParam-
                            // ja Height -funktioissa.
   std::vector<float> itsPressureLevelDataPressures;  // optimointia kun data on painepinta dataa,
-                                                     // t‰h‰n on talletettu eri painepinnat
+                                                     // t√§h√§n on talletettu eri painepinnat
   unsigned long itsLongitudeParamIndex;  // Optimointia GetLatlonFromData-metodin varalle.
   unsigned long itsLatitudeParamIndex;   // Optimointia GetLatlonFromData-metodin varalle.
 
-  // T‰h‰n tulee optimointi apua location ID hakuja varten. Eli kun haetaan havainto-aseman id:n
+  // T√§h√§n tulee optimointi apua location ID hakuja varten. Eli kun haetaan havainto-aseman id:n
   // avulla paikkoja.
   // unorderd-mappiin laitetaan asema id avaimeksi ja location index arvoksi.
   typedef boost::unordered_map<unsigned long, unsigned long> StationIdSeekContainer;
   StationIdSeekContainer itsFastStationIdSeekList;
-  NFmiInfoData::Type itsDataType;  // data tyyppi‰ k‰ytet‰‰n l‰hinn‰ SmartMet koodeissa (esim.
+  NFmiInfoData::Type itsDataType;  // data tyyppi√§ k√§ytet√§√§n l√§hinn√§ SmartMet koodeissa (esim.
                                    // 2=malli-pinta, 5=havainto, 15=mallihybridipinta), jouduin
                                    // pudottamaan sen fastInfon lapsi-luokalta (NFmiOwnerInfo -
                                    // smarttools-kirjasto)
 
-  NFmiMetTime itsDummyTime;  // kun halutaan palauttaa const& time jota ei ole, palautetaan t‰m‰,
+  NFmiMetTime itsDummyTime;  // kun halutaan palauttaa const& time jota ei ole, palautetaan t√§m√§,
                              // asetettu aikaan 1900.01.01: 1.1.1
 
 };  // class NFmiFastQueryInfo
 
 // ----------------------------------------------------------------------
 /*!
- *†\param theParamIndex Undocumented
+ *¬†\param theParamIndex Undocumented
  * \param theLocationIndex Undocumented
  * \param theLevelIndex Undocumented
  * \param theTimeIndex Undocumented
@@ -623,7 +624,7 @@ inline size_t NFmiFastQueryInfo::Index(void) const
 
 // ----------------------------------------------------------------------
 /*!
- *†\param theParamIndex Undocumented
+ *¬†\param theParamIndex Undocumented
  * \param theLocationIndex Undocumented
  * \param theLevelIndex Undocumented
  * \param theTimeIndex Undocumented
@@ -942,8 +943,8 @@ inline bool NFmiFastQueryInfo::IsTimeUsable(void) const { return itsTimeIndex < 
 
 inline unsigned long NFmiFastQueryInfo::TimeResolution(void)
 {
-  // piti overidata t‰‰ll‰, koska timeindex pit‰‰ asettaa
-  // ennen Resolution kysely‰
+  // piti overidata t√§√§ll√§, koska timeindex pit√§√§ asettaa
+  // ennen Resolution kysely√§
   itsTimeDescriptor->Time(itsTimeIndex);
   return itsTimeDescriptor->Resolution();
 }
@@ -977,11 +978,11 @@ inline unsigned long NFmiFastQueryInfo::PeekLocationIndex(int theXOffset, int th
     long currentXIndex = (theHPlaceIndex % itsGridXNumber) + theXOffset;
     long currentYIndex = (theHPlaceIndex / itsGridXNumber) + theYOffset;
 
-    // voiko t‰m‰n seuraavan tarkistuksen poistaa, kun indeksi tarkistetaan kuitenkin
+    // voiko t√§m√§n seuraavan tarkistuksen poistaa, kun indeksi tarkistetaan kuitenkin
     // Index-metodissa??
     if (currentXIndex >= 0 &&
         currentXIndex <
-            int(itsGridXNumber) &&  // x- ja y-indeksien pit‰‰ pysy‰ gridin sis‰ll‰ offsettien kera!
+            int(itsGridXNumber) &&  // x- ja y-indeksien pit√§√§ pysy√§ gridin sis√§ll√§ offsettien kera!
         currentYIndex >= 0 &&
         currentYIndex < int(itsGridYNumber))
       theHPlaceIndex = theHPlaceIndex + theYOffset * itsGridXNumber + theXOffset;
@@ -997,11 +998,11 @@ inline unsigned long NFmiFastQueryInfo::PeekLocationIndex(int theXOffset, int th
 // ----------------------------------------------------------------------
 /*!
  * Palauttaa kaikki hilan data-arvot annettuun datamatriisiin.
- * Muutettu siten ett‰ hiladata menee kuten ennenkin, mutta
+ * Muutettu siten ett√§ hiladata menee kuten ennenkin, mutta
  * asemadata ladataankin 'yksiulotteiseen'-matriisiin (eli 1 x N).
- * Huom! x-dimension pit‰‰ olla 1 ja y-dimensioon laitetaan paikkojen
- * m‰‰r‰ ja sen pit‰‰ tapahtua n‰in jolloin matrix-luokka tekee
- * vain 1 + 1 vector-luokan instanssia (toisin p‰in tekisi 1 + N kpl).
+ * Huom! x-dimension pit√§√§ olla 1 ja y-dimensioon laitetaan paikkojen
+ * m√§√§r√§ ja sen pit√§√§ tapahtua n√§in jolloin matrix-luokka tekee
+ * vain 1 + 1 vector-luokan instanssia (toisin p√§in tekisi 1 + N kpl).
  *
  * \param theMatrix The matrix in which to store the values
  */
@@ -1045,7 +1046,7 @@ inline void NFmiFastQueryInfo::Values(NFmiDataMatrix<float> &theMatrix) const
 
   for (unsigned long j = 0; j < ny; j++)
     for (unsigned long i = 0; i < nx;
-         i++)  // pient‰ optimointia olisi jos for loopit saisi toisin p‰in
+         i++)  // pient√§ optimointia olisi jos for loopit saisi toisin p√§in
     {
       theMatrix[i][j] = NFmiQueryInfo::PeekValue(idx);
       idx += offset;

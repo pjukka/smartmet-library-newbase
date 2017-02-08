@@ -18,7 +18,7 @@
 #include <iostream>
 
 // **********************************************************************
-// Muista muuttaa myˆs NFmiEnumConverter.cpp, jos lis‰‰t tai poistat
+// Muista muuttaa my√∂s NFmiEnumConverter.cpp, jos lis√§√§t tai poistat
 // jonkin parametrin.
 // **********************************************************************
 
@@ -81,7 +81,7 @@ enum FmiParameterName
   kFmiRadiationInSW,
   kFmiPrecipitationLarge = 55, /*RRLAR*/
   kFmiPrecipitationType = 56,
-  kFmiPrecipitationForm = 57,  //(hessaan osaparametrej‰)
+  kFmiPrecipitationForm = 57,  //(hessaan osaparametrej√§)
   kFmiGolfIndex = 58,          // TV4 golf-index arvo 0-100 (100 on huippu golfkeli)
   kFmiCAPE = 59,
   kFmiSeaLevel = 60,
@@ -214,7 +214,7 @@ enum FmiParameterName
 
   kFmiTemperatureVirtual = 212,
 
-  kFmiSnowWarning = 220,  // arvot: 0 = ei varoitusta, 1 = lumivaroitus, 2 = lumih‰lytys
+  kFmiSnowWarning = 220,  // arvot: 0 = ei varoitusta, 1 = lumivaroitus, 2 = lumih√§lytys
 
   kFmiPressureAnomaly = 226,
   kFmiGeopotentialHeightAnomaly,
@@ -278,7 +278,7 @@ enum FmiParameterName
   kFmiCloudCondensate = 299,
 
   kFmiTurbulentKineticEnergy = 301,
-// kFmiTemperatureChgByParamn, Ei en‰‰ tule Hirlamista
+// kFmiTemperatureChgByParamn, Ei en√§√§ tule Hirlamista
 // kFmiHumidityChgByParamn,
 // kFmiCloudWaterChgByParamn = 304,
 #define NO_kFmixxxChgByParamn
@@ -570,7 +570,7 @@ enum FmiParameterName
   kFmiDeltaTime,
 
   // Pollen models
-  // birch = koivu, grass = ruoho, alder = lepp‰, mugwort = pujo, ragweed = hein‰
+  // birch = koivu, grass = ruoho, alder = lepp√§, mugwort = pujo, ragweed = hein√§
   // Remaining ratio becomes available and then becomes concentration when released
 
   kFmiBirchPollenTemperatureSum = 602,  // accumulated temperature sum for birch flowering
@@ -598,7 +598,7 @@ enum FmiParameterName
   kFmiRagweedPollenAvailable = 620,
   kFmiRagweedPollenRemainingRatio = 621,
 
-  // Ties‰‰mallin ja aurausmallin parametreja
+  // Ties√§√§mallin ja aurausmallin parametreja
   kFmiFrostSum = 634,  // kFmiGrowthPeriodPrecipitationAnomaly
   kFmiRoadFrostCover = 635,
   kFmiRoadSnowCover = 636,
@@ -680,8 +680,8 @@ enum FmiParameterName
   kFmiSatelCh10,
   kFmiSatelCh11,
   kFmiSatelCh12,
-  kFmiSatelCh129 = 730,  // meteosat8/noaa yhdistelm‰ kanavia, ch 1,2,9 (j‰tin tilaa tavallisille
-                         // kanaville tuohon v‰liin)
+  kFmiSatelCh129 = 730,  // meteosat8/noaa yhdistelm√§ kanavia, ch 1,2,9 (j√§tin tilaa tavallisille
+                         // kanaville tuohon v√§liin)
   kFmiSatelCh239,
   kFmiSatelCh321,
   kFmiSatelCh4910,  // ch 4,9,10
@@ -793,7 +793,7 @@ enum FmiParameterName
 
   kFmiMetarObservationType = 840,
 
-  // Antti Westerberg lis‰si ties‰‰varoituksien Kriging-analyysia varten
+  // Antti Westerberg lis√§si ties√§√§varoituksien Kriging-analyysia varten
   kFmiRoadWarning1 = 841,
   kFmiRoadWarning2 = 842,
   kFmiRoadWarning3 = 843,
@@ -808,15 +808,15 @@ enum FmiParameterName
   kFmiTotalSnowLoad = 852,  // kokonaiskuorma (lumi + huurre)
 
   kFmiDrySnowLoad = 853,     // kuiva lumikuorma
-  kFmiWetSnowLoad = 854,     // m‰rk‰ lumikuorma
-  kFmiFrozenSnowLoad = 855,  // j‰‰tynyt lumikuorma
+  kFmiWetSnowLoad = 854,     // m√§rk√§ lumikuorma
+  kFmiFrozenSnowLoad = 855,  // j√§√§tynyt lumikuorma
   kFmiSnowLoadType = 856,    // kokonaislumikuorman dominoiva tyyppi
 
   // Sateen koostumus
 
-  kFmiPrecipitationWater = 857,  // vesisateen m‰‰r‰
-  kFmiPrecipitationSnow = 858,   // lumisateen m‰‰r‰
-  kFmiPrecipitationSleet = 859,  // r‰nt‰sateen m‰‰r‰
+  kFmiPrecipitationWater = 857,  // vesisateen m√§√§r√§
+  kFmiPrecipitationSnow = 858,   // lumisateen m√§√§r√§
+  kFmiPrecipitationSleet = 859,  // r√§nt√§sateen m√§√§r√§
 
   // Lumikuormamalli jatkuu
 
@@ -837,7 +837,7 @@ enum FmiParameterName
 
   kFmiVerticalMeltingArea = 870,
 
-  // EC EPS l‰mpˆtilafraktiilit
+  // EC EPS l√§mp√∂tilafraktiilit
 
   kFmiTemperatureF100 = 871,
   kFmiTemperatureF90 = 872,
@@ -1104,6 +1104,8 @@ enum FmiParameterName
                         // metareihin (?), tama on ennustettu
   kFmiFloodWarningIndex = 1175,
 
+  kFmiHakeMessageType = 1176,
+
   // Dry and wet deposition 6h cumulative
   kFmiSurface6hAccumulatedNOxDryDeposition = 1180,
   kFmiSurface6hAccumulatedNOxWetDeposition,
@@ -1155,10 +1157,10 @@ enum FmiParameterName
   kFmiDeIcingClass3Probability,  // heavy snow/rain, freezing rain, vis<2km
   kFmiDeIcingClass4Probability,  // exceptionally string snow/rain, no deicing possible
 
-  // TopLink -lentos‰‰projektin indekseja
-  kFmiTopLinkIndex2 = 1216,  // Lumisateen ja j‰‰t‰v‰n sateen intensiteetin sek‰ sateesta johtuvan
-                             // n‰kyvyyden yhdistelm‰
-  kFmiTopLinkIndex3,         // Lumi/R‰nt‰sateen ja n‰kyvyyden yhdistelm‰
+  // TopLink -lentos√§√§projektin indekseja
+  kFmiTopLinkIndex2 = 1216,  // Lumisateen ja j√§√§t√§v√§n sateen intensiteetin sek√§ sateesta johtuvan
+                             // n√§kyvyyden yhdistelm√§
+  kFmiTopLinkIndex3,         // Lumi/R√§nt√§sateen ja n√§kyvyyden yhdistelm√§
 
   // Ukkosen todennaikoisyys, toinen parametri koska 260 on aliparametrina ja sen tarkkuus on
   // rajattu
@@ -1188,13 +1190,13 @@ enum FmiParameterName
   kFmiFrostLayerBottom,  // Frost layer bottom
 
   kFmiVisibility2 = 1232,
-  kFmiCloudTop2,         // post-processed cloud top
+  kFmiCloudTop2,  // post-processed cloud top
   kFmiAverageWindSpeedMS,
   kFmiPotentialPrecipitationType,
   kFmiHumidityRelativeToIce,
   kFmiHoarFrostTemperature,
   kFmiAvailableEnsembleMemberPercentage,
-  kFmiWindGust2,         // post-processed wind gust speed
+  kFmiWindGust2,  // post-processed wind gust speed
   kFmiProbabilityOfSigWaveHeightLimit1,
   kFmiProbabilityOfSigWaveHeightLimit2,
   kFmiProbabilityOfSigWaveHeightLimit3,
@@ -1436,14 +1438,14 @@ enum FmiParameterName
   kFmiSoundingLFCHeightMostUn,
   kFmiSoundingELHeightMostUn,
   kFmiSoundingCAPE_TT_MostUn,  // cape -10 ja -40 asteen kerroksen lapi
-  // sitten normaaleja yleis indeksej‰
+  // sitten normaaleja yleis indeksej√§
   kFmiSoundingSHOW = 4750,
   kFmiSoundingLIFT,
   kFmiSoundingKINX,
   kFmiSoundingCTOT,
   kFmiSoundingVTOT,
   kFmiSoundingTOTL,
-  // sitten viel‰ 'speciaali' paramereja
+  // sitten viel√§ 'speciaali' paramereja
   kFmiSoundingBS0_6km = 4770,  // BS=bulkshear
   kFmiSoundingBS0_1km,
   kFmiSoundingSRH0_3km,  // SRH=storm related helicity
@@ -1469,7 +1471,7 @@ enum FmiParameterName
   kFmiHighVegetationType,  // grib_api: TypeOfHighVegetation
   kFmiLowVegetationType,   // grib_api: TypeOfLowVegetation
 
-  // WindMill icing forecasts (Karoliina H‰m‰l‰inen, SOL-4545)
+  // WindMill icing forecasts (Karoliina H√§m√§l√§inen, SOL-4545)
   kFmiIcingRate = 4820,
   kFmiIceMass = 4821,
 

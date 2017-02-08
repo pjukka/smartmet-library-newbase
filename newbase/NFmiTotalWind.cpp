@@ -123,7 +123,7 @@ NFmiTotalWind::NFmiTotalWind(double theInfoVersion)
 {
   itsData.longType = kTCombinedWeatherMissing;
   SetWindDirection(kT6BitMissing);
-  SetWindSpeed(WindSpeedMissingValue());  // Marko testi, toimii sek‰ versiolle 6 ett‰ 7!!!
+  SetWindSpeed(WindSpeedMissingValue());  // Marko testi, toimii sek√§ versiolle 6 ett√§ 7!!!
   SetWindGust(WindGustMissingValue());
   fDataOk = true;
 }
@@ -147,7 +147,7 @@ NFmiTotalWind::NFmiTotalWind(unsigned long theValue,
   itsData.longType = kTCombinedWeatherMissing;
   if (theParamType == kFmiPackedWind)
   {
-    // huom! puuskaa ei aseteta t‰ss‰ tapauksessa, koska se tulee pakattuna arvona!!!
+    // huom! puuskaa ei aseteta t√§ss√§ tapauksessa, koska se tulee pakattuna arvona!!!
     itsData.longType = theValue;
     fDataOk = true;
   }
@@ -155,7 +155,7 @@ NFmiTotalWind::NFmiTotalWind(unsigned long theValue,
   {
     FromWindVector(theValue);
     SetWindGust(WindGustVx(theWindGustValue));  // jos parametri on windvector, laitetaan mahd.
-                                                // puuska arvo myˆs kohdalleen
+                                                // puuska arvo my√∂s kohdalleen
   }
 }
 
@@ -178,7 +178,7 @@ NFmiTotalWind::NFmiTotalWind(float theValue,
   itsData.longType = kTCombinedWeatherMissing;
   if (theParamType == kFmiPackedWind)
   {
-    // huom! puuskaa ei aseteta t‰ss‰ tapauksessa, koska se tulee pakattuna arvona!!!
+    // huom! puuskaa ei aseteta t√§ss√§ tapauksessa, koska se tulee pakattuna arvona!!!
     itsData.longType = ConvertFloatToLong(theValue);
     fDataOk = true;
   }
@@ -186,7 +186,7 @@ NFmiTotalWind::NFmiTotalWind(float theValue,
   {
     FromWindVector(static_cast<long unsigned int>(theValue));
     SetWindGust(WindGustVx(theWindGustValue));  // jos parametri on windvector, laitetaan mahd.
-                                                // puuska arvo myˆs kohdalleen
+                                                // puuska arvo my√∂s kohdalleen
   }
 }
 
@@ -212,7 +212,7 @@ NFmiTotalWind::NFmiTotalWind(float theFirstValue,
     SetFromDirectionAndSpeed(theFirstValue, theSecondValue);
   else if (theParamType == kFmiUVComponents)
     SetFromUVComponents(
-        theFirstValue, theSecondValue, true);  // true=aseta mm. myˆs gustindex puuttuvaksi
+        theFirstValue, theSecondValue, true);  // true=aseta mm. my√∂s gustindex puuttuvaksi
   SetWindGust(WindGustVx(theWindGustValue));
 }
 
@@ -301,7 +301,7 @@ bool NFmiTotalWind::CheckWindVector(unsigned long theValue)
 
 // ----------------------------------------------------------------------
 /*!
- *†\param theValue Undocumented
+ *¬†\param theValue Undocumented
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
@@ -373,7 +373,7 @@ bool NFmiTotalWind::IsMemberParam(FmiParameterName type) const
 {
   switch (type)
   {
-    // onko t‰ss‰ kaikki
+    // onko t√§ss√§ kaikki
     case kFmiWindDirection:
     case kFmiWindSpeedMS:
     case kFmiWindVectorMS:
@@ -490,7 +490,7 @@ double NFmiTotalWind::SubValue(FmiParameterName theParam,
 
 // ----------------------------------------------------------------------
 /*!
- * Laskee raaka biteist‰ suuntaa ja konvertoi lopulliseen aste arvoon
+ * Laskee raaka biteist√§ suuntaa ja konvertoi lopulliseen aste arvoon
  *
  * \return Undocumented
  */
@@ -523,12 +523,12 @@ double NFmiTotalWind::CalcU(void)
   double WS = WindSpeedVx(WindSpeed());
   int WD = static_cast<int>(WindDirectionValue());
   if (WD ==
-      999)  // jos tuulensuunta on vaihtelevaa (999), palautetaan 0 arvo (voisi olla myˆs puuttuvaa)
+      999)  // jos tuulensuunta on vaihtelevaa (999), palautetaan 0 arvo (voisi olla my√∂s puuttuvaa)
     return 0;
   if (WS != kFloatMissing && WD != kFloatMissing)
   {
-    value = WS * sin((((180 + WD) % 360) / 360.) * (2. * kPii));  // huom! tuulen suunta pit‰‰ ensin
-                                                                  // k‰‰nt‰‰ 180 astetta ja sitten
+    value = WS * sin((((180 + WD) % 360) / 360.) * (2. * kPii));  // huom! tuulen suunta pit√§√§ ensin
+                                                                  // k√§√§nt√§√§ 180 astetta ja sitten
                                                                   // muuttaa radiaaneiksi kulma/360
                                                                   // * 2*pii
   }
@@ -537,7 +537,7 @@ double NFmiTotalWind::CalcU(void)
 
 // ----------------------------------------------------------------------
 /*!
- * Lasketaan myˆs tuuli komponentit u ja v
+ * Lasketaan my√∂s tuuli komponentit u ja v
  *
  * \return Undocumented
  */
@@ -549,12 +549,12 @@ double NFmiTotalWind::CalcV(void)
   double WS = WindSpeedVx(WindSpeed());
   int WD = static_cast<int>(WindDirectionValue());
   if (WD ==
-      999)  // jos tuulensuunta on vaihtelevaa (999), palautetaan 0 arvo (voisi olla myˆs puuttuvaa)
+      999)  // jos tuulensuunta on vaihtelevaa (999), palautetaan 0 arvo (voisi olla my√∂s puuttuvaa)
     return 0;
   if (WS != kFloatMissing && WD != kFloatMissing)
   {
-    value = WS * cos((((180 + WD) % 360) / 360.) * (2. * kPii));  // huom! tuulen suunta pit‰‰ ensin
-                                                                  // k‰‰nt‰‰ 180 astetta ja sitten
+    value = WS * cos((((180 + WD) % 360) / 360.) * (2. * kPii));  // huom! tuulen suunta pit√§√§ ensin
+                                                                  // k√§√§nt√§√§ 180 astetta ja sitten
                                                                   // muuttaa radiaaneiksi kulma/360
                                                                   // * 2*pii
   }
@@ -570,8 +570,8 @@ double NFmiTotalWind::CalcV(void)
 
 double NFmiTotalWind::RawSubValue(FmiParameterName theParam)
 {
-  // Persa lis‰si t‰m‰n, vaan ei kirjoittanut viel‰ sis‰ltˆ‰
-  // T‰ll‰ hetkell‰ toimii aivan samoin kuin SubValue
+  // Persa lis√§si t√§m√§n, vaan ei kirjoittanut viel√§ sis√§lt√∂√§
+  // T√§ll√§ hetkell√§ toimii aivan samoin kuin SubValue
 
   // palauttaa kFloatMissing, jos arvo on puuttuva
   double returnVal = kFloatMissing;
@@ -621,7 +621,7 @@ NFmiDataIdent *NFmiTotalWind::CreateParam(const NFmiProducer &theProducer,
   NFmiParam param;
   NFmiParamBag subParamBag;
 
-  // lis‰‰ t‰nne gustit ym!
+  // lis√§√§ t√§nne gustit ym!
   unsigned long maxWindSpeedValue = (itsInfoVersion >= 7.) ? 4094 : 500;
   unsigned long maxGustSpeedValue = (itsInfoVersion >= 7.) ? 4094 : 14;
   param = NFmiParam(kFmiWindSpeedMS, "Wind speed", 0, maxWindSpeedValue, 1, 0, "%.1f", kLinearly);
@@ -711,21 +711,21 @@ unsigned long NFmiTotalWind::WindDirectionMean(unsigned long dir1, unsigned long
     if (factor == 0)
       return kTVariableWind;
     else
-      return dir2;  // ei tarvitse laskea mit‰‰n
+      return dir2;  // ei tarvitse laskea mit√§√§n
   }
   else if (dir2 == kTVariableWind)
   {
     if (factor == 1)
       return kTVariableWind;
     else
-      return dir1;  // ei tarvitse laskea mit‰‰n
+      return dir1;  // ei tarvitse laskea mit√§√§n
   }
   if (dir1 == kT6BitMissing)
   {
     if (factor == 0)
       return kT6BitMissing;  // palautetaan puuttuva tieto
     else
-      return dir2;  // ei tarvitse laskea mit‰‰n
+      return dir2;  // ei tarvitse laskea mit√§√§n
   }
 
   for (int i = 0; i < 2; i++)  // katsotaan kummalla puolella 180:aa astetta arvot ovat
@@ -745,7 +745,7 @@ unsigned long NFmiTotalWind::WindDirectionMean(unsigned long dir1, unsigned long
     meanValue = dirTable[0] * (1 - factor) + dirTable[1] * factor;
   else  // 360 astetta ylittyy
   {
-    // Mika: cast v‰ltt‰m‰tˆn g++ k‰‰nt‰j‰ll‰
+    // Mika: cast v√§ltt√§m√§t√∂n g++ k√§√§nt√§j√§ll√§
     if (abs(static_cast<int>(dirTable[0]) - static_cast<int>(dirTable[1])) > 18)
     {
       if (dirTable[0] < dirTable[1])
@@ -781,7 +781,7 @@ NFmiTotalWind *NFmiTotalWind::Mean(const NFmiTotalWind &theTotalWind, float fact
 
 // ----------------------------------------------------------------------
 /*!
- * Lasketaan painotettu keskiarvo k‰ytt‰en U- ja V-komponetteja.
+ * Lasketaan painotettu keskiarvo k√§ytt√§en U- ja V-komponetteja.
  *
  * \param theCombinedParam1 Undocumented
  * \param fac1 Undocumented
@@ -836,7 +836,7 @@ bool NFmiTotalWind::SetToWeightedMean(NFmiCombinedParam *theCombinedParam1,
   windInterpolator.operator()(
       theWind4->SubValue(kFmiWindSpeedMS), theWind4->SubValue(kFmiWindDirection), factor4);
 
-  // Muutin tuulen interpolointia siten, ett‰ tuulen nopeus lasketaan skalaarisesti
+  // Muutin tuulen interpolointia siten, ett√§ tuulen nopeus lasketaan skalaarisesti
   // ja suunta ottaa huomioon jatkuvuuden 360 kohdalla (ennen laskettiin u- ja v-komponenttien
   // avulla)
   SetFromDirectionAndSpeed(static_cast<float>(windInterpolator.Direction()),
@@ -920,7 +920,7 @@ bool NFmiTotalWind::WindDirection(unsigned long theValue)
   int integerValue = theValue;
   if (theValue != kFloatMissing)  // vai float???
   {
-    if (integerValue < 0)  // integerValue tarvitaan, ett‰ n‰ht‰isiin alle nollan arvot
+    if (integerValue < 0)  // integerValue tarvitaan, ett√§ n√§ht√§isiin alle nollan arvot
     {
       theValue = 36 + integerValue % 36;
     }

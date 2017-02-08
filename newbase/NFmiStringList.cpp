@@ -188,15 +188,15 @@ void NFmiStringList::Add(NFmiStringList *theList)
 
 // ----------------------------------------------------------------------
 /*!
- * Lis‰‰ annetun merkkijonon theStr listaan riveitt‰in. Rivin pituus annetaan
- * parametrina. Rivit eli listaan lis‰tt‰v‰t itemit pyrit‰‰n jos mahdollista
- * katkaisemaan v‰lilyˆnnin kohdalta eli sanat pyrit‰‰n s‰ilytt‰m‰‰n kokonaisina.
- * Kutakin rivi‰ varten luodaan dynaamisesti uusi NFmiString-merkkijono.
+ * Lis√§√§ annetun merkkijonon theStr listaan riveitt√§in. Rivin pituus annetaan
+ * parametrina. Rivit eli listaan lis√§tt√§v√§t itemit pyrit√§√§n jos mahdollista
+ * katkaisemaan v√§lily√∂nnin kohdalta eli sanat pyrit√§√§n s√§ilytt√§m√§√§n kokonaisina.
+ * Kutakin rivi√§ varten luodaan dynaamisesti uusi NFmiString-merkkijono.
  * Esim. jos merkkijonon pituus on pienempi kuin annettu rivin pituus,
- * str-listaan lis‰t‰‰n vain yksi item.
+ * str-listaan lis√§t√§√§n vain yksi item.
  *
  *
- * \param theStr, listaan lis‰tt‰v‰n merkkijonon osoite
+ * \param theStr, listaan lis√§tt√§v√§n merkkijonon osoite
  */
 // ----------------------------------------------------------------------
 
@@ -364,11 +364,11 @@ bool NFmiStringList::Find(const NFmiString &str)
 // ----------------------------------------------------------------------
 
 // 16.5.2001/Marko Poistaa currentin stringin listasta.
-// HUOM!!!!! Toimii huonosti, poiston j‰lkeen lista osoittaa seuraavaa stringi‰.
-// Ongelma jos k‰y listaa l‰pi Next:illa ja poistaa tiettyj‰ stringeja, t‰llˆin
-// poiston j‰lkeen siirryt‰‰n eteenp‰in ja Next siirrt‰‰ viel‰ yhden eteenp‰in.
-// SYY VoidPointerList ja sen rajoitukset ja vaikeudet (en luettele t‰ss‰)
-// KORJAUS: Toteuta koko juttu STL-vector:ia k‰ytt‰en.
+// HUOM!!!!! Toimii huonosti, poiston j√§lkeen lista osoittaa seuraavaa stringi√§.
+// Ongelma jos k√§y listaa l√§pi Next:illa ja poistaa tiettyj√§ stringeja, t√§ll√∂in
+// poiston j√§lkeen siirryt√§√§n eteenp√§in ja Next siirrt√§√§ viel√§ yhden eteenp√§in.
+// SYY VoidPointerList ja sen rajoitukset ja vaikeudet (en luettele t√§ss√§)
+// KORJAUS: Toteuta koko juttu STL-vector:ia k√§ytt√§en.
 
 bool NFmiStringList::Remove(void)
 {

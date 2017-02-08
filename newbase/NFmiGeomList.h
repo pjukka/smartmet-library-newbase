@@ -8,12 +8,12 @@
  * \struct GeomList
  *
  * \deprecated
- * N‰ytt‰‰ silt‰, ettei GeomList structia eik‰ GEOMNAMEMAXSIZE m‰‰ritelm‰‰
- * k‰ytet‰‰ miss‰‰n kirjastossa. Siten se tulisi poistaa. Toisaalta koodi
- * on niin C-tyyppist‰, ettei se kuulu C++ kirjastoon.
+ * N√§ytt√§√§ silt√§, ettei GeomList structia eik√§ GEOMNAMEMAXSIZE m√§√§ritelm√§√§
+ * k√§ytet√§√§ miss√§√§n kirjastossa. Siten se tulisi poistaa. Toisaalta koodi
+ * on niin C-tyyppist√§, ettei se kuulu C++ kirjastoon.
  *
- * \todo Ota selv‰‰, tarvitaanko t‰t‰ tiedostoa. Ilmeisesti struct on
- * Vilin m‰‰rittelem‰.
+ * \todo Ota selv√§√§, tarvitaanko t√§t√§ tiedostoa. Ilmeisesti struct on
+ * Vilin m√§√§rittelem√§.
  */
 // ======================================================================
 
@@ -22,7 +22,7 @@
 
 #define GEOMNAMEMAXSIZE 15
 
-//! Jonkinlainen struct nimien ja kokojen s‰ilyt‰miseen
+//! Jonkinlainen struct nimien ja kokojen s√§ilyt√§miseen
 typedef struct
 {
   long size;

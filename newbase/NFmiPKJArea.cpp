@@ -7,9 +7,9 @@
 /*!
  * \class NFmiPKJArea
  *
- * Implements transformation from rectangular PKJ (PerusKoordinaattiJ‰rjestelm‰)
+ * Implements transformation from rectangular PKJ (PerusKoordinaattiJ√§rjestelm√§)
  * coordinates into geodetic coordinates and vice versa for the Finnish
- * National Grid Coordinate System KKJ (KartastoKoordinaattiJ‰rjestelm‰).
+ * National Grid Coordinate System KKJ (KartastoKoordinaattiJ√§rjestelm√§).
  *
  * The rectangular PKJ coordinates are located on KKJ zones 1-4 with easting
  * and northing in meters.
@@ -165,15 +165,15 @@ NFmiPKJArea::NFmiPKJArea(const NFmiPoint &theBottomLeftLatLon,
 
   Init(true);
 
-  // 28.8.2001/Marko&Esa itsWorldRect on laskettu sellaisilla argumenteilla t‰ss‰, mitk‰ eiv‰t
-  // ole dataosia, joten sit‰ ei saa laskea Init:iss‰ uudestaan
+  // 28.8.2001/Marko&Esa itsWorldRect on laskettu sellaisilla argumenteilla t√§ss√§, mitk√§ eiv√§t
+  // ole dataosia, joten sit√§ ei saa laskea Init:iss√§ uudestaan
 }
 
 // ----------------------------------------------------------------------
 /*!
  * \param theBottomLeftWorldXY Undocumented (in meters)
  * \param theTopRightWorldXY Undocumented (in meters)
- *†\param isWorldXYInMeters Undocumented, unused
+ *¬†\param isWorldXYInMeters Undocumented, unused
  * \param theTopLeftXY Undocumented
  * \param theBottomRightXY Undocumented
  */
@@ -190,8 +190,8 @@ NFmiPKJArea::NFmiPKJArea(const NFmiPoint &theBottomLeftWorldXY,
 
   Init(true);
   // 28.8.2001/Marko&Esa itsWorldRect on laskettu sellaisilla argumenteilla
-  // t‰ss‰, mitk‰ eiv‰t ole dataosia, joten sit‰ ei saa laskea Init:iss‰
-  // uudestaan // 13.11.98/EL lis‰si
+  // t√§ss√§, mitk√§ eiv√§t ole dataosia, joten sit√§ ei saa laskea Init:iss√§
+  // uudestaan // 13.11.98/EL lis√§si
 }
 
 // ----------------------------------------------------------------------
@@ -205,7 +205,7 @@ void NFmiPKJArea::Init(bool fKeepWorldRect)
   if (!fKeepWorldRect)
     itsWorldRect =
         NFmiRect(LatLonToWorldXY(itsBottomLeftLatLon),
-                 LatLonToWorldXY(itsTopRightLatLon));  // 28.8.2001/Marko&Esa Lis‰tty laskuihin.
+                 LatLonToWorldXY(itsTopRightLatLon));  // 28.8.2001/Marko&Esa Lis√§tty laskuihin.
 
   itsXScaleFactor = Width() / itsWorldRect.Width();
   itsYScaleFactor = Height() / itsWorldRect.Height();
@@ -310,7 +310,7 @@ NFmiArea *NFmiPKJArea::Clone(void) const { return new NFmiPKJArea(*this); }
 /*!
  * Assignment operator
  *
- *†\param theArea The other object being copied
+ *¬†\param theArea The other object being copied
  * \return The object assigned to
  * \todo Should protect from self-assignment due to inheritance
  */
@@ -408,9 +408,9 @@ std::istream &NFmiPKJArea::Read(std::istream &file)
 /*!
  * \brief Return Well Known Text representation of the GCS
  *
- * Newbasen PKJ n‰ytt‰isi olevan sama asia kuin geneerinen KKJ.
- * Erityisesti siis YKJ:ta ei voida esitt‰‰ valitsemalla vyˆhykett‰
- * 3 konstruktorissa. N‰in ollen heitet‰‰n poikkeus.
+ * Newbasen PKJ n√§ytt√§isi olevan sama asia kuin geneerinen KKJ.
+ * Erityisesti siis YKJ:ta ei voida esitt√§√§ valitsemalla vy√∂hykett√§
+ * 3 konstruktorissa. N√§in ollen heitet√§√§n poikkeus.
  */
 // ----------------------------------------------------------------------
 

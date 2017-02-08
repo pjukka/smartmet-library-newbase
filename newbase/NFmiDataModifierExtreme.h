@@ -1,7 +1,7 @@
 // ======================================================================
 /*!
  * \file NFmiDataModifierExtreme.h
- * \brief abstrakti luokka min/max:ia varten joka myös antaa äärirvon
+ * \brief abstrakti luokka min/max:ia varten joka myÃ¶s antaa Ã¤Ã¤rirvon
  *  sattumisajan/Lasse
  */
 // ======================================================================

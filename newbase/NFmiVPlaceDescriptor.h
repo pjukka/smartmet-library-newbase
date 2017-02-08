@@ -35,8 +35,8 @@ class _FMI_DLL NFmiVPlaceDescriptor : public NFmiDataDescriptor
 
   const NFmiLevelBag *Levels(void) const;
 
-  bool IsStep(void) const;   // 'askel' m‰‰ritelty? false jos ei.
-  bool IsLevel(void) const;  // LevelBag m‰‰ritelty?
+  bool IsStep(void) const;   // 'askel' m√§√§ritelty? false jos ei.
+  bool IsLevel(void) const;  // LevelBag m√§√§ritelty?
 
   void LevelBag(NFmiLevelBag &theLevelBag);
   const NFmiLevelBag &LevelBag() const { return *itsLevelBag; }

@@ -65,15 +65,15 @@
 #ifndef NFMIMULTIQUERYINFO_H
 #define NFMIMULTIQUERYINFO_H
 
-// Ilman seuraavaa define:‰ Visual C++ 2012 k‰‰nt‰j‰ll‰ tulee k‰‰nnˆsvirhe boostin
+// Ilman seuraavaa define:√§ Visual C++ 2012 k√§√§nt√§j√§ll√§ tulee k√§√§nn√∂svirhe boostin
 // detail/container_fwd.hpp -headerissa
-// m‰‰riteltyjen ei-oletusarvoja k‰ytt‰vien std::list (ja muiden std-containereiden) forward
+// m√§√§riteltyjen ei-oletusarvoja k√§ytt√§vien std::list (ja muiden std-containereiden) forward
 // esittelyn kanssa.
-// siell‰ on siis esi-esitelty std::list seuraavasti:
+// siell√§ on siis esi-esitelty std::list seuraavasti:
 // template <class T, class Allocator> class list;
-//, kun pit‰isi olla (kuten onkin container/container_fwd.hpp)
+//, kun pit√§isi olla (kuten onkin container/container_fwd.hpp)
 // template <class T,class Allocator = std::allocator<T> > class list;
-// Miksi ongelma ei esiinny Linux + gcc yhdistelm‰n kanssa, ei ole tietoa.
+// Miksi ongelma ei esiinny Linux + gcc yhdistelm√§n kanssa, ei ole tietoa.
 #define BOOST_DETAIL_NO_CONTAINER_FWD
 
 #include "NFmiFastQueryInfo.h"

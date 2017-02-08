@@ -3,8 +3,8 @@
  * \file
  * \brief Interface of namespace NFmiAreaFactory
  *
- * HUOM!!! NFmiAreaFactory ei ole k‰ytˆss‰ MSVC60:lla koska
- * NFmiStringTools-funktiot eiv‰t ole k‰ytˆss‰.
+ * HUOM!!! NFmiAreaFactory ei ole k√§yt√∂ss√§ MSVC60:lla koska
+ * NFmiStringTools-funktiot eiv√§t ole k√§yt√∂ss√§.
  */
 // ======================================================================
 

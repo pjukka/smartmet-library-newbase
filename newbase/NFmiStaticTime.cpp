@@ -413,7 +413,7 @@ void NFmiStaticTime::SetTime(const short hour, const short minute, const short s
 /*!
  * \param hour Undocumented
  * \param minute Undocumented
- * \param sec Undocumented
+ *Â \param sec Undocumented
  */
 // ----------------------------------------------------------------------
 
@@ -469,7 +469,7 @@ void NFmiStaticTime::XPrint(const char *str) const  // testausfunktio!!!!
  * \param theTimeString Undocumented
  * \param theTimeMask Undocumented
  * \todo theTimeString should be a const reference
- * BUG: ei toimi esim. kDDHHMM vakion kanssa, koska siirtymää ei lasketa oikein.
+ * BUG: ei toimi esim. kDDHHMM vakion kanssa, koska siirtymÃ¤Ã¤ ei lasketa oikein.
  */
 // ----------------------------------------------------------------------
 

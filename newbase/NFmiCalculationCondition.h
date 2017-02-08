@@ -37,7 +37,7 @@ class _FMI_DLL NFmiCalculationCondition
   void Read(std::istream& is);
 
  private:
-  // Enum tyyppi, määrittelee eri operaatiot kuten: ==, >, <, >= jne.
+  // Enum tyyppi, mÃ¤Ã¤rittelee eri operaatiot kuten: ==, >, <, >= jne.
   FmiMaskOperation itsCondition;
   double itsUpperLimit;
   double itsLowerLimit;

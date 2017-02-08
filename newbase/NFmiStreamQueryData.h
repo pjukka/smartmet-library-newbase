@@ -19,8 +19,8 @@ class _FMI_DLL NFmiStreamQueryData
   NFmiStreamQueryData(void);
   NFmiStreamQueryData(NFmiQueryData* theQueryData, bool isOwnerData = false);
 
-  // Marko Muutin rajapinnan niin, ett‰ theQueryData pointterita tuli pointterin pointteri.
-  // T‰llˆin voin muuttaa koodin niin, ett‰ luettu data annetaan pointterin pointteriin ja omistus
+  // Marko Muutin rajapinnan niin, ett√§ theQueryData pointterita tuli pointterin pointteri.
+  // T√§ll√∂in voin muuttaa koodin niin, ett√§ luettu data annetaan pointterin pointteriin ja omistus
   // siirtyy ulos NFmiStreamQueryData-oliolta.
 
   bool ReadData(const NFmiString& theFileName, NFmiQueryData** theQueryData = 0);
@@ -46,7 +46,7 @@ class _FMI_DLL NFmiStreamQueryData
   NFmiQueryData* itsQueryData;
   NFmiFastQueryInfo* itsQueryDataIter;
   bool itsOwnerData;  // Jos false, omistaa itsQueryData:n ja tuhoaa sen destruktorissa, jos true,
-                      // ei omista eik‰ tuhoa.
+                      // ei omista eik√§ tuhoa.
 
 };  // class NFmiStreamQueryData
 

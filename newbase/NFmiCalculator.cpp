@@ -107,8 +107,8 @@ NFmiDataModifier* NFmiCalculator::CalculatedModifier(void)
  */
 // ----------------------------------------------------------------------
 
-// T‰m‰ on kuten FloatValue, paitsi ett‰ juoksutus tehd‰‰n t‰‰ll‰ loopissa
-// ja laskut tehd‰‰n t‰‰ll‰ eik‰ iteratorin DoForEach-metodissa.
+// T√§m√§ on kuten FloatValue, paitsi ett√§ juoksutus tehd√§√§n t√§√§ll√§ loopissa
+// ja laskut tehd√§√§n t√§√§ll√§ eik√§ iteratorin DoForEach-metodissa.
 
 float NFmiCalculator::CalculatedValue(void) { return kFloatMissing; }
 // ======================================================================

@@ -7,8 +7,8 @@
 /*!
  * \class NFmiPoint
  *
- * NFmiPoint-luokka pit‰‰ sis‰ll‰‰n tiedon kaksiulotteisesta pisteest‰. Luokalla
- * on tieto x- ja y-sijainnista. Voidaan k‰ytt‰‰ esitt‰m‰‰n mm. suhteelisia ja
+ * NFmiPoint-luokka pit√§√§ sis√§ll√§√§n tiedon kaksiulotteisesta pisteest√§. Luokalla
+ * on tieto x- ja y-sijainnista. Voidaan k√§ytt√§√§ esitt√§m√§√§n mm. suhteelisia ja
  * maantieteellisia sijainteja.
  * Helsingin sijainti voidaan esim. ilmoittaa seuraavasti (lon-lat muodossa):
  * NFmiPoint hki(24.95, 60.1667);
@@ -18,9 +18,9 @@
 /*!
  * \example example_NFmiPoint.cpp
  *
- * Esimerkki NFmiPoint-luokan k‰ytˆst‰.
+ * Esimerkki NFmiPoint-luokan k√§yt√∂st√§.
  *  Polku: newbase/examples/example_NFmiPoint.cpp
- * Luo erilaisia NFmiPoint ilmentymi‰ ja manipuloi niit‰ ja tulostaa
+ * Luo erilaisia NFmiPoint ilmentymi√§ ja manipuloi niit√§ ja tulostaa
  * olioiden arvoja cout:iin.
  */
 // ======================================================================
@@ -64,8 +64,8 @@ NFmiPoint& NFmiPoint::operator+=(const NFmiPoint& thePoint)
 
 // ----------------------------------------------------------------------
 /*!
- * -=operator v‰hent‰‰ itsest‰‰n annetun pisteen arvot.
- * X- ja Y-arvot v‰hennet‰‰n erikseen toisistaan ja sijoitetaan
+ * -=operator v√§hent√§√§ itsest√§√§n annetun pisteen arvot.
+ * X- ja Y-arvot v√§hennet√§√§n erikseen toisistaan ja sijoitetaan
  * this-NFmiPoint:iin.
  *
  * \param thePoint The other object being copied
@@ -115,10 +115,10 @@ NFmiPoint& NFmiPoint::operator/=(const NFmiPoint& thePoint)
 
 //___________________________________________________________
 /*!
- * Laskee miss‰ kulmassa (kUpLeft, kUpRight, kLeftDown ja kRightDown)
- * annettu piste on suhteessa this-pisteeseen. Ei ota huomioon, ett‰
+ * Laskee miss√§ kulmassa (kUpLeft, kUpRight, kLeftDown ja kRightDown)
+ * annettu piste on suhteessa this-pisteeseen. Ei ota huomioon, ett√§
  * voisi olla samassa tasossa joltain kantilta eli vastaus ei voi olla
- * pelkk‰ left, right, top tai bottom.
+ * pelkk√§ left, right, top tai bottom.
  *
  * \param thePoint The point whose relative position is to be determined
  * \return The relative direction of the point

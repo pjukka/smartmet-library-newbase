@@ -50,7 +50,7 @@ class _FMI_DLL NFmiLocationBag : public NFmiSize
                                const NFmiArea *theArea,
                                double theMaxDistance = kFloatMissing * 1000.);
 
-  //! Hakee listan paikkaindeksi/et‰isyys metrein‰ pareja. Listaan haetaan annettua paikkaa l‰himmat
+  //! Hakee listan paikkaindeksi/et√§isyys metrein√§ pareja. Listaan haetaan annettua paikkaa l√§himmat
   //! datapisteet.
   const checkedVector<std::pair<int, double> > NearestLocations(
       const NFmiLocation &theLocation,

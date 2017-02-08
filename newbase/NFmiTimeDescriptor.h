@@ -100,9 +100,9 @@ class _FMI_DLL NFmiTimeDescriptor : public NFmiDataDescriptor
 
   virtual unsigned long Index(void) const;
   virtual unsigned long Size(void) const;
-  bool IsEmpty(void) const;  // Jouduin tekem‰‰n IsEmpty -metodin, koska Size -metodi palauttaa
-                             // joskus tyhj‰n‰ 1:n (NFmiTimeBag palauttaa tyhj‰n‰ 1:n kun resolution
-                             // on 0 jostain historiallisista v. 1998 syist‰)
+  bool IsEmpty(void) const;  // Jouduin tekem√§√§n IsEmpty -metodin, koska Size -metodi palauttaa
+                             // joskus tyhj√§n√§ 1:n (NFmiTimeBag palauttaa tyhj√§n√§ 1:n kun resolution
+                             // on 0 jostain historiallisista v. 1998 syist√§)
   virtual unsigned long SizeActive(void) const;
 
   virtual bool NextActive(void);
@@ -146,7 +146,7 @@ class _FMI_DLL NFmiTimeDescriptor : public NFmiDataDescriptor
   unsigned long LocalTimeStep(void);
   void ReduseTimeBag(void);
   void ExtendTimeBag(void);
-  //  unsigned long TimeResolution(void); // poistettu, k‰yt‰ Resolution-metodia
+  //  unsigned long TimeResolution(void); // poistettu, k√§yt√§ Resolution-metodia
   bool IsInside(const NFmiMetTime &theTime) const;
   bool FindNearestTime(const NFmiMetTime &theTime,
                        FmiDirection theDirection = kCenter,

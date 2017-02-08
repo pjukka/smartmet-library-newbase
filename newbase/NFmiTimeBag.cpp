@@ -58,11 +58,11 @@ unsigned long NFmiTimeBag::GetSize(void) const
 bool NFmiTimeBag::IsEmpty(void) const { return NFmiSize::GetSize() == 0; }
 // ----------------------------------------------------------------------
 /*!
- * \param theBag This-otus ja theBag yhdistet‰‰n halutulla tavalla.
- * \param theStartTimeFunction Mist‰ otetaan alkuaika, jos 0, pienempi,
- *				jos 1 otetaan this:ist‰ ja jos 2 otetaan theBag:ista.
- * \param theEndTimeFunction Mist‰ otetaan loppuaika, jos 0, suurempi,
- *				jos 1 otetaan this:ist‰ ja jos 2 otetaan theBag:ista.
+ * \param theBag This-otus ja theBag yhdistet√§√§n halutulla tavalla.
+ * \param theStartTimeFunction Mist√§ otetaan alkuaika, jos 0, pienempi,
+ *				jos 1 otetaan this:ist√§ ja jos 2 otetaan theBag:ista.
+ * \param theEndTimeFunction Mist√§ otetaan loppuaika, jos 0, suurempi,
+ *				jos 1 otetaan this:ist√§ ja jos 2 otetaan theBag:ista.
  * \return Palautetaan yhdistetty timebagi
  *
  * \todo Should be a const method, but NFmiSortable does not allow it
@@ -78,7 +78,7 @@ const NFmiTimeBag NFmiTimeBag::Combine(const NFmiTimeBag &theBag,
     startTime = itsFirstTime < theBag.itsFirstTime ? itsFirstTime : theBag.itsFirstTime;
   else if (theStartTimeFunction == 1)
     startTime = itsFirstTime;
-  else  // t‰ss‰ pit‰isi olla 2, mutta en jaksa tarkistaa, ettei tarvitse tehd‰ virhe k‰sittely‰
+  else  // t√§ss√§ pit√§isi olla 2, mutta en jaksa tarkistaa, ettei tarvitse tehd√§ virhe k√§sittely√§
     startTime = theBag.itsFirstTime;
 
   NFmiMetTime endTime;
@@ -86,7 +86,7 @@ const NFmiTimeBag NFmiTimeBag::Combine(const NFmiTimeBag &theBag,
     endTime = itsLastTime > theBag.itsLastTime ? itsLastTime : theBag.itsLastTime;
   else if (theEndTimeFunction == 1)
     endTime = itsLastTime;
-  else  // t‰ss‰ pit‰isi olla 2, mutta en jaksa tarkistaa, ettei tarvitse tehd‰ virhe k‰sittely‰
+  else  // t√§ss√§ pit√§isi olla 2, mutta en jaksa tarkistaa, ettei tarvitse tehd√§ virhe k√§sittely√§
     endTime = theBag.itsLastTime;
 
   return NFmiTimeBag(startTime,
@@ -162,10 +162,10 @@ bool NFmiTimeBag::SetCurrent(const NFmiMetTime &theTime)
   if (diffFromFirstTimeInMinutes >= 0 && (diffFromFirstTimeInMinutes % resolutionInMinutes == 0))
     if (diffFromFirstTimeInMinutes <
         resolutionInMinutes *
-            static_cast<long>(itsSize))  // tarkistetaan viel‰, ettei mene yli lastTimen
+            static_cast<long>(itsSize))  // tarkistetaan viel√§, ettei mene yli lastTimen
     {
       itsCurrentTime = itsFirstTime;
-      if (diffFromFirstTimeInMinutes)  // pient‰ optimointia, pit‰isi tehd‰ NFmiTime-luokan
+      if (diffFromFirstTimeInMinutes)  // pient√§ optimointia, pit√§isi tehd√§ NFmiTime-luokan
                                        // ChangeBy???-metodeissa!!!!
         itsCurrentTime.ChangeByMinutes(diffFromFirstTimeInMinutes);
       itsIndex = diffFromFirstTimeInMinutes / resolutionInMinutes;
@@ -177,15 +177,15 @@ bool NFmiTimeBag::SetCurrent(const NFmiMetTime &theTime)
 
 // ----------------------------------------------------------------------
 /*!
- * Laskee this timebagista theBag2:n leikkauksen siten, ett‰ rajat (firstTime
- * ja lastTime) otetaan joko this-bagist‰ tai theBag2:sta, riippuen siit‰
- * onko rajoittavan bagin ajat this-bagin sis‰ll‰ vai ulkona. Tulos
+ * Laskee this timebagista theBag2:n leikkauksen siten, ett√§ rajat (firstTime
+ * ja lastTime) otetaan joko this-bagist√§ tai theBag2:sta, riippuen siit√§
+ * onko rajoittavan bagin ajat this-bagin sis√§ll√§ vai ulkona. Tulos
  * timebagi sijoitetaan refBag:iin ja siihen saa joko this:in tai
  * theBag2:en aikaresoluution.
  * \param theBag2 Leikkausta rajoittava timebagi
- * \param refBag Tulos-timebagi sijoitetaan t‰h‰n.
- * \param resolOfBag2 Jos true, otetaan aikaresoluutio theBag2:sta, muuten this:ist‰.
- * \return Palauttaa false, jos tulostimebagi‰ ei voi tehd‰, en ole varma voiko menn‰ siihen.
+ * \param refBag Tulos-timebagi sijoitetaan t√§h√§n.
+ * \param resolOfBag2 Jos true, otetaan aikaresoluutio theBag2:sta, muuten this:ist√§.
+ * \return Palauttaa false, jos tulostimebagi√§ ei voi tehd√§, en ole varma voiko menn√§ siihen.
  */
 // ----------------------------------------------------------------------
 
@@ -207,11 +207,11 @@ bool NFmiTimeBag::CalcIntersection(const NFmiTimeBag &theBag2,
 
 // ----------------------------------------------------------------------
 /*!
- * Laskee this timebagista leikkauksen siten, ett‰ rajat otetaan this-bagist‰.
- * Metodi etsii annettujen rajojen sis‰lt‰/rajalta timebagist‰ aikoja
+ * Laskee this timebagista leikkauksen siten, ett√§ rajat otetaan this-bagist√§.
+ * Metodi etsii annettujen rajojen sis√§lt√§/rajalta timebagist√§ aikoja
  * ja muodostaa uuden timebagin joka palautetaan ulos.
- * Jos rajat ovat ohi kokonaan timebagist‰ ja viel‰ samaan suuntaan,
- * palautetaan tyhj‰ timebagi. Samoin k‰y jos rajojen sis‰‰n ei sovi yht‰‰n
+ * Jos rajat ovat ohi kokonaan timebagist√§ ja viel√§ samaan suuntaan,
+ * palautetaan tyhj√§ timebagi. Samoin k√§y jos rajojen sis√§√§n ei sovi yht√§√§n
  * timebagin aikaa.
  * \param theStartLimit Leikkausta rajoittava alkuaika.
  * \param theEndLimit Leikkausta rajoittava loppuaika.
@@ -245,7 +245,7 @@ bool NFmiTimeBag::SetTime(unsigned long theIndex)
 {
   if (theIndex < GetSize())
   {
-    SetCurrentIndex(theIndex);  // NFmiSize asetetaan t‰ll‰
+    SetCurrentIndex(theIndex);  // NFmiSize asetetaan t√§ll√§
     itsCurrentTime = itsFirstTime;
     if (theIndex > 0 && itsResolution.IsDate())
     {
@@ -253,7 +253,7 @@ bool NFmiTimeBag::SetTime(unsigned long theIndex)
         itsCurrentTime.SetYear(
             static_cast<short>(itsCurrentTime.GetYear() + (theIndex * itsResolution.Year())));
       if (itsResolution.Month())
-        throw runtime_error("NFmiTimeBag::SetTime: Kuukausi resoluutiossa ei toimi viel‰.");
+        throw runtime_error("NFmiTimeBag::SetTime: Kuukausi resoluutiossa ei toimi viel√§.");
       //	itsCurrentTime.ChangeByMonth(theIndex * itsResolution.Month()); // TEE
       // ChangeByMonth-metodi!!!!
       if (itsResolution.Day()) itsCurrentTime.ChangeByDays(theIndex * itsResolution.Day());
@@ -491,9 +491,9 @@ std::istream &NFmiTimeBag::Read(std::istream &file)
 
 // ----------------------------------------------------------------------
 /*!
- * Karsii halutut ylim‰‰r‰iset ajat pois
+ * Karsii halutut ylim√§√§r√§iset ajat pois
  * \param theMaxTimeCount Kertoo kuinka monta aikaa saa olla maksimissaan.
- * \param fFromEnd kertoo, mist‰ p‰‰st‰ karsitaan ylim‰‰r‰iset pois.
+ * \param fFromEnd kertoo, mist√§ p√§√§st√§ karsitaan ylim√§√§r√§iset pois.
  */
 // ----------------------------------------------------------------------
 
@@ -518,10 +518,10 @@ void NFmiTimeBag::PruneTimes(int theMaxTimeCount, bool fFromEnd)
 
 // ----------------------------------------------------------------------
 /*!
- * Muuttaa timebagi‰ niin ett‰ annettu aika laitetaan firstTimeksi,
- * ja lastTimeksi lasketaan uusi arvo, niin ett‰ erotus ensimm‰isen ja
- * viimeisen ajan v‰lill‰ pysyy samana. N‰in timebagin rakenne ja resoluutio s‰ilyv‰t.
- * Lis‰ksi currentTime:ksi asetetaan theTime arvo eli 1. aika.
+ * Muuttaa timebagi√§ niin ett√§ annettu aika laitetaan firstTimeksi,
+ * ja lastTimeksi lasketaan uusi arvo, niin ett√§ erotus ensimm√§isen ja
+ * viimeisen ajan v√§lill√§ pysyy samana. N√§in timebagin rakenne ja resoluutio s√§ilyv√§t.
+ * Lis√§ksi currentTime:ksi asetetaan theTime arvo eli 1. aika.
  * \param theTime on timebagin uusi firstTime.
  */
 // ----------------------------------------------------------------------

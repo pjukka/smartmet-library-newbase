@@ -116,10 +116,10 @@ bool NFmiDataPool::Init(unsigned long theNumber)
   {
     throw static_cast<double>(sizeof(float) * itsSize / (1024. * 1024.));
 
-    // t‰ss‰ on tarkoitus heitt‰‰ speciaali poikkeus mutta vain meteorologin editorissa
-    // t‰m‰ double poikkeus kertoo pyydetyn datan koon MB yksikˆss‰ ja ett‰ datassa sin‰ns‰
+    // t√§ss√§ on tarkoitus heitt√§√§ speciaali poikkeus mutta vain meteorologin editorissa
+    // t√§m√§ double poikkeus kertoo pyydetyn datan koon MB yksik√∂ss√§ ja ett√§ datassa sin√§ns√§
     // ei ollut vikaa, mutta ei saatu varattua
-    // tarpeeksi isoa yhten‰ist‰ muistialuett‰ char taulukolle johon data luettaisiin.
+    // tarpeeksi isoa yhten√§ist√§ muistialuett√§ char taulukolle johon data luettaisiin.
   }
 #endif  // FMI_MET_EDITOR_CONTINUOIS_MEMORY_ALLOC_FAILED
 
@@ -799,7 +799,7 @@ std::istream &NFmiDataPool::Read(std::istream &file)
     char ch;
     file.get(ch);
     file.read(reinterpret_cast<char *>(itsData), itsSize * sizeof(float));
-    DoEndianByteSwap();  // tarkistaa ensin, pit‰‰kˆ swapata ensink‰‰n!!
+    DoEndianByteSwap();  // tarkistaa ensin, pit√§√§k√∂ swapata ensink√§√§n!!
   }
   else
   {
@@ -825,10 +825,10 @@ std::istream &NFmiDataPool::Read(std::istream &file)
 // ----------------------------------------------------------------------
 void NFmiDataPool::DoEndianByteSwap(void)
 {
-  if (fDoEndianByteSwap)  // t‰m‰ tieto on annettu ulkoa (qdata on kysynyt qinfolta, tarvitaanko
+  if (fDoEndianByteSwap)  // t√§m√§ tieto on annettu ulkoa (qdata on kysynyt qinfolta, tarvitaanko
                           // swappaus)
   {
-    // Mika: Lis‰tty swab operaatio
+    // Mika: Lis√§tty swab operaatio
     if (itsSize > 1)
     {
       char tmp1, tmp2, tmp3, tmp4;

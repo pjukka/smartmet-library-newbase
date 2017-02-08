@@ -170,7 +170,7 @@ void NFmiValueString::SetValue(const short theValue, const char *theFormat)
   valueLength = ::snprintf(
       reinterpret_cast<char *>(valueString), sizeof(valueString) - 1, theFormat, theValue);
 #endif
-  valueString[sizeof(valueString) - 1] = 0;  // pit‰‰ varmistaa ett‰ p‰‰ttyy 0-merkkiin!!!!
+  valueString[sizeof(valueString) - 1] = 0;  // pit√§√§ varmistaa ett√§ p√§√§ttyy 0-merkkiin!!!!
 
   Set(valueString, static_cast<short>(valueLength));
 }
@@ -194,7 +194,7 @@ void NFmiValueString::SetValue(const int theValue, const char *theFormat)
   valueLength = ::snprintf(
       reinterpret_cast<char *>(valueString), sizeof(valueString) - 1, theFormat, theValue);
 #endif
-  valueString[sizeof(valueString) - 1] = 0;  // pit‰‰ varmistaa ett‰ p‰‰ttyy 0-merkkiin!!!!
+  valueString[sizeof(valueString) - 1] = 0;  // pit√§√§ varmistaa ett√§ p√§√§ttyy 0-merkkiin!!!!
 
   Set(valueString, static_cast<short>(valueLength));
 }
@@ -218,7 +218,7 @@ void NFmiValueString::SetValue(const float theValue, const char *theFormat)
   valueLength = ::snprintf(
       reinterpret_cast<char *>(valueString), sizeof(valueString) - 1, theFormat, theValue);
 #endif
-  valueString[sizeof(valueString) - 1] = 0;  // pit‰‰ varmistaa ett‰ p‰‰ttyy 0-merkkiin!!!!
+  valueString[sizeof(valueString) - 1] = 0;  // pit√§√§ varmistaa ett√§ p√§√§ttyy 0-merkkiin!!!!
 
   Set(valueString, static_cast<short>(valueLength));
 }
@@ -242,7 +242,7 @@ void NFmiValueString::SetValue(const long theValue, const char *theFormat)
   valueLength = ::snprintf(
       reinterpret_cast<char *>(valueString), sizeof(valueString) - 1, theFormat, theValue);
 #endif
-  valueString[sizeof(valueString) - 1] = 0;  // pit‰‰ varmistaa ett‰ p‰‰ttyy 0-merkkiin!!!!
+  valueString[sizeof(valueString) - 1] = 0;  // pit√§√§ varmistaa ett√§ p√§√§ttyy 0-merkkiin!!!!
 
   Set(valueString, static_cast<short>(valueLength));
 }
@@ -266,7 +266,7 @@ void NFmiValueString::SetValue(const double theValue, const char *theFormat)
   valueLength = ::snprintf(
       reinterpret_cast<char *>(valueString), sizeof(valueString) - 1, theFormat, theValue);
 #endif
-  valueString[sizeof(valueString) - 1] = 0;  // pit‰‰ varmistaa ett‰ p‰‰ttyy 0-merkkiin!!!!
+  valueString[sizeof(valueString) - 1] = 0;  // pit√§√§ varmistaa ett√§ p√§√§ttyy 0-merkkiin!!!!
 
   Set(valueString, static_cast<short>(valueLength));
 }
@@ -340,10 +340,10 @@ bool NFmiValueString::IsNumeric(int theStart, int theSize) const
 
 // ----------------------------------------------------------------------
 /*!
- * Hakee merkkijonon ensimm‰isen numeerisen merkin. Haku aloitetaan
- * annetusta indeksist‰ start, jonka oletusarvo on 1.
+ * Hakee merkkijonon ensimm√§isen numeerisen merkin. Haku aloitetaan
+ * annetusta indeksist√§ start, jonka oletusarvo on 1.
  * \param start, indeksi, josta haku aloitetaan, oletusarvo 1
- * \return ensimm‰iseksi lˆydetyn numeerisen merkin indeksi
+ * \return ensimm√§iseksi l√∂ydetyn numeerisen merkin indeksi
  */
 // ----------------------------------------------------------------------
 unsigned long NFmiValueString::SearchNumeric(unsigned long start) const
@@ -434,7 +434,7 @@ bool NFmiValueString::IsDouble(int theStart, int theSize) const
 // ----------------------------------------------------------------------
 /*!
  * \param theValue Undocumented
- *†\param theStart Undocumented
+ *¬†\param theStart Undocumented
  * \param theSize Undocumented
  * \return Undocumented
  */
@@ -605,18 +605,18 @@ const NFmiString NFmiValueString::GetStringWithMaxDecimalsSmartWay(double value,
 #else
     ::snprintf(buffer2, sizeof(buffer2) - 1, "%%0.%dg", precisionValue);
 #endif
-    buffer2[sizeof(buffer2) - 1] = 0;  // pit‰‰ varmistaa ett‰ p‰‰ttyy 0-merkkiin!!!!
+    buffer2[sizeof(buffer2) - 1] = 0;  // pit√§√§ varmistaa ett√§ p√§√§ttyy 0-merkkiin!!!!
     format = buffer2;
   }
-  else  // jos maxDecimals oli 0 ja luku vaikka 10, tuli MSVC:lla tulos 1e+001 (t‰m‰ XP:ll‰,
-        // mielest‰ni toimi NT4:lla?!?!?)
+  else  // jos maxDecimals oli 0 ja luku vaikka 10, tuli MSVC:lla tulos 1e+001 (t√§m√§ XP:ll√§,
+        // mielest√§ni toimi NT4:lla?!?!?)
     format += "%.0f";
 #ifdef _MSC_VER
   ::_snprintf(buffer, sizeof(buffer) - 1, format, value);
 #else
   ::snprintf(buffer, sizeof(buffer) - 1, format, value);
 #endif
-  buffer[sizeof(buffer) - 1] = 0;  // pit‰‰ varmistaa ett‰ p‰‰ttyy 0-merkkiin!!!!
+  buffer[sizeof(buffer) - 1] = 0;  // pit√§√§ varmistaa ett√§ p√§√§ttyy 0-merkkiin!!!!
   return NFmiString(buffer);
 }
 

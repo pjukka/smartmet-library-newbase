@@ -22,11 +22,11 @@
 
 #ifdef _MSC_VER
 #pragma warning( \
-    disable : 4244 4267 4512)  // boost:in thread kirjastosta tulee ik‰v‰sti 4244 varoituksia
+    disable : 4244 4267 4512)  // boost:in thread kirjastosta tulee ik√§v√§sti 4244 varoituksia
 #endif
 #include <boost/thread.hpp>
 #ifdef _MSC_VER
-#pragma warning(default : 4244 4267 4512)  // laitetaan 4244 takaisin p‰‰lle, koska se on t‰rke‰
+#pragma warning(default : 4244 4267 4512)  // laitetaan 4244 takaisin p√§√§lle, koska se on t√§rke√§
                                            // (esim. double -> int auto castaus varoitus)
 #endif
 
@@ -54,10 +54,10 @@ class NFmiLogger;
 
 /*!
  * \class MyGrid
- * T‰ss‰ pari apu luokkaa useiden hilojen yhdist‰mist‰ varten.
- * En k‰ytt‰nyt NFmiGrid-luokkaa, koska sill‰ ja sen emolla ei
- * ollut kopi-konstruktoria ei sijoitus operaattoreita (enk‰ jaksanut tehd‰).
- * K‰ytet‰‰n apuna mm. kun grib:eist‰ tehd‰‰n qdataa ja kun yhdistell‰‰n
+ * T√§ss√§ pari apu luokkaa useiden hilojen yhdist√§mist√§ varten.
+ * En k√§ytt√§nyt NFmiGrid-luokkaa, koska sill√§ ja sen emolla ei
+ * ollut kopi-konstruktoria ei sijoitus operaattoreita (enk√§ jaksanut tehd√§).
+ * K√§ytet√§√§n apuna mm. kun grib:eist√§ tehd√§√§n qdataa ja kun yhdistell√§√§n
  * monista qdatoista yksi uusi qdata.
  */
 class MyGrid
@@ -135,26 +135,26 @@ class MyGrid
 };
 
 struct CombinedParamStruct
-{  // t‰m‰ structi piti tehd‰, ett‰ sain v‰hennetty‰ boost::in Thread:ille annettujen parametrin
-  // m‰‰r‰‰ (max 9 parametria)
+{  // t√§m√§ structi piti tehd√§, ett√§ sain v√§hennetty√§ boost::in Thread:ille annettujen parametrin
+  // m√§√§r√§√§ (max 9 parametria)
   CombinedParamStruct(void)
       : weather1(false), weather2(false), wind1(false), wind2(false), wind3(false)
   {
   }
 
-  bool weather1;  // tehd‰‰n weatherandcloudiness seuraavista: kFmiWeatherSymbol1,
+  bool weather1;  // tehd√§√§n weatherandcloudiness seuraavista: kFmiWeatherSymbol1,
                   // kFmiTotalCloudCover, kFmiCloudSymbol ja kFmiFogSymbol
-  bool weather2;  // tehd‰‰n weatherandcloudiness seuraavista: kFmiWeatherSymbol3
-  bool wind1;     // tehd‰‰n totalwind seuraavista: kFmiWindVectorMS
-  bool wind2;     // tehd‰‰n totalwind seuraavista: kFmiWindDirection ja kFmiWindSpeedMS
-  bool wind3;     // tehd‰‰n totalwind seuraavista: kFmiWindUMS ja kFmiWindVMS
+  bool weather2;  // tehd√§√§n weatherandcloudiness seuraavista: kFmiWeatherSymbol3
+  bool wind1;     // tehd√§√§n totalwind seuraavista: kFmiWindVectorMS
+  bool wind2;     // tehd√§√§n totalwind seuraavista: kFmiWindDirection ja kFmiWindSpeedMS
+  bool wind3;     // tehd√§√§n totalwind seuraavista: kFmiWindUMS ja kFmiWindVMS
 };
 
 static const NFmiRect gMissingCropRect(kFloatMissing, kFloatMissing, kFloatMissing, kFloatMissing);
 
-// T‰h‰n rakenteeseen saadaan kaikki tieto mist‰ tahansa hilasta, ett‰
-// voidaan tehd‰ yhdistelyj‰.
-// K‰ytet‰‰n apuna mm. kun grib:eist‰ tehd‰‰n qdataa ja kun yhdistell‰‰n
+// T√§h√§n rakenteeseen saadaan kaikki tieto mist√§ tahansa hilasta, ett√§
+// voidaan tehd√§ yhdistelyj√§.
+// K√§ytet√§√§n apuna mm. kun grib:eist√§ tehd√§√§n qdataa ja kun yhdistell√§√§n
 // monista qdatoista yksi uusi qdata.
 struct GridRecordData
 {
@@ -165,14 +165,14 @@ struct GridRecordData
   NFmiMetTime itsValidTime;
   NFmiDataIdent itsParam;
   NFmiLevel itsLevel;
-  MyGrid itsOrigGrid;  // t‰m‰ on datan originaali gridi
-  MyGrid itsGrid;  // t‰m‰ on haluttu datan gridi, joka yleensa sama kuin orig, mutta jos on haluttu
-                   // cropata dataa, t‰ss‰ croppi hila
+  MyGrid itsOrigGrid;  // t√§m√§ on datan originaali gridi
+  MyGrid itsGrid;  // t√§m√§ on haluttu datan gridi, joka yleensa sama kuin orig, mutta jos on haluttu
+                   // cropata dataa, t√§ss√§ croppi hila
   bool fDoProjectionConversion;
   NFmiDataMatrix<float> itsGridData;
-  NFmiRect itsLatlonCropRect;        // t‰h‰n talletetaan mahdollinen croppi recti
-  NFmiPoint itsGridPointCropOffset;  // t‰h‰n talletetaan mahdollinen cropin offset originaali
-                                     // gridin hila yksikˆss‰
+  NFmiRect itsLatlonCropRect;        // t√§h√§n talletetaan mahdollinen croppi recti
+  NFmiPoint itsGridPointCropOffset;  // t√§h√§n talletetaan mahdollinen cropin offset originaali
+                                     // gridin hila yksik√∂ss√§
   double itsMissingValue;
   bool fParamChanged;
   NFmiParam itsOrigParam;
@@ -214,7 +214,7 @@ class NFmiThreadCallBacks
   void SetRange(int low, int high, int stepCount);
   void AddRange(int value);
   bool DoPostMessage(unsigned int message, unsigned int wParam = 0, long lParam = 0);
-  void CheckIfStopped(void);  // heitt‰‰ poikkeuksen, jos lopetetaan
+  void CheckIfStopped(void);  // heitt√§√§ poikkeuksen, jos lopetetaan
   bool WaitUntilInitialized(void);
 
  private:
@@ -229,15 +229,15 @@ class NFmiStopThreadException
   ~NFmiStopThreadException(void) {}
 };
 
-// T‰m‰ luokka laskee worker-threadi parvelle aina kulloisenkin 'vapaan' laskettavan timeIndeksin.
-// T‰lt‰ siis pyydet‰‰n seuraav tyˆstett‰v‰ aika-indeksi mm.
+// T√§m√§ luokka laskee worker-threadi parvelle aina kulloisenkin 'vapaan' laskettavan timeIndeksin.
+// T√§lt√§ siis pyydet√§√§n seuraav ty√∂stett√§v√§ aika-indeksi mm.
 // FillSingleTimeGridDataInThread-funktiossa.
 class NFmiTimeIndexCalculator
 {
  public:
   typedef boost::shared_mutex MutexType;
   typedef boost::shared_lock<MutexType>
-      ReadLock;  // Read-lockia ei oikeasti tarvita, mutta laitan sen t‰h‰n, jos joskus tarvitaankin
+      ReadLock;  // Read-lockia ei oikeasti tarvita, mutta laitan sen t√§h√§n, jos joskus tarvitaankin
   typedef boost::unique_lock<MutexType> WriteLock;
 
   NFmiTimeIndexCalculator(unsigned long theTimeSize);
@@ -256,15 +256,15 @@ class NFmiTimeIndexCalculator
       NFmiTimeIndexCalculator const &);  // ei toteuteta sijoitus operaattoria
 };
 
-// T‰m‰ luokka laskee worker-threadi parvelle aina sopivan locationIndex-v‰lin laskettavaksi.
-// Idea on siis se ett‰ hila laskut jaetaan sopivan mitt‰isiin p‰tkiin esim. 50 pituisiin
-// ja kukin worker threadi aina vuorollaan kysisi, mink‰ p‰tk‰n nyt voisi tehd‰.
+// T√§m√§ luokka laskee worker-threadi parvelle aina sopivan locationIndex-v√§lin laskettavaksi.
+// Idea on siis se ett√§ hila laskut jaetaan sopivan mitt√§isiin p√§tkiin esim. 50 pituisiin
+// ja kukin worker threadi aina vuorollaan kysisi, mink√§ p√§tk√§n nyt voisi tehd√§.
 class NFmiLocationIndexRangeCalculator
 {
  public:
   typedef boost::shared_mutex MutexType;
   typedef boost::shared_lock<MutexType>
-      ReadLock;  // Read-lockia ei oikeasti tarvita, mutta laitan sen t‰h‰n, jos joskus tarvitaankin
+      ReadLock;  // Read-lockia ei oikeasti tarvita, mutta laitan sen t√§h√§n, jos joskus tarvitaankin
   typedef boost::unique_lock<MutexType> WriteLock;
 
   NFmiLocationIndexRangeCalculator(unsigned long theLocationSize, unsigned long theChunkSize);
@@ -295,16 +295,16 @@ class _FMI_DLL NFmiQueryDataUtil
   typedef checkedVector<GridRecordData *> GridDataVector;
   static void DestroyGridRecordData(GridDataVector &theGridRecordDatas);  // apufunktio, joka tuhoaa
                                                                           // dynaamisen datan ja
-                                                                          // tyhjent‰‰ vektorin
+                                                                          // tyhjent√§√§ vektorin
 
   /*!
    *  \class LimitChecker
-   *  Tarkistaa ettei jokin laskettu arvo mene yli alle s‰‰dettyjen rajojen.
-   *  Tarpeen mm. Lagrange interpoloinnissa, jossa voi synty‰ uusia minimi ja maksimi
-   *  arvoja. T‰llˆin esim. tuulen suunnaksi voi tulla negatiivinen arvo tai yli 360 astetta.
-   *  Halutessa myˆs pyˆr‰ytt‰‰ ymp‰ri eli jos arvoksi olisi tuulen suunnalle tulossa
-   *  370, osaa laittaa arvoksi 10 eik‰ leikkaa 360:een. Jos taas kyseess‰ vaikka
-   *  kosteusprosentti, pit‰‰ yli sadan mene arvo leikata 100:n.
+   *  Tarkistaa ettei jokin laskettu arvo mene yli alle s√§√§dettyjen rajojen.
+   *  Tarpeen mm. Lagrange interpoloinnissa, jossa voi synty√§ uusia minimi ja maksimi
+   *  arvoja. T√§ll√∂in esim. tuulen suunnaksi voi tulla negatiivinen arvo tai yli 360 astetta.
+   *  Halutessa my√∂s py√∂r√§ytt√§√§ ymp√§ri eli jos arvoksi olisi tuulen suunnalle tulossa
+   *  370, osaa laittaa arvoksi 10 eik√§ leikkaa 360:een. Jos taas kyseess√§ vaikka
+   *  kosteusprosentti, pit√§√§ yli sadan mene arvo leikata 100:n.
    */
   class _FMI_DLL LimitChecker
   {
@@ -336,8 +336,8 @@ class _FMI_DLL NFmiQueryDataUtil
 
     float itsLowerLimit;
     float itsUpperLimit;
-    bool fCircularValue;       // esim tuulen suunta menee ymp‰ri rajojen
-    float itsLimitDifference;  // ympyr‰ laskuja varten
+    bool fCircularValue;       // esim tuulen suunta menee ymp√§ri rajojen
+    float itsLimitDifference;  // ympyr√§ laskuja varten
   };                           // class LimitChecker
 
  public:
@@ -368,6 +368,7 @@ class _FMI_DLL NFmiQueryDataUtil
                                  NFmiLogger *theDebugLogger = 0);
   static bool AreAreasEqual(const NFmiArea *theArea1, const NFmiArea *theArea2);
   static bool AreGridsEqual(const NFmiGrid *theGrid1, const NFmiGrid *theGrid2);
+  static bool AreAreasSameKind(const NFmiArea *theArea1, const NFmiArea *theArea2);
 
   static NFmiQueryData *GridQD2NewGridQD(NFmiQueryData *theSourceData,
                                          NFmiGrid *theWantedGridFormat);
@@ -404,7 +405,7 @@ class _FMI_DLL NFmiQueryDataUtil
   static NFmiTimeDescriptor NewTimeDescriptor(NFmiQueryData *theSourceData,
                                               int theTimeResolutionInMinutes);
 
-  //! Aikaresoluution pit‰‰ olla sama
+  //! Aikaresoluution pit√§√§ olla sama
   static bool OverWriteTimesFromFile(NFmiFastQueryInfo &theLongerInfo,
                                      NFmiFastQueryInfo &theShorterInfo);
 
@@ -456,7 +457,7 @@ class _FMI_DLL NFmiQueryDataUtil
                                         const std::string &theFilename,
                                         bool fInitialize);
 
-  //@{ \name datan konversiot 6:sta 7:aan tai p‰invastoin -funktiot
+  //@{ \name datan konversiot 6:sta 7:aan tai p√§invastoin -funktiot
   static NFmiQueryData *FqdV6ToV7(NFmiFastQueryInfo &theSourceInfo);
   static NFmiQueryData *FqdV7ToV6(NFmiFastQueryInfo &theSourceInfo);
   //@}
@@ -475,7 +476,7 @@ class _FMI_DLL NFmiQueryDataUtil
                                         double theAdditionalParam2 = 1);
 
   // ********************************************************************************
-  // ***************  NowcastFilter osuus on nyt t‰‰ll‰!  ***************************
+  // ***************  NowcastFilter osuus on nyt t√§√§ll√§!  ***************************
   // ********************************************************************************
   static bool DoNowCastFiltering(const NFmiString &theData1FileName,
                                  const NFmiString &theData2FileName,
@@ -487,7 +488,7 @@ class _FMI_DLL NFmiQueryDataUtil
                                            int theTimeRangeForPureData);
 
   // ********************************************************************************
-  // ***************  NowcastFilter osuus on nyt t‰‰ll‰!  ***************************
+  // ***************  NowcastFilter osuus on nyt t√§√§ll√§!  ***************************
   // ********************************************************************************
 
   static const NFmiString &GetOfficialQueryDataProdIdsKey(void);
