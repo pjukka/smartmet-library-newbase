@@ -1192,8 +1192,8 @@ enum FmiParameterName
   kFmiAverageWindSpeedMS,
   kFmiPotentialPrecipitationType,
   kFmiHumidityRelativeToIce,
-  kFmiHoarFrostTemperature,
-  kFmiAvailableEnsembleMemberPercentage,
+  kFmiFrostPoint,
+  kFmiAvailableEnsembleMemberCount,
   kFmiWindGust2,         // post-processed wind gust speed
   kFmiProbabilityOfSigWaveHeightLimit1,
   kFmiProbabilityOfSigWaveHeightLimit2,

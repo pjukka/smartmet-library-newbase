@@ -273,7 +273,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("AreaOfRisk", kFmiAreaOfRisk);
   PARAMINSERT("AshConcentration", kFmiAshConcentration);
   PARAMINSERT("AshOnOff", kFmiAshOnOff);
-  PARAMINSERT("AvailableEnsembleMemberPercentage", kFmiAvailableEnsembleMemberPercentage);
+  PARAMINSERT("AvailableEnsembleMemberCount", kFmiAvailableEnsembleMemberCount);
   PARAMINSERT("AverageHumidity", kFmiAverageHumidity);
   PARAMINSERT("AveragePressure", kFmiAveragePressure);
   PARAMINSERT("AverageTemperature", kFmiAverageTemperature);
@@ -462,6 +462,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("FrontSymbol", kFmiFrontSymbol);
   PARAMINSERT("FrostLayerBottom", kFmiFrostLayerBottom);
   PARAMINSERT("FrostLayerTop", kFmiFrostLayerTop);
+  PARAMINSERT("FrostPoint", kFmiFrostPoint);
   PARAMINSERT("FrostProbability", kFmiFrostProbability);
   PARAMINSERT("FrostSum", kFmiFrostSum);
   PARAMINSERT("FrozenSnowLoad", kFmiFrozenSnowLoad);
@@ -1375,7 +1376,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("WindGustF87.5", kFmiWindGustF87_5);
   PARAMINSERT("WindGustF90", kFmiWindGustF90);
   PARAMINSERT("WindGustF95", kFmiWindGustF95);
-  PARAMINSERT("WindGustF97_5", kFmiWindGustF97_5);
+  PARAMINSERT("WindGustF97.5", kFmiWindGustF97_5);
   PARAMINSERT("WindGustF99", kFmiWindGustF99);
   PARAMINSERT("WindGustKT", kFmiWindGustKT);
   PARAMINSERT("WindGustU", kFmiWindGustU);
