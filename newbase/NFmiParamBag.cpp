@@ -578,8 +578,8 @@ bool NFmiParamBag::SetActivities(NFmiParamBag& theParams,
               ->SetActive(this->Current(false)->IsActive() && theParams.Current(false)->IsActive());
           break;
         case kOr:  // eli jos kummassa tahansa on true, laitetaan true, muuten false (itse haluan
-                   // käyttää tätä siten, että theParams:issa on aktiivisina ne mitkä haluan lisäksi
-                   // aktivoida, mutta muita en halua deaktivoida)
+          // käyttää tätä siten, että theParams:issa on aktiivisina ne mitkä haluan lisäksi
+          // aktivoida, mutta muita en halua deaktivoida)
           this->Current(false)
               ->SetActive(this->Current(false)->IsActive() || theParams.Current(false)->IsActive());
           break;

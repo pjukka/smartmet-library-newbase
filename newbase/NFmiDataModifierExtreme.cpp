@@ -77,7 +77,7 @@ void NFmiDataModifierExtreme::Calculate(float theValue)
   if (IsAllowedValue(theValue))
   {
     //	 if(value != kFloatMissing && value != kRadarPrecipitationMissing)  //puuttuvat
-    //tutkasateet==65535??
+    // tutkasateet==65535??
     if (IsNewExtreme(theValue))
     {
       itsExtremeValue = theValue;
@@ -97,7 +97,7 @@ void NFmiDataModifierExtreme::Calculate(float theValue, NFmiQueryInfo *theQI)
   if (IsAllowedValue(theValue))
   {
     //	 if(value != kFloatMissing && value != kRadarPrecipitationMissing)  //puuttuvat
-    //tutkasateet==65535??
+    // tutkasateet==65535??
     if (IsNewExtreme(theValue))
     {
       itsExtremeValue = theValue;

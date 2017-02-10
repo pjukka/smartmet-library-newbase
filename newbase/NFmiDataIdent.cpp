@@ -255,7 +255,7 @@ std::ostream &NFmiDataIdent::Write(std::ostream &file) const
 
   if (FmiInfoVersion >= 4)
   {
-    file << "0 ";  // Varattu
+    file << "0 ";               // Varattu
     file << "0 " << std::endl;  // Varattu
     if (fHasDataParams)
     {

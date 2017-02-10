@@ -32,8 +32,8 @@ class _FMI_DLL NFmiDataIterator
   void CheckIfMaskIsUsed(void);  // tarkistaa käytetäänkö maskia ja asetetaan fMaskInUse arvo
   bool IsMasked(const NFmiPoint& theLatLonPoint);
   NFmiQueryInfo* itsData;  // ei omista, ei tuhoa!
-  NFmiAreaMask* itsMask;   // ei omista, ei tuhoa! // jos iterointia halutaan rajata maskilla, tähän
-                           // talletetaan maski
+  NFmiAreaMask* itsMask;  // ei omista, ei tuhoa! // jos iterointia halutaan rajata maskilla, tähän
+                          // talletetaan maski
   bool fMaskInUse;  // ennen maskin käyttöä optimoinnin vuoksi on tarkastettu, onko maski käytössä
                     // vai ei (onko maski olemassa ja onko se enbloitu)
 

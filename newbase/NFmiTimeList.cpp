@@ -480,107 +480,117 @@ bool NFmiTimeList::Find(const NFmiMetTime &theTime)
 // ----------------------------------------------------------------------
 
 bool NFmiTimeList::FindNearestTime(const NFmiMetTime &theTime,
-    FmiDirection theDirection,
-    unsigned long theTimeRangeInMinutes)
+                                   FmiDirection theDirection,
+                                   unsigned long theTimeRangeInMinutes)
 {
-    if(itsVectorList.empty())
-        return false;
+  if (itsVectorList.empty()) return false;
 
-    checkedVector<NFmiMetTime *>::iterator firstNotLess = std::lower_bound(
-        itsVectorList.begin(), itsVectorList.end(), &theTime, ComparePtrs<NFmiMetTime>());
-    if(firstNotLess != itsVectorList.end() && *(*firstNotLess) == theTime)
-    {
-        // Searched time was found from time-vector
-        itsIndex = CalcTimeListIndex(firstNotLess);
-        return true;
-    }
+  checkedVector<NFmiMetTime *>::iterator firstNotLess = std::lower_bound(
+      itsVectorList.begin(), itsVectorList.end(), &theTime, ComparePtrs<NFmiMetTime>());
+  if (firstNotLess != itsVectorList.end() && *(*firstNotLess) == theTime)
+  {
+    // Searched time was found from time-vector
+    itsIndex = CalcTimeListIndex(firstNotLess);
+    return true;
+  }
 
-    if(theDirection == kBackward)
-        return FindNearestBackwardTime(firstNotLess, theTime, theTimeRangeInMinutes);
-    else if(theDirection == kForward)
-        return FindNearestForwardTime(firstNotLess, theTime, theTimeRangeInMinutes);
-    else
-        return FindNearestTime(firstNotLess, theTime, theTimeRangeInMinutes);
+  if (theDirection == kBackward)
+    return FindNearestBackwardTime(firstNotLess, theTime, theTimeRangeInMinutes);
+  else if (theDirection == kForward)
+    return FindNearestForwardTime(firstNotLess, theTime, theTimeRangeInMinutes);
+  else
+    return FindNearestTime(firstNotLess, theTime, theTimeRangeInMinutes);
 }
 
 // Assumption: firstNotLess -iterator is from the itsVectorList.
-bool NFmiTimeList::FindNearestBackwardTime(checkedVector<NFmiMetTime *>::iterator &firstNotLess, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes)
+bool NFmiTimeList::FindNearestBackwardTime(checkedVector<NFmiMetTime *>::iterator &firstNotLess,
+                                           const NFmiMetTime &theTime,
+                                           unsigned long theTimeRangeInMinutes)
 {
-    if(firstNotLess == itsVectorList.begin())
-        return false; // All times in itsVectorList were bigger than theTime
-    else
-    {
-        firstNotLess--; // Lets move to previous time which is what we are searching here (parameter's descriptive name false after this)
-        return CheckFoundTimeIter(firstNotLess, theTime, theTimeRangeInMinutes);
-    }
+  if (firstNotLess == itsVectorList.begin())
+    return false;  // All times in itsVectorList were bigger than theTime
+  else
+  {
+    firstNotLess--;  // Lets move to previous time which is what we are searching here (parameter's
+                     // descriptive name false after this)
+    return CheckFoundTimeIter(firstNotLess, theTime, theTimeRangeInMinutes);
+  }
 }
 
 // Assumption: firstNotLess -iterator is from the itsVectorList.
-bool NFmiTimeList::FindNearestForwardTime(checkedVector<NFmiMetTime *>::iterator &firstNotLess, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes)
+bool NFmiTimeList::FindNearestForwardTime(checkedVector<NFmiMetTime *>::iterator &firstNotLess,
+                                          const NFmiMetTime &theTime,
+                                          unsigned long theTimeRangeInMinutes)
 {
-    if(firstNotLess == itsVectorList.end())
-        return false; // All times in itsVectorList were less than theTime
-    else
-    {
-        return CheckFoundTimeIter(firstNotLess, theTime, theTimeRangeInMinutes);
-    }
+  if (firstNotLess == itsVectorList.end())
+    return false;  // All times in itsVectorList were less than theTime
+  else
+  {
+    return CheckFoundTimeIter(firstNotLess, theTime, theTimeRangeInMinutes);
+  }
 }
 
 // Assumption: firstNotLess -iterator is from the itsVectorList.
-bool NFmiTimeList::FindNearestTime(checkedVector<NFmiMetTime *>::iterator &firstNotLess, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes)
+bool NFmiTimeList::FindNearestTime(checkedVector<NFmiMetTime *>::iterator &firstNotLess,
+                                   const NFmiMetTime &theTime,
+                                   unsigned long theTimeRangeInMinutes)
 {
-    if(firstNotLess == itsVectorList.begin())
-    {
-        // Only list's first time is possible
-        return CheckFoundTimeIter(firstNotLess, theTime, theTimeRangeInMinutes);
-    }
-    else if(firstNotLess == itsVectorList.end())
-    {
-        // Only list's last time is possible
-        firstNotLess--;
-        return CheckFoundTimeIter(firstNotLess, theTime, theTimeRangeInMinutes);
-    }
+  if (firstNotLess == itsVectorList.begin())
+  {
+    // Only list's first time is possible
+    return CheckFoundTimeIter(firstNotLess, theTime, theTimeRangeInMinutes);
+  }
+  else if (firstNotLess == itsVectorList.end())
+  {
+    // Only list's last time is possible
+    firstNotLess--;
+    return CheckFoundTimeIter(firstNotLess, theTime, theTimeRangeInMinutes);
+  }
+  else
+  {
+    // Must check the first not-less time and the previous time
+    checkedVector<NFmiMetTime *>::iterator timeIter2 = firstNotLess;
+    double diff2 = std::fabs(theTime.DifferenceInMinutes(*(*timeIter2)));
+    firstNotLess--;
+    checkedVector<NFmiMetTime *>::iterator timeIter1 = firstNotLess;
+    double diff1 = std::fabs(theTime.DifferenceInMinutes(*(*timeIter1)));
+    // first time in the list has precedence if difference is equal
+    if (diff1 <= diff2)
+      return CheckFoundTimeIter(timeIter1, theTime, theTimeRangeInMinutes);
     else
-    {
-        // Must check the first not-less time and the previous time
-        checkedVector<NFmiMetTime *>::iterator timeIter2 = firstNotLess;
-        double diff2 = std::fabs(theTime.DifferenceInMinutes(*(*timeIter2)));
-        firstNotLess--;
-        checkedVector<NFmiMetTime *>::iterator timeIter1 = firstNotLess;
-        double diff1 = std::fabs(theTime.DifferenceInMinutes(*(*timeIter1)));
-        // first time in the list has precedence if difference is equal
-        if(diff1 <= diff2)
-            return CheckFoundTimeIter(timeIter1, theTime, theTimeRangeInMinutes);
-        else
-            return CheckFoundTimeIter(timeIter2, theTime, theTimeRangeInMinutes);
-    }
+      return CheckFoundTimeIter(timeIter2, theTime, theTimeRangeInMinutes);
+  }
 }
 
 // Assumption: theIter -iterator is from the itsVectorList.
 int NFmiTimeList::CalcTimeListIndex(const checkedVector<NFmiMetTime *>::iterator &theIter)
 {
-    return static_cast<int>(std::distance(itsVectorList.begin(), theIter));
+  return static_cast<int>(std::distance(itsVectorList.begin(), theIter));
 }
 
-bool NFmiTimeList::IsSearchedTimeInRange(checkedVector<NFmiMetTime *>::iterator &foundTimeIter, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes)
+bool NFmiTimeList::IsSearchedTimeInRange(checkedVector<NFmiMetTime *>::iterator &foundTimeIter,
+                                         const NFmiMetTime &theTime,
+                                         unsigned long theTimeRangeInMinutes)
 {
-    if(theTimeRangeInMinutes == kUnsignedLongMissing)
-        return true;
-    else if(theTimeRangeInMinutes >= std::fabs(theTime.DifferenceInMinutes(*(*foundTimeIter))))
-        return true;
-    else
-        return false;
+  if (theTimeRangeInMinutes == kUnsignedLongMissing)
+    return true;
+  else if (theTimeRangeInMinutes >= std::fabs(theTime.DifferenceInMinutes(*(*foundTimeIter))))
+    return true;
+  else
+    return false;
 }
 
-bool NFmiTimeList::CheckFoundTimeIter(checkedVector<NFmiMetTime *>::iterator &foundTimeIter, const NFmiMetTime &theTime, unsigned long theTimeRangeInMinutes)
+bool NFmiTimeList::CheckFoundTimeIter(checkedVector<NFmiMetTime *>::iterator &foundTimeIter,
+                                      const NFmiMetTime &theTime,
+                                      unsigned long theTimeRangeInMinutes)
 {
-    if(IsSearchedTimeInRange(foundTimeIter, theTime, theTimeRangeInMinutes))
-    {
-        itsIndex = CalcTimeListIndex(foundTimeIter);
-        return true;
-    }
-    else
-        return false;
+  if (IsSearchedTimeInRange(foundTimeIter, theTime, theTimeRangeInMinutes))
+  {
+    itsIndex = CalcTimeListIndex(foundTimeIter);
+    return true;
+  }
+  else
+    return false;
 }
 
 // ----------------------------------------------------------------------

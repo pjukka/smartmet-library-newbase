@@ -46,7 +46,7 @@ class _FMI_DLL NFmiCommentStripper
   bool StripBlocks(const std::string& theBeginDirective = "/*",
                    const std::string& theEndDirective = "*/");
   bool StripDoubleSlashes(void);  // to endline
-  bool StripPounds(void);  // to endline
+  bool StripPounds(void);         // to endline
   bool StripSubStrings(const std::string& theString);
 
  private:

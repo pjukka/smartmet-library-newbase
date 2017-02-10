@@ -486,32 +486,33 @@ class _FMI_DLL NFmiInfoAreaMaskVertFunc : public NFmiInfoAreaMaskMetFuncBase
 
 class _FMI_DLL NFmiInfoAreaMaskVertConditionalFunc : public NFmiInfoAreaMaskVertFunc
 {
-public:
-    ~NFmiInfoAreaMaskVertConditionalFunc(void);
-    NFmiInfoAreaMaskVertConditionalFunc(const NFmiCalculationCondition &theOperation,
-        Type theMaskType,
-        NFmiInfoData::Type theDataType,
-        const boost::shared_ptr<NFmiFastQueryInfo> &theInfo,
-        NFmiAreaMask::FunctionType thePrimaryFunc,
-        NFmiAreaMask::FunctionType theSecondaryFunc,
-        int theArgumentCount);
-    NFmiInfoAreaMaskVertConditionalFunc(const NFmiInfoAreaMaskVertConditionalFunc &theOther);
-    NFmiAreaMask *Clone(void) const;
-    void Initialize(void);
+ public:
+  ~NFmiInfoAreaMaskVertConditionalFunc(void);
+  NFmiInfoAreaMaskVertConditionalFunc(const NFmiCalculationCondition &theOperation,
+                                      Type theMaskType,
+                                      NFmiInfoData::Type theDataType,
+                                      const boost::shared_ptr<NFmiFastQueryInfo> &theInfo,
+                                      NFmiAreaMask::FunctionType thePrimaryFunc,
+                                      NFmiAreaMask::FunctionType theSecondaryFunc,
+                                      int theArgumentCount);
+  NFmiInfoAreaMaskVertConditionalFunc(const NFmiInfoAreaMaskVertConditionalFunc &theOther);
+  NFmiAreaMask *Clone(void) const;
+  void Initialize(void);
 
-    // tätä kaytetaan smarttool-modifierin yhteydessä
-    double Value(const NFmiCalculationParams &theCalculationParams, bool fUseTimeInterpolationAlways);
+  // tätä kaytetaan smarttool-modifierin yhteydessä
+  double Value(const NFmiCalculationParams &theCalculationParams, bool fUseTimeInterpolationAlways);
 
-protected:
-    bool InitializeFromArguments(void);
-    bool CheckProbabilityCondition(double value);
-    float DoFindConditionalFunction(const NFmiLocationCache &theLocationCache);
+ protected:
+  bool InitializeFromArguments(void);
+  bool CheckProbabilityCondition(double value);
+  float DoFindConditionalFunction(const NFmiLocationCache &theLocationCache);
 
-    double itsLimit1;
-    double itsLimit2;
+  double itsLimit1;
+  double itsLimit2;
 
-private:
-    NFmiInfoAreaMaskVertConditionalFunc &operator=(const NFmiInfoAreaMaskVertConditionalFunc &theMask);
+ private:
+  NFmiInfoAreaMaskVertConditionalFunc &operator=(
+      const NFmiInfoAreaMaskVertConditionalFunc &theMask);
 };
 
 class NFmiInfoAreaMaskTimeVertFunc : public NFmiInfoAreaMaskVertFunc

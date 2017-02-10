@@ -183,7 +183,7 @@ class _FMI_DLL NFmiPtrList
       return false;  // currentti oli start tai end!
     }
 
-  };  // Iterator
+  };                      // Iterator
   friend class Iterator;  // Lisäsin tämän ja kopiokonstruktorin 9.9.99 /Mikael
   //	friend class NFmiPtrList<Type>::Iterator;
   NFmiPtrList(void);

@@ -177,7 +177,7 @@ bool NFmiStreamQueryData::WriteData(const NFmiString &theFileName,
     if (theQueryData)
     {
       //		  theQueryData->InfoVersion(FmiInfoVersion); // uudessa data versio 7:ssa
-      //pitää asentaa 'sisäinen' versio numerokin
+      // pitää asentaa 'sisäinen' versio numerokin
       theQueryData->UseBinaryStorage(theLibVersion <= 5 ? false : true);
       dataFile << *theQueryData;
     }
@@ -186,7 +186,7 @@ bool NFmiStreamQueryData::WriteData(const NFmiString &theFileName,
       if (itsQueryData)
       {
         //			  itsQueryData->InfoVersion(FmiInfoVersion); // uudessa data versio
-        //7:ssa pitää asentaa 'sisäinen' versio numerokin
+        // 7:ssa pitää asentaa 'sisäinen' versio numerokin
         itsQueryData->UseBinaryStorage(theLibVersion <= 5 ? false : true);
         dataFile << *itsQueryData;
       }

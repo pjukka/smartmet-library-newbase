@@ -128,8 +128,8 @@ class _FMI_DLL NFmiAreaMaskImpl : public NFmiAreaMask
                                           // VertP, VertZ, VertFL ja VertHyb eli missä vertikaali
                                           // asteikossa operoidaan
   MetFunctionDirection itsMetFunctionDirection;  // grad, adv, div rot ja lap -funktioille (ja
-                                                 // näiden 2-versioille) määrätään myös suunta, joka
-                                                 // voi olla X, Y tai molemmat
+  // näiden 2-versioille) määrätään myös suunta, joka
+  // voi olla X, Y tai molemmat
   int itsIntegrationFunctionType;  // 1=SumT tyylinen ja 2=SumZ tyylinen ja 3=MinH tyylinen funktio
   int itsFunctionArgumentCount;
   bool fHasSubMasks;

@@ -243,10 +243,10 @@ void NFmiCombinedParam::EndIntegration(void)
       if (integrator)
       {
         //				SubValue(integrator->CalculationResult(),
-        //itsSubParams->CurrentParam());
+        // itsSubParams->CurrentParam());
         /////Persa poisti koska yrittää toisella tavalla tuloksia
         ///				SubValue(integrator->CalcResult(kFmiMean),
-        ///itsSubParams->CurrentParam());
+        /// itsSubParams->CurrentParam());
       }
       idx++;
     }

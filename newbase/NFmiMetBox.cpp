@@ -127,7 +127,9 @@ std::ostream &NFmiMetBox::Write(std::ostream &file) const
 {
   unsigned short FmiInfoVersionOld = FmiInfoVersion;
 
-  file << "@$\260\243BOX@$\260\243" // '°' => \260 ja '£' => \243, koska cpp tiedoston character set muutettu Utf-8:ksi ja string literalien non-ascii koodaus muutettava.
+  file << "@$\260\243BOX@$\260\243"  // '°' => \260 ja '£' => \243, koska cpp tiedoston character
+                                     // set muutettu Utf-8:ksi ja string literalien non-ascii
+                                     // koodaus muutettava.
        << " ";
   file << "VER " << FmiBoxVersion << std::endl;
 

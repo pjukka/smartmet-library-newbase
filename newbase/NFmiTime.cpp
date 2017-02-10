@@ -204,7 +204,7 @@ const char *months[] = {
 
 std::string monthStrings[12];
 
-const char *atNotation[] =                              // latvia?
+const char *atNotation[] =  // latvia?
     {"klo", "kl.", "at", "a las", "??", "um?", "dmu", "zvans"};
 
 const char *reldays[] =  // OBS also in NFmiPressTime ??

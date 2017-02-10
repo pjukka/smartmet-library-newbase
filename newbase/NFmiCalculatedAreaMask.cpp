@@ -514,7 +514,6 @@ const NFmiString NFmiUtcHourAreaMask::MakeSubMaskString(void) const
   return NFmiString("NFmiUtcHourAreaMask::MakeSubMaskString");
 }
 
-
 // ======================================================================
 
 NFmiMinuteAreaMask::~NFmiMinuteAreaMask(void) {}
@@ -524,18 +523,18 @@ NFmiMinuteAreaMask::NFmiMinuteAreaMask(const NFmiMinuteAreaMask& theMask)
 {
 }
 NFmiMinuteAreaMask::NFmiMinuteAreaMask(const NFmiDataIdent& theParam,
-    const NFmiCalculationCondition& theOperation)
+                                       const NFmiCalculationCondition& theOperation)
     : NFmiElevationAngleAreaMask(theParam, theOperation)
 {
 }
 NFmiAreaMask* NFmiMinuteAreaMask::Clone(void) const { return new NFmiMinuteAreaMask(*this); }
 double NFmiMinuteAreaMask::CalcValueFromLocation(const NFmiPoint& /* theLatLon */) const
 {
-    return itsTime.GetMin();
+  return itsTime.GetMin();
 }
 const NFmiString NFmiMinuteAreaMask::MakeSubMaskString(void) const
 {
-    return NFmiString("NFmiMinuteAreaMask::MakeSubMaskString");
+  return NFmiString("NFmiMinuteAreaMask::MakeSubMaskString");
 }
 
 // ======================================================================

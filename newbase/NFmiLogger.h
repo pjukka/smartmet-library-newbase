@@ -127,9 +127,9 @@ class _FMI_DLL NFmiLogger
                                          // tässä vaiheessa sisältää luvun jolla saadaan
                                          // time-luokalta haluttu time-string esim. 120 =
                                          // YYYYMMDDHHMMSS
-  int itsTimeStampStringIntegerFormat;   // tähän lasketaan toistaiseksi ed. format juttu valmiiksi
-                                         // kun vielä käytetään simppeliä integer lukua osoittamaan
-                                         // formaatti
+  int itsTimeStampStringIntegerFormat;  // tähän lasketaan toistaiseksi ed. format juttu valmiiksi
+  // kun vielä käytetään simppeliä integer lukua osoittamaan
+  // formaatti
   // Tämä kertoo kuika usein on tarkoitus tehdä log-file backupeja. Tunnin, päivän vai kuukauden
   // välein (ks. enum Period)
   Period itsLogFileBackupTimePeriod;
@@ -148,8 +148,8 @@ class _FMI_DLL NFmiLogger
   bool fUseBackupSystem;  // Tekeekö luokka myös backup loki-tiedostoja (aikaleimoilla varustettuja)
   bool fCleanBackupFiles;   // siivoaako luokka myös backup loki-tiedostoja
   bool fLoggerInitialized;  // tällä voidaan tarkistaa onko loggeri jo ainakin kerran initialisoitu
-  bool fLogJustMessages;    // tämä on jälkeen lisätty moodi joka on defaulttina pois päältä ja se
-                            // pitää aina laittaa erikseen päälle (ei konffissa ainakaan vielä).
+  bool fLogJustMessages;  // tämä on jälkeen lisätty moodi joka on defaulttina pois päältä ja se
+                          // pitää aina laittaa erikseen päälle (ei konffissa ainakaan vielä).
   // Jos siis tämä on päällä, ei laiteta loki-viestiin mitään aika leimoja, pellkä annettu viesti.
   bool fNewLogFileInUse;  // Säädetyin väliajoin käytetty lokitiedosto laitetaan talteen omalla
                           // nimellään ja luodaan uusi

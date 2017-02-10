@@ -210,10 +210,13 @@ class _FMI_DLL NFmiAreaMask
     TimeVertFL,   //!< aika+vertikaali-hakua lentopinta rajoissa hakien
     TimeVertHyb,  //!< aika+vertikaali-hakua hybrid-pintojen mukaan hakien
     Occurrence,  //!< aika-väli + aluehaku datasta, laskee kuinka monta kertaa tarkastelupisteessä
-    PeekT,      //!< 'Kurkistetaan' arvo halutun aikahypyn [h] päästä
-    Resolution,      //!< Tällä asetetaan macroParamin lasketun hilan toive resoluutio, joko jostain datasta tai suoraan kilometreinä.
-    CalculationPoint, //!< Tällä asetetaan macroParamin laskentapiste (lat,lon). Laskut saavat muissa hilapisteissä puuttuvaa.
-    ObservationRadius, //!< Tällä määrätään että laskuissa otetaan huomioon havainnoista vain x [km] säteellä olevat arvot.
+    PeekT,       //!< 'Kurkistetaan' arvo halutun aikahypyn [h] päästä
+    Resolution,  //!< Tällä asetetaan macroParamin lasketun hilan toive resoluutio, joko jostain
+                 //!datasta tai suoraan kilometreinä.
+    CalculationPoint,  //!< Tällä asetetaan macroParamin laskentapiste (lat,lon). Laskut saavat
+                       //!muissa hilapisteissä puuttuvaa.
+    ObservationRadius,  //!< Tällä määrätään että laskuissa otetaan huomioon havainnoista vain x
+                        //![km] säteellä olevat arvot.
     //! joku ehto toteutuu
   };
 

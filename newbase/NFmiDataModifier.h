@@ -62,8 +62,8 @@ class _FMI_DLL NFmiDataModifier : public NFmiDataModifierBase
 
   NFmiCombinedParam* itsCombinedParam;
   bool fCalculationResultOk;  // käytetään mm. keskiarvon laskun tuloksen palautuksen tarkastelussa
-                              // eli jos ei ole ollut mitään laskettavaa, ei palauteta arvoa 0 vaan
-                              // kFloatMissing
+  // eli jos ei ole ollut mitään laskettavaa, ei palauteta arvoa 0 vaan
+  // kFloatMissing
   bool fMissingValuesAllowed;
 
   int itsNumberOfMissingValues;

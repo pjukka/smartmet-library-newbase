@@ -187,7 +187,7 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo(const NFmiSuperSmartInfo& theInfo)
       itsTimeIntegrationCalculator(0)
       // HUOM!!!! TÄMÄ PITÄÄ HOITAA SITTEN KUNTOON (itsCurrentVarianceCalculator)
       //,itsCurrentVarianceCalculator(new NFmiCalculator((NFmiQueryInfo *)0, 0)) // laitetaan täällä
-      //tyhjät calculaattorit valmiiksi
+      // tyhjät calculaattorit valmiiksi
       ,
       itsCurrentVarianceCalculator(0),
       itsDataModifierDescriptor(theInfo.itsDataModifierDescriptor),

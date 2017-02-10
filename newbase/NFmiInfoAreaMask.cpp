@@ -30,44 +30,47 @@
 
 static bool IsFindFunction(NFmiAreaMask::FunctionType theFunction)
 {
-    if(theFunction == NFmiAreaMask::FindH || theFunction == NFmiAreaMask::FindC)
-        return true;
-    else
-        return false;
+  if (theFunction == NFmiAreaMask::FindH || theFunction == NFmiAreaMask::FindC)
+    return true;
+  else
+    return false;
 }
 
 static bool IsFindConditionalFunction(NFmiAreaMask::FunctionType theFunction)
 {
-    if(theFunction >= NFmiAreaMask::ProbOver && theFunction <= NFmiAreaMask::ProbBetweenEq)
-        return true;
-    else
-        return false;
+  if (theFunction >= NFmiAreaMask::ProbOver && theFunction <= NFmiAreaMask::ProbBetweenEq)
+    return true;
+  else
+    return false;
 }
 
-static bool CheckProbabilityCondition(NFmiAreaMask::FunctionType condition, double value, double limit1, double limit2)
+static bool CheckProbabilityCondition(NFmiAreaMask::FunctionType condition,
+                                      double value,
+                                      double limit1,
+                                      double limit2)
 {
-    switch(condition)
-    {
+  switch (condition)
+  {
     case NFmiAreaMask::ProbOver:
-        return value > limit1;
+      return value > limit1;
     case NFmiAreaMask::ProbOverEq:
-        return value >= limit1;
+      return value >= limit1;
     case NFmiAreaMask::ProbUnder:
-        return value < limit1;
+      return value < limit1;
     case NFmiAreaMask::ProbUnderEq:
-        return value <= limit1;
+      return value <= limit1;
     case NFmiAreaMask::ProbEqual:
-        return value == limit1;
+      return value == limit1;
     case NFmiAreaMask::ProbNotEqual:
-        return value != limit1;
+      return value != limit1;
     case NFmiAreaMask::ProbBetween:
-        return (value > limit1) && (value < limit2);
+      return (value > limit1) && (value < limit2);
     case NFmiAreaMask::ProbBetweenEq:
-        return (value >= limit1) && (value <= limit2);
+      return (value >= limit1) && (value <= limit2);
 
     default:
-        throw std::runtime_error("Internal error in SmartTool system, probability condition unknown");
-    }
+      throw std::runtime_error("Internal error in SmartTool system, probability condition unknown");
+  }
 }
 
 // ----------------------------------------------------------------------
@@ -1345,40 +1348,41 @@ NFmiAreaMask *NFmiInfoAreaMaskVertFunc::Clone(void) const
 static boost::shared_ptr<NFmiDataModifier> CreateIntegrationFuction(NFmiAreaMask::FunctionType func)
 {
   boost::shared_ptr<NFmiDataModifier> modifier;
-  // vertCondFunc tapauksia on paljon ja niille ei tehdä integraatiota, joten tein ehdon vähentämään case -tapauksia
-  if(!::IsFindConditionalFunction(func))
+  // vertCondFunc tapauksia on paljon ja niille ei tehdä integraatiota, joten tein ehdon vähentämään
+  // case -tapauksia
+  if (!::IsFindConditionalFunction(func))
   {
-      switch(func)
-      {
+    switch (func)
+    {
       case NFmiAreaMask::Avg:
-          modifier = boost::shared_ptr<NFmiDataModifier>(new NFmiDataModifierAvg());
-          break;
+        modifier = boost::shared_ptr<NFmiDataModifier>(new NFmiDataModifierAvg());
+        break;
       case NFmiAreaMask::Min:
-          modifier = boost::shared_ptr<NFmiDataModifier>(new NFmiDataModifierMin());
-          break;
+        modifier = boost::shared_ptr<NFmiDataModifier>(new NFmiDataModifierMin());
+        break;
       case NFmiAreaMask::Max:
-          modifier = boost::shared_ptr<NFmiDataModifier>(new NFmiDataModifierMax());
-          break;
+        modifier = boost::shared_ptr<NFmiDataModifier>(new NFmiDataModifierMax());
+        break;
       case NFmiAreaMask::Sum:
-          modifier = boost::shared_ptr<NFmiDataModifier>(new NFmiDataModifierSum());
-          break;
+        modifier = boost::shared_ptr<NFmiDataModifier>(new NFmiDataModifierSum());
+        break;
       case NFmiAreaMask::Get:
       case NFmiAreaMask::FindH:
       case NFmiAreaMask::FindC:
       case NFmiAreaMask::MinH:
       case NFmiAreaMask::MaxH:
       case NFmiAreaMask::Grad:
-          modifier = boost::shared_ptr<NFmiDataModifier>();  // get- ja find -tapauksissa palautetaan
-                                                             // tyhjä-olio, koska niille ei tarvita
-                                                             // erillistä integraattoria
-          break;
-          // HUOM!!!! Tee WAvg-modifier myös, joka on peritty Avg-modifieristä ja tee joku kerroin juttu
-          // painotukseen.
+        modifier = boost::shared_ptr<NFmiDataModifier>();  // get- ja find -tapauksissa palautetaan
+                                                           // tyhjä-olio, koska niille ei tarvita
+                                                           // erillistä integraattoria
+        break;
+      // HUOM!!!! Tee WAvg-modifier myös, joka on peritty Avg-modifieristä ja tee joku kerroin juttu
+      // painotukseen.
       default:
-          throw std::runtime_error(
-              "Internal SmartMet error: Vertical function has unknown integration function,\ncan't "
-              "execute the calculations.");
-      }
+        throw std::runtime_error(
+            "Internal SmartMet error: Vertical function has unknown integration function,\ncan't "
+            "execute the calculations.");
+    }
   }
   return modifier;
 }
@@ -1873,118 +1877,121 @@ float NFmiInfoAreaMaskVertFunc::DoNormalFunction(const NFmiLocationCache &theLoc
 // *****    NFmiInfoAreaMaskVertFunc   **********************
 // **********************************************************
 
-
 // **********************************************************
 // *****    NFmiInfoAreaMaskVertConditionalFunc  ************
 // **********************************************************
 
-NFmiInfoAreaMaskVertConditionalFunc::~NFmiInfoAreaMaskVertConditionalFunc(void)
-{}
-
-NFmiInfoAreaMaskVertConditionalFunc::NFmiInfoAreaMaskVertConditionalFunc(const NFmiCalculationCondition &theOperation,
+NFmiInfoAreaMaskVertConditionalFunc::~NFmiInfoAreaMaskVertConditionalFunc(void) {}
+NFmiInfoAreaMaskVertConditionalFunc::NFmiInfoAreaMaskVertConditionalFunc(
+    const NFmiCalculationCondition &theOperation,
     Type theMaskType,
     NFmiInfoData::Type theDataType,
     const boost::shared_ptr<NFmiFastQueryInfo> &theInfo,
     NFmiAreaMask::FunctionType thePrimaryFunc,
     NFmiAreaMask::FunctionType theSecondaryFunc,
     int theArgumentCount)
-    :NFmiInfoAreaMaskVertFunc(theOperation, theMaskType, theDataType, theInfo, thePrimaryFunc,
-        theSecondaryFunc, theArgumentCount)
-    , itsLimit1(kFloatMissing)
-    , itsLimit2(kFloatMissing)
+    : NFmiInfoAreaMaskVertFunc(theOperation,
+                               theMaskType,
+                               theDataType,
+                               theInfo,
+                               thePrimaryFunc,
+                               theSecondaryFunc,
+                               theArgumentCount),
+      itsLimit1(kFloatMissing),
+      itsLimit2(kFloatMissing)
 {
-    if(::IsFindConditionalFunction(itsPrimaryFunc))
-        fReturnHeightValue = true;
+  if (::IsFindConditionalFunction(itsPrimaryFunc)) fReturnHeightValue = true;
 }
 
-NFmiInfoAreaMaskVertConditionalFunc::NFmiInfoAreaMaskVertConditionalFunc(const NFmiInfoAreaMaskVertConditionalFunc &theOther)
-    :NFmiInfoAreaMaskVertFunc(theOther)
-    , itsLimit1(theOther.itsLimit1)
-    , itsLimit2(theOther.itsLimit2)
+NFmiInfoAreaMaskVertConditionalFunc::NFmiInfoAreaMaskVertConditionalFunc(
+    const NFmiInfoAreaMaskVertConditionalFunc &theOther)
+    : NFmiInfoAreaMaskVertFunc(theOther),
+      itsLimit1(theOther.itsLimit1),
+      itsLimit2(theOther.itsLimit2)
 {
 }
 
-NFmiAreaMask* NFmiInfoAreaMaskVertConditionalFunc::Clone(void) const
+NFmiAreaMask *NFmiInfoAreaMaskVertConditionalFunc::Clone(void) const
 {
-    return new NFmiInfoAreaMaskVertConditionalFunc(*this);
+  return new NFmiInfoAreaMaskVertConditionalFunc(*this);
 }
 
 void NFmiInfoAreaMaskVertConditionalFunc::Initialize(void)
 {
-    NFmiInfoAreaMaskVertFunc::Initialize();
+  NFmiInfoAreaMaskVertFunc::Initialize();
 }
 
 // Tätä kutsutaan jokaiselle erillis pistelaskulle erikseen value-funktiossa.
 bool NFmiInfoAreaMaskVertConditionalFunc::InitializeFromArguments(void)
 {
-    itsStartLevelValue = itsArgumentVector[0];
-    itsEndLevelValue = itsArgumentVector[1];
-    itsLimit1 = itsArgumentVector[2];
-    itsLimit2 = kFloatMissing;  // Huom! tämä voi olla puuttuva, jos kyse on simppelistä
-                                // get-funktiosta (esim. vertp_get(WS_Hir, pressure))
-    if(itsArgumentVector.size() > 4) 
-        itsLimit2 = itsArgumentVector[4];
+  itsStartLevelValue = itsArgumentVector[0];
+  itsEndLevelValue = itsArgumentVector[1];
+  itsLimit1 = itsArgumentVector[2];
+  itsLimit2 = kFloatMissing;  // Huom! tämä voi olla puuttuva, jos kyse on simppelistä
+                              // get-funktiosta (esim. vertp_get(WS_Hir, pressure))
+  if (itsArgumentVector.size() > 4) itsLimit2 = itsArgumentVector[4];
 
-    if(itsStartLevelValue == kFloatMissing || itsEndLevelValue == kFloatMissing)
-        return false;  // jos alku/loppu level arvo on puuttuvaa, ei voi tehdä mitään järkevää
+  if (itsStartLevelValue == kFloatMissing || itsEndLevelValue == kFloatMissing)
+    return false;  // jos alku/loppu level arvo on puuttuvaa, ei voi tehdä mitään järkevää
 
-    return true;
+  return true;
 }
 
-double NFmiInfoAreaMaskVertConditionalFunc::Value(const NFmiCalculationParams &theCalculationParams, bool fUseTimeInterpolationAlways)
+double NFmiInfoAreaMaskVertConditionalFunc::Value(const NFmiCalculationParams &theCalculationParams,
+                                                  bool fUseTimeInterpolationAlways)
 {
-    float value = kFloatMissing;
-    if(InitializeFromArguments())
+  float value = kFloatMissing;
+  if (InitializeFromArguments())
+  {
+    // 1. Laske latlon-pistettä vastaava 'reaali'-hilapiste.
+    NFmiLocationCache locationCache = CalcLocationCache(theCalculationParams.itsLatlon);
+
+    // 2. Käy läpi haluttu level korkeus/level väli ja laske haluttu operaatio niille
+    FindCalculatedLeves(locationCache);
+
+    if (itsStartLevelIndex != gMissingIndex && itsEndLevelIndex != gMissingIndex)
     {
-        // 1. Laske latlon-pistettä vastaava 'reaali'-hilapiste.
-        NFmiLocationCache locationCache = CalcLocationCache(theCalculationParams.itsLatlon);
-
-        // 2. Käy läpi haluttu level korkeus/level väli ja laske haluttu operaatio niille
-        FindCalculatedLeves(locationCache);
-
-        if(itsStartLevelIndex != gMissingIndex && itsEndLevelIndex != gMissingIndex)
-        {
-            value = DoFindConditionalFunction(locationCache);
-            if(fReturnHeightValue && itsSecondaryFunc == NFmiAreaMask::VertFL)
-                value = static_cast<float>(::CalcPressureFlightLevel(value));
-        }
+      value = DoFindConditionalFunction(locationCache);
+      if (fReturnHeightValue && itsSecondaryFunc == NFmiAreaMask::VertFL)
+        value = static_cast<float>(::CalcPressureFlightLevel(value));
     }
-    return value;
+  }
+  return value;
 }
 
 bool NFmiInfoAreaMaskVertConditionalFunc::CheckProbabilityCondition(double value)
 {
-    return ::CheckProbabilityCondition(itsPrimaryFunc, value, itsLimit1, itsLimit2);
+  return ::CheckProbabilityCondition(itsPrimaryFunc, value, itsLimit1, itsLimit2);
 }
 
-float NFmiInfoAreaMaskVertConditionalFunc::DoFindConditionalFunction(const NFmiLocationCache &theLocationCache)
+float NFmiInfoAreaMaskVertConditionalFunc::DoFindConditionalFunction(
+    const NFmiLocationCache &theLocationCache)
 {
-    if(fReturnHeightValue)
+  if (fReturnHeightValue)
+  {
+    for (int levelIndex = static_cast<int>(itsStartLevelIndex);
+         fReverseLevels ? levelIndex >= static_cast<int>(itsEndLevelIndex)
+                        : levelIndex <= static_cast<int>(itsEndLevelIndex);
+         levelIndex += itsLevelIncrement)
     {
-        for(int levelIndex = static_cast<int>(itsStartLevelIndex);
-            fReverseLevels ? levelIndex >= static_cast<int>(itsEndLevelIndex)
-            : levelIndex <= static_cast<int>(itsEndLevelIndex);
-            levelIndex += itsLevelIncrement)
-        {
-            itsInfo->LevelIndex(levelIndex);
-            float value = itsInfo->CachedInterpolation(theLocationCache, itsTimeCache);
-            if(CheckProbabilityCondition(value))
-            {
-                float heightValue = GetLevelHeightValue(theLocationCache);
-                return heightValue;
-            }
-        }
-        return kFloatMissing;
+      itsInfo->LevelIndex(levelIndex);
+      float value = itsInfo->CachedInterpolation(theLocationCache, itsTimeCache);
+      if (CheckProbabilityCondition(value))
+      {
+        float heightValue = GetLevelHeightValue(theLocationCache);
+        return heightValue;
+      }
     }
+    return kFloatMissing;
+  }
 
-    throw std::runtime_error("Error in program's logic: vertical conditional find function didn't return height value...");
+  throw std::runtime_error(
+      "Error in program's logic: vertical conditional find function didn't return height value...");
 }
-
 
 // **********************************************************
 // *****    NFmiInfoAreaMaskVertConditionalFunc  ************
 // **********************************************************
-
 
 // **********************************************************
 // *****    NFmiInfoAreaMaskTimeVertFunc  *******************
@@ -2222,7 +2229,6 @@ NFmiAreaMask *NFmiInfoAreaMaskProbFunc::Clone(void) const
 }
 
 void NFmiInfoAreaMaskProbFunc::Initialize(void) {}
-
 // Tätä kutsutaan jokaiselle erillis pistelaskulle erikseen value-funktiossa.
 void NFmiInfoAreaMaskProbFunc::InitializeFromArguments(void)
 {
@@ -2301,7 +2307,7 @@ static void CalcPeekLoopLimits(int rectSize, double interpolationPoint, int &lim
 
 bool NFmiInfoAreaMaskProbFunc::CheckProbabilityCondition(double value)
 {
-    return ::CheckProbabilityCondition(itsPrimaryFunc, value, itsLimit1, itsLimit2);
+  return ::CheckProbabilityCondition(itsPrimaryFunc, value, itsLimit1, itsLimit2);
 }
 
 // Etsii halutun aika loopituksen alku- ja loppuaika indeksejä annetusta infosta.

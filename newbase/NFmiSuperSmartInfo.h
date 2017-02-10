@@ -94,7 +94,7 @@ class _FMI_DLL NFmiSuperSmartInfo : public NFmiFastQueryInfo
   bool PreviousTime(void);
 
 #ifndef UNIX
-  using NFmiFastQueryInfo::Time;       // nyt voi käyttää suoraan SSInfosta muitakin Time-funktioita
+  using NFmiFastQueryInfo::Time;  // nyt voi käyttää suoraan SSInfosta muitakin Time-funktioita
   using NFmiFastQueryInfo::TimeIndex;  // nyt voi käyttää suoraan SSInfosta muitakin
                                        // TimeIndex-funktioita
 #else

@@ -24,20 +24,21 @@
 #ifndef _MSC_VER
 #include <dirent.h>
 #else
-// Must use MoveFileExA -funktion on Windows and this is how you have to include and do required stuff
+// Must use MoveFileExA -funktion on Windows and this is how you have to include and do required
+// stuff
 #ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0600   // Specifies that the minimum required platform is Windows Vista.
+#define _WIN32_WINNT 0x0600  // Specifies that the minimum required platform is Windows Vista.
 #endif
 #define _AFXDLL
 #include <afx.h>
 #ifdef min
-#undef min // have to remove min -macro defined by win32 system
+#undef min  // have to remove min -macro defined by win32 system
 #endif
 #ifdef CreateDirectory
-#undef CreateDirectory // have to remove CreateDirectory -macro defined by win32 system
+#undef CreateDirectory  // have to remove CreateDirectory -macro defined by win32 system
 #endif
 #ifdef CopyFile
-#undef CopyFile // have to remove CopyFile -macro defined by win32 system
+#undef CopyFile  // have to remove CopyFile -macro defined by win32 system
 #endif
 #endif
 
@@ -1617,14 +1618,14 @@ void SafeFileSave(const std::string &theFileName, const std::string &theContents
 
 #ifdef _MSC_VER
   // NFmiFileSystem::RenameFile doesn't work allways desired way on Windows, in some cases
-  // people have noticed that only the TMP-file was left after execution. That's is why I try 
+  // people have noticed that only the TMP-file was left after execution. That's is why I try
   // to solve this with Windows own win32 functionality.
-  // Using the ascii version of MoveFileEx -function (A -letter as last character), because we 
+  // Using the ascii version of MoveFileEx -function (A -letter as last character), because we
   // are operating with ascii file paths.
-  if(!::MoveFileExA(tmpFileName.c_str(), theFileName.c_str(), MOVEFILE_REPLACE_EXISTING))
+  if (!::MoveFileExA(tmpFileName.c_str(), theFileName.c_str(), MOVEFILE_REPLACE_EXISTING))
   {
-      throw std::runtime_error("Error while moving temporary file: '" + tmpFileName +
-          "' to replace the original file '" + theFileName + "' was made.");
+    throw std::runtime_error("Error while moving temporary file: '" + tmpFileName +
+                             "' to replace the original file '" + theFileName + "' was made.");
   }
 #else
   // RenameFile -funktio tuhoaa vanhan tiedoston uuden tieltä. En tiedä mitä pitäisi tehdä,

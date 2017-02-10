@@ -44,7 +44,8 @@
  *								 latitude-longitude coordinates
  *
  * theTopRightLatLon =	 upper right corner point of the rectangle in GEODETIC
- *								 latitude-longitude coordinates for the
+ *								 latitude-longitude coordinates for
+ *the
  *rectangle
  *
  * theTopLeftXY = upper left corner of the rectangle in rectangular LOCAL coordinates

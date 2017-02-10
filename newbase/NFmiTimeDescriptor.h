@@ -101,8 +101,8 @@ class _FMI_DLL NFmiTimeDescriptor : public NFmiDataDescriptor
   virtual unsigned long Index(void) const;
   virtual unsigned long Size(void) const;
   bool IsEmpty(void) const;  // Jouduin tekemään IsEmpty -metodin, koska Size -metodi palauttaa
-                             // joskus tyhjänä 1:n (NFmiTimeBag palauttaa tyhjänä 1:n kun resolution
-                             // on 0 jostain historiallisista v. 1998 syistä)
+  // joskus tyhjänä 1:n (NFmiTimeBag palauttaa tyhjänä 1:n kun resolution
+  // on 0 jostain historiallisista v. 1998 syistä)
   virtual unsigned long SizeActive(void) const;
 
   virtual bool NextActive(void);

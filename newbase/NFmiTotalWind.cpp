@@ -528,9 +528,9 @@ double NFmiTotalWind::CalcU(void)
   if (WS != kFloatMissing && WD != kFloatMissing)
   {
     value = WS * sin((((180 + WD) % 360) / 360.) * (2. * kPii));  // huom! tuulen suunta pitää ensin
-                                                                  // kääntää 180 astetta ja sitten
-                                                                  // muuttaa radiaaneiksi kulma/360
-                                                                  // * 2*pii
+    // kääntää 180 astetta ja sitten
+    // muuttaa radiaaneiksi kulma/360
+    // * 2*pii
   }
   return value;
 }
@@ -554,9 +554,9 @@ double NFmiTotalWind::CalcV(void)
   if (WS != kFloatMissing && WD != kFloatMissing)
   {
     value = WS * cos((((180 + WD) % 360) / 360.) * (2. * kPii));  // huom! tuulen suunta pitää ensin
-                                                                  // kääntää 180 astetta ja sitten
-                                                                  // muuttaa radiaaneiksi kulma/360
-                                                                  // * 2*pii
+    // kääntää 180 astetta ja sitten
+    // muuttaa radiaaneiksi kulma/360
+    // * 2*pii
   }
   return value;
 }

@@ -395,10 +395,10 @@ double NearestNonMissing(double theX,
 
 NFmiPoint BiLinear(double theX,
                    double theY,
-                   const NFmiPoint& theTopLeft,
-                   const NFmiPoint& theTopRight,
-                   const NFmiPoint& theBottomLeft,
-                   const NFmiPoint& theBottomRight)
+                   const NFmiPoint &theTopLeft,
+                   const NFmiPoint &theTopRight,
+                   const NFmiPoint &theBottomLeft,
+                   const NFmiPoint &theBottomRight)
 {
   double dx = theX;
   double dy = theY;

@@ -63,7 +63,7 @@ void NFmiDataModifierExtremePlace::Calculate(float theValue, NFmiQueryInfo* theQ
   if (IsAllowedValue(theValue))
   {
     //	 if(value != kFloatMissing && value != kRadarPrecipitationMissing)  //puuttuvat
-    //tutkasateet==65535??
+    // tutkasateet==65535??
     if (IsNewExtreme(theValue))
     {
       itsExtremeValue = theValue;

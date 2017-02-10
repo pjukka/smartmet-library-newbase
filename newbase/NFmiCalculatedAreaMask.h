@@ -129,17 +129,16 @@ class _FMI_DLL NFmiUtcHourAreaMask : public NFmiElevationAngleAreaMask
 // class NFmiMinuteAreaMask
 class _FMI_DLL NFmiMinuteAreaMask : public NFmiElevationAngleAreaMask
 {
-public:
-    ~NFmiMinuteAreaMask(void);
-    NFmiMinuteAreaMask(void);
-    NFmiMinuteAreaMask(const NFmiMinuteAreaMask& theMask);
-    NFmiMinuteAreaMask(const NFmiDataIdent& theParam, const NFmiCalculationCondition& theOperation);
-    NFmiAreaMask* Clone(void) const;
+ public:
+  ~NFmiMinuteAreaMask(void);
+  NFmiMinuteAreaMask(void);
+  NFmiMinuteAreaMask(const NFmiMinuteAreaMask& theMask);
+  NFmiMinuteAreaMask(const NFmiDataIdent& theParam, const NFmiCalculationCondition& theOperation);
+  NFmiAreaMask* Clone(void) const;
 
-protected:
-    double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee tämä lapsiin!!!
-    const NFmiString MakeSubMaskString(void) const;
-
+ protected:
+  double CalcValueFromLocation(const NFmiPoint& theLatLon) const;  // tee tämä lapsiin!!!
+  const NFmiString MakeSubMaskString(void) const;
 };
 
 //! Undocumented

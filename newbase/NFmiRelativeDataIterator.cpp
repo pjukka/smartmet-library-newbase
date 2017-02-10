@@ -98,10 +98,10 @@ void NFmiRelativeDataIterator::DoForEach(NFmiDataModifier* theDataModifier)
       for (long x = itsDxStart; x <= itsDxEnd; x++)
       {
         if ((!fMaskInUse) || IsMasked(itsData->PeekLocationLatLon(x, y)))  // tehdään laskut, jos
-                                                                           // maski ei ole käytössä
-                                                                           // tai sitten jos maski
-                                                                           // on käytössä ja
-                                                                           // 'päällä'
+          // maski ei ole käytössä
+          // tai sitten jos maski
+          // on käytössä ja
+          // 'päällä'
           theDataModifier->Calculate(itsData->PeekValue(t, x, y));
       }
 }

@@ -269,10 +269,10 @@ double CalcPressureAtHeight(double z2)
   double R = 287.04;   // R is the dry air gas constant (=287.04 J kg-1 K-1)
   // mean layer temperature T is calculated so that it is 15 celsius at surface and drops by 6.5
   // c/km
-  double L = -6.5;     // standardiilmakehän lapserate eli lämpötilan muutos kilometreissa alhaalta
-                       // ylöspäin mentäessä.
-  double T0 = 273.15;  // muunnos siirto celsius -> kelvin
-  double Tg = 15;      // standardiilmakehän maanpinnan lämpötila celsiuksinä.
+  double L = -6.5;  // standardiilmakehän lapserate eli lämpötilan muutos kilometreissa alhaalta
+                    // ylöspäin mentäessä.
+  double T0 = 273.15;             // muunnos siirto celsius -> kelvin
+  double Tg = 15;                 // standardiilmakehän maanpinnan lämpötila celsiuksinä.
   double T = (Tg + z2 * L) / 2.;  // siis keski arvo lämpötila välillä 0-z2 km
   T += T0;                        // muunto kelvineiksi
 

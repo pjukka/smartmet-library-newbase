@@ -18,7 +18,7 @@ class _FMI_DLL NFmiRelativeTimeIntegrationIterator : public NFmiDataIterator
   virtual ~NFmiRelativeTimeIntegrationIterator();
   NFmiRelativeTimeIntegrationIterator(
       NFmiQueryInfo* theData,
-      int theStepnumber,  // integroitavien aika-askelten lukumäärä
+      int theStepnumber,       // integroitavien aika-askelten lukumäärä
       int theStartShift = 0);  // Integroinnin loppuaika aikaskeleina
 
   virtual void DoForEach(NFmiDataModifier* theDataModifier);
