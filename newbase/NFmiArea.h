@@ -265,7 +265,7 @@ inline bool NFmiArea::IsInside(const NFmiPoint &theLatLonPoint) const
   {
     return false;
   }
-  return itsXYRectArea.IsInside(ToXY(xyPoint));
+  return itsXYRectArea.IsInside(xyPoint);
 }
 
 // ----------------------------------------------------------------------
