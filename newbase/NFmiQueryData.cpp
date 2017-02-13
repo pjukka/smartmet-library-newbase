@@ -687,8 +687,9 @@ void NFmiQueryData::SetLatLonCache(boost::shared_ptr<std::vector<NFmiPoint> > ne
 
 void NFmiQueryData::MakeLatLonCache() const
 {
-  itsLatLonCache = boost::make_shared<std::vector<NFmiPoint> >();
-  HPlaceDesc()->CreateLatLonCache(*itsLatLonCache);
+  boost::shared_ptr<std::vector<NFmiPoint> > tmp = boost::make_shared<std::vector<NFmiPoint> >();
+  HPlaceDesc()->CreateLatLonCache(*tmp);
+  boost::atomic_store(&itsLatLonCache, tmp);
 }
 
 // ----------------------------------------------------------------------
