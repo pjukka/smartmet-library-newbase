@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.2.13
+Version: 17.2.15
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -61,7 +61,21 @@ FMI newbase development files
 %defattr(0664,root,root,0775)
 %{_includedir}/smartmet/%{DIRNAME}
 
+%package -n %{SPECNAME}-static
+Summary: FMI newbase static library
+Provides: %{SPECNAME}-static
+
+%description -n %{SPECNAME}-static
+FMI newbase static library
+
+%files -n %{SPECNAME}-static
+%defattr(0664,root,root,0775)
+%{_libdir}/libsmartmet-%{DIRNAME}.a
+
 %changelog
+* Wed Feb 15 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.2.15-1.fmi
+- Added static packaging
+
 * Mon Feb 13 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.2.13-1.fmi
 - Fixed a race condition in NFmiQueryData::LatLonCache()
 
