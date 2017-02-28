@@ -1208,6 +1208,7 @@ enum FmiParameterName
   kFmiProbabilityOfConvectivePrecipitationLimit5,
   kFmiProbabilityOfConvectivePrecipitationLimit6,
   kFmiProbabilityOfPrecipitation3h03mm,  // > 0.3 mm
+  kFmiProbabilityOfColdLimit5,  // T < -35
 
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 
