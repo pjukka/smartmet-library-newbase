@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.2.15
+Version: 17.2.28
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -73,6 +73,10 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Tue Feb 28 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.2.28-1.fmi
+- Renamed AvailableEnsembleMemberPercentage to AvailableEnsembleMemberCount
+- Renamed HoarFrostTemperature to FrostPoint
+
 * Wed Feb 15 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.2.15-1.fmi
 - Added static packaging
 
