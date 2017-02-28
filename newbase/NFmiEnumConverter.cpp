@@ -847,6 +847,12 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("ProbabilityOfColdLimit2", kFmiProbabilityOfColdLimit2);
   PARAMINSERT("ProbabilityOfColdLimit3", kFmiProbabilityOfColdLimit3);
   PARAMINSERT("ProbabilityOfColdLimit4", kFmiProbabilityOfColdLimit4);
+  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit1", kFmiProbabilityOfConvectivePrecipitationLimit1);
+  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit2", kFmiProbabilityOfConvectivePrecipitationLimit2);
+  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit3", kFmiProbabilityOfConvectivePrecipitationLimit3);
+  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit4", kFmiProbabilityOfConvectivePrecipitationLimit4);
+  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit5", kFmiProbabilityOfConvectivePrecipitationLimit5);
+  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit6", kFmiProbabilityOfConvectivePrecipitationLimit6);
   PARAMINSERT("ProbabilityOfGustLimit1", kFmiProbabilityOfGustLimit1);
   PARAMINSERT("ProbabilityOfGustLimit2", kFmiProbabilityOfGustLimit2);
   PARAMINSERT("ProbabilityOfGustLimit3", kFmiProbabilityOfGustLimit3);
@@ -884,6 +890,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("ProbabilityOfPrecLimit9", kFmiProbabilityOfPrecLimit9);
   PARAMINSERT("ProbabilityOfPrecLimit10", kFmiProbabilityOfPrecLimit10);
   PARAMINSERT("ProbabilityOfPrecipitation3h01mm", kFmiProbabilityOfPrecipitation3h01mm);
+  PARAMINSERT("ProbabilityOfPrecipitation3h03mm", kFmiProbabilityOfPrecipitation3h03mm);
   PARAMINSERT("ProbabilityOfPrecipitation3h05mm", kFmiProbabilityOfPrecipitation3h05mm);
   PARAMINSERT("ProbabilityOfPrecipitation3h0mm", kFmiProbabilityOfPrecipitation3h0mm);
   PARAMINSERT("ProbabilityOfPrecipitation3h100mm", kFmiProbabilityOfPrecipitation3h100mm);

@@ -1201,6 +1201,13 @@ enum FmiParameterName
   kFmiProbabilityOfSigWaveHeightLimit2,
   kFmiProbabilityOfSigWaveHeightLimit3,
   kFmiProbabilityOfSigWaveHeightLimit4,
+  kFmiProbabilityOfConvectivePrecipitationLimit1,
+  kFmiProbabilityOfConvectivePrecipitationLimit2,
+  kFmiProbabilityOfConvectivePrecipitationLimit3,
+  kFmiProbabilityOfConvectivePrecipitationLimit4,
+  kFmiProbabilityOfConvectivePrecipitationLimit5,
+  kFmiProbabilityOfConvectivePrecipitationLimit6,
+  kFmiProbabilityOfPrecipitation3h03mm,  // > 0.3 mm
 
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 
