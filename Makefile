@@ -78,19 +78,17 @@ LIBS = -L$(libdir) \
 	-lboost_thread \
 	-lgdal
 
-# rpm variables
-
-rpmsourcedir = /tmp/$(shell whoami)/rpmbuild
-rpmexcludevcs := $(shell tar --help | grep -m 1 -o -- '--exclude-vcs')
-
 # What to install
 
 LIBFILE = libsmartmet-$(SUBNAME).so
+ALIBFILE = libsmartmet-$(SUBNAME).a
 
 # How to install
 
 INSTALL_PROG = install -p -m 775
 INSTALL_DATA = install -p -m 664
+
+ARFLAGS = -r
 
 # Compile option overrides
 
@@ -104,13 +102,13 @@ endif
 
 # Compilation directories
 
-vpath %.cpp source
-vpath %.h include
+vpath %.cpp $(SUBNAME)
+vpath %.h $(SUBNAME)
 
 # The files to be compiled
 
-SRCS = $(wildcard source/*.cpp)
-HDRS = $(wildcard include/*.h)
+SRCS = $(wildcard $(SUBNAME)/*.cpp)
+HDRS = $(wildcard $(SUBNAME)/*.h)
 OBJS = $(patsubst %.cpp, obj/%.o, $(notdir $(SRCS)))
 
 INCLUDES := -Iinclude $(INCLUDES)
@@ -119,7 +117,7 @@ INCLUDES := -Iinclude $(INCLUDES)
 
 # The rules
 
-all: objdir $(LIBFILE)
+all: objdir $(LIBFILE) $(ALIBFILE)
 debug: all
 release: all
 profile: all
@@ -127,12 +125,15 @@ profile: all
 $(LIBFILE): $(OBJS)
 	$(CXX) $(CFLAGS) -shared -rdynamic -o $(LIBFILE) $(OBJS) $(LIBS)
 
+$(ALIBFILE): $(OBJS)
+	$(AR) $(ARFLAGS) $(ALIBFILE) $(OBJS)
+
 clean:
-	rm -f $(LIBFILE) *~ source/*~ include/*~
+	rm -f $(LIBFILE) $(ALIBFILE) *~ $(SUBNAME)/*~
 	rm -rf $(objdir)
 
 format:
-	clang-format -i -style=file include/*.h source/*.cpp test/*.cpp
+	clang-format -i -style=file $(SUBNAME)/*.h $(SUBNAME)/*.cpp test/*.cpp
 
 install:
 	@mkdir -p $(includedir)/$(INCDIR)
@@ -145,6 +146,8 @@ install:
 	@mkdir -p $(libdir)
 	echo $(INSTALL_PROG) $(LIBFILE) $(libdir)/$(LIBFILE)
 	$(INSTALL_PROG) $(LIBFILE) $(libdir)/$(LIBFILE)
+	echo $(INSTALL_DATA) $(ALIBFILE) $(libdir)/$(ALIBFILE)
+	$(INSTALL_DATA) $(ALIBFILE) $(libdir)/$(ALIBFILE)
 
 test:
 	+cd test && make test
@@ -155,11 +158,9 @@ objdir:
 rpm: clean
 	if [ -e $(SPEC).spec ]; \
 	then \
-	  mkdir -p $(rpmsourcedir) ; \
-	  tar $(rpmexcludevcs) -C ../ -cf $(rpmsourcedir)/$(SPEC).tar $(SUBNAME) ; \
-	  gzip -f $(rpmsourcedir)/$(SPEC).tar ; \
-	  TAR_OPTIONS=--wildcards rpmbuild -v -ta $(rpmsourcedir)/$(SPEC).tar.gz ; \
-	  rm -f $(rpmsourcedir)/$(SPEC).tar.gz ; \
+	  tar -czvf $(SPEC).tar.gz --transform "s,^,$(SPEC)/," * ; \
+	  rpmbuild -ta $(SPEC).tar.gz ; \
+	  rm -f $(SPEC).tar.gz ; \
 	else \
 	  echo $(SPEC).spec file missing; \
 	fi;

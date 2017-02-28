@@ -14,7 +14,7 @@ CC = g++
 CFLAGS = -DUNIX -O0 -g $(MAINFLAGS)
 
 INCLUDES = \
-	-I ../include \
+	-I ../newbase \
 	-I /usr/include/smartmet \
 	-I .
 
