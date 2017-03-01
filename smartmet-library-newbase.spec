@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.2.28
+Version: 17.3.1
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -73,6 +73,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Wed Mar  1 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.3.1-1.fmi
+- ProbabilityOfColdLimit5 is the probability of temperature being below -35C
+
 * Tue Feb 28 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.2.28-1.fmi
 - Renamed AvailableEnsembleMemberPercentage to AvailableEnsembleMemberCount
 - Renamed HoarFrostTemperature to FrostPoint
