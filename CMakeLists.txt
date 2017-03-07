@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.7.1)
 project(Newbase)
 
-set(CMAKE_MFC_FLAG 0)
+if(WIN32)
+    set(CMAKE_MFC_FLAG 0)
+endif()
 
 file( GLOB SOURCE_FILES newbase/* )
 
