@@ -2183,21 +2183,20 @@ NFmiQueryData *NFmiQueryDataUtil::CombineTimes(NFmiFastQueryInfo &theSourceInfo1
   return destData;
 }
 
-NFmiQueryDataUtil::SignificantSoundingLevels NFmiQueryDataUtil::GetSignificantSoundingLevelIndices(NFmiFastQueryInfo &theInfo)
+NFmiQueryDataUtil::SignificantSoundingLevels NFmiQueryDataUtil::GetSignificantSoundingLevelIndices(
+    NFmiFastQueryInfo &theInfo)
 {
-    if(theInfo.Param(kFmiVerticalSoundingSignificance))
+  if (theInfo.Param(kFmiVerticalSoundingSignificance))
+  {
+    std::unique_ptr<SoundingLevelContainer> indexVector(new SoundingLevelContainer());
+    for (theInfo.ResetLevel(); theInfo.NextLevel();)
     {
-        auto indexVector = std::make_unique<SoundingLevelContainer>();
-        for(theInfo.ResetLevel(); theInfo.NextLevel(); )
-        {
-            auto value = theInfo.FloatValue();
-            if(value != kFloatMissing && value > 0)
-                indexVector->push_back(theInfo.LevelIndex());
-        }
-        if(indexVector->size())
-            return indexVector;
+      auto value = theInfo.FloatValue();
+      if (value != kFloatMissing && value > 0) indexVector->push_back(theInfo.LevelIndex());
     }
-    return SignificantSoundingLevels();
+    if (indexVector->size()) return indexVector;
+  }
+  return SignificantSoundingLevels();
 }
 
 void NFmiQueryDataUtil::DestroyGridRecordData(GridDataVector &theGridRecordDatas)
