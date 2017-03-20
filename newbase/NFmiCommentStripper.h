@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMICOMMENTSTRIPPER_H
-#define NFMICOMMENTSTRIPPER_H
+#pragma once
 
 #include "NFmiDef.h"
 #include "NFmiDataMatrix.h"
@@ -70,6 +69,5 @@ class _FMI_DLL NFmiCommentStripper
 
 };  // class NFmiCommentStripper
 
-#endif  // NFMICOMMENTSTRIPPER_H
 
 // ======================================================================

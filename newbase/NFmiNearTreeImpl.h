@@ -110,8 +110,7 @@
  */
 // ======================================================================
 
-#ifndef NFMINEARTREEIMPL_H
-#define NFMINEARTREEIMPL_H
+#pragma once
 
 #include "NFmiDef.h"
 #include <cmath>
@@ -547,6 +546,5 @@ bool NFmiNearTreeImpl<T, F>::Farthest(value_type& theFarthest,
   return found;
 }
 
-#endif  // NFMINEARTREEIMPL_H
 
 // ======================================================================

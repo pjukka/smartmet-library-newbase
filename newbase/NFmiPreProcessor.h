@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIPREPROCESSOR_H
-#define NFMIPREPROCESSOR_H
+#pragma once
 
 #include "NFmiCommentStripper.h"
 #include <string>
@@ -151,6 +150,5 @@ inline bool NFmiPreProcessor::IsReplace(void) const { return !itsReplaceMap.empt
 // ----------------------------------------------------------------------
 
 inline bool NFmiPreProcessor::IsInclude(void) const { return !itsIncludeDirective.empty(); }
-#endif  // NFMIPREPOCESSOR_H
 
 // ======================================================================

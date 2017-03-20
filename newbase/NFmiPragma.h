@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIPRAGMA_H
-#define NFMIPRAGMA_H
+#pragma once
 
 #ifdef _MSC_VER
 
@@ -22,4 +21,3 @@
 
 #endif
 
-#endif  // NFMIPRAGMA_H

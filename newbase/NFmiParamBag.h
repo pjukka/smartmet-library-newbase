@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIPARAMBAG_H
-#define NFMIPARAMBAG_H
+#pragma once
 
 #include "NFmiSize.h"
 #include "NFmiParameterName.h"
@@ -189,6 +188,5 @@ inline bool NFmiParamBag::SetCurrent(unsigned long theParam, bool fIgnoreSubPara
   return SetCurrent(FmiParameterName(theParam), fIgnoreSubParam);
 }
 
-#endif  // NFMIPARAMBAG_H
 
 // ======================================================================

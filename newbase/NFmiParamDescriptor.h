@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIPARAMDESCRIPTOR_H
-#define NFMIPARAMDESCRIPTOR_H
+#pragma once
 
 #include "NFmiDataDescriptor.h"
 #include "NFmiSaveBaseFactory.h"
@@ -268,6 +267,5 @@ inline std::istream &operator>>(std::istream &file, NFmiParamDescriptor &ob)
   return ob.Read(file);
 }
 
-#endif  // NFMIPARAMDESCRIPTOR_H
 
 // ======================================================================

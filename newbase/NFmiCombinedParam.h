@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMICOMBINEDPARAM_H
-#define NFMICOMBINEDPARAM_H
+#pragma once
 
 #include "NFmiGlobals.h"
 #include "NFmiParameterName.h"
@@ -200,6 +199,5 @@ inline double NFmiCombinedParam::InfoVersion(void) const { return itsInfoVersion
 // ----------------------------------------------------------------------
 
 inline void NFmiCombinedParam::InfoVersion(double newValue) { itsInfoVersion = newValue; }
-#endif  // NFMICOMBINEDPARAM_H
 
 // ======================================================================

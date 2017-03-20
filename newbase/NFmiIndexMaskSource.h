@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIINDEXMASKSOURCE_H
-#define NFMIINDEXMASKSOURCE_H
+#pragma once
 
 #include "NFmiIndexMask.h"
 #include "NFmiMetTime.h"
@@ -30,6 +29,5 @@ class NFmiIndexMaskSource
 
 };  // class NFmiIndexMaskSource
 
-#endif  // NFMIINDESMASKSOURCE_H
 
 // ======================================================================

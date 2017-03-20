@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIFILESYSTEM_H
-#define NFMIFILESYSTEM_H
+#pragma once
 
 #include "NFmiDef.h"
 #include <string>  // filenames are strings
@@ -109,6 +108,5 @@ _FMI_DLL void SafeFileSave(const std::string &theFileName, const std::string &th
 
 }  // namespace NFmiFileSystem
 
-#endif  // NFMIFILESYSTEM_H
 
 // ======================================================================

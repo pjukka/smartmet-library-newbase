@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIYKJAREA_H
-#define NFMIYKJAREA_H
+#pragma once
 
 #include "NFmiKKJArea.h"
 #include "NFmiAngle.h"
@@ -100,4 +99,3 @@ inline unsigned long NFmiYKJArea::ClassId(void) const { return kNFmiYKJArea; }
 // ----------------------------------------------------------------------
 
 inline const char* NFmiYKJArea::ClassName(void) const { return "NFmiYKJArea"; }
-#endif  //__NYKJ_H__

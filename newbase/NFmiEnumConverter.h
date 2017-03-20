@@ -5,8 +5,7 @@
  */
 // ----------------------------------------------------------------------
 
-#ifndef NFMIENUMCONVERTER_H
-#define NFMIENUMCONVERTER_H
+#pragma once
 
 #include "NFmiParameterName.h"
 #include "NFmiDef.h"
@@ -53,6 +52,5 @@ class _FMI_DLL NFmiEnumConverter
 
 };  // class NFmiEnumConverter
 
-#endif  // NFMIENUMCONVERTER_H
 
 // ======================================================================

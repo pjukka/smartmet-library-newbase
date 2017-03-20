@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISIZE_H
-#define NFMISIZE_H
+#pragma once
 
 #include "NFmiGlobals.h"
 #include <iostream>
@@ -42,6 +41,5 @@ class _FMI_DLL NFmiSize
 
 };  // class NFmiSize
 
-#endif  // NFMISIZE_H
 
 // ======================================================================

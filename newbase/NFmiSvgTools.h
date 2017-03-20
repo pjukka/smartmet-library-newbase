@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISVGTOOLS_H
-#define NFMISVGTOOLS_H
+#pragma once
 
 class NFmiArea;
 class NFmiPoint;
@@ -23,6 +22,5 @@ void LatLonToWorldXY(NFmiSvgPath& thePath, const NFmiArea& theArea);
 
 }  // namespace NFmiSvgTools
 
-#endif  // NFMISVGTOOLS_H
 
 // ======================================================================

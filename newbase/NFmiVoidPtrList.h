@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIVOIDPTRLIST_H
-#define NFMIVOIDPTRLIST_H
+#pragma once
 
 #include "NFmiGlobals.h"
 
@@ -170,6 +169,5 @@ class _FMI_DLL NFmiVoidPtrIterator
   NFmiVoidPtrList* itsListItem;
 };
 
-#endif  // NFMIVOIDPTRLIST_H
 
 // ======================================================================

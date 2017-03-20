@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIKKJAREA_H
-#define NFMIKKJAREA_H
+#pragma once
 
 #include "NFmiArea.h"
 #include "NFmiAngle.h"
@@ -159,6 +158,5 @@ inline double NFmiKKJArea::Artanh(double x) const
   return 0.5 * log((1.0 + x) / (1.0 - x));
 }
 
-#endif  // NFMIKKJAREA_H
 
 // ======================================================================

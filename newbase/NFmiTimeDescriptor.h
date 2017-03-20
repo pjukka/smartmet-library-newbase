@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMITIMEDESCRIPTOR_H
-#define NFMITIMEDESCRIPTOR_H
+#pragma once
 
 #include "NFmiSaveBaseFactory.h"
 #include "NFmiTimeBag.h"
@@ -326,6 +325,5 @@ inline std::istream &operator>>(std::istream &file, NFmiTimeDescriptor &ob)
   return ob.Read(file);
 }
 
-#endif  // NFMITIMEDESCRIPTOR_H
 
 // ======================================================================

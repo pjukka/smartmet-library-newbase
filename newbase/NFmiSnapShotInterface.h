@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISNAPSHOTINTERFACE_H
-#define NFMISNAPSHOTINTERFACE_H
+#pragma once
 
 #include "NFmiString.h"  // Added by ClassView
 #include "NFmiQueryData.h"
@@ -53,6 +52,5 @@ class _FMI_DLL NFmiSnapShotInterface
 
 };  // class NFmiSnapShortInterface
 
-#endif  // NFMISNAPSHOTINTERFACE_H
 
 // ======================================================================

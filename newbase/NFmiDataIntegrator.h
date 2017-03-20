@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAINTEGRATOR_H
-#define NFMIDATAINTEGRATOR_H
+#pragma once
 
 class NFmiDataModifier;
 class NFmiFastQueryInfo;
@@ -78,6 +77,5 @@ float Integrate(NFmiFastQueryInfo& theQI,
 
 }  // namespace NFmiDataIntegrator
 
-#endif  // NFMIDATAINTEGRATOR_H
 
 // ======================================================================

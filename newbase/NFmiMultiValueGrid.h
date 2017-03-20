@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIMULTIVALUEGRID_H
-#define NFMIMULTIVALUEGRID_H
+#pragma once
 
 #include "NFmiQueryInfo.h"
 #include "NFmiGrid.h"
@@ -85,6 +84,5 @@ inline unsigned long NFmiMultiValuedGrid::Size(void) const { return NFmiGrid::Si
 // ----------------------------------------------------------------------
 
 inline NFmiArea* NFmiMultiValuedGrid::Area(void) const { return NFmiGrid::Area(); }
-#endif  // NFMIMULTIVALUEGRID_H
 
 // ======================================================================

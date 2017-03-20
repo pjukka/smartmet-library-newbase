@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMILOCATIONBAG_H
-#define NFMILOCATIONBAG_H
+#pragma once
 
 #include "NFmiDataMatrix.h"
 #include "NFmiGeoTools.h"
@@ -152,6 +151,5 @@ inline NFmiLocationBag *NFmiLocationBag::Clone(void) const { return new NFmiLoca
 // ----------------------------------------------------------------------
 
 inline bool NFmiLocationBag::IsLocations(void) const { return (!itsLocations.empty()); }
-#endif  // NFMILOCATIONBAG_H
 
 // ======================================================================

@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMODIFIERVARIANCE_H
-#define NFMIDATAMODIFIERVARIANCE_H
+#pragma once
 
 #include "NFmiRegressionModifier.h"
 
@@ -34,6 +33,5 @@ class _FMI_DLL NFmiDataModifierVariance : public NFmiRegressionModifier
 
 };  // class NFmiDataModifierVariance
 
-#endif  // NFMIDATAMODIFIERVARIANCE_H
 
 // ======================================================================

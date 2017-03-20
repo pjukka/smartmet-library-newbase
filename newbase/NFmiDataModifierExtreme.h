@@ -6,8 +6,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMODIFIEREXTREME_H
-#define NFMIDATAMODIFIEREXTREME_H
+#pragma once
 
 #include "NFmiDataModifier.h"
 #include "NFmiMetTime.h"
@@ -35,6 +34,5 @@ class _FMI_DLL NFmiDataModifierExtreme : public NFmiDataModifier
 
 };  // class NFmiDataModifierExtreme
 
-#endif  // NFMIDATAMODIFIEREXTREME_H
 
 // ======================================================================

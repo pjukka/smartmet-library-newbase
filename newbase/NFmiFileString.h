@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIFILESTRING_H
-#define NFMIFILESTRING_H
+#pragma once
 
 #include "NFmiString.h"
 
@@ -52,6 +51,5 @@ class _FMI_DLL NFmiFileString : public NFmiString
 
 };  // class NFmiFileString
 
-#endif  // NFMIFILESTRING_H
 
 // ======================================================================

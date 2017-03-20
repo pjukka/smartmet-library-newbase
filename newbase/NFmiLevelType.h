@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMILEVELTYPE_H
-#define NFMILEVELTYPE_H
+#pragma once
 
 //! Enumeraatio mahdollisista korkeuspintojen tyypeistä
 
@@ -31,6 +30,5 @@ enum FmiLevelType
   kFmiAnyLevelType = 5000  //!< ???
 };
 
-#endif  // NFMILEVELTYPE_H
 
 // ======================================================================

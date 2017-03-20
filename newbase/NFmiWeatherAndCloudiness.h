@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIWEATHERANDCLOUDINESS_H
-#define NFMIWEATHERANDCLOUDINESS_H
+#pragma once
 
 #include "NFmiCombinedParam.h"
 
@@ -808,6 +807,5 @@ inline void NFmiWeatherAndCloudiness::SetThunderProbability(unsigned long theVal
       static_cast<uint32_t>((itsData.longType & (~(0xF << 28))) | ((theValue & 0xF) << 28));
 }
 
-#endif  // NFMIWEATHERANDCLOUDINESS_H
 
 // ======================================================================

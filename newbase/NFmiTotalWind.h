@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMITOTALWIND_H
-#define NFMITOTALWIND_H
+#pragma once
 
 #include "NFmiCombinedParam.h"
 
@@ -428,6 +427,5 @@ inline void NFmiTotalWind::SetWindGust(unsigned long theValue)
     SetWindGustV6(theValue);
 }
 
-#endif  // NFMITOTALWIND_H
 
 // ======================================================================

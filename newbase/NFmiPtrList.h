@@ -45,8 +45,7 @@
 // Changed 1999.08.31/Marko	Lisäsin listaan uuden metodin Find().
 //
 //**********************************************************
-#ifndef NFMIPTRLIST_H
-#define NFMIPTRLIST_H
+#pragma once
 #include "NFmiGlobals.h"
 
 template <class Type>
@@ -492,4 +491,3 @@ bool NFmiPtrList<Type>::Find(const Type &theValue, Iterator &theFoundItemIterato
   return false;
 }
 
-#endif

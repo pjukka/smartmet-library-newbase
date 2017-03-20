@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIAREAMASKIMPL_H
-#define NFMIAREAMASKIMPL_H
+#pragma once
 
 #include "NFmiAreaMask.h"
 #include "NFmiCalculationCondition.h"
@@ -364,6 +363,5 @@ inline FmiMaskOperation NFmiAreaMaskImpl::MaskOperation(void) const
   return itsMaskCondition.Condition();
 }
 
-#endif  // NFMIAREAMASKIMPL_H
 
 // ======================================================================

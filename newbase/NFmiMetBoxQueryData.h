@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIMETBOXQUERYDATA_H
-#define NFMIMETBOXQUERYDATA_H
+#pragma once
 
 #include "NFmiQueryData.h"
 #include "NFmiMetBox.h"
@@ -29,6 +28,5 @@ class _FMI_DLL NFmiMetBoxQueryData : public NFmiQueryData
 
 };  // class NFmiMetBoxQueryData
 
-#endif  // NFMIMETBOXQUERYDATA_H
 
 // ======================================================================

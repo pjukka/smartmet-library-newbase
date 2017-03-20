@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIINDEXMASKTOOLS_H
-#define NFMIINDEXMASKTOOLS_H
+#pragma once
 
 #include <vector>
 #include <string>
@@ -63,6 +62,5 @@ const std::string MaskString(const NFmiIndexMask &theMask,
 
 }  // namespace NFmiIndexMaskTools
 
-#endif  // NFMIINDEXMASKTOOLS_H
 
 // ======================================================================

@@ -41,8 +41,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMATRIX_H
-#define NFMIDATAMATRIX_H
+#pragma once
 
 // Jos tämä on määritelty, checkedVector tarkistaa aina rajat ja heittää aina poikkeuksen
 // virhetilanteessa
@@ -678,6 +677,5 @@ inline std::istream& operator>>(std::istream& s, NFmiDataMatrix<T>& m)
   return s;
 }
 
-#endif  // NFMIDATAMATRIX_H
 
 // ======================================================================

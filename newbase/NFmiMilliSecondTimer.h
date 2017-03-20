@@ -13,8 +13,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIMILLISECONDTIMER_H
-#define NFMIMILLISECONDTIMER_H
+#pragma once
 
 #include "NFmiGlobals.h"
 #include "NFmiStringTools.h"
@@ -111,6 +110,5 @@ inline int NFmiMilliSecondTimer::CurrentTimeDiffInMSeconds() const
   return CalcTimeDiffInMS(itsTime1, currentTime);
 }
 
-#endif  // NFMIMILLISECONDTIMER_H
 
 // ======================================================================

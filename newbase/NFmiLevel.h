@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMILEVEL_H
-#define NFMILEVEL_H
+#pragma once
 
 #include "NFmiLevelType.h"
 #include "NFmiIndividual.h"
@@ -43,6 +42,5 @@ class _FMI_DLL NFmiLevel : public NFmiIndividual
 
 };  // class NFmiLevel
 
-#endif  // NFMILEVEL_H
 
 // ======================================================================

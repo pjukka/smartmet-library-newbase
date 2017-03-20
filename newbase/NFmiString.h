@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISTRING_H
-#define NFMISTRING_H
+#pragma once
 
 #include "NFmiSaveBaseFactory.h"
 #include "NFmiSortable.h"
@@ -289,6 +288,5 @@ inline NFmiString operator+(const NFmiString &lhs1, const NFmiString &lhs2)
   return temp;
 }
 
-#endif  // NFMISTRING_H
 
 // ======================================================================

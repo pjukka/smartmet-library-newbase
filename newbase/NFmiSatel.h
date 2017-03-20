@@ -12,8 +12,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISATEL_H
-#define NFMISATEL_H
+#pragma once
 
 #include "NFmiString.h"
 #include <iostream>
@@ -169,6 +168,5 @@ inline std::istream& NFmiSatel::Read(std::istream& file)
   return file;
 }
 
-#endif  // NFMISATEL_H
 
 // ======================================================================

@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIRELATIVETIMEINTEGRATIONITERATOR_H
-#define NFMIRELATIVETIMEINTEGRATIONITERATOR_H
+#pragma once
 
 #include "NFmiDataIterator.h"
 
@@ -51,6 +50,5 @@ class _FMI_DLL NFmiRelativeTimeIntegrationIterator2 : public NFmiDataIterator
 
 };  // class NFmiRelativeTimeIntegrationIterator
 
-#endif  // NFMIRELATIVETIMEINTEGRATIONITERATOR_H
 
 // ======================================================================

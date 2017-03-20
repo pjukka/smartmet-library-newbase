@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISTEREOGRAPHICAREA_H
-#define NFMISTEREOGRAPHICAREA_H
+#pragma once
 
 #include "NFmiAzimuthalArea.h"
 #include "NFmiAngle.h"
@@ -118,6 +117,5 @@ inline unsigned long NFmiStereographicArea::ClassId(void) const { return kNFmiSt
 // ----------------------------------------------------------------------
 
 inline const char* NFmiStereographicArea::ClassName(void) const { return "kNFmiStereographicArea"; }
-#endif  // NFMISTEREOGRAPHICAREA_H
 
 // ======================================================================

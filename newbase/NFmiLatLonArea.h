@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMILATLONAREA_H
-#define NFMILATLONAREA_H
+#pragma once
 
 #include "NFmiArea.h"
 #include "NFmiAngle.h"
@@ -107,6 +106,5 @@ inline unsigned long NFmiLatLonArea::ClassId(void) const { return kNFmiLatLonAre
 // ----------------------------------------------------------------------
 
 inline const char* NFmiLatLonArea::ClassName(void) const { return "NFmiLatLonArea"; }
-#endif  // NFMILATLONAREA_H
 
 // ======================================================================

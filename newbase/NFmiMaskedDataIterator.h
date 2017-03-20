@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIMASKEDDATAITERATOR_H
-#define NFMIMASKEDDATAITERATOR_H
+#pragma once
 
 #include "NFmiDataIterator.h"
 
@@ -33,6 +32,5 @@ class _FMI_DLL NFmiMaskedDataIterator : public NFmiDataIterator
 
 };  // class NFmiMaskedDataIterator
 
-#endif  // NFMIMASKEDDATAITERATOR_H
 
 // ======================================================================

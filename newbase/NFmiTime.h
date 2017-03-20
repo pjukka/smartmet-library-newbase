@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMITIME_H
-#define NFMITIME_H
+#pragma once
 
 #include "NFmiStaticTime.h"
 
@@ -259,6 +258,5 @@ inline long NFmiTime::DifferenceInDays(const NFmiTime &anotherTime) const
 // ----------------------------------------------------------------------
 
 inline short NFmiTime::GetZoneDifferenceHour(void) const { return itsZoneDifferenceHour; }
-#endif  // NFMITIME_H
 
 // ======================================================================

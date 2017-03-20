@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIAREAMASK_H
-#define NFMIAREAMASK_H
+#pragma once
 
 #include "NFmiString.h"
 #include "NFmiPoint.h"
@@ -357,6 +356,5 @@ class _FMI_DLL NFmiAreaMask
 
 };  // class NFmiAreaMask
 
-#endif  // NFMIAREAMASK_H
 
 // ======================================================================

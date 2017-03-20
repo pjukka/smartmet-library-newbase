@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMBITMAPAREAMASK_H
-#define NFMBITMAPAREAMASK_H
+#pragma once
 
 #include "NFmiAreaMaskImpl.h"
 #include "NFmiDataIdent.h"
@@ -86,6 +85,5 @@ class _FMI_DLL NFmiBitmapAreaMask : public NFmiAreaMaskImpl
 
 };  // class NFmiBitmapAreaMask
 
-#endif  // NFMIBITMAPAREAMASK_H
 
 // ======================================================================

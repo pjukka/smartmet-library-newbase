@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISUPERSMARTINFO_H
-#define NFMISUPERSMARTINFO_H
+#pragma once
 
 #ifdef _MSC_VER
 #pragma warning(disable : 4251)  // poistaa VC++ kääntäjän varoituksen dll käännöksissä
@@ -529,6 +528,5 @@ inline float NFmiSuperSmartInfo::RawFloatValue(void) const
   return NFmiFastQueryInfo::FloatValue();
 }
 
-#endif  // class NFmiSuperSmartInfo
 
 // ======================================================================

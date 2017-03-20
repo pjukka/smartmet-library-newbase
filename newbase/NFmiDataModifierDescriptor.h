@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMODIFIERDESCRIPTOR_H
-#define NFMIDATAMODIFIERDESCRIPTOR_H
+#pragma once
 
 #include "NFmiDataDescriptor.h"
 
@@ -45,6 +44,5 @@ class _FMI_DLL NFmiDataModifierDescriptor : public NFmiDataDescriptor
 
 };  // class NFmiDataModifierDescriptor
 
-#endif  // NFMIDATAMODIFIERDESCRIPTOR_H
 
 // ======================================================================

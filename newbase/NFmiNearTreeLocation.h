@@ -1,5 +1,4 @@
-#ifndef NFMINEARTREELOCATION_H
-#define NFMINEARTREELOCATION_H
+#pragma once
 
 #include "NFmiDef.h"
 #include <cmath>
@@ -49,4 +48,3 @@ class _FMI_DLL NFmiNearTreeLocationDistance
   }
 };
 
-#endif  // NFMINEARTREELOCATION_H

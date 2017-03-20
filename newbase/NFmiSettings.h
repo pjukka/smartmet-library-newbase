@@ -5,8 +5,7 @@
  */
 // ----------------------------------------------------------------------
 
-#ifndef NFMISETTINGS_H
-#define NFMISETTINGS_H
+#pragma once
 
 #include "NFmiSettingsImpl.h"
 #include "NFmiStringTools.h"
@@ -203,6 +202,5 @@ inline T OptionalRange(const std::string& theName,
 }
 }
 
-#endif  // NFMISETTINGS_H
 
 // ======================================================================

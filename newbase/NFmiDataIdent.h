@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAIDENT_H
-#define NFMIDATAIDENT_H
+#pragma once
 
 #include "NFmiParam.h"
 #include "NFmiProducer.h"
@@ -356,6 +355,5 @@ inline void NFmiDataIdent::SetActive(bool isActive) { fIsActive = isActive; }
 // ----------------------------------------------------------------------
 
 inline const char *NFmiDataIdent::ClassName(void) const { return "NFmiDataIdent"; }
-#endif  // NFMIDATAIDENT_H
 
 // ======================================================================

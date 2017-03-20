@@ -12,8 +12,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISPACEDESCRIPTOR_H
-#define NFMISPACEDESCRIPTOR_H
+#pragma once
 
 #include "NFmiDataDescriptor.h"
 #include "NFmiHPlaceDescriptor.h"
@@ -35,6 +34,5 @@ class _FMI_DLL NFmiSpaceDescriptor : public NFmiDataDescriptor
 
 };  // class NFmiSpaceDescriptor
 
-#endif  // NFMISPACEDESCRIPTOR_H
 
 // ======================================================================

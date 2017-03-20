@@ -12,8 +12,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMODIFIERMINPLACE_H
-#define NFMIDATAMODIFIERMINPLACE_H
+#pragma once
 
 #include "NFmiDataModifierExtremePlace.h"
 
@@ -37,6 +36,5 @@ class _FMI_DLL NFmiDataModifierMinPlace : public NFmiDataModifierExtremePlace
 
 };  // class NFmiDataModifierMinPlace
 
-#endif  // NFMIDATAMODIFIERMINPLACE_H
 
 // ======================================================================

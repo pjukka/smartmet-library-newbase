@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMINFOMODIFIER_H
-#define NFMINFOMODIFIER_H
+#pragma once
 
 #include "NFmiParamDataModifier.h"
 
@@ -34,6 +33,5 @@ class _FMI_DLL NFmiInfoModifier : public NFmiParamDataModifier
 
 };  // class NFmiInfoModifier
 
-#endif  // NFMINFOMODIFIER_H
 
 // ======================================================================

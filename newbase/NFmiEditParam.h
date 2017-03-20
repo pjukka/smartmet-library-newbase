@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIEDITPARAM_H
-#define NFMIEDITPARAM_H
+#pragma once
 
 #include "NFmiParam.h"
 
@@ -30,6 +29,5 @@ class _FMI_DLL NFmiEditParam : public NFmiParam
 
 };  // class NFmiEditParam
 
-#endif  // NFMIEDITPARAM_H
 
 // ======================================================================

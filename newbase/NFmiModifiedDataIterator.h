@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIMODIFIERDATAITERATOR_H
-#define NFMIMODIFIERDATAITERATOR_H
+#pragma once
 
 #include "NFmiRelativeDataIterator.h"
 
@@ -27,6 +26,5 @@ class _FMI_DLL NFmiModifiedDataIterator : public NFmiRelativeDataIterator
 
 };  // class NFmiModifiedDataIterator
 
-#endif  // NFMIMODIFIERDATAITERATOR_H
 
 // ======================================================================

@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NMETBOX_H
-#define NMETBOX_H
+#pragma once
 
 #include "NFmiBox.h"
 #include "NFmiTimeBag.h"
@@ -478,6 +477,5 @@ inline bool NFmiMetBoxIterator::CurrentParam(const NFmiDataIdent &newParam)
   return itsParamDescriptor->Current(newParam);
 }
 
-#endif  // NFMIMETBOX_H
 
 // ======================================================================

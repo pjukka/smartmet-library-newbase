@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMILEVELBAG_H
-#define NFMILEVELBAG_H
+#pragma once
 
 #include "NFmiGlobals.h"
 #include "NFmiString.h"
@@ -139,6 +138,5 @@ inline NFmiLevel *NFmiLevelBag::Level(unsigned long theIndex) const
 // ----------------------------------------------------------------------
 
 inline const char *NFmiLevelBag::ClassName(void) const { return "NFmiLevelBag"; }
-#endif  // NFMILEVELBAG_H
 
 // ======================================================================

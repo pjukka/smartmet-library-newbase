@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef FMIPRESSMASKS_H
-#define FMIPRESSMASKS_H
+#pragma once
 
 enum FmiPressMasks
 {
@@ -14,6 +13,5 @@ enum FmiPressMasks
   kPressTampereenAlue = 1
 };
 
-#endif  // FMIPRESSMASKS_H
 
 // ======================================================================

@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMODIFIERSTANDARDDEVIATION_H
-#define NFMIDATAMODIFIERSTANDARDDEVIATION_H
+#pragma once
 
 #include "NFmiDataModifier.h"
 
@@ -30,6 +29,5 @@ class _FMI_DLL NFmiDataModifierStandardDeviation : public NFmiDataModifier
 
 };  // class NFmiDataModifierStandardDeviation
 
-#endif  // NFMIDATAMODIFIERSTANDARDDEVIATION_H
 
 // ======================================================================

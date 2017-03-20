@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIGRID_H
-#define NFMIGRID_H
+#pragma once
 
 #include "NFmiGridBase.h"
 #include "NFmiArea.h"
@@ -559,6 +558,5 @@ inline std::ostream &operator<<(std::ostream &file, const NFmiGrid &ob) { return
 // ----------------------------------------------------------------------
 
 inline std::istream &operator>>(std::istream &file, NFmiGrid &ob) { return ob.Read(file); }
-#endif  // NFMIGRID_H
 
 // ======================================================================

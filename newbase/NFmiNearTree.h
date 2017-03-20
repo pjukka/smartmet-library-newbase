@@ -97,8 +97,7 @@
  */
 // ======================================================================
 
-#ifndef NFMINEARTREE_H
-#define NFMINEARTREE_H
+#pragma once
 
 #include "NFmiDef.h"
 #include "NFmiNearTreeImpl.h"
@@ -328,6 +327,5 @@ void NFmiNearTree<T, F>::Flush(void) const
   }
 }
 
-#endif  // NFMINEARTREE_H
 
 // ======================================================================

@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIAREAMASKLIST_H
-#define NFMIAREAMASKLIST_H
+#pragma once
 
 #include "NFmiAreaMask.h"
 #include "boost/shared_ptr.hpp"
@@ -52,6 +51,5 @@ class _FMI_DLL NFmiAreaMaskList
 
 };  // class NFmiAreaMaskList
 
-#endif  // NFMIAREAMASKLIST_H
 
 // ======================================================================

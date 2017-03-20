@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIGNOMONICAREA_H
-#define NFMIGNOMONICAREA_H
+#pragma once
 
 #include "NFmiAzimuthalArea.h"
 #include "NFmiAngle.h"
@@ -103,6 +102,5 @@ inline unsigned long NFmiGnomonicArea::ClassId(void) const { return kNFmiGnomoni
 // ----------------------------------------------------------------------
 
 inline const char* NFmiGnomonicArea::ClassName(void) const { return "kNFmiGnomonicArea"; }
-#endif  // NFMIGNOMONICAREA_H
 
 // ======================================================================

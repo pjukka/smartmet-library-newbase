@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISTATUSPOSITIONSTRING_H
-#define NFMISTATUSPOSITIONSTRING_H
+#pragma once
 
 #include "NFmiStatusString.h"
 
@@ -50,6 +49,5 @@ inline unsigned long NFmiStatusPositionString::ClassId(void) const
   return kNFmiStatusPositionString;
 }
 
-#endif  // NFMISTATUSPOSITIONSTRING_H
 
 // ======================================================================

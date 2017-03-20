@@ -62,8 +62,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIMULTIQUERYINFO_H
-#define NFMIMULTIQUERYINFO_H
+#pragma once
 
 // Ilman seuraavaa define:ä Visual C++ 2012 kääntäjällä tulee käännösvirhe boostin
 // detail/container_fwd.hpp -headerissa
@@ -172,4 +171,3 @@ class _FMI_DLL NFmiMultiQueryInfo : public NFmiFastQueryInfo, private boost::non
 
 // ======================================================================
 
-#endif  // NFMIMULTIQUERYINFO_H

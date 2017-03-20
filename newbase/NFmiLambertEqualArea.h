@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMILAMBERTEQUALAREA_H
-#define NFMILAMBERTEQUALAREA_H
+#pragma once
 
 #include "NFmiAzimuthalArea.h"
 #include "NFmiAngle.h"
@@ -118,6 +117,5 @@ inline unsigned long NFmiLambertEqualArea::ClassId(void) const { return kNFmiLam
 // ----------------------------------------------------------------------
 
 inline const char* NFmiLambertEqualArea::ClassName(void) const { return "kNFmiLambertEqualArea"; }
-#endif  // NFMILAMBERTEQUALAREA_H
 
 // ======================================================================

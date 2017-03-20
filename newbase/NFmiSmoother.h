@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISMOOTHER_H
-#define NFMISMOOTHER_H
+#pragma once
 
 #include "NFmiGlobals.h"     // for kFloatMissing
 #include "NFmiPoint.h"       // for NFmiPoint
@@ -149,6 +148,5 @@ inline float NFmiSmoother::Weight(float theDistance) const
   return weight;
 }
 
-#endif  // NFMISMOOTHER_H
 
 // ======================================================================

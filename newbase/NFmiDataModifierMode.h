@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMODIFIERMODE_H
-#define NFMIDATAMODIFIERMODE_H
+#pragma once
 
 #include "NFmiDataModifier.h"
 #include "NFmiDataMatrix.h"
@@ -45,6 +44,5 @@ class _FMI_DLL NFmiDataModifierMode : public NFmiDataModifier
   checkedVector<Data> itsDataVector;
 };
 
-#endif  // NFMIDATAMODIFIERMODE_H
 
 // ======================================================================

@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISETTINGSIMPL_H
-#define NFMISETTINGSIMPL_H
+#pragma once
 
 #include "NFmiDef.h"
 #include <list>
@@ -74,6 +73,5 @@ class _FMI_DLL NFmiSettingsImpl
 
 };  // class NFmiSettingsImpl
 
-#endif  // NFMISETTINGSIMPL_H
 
 // ======================================================================

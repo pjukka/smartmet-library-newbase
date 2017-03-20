@@ -4,8 +4,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIMODMEANCALCULATOR_H
-#define NFMIMODMEANCALCULATOR_H
+#pragma once
 
 #include "NFmiGlobals.h"
 
@@ -28,6 +27,5 @@ class _FMI_DLL NFmiModMeanCalculator
 
 };  // NFmiModMeanCalculator
 
-#endif  // NFMIMODMEANCALCULATOR_H
 
 // ======================================================================

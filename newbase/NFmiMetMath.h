@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIMETMATH_H
-#define NFMIMETMATH_H
+#pragma once
 
 #include "NFmiGlobals.h"
 #include <algorithm>
@@ -31,6 +30,5 @@ double CalcPressureFlightLevel(double hPa);
 double CalcPressureAtHeight(double z2);
 double CalcHeightAtPressure(double p2);
 
-#endif  // NFMIMETMATH_H
 
 // ======================================================================

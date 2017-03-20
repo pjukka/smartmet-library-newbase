@@ -12,8 +12,7 @@
 #include <string>
 #include <cmath>
 
-#ifndef NFMILAGRANGE_H
-#define NFMILAGRANGE_H
+#pragma once
 
 //! Undocumented
 class _FMI_DLL NFmiLagrange
@@ -68,6 +67,5 @@ class _FMI_DLL NFmiLagrange
 
 };  // class NFmiLagrange
 
-#endif  // NFMILAGRANGE_H
 
 // ======================================================================

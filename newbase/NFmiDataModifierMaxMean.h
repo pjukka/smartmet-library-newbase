@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMODIFIERMAXMEAN_H
-#define NFMIDATAMODIFIERMAXMEAN_H
+#pragma once
 
 #include "NFmiDataModifier.h"
 
@@ -32,6 +31,5 @@ class _FMI_DLL NFmiDataModifierMaxMean : public NFmiDataModifier
 
 };  // class NFmiDataModifierMaxMean
 
-#endif  // NFMIDATAMODIFIERMAXMEAN_H
 
 // ======================================================================

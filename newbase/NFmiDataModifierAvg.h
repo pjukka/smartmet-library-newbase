@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMODIFIERAVG_H
-#define NFMIDATAMODIFIERAVG_H
+#pragma once
 
 #include "NFmiDataModifier.h"
 
@@ -33,6 +32,5 @@ class _FMI_DLL NFmiDataModifierAvg : public NFmiDataModifier
 
 };  // class NFmiDataModifierAvg
 
-#endif  // NFMIDATAMODIFIERAVG_H
 
 // ======================================================================

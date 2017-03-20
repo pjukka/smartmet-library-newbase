@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIINDIVIDUAL_H
-#define NFMIINDIVIDUAL_H
+#pragma once
 
 #include "NFmiString.h"
 #include "NFmiSortable.h"
@@ -101,6 +100,5 @@ inline bool NFmiIndividual::IsLessThan(const NFmiSortable &theSortable) const
   return itsIdent > (static_cast<const NFmiIndividual &>(theSortable)).itsIdent;
 }
 
-#endif  // NFMIINDIVIDUAL_H
 
 // ======================================================================

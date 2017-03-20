@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISTATUSSTRING_H
-#define NFMISTATUSSTRING_H
+#pragma once
 
 #include "NFmiString.h"
 
@@ -34,6 +33,5 @@ class _FMI_DLL NFmiStatusString : public NFmiString
 
 };  // class NFmiStatusString
 
-#endif  // NFMISTATUSSTRING_H
 
 // ======================================================================

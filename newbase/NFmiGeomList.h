@@ -17,8 +17,7 @@
  */
 // ======================================================================
 
-#ifndef GEOMLIST_H
-#define GEOMLIST_H
+#pragma once
 
 #define GEOMNAMEMAXSIZE 15
 
@@ -29,6 +28,5 @@ typedef struct
   char geomName[GEOMNAMEMAXSIZE][GEOMNAMELENGTH];
 } GeomList;
 
-#endif  // GEOMLIST_H
 
 // ======================================================================

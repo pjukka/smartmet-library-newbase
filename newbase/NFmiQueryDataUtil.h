@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIQUERYDATAUTIL_H
-#define NFMIQUERYDATAUTIL_H
+#pragma once
 
 #include "NFmiDef.h"
 #include "NFmiGlobals.h"
@@ -518,6 +517,5 @@ class _FMI_DLL NFmiQueryDataUtil
 
 };  // class NFmiQueryDataUtil
 
-#endif  // NFMIQUERYDATAUTIL_H
 
 // ======================================================================

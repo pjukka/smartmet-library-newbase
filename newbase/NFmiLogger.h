@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMILOGGER_H
-#define NFMILOGGER_H
+#pragma once
 
 #include "NFmiMetTime.h"
 #include <string>
@@ -277,6 +276,5 @@ inline const std::string &NFmiLogger::TimeStampStringFormat(void) const
   return itsTimeStampStringFormat;
 }
 
-#endif  // NFMILOGGER_H
 
 // ======================================================================

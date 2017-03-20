@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMODIFIERLOGICAL_H
-#define NFMIDATAMODIFIERLOGICAL_H
+#pragma once
 
 #include "NFmiDataModifierBoolean.h"
 
@@ -34,6 +33,5 @@ class _FMI_DLL NFmiDataModifierLogical : public NFmiDataModifier
 
 };  // class NFmiDataModifierLogical
 
-#endif  // NFMIDATAMODIFIERLOGICAL_H
 
 // ======================================================================

@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMITIMEZONEFINDER_H
-#define NFMITIMEZONEFINDER_H
+#pragma once
 
 #include "NFmiDef.h"
 #include <boost/shared_ptr.hpp>
@@ -39,6 +38,5 @@ class _FMI_DLL NFmiTimeZoneFinder
 
 };  // class NFmiTimeZoneFinder
 
-#endif  // NFMITIMEZONEFINDER_H
 
 // ======================================================================

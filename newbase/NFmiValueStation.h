@@ -12,8 +12,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIVALUESTATION_H
-#define NFMIVALUESTATION_H
+#pragma once
 
 #include "NFmiStation.h"
 
@@ -119,6 +118,5 @@ inline bool NFmiValueStation::IsEqual(const NFmiSortable &theLocation) const
   return (GetValue() == (static_cast<const NFmiValueStation *>((&theLocation))->GetValue()));
 }
 
-#endif  // NFMIVALUESTATION_H
 
 // ======================================================================

@@ -12,8 +12,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMODIFIERMASK_H
-#define NFMIDATAMODIFIERMASK_H
+#pragma once
 
 #include "NFmiDataModifier.h"
 #include "NFmiGlobals.h"  // Added by ClassView
@@ -35,6 +34,5 @@ class _FMI_DLL NFmiDataModifierMask : public NFmiDataModifier
 
 };  // class NFmiDataModifierMask
 
-#endif  // NFMIDATAMODIFIERMASK_H
 
 // ======================================================================

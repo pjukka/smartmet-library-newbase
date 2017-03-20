@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIPRODUCERNAME_H
-#define NFMIPRODUCERNAME_H
+#pragma once
 
 //! Undocumented
 enum FmiProducerName
@@ -39,6 +38,5 @@ enum FmiProducerName
   kFmiTAFMET = 2011         //!< Fmi number for TAFMET
 };
 
-#endif  // NFMIPRODUCERNAME_H
 
 // ======================================================================

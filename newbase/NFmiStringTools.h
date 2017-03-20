@@ -11,8 +11,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISTRINGTOOLS_H
-#define NFMISTRINGTOOLS_H
+#pragma once
 
 #include "NFmiDef.h"
 #include "NFmiTypeNameTraits.h"
@@ -165,6 +164,5 @@ inline const std::string Join(const T &theWords, const std::string &theSeparator
 }
 }
 
-#endif  // NFMISTRINGTOOLS_H
 
 // ======================================================================

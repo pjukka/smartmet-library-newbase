@@ -12,8 +12,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIPARAMETERNAME_H
-#define NFMIPARAMETERNAME_H
+#pragma once
 
 #include <iostream>
 
@@ -1510,6 +1509,5 @@ inline std::ostream& operator<<(std::ostream& out, FmiParameterName p)
   return out;
 }
 
-#endif  // NFMIPARAMETERNAME_H
 
 // ======================================================================

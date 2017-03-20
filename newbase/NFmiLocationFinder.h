@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMILOCATIONFINDER_H
-#define NFMILOCATIONFINDER_H
+#pragma once
 
 #include "NFmiPoint.h"
 #include "NFmiString.h"
@@ -76,6 +75,5 @@ inline void NFmiLocationFinder::Clear(void)
 // ----------------------------------------------------------------------
 
 inline bool NFmiLocationFinder::LastSearchFailed(void) { return itsLastSearchFailed; }
-#endif  // NFMILOCATIONFINDER_H
 
 // ======================================================================

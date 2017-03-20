@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMODIFIERCLASSES_H
-#define NFMIDATAMODIFIERCLASSES_H
+#pragma once
 
 #include "NFmiDataModifier.h"
 
@@ -30,6 +29,5 @@
 #include "NFmiDataModifierMinMax.h"
 #include "NFmiDataModifierReplace.h"
 
-#endif  // NFMIDATAMODIFIERCLASSES_H
 
 // ======================================================================

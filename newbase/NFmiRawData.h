@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIRAWDATA_H
-#define NFMIRAWDATA_H
+#pragma once
 
 #include "NFmiGlobals.h"
 #include <string>
@@ -57,6 +56,5 @@ class _FMI_DLL NFmiRawData
 
 };  // class NFmiRawData
 
-#endif  // NFMIRAWDATA_H
 
 // ======================================================================

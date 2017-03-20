@@ -12,8 +12,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMODIFIERMEDIAN_H
-#define NFMIDATAMODIFIERMEDIAN_H
+#pragma once
 
 #include "NFmiDataModifier.h"
 #include "NFmiDataMatrix.h"
@@ -44,6 +43,5 @@ class _FMI_DLL NFmiDataModifierMedian : public NFmiDataModifier
 
 };  // class NFmiDataModifierMedian
 
-#endif  // NFMIDATAMODIFIERMEDIAN_H
 
 // ======================================================================

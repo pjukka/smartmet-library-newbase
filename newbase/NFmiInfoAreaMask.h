@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIINFOAREAMASK_H
-#define NFMIINFOAREAMASK_H
+#pragma once
 
 #include "NFmiAreaMaskImpl.h"
 #include "NFmiDataIdent.h"
@@ -729,6 +728,5 @@ class _FMI_DLL NFmiInfoRectAreaIntegrator : public NFmiInfoAreaMaskMetFuncBase
   int itsEndYOffset;
 };
 
-#endif  // NFMIINFOAREAMASK_H
 
 // ======================================================================

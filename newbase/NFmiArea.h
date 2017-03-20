@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIAREA_H
-#define NFMIAREA_H
+#pragma once
 
 #include "NFmiRect.h"
 #include "NFmiAngle.h"
@@ -451,6 +450,5 @@ inline std::ostream &operator<<(std::ostream &file, const NFmiArea &ob) { return
 // ----------------------------------------------------------------------
 
 inline std::istream &operator>>(std::istream &file, NFmiArea &ob) { return ob.Read(file); }
-#endif  // NFMIAREA_H
 
 // ======================================================================

@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISTREAMQUERYDATA_H
-#define NFMISTREAMQUERYDATA_H
+#pragma once
 
 #include "NFmiQueryData.h"
 #include "NFmiFastQueryInfo.h"
@@ -50,6 +49,5 @@ class _FMI_DLL NFmiStreamQueryData
 
 };  // class NFmiStreamQueryData
 
-#endif  // NFMISTREAMQUERYDATA_H
 
 // ======================================================================

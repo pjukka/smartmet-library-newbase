@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIHPLACEDESCRIPTOR_H
-#define NFMIHPLACEDESCRIPTOR_H
+#pragma once
 
 #include "NFmiSaveBaseFactory.h"
 #include "NFmiDataDescriptor.h"
@@ -281,6 +280,5 @@ inline unsigned long NFmiHPlaceDescriptor::ClassId(void) const { return kNFmiHPl
 // ----------------------------------------------------------------------
 
 inline const char *NFmiHPlaceDescriptor::ClassName(void) const { return "NFmiHPlaceDescriptor"; }
-#endif  // NFMIHPLACEDESCRIPTOR_H
 
 // ======================================================================

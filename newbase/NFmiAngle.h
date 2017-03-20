@@ -6,8 +6,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIANGLE_H
-#define NFMIANGLE_H
+#pragma once
 
 #include "NFmiGlobals.h"
 #include <cmath>
@@ -190,6 +189,5 @@ class _FMI_DLL NFmiLongitude : public NFmiAngle
   bool fPacificView;
 };
 
-#endif  // NFMIANGLE_H
 
 // ======================================================================

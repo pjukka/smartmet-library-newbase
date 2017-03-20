@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIFASTQUERYINFO_H
-#define NFMIFASTQUERYINFO_H
+#pragma once
 
 #include "NFmiQueryInfo.h"
 #include "NFmiDataMatrix.h"
@@ -1105,4 +1104,3 @@ inline void NFmiFastQueryInfo::Locations(NFmiDataMatrix<NFmiPoint> &theMatrix) c
 
 // ======================================================================
 
-#endif  // NFMIFASTQUERYINFO_H

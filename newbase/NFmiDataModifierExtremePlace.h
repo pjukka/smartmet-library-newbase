@@ -7,8 +7,7 @@
  */
 // ======================================================================
 
-#ifndef NFMIDATAMODIFIEREXTREMEPLACE_H
-#define NFMIDATAMODIFIEREXTREMEPLACE_H
+#pragma once
 
 #include "NFmiDataModifier.h"
 #include "NFmiLocation.h"
@@ -36,6 +35,5 @@ class _FMI_DLL NFmiDataModifierExtremePlace : public NFmiDataModifier
 
 };  // class NFmiDataModifierExtremePlace
 
-#endif  // NFMIDATAMODIFIEREXTREMEPLACE_H
 
 // ======================================================================

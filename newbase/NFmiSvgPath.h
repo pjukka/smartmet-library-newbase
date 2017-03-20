@@ -5,8 +5,7 @@
  */
 // ======================================================================
 
-#ifndef NFMISVGPATH_H
-#define NFMISVGPATH_H
+#pragma once
 
 #include "NFmiDef.h"
 #include "NFmiDataMatrix.h"
@@ -162,6 +161,5 @@ inline std::ostream& operator<<(std::ostream& os, const NFmiSvgPath& item)
 // ----------------------------------------------------------------------
 
 inline std::istream& operator>>(std::istream& is, NFmiSvgPath& item) { return item.Read(is); }
-#endif  // NFMISVGPATH_H
 
 // ======================================================================
