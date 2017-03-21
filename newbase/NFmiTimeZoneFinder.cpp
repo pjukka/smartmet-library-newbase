@@ -122,7 +122,7 @@ class NFmiTimeZoneRing
   void CheckClosed() const;
   void Add(const NFmiTimeZoneEdge& theEdge);
 
-  typedef set<NFmiTimeZoneEdge> storage_type;
+  using storage_type = set<NFmiTimeZoneEdge>;
   storage_type itsData;
   double itsSignedArea{0.0};
   NFmiPoint itsFirstPoint;
@@ -283,7 +283,7 @@ class NFmiTimeZonePolygon
  private:
   NFmiTimeZonePolygon() = delete;
   float itsTimeZone;
-  typedef list<NFmiTimeZoneRing> storage_type;
+  using storage_type = list<NFmiTimeZoneRing>;
   storage_type itsRings;
 
 };  // class NFmiTimeZonePolygon
@@ -344,7 +344,7 @@ class NFmiTimeZoneFinderPimple
   NFmiTimeZoneFinderPimple() : itsData() {}
   float Find(const NFmiPoint& thePoint) const;
 
-  typedef list<NFmiTimeZonePolygon> storage_type;
+  using storage_type = list<NFmiTimeZonePolygon>;
   storage_type itsData;
 
 };  // class NFmiTimeZoneFinderPimple
