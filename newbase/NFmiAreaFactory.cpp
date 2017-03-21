@@ -272,7 +272,7 @@ boost::shared_ptr<NFmiArea> Create(const std::string &theProjection)
 
   try
   {
-    if (parts.size() == 1) parts.push_back("6,51.3,49,70.2");
+    if (parts.size() == 1) parts.emplace_back("6,51.3,49,70.2");
 
     if (parts.size() < 1 || parts.size() > 3)
       throw runtime_error("must have 1-3 parts separated by ':' or '|'");
