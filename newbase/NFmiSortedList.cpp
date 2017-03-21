@@ -22,7 +22,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiSortedList::~NFmiSortedList() {}
+NFmiSortedList::~NFmiSortedList() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -45,9 +45,8 @@ NFmiSortedList::NFmiSortedList(FmiSortOrder theSortOrder)
 // ----------------------------------------------------------------------
 
 NFmiSortedList::NFmiSortedList(NFmiSortedList &theList)
-    : NFmiVoidPtrList(theList), itsSortOrder(theList.itsSortOrder)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!

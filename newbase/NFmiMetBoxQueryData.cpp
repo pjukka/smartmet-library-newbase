@@ -42,9 +42,8 @@ NFmiMetBoxQueryData::NFmiMetBoxQueryData() : NFmiQueryData(), itsMetBox(nullptr)
 // ----------------------------------------------------------------------
 
 NFmiMetBoxQueryData::NFmiMetBoxQueryData(const NFmiMetBoxQueryData& theData)
-    : NFmiQueryData(theData), itsMetBox(theData.itsMetBox)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!

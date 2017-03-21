@@ -24,7 +24,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiStatusPositionString::~NFmiStatusPositionString() {}
+NFmiStatusPositionString::~NFmiStatusPositionString() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
@@ -84,11 +84,8 @@ NFmiStatusPositionString::NFmiStatusPositionString(const NFmiStatusString& theSt
 
 NFmiStatusPositionString::NFmiStatusPositionString(
     const NFmiStatusPositionString& theStatusPositionString)
-    : NFmiStatusString(theStatusPositionString),
-      itsStartPosition(theStatusPositionString.itsStartPosition),
-      itsEndPosition(theStatusPositionString.itsEndPosition)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!
@@ -125,13 +122,7 @@ NFmiString* NFmiStatusPositionString::Clone() const { return new NFmiStatusPosit
 // ----------------------------------------------------------------------
 
 NFmiStatusPositionString& NFmiStatusPositionString::operator=(
-    const NFmiStatusPositionString& theStatusPositionString)
-{
-  NFmiStatusString::operator=(theStatusPositionString);
-  itsStartPosition = theStatusPositionString.itsStartPosition;
-  itsEndPosition = theStatusPositionString.itsEndPosition;
-  return *this;
-}
+    const NFmiStatusPositionString& theStatusPositionString) = default;
 
 // ----------------------------------------------------------------------
 /*!

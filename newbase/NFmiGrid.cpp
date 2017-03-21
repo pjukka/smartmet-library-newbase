@@ -27,7 +27,7 @@ NFmiLocationCache::NFmiLocationCache()
 {
 }
 
-NFmiLocationCache::~NFmiLocationCache() {}
+NFmiLocationCache::~NFmiLocationCache() = default;
 static const double gGridPointEpsilon =
     0.0000001;  // kuinka paljon interpolointi hila-piste saa poiketa maksimissaan tasaluvuista,
 // että erotus tulkitaan interpolaatiossa turhaksi ja indeksi pyöristetään vain lähintä
@@ -117,7 +117,7 @@ NFmiTimeCache::NFmiTimeCache()
 {
 }
 
-NFmiTimeCache::~NFmiTimeCache() {}
+NFmiTimeCache::~NFmiTimeCache() = default;
 void NFmiTimeCache::CalcIsInterpolationNeeded()
 {
   double diff = ::fabs(itsOffset - ::round(itsOffset));

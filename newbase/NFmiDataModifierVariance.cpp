@@ -29,7 +29,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierVariance::~NFmiDataModifierVariance() {}
+NFmiDataModifierVariance::~NFmiDataModifierVariance() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor

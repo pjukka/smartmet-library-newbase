@@ -99,7 +99,7 @@ NFmiAreaMaskImpl::NFmiAreaMaskImpl(const NFmiAreaMaskImpl &theOther)
  */
 // ----------------------------------------------------------------------
 
-NFmiAreaMaskImpl::~NFmiAreaMaskImpl() {}
+NFmiAreaMaskImpl::~NFmiAreaMaskImpl() = default;
 // ----------------------------------------------------------------------
 /*!
  * \param theLatLon Undocumented

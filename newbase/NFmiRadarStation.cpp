@@ -23,7 +23,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiRadarStation::~NFmiRadarStation() {}
+NFmiRadarStation::~NFmiRadarStation() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
@@ -47,12 +47,8 @@ NFmiRadarStation::NFmiRadarStation()
 // ----------------------------------------------------------------------
 
 NFmiRadarStation::NFmiRadarStation(const NFmiRadarStation &theStation)
-    : NFmiStation(theStation),
-      itsResolution(theStation.itsResolution),
-      itsXNumber(theStation.itsXNumber),
-      itsYNumber(theStation.itsYNumber)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!

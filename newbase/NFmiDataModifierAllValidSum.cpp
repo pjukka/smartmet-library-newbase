@@ -24,7 +24,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierAllValidSum::~NFmiDataModifierAllValidSum() {}
+NFmiDataModifierAllValidSum::~NFmiDataModifierAllValidSum() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

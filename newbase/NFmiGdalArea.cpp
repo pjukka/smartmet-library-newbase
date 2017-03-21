@@ -27,7 +27,7 @@ std::string fmiwkt =
  */
 // ----------------------------------------------------------------------
 
-NFmiGdalArea::~NFmiGdalArea() {}
+NFmiGdalArea::~NFmiGdalArea() = default;
 // ----------------------------------------------------------------------
 /*!
  * \brief Default constructor
@@ -55,19 +55,8 @@ NFmiGdalArea::NFmiGdalArea()
 // ----------------------------------------------------------------------
 
 NFmiGdalArea::NFmiGdalArea(const NFmiGdalArea &theArea)
-    : NFmiArea(theArea),
-      itsDatum(theArea.itsDatum),
-      itsDescription(theArea.itsDescription),
-      itsWKT(theArea.itsWKT),
-      itsBottomLeftLatLon(theArea.itsBottomLeftLatLon),
-      itsTopRightLatLon(theArea.itsTopRightLatLon),
-      itsWorldRect(theArea.itsWorldRect),
-      itsSpatialReference(theArea.itsSpatialReference),
-      itsLatLonToWorldXYTransformation(theArea.itsLatLonToWorldXYTransformation),
-      itsWorldXYToLatLonTransformation(theArea.itsWorldXYToLatLonTransformation)
 
-{
-}
+    = default;
 
 // ----------------------------------------------------------------------
 /*!
@@ -75,20 +64,7 @@ NFmiGdalArea::NFmiGdalArea(const NFmiGdalArea &theArea)
  */
 // ----------------------------------------------------------------------
 
-NFmiGdalArea &NFmiGdalArea::operator=(const NFmiGdalArea &theArea)
-{
-  NFmiArea::operator=(theArea);
-  itsBottomLeftLatLon = theArea.itsBottomLeftLatLon;
-  itsTopRightLatLon = theArea.itsTopRightLatLon;
-  itsWorldRect = theArea.itsWorldRect;
-  itsDatum = theArea.itsDatum;
-  itsDescription = theArea.itsDescription;
-  itsWKT = theArea.itsWKT;
-  itsSpatialReference = theArea.itsSpatialReference;
-  itsLatLonToWorldXYTransformation = theArea.itsLatLonToWorldXYTransformation;
-  itsWorldXYToLatLonTransformation = theArea.itsWorldXYToLatLonTransformation;
-  return *this;
-}
+NFmiGdalArea &NFmiGdalArea::operator=(const NFmiGdalArea &theArea) = default;
 
 // ----------------------------------------------------------------------
 /*!

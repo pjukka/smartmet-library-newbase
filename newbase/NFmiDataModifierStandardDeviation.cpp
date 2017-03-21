@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierStandardDeviation::~NFmiDataModifierStandardDeviation() {}
+NFmiDataModifierStandardDeviation::~NFmiDataModifierStandardDeviation() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

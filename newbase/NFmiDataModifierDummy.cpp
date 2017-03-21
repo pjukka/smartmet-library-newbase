@@ -20,7 +20,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierDummy::~NFmiDataModifierDummy() {}
+NFmiDataModifierDummy::~NFmiDataModifierDummy() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

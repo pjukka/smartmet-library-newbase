@@ -65,7 +65,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiEnumConverter::~NFmiEnumConverter() {}
+NFmiEnumConverter::~NFmiEnumConverter() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor

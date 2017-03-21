@@ -23,7 +23,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiLambertEqualArea::NFmiLambertEqualArea() {}
+NFmiLambertEqualArea::NFmiLambertEqualArea() = default;
 // ----------------------------------------------------------------------
 /*!
  * Copy constructor
@@ -33,9 +33,8 @@ NFmiLambertEqualArea::NFmiLambertEqualArea() {}
 // ----------------------------------------------------------------------
 
 NFmiLambertEqualArea::NFmiLambertEqualArea(const NFmiLambertEqualArea &theLambertEqualArea)
-    : NFmiAzimuthalArea(theLambertEqualArea)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!
@@ -322,11 +321,8 @@ NFmiArea *NFmiLambertEqualArea::Clone() const { return new NFmiLambertEqualArea(
  */
 // ----------------------------------------------------------------------
 
-NFmiLambertEqualArea &NFmiLambertEqualArea::operator=(const NFmiLambertEqualArea &theArea)
-{
-  NFmiAzimuthalArea::operator=(theArea);
-  return *this;
-}
+NFmiLambertEqualArea &NFmiLambertEqualArea::operator=(const NFmiLambertEqualArea &theArea) =
+    default;
 
 // ----------------------------------------------------------------------
 /*!

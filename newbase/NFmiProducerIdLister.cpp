@@ -61,13 +61,8 @@ NFmiProducerIdLister::NFmiProducerIdLister(const std::string &theProducersString
 }
 
 NFmiProducerIdLister::NFmiProducerIdLister(const NFmiProducerIdLister &theOther)
-    : itsTimes(theOther.itsTimes),
-      itsProducerString(theOther.itsProducerString),
-      itsProducerIds(theOther.itsProducerIds),
-      itsModelOriginTimes(theOther.itsModelOriginTimes),
-      itsDefaultProducerId(theOther.itsDefaultProducerId)
-{
-}
+
+    = default;
 
 // Huom! pitäisi olla const info, mutta pari metodia pitää muuttaa ensin
 NFmiProducerIdLister::NFmiProducerIdLister(NFmiQueryInfo &theInfo)

@@ -111,7 +111,7 @@ bool NFmiTimeZoneEdge::operator<(const NFmiTimeZoneEdge& theOther) const
 class NFmiTimeZoneRing
 {
  public:
-  NFmiTimeZoneRing() {}
+  NFmiTimeZoneRing() = default;
   void Add(const NFmiPoint& thePoint);
   bool Inside(const NFmiPoint& thePoint) const;
   bool Clockwise() const;
@@ -281,7 +281,7 @@ class NFmiTimeZonePolygon
   float TimeZone() const { return itsTimeZone; }
 
  private:
-  NFmiTimeZonePolygon();
+  NFmiTimeZonePolygon() = delete;
   float itsTimeZone;
   typedef list<NFmiTimeZoneRing> storage_type;
   storage_type itsRings;
@@ -377,7 +377,7 @@ float NFmiTimeZoneFinderPimple::Find(const NFmiPoint& theLatLon) const
  */
 // ----------------------------------------------------------------------
 
-NFmiTimeZoneFinder::~NFmiTimeZoneFinder() {}
+NFmiTimeZoneFinder::~NFmiTimeZoneFinder() = default;
 // ----------------------------------------------------------------------
 /*!
  * \brief Constructor

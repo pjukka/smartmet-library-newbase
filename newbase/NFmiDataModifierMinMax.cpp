@@ -20,7 +20,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierMinMax::~NFmiDataModifierMinMax() {}
+NFmiDataModifierMinMax::~NFmiDataModifierMinMax() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
@@ -30,11 +30,8 @@ NFmiDataModifierMinMax::~NFmiDataModifierMinMax() {}
 NFmiDataModifierMinMax::NFmiDataModifierMinMax() : itsMinValue(FLT_MAX), itsMaxValue(-FLT_MAX) {}
 
 NFmiDataModifierMinMax::NFmiDataModifierMinMax(const NFmiDataModifierMinMax& theOther)
-    : NFmiDataModifier(theOther),
-      itsMinValue(theOther.itsMinValue),
-      itsMaxValue(theOther.itsMaxValue)
-{
-}
+
+    = default;
 
 NFmiDataModifier* NFmiDataModifierMinMax::Clone() const
 {

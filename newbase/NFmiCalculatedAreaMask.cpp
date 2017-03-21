@@ -177,9 +177,8 @@ NFmiLatLonAreaMask::NFmiLatLonAreaMask(const NFmiDataIdent& theParam,
 // ----------------------------------------------------------------------
 
 NFmiLatLonAreaMask::NFmiLatLonAreaMask(const NFmiLatLonAreaMask& theMask)
-    : NFmiCalculatedAreaMask(theMask)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!
@@ -187,7 +186,7 @@ NFmiLatLonAreaMask::NFmiLatLonAreaMask(const NFmiLatLonAreaMask& theMask)
  */
 // ----------------------------------------------------------------------
 
-NFmiLatLonAreaMask::~NFmiLatLonAreaMask() {}
+NFmiLatLonAreaMask::~NFmiLatLonAreaMask() = default;
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
@@ -238,9 +237,8 @@ NFmiElevationAngleAreaMask::NFmiElevationAngleAreaMask() : NFmiLatLonAreaMask(),
 // ----------------------------------------------------------------------
 
 NFmiElevationAngleAreaMask::NFmiElevationAngleAreaMask(const NFmiElevationAngleAreaMask& theMask)
-    : NFmiLatLonAreaMask(theMask), itsTime(theMask.itsTime)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!
@@ -263,7 +261,7 @@ NFmiElevationAngleAreaMask::NFmiElevationAngleAreaMask(const NFmiDataIdent& theP
  */
 // ----------------------------------------------------------------------
 
-NFmiElevationAngleAreaMask::~NFmiElevationAngleAreaMask() {}
+NFmiElevationAngleAreaMask::~NFmiElevationAngleAreaMask() = default;
 // ----------------------------------------------------------------------
 /*!
  * \param theTime Undocumented
@@ -356,9 +354,8 @@ NFmiJulianDayAreaMask::NFmiJulianDayAreaMask(const NFmiDataIdent& theParam,
 // ----------------------------------------------------------------------
 
 NFmiJulianDayAreaMask::NFmiJulianDayAreaMask(const NFmiJulianDayAreaMask& theMask)
-    : NFmiElevationAngleAreaMask(theMask), itsJulianDay(theMask.itsJulianDay)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!
@@ -366,7 +363,7 @@ NFmiJulianDayAreaMask::NFmiJulianDayAreaMask(const NFmiJulianDayAreaMask& theMas
  */
 // ----------------------------------------------------------------------
 
-NFmiJulianDayAreaMask::~NFmiJulianDayAreaMask() {}
+NFmiJulianDayAreaMask::~NFmiJulianDayAreaMask() = default;
 // ----------------------------------------------------------------------
 /*!
  * \param theTime Undocumented
@@ -443,9 +440,8 @@ NFmiLocalHourAreaMask::NFmiLocalHourAreaMask(const NFmiDataIdent& theParam,
 // ----------------------------------------------------------------------
 
 NFmiLocalHourAreaMask::NFmiLocalHourAreaMask(const NFmiLocalHourAreaMask& theMask)
-    : NFmiElevationAngleAreaMask(theMask)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!
@@ -453,7 +449,7 @@ NFmiLocalHourAreaMask::NFmiLocalHourAreaMask(const NFmiLocalHourAreaMask& theMas
  */
 // ----------------------------------------------------------------------
 
-NFmiLocalHourAreaMask::~NFmiLocalHourAreaMask() {}
+NFmiLocalHourAreaMask::~NFmiLocalHourAreaMask() = default;
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
@@ -488,12 +484,11 @@ const NFmiString NFmiLocalHourAreaMask::MakeSubMaskString() const
 
 // ======================================================================
 
-NFmiUtcHourAreaMask::~NFmiUtcHourAreaMask() {}
+NFmiUtcHourAreaMask::~NFmiUtcHourAreaMask() = default;
 NFmiUtcHourAreaMask::NFmiUtcHourAreaMask() : NFmiElevationAngleAreaMask() {}
 NFmiUtcHourAreaMask::NFmiUtcHourAreaMask(const NFmiUtcHourAreaMask& theMask)
-    : NFmiElevationAngleAreaMask(theMask)
-{
-}
+
+    = default;
 NFmiUtcHourAreaMask::NFmiUtcHourAreaMask(const NFmiDataIdent& theParam,
                                          const NFmiCalculationCondition& theOperation)
     : NFmiElevationAngleAreaMask(theParam, theOperation)
@@ -511,12 +506,11 @@ const NFmiString NFmiUtcHourAreaMask::MakeSubMaskString() const
 
 // ======================================================================
 
-NFmiMinuteAreaMask::~NFmiMinuteAreaMask() {}
+NFmiMinuteAreaMask::~NFmiMinuteAreaMask() = default;
 NFmiMinuteAreaMask::NFmiMinuteAreaMask() : NFmiElevationAngleAreaMask() {}
 NFmiMinuteAreaMask::NFmiMinuteAreaMask(const NFmiMinuteAreaMask& theMask)
-    : NFmiElevationAngleAreaMask(theMask)
-{
-}
+
+    = default;
 NFmiMinuteAreaMask::NFmiMinuteAreaMask(const NFmiDataIdent& theParam,
                                        const NFmiCalculationCondition& theOperation)
     : NFmiElevationAngleAreaMask(theParam, theOperation)
@@ -602,7 +596,7 @@ NFmiForecastHourAreaMask& NFmiForecastHourAreaMask::operator=(
  */
 // ----------------------------------------------------------------------
 
-NFmiForecastHourAreaMask::~NFmiForecastHourAreaMask() {}
+NFmiForecastHourAreaMask::~NFmiForecastHourAreaMask() = default;
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
@@ -638,7 +632,7 @@ const NFmiString NFmiForecastHourAreaMask::MakeSubMaskString() const
   return NFmiString("NFmiForecastHourAreaMask::MakeSubMaskString");
 }
 
-NFmiTimeStepAreaMask::~NFmiTimeStepAreaMask() {}
+NFmiTimeStepAreaMask::~NFmiTimeStepAreaMask() = default;
 NFmiTimeStepAreaMask::NFmiTimeStepAreaMask(const boost::shared_ptr<NFmiFastQueryInfo>& theInfo)
     : NFmiElevationAngleAreaMask(), itsInfo(theInfo)
 {
@@ -696,7 +690,7 @@ double NFmiTimeStepAreaMask::Value(const NFmiCalculationParams& theCalculationPa
 // *****    NFmiGridSizeAreaMask    *************************
 // **********************************************************
 
-NFmiGridSizeAreaMask::~NFmiGridSizeAreaMask() {}
+NFmiGridSizeAreaMask::~NFmiGridSizeAreaMask() = default;
 NFmiGridSizeAreaMask::NFmiGridSizeAreaMask(const boost::shared_ptr<NFmiFastQueryInfo>& theInfo,
                                            bool calcXValue)
     : NFmiElevationAngleAreaMask(), itsInfo(theInfo), fCalcXValue(calcXValue)

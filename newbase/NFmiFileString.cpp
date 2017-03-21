@@ -21,14 +21,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiFileString::~NFmiFileString() {}
+NFmiFileString::~NFmiFileString() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiFileString::NFmiFileString() {}
+NFmiFileString::NFmiFileString() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor

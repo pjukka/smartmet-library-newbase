@@ -27,7 +27,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierWindChill::~NFmiDataModifierWindChill() {}
+NFmiDataModifierWindChill::~NFmiDataModifierWindChill() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor

@@ -38,7 +38,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiIndexMaskSource::~NFmiIndexMaskSource() {}
+NFmiIndexMaskSource::~NFmiIndexMaskSource() = default;
 // ----------------------------------------------------------------------
 /*!
  * \brief Constructor
@@ -55,9 +55,8 @@ NFmiIndexMaskSource::NFmiIndexMaskSource() : itsData() {}
 // ----------------------------------------------------------------------
 
 NFmiIndexMaskSource::NFmiIndexMaskSource(const NFmiIndexMaskSource& theSource)
-    : itsData(theSource.itsData)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!

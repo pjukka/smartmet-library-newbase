@@ -114,7 +114,7 @@ NFmiYKJArea::NFmiYKJArea() : NFmiKKJArea() {}
  */
 // ----------------------------------------------------------------------
 
-NFmiYKJArea::NFmiYKJArea(const NFmiYKJArea &theYKJArea) : NFmiKKJArea(theYKJArea) {}
+NFmiYKJArea::NFmiYKJArea(const NFmiYKJArea &theYKJArea) = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -342,11 +342,7 @@ NFmiArea *NFmiYKJArea::Clone() const { return new NFmiYKJArea(*this); }
  */
 // ----------------------------------------------------------------------
 
-NFmiYKJArea &NFmiYKJArea::operator=(const NFmiYKJArea &theArea)
-{
-  NFmiKKJArea::operator=(theArea);
-  return *this;
-}
+NFmiYKJArea &NFmiYKJArea::operator=(const NFmiYKJArea &theArea) = default;
 
 // ----------------------------------------------------------------------
 /*!

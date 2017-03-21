@@ -77,7 +77,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiIndexMask::~NFmiIndexMask() {}
+NFmiIndexMask::~NFmiIndexMask() = default;
 // ----------------------------------------------------------------------
 /*!
  * \brief Constructor
@@ -105,12 +105,8 @@ NFmiIndexMask::NFmiIndexMask(size_type theXSize, size_type theYSize)
 // ----------------------------------------------------------------------
 
 NFmiIndexMask::NFmiIndexMask(const NFmiIndexMask& theMask)
-    : itsData(theMask.itsData),
-      itsSorted(theMask.itsSorted),
-      itsXSize(theMask.itsXSize),
-      itsYSize(theMask.itsYSize)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!

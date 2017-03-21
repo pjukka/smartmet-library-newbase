@@ -143,14 +143,8 @@ NFmiMercatorArea::NFmiMercatorArea(const NFmiPoint& theBottomLeftLatLon,
 // ----------------------------------------------------------------------
 
 NFmiMercatorArea::NFmiMercatorArea(const NFmiMercatorArea& theLatLonArea)
-    : NFmiArea(theLatLonArea),
-      itsBottomLeftLatLon(theLatLonArea.itsBottomLeftLatLon),
-      itsTopRightLatLon(theLatLonArea.itsTopRightLatLon),
-      itsXScaleFactor(theLatLonArea.itsXScaleFactor),
-      itsYScaleFactor(theLatLonArea.itsYScaleFactor),
-      itsWorldRect(theLatLonArea.itsWorldRect)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!

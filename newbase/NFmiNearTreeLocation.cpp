@@ -8,7 +8,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiNearTreeLocation::NFmiNearTreeLocation() {}
+NFmiNearTreeLocation::NFmiNearTreeLocation() = default;
 // ----------------------------------------------------------------------
 /*!
  * \brief Construct unit circle location from latlon information

@@ -25,7 +25,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierMaxMean::~NFmiDataModifierMaxMean() {}
+NFmiDataModifierMaxMean::~NFmiDataModifierMaxMean() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

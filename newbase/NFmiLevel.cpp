@@ -23,7 +23,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiLevel::~NFmiLevel() {}
+NFmiLevel::~NFmiLevel() = default;
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
@@ -135,13 +135,7 @@ NFmiLevel::NFmiLevel(const NFmiLevel& theLevel)
  */
 // ----------------------------------------------------------------------
 
-NFmiLevel& NFmiLevel::operator=(const NFmiLevel& theLevel)
-{
-  NFmiIndividual::operator=(theLevel);
-  itsLevelValue = theLevel.itsLevelValue;
-
-  return *this;
-}
+NFmiLevel& NFmiLevel::operator=(const NFmiLevel& theLevel) = default;
 
 // ----------------------------------------------------------------------
 /*!

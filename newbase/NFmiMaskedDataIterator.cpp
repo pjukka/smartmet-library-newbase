@@ -26,7 +26,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiMaskedDataIterator::~NFmiMaskedDataIterator() {}
+NFmiMaskedDataIterator::~NFmiMaskedDataIterator() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor

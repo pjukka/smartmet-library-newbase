@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierAvgAbs::~NFmiDataModifierAvgAbs() {}
+NFmiDataModifierAvgAbs::~NFmiDataModifierAvgAbs() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

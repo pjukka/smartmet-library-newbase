@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiInfoModifier::~NFmiInfoModifier() {}
+NFmiInfoModifier::~NFmiInfoModifier() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor

@@ -60,7 +60,7 @@ NFmiStationBag::NFmiStationBag(NFmiStation *theStationArray, unsigned long numbe
  */
 // ----------------------------------------------------------------------
 
-NFmiStationBag::NFmiStationBag(const NFmiStationBag &theBag) : NFmiLocationBag(theBag) {}
+NFmiStationBag::NFmiStationBag(const NFmiStationBag &theBag) = default;
 // ----------------------------------------------------------------------
 /*!
  *

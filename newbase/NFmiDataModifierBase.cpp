@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierBase::~NFmiDataModifierBase() {}
+NFmiDataModifierBase::~NFmiDataModifierBase() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -44,9 +44,8 @@ NFmiDataModifierBase::NFmiDataModifierBase(FmiJoinOperator theJoinOperator)
 // ----------------------------------------------------------------------
 
 NFmiDataModifierBase::NFmiDataModifierBase(const NFmiDataModifierBase &other)
-    : itsJoinOperator(other.itsJoinOperator), itsExpressionType(other.itsExpressionType)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!

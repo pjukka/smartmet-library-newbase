@@ -13,7 +13,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierMaxPlace::~NFmiDataModifierMaxPlace() {}
+NFmiDataModifierMaxPlace::~NFmiDataModifierMaxPlace() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

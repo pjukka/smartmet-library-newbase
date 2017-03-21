@@ -125,20 +125,8 @@ NFmiAzimuthalArea::NFmiAzimuthalArea()
 // ----------------------------------------------------------------------
 
 NFmiAzimuthalArea::NFmiAzimuthalArea(const NFmiAzimuthalArea &theAzimuthalArea)
-    : NFmiArea(theAzimuthalArea),
-      itsTopRightLatLon(theAzimuthalArea.itsTopRightLatLon),
-      itsBottomLeftLatLon(theAzimuthalArea.itsBottomLeftLatLon),
-      itsBottomLeftWorldXY(theAzimuthalArea.itsBottomLeftWorldXY),
-      itsXScaleFactor(theAzimuthalArea.itsXScaleFactor),
-      itsYScaleFactor(theAzimuthalArea.itsYScaleFactor),
-      itsWorldRect(theAzimuthalArea.itsWorldRect),
-      itsRadialRange(theAzimuthalArea.itsRadialRange),
-      itsCentralLongitude(theAzimuthalArea.itsCentralLongitude),
-      itsCentralLatitude(theAzimuthalArea.itsCentralLatitude),
-      itsTrueLatitude(theAzimuthalArea.itsTrueLatitude),
-      itsTrueLatScaleFactor(theAzimuthalArea.itsTrueLatScaleFactor)
-{
-}
+
+    = default;
 
 /*!
 * Constructor

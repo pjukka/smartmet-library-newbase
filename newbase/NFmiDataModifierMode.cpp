@@ -16,11 +16,10 @@
 #include <algorithm>
 
 NFmiDataModifierMode::NFmiDataModifierMode() : NFmiDataModifier(), itsDataVector() {}
-NFmiDataModifierMode::~NFmiDataModifierMode() {}
+NFmiDataModifierMode::~NFmiDataModifierMode() = default;
 NFmiDataModifierMode::NFmiDataModifierMode(const NFmiDataModifierMode& theOther)
-    : NFmiDataModifier(theOther), itsDataVector(theOther.itsDataVector)
-{
-}
+
+    = default;
 
 NFmiDataModifier* NFmiDataModifierMode::Clone() const { return new NFmiDataModifierMode(*this); }
 

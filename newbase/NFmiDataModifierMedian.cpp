@@ -15,7 +15,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierMedian::~NFmiDataModifierMedian() {}
+NFmiDataModifierMedian::~NFmiDataModifierMedian() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

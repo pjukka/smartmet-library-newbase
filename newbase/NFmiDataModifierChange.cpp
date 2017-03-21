@@ -14,7 +14,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierChange::~NFmiDataModifierChange() {}
+NFmiDataModifierChange::~NFmiDataModifierChange() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

@@ -21,7 +21,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiValueString::~NFmiValueString() {}
+NFmiValueString::~NFmiValueString() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

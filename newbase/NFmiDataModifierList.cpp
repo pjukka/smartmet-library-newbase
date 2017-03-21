@@ -23,7 +23,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierList::~NFmiDataModifierList() {}
+NFmiDataModifierList::~NFmiDataModifierList() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor

@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierSum::~NFmiDataModifierSum() {}
+NFmiDataModifierSum::~NFmiDataModifierSum() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -37,9 +37,8 @@ NFmiDataModifierSum::NFmiDataModifierSum(FmiJoinOperator theJoinOperator, bool m
 }
 
 NFmiDataModifierSum::NFmiDataModifierSum(const NFmiDataModifierSum& theOther)
-    : NFmiDataModifier(theOther), itsSum(theOther.itsSum)
-{
-}
+
+    = default;
 
 NFmiDataModifier* NFmiDataModifierSum::Clone() const { return new NFmiDataModifierSum(*this); }
 // ----------------------------------------------------------------------

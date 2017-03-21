@@ -20,7 +20,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierProb::~NFmiDataModifierProb() {}
+NFmiDataModifierProb::~NFmiDataModifierProb() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor

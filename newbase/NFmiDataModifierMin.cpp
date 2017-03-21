@@ -20,7 +20,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierMin::~NFmiDataModifierMin() {}
+NFmiDataModifierMin::~NFmiDataModifierMin() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
@@ -29,9 +29,8 @@ NFmiDataModifierMin::~NFmiDataModifierMin() {}
 
 NFmiDataModifierMin::NFmiDataModifierMin() { itsExtremeValue = 3.4E+38f; }
 NFmiDataModifierMin::NFmiDataModifierMin(const NFmiDataModifierMin& theOther)
-    : NFmiDataModifierExtreme(theOther)
-{
-}
+
+    = default;
 
 NFmiDataModifier* NFmiDataModifierMin::Clone() const { return new NFmiDataModifierMin(*this); }
 // ----------------------------------------------------------------------

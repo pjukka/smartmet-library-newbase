@@ -25,7 +25,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierAllValidClipSum::~NFmiDataModifierAllValidClipSum() {}
+NFmiDataModifierAllValidClipSum::~NFmiDataModifierAllValidClipSum() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiRegressionItem::~NFmiRegressionItem() {}
+NFmiRegressionItem::~NFmiRegressionItem() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor

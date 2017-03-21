@@ -50,7 +50,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiLocationFinder::~NFmiLocationFinder() {}
+NFmiLocationFinder::~NFmiLocationFinder() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
@@ -72,11 +72,8 @@ NFmiLocationFinder::NFmiLocationFinder()
 // ----------------------------------------------------------------------
 
 NFmiLocationFinder::NFmiLocationFinder(const NFmiLocationFinder& theLocationFinder)
-    : itsPrimaryPoints(theLocationFinder.itsPrimaryPoints),
-      itsSecondaryPoints(theLocationFinder.itsSecondaryPoints),
-      itsLastSearchFailed(theLocationFinder.itsLastSearchFailed)
-{
-}
+
+    = default;
 
 // ======================================================================
 /*!

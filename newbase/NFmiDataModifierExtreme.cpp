@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierExtreme::~NFmiDataModifierExtreme() {}
+NFmiDataModifierExtreme::~NFmiDataModifierExtreme() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
@@ -30,11 +30,8 @@ NFmiDataModifierExtreme::~NFmiDataModifierExtreme() {}
 
 NFmiDataModifierExtreme::NFmiDataModifierExtreme() : itsExtremeValue(), itsExtremeTime() {}
 NFmiDataModifierExtreme::NFmiDataModifierExtreme(const NFmiDataModifierExtreme &theOther)
-    : NFmiDataModifier(theOther),
-      itsExtremeValue(theOther.itsExtremeValue),
-      itsExtremeTime(theOther.itsExtremeTime)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!

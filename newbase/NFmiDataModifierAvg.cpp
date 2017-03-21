@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierAvg::~NFmiDataModifierAvg() {}
+NFmiDataModifierAvg::~NFmiDataModifierAvg() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
@@ -34,9 +34,8 @@ NFmiDataModifierAvg::NFmiDataModifierAvg() : NFmiDataModifier(), itsCounter(0), 
 }
 
 NFmiDataModifierAvg::NFmiDataModifierAvg(const NFmiDataModifierAvg& theOther)
-    : NFmiDataModifier(theOther), itsCounter(theOther.itsCounter), itsAverage(theOther.itsAverage)
-{
-}
+
+    = default;
 
 NFmiDataModifier* NFmiDataModifierAvg::Clone() const { return new NFmiDataModifierAvg(*this); }
 // ----------------------------------------------------------------------

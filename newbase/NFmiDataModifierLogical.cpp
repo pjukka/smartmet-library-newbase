@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierLogical::~NFmiDataModifierLogical() {}
+NFmiDataModifierLogical::~NFmiDataModifierLogical() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor

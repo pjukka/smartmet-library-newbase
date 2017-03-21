@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierBoolean::~NFmiDataModifierBoolean() {}
+NFmiDataModifierBoolean::~NFmiDataModifierBoolean() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor

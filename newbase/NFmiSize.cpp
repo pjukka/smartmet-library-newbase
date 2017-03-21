@@ -54,9 +54,7 @@ NFmiSize::NFmiSize(unsigned long theIndex, unsigned long theSize)
  */
 // ----------------------------------------------------------------------
 
-NFmiSize::NFmiSize(const NFmiSize& theSize) : itsSize(theSize.itsSize), itsIndex(theSize.itsIndex)
-{
-}
+NFmiSize::NFmiSize(const NFmiSize& theSize) = default;
 
 // ----------------------------------------------------------------------
 /*!

@@ -23,7 +23,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierAllValidAvg::~NFmiDataModifierAllValidAvg() {}
+NFmiDataModifierAllValidAvg::~NFmiDataModifierAllValidAvg() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

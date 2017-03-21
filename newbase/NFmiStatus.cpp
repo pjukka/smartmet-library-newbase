@@ -23,11 +23,8 @@ NFmiStatus::NFmiStatus() : itsErrorLog(), itsWarningLog(), itsMessageLog() {}
 // ----------------------------------------------------------------------
 
 NFmiStatus::NFmiStatus(const NFmiStatus& theStatus)
-    : itsErrorLog(theStatus.itsErrorLog),
-      itsWarningLog(theStatus.itsWarningLog),
-      itsMessageLog(theStatus.itsMessageLog)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!
@@ -122,14 +119,7 @@ const NFmiString NFmiStatus::MessageLog() const { return itsMessageLog; }
  */
 // ----------------------------------------------------------------------
 
-NFmiStatus& NFmiStatus::operator=(const NFmiStatus& theStatus)
-{
-  itsMessageLog = theStatus.itsMessageLog;
-  itsWarningLog = theStatus.itsWarningLog;
-  itsErrorLog = theStatus.itsErrorLog;
-
-  return *this;
-}
+NFmiStatus& NFmiStatus::operator=(const NFmiStatus& theStatus) = default;
 
 // ----------------------------------------------------------------------
 /*!

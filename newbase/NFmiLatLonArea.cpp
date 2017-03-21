@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiLatLonArea::~NFmiLatLonArea() {}
+NFmiLatLonArea::~NFmiLatLonArea() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
@@ -73,14 +73,8 @@ NFmiLatLonArea::NFmiLatLonArea(const NFmiPoint &theBottomLeftLatLon,
 // ----------------------------------------------------------------------
 
 NFmiLatLonArea::NFmiLatLonArea(const NFmiLatLonArea &theLatLonArea)
-    : NFmiArea(theLatLonArea),
-      itsBottomLeftLatLon(theLatLonArea.itsBottomLeftLatLon),
-      itsTopRightLatLon(theLatLonArea.itsTopRightLatLon),
-      itsXScaleFactor(theLatLonArea.itsXScaleFactor),
-      itsYScaleFactor(theLatLonArea.itsYScaleFactor),
-      itsWorldRect(theLatLonArea.itsWorldRect)  // 18.10.2000/EL
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!

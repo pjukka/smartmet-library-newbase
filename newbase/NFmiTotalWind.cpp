@@ -27,7 +27,7 @@ using namespace std;
  * Destructor
  */
 // ----------------------------------------------------------------------
-NFmiTotalWind::~NFmiTotalWind() {}
+NFmiTotalWind::~NFmiTotalWind() = default;
 // ----------------------------------------------------------------------
 /*!
  * Copy constructor

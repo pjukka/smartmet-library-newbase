@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierExtremePlace::~NFmiDataModifierExtremePlace() {}
+NFmiDataModifierExtremePlace::~NFmiDataModifierExtremePlace() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

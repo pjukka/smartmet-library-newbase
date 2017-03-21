@@ -20,7 +20,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiAreaMaskList::~NFmiAreaMaskList() {}
+NFmiAreaMaskList::~NFmiAreaMaskList() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
@@ -30,11 +30,8 @@ NFmiAreaMaskList::~NFmiAreaMaskList() {}
 NFmiAreaMaskList::NFmiAreaMaskList() : itsMaskVector(), itsCurrentIndex(-1), fMaskInUse(false) {}
 
 NFmiAreaMaskList::NFmiAreaMaskList(const NFmiAreaMaskList &theOther)
-    : itsMaskVector(theOther.itsMaskVector),
-      itsCurrentIndex(theOther.itsCurrentIndex),
-      fMaskInUse(theOther.fMaskInUse)
-{
-}
+
+    = default;
 
 boost::shared_ptr<NFmiAreaMaskList> NFmiAreaMaskList::CreateShallowCopy(
     const boost::shared_ptr<NFmiAreaMaskList> &theOther)

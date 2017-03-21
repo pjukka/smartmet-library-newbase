@@ -14,7 +14,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiStatusString::~NFmiStatusString() {}
+NFmiStatusString::~NFmiStatusString() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
@@ -45,9 +45,8 @@ NFmiStatusString::NFmiStatusString(const NFmiString &theString, long theStatus)
 // ----------------------------------------------------------------------
 
 NFmiStatusString::NFmiStatusString(const NFmiStatusString &theStatusString)
-    : NFmiString(theStatusString), itsStatus(theStatusString.itsStatus)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!
@@ -84,12 +83,7 @@ NFmiString *NFmiStatusString::Clone() const { return new NFmiStatusString(*this)
  */
 // ----------------------------------------------------------------------
 
-NFmiStatusString &NFmiStatusString::operator=(const NFmiStatusString &theStatusString)
-{
-  NFmiString::operator=(theStatusString);
-  itsStatus = theStatusString.itsStatus;
-  return *this;
-}
+NFmiStatusString &NFmiStatusString::operator=(const NFmiStatusString &theStatusString) = default;
 
 // ----------------------------------------------------------------------
 /*!

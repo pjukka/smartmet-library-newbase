@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierPrecFormUnion::~NFmiDataModifierPrecFormUnion() {}
+NFmiDataModifierPrecFormUnion::~NFmiDataModifierPrecFormUnion() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor

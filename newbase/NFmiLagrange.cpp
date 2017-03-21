@@ -112,7 +112,7 @@ NFmiLagrange::NFmiLagrange(const double *si, const double *yij, int sn)
  */
 // ----------------------------------------------------------------------
 
-NFmiLagrange::~NFmiLagrange() {}
+NFmiLagrange::~NFmiLagrange() = default;
 // ----------------------------------------------------------------------
 /*!
  * \param ti Undocumented

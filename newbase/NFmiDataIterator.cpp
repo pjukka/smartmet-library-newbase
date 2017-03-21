@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataIterator::~NFmiDataIterator() {}
+NFmiDataIterator::~NFmiDataIterator() = default;
 // ----------------------------------------------------------------------
 /*!
  * Constructor

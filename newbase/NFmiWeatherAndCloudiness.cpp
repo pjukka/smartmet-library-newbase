@@ -341,14 +341,8 @@ NFmiWeatherAndCloudiness::NFmiWeatherAndCloudiness(float theCloudSymbol,
 // ----------------------------------------------------------------------
 
 NFmiWeatherAndCloudiness::NFmiWeatherAndCloudiness(const NFmiWeatherAndCloudiness &theWeather)
-    : NFmiCombinedParam(theWeather),
-      itsData(theWeather.itsData),
-      itsTemperature(theWeather.itsTemperature),
-      itsCrossCheckIndex(theWeather.itsCrossCheckIndex),
-      itsPrecipitationProbabilityLimit1(theWeather.itsPrecipitationProbabilityLimit1),
-      itsPrecipitationProbabilityLimit2(theWeather.itsPrecipitationProbabilityLimit2)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!
@@ -356,7 +350,7 @@ NFmiWeatherAndCloudiness::NFmiWeatherAndCloudiness(const NFmiWeatherAndCloudines
  */
 // ----------------------------------------------------------------------
 
-NFmiWeatherAndCloudiness::~NFmiWeatherAndCloudiness() {}
+NFmiWeatherAndCloudiness::~NFmiWeatherAndCloudiness() = default;
 // ----------------------------------------------------------------------
 /*!
  * \param theCloudSymbol Undocumented

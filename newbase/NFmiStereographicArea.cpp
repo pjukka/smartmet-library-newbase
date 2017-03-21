@@ -77,7 +77,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiStereographicArea::NFmiStereographicArea() {}
+NFmiStereographicArea::NFmiStereographicArea() = default;
 // ----------------------------------------------------------------------
 /*!
  * Copy constructor
@@ -87,9 +87,8 @@ NFmiStereographicArea::NFmiStereographicArea() {}
 // ----------------------------------------------------------------------
 
 NFmiStereographicArea::NFmiStereographicArea(const NFmiStereographicArea &theStereographicArea)
-    : NFmiAzimuthalArea(theStereographicArea)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!
@@ -364,11 +363,8 @@ NFmiArea *NFmiStereographicArea::Clone() const { return new NFmiStereographicAre
  */
 // ----------------------------------------------------------------------
 
-NFmiStereographicArea &NFmiStereographicArea::operator=(const NFmiStereographicArea &theArea)
-{
-  NFmiAzimuthalArea::operator=(theArea);
-  return *this;
-}
+NFmiStereographicArea &NFmiStereographicArea::operator=(const NFmiStereographicArea &theArea) =
+    default;
 
 // ----------------------------------------------------------------------
 /*!

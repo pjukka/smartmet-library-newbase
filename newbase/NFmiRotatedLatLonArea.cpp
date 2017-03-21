@@ -123,9 +123,8 @@ const NFmiPoint toreglatlon(const NFmiPoint &theRotLatLonPoint,
 
 NFmiRotatedLatLonArea::NFmiRotatedLatLonArea() : NFmiLatLonArea(), itsSouthernPole() {}
 NFmiRotatedLatLonArea::NFmiRotatedLatLonArea(const NFmiRotatedLatLonArea &theRotatedLatLonArea)
-    : NFmiLatLonArea(theRotatedLatLonArea), itsSouthernPole(theRotatedLatLonArea.itsSouthernPole)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!

@@ -36,7 +36,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiLogger::~NFmiLogger() {}
+NFmiLogger::~NFmiLogger() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

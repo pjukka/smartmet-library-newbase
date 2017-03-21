@@ -2629,7 +2629,8 @@ class TimeToModifyCalculator
   MutexType itsMutex;
   bool fNoMoreWork;
 
-  TimeToModifyCalculator(const TimeToModifyCalculator &);  // ei toteuteta kopio konstruktoria
+  TimeToModifyCalculator(const TimeToModifyCalculator &) =
+      delete;  // ei toteuteta kopio konstruktoria
 };
 
 static void ModifySingleTimeGridInThread(NFmiFastQueryInfo &theModifiedInfo,

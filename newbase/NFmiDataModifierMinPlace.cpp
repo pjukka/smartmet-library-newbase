@@ -13,7 +13,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierMinPlace::~NFmiDataModifierMinPlace() {}
+NFmiDataModifierMinPlace::~NFmiDataModifierMinPlace() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor

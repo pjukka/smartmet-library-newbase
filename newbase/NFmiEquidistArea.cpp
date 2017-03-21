@@ -85,9 +85,8 @@ using namespace std;
 // ----------------------------------------------------------------------
 
 NFmiEquidistArea::NFmiEquidistArea(const NFmiEquidistArea &theEquidistArea)
-    : NFmiAzimuthalArea(theEquidistArea)
-{
-}
+
+    = default;
 
 /*!
 * Constructor
@@ -336,11 +335,7 @@ NFmiArea *NFmiEquidistArea::Clone() const { return new NFmiEquidistArea(*this); 
  */
 // ----------------------------------------------------------------------
 
-NFmiEquidistArea &NFmiEquidistArea::operator=(const NFmiEquidistArea &theArea)
-{
-  NFmiAzimuthalArea::operator=(theArea);
-  return *this;
-}
+NFmiEquidistArea &NFmiEquidistArea::operator=(const NFmiEquidistArea &theArea) = default;
 
 // ----------------------------------------------------------------------
 /*!

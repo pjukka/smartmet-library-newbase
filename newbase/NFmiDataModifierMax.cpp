@@ -13,7 +13,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierMax::~NFmiDataModifierMax() {}
+NFmiDataModifierMax::~NFmiDataModifierMax() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
@@ -22,9 +22,8 @@ NFmiDataModifierMax::~NFmiDataModifierMax() {}
 
 NFmiDataModifierMax::NFmiDataModifierMax() { itsExtremeValue = -3.4E+38f; }
 NFmiDataModifierMax::NFmiDataModifierMax(const NFmiDataModifierMax& theOther)
-    : NFmiDataModifierExtreme(theOther)
-{
-}
+
+    = default;
 
 NFmiDataModifier* NFmiDataModifierMax::Clone() const { return new NFmiDataModifierMax(*this); }
 // ----------------------------------------------------------------------

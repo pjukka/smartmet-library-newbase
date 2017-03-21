@@ -85,9 +85,8 @@ NFmiGnomonicArea::NFmiGnomonicArea() : NFmiAzimuthalArea() {}
 // ----------------------------------------------------------------------
 
 NFmiGnomonicArea::NFmiGnomonicArea(const NFmiGnomonicArea &theGnomonicArea)
-    : NFmiAzimuthalArea(theGnomonicArea)
-{
-}
+
+    = default;
 
 // ----------------------------------------------------------------------
 /*!
@@ -308,11 +307,7 @@ NFmiArea *NFmiGnomonicArea::Clone() const { return new NFmiGnomonicArea(*this); 
  */
 // ----------------------------------------------------------------------
 
-NFmiGnomonicArea &NFmiGnomonicArea::operator=(const NFmiGnomonicArea &theArea)
-{
-  NFmiAzimuthalArea::operator=(theArea);
-  return *this;
-}
+NFmiGnomonicArea &NFmiGnomonicArea::operator=(const NFmiGnomonicArea &theArea) = default;
 
 // ----------------------------------------------------------------------
 /*!

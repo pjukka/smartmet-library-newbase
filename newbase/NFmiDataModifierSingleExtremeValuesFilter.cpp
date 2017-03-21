@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierSingleExtremeValuesFilter::~NFmiDataModifierSingleExtremeValuesFilter() {}
+NFmiDataModifierSingleExtremeValuesFilter::~NFmiDataModifierSingleExtremeValuesFilter() = default;
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
