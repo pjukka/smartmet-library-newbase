@@ -51,5 +51,4 @@ class _FMI_DLL NFmiFileString : public NFmiString
 
 };  // class NFmiFileString
 
-
 // ======================================================================

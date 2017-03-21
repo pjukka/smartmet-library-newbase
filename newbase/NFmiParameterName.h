@@ -1195,7 +1195,7 @@ enum FmiParameterName
   kFmiHumidityRelativeToIce,
   kFmiFrostPoint,
   kFmiAvailableEnsembleMemberCount,
-  kFmiWindGust2,         // post-processed wind gust speed
+  kFmiWindGust2,  // post-processed wind gust speed
   kFmiProbabilityOfSigWaveHeightLimit1,
   kFmiProbabilityOfSigWaveHeightLimit2,
   kFmiProbabilityOfSigWaveHeightLimit3,
@@ -1207,7 +1207,7 @@ enum FmiParameterName
   kFmiProbabilityOfConvectivePrecipitationLimit5,
   kFmiProbabilityOfConvectivePrecipitationLimit6,
   kFmiProbabilityOfPrecipitation3h03mm,  // > 0.3 mm
-  kFmiProbabilityOfColdLimit5,  // T < -35
+  kFmiProbabilityOfColdLimit5,           // T < -35
 
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 
@@ -1508,6 +1508,5 @@ inline std::ostream& operator<<(std::ostream& out, FmiParameterName p)
   out << static_cast<unsigned long>(p);
   return out;
 }
-
 
 // ======================================================================

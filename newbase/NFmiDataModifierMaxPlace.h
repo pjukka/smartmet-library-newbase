@@ -36,5 +36,4 @@ class _FMI_DLL NFmiDataModifierMaxPlace : public NFmiDataModifierExtremePlace
 
 };  // class NFmiDataModifierMaxPlace
 
-
 // ======================================================================

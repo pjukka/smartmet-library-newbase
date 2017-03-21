@@ -30,5 +30,4 @@ double CalcPressureFlightLevel(double hPa);
 double CalcPressureAtHeight(double z2);
 double CalcHeightAtPressure(double p2);
 
-
 // ======================================================================

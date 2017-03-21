@@ -37,5 +37,4 @@ class _FMI_DLL NFmiDataModifierMax : public NFmiDataModifierExtreme
 
 };  // class NFmiDataModifierMax
 
-
 // ======================================================================

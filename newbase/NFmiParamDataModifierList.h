@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiPtrList.h"
 #include "NFmiParamDataModifier.h"
+#include "NFmiPtrList.h"
 
 class NFmiDataIdent;
 class NFmiLevel;
@@ -48,6 +48,5 @@ inline unsigned long NFmiParamDataModifierList::NumberOfItems(void)
 {
   return itsList.NumberOfItems();
 }
-
 
 // ======================================================================

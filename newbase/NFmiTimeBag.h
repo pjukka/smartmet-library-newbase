@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiSize.h"
 #include "NFmiMetTime.h"
+#include "NFmiSize.h"
 
 //! Undocumented
 class _FMI_DLL NFmiTimeBag : public NFmiSize

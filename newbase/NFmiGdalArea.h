@@ -101,5 +101,4 @@ class _FMI_DLL NFmiGdalArea : public NFmiArea
 
 #endif  // NFMIGDALAREA_H
 
-
 // ======================================================================

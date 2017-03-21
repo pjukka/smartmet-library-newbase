@@ -7,12 +7,12 @@
 
 #pragma once
 
-#include "NFmiSaveBaseFactory.h"
 #include "NFmiDataDescriptor.h"
 #include "NFmiDataMatrix.h"
 #include "NFmiGlobals.h"
-#include "NFmiPoint.h"
 #include "NFmiLocation.h"
+#include "NFmiPoint.h"
+#include "NFmiSaveBaseFactory.h"
 #include <algorithm>
 
 class NFmiLocationBag;

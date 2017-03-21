@@ -22,5 +22,4 @@ void LatLonToWorldXY(NFmiSvgPath& thePath, const NFmiArea& theArea);
 
 }  // namespace NFmiSvgTools
 
-
 // ======================================================================

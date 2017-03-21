@@ -50,5 +50,4 @@ class _FMI_DLL NFmiRelativeTimeIntegrationIterator2 : public NFmiDataIterator
 
 };  // class NFmiRelativeTimeIntegrationIterator
 
-
 // ======================================================================

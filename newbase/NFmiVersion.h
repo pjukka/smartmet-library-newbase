@@ -5,4 +5,3 @@
 //
 extern unsigned short FmiBoxVersion;
 extern unsigned short FmiInfoVersion;
-

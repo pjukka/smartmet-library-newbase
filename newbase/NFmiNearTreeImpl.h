@@ -546,5 +546,4 @@ bool NFmiNearTreeImpl<T, F>::Farthest(value_type& theFarthest,
   return found;
 }
 
-
 // ======================================================================

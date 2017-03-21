@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiAzimuthalArea.h"
 #include "NFmiAngle.h"
+#include "NFmiAzimuthalArea.h"
 
 //! Undocumened
 class _FMI_DLL NFmiLambertEqualArea : public NFmiAzimuthalArea

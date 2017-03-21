@@ -28,5 +28,4 @@ class _FMI_DLL NFmiDataModifierAllValidSum : public NFmiDataModifierSum
 
 };  // class NFmiDataModifierAllValidSum
 
-
 // ======================================================================

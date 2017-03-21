@@ -118,5 +118,4 @@ inline bool NFmiValueStation::IsEqual(const NFmiSortable &theLocation) const
   return (GetValue() == (static_cast<const NFmiValueStation *>((&theLocation))->GetValue()));
 }
 
-
 // ======================================================================

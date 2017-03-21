@@ -64,5 +64,4 @@ inline void NFmiDataModifierWindChill::LatLon(const NFmiPoint& newLatLon)
   itsLatLonPoint = newLatLon;
 }
 
-
 // ======================================================================

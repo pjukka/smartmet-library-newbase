@@ -226,8 +226,7 @@ bool NFmiPtrList<Type>::Iterator::Next(void)
 }*/
 
 template <class Type>
-NFmiPtrList<Type>::NFmiPtrList(void)
-    : itsStart(new Node()), itsEnd(new Node()), itsCounter(0)
+NFmiPtrList<Type>::NFmiPtrList(void) : itsStart(new Node()), itsEnd(new Node()), itsCounter(0)
 {
   itsStart->itsNext = itsEnd;
   itsEnd->itsPrevious = itsStart;
@@ -490,4 +489,3 @@ bool NFmiPtrList<Type>::Find(const Type &theValue, Iterator &theFoundItemIterato
   }
   return false;
 }
-

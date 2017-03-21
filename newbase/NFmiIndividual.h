@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiString.h"
 #include "NFmiSortable.h"
+#include "NFmiString.h"
 
 //! Undocumented
 
@@ -99,6 +99,5 @@ inline bool NFmiIndividual::IsLessThan(const NFmiSortable &theSortable) const
 {
   return itsIdent > (static_cast<const NFmiIndividual &>(theSortable)).itsIdent;
 }
-
 
 // ======================================================================

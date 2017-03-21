@@ -8,7 +8,6 @@
 #pragma once
 
 #include "NFmiGlobals.h"
-#include <string>
 #include <iosfwd>
 #include <string>
 
@@ -55,6 +54,5 @@ class _FMI_DLL NFmiRawData
   bool Advise(FmiAdvice theAdvice);
 
 };  // class NFmiRawData
-
 
 // ======================================================================

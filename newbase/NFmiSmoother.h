@@ -7,9 +7,9 @@
 
 #pragma once
 
+#include "NFmiDataMatrix.h"  // for NFmiDataMatrix
 #include "NFmiGlobals.h"     // for kFloatMissing
 #include "NFmiPoint.h"       // for NFmiPoint
-#include "NFmiDataMatrix.h"  // for NFmiDataMatrix
 #include <string>
 
 //! Undocumented
@@ -147,6 +147,5 @@ inline float NFmiSmoother::Weight(float theDistance) const
   }
   return weight;
 }
-
 
 // ======================================================================

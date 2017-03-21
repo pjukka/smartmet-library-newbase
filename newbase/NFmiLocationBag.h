@@ -15,8 +15,8 @@
 #include "NFmiSaveBaseFactory.h"
 #include "NFmiSize.h"
 #include <boost/math/constants/constants.hpp>
-#include <cassert>
 #include <algorithm>
+#include <cassert>
 #include <set>
 
 class NFmiStation;

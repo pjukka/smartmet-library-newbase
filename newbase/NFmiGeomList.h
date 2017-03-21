@@ -28,5 +28,4 @@ typedef struct
   char geomName[GEOMNAMEMAXSIZE][GEOMNAMELENGTH];
 } GeomList;
 
-
 // ======================================================================

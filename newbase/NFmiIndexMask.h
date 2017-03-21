@@ -78,5 +78,4 @@ NFmiIndexMask operator-(const NFmiIndexMask& theLhs, const NFmiIndexMask& theRhs
 
 NFmiIndexMask operator^(const NFmiIndexMask& theLhs, const NFmiIndexMask& theRhs);
 
-
 // ======================================================================

@@ -18,5 +18,4 @@ void LatLonBoundingBox(const NFmiArea& theArea,
                        double& theMaxLat);
 }
 
-
 // ======================================================================

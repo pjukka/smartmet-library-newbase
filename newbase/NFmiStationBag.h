@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiStation.h"
 #include "NFmiLocationBag.h"
+#include "NFmiStation.h"
 
 // ÄLÄ KÄYTÄ TÄTÄ LUOKKAA UUSIIN JUTTUIHIN, VAAN KÄYTÄ NFmiLocationBag:ia
 
@@ -129,6 +129,5 @@ inline bool NFmiStationBag::Location(const NFmiLocation &theLocation)
 {
   return NFmiLocationBag::Location(theLocation);
 }
-
 
 // ======================================================================

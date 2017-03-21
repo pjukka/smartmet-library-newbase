@@ -7,10 +7,10 @@
 
 #pragma once
 
-#include "NFmiDef.h"
 #include "NFmiDataMatrix.h"
-#include <string>
+#include "NFmiDef.h"
 #include <set>
+#include <string>
 
 //! Undocumented
 class _FMI_DLL NFmiCommentStripper
@@ -68,6 +68,5 @@ class _FMI_DLL NFmiCommentStripper
                                // spacet poistetaan.
 
 };  // class NFmiCommentStripper
-
 
 // ======================================================================

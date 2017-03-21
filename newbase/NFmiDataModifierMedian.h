@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include "NFmiDataModifier.h"
 #include "NFmiDataMatrix.h"
+#include "NFmiDataModifier.h"
 
 class _FMI_DLL NFmiDataModifierMedian : public NFmiDataModifier
 {
@@ -42,6 +42,5 @@ class _FMI_DLL NFmiDataModifierMedian : public NFmiDataModifier
   // säädettävän rajan, jonka mukaan arvo palautetaan. Defaulttina raja on 50% eli juuri puoliväli
 
 };  // class NFmiDataModifierMedian
-
 
 // ======================================================================

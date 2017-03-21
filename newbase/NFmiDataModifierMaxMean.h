@@ -31,5 +31,4 @@ class _FMI_DLL NFmiDataModifierMaxMean : public NFmiDataModifier
 
 };  // class NFmiDataModifierMaxMean
 
-
 // ======================================================================

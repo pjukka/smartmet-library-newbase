@@ -15,14 +15,14 @@
 
 #include "NFmiDef.h"
 #include "NFmiTypeNameTraits.h"
+#include <cstring>
 #include <iostream>
+#include <iterator>
 #include <map>
 #include <sstream>
 #include <stdexcept>
 #include <string>
 #include <vector>
-#include <cstring>
-#include <iterator>
 
 namespace NFmiStringTools
 {
@@ -163,6 +163,5 @@ inline const std::string Join(const T &theWords, const std::string &theSeparator
   return ret;
 }
 }
-
 
 // ======================================================================

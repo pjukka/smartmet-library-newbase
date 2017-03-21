@@ -167,6 +167,9 @@ rpm: clean
 
 .SUFFIXES: $(SUFFIXES) .cpp
 
+modernize:
+	for F in newbase/*.cpp; do echo $$F; clang-tidy $$F -fix -checks=-*,modernize-* -- $(CFLAGS) $(DEFINES) $(INCLUDES); done
+
 obj/%.o: %.cpp
 	$(CXX) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 

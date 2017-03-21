@@ -29,5 +29,4 @@ class _FMI_DLL NFmiEditParam : public NFmiParam
 
 };  // class NFmiEditParam
 
-
 // ======================================================================

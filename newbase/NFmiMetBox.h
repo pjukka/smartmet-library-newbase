@@ -8,10 +8,10 @@
 #pragma once
 
 #include "NFmiBox.h"
-#include "NFmiTimeBag.h"
+#include "NFmiLocationBag.h"
 #include "NFmiParamBag.h"
 #include "NFmiStation.h"
-#include "NFmiLocationBag.h"
+#include "NFmiTimeBag.h"
 
 //! Undocumented, should use a const int instead
 #define HEADERMAX 3
@@ -476,6 +476,5 @@ inline bool NFmiMetBoxIterator::CurrentParam(const NFmiDataIdent &newParam)
 {
   return itsParamDescriptor->Current(newParam);
 }
-
 
 // ======================================================================

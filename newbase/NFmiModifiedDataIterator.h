@@ -26,5 +26,4 @@ class _FMI_DLL NFmiModifiedDataIterator : public NFmiRelativeDataIterator
 
 };  // class NFmiModifiedDataIterator
 
-
 // ======================================================================

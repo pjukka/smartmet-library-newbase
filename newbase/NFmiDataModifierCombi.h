@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiDataModifier.h"
 #include "NFmiCombinedParam.h"
+#include "NFmiDataModifier.h"
 
 class NFmiIntegrationSelector;
 
@@ -47,6 +47,5 @@ class _FMI_DLL NFmiDataModifierCombi : public NFmiDataModifier
   int* itsFrequencies;
 
 };  // class NFmiDataModifierCombi
-
 
 // ======================================================================

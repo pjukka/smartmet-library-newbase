@@ -27,5 +27,4 @@ class _FMI_DLL NFmiModMeanCalculator
 
 };  // NFmiModMeanCalculator
 
-
 // ======================================================================

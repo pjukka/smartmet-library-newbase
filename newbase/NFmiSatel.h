@@ -15,8 +15,8 @@
 #pragma once
 
 #include "NFmiString.h"
-#include <iostream>
 #include <sys/stat.h>
+#include <iostream>
 
 //! Undocumented
 class _FMI_DLL NFmiSatel
@@ -167,6 +167,5 @@ inline std::istream& NFmiSatel::Read(std::istream& file)
   file.read(itsSatelData, itsSatelDataSize);
   return file;
 }
-
 
 // ======================================================================

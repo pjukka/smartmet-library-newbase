@@ -28,5 +28,4 @@ class _FMI_DLL NFmiRegressionModifier : public NFmiInfoModifier
 
 };  // class NFmiRegressionModifier
 
-
 // ======================================================================

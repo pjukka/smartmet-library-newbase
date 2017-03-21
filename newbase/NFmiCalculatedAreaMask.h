@@ -212,5 +212,4 @@ class _FMI_DLL NFmiGridSizeAreaMask : public NFmiElevationAngleAreaMask
   NFmiGridSizeAreaMask& operator=(const NFmiGridSizeAreaMask& theMask);
 };  // class NFmiGridSizeAreaMask
 
-
 // ======================================================================

@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include <vector>
 #include <string>
+#include <vector>
 class NFmiIndexMask;
 class NFmiPoint;
 class NFmiGrid;
@@ -61,6 +61,5 @@ const std::string MaskString(const NFmiIndexMask &theMask,
                              unsigned long theHeight);
 
 }  // namespace NFmiIndexMaskTools
-
 
 // ======================================================================

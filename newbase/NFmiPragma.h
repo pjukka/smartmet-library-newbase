@@ -20,4 +20,3 @@
 #define PRAGMA_WARNING_POP()
 
 #endif
-

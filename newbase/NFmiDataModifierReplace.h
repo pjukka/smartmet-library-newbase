@@ -22,5 +22,4 @@ class _FMI_DLL NFmiDataModifierReplace : public NFmiDataModifier
 
 };  // class NFmiDataModifierReplace
 
-
 // ======================================================================

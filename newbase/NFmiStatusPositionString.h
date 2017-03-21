@@ -49,5 +49,4 @@ inline unsigned long NFmiStatusPositionString::ClassId(void) const
   return kNFmiStatusPositionString;
 }
 
-
 // ======================================================================

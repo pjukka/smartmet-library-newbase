@@ -7,11 +7,11 @@
 
 #pragma once
 
-#include "NFmiQueryInfo.h"
 #include "NFmiDataMatrix.h"
+#include "NFmiQueryInfo.h"
 
-#include <boost/unordered_map.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/unordered_map.hpp>
 
 class NFmiRect;
 
@@ -1103,4 +1103,3 @@ inline void NFmiFastQueryInfo::Locations(NFmiDataMatrix<NFmiPoint> &theMatrix) c
 }
 
 // ======================================================================
-

@@ -59,5 +59,4 @@ class _FMI_DLL NFmiDataModifierBase
 
 };  // class NFmiDataModifierBase
 
-
 // ======================================================================

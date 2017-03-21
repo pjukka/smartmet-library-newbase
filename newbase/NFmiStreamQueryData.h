@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiQueryData.h"
 #include "NFmiFastQueryInfo.h"
+#include "NFmiQueryData.h"
 
 //! Undocumented
 class _FMI_DLL NFmiStreamQueryData
@@ -48,6 +48,5 @@ class _FMI_DLL NFmiStreamQueryData
                       // ei omista eikä tuhoa.
 
 };  // class NFmiStreamQueryData
-
 
 // ======================================================================

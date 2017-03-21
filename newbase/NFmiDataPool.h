@@ -12,8 +12,8 @@
 
 #include <cstdlib>
 #include <memory>
-#include <vector>
 #include <ostream>
+#include <vector>
 
 class NFmiTransformList;
 

@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiString.h"  // Added by ClassView
 #include "NFmiQueryData.h"
+#include "NFmiString.h"  // Added by ClassView
 #include <ctime>
 
 #ifdef UNIX
@@ -51,6 +51,5 @@ class _FMI_DLL NFmiSnapShotInterface
   time_t itsStartingTime;
 
 };  // class NFmiSnapShortInterface
-
 
 // ======================================================================

@@ -30,5 +30,4 @@ class _FMI_DLL NFmiDataModifierSum : public NFmiDataModifier
 
 };  // class NFmiDataModifierSum
 
-
 // ======================================================================

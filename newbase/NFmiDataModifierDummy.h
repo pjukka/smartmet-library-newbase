@@ -34,5 +34,4 @@ class _FMI_DLL NFmiDataModifierDummy : public NFmiDataModifier
 
 };  // class NFmiDataModifierDummy
 
-
 // ======================================================================

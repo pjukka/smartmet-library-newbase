@@ -8,9 +8,9 @@
 #pragma once
 
 #include "NFmiGlobals.h"
-#include "NFmiString.h"
 #include "NFmiLevel.h"
 #include "NFmiSize.h"
+#include "NFmiString.h"
 
 class NFmiLevel;
 

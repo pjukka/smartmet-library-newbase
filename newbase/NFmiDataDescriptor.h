@@ -28,5 +28,4 @@ class _FMI_DLL NFmiDataDescriptor
 
 };  // class NFmiDataDescriptor
 
-
 // ======================================================================

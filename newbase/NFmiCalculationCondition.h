@@ -112,5 +112,4 @@ inline bool NFmiCalculationCondition::IsRampMask(void) const
           itsCondition == kFmiMaskDoubleRamp);
 }
 
-
 // ======================================================================

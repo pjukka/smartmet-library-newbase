@@ -20,5 +20,4 @@ class _FMI_DLL NFmiDataModifierGreaterThan : public NFmiDataModifier
 
 };  // class NFmiDataModifierGreaterThan
 
-
 // ======================================================================

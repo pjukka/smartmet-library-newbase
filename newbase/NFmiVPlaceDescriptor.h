@@ -129,5 +129,4 @@ inline std::istream &operator>>(std::istream &file, NFmiVPlaceDescriptor &ob)
   return ob.Read(file);
 }
 
-
 // ======================================================================

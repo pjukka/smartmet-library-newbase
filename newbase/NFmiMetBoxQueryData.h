@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiQueryData.h"
 #include "NFmiMetBox.h"
+#include "NFmiQueryData.h"
 
 //! Undocumented
 class _FMI_DLL NFmiMetBoxQueryData : public NFmiQueryData
@@ -27,6 +27,5 @@ class _FMI_DLL NFmiMetBoxQueryData : public NFmiQueryData
   NFmiMetBox* itsMetBox;
 
 };  // class NFmiMetBoxQueryData
-
 
 // ======================================================================

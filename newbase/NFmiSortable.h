@@ -111,5 +111,4 @@ inline bool NFmiSortable::operator<=(const NFmiSortable& aObjTest) const
 //! Undocumented, should be removed.
 typedef NFmiSortable TSortable;
 
-
 // ======================================================================

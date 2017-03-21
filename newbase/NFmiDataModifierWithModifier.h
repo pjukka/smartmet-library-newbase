@@ -84,5 +84,4 @@ inline float NFmiDataModifierWithModifier::CalculationResult(void)
   return itsModifier->CalculationResult();
 }
 
-
 // ======================================================================

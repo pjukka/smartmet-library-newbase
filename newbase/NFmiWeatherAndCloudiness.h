@@ -351,8 +351,7 @@ class _FMI_DLL NFmiWeatherAndCloudiness : public NFmiCombinedParam
   void SetThunderProbability(unsigned long theValue);
 
   //! Tämän structin avulla debuggaus on helpompaa (toimii ainoastaan little-endian koneissa)
-  union FmiWeatherUnion
-  {
+  union FmiWeatherUnion {
     uint32_t longType;
     float floatType;
 #ifndef UNIX
@@ -806,6 +805,5 @@ inline void NFmiWeatherAndCloudiness::SetThunderProbability(unsigned long theVal
   itsData.longType =
       static_cast<uint32_t>((itsData.longType & (~(0xF << 28))) | ((theValue & 0xF) << 28));
 }
-
 
 // ======================================================================
