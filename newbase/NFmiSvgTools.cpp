@@ -55,12 +55,12 @@ double Distance(const NFmiSvgPath& thePath, const NFmiPoint& thePoint)
 
   double minDist = -1;
 
-  NFmiSvgPath::const_iterator firstPoint = thePath.begin();
+  auto firstPoint = thePath.begin();
 
   double lastX = 0;
   double lastY = 0;
 
-  for (NFmiSvgPath::const_iterator it = thePath.begin(); it != thePath.end(); ++it)
+  for (auto it = thePath.begin(); it != thePath.end(); ++it)
   {
     switch (it->itsType)
     {
@@ -132,7 +132,7 @@ double GeoDistance(const NFmiSvgPath& thePath, const NFmiPoint& thePoint)
   NFmiPoint lastPoint = firstPoint;
   NFmiPoint center = area.LatLonToWorldXY(thePoint);
 
-  for (NFmiSvgPath::const_iterator it = thePath.begin(); it != thePath.end(); ++it)
+  for (auto it = thePath.begin(); it != thePath.end(); ++it)
   {
     switch (it->itsType)
     {
@@ -193,7 +193,7 @@ void BoundingBox(
 
   bool firstmove = true;
 
-  for (NFmiSvgPath::const_iterator it = thePath.begin(); it != thePath.end(); ++it)
+  for (auto it = thePath.begin(); it != thePath.end(); ++it)
   {
     switch (it->itsType)
     {
@@ -226,7 +226,7 @@ void BoundingBox(
 void LatLonToWorldXY(NFmiSvgPath& thePath, const NFmiArea& theArea)
 {
   NFmiPoint tmp;
-  for (NFmiSvgPath::iterator it = thePath.begin(); it != thePath.end(); ++it)
+  for (auto it = thePath.begin(); it != thePath.end(); ++it)
   {
     switch (it->itsType)
     {

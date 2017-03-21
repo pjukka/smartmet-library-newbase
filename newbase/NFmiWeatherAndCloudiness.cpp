@@ -458,16 +458,16 @@ NFmiDataIdent *NFmiWeatherAndCloudiness::CreateParam(
                     0,
                     "%.1f",
                     kByCombinedParam);
-  NFmiDataIdent *theDataIdent = new NFmiDataIdent(param,
-                                                  theProducer,
-                                                  kContinuousParam,
-                                                  true,
-                                                  true,
-                                                  true,
-                                                  true,
-                                                  true,
-                                                  &subParamBag,
-                                                  theSecondaryProducerList);
+  auto *theDataIdent = new NFmiDataIdent(param,
+                                         theProducer,
+                                         kContinuousParam,
+                                         true,
+                                         true,
+                                         true,
+                                         true,
+                                         true,
+                                         &subParamBag,
+                                         theSecondaryProducerList);
   return theDataIdent;
 }
 
@@ -865,14 +865,10 @@ bool NFmiWeatherAndCloudiness::SetToWeightedMean(NFmiCombinedParam *theCombinedP
   // käytetään qinfosta painotettujen keskiarvojen laskemiseen
   // (latlon:n ympäröivistä 4:stä pisteestä)
 
-  NFmiWeatherAndCloudiness *theWeatherAndCloudiness1 =
-      static_cast<NFmiWeatherAndCloudiness *>(theCombinedParam1);
-  NFmiWeatherAndCloudiness *theWeatherAndCloudiness2 =
-      static_cast<NFmiWeatherAndCloudiness *>(theCombinedParam2);
-  NFmiWeatherAndCloudiness *theWeatherAndCloudiness3 =
-      static_cast<NFmiWeatherAndCloudiness *>(theCombinedParam3);
-  NFmiWeatherAndCloudiness *theWeatherAndCloudiness4 =
-      static_cast<NFmiWeatherAndCloudiness *>(theCombinedParam4);
+  auto *theWeatherAndCloudiness1 = static_cast<NFmiWeatherAndCloudiness *>(theCombinedParam1);
+  auto *theWeatherAndCloudiness2 = static_cast<NFmiWeatherAndCloudiness *>(theCombinedParam2);
+  auto *theWeatherAndCloudiness3 = static_cast<NFmiWeatherAndCloudiness *>(theCombinedParam3);
+  auto *theWeatherAndCloudiness4 = static_cast<NFmiWeatherAndCloudiness *>(theCombinedParam4);
 
   float factorSum = fac1 + fac2;
   if (fac3 != kFloatMissing) factorSum += fac3;
@@ -2007,8 +2003,7 @@ bool NFmiWeatherAndCloudiness::SetToWeightedPeriod(NFmiQueryInfo *info,
       // jos lonlat annettu  pitää ottaa paikan mukaan interpoloitu
       if (!locationMissing) newInfo->InterpolatedValue(theLonLat);
 
-      const NFmiWeatherAndCloudiness *weather =
-          static_cast<const NFmiWeatherAndCloudiness *>(newInfo->CombinedParam());
+      const auto *weather = static_cast<const NFmiWeatherAndCloudiness *>(newInfo->CombinedParam());
       if (weather)
       {
         if (newInfo->Time() < info->Time())
@@ -2193,8 +2188,7 @@ bool NFmiWeatherAndCloudiness::SetToWeightedPeriod(NFmiQueryInfo *info,
       // jos lonlat annettu  pitää ottaa paikan mukaan interpoloitu
       if (!locationMissing) newInfo->InterpolatedValue(theLonLat);
 
-      const NFmiWeatherAndCloudiness *weather =
-          static_cast<const NFmiWeatherAndCloudiness *>(newInfo->CombinedParam());
+      const auto *weather = static_cast<const NFmiWeatherAndCloudiness *>(newInfo->CombinedParam());
       if (weather)
       {
         if (newInfo->Time() < info->Time())
@@ -4491,7 +4485,7 @@ void NFmiWeatherAndCloudiness::CreateIntegrators()
 
 NFmiCombinedParam *NFmiWeatherAndCloudiness::CreateNew(float theInitValue)
 {
-  NFmiWeatherAndCloudiness *kisu = new NFmiWeatherAndCloudiness(*this);
+  auto *kisu = new NFmiWeatherAndCloudiness(*this);
   kisu->LongValue(ConvertFloatToLong(theInitValue));
   return kisu;
 }

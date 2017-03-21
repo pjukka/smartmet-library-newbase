@@ -536,7 +536,7 @@ bool NFmiDataPool::ReadBinaryData(unsigned long theNumber, const char *theFileNa
 
   itsSize = theNumber;
 
-  float *floatdata = new float[theNumber];
+  auto *floatdata = new float[theNumber];
 
   in.read(reinterpret_cast<char *>(floatdata), theNumber * sizeof(float));
 
@@ -593,7 +593,7 @@ bool NFmiDataPool::ReadTextData(unsigned long theNumber, const char *theFileName
   itsSize = theNumber;
   unsigned long i;
 
-  float *floatdata = new float[theNumber];
+  auto *floatdata = new float[theNumber];
 
   for (i = 0; i < theNumber; i++)
     in >> floatdata[i];

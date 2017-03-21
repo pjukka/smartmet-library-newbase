@@ -101,7 +101,7 @@ int NFmiEnumConverter::ToEnum(const char *s)
 {
   EnumTableInit();
 
-  storage_type::iterator iter = itsData.find(s);
+  auto iter = itsData.find(s);
 
   if (iter == itsData.end())
     return itsBadEnum;
@@ -144,7 +144,7 @@ const char *NFmiEnumConverter::ToCharPtr(int theName)
 {
   EnumTableInit();
 
-  for (storage_type::iterator iter = itsData.begin(); iter != itsData.end(); ++iter)
+  for (auto iter = itsData.begin(); iter != itsData.end(); ++iter)
   {
     if (iter->second == theName) return iter->first;
   }

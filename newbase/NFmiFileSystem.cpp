@@ -684,7 +684,7 @@ std::time_t NewestFileTime(const std::list<std::string> &theFileList, const std:
   if (theFileList.empty()) return 0;
 
   time_t newesttime = 0;
-  for (list<string>::const_iterator f = theFileList.begin(); f != theFileList.end(); ++f)
+  for (auto f = theFileList.begin(); f != theFileList.end(); ++f)
   {
     string filename = thePath + '/' + *f;
     if (FileReadable(filename))
@@ -702,7 +702,7 @@ std::string NewestFileName(const std::list<std::string> &theFileList, const std:
 
   std::string newestFileName;
   time_t newesttime = 0;
-  for (list<string>::const_iterator f = theFileList.begin(); f != theFileList.end(); ++f)
+  for (auto f = theFileList.begin(); f != theFileList.end(); ++f)
   {
     string filename = thePath + *f;
     if (FileReadable(filename))
@@ -1456,7 +1456,7 @@ void CleanFilePattern(const std::string &theFilePattern,
     fileMap.insert(std::make_pair(modtime, filename));
   }
 
-  std::map<time_t, std::string>::iterator mapIt = fileMap.begin();
+  auto mapIt = fileMap.begin();
   for (int i = 0; mapIt != fileMap.end(); ++mapIt, i++)
   {
     if (static_cast<int>(fileMap.size()) - i <= theKeepFileCount)

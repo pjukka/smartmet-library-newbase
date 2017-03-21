@@ -202,7 +202,7 @@ void NFmiStringList::Add(NFmiStringList *theList)
 
 void NFmiStringList::Add(NFmiString *theStr, unsigned short theLengthLimitForStrItem)
 {
-  NFmiString *strLeft = new NFmiString(*theStr);
+  auto *strLeft = new NFmiString(*theStr);
   NFmiString *tempStr = 0;
   unsigned long lineLenght = theLengthLimitForStrItem;
   unsigned long ind = 0;
@@ -374,7 +374,7 @@ bool NFmiStringList::Remove()
 {
   if (Current())
   {
-    StorageType::iterator iter = itsList.begin() + itsIndex;
+    auto iter = itsList.begin() + itsIndex;
     delete *iter;
     *iter = 0;
     itsList.erase(iter);

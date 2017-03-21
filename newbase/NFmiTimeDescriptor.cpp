@@ -1067,8 +1067,8 @@ std::istream &NFmiTimeDescriptor::Read(std::istream &file)
   if (itsTimeBagIdent == true)
   {
     {
-      int theSize = static_cast<int>(itsValidTimeBag ? itsValidTimeBag->GetSize()
-                                                     : itsTimeList->NumberOfItems());
+      auto theSize = static_cast<int>(itsValidTimeBag ? itsValidTimeBag->GetSize()
+                                                      : itsTimeList->NumberOfItems());
       itsActivity = new bool[theSize];
       for (int i = 0; i < theSize; i++)
         if (FmiInfoVersion >= 3)

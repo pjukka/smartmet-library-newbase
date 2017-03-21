@@ -1039,7 +1039,7 @@ NFmiGrid *NFmiFastQueryInfo::GridData(bool fUseExisting)
   delete itsTemporaryGridData;
   NFmiDataPool datapool;
   itsTemporaryGridData = new NFmiGrid(*Grid());
-  float *floatarray = new float[Grid()->Size()];
+  auto *floatarray = new float[Grid()->Size()];
 
   unsigned long arrayCount = 0;
   ResetLocation();
@@ -1940,8 +1940,8 @@ void NFmiFastQueryInfo::CroppedValues(
 {
   if (IsGrid())
   {
-    int nx = static_cast<int>(x2 - x1 + 1);
-    int ny = static_cast<int>(y2 - y1 + 1);
+    auto nx = static_cast<int>(x2 - x1 + 1);
+    auto ny = static_cast<int>(y2 - y1 + 1);
 
     theMatrix.Resize(nx, ny, kFloatMissing);
 
@@ -2028,8 +2028,8 @@ void NFmiFastQueryInfo::Values(NFmiDataMatrix<float> &theMatrix,
   if (TimeToNearestStep(theInterpolatedTime, kForward)) Values(values2);
   NFmiMetTime time2(Time());
 
-  float diff1 = static_cast<float>(theInterpolatedTime.DifferenceInMinutes(time1));
-  float diff2 = static_cast<float>(time2.DifferenceInMinutes(time1));
+  auto diff1 = static_cast<float>(theInterpolatedTime.DifferenceInMinutes(time1));
+  auto diff2 = static_cast<float>(time2.DifferenceInMinutes(time1));
 
   float factor = 1 - diff1 / diff2;
 
@@ -2122,8 +2122,8 @@ void NFmiFastQueryInfo::CroppedValues(NFmiDataMatrix<float> &theMatrix,
 
   // Extract leftside and rightside data values
 
-  int nx = static_cast<int>(x2 - x1 + 1);
-  int ny = static_cast<int>(y2 - y1 + 1);
+  auto nx = static_cast<int>(x2 - x1 + 1);
+  auto ny = static_cast<int>(y2 - y1 + 1);
   theMatrix.Resize(nx, ny, kFloatMissing);
 
   NFmiDataMatrix<float> values1;
@@ -2137,8 +2137,8 @@ void NFmiFastQueryInfo::CroppedValues(NFmiDataMatrix<float> &theMatrix,
   if (TimeToNearestStep(theInterpolatedTime, kForward)) CroppedValues(values2, x1, y1, x2, y2);
   NFmiMetTime time2(Time());
 
-  float diff1 = static_cast<float>(theInterpolatedTime.DifferenceInMinutes(time1));
-  float diff2 = static_cast<float>(time2.DifferenceInMinutes(time1));
+  auto diff1 = static_cast<float>(theInterpolatedTime.DifferenceInMinutes(time1));
+  auto diff2 = static_cast<float>(time2.DifferenceInMinutes(time1));
 
   float factor = 1 - diff1 / diff2;
 
@@ -2445,12 +2445,12 @@ float CalcLogInterpolatedWindWectorValue(float x1, float x2, float x, float wv1,
   if (wv1 != kFloatMissing && wv2 != kFloatMissing)
   {
     float wd1 = (static_cast<int>(wv1) % 100) * 10.f;
-    float ws1 = static_cast<float>(static_cast<int>(wv1) / 100);
+    auto ws1 = static_cast<float>(static_cast<int>(wv1) / 100);
     float wd2 = (static_cast<int>(wv2) % 100) * 10.f;
-    float ws2 = static_cast<float>(static_cast<int>(wv2) / 100);
+    auto ws2 = static_cast<float>(static_cast<int>(wv2) / 100);
 
     float wdInterp = CalcLogModLinearInterpolatedValue(x1, x2, x, wd1, wd2, 360);
-    float wsInterp = static_cast<float>(CalcLogInterpolatedValue(x1, x2, x, ws1, ws2));
+    auto wsInterp = static_cast<float>(CalcLogInterpolatedValue(x1, x2, x, ws1, ws2));
     if (wdInterp != kFloatMissing && wsInterp != kFloatMissing)
     {
       y = static_cast<float>(round(wsInterp) * 100 + round(wdInterp / 10.));
@@ -2503,8 +2503,8 @@ bool NFmiFastQueryInfo::GetTimeIndex(const NFmiMetTime &theTime, double &tInd)
       NextTime();  // tämänkin pitää löytyä
       NFmiMetTime time2(Time());
 
-      float totalDiff = static_cast<float>(time2.DifferenceInMinutes(time1));
-      float diff1 = static_cast<float>(theTime.DifferenceInMinutes(time1));
+      auto totalDiff = static_cast<float>(time2.DifferenceInMinutes(time1));
+      auto diff1 = static_cast<float>(theTime.DifferenceInMinutes(time1));
       if (totalDiff)
       {
         float offset = (diff1 / totalDiff);
@@ -2662,7 +2662,7 @@ float NFmiFastQueryInfo::FastPressureLevelValue(double xInd, double yInd, double
     FmiInterpolationMethod interp = Param().GetParam()->InterpolationMethod();
     if (IsGrid() && interp == kLinearly)
     {  // lineaarinen interpolointi
-      FmiParameterName param = static_cast<FmiParameterName>(Param().GetParamIdent());
+      auto param = static_cast<FmiParameterName>(Param().GetParamIdent());
       if (param == kFmiWindDirection || param == kFmiWaveDirection)
         value = static_cast<float>(NFmiInterpolation::ModLinear(factor, value1, value2, 360));
       else
@@ -2711,7 +2711,7 @@ float NFmiFastQueryInfo::FastPressureLevelValue(double xInd, double yInd, double
     FmiInterpolationMethod interp = Param().GetParam()->InterpolationMethod();
     if (IsGrid() && interp == kLinearly)
     {  // lineaarinen interpolointi
-      FmiParameterName param = static_cast<FmiParameterName>(Param().GetParamIdent());
+      auto param = static_cast<FmiParameterName>(Param().GetParamIdent());
       if (param == kFmiWindDirection || param == kFmiWaveDirection)
         value = static_cast<float>(NFmiInterpolation::ModLinear(factor, value1, value2, 360));
       else
@@ -2769,7 +2769,7 @@ float NFmiFastQueryInfo::FastPressureLevelValue(double xInd, double yInd)
     MoveLeft();
     float topLeftValue = FloatValue();
 
-    FmiParameterName param = static_cast<FmiParameterName>(Param().GetParamIdent());
+    auto param = static_cast<FmiParameterName>(Param().GetParamIdent());
     if (param == kFmiWindDirection || param == kFmiWaveDirection)
       value = static_cast<float>(NFmiInterpolation::ModBiLinear(xInd - floor(xInd),
                                                                 yInd - floor(yInd),
@@ -2921,7 +2921,7 @@ float NFmiFastQueryInfo::PressureLevelValue(float P)
       FmiInterpolationMethod interp = Param().GetParam()->InterpolationMethod();
       if (IsGrid() && interp == kLinearly)
       {  // lineaarinen interpolointi
-        FmiParameterName param = static_cast<FmiParameterName>(Param().GetParamIdent());
+        auto param = static_cast<FmiParameterName>(Param().GetParamIdent());
         if (param == kFmiWindDirection || param == kFmiWaveDirection)
         {
           float factor = ::fabs(P - lastPressure) / ::fabs(lastPressure - pressureValue);
@@ -2974,7 +2974,7 @@ float NFmiFastQueryInfo::PressureLevelValue(float P, const NFmiPoint &theLatlon)
       PreviousLevel();
       float value1 = InterpolatedValue(theLatlon);
 
-      FmiParameterName param = static_cast<FmiParameterName>(Param().GetParamIdent());
+      auto param = static_cast<FmiParameterName>(Param().GetParamIdent());
       if (param != kFmiWindDirection && param != kFmiWaveDirection)
         return static_cast<float>(CalcLogInterpolatedValue(p1, p2, P, value1, value2));
 
@@ -3075,7 +3075,7 @@ float NFmiFastQueryInfo::HeightValue(float theHeight)
           if (IsGrid() && interp == kLinearly)
           {  // lineaarinen interpolointi
             float factor = ::fabs(theHeight - lastHeight) / ::fabs(lastHeight - heightValue);
-            FmiParameterName param = static_cast<FmiParameterName>(Param().GetParamIdent());
+            auto param = static_cast<FmiParameterName>(Param().GetParamIdent());
             if (param == kFmiWindDirection || param == kFmiWaveDirection)
               value = static_cast<float>(
                   NFmiInterpolation::ModLinear((1. - factor), value1, value2, 360));
@@ -3128,7 +3128,7 @@ float NFmiFastQueryInfo::HeightValue(float theHeight, const NFmiPoint &theLatlon
       MoveRight();
       float topRightValue = HeightValue(theHeight);
 
-      FmiParameterName param = static_cast<FmiParameterName>(Param().GetParamIdent());
+      auto param = static_cast<FmiParameterName>(Param().GetParamIdent());
       if (param == kFmiWindDirection || param == kFmiWaveDirection)
         value = static_cast<float>(NFmiInterpolation::ModBiLinear(gpoint.X() - floor(gpoint.X()),
                                                                   gpoint.Y() - floor(gpoint.Y()),
@@ -3248,7 +3248,7 @@ static float GetValueAtHeight(NFmiDataMatrix<float> &theParValues,
   if (::IsInsideRange(tmpVec, theHeight) == false) return kFloatMissing;
 
   // haetaan 1. theHeight:ia suuremman arvon sijainti
-  checkedVector<float>::iterator pos = std::lower_bound(tmpVec.begin(), tmpVec.end(), theHeight);
+  auto pos = std::lower_bound(tmpVec.begin(), tmpVec.end(), theHeight);
   if (pos == tmpVec.end())  // ei voida interpoloida korkeuden mukaan niss tapauksissa
     return kFloatMissing;
   else if (pos == tmpVec.begin())  // voidaan palauttaa suoraan 1. kohdan arvo
@@ -3298,8 +3298,7 @@ static float GetValueAtPressure(NFmiDataMatrix<float> &theParValues,
   // ja jos ollaan ala ja ylä arvojen ulkopuolella, palautetaan missing arvo.)
   if (::IsInsideRange(tmpVec, theP) == false) return kFloatMissing;
 
-  checkedVector<float>::reverse_iterator pos =
-      std::lower_bound(tmpVec.rbegin(), tmpVec.rend(), theP);
+  auto pos = std::lower_bound(tmpVec.rbegin(), tmpVec.rend(), theP);
   if (pos == tmpVec.rend())  // ei voida interpoloida korkeuden mukaan niss tapauksissa
     return kFloatMissing;
   else if (pos == tmpVec.rbegin())  // voidaan palauttaa suoraan viimeisen kohdan arvo
@@ -3534,7 +3533,7 @@ void NFmiFastQueryInfo::CrossSectionValuesLogP(NFmiDataMatrix<float> &theValues,
   else if (PressureDataAvailable())
   {
     FmiInterpolationMethod interp = Param().GetParam()->InterpolationMethod();
-    FmiParameterName paramId = static_cast<FmiParameterName>(Param().GetParam()->GetIdent());
+    auto paramId = static_cast<FmiParameterName>(Param().GetParam()->GetIdent());
     // 1. Kerää ensin level data halutulle parametrille (paikka+aika intepolointeineen)
     // väliaikaiseen matriisiin
     NFmiDataMatrix<float> paramValues =
@@ -3737,7 +3736,7 @@ void NFmiFastQueryInfo::TimeCrossSectionValuesLogP(NFmiDataMatrix<float> &theVal
   else if (PressureDataAvailable())
   {
     FmiInterpolationMethod interp = Param().GetParam()->InterpolationMethod();
-    FmiParameterName paramId = static_cast<FmiParameterName>(Param().GetParam()->GetIdent());
+    auto paramId = static_cast<FmiParameterName>(Param().GetParam()->GetIdent());
     // 1. Kerää ensin level data halutulle parametrille (paikka+aika intepolointeineen)
     // väliaikaiseen matriisiin
     NFmiDataMatrix<float> paramValues =
@@ -4063,7 +4062,7 @@ void NFmiFastQueryInfo::RouteCrossSectionValuesLogP(NFmiDataMatrix<float> &theVa
   if (PressureDataAvailable())
   {
     FmiInterpolationMethod interp = Param().GetParam()->InterpolationMethod();
-    FmiParameterName paramId = static_cast<FmiParameterName>(Param().GetParam()->GetIdent());
+    auto paramId = static_cast<FmiParameterName>(Param().GetParam()->GetIdent());
     // 1. Kerää ensin level data halutulle parametrille (paikka+aika intepolointeineen)
     // väliaikaiseen matriisiin
     NFmiDataMatrix<float> paramValues =
@@ -4158,7 +4157,7 @@ void NFmiFastQueryInfo::FlightRouteValuesLogP(NFmiDataMatrix<float> &theValues,
     const checkedVector<NFmiMetTime> &times = localTimes ? pointTimes : thePointTimes;
 
     FmiInterpolationMethod interp = Param().GetParam()->InterpolationMethod();
-    FmiParameterName paramId = static_cast<FmiParameterName>(Param().GetParam()->GetIdent());
+    auto paramId = static_cast<FmiParameterName>(Param().GetParam()->GetIdent());
     // 1. Kerï¿½ï¿½ ensin level data halutulle parametrille (paikka+aika intepolointeineen)
     // vï¿½liaikaiseen matriisiin
     NFmiDataMatrix<float> paramValues = CalcRouteCrossSectionLeveldata(*this, points, times);
@@ -4281,7 +4280,7 @@ void NFmiFastQueryInfo::PressureValues(NFmiDataMatrix<float> &theValues,
   NFmiGrid usedGrid(theWantedGrid);
   theValues.Resize(usedGrid.XNumber(), usedGrid.YNumber(), kFloatMissing);
 
-  FmiParameterName id = FmiParameterName(Param().GetParam()->GetIdent());
+  auto id = FmiParameterName(Param().GetParam()->GetIdent());
 
   if (id == kFmiWindUMS || id == kFmiWindVMS)
   {
@@ -4355,7 +4354,7 @@ void NFmiFastQueryInfo::GridValues(NFmiDataMatrix<float> &theValues,
   theValues.Resize(usedGrid.XNumber(), usedGrid.YNumber(), kFloatMissing);
   bool timeInterpolationNeeded = (Time(theInterpolatedTime) == false);
 
-  FmiParameterName id = FmiParameterName(Param().GetParam()->GetIdent());
+  auto id = FmiParameterName(Param().GetParam()->GetIdent());
 
   if (id == kFmiWindUMS || id == kFmiWindVMS)
   {
@@ -4458,7 +4457,7 @@ void NFmiFastQueryInfo::HeightValues(NFmiDataMatrix<float> &theValues,
   NFmiGrid usedGrid(theWantedGrid);
   theValues.Resize(usedGrid.XNumber(), usedGrid.YNumber(), kFloatMissing);
 
-  FmiParameterName id = FmiParameterName(Param().GetParam()->GetIdent());
+  auto id = FmiParameterName(Param().GetParam()->GetIdent());
 
   if (id == kFmiWindUMS || id == kFmiWindVMS)
   {
@@ -4554,7 +4553,7 @@ float NFmiFastQueryInfo::PeekParamValue(unsigned long theParamIndex)
   {
     if (IsSubParamUsed())
     {  // Jos ali parametri on käytössä, ei voida optimoida
-      FmiParameterName oldParam = static_cast<FmiParameterName>(Param().GetParamIdent());
+      auto oldParam = static_cast<FmiParameterName>(Param().GetParamIdent());
       ParamIndex(theParamIndex);
       SetIsSubParamUsed(false);
       float value = FloatValue();
@@ -5350,8 +5349,8 @@ void NFmiFastQueryInfo::LandscapeValues(NFmiDataMatrix<float> &theMatrix,
     LandscapeValues(values2, theDEMMatrix, theWaterFlagMatrix);
   NFmiMetTime time2(Time());
 
-  float diff1 = static_cast<float>(theInterpolatedTime.DifferenceInMinutes(time1));
-  float diff2 = static_cast<float>(time2.DifferenceInMinutes(time1));
+  auto diff1 = static_cast<float>(theInterpolatedTime.DifferenceInMinutes(time1));
+  auto diff2 = static_cast<float>(time2.DifferenceInMinutes(time1));
 
   float factor = 1 - diff1 / diff2;
 

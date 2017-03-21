@@ -143,7 +143,7 @@ NFmiRawData::Pimple::Pimple(const Pimple &other)
   }
   else
   {
-    char *dst = reinterpret_cast<char *>(itsData);
+    auto *dst = reinterpret_cast<char *>(itsData);
     const char *src = other.itsMappedFile->const_data() + other.itsOffset;
     memcpy(dst, src, itsSize * sizeof(float));
   }
@@ -266,7 +266,7 @@ NFmiRawData::Pimple::Pimple(istream &file, size_t size, bool endianswap)
     char ch;
     file.get(ch);
 
-    char *ptr = reinterpret_cast<char *>(itsData);
+    auto *ptr = reinterpret_cast<char *>(itsData);
     file.read(ptr, poolsize);
   }
 
@@ -275,7 +275,7 @@ NFmiRawData::Pimple::Pimple(istream &file, size_t size, bool endianswap)
   if (itsEndianSwapFlag)
   {
     char tmp1, tmp2, tmp3, tmp4;
-    char *ptr = reinterpret_cast<char *>(itsData);
+    auto *ptr = reinterpret_cast<char *>(itsData);
     for (size_t i = 3; i < itsSize * sizeof(float); i += 4)
     {
       tmp1 = ptr[i - 3];
@@ -341,7 +341,7 @@ bool NFmiRawData::Pimple::Init(size_t size,
 
   if (fInitialize)
   {
-    float *data = reinterpret_cast<float *>(itsMappedFile->data() + itsOffset);
+    auto *data = reinterpret_cast<float *>(itsMappedFile->data() + itsOffset);
     for (std::size_t i = 0; i < itsSize; i++)
       data[i] = kFloatMissing;
   }
@@ -437,7 +437,7 @@ float NFmiRawData::Pimple::GetValue(size_t index) const
 
   if (itsData) return itsData[index];
 
-  const float *ptr = reinterpret_cast<const float *>(itsMappedFile->const_data() + itsOffset);
+  const auto *ptr = reinterpret_cast<const float *>(itsMappedFile->const_data() + itsOffset);
   return ptr[index];
 }
 
@@ -461,7 +461,7 @@ bool NFmiRawData::Pimple::SetValue(size_t index, float value)
   else if (itsOffset > 0)
   {
     // We have mmapped output data
-    float *ptr = reinterpret_cast<float *>(itsMappedFile->data() + itsOffset);
+    auto *ptr = reinterpret_cast<float *>(itsMappedFile->data() + itsOffset);
     ptr[index] = value;
     return true;
   }
@@ -498,7 +498,7 @@ ostream &NFmiRawData::Pimple::Write(ostream &file) const
   {
     if (itsData != 0)
     {
-      char *ptr = reinterpret_cast<char *>(itsData);
+      auto *ptr = reinterpret_cast<char *>(itsData);
       file.write(ptr, itsSize * sizeof(float));
     }
     else
@@ -533,7 +533,7 @@ void NFmiRawData::Pimple::Backup(char *ptr) const
   Unmap();
 #endif
 
-  char *src = reinterpret_cast<char *>(itsData);
+  auto *src = reinterpret_cast<char *>(itsData);
   memcpy(ptr, src, itsSize * sizeof(float));
 }
 
@@ -553,7 +553,7 @@ void NFmiRawData::Pimple::Undo(char *ptr)
 #if NFMIRAWDATA_ENABLE_UNDO_REDO
   Unmap();
 #endif
-  char *src = reinterpret_cast<char *>(itsData);
+  auto *src = reinterpret_cast<char *>(itsData);
   memcpy(src, ptr, itsSize * sizeof(float));
 }
 

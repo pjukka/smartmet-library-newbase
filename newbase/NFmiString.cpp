@@ -218,7 +218,7 @@ NFmiString &NFmiString::Add(const unsigned char *aChar)
   if (fReservedLength <= static_cast<long>(fLength + strlen(reinterpret_cast<const char *>(aChar))))
   {
     fReservedLength = fLength + strlen(reinterpret_cast<const char *>(aChar)) + 1;
-    unsigned char *aHelp = new unsigned char[fReservedLength];
+    auto *aHelp = new unsigned char[fReservedLength];
     strcpy(reinterpret_cast<char *>(aHelp), reinterpret_cast<char *>(fChar));
     delete[] static_cast<unsigned char *>(fChar);
     fChar = aHelp;
@@ -385,7 +385,7 @@ char *NFmiString::GetCharsPtr(unsigned long firstChar, unsigned long length) con
   SizeCheck(firstChar);
   SizeCheck(firstChar + length - 1);
 
-  NFmiString *back = new NFmiString(length);
+  auto *back = new NFmiString(length);
 
   firstChar--;
   for (unsigned long i = 0; i < back->fLength; i++)
@@ -696,7 +696,7 @@ void NFmiString::FirstCharToUpper(unsigned long theUpperIndex)
     char *theChar = ::_strupr((char *)theLetter);
 
 #else
-    char *theChar = static_cast<char *>(theLetter);
+    auto *theChar = static_cast<char *>(theLetter);
     *theChar = toupper(*theChar);
 #endif
     fChar[theUpperIndex] = theChar[theUpperIndex];

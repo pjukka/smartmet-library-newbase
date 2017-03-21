@@ -551,7 +551,7 @@ struct LocationIndexDistanceGreater
 const checkedVector<pair<int, double> > NFmiLocationBag::NearestLocations(
     const NFmiLocation &theLocation, int theMaxWantedLocations, double theMaxDistance) const
 {
-  int size = static_cast<int>(this->GetSize());
+  auto size = static_cast<int>(this->GetSize());
   checkedVector<IndDistPari> tempValues(size, make_pair(-1, kFloatMissing));
   for (int i = 0; i < size; i++)
     tempValues[i] = make_pair(i, theLocation.Distance(*this->itsLocations[i]));
@@ -587,14 +587,13 @@ const checkedVector<pair<int, double> > NFmiLocationBag::NearestLocations(
 
   // haetaan kaikki annetun säteen sisällä olevat paikat
   std::sort(tempValues.begin(), tempValues.end(), LocationIndexDistanceLess<IndDistPari>());
-  checkedVector<IndDistPari>::iterator pos =
-      std::find_if(tempValues.begin(),
-                   tempValues.end(),
-                   LocationIndexDistanceGreater<IndDistPari>(theMaxDistance));
+  auto pos = std::find_if(tempValues.begin(),
+                          tempValues.end(),
+                          LocationIndexDistanceGreater<IndDistPari>(theMaxDistance));
 
   if (theMaxWantedLocations != -1)
   {
-    checkedVector<IndDistPari>::iterator maxWantedPos = tempValues.begin() + theMaxWantedLocations;
+    auto maxWantedPos = tempValues.begin() + theMaxWantedLocations;
     if (pos > maxWantedPos) pos = maxWantedPos;
   }
 

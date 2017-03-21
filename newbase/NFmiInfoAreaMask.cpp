@@ -1609,7 +1609,7 @@ static bool IsUnder(float theSearchedValue, float theCurrentValue)
 unsigned long NFmiInfoAreaMaskVertFunc::GetNonMissingStartLevelIndex(
     const NFmiLocationCache &theLocationCache)
 {
-  for (int levelIndex = static_cast<int>(itsStartLevelIndex);
+  for (auto levelIndex = static_cast<int>(itsStartLevelIndex);
        fReverseLevels ? levelIndex >= static_cast<int>(itsEndLevelIndex)
                       : levelIndex <= static_cast<int>(itsEndLevelIndex);
        levelIndex += itsLevelIncrement)
@@ -1687,7 +1687,7 @@ float NFmiInfoAreaMaskVertFunc::DoFindFunction(const NFmiLocationCache &theLocat
     height1 = GetLevelHeightValue(theLocationCache);
 
     bool isUnder = ::IsUnder(searchedValue, value1);
-    for (int levelIndex = static_cast<int>(realStartLevelIndex + itsLevelIncrement);
+    for (auto levelIndex = static_cast<int>(realStartLevelIndex + itsLevelIncrement);
          fReverseLevels ? levelIndex >= static_cast<int>(itsEndLevelIndex)
                         : levelIndex <= static_cast<int>(itsEndLevelIndex);
          levelIndex += itsLevelIncrement)
@@ -1829,7 +1829,7 @@ float NFmiInfoAreaMaskVertFunc::DoNormalFunction(const NFmiLocationCache &theLoc
   if (fReturnHeightValue)
   {
     DoubleValueSearcher valueSearcher(itsPrimaryFunc == NFmiAreaMask::MaxH);
-    for (int levelIndex = static_cast<int>(itsStartLevelIndex);
+    for (auto levelIndex = static_cast<int>(itsStartLevelIndex);
          fReverseLevels ? levelIndex >= static_cast<int>(itsEndLevelIndex)
                         : levelIndex <= static_cast<int>(itsEndLevelIndex);
          levelIndex += itsLevelIncrement)
@@ -1846,7 +1846,7 @@ float NFmiInfoAreaMaskVertFunc::DoNormalFunction(const NFmiLocationCache &theLoc
     // 3. Nollaa integraattori-laskuri
     itsFunctionModifier->Clear();
     // 7. käy levelit läpi ja sijoita arvot itsFunctionModifier:iin
-    for (int levelIndex = static_cast<int>(itsStartLevelIndex);
+    for (auto levelIndex = static_cast<int>(itsStartLevelIndex);
          fReverseLevels ? levelIndex >= static_cast<int>(itsEndLevelIndex)
                         : levelIndex <= static_cast<int>(itsEndLevelIndex);
          levelIndex += itsLevelIncrement)
@@ -1953,7 +1953,7 @@ float NFmiInfoAreaMaskVertConditionalFunc::DoFindConditionalFunction(
 {
   if (fReturnHeightValue)
   {
-    for (int levelIndex = static_cast<int>(itsStartLevelIndex);
+    for (auto levelIndex = static_cast<int>(itsStartLevelIndex);
          fReverseLevels ? levelIndex >= static_cast<int>(itsEndLevelIndex)
                         : levelIndex <= static_cast<int>(itsEndLevelIndex);
          levelIndex += itsLevelIncrement)
@@ -2139,7 +2139,7 @@ double NFmiInfoAreaMaskTimeVertFunc::Value(const NFmiCalculationParams &theCalcu
     {
       itsInfo->TimeIndex(timeIndex);
       // for -loopin juoksutus kopsattu NFmiInfoAreaMaskVertFunc::DoNormalFunction -metodista
-      for (int levelIndex = static_cast<int>(itsStartLevelIndex);
+      for (auto levelIndex = static_cast<int>(itsStartLevelIndex);
            fReverseLevels ? levelIndex >= static_cast<int>(itsEndLevelIndex)
                           : levelIndex <= static_cast<int>(itsEndLevelIndex);
            levelIndex += itsLevelIncrement)
@@ -2318,7 +2318,7 @@ NFmiMetTime NFmiInfoAreaMaskProbFunc::CalcTimeLoopLimits(
       interpolationTime = startTime;
     else
     {
-      unsigned long usedTimeRangeInMinutes = static_cast<unsigned long>(
+      auto usedTimeRangeInMinutes = static_cast<unsigned long>(
           std::abs(theEndTimeOffsetInHours - theStartTimeOffsetInHours) * 60);
       bool foundStartTime = theInfo->FindNearestTime(startTime, kForward, usedTimeRangeInMinutes);
       *theStartTimeIndexOut = theInfo->TimeIndex();

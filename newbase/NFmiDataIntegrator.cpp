@@ -146,7 +146,7 @@ float Integrate(NFmiFastQueryInfo& theQI,
 {
   if (theIndexMask.empty()) return kFloatMissing;
 
-  for (NFmiIndexMask::const_iterator it = theIndexMask.begin(); it != theIndexMask.end(); ++it)
+  for (auto it = theIndexMask.begin(); it != theIndexMask.end(); ++it)
   {
     theQI.LocationIndex(*it);
     const float tmp = theQI.FloatValue();
@@ -232,7 +232,7 @@ float Integrate(NFmiFastQueryInfo& theQI,
 
   if (theIndexMask.empty()) return kFloatMissing;
 
-  for (NFmiIndexMask::const_iterator it = theIndexMask.begin(); it != theIndexMask.end(); ++it)
+  for (auto it = theIndexMask.begin(); it != theIndexMask.end(); ++it)
   {
     theTimeModifier.Clear();
 
@@ -349,7 +349,7 @@ float Integrate(NFmiFastQueryInfo& theQI,
 
   if (theIndexMask.empty()) return kFloatMissing;
 
-  for (NFmiIndexMask::const_iterator it = theIndexMask.begin(); it != theIndexMask.end(); ++it)
+  for (auto it = theIndexMask.begin(); it != theIndexMask.end(); ++it)
   {
     theMainTimeModifier.Clear();
 

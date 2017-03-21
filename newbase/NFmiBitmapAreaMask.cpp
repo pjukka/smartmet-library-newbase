@@ -286,8 +286,8 @@ int NFmiBitmapAreaMask::LatLon2Index(const NFmiPoint& theLatLon) const
   if (itsArea)
   {
     NFmiPoint xyPoint(itsArea->ToXY(theLatLon));  // tämä on 'suhteellisessa' 0,0 - 1,1 maailmassa
-    int x = static_cast<int>(round((itsGridXSize - 1) * itsArea->Width() * xyPoint.X()));
-    int y = static_cast<int>(round((itsGridYSize - 1) * itsArea->Height() * xyPoint.Y()));
+    auto x = static_cast<int>(round((itsGridXSize - 1) * itsArea->Width() * xyPoint.X()));
+    auto y = static_cast<int>(round((itsGridYSize - 1) * itsArea->Height() * xyPoint.Y()));
     // pitää vielä kääntää
     y = static_cast<int>(round((itsGridYSize - 1) * itsArea->Height() - y));
     int finalIndex = y * itsGridXSize + x;

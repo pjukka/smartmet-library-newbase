@@ -899,7 +899,7 @@ bool NFmiParamBag::Remove()
     return false;
   else
   {
-    checkedVector<NFmiDataIdent>::iterator it = itsParamsVector.begin();
+    auto it = itsParamsVector.begin();
     it += itsIndex;
     itsParamsVector.erase(it);
     SetSize(itsParamsVector.size());

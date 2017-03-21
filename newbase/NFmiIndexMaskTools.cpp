@@ -665,7 +665,7 @@ void Insert(NFmiNearTree<NFmiPoint> &theTree, const NFmiSvgPath &thePath, double
 
   NFmiPoint lastPoint(0, 0);
 
-  for (NFmiSvgPath::const_iterator it = thePath.begin(); it != thePath.end(); ++it)
+  for (auto it = thePath.begin(); it != thePath.end(); ++it)
   {
     switch (it->itsType)
     {

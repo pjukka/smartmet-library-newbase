@@ -474,8 +474,8 @@ bool NFmiCommentStripper::StripSubStrings(const string& theString)
 bool NFmiCommentStripper::StripNested(checkedVector<unsigned long> theBeginPositions,
                                       checkedVector<unsigned long> theEndPositions)
 {
-  checkedVector<unsigned long>::iterator startFiltsInd = theBeginPositions.begin();
-  checkedVector<unsigned long>::iterator endFiltsInd = theEndPositions.begin();
+  auto startFiltsInd = theBeginPositions.begin();
+  auto endFiltsInd = theEndPositions.begin();
   int posStart, posEnd, startOfErase = 0;
   int eraseSum = 0;
   int level = 0;

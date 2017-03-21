@@ -288,7 +288,7 @@ NFmiArea *NFmiArea::CreateNewAreaByWorldRect(const NFmiRect &theWorldRect)
 
   if (!IsInside(newBottomLeftLatLon) || !IsInside(newTopRightLatLon)) return 0;
 
-  NFmiArea *newArea = static_cast<NFmiArea *>(NewArea(newBottomLeftLatLon, newTopRightLatLon));
+  auto *newArea = static_cast<NFmiArea *>(NewArea(newBottomLeftLatLon, newTopRightLatLon));
 
   if (!IsInside(*newArea)) return 0;
 

@@ -156,7 +156,7 @@ void NFmiTimeBag::Reset(FmiDirection directionToIter)
 
 bool NFmiTimeBag::SetCurrent(const NFmiMetTime &theTime)
 {
-  long resolutionInMinutes = static_cast<long>(itsResolution);
+  auto resolutionInMinutes = static_cast<long>(itsResolution);
   assert(resolutionInMinutes);
   int diffFromFirstTimeInMinutes = theTime.DifferenceInMinutes(itsFirstTime);
   if (diffFromFirstTimeInMinutes >= 0 && (diffFromFirstTimeInMinutes % resolutionInMinutes == 0))

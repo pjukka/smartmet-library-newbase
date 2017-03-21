@@ -237,7 +237,7 @@ bool NFmiTimeZoneRing::Inside(const NFmiPoint& thePoint) const
   const double min_lon = -180.0;
   const double min_y = thePoint.Y() - MaxLength;
   NFmiTimeZoneEdge dummy(min_lon, min_y, min_lon, min_y);
-  storage_type::const_iterator it = itsData.lower_bound(dummy);
+  auto it = itsData.lower_bound(dummy);
 
   double x = thePoint.X();
   double y = thePoint.Y();
@@ -324,7 +324,7 @@ bool NFmiTimeZonePolygon::Inside(const NFmiPoint& thePoint) const
   if (itsRings.empty()) return false;
 
   int i = 0;
-  for (storage_type::const_iterator it = itsRings.begin(); it != itsRings.end(); ++it)
+  for (auto it = itsRings.begin(); it != itsRings.end(); ++it)
   {
     if (it->Inside(thePoint)) return it->Clockwise();
     i++;
@@ -363,7 +363,7 @@ float NFmiTimeZoneFinderPimple::Find(const NFmiPoint& theLatLon) const
   if (theLatLon.X() == kFloatMissing || theLatLon.Y() == kFloatMissing) return kFloatMissing;
 
   int i = 0;
-  for (storage_type::const_iterator it = itsData.begin(); it != itsData.end(); ++it)
+  for (auto it = itsData.begin(); it != itsData.end(); ++it)
   {
     if (it->Inside(theLatLon)) return it->TimeZone();
     i++;

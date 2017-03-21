@@ -822,7 +822,7 @@ short NFmiTime::CalcZoneDifferenceHour(float theLongitude) const
   ::localtime_r(&aclock, &newtime);
 #endif
 
-  short theWinterTimeDiff = short(newtime.tm_isdst);
+  auto theWinterTimeDiff = short(newtime.tm_isdst);
 
   if (theLongitude < 0)
     return static_cast<short>((((-1 * theLongitude) + 7.5) / 15) + theWinterTimeDiff);

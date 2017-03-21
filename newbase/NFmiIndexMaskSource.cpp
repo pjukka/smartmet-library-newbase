@@ -113,7 +113,7 @@ const NFmiIndexMask& NFmiIndexMaskSource::Find(const NFmiMetTime& theTime) const
   if (itsData.empty()) return empty_mask;
 
   // find first time >= theTime
-  storage_type::const_iterator it = itsData.lower_bound(theTime);
+  auto it = itsData.lower_bound(theTime);
 
   // Return last mask when the time is too late
   if (it == itsData.end()) return (--it)->second;

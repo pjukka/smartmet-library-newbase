@@ -69,7 +69,7 @@ void NFmiDataModifierWindChill::Calculate(float /* theValue */)
 {
   if (itsQueryInfo)
   {
-    FmiParameterName oldParam = FmiParameterName(itsQueryInfo->Param().GetParamIdent());
+    auto oldParam = FmiParameterName(itsQueryInfo->Param().GetParamIdent());
 
     // unsigned long oldPlaceIndex = itsQueryInfo->LocationIndex(); // tämä toimii vain uudessa
     // newbase:ssa (parempi!)

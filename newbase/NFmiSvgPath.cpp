@@ -357,7 +357,7 @@ std::ostream& NFmiSvgPath::Write(std::ostream& file) const
   if (itsData.size() > 0)
   {
     file << '"';
-    for (const_iterator it = begin(); it != end(); ++it)
+    for (auto it = begin(); it != end(); ++it)
     {
       if (it != begin()) file << ' ';
 
@@ -421,7 +421,7 @@ bool NFmiSvgPath::IsInside(const NFmiPoint& thePoint) const
 
   if (!itsBBoxValid)
   {
-    for (const_iterator it = itsData.begin(); it != itsData.end(); ++it)
+    for (auto it = itsData.begin(); it != itsData.end(); ++it)
     {
       switch (it->itsType)
       {
@@ -458,14 +458,14 @@ bool NFmiSvgPath::IsInside(const NFmiPoint& thePoint) const
 
   // Joudutaan laskemaan suoraan
 
-  NFmiSvgPath::const_iterator firstPoint = begin();
-  NFmiSvgPath::const_iterator p1 = begin();
-  NFmiSvgPath::const_iterator p2 = begin();
+  auto firstPoint = begin();
+  auto p1 = begin();
+  auto p2 = begin();
 
   int counter = 0;
 
   // hypätään ensimmäisen käskyn yli, se on aina moveto
-  NFmiSvgPath::const_iterator it = begin();
+  auto it = begin();
   for (++it; it != end(); ++it)
   {
     p2 = it;

@@ -210,7 +210,7 @@ void NFmiTimeList::Add(NFmiMetTime *theItem, bool fAllowDuplicates, bool fAddEnd
 {
   // etsitään ensimmäinen kohta, jossa vanha aika >= uusi aika
 
-  checkedVector<NFmiMetTime *>::iterator it(itsVectorList.begin());
+  auto it(itsVectorList.begin());
 
   if (fAddEnd)  // pakko optimoida, koska salamadatassa on jumalattomasti aikoja ja ne ovat jo
                 // järjestyksessä!!!
@@ -440,7 +440,7 @@ bool NFmiTimeList::Find(const NFmiMetTime &theTime)
 {
   itsIndex = -1;
   if (itsVectorList.empty()) return false;
-  checkedVector<NFmiMetTime *>::iterator pos = std::lower_bound(
+  auto pos = std::lower_bound(
       itsVectorList.begin(), itsVectorList.end(), &theTime, ComparePtrs<NFmiMetTime>());
   if (pos != itsVectorList.end())
   {
@@ -485,7 +485,7 @@ bool NFmiTimeList::FindNearestTime(const NFmiMetTime &theTime,
 {
   if (itsVectorList.empty()) return false;
 
-  checkedVector<NFmiMetTime *>::iterator firstNotLess = std::lower_bound(
+  auto firstNotLess = std::lower_bound(
       itsVectorList.begin(), itsVectorList.end(), &theTime, ComparePtrs<NFmiMetTime>());
   if (firstNotLess != itsVectorList.end() && *(*firstNotLess) == theTime)
   {
@@ -549,10 +549,10 @@ bool NFmiTimeList::FindNearestTime(checkedVector<NFmiMetTime *>::iterator &first
   else
   {
     // Must check the first not-less time and the previous time
-    checkedVector<NFmiMetTime *>::iterator timeIter2 = firstNotLess;
+    auto timeIter2 = firstNotLess;
     double diff2 = std::fabs(theTime.DifferenceInMinutes(*(*timeIter2)));
     firstNotLess--;
-    checkedVector<NFmiMetTime *>::iterator timeIter1 = firstNotLess;
+    auto timeIter1 = firstNotLess;
     double diff1 = std::fabs(theTime.DifferenceInMinutes(*(*timeIter1)));
     // first time in the list has precedence if difference is equal
     if (diff1 <= diff2)
@@ -632,7 +632,7 @@ const NFmiTimeList NFmiTimeList::Combine(NFmiTimeList &theList,
   NFmiTimeList combinedList(*this);
   for (theList.Reset(); theList.Next();)
   {
-    NFmiMetTime *tempTime = new NFmiMetTime(*theList.Current());
+    auto *tempTime = new NFmiMetTime(*theList.Current());
     combinedList.Add(tempTime, false, false);  // 1. false ei salli duplikaatteja, 2. false etsii
                                                // ajan paikan olemassa olevasta listasta
   }

@@ -784,7 +784,7 @@ float NFmiSuperSmartInfo::VarianceFloatValue() const
     DataAccessLevel oldAccessLevel = itsFloatValueAccessLevel;
     itsFloatValueAccessLevel = kNormalAccess;
 
-    float value = static_cast<float>(itsCurrentVarianceCalculator->FloatValue());
+    auto value = static_cast<float>(itsCurrentVarianceCalculator->FloatValue());
 
     // palautetaan accesslevel
     itsFloatValueAccessLevel = oldAccessLevel;
@@ -809,7 +809,7 @@ float NFmiSuperSmartInfo::VariationFloatValue() const
     DataAccessLevel oldAccessLevel = itsFloatValueAccessLevel;
     itsFloatValueAccessLevel = kTimeIntegrationAccess;
 
-    float value = static_cast<float>(itsVariationCalculator->FloatValue());
+    auto value = static_cast<float>(itsVariationCalculator->FloatValue());
 
     // palautetaan accesslevel
     itsFloatValueAccessLevel = oldAccessLevel;
@@ -836,7 +836,7 @@ float NFmiSuperSmartInfo::TimeIntegrationFloatValue() const
     DataAccessLevel oldAccessLevel = itsFloatValueAccessLevel;
     itsFloatValueAccessLevel = kVarianceAccess;
 
-    float value = static_cast<float>(itsTimeIntegrationCalculator->FloatValue());
+    auto value = static_cast<float>(itsTimeIntegrationCalculator->FloatValue());
 
     itsFloatValueAccessLevel = oldAccessLevel;
     return value;
@@ -916,7 +916,7 @@ float NFmiSuperSmartInfo::CalculationFloatValue() const
     DataAccessLevel oldAccessLevel = itsFloatValueAccessLevel;
     itsFloatValueAccessLevel = kVariationAccess;
 
-    float value = static_cast<float>(itsCalculator->FloatValue());
+    auto value = static_cast<float>(itsCalculator->FloatValue());
 
     itsFloatValueAccessLevel = oldAccessLevel;
     return value;
@@ -1259,14 +1259,14 @@ NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateHelperBinaryMask(int theUsedVariat
 {
   if (theUsedVariationFactor == 0) return CreateZeroVariationHelperBinaryMask();
 
-  NFmiBitmapAreaMask* helperMask =
+  auto* helperMask =
       new NFmiBitmapAreaMask(itsGridXNumber, itsGridYNumber, Area(), &Param(), Level());
   if (!helperMask) return 0;
 
   int moveByX = theUsedVariationFactor * 2 + 1;
   int moveByY = theUsedVariationFactor * 2 + 1;
-  int left = static_cast<int>(itsXYMaskBoundingBox.Left());
-  int right = static_cast<int>(itsXYMaskBoundingBox.Right());
+  auto left = static_cast<int>(itsXYMaskBoundingBox.Left());
+  auto right = static_cast<int>(itsXYMaskBoundingBox.Right());
 
   int moveXFromStart = 0;
   int moveXFactor = (right - left) % (moveByX);
@@ -1276,8 +1276,8 @@ NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateHelperBinaryMask(int theUsedVariat
     moveByX--;
   else if (moveXFactor > 1)
     moveXFromStart = moveXFactor / 2;
-  int top = static_cast<int>(itsXYMaskBoundingBox.Top());
-  int bottom = static_cast<int>(itsXYMaskBoundingBox.Bottom());
+  auto top = static_cast<int>(itsXYMaskBoundingBox.Top());
+  auto bottom = static_cast<int>(itsXYMaskBoundingBox.Bottom());
   int moveYFromStart = 0;
   int moveYFactor = (bottom - top) % (moveByY);
   bool specialYCase = ((moveByY > 3) && ((moveByY - moveYFactor) == 1));
@@ -1307,7 +1307,7 @@ NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateHelperBinaryMask(int theUsedVariat
 NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateZeroVariationHelperBinaryMask()
 {
   NFmiAreaMask* mask = AreaMask();
-  NFmiBitmapAreaMask* helperMask = new NFmiBitmapAreaMask;
+  auto* helperMask = new NFmiBitmapAreaMask;
   if (mask && mask->Info() && helperMask)
   {
     unsigned int oldLocationIndex = LocationIndex();

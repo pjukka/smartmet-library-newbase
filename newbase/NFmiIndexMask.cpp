@@ -467,8 +467,8 @@ void NFmiIndexMask::Move(int theXMove, int theYMove)
     int xPos = 0;
     int yPos = 0;
 
-    const_iterator it = begin();
-    const_iterator endIt = end();
+    auto it = begin();
+    auto endIt = end();
     for (; it != endIt; ++it)
     {
       origIndex = *it;
@@ -497,7 +497,7 @@ void NFmiIndexMask::require_sorted() const
 
   sort(itsData.begin(), itsData.end());
 
-  storage_type::iterator it = unique(itsData.begin(), itsData.end());
+  auto it = unique(itsData.begin(), itsData.end());
   itsData.erase(it, itsData.end());
 
   itsSorted = true;

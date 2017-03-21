@@ -786,8 +786,8 @@ bool NFmiGridBase::FastBiVariateInterpolation(double x, double y, double &theVal
   double dx = modf(x, &X);
   double dy = modf(y, &Y);
 
-  int x0 = static_cast<int>(X);
-  int y0 = static_cast<int>(Y);
+  auto x0 = static_cast<int>(X);
+  auto y0 = static_cast<int>(Y);
 
   if ((dx != 0.) && (dx < kFmiEps))
   {

@@ -86,7 +86,7 @@ NFmiMetBox* NFmiMetBoxQueryData::Value()
 
   // Set StationBag Descritor
   theNumber = HPlaceDesc()->Size();
-  NFmiStation* theStation = new NFmiStation[theNumber];
+  auto* theStation = new NFmiStation[theNumber];
 #if 0
   for(i=0;i<theNumber;i++)
 	{
@@ -96,17 +96,17 @@ NFmiMetBox* NFmiMetBoxQueryData::Value()
 	  // NextLocation();
 	}
 #endif
-  NFmiStationBag* theStationBag = new NFmiStationBag(theStation, theNumber);
+  auto* theStationBag = new NFmiStationBag(theStation, theNumber);
 
   // Set ParamBag Descritor
   theNumber = ParamDesc()->Size();
-  NFmiDataIdent* theParam = new NFmiDataIdent[theNumber];
+  auto* theParam = new NFmiDataIdent[theNumber];
   for (i = 0; i < theNumber; i++)
   {
     theParam[i] = Param();
     NextParam();
   }
-  NFmiParamBag* theParamBag = new NFmiParamBag(theParam, theNumber);
+  auto* theParamBag = new NFmiParamBag(theParam, theNumber);
 
   itsMetBox = new NFmiMetBox(*theTimeBag, *theStationBag, *theParamBag);
   NFmiMetBoxIterator theBoxIterator(itsMetBox);

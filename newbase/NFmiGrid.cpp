@@ -175,7 +175,7 @@ bool NFmiGrid::Init(NFmiGrid &theGrid, FmiInterpolationMethod howToInterpolate)
 {
   unsigned long counter = 0;
   double theValue;
-  float *values = new float[Size()];
+  auto *values = new float[Size()];
 
   Reset();
   while (Next())
@@ -215,7 +215,7 @@ bool NFmiGrid::Init(NFmiGrid &theGrid,
 
   unsigned long counter = 0;
   double theValue;
-  float *values = new float[Size()];
+  auto *values = new float[Size()];
 
   Reset();
   while (Next())
@@ -329,7 +329,7 @@ NFmiGrid *NFmiGrid::CreateNewGrid(NFmiArea *newArea,
                                   FmiDirection theStartingCorner,
                                   FmiInterpolationMethod theInterpolationMethod)
 {
-  NFmiGrid *newGrid =
+  auto *newGrid =
       new NFmiGrid(newArea, theXNumber, theYNumber, theStartingCorner, theInterpolationMethod);
   ResetCrop();
   newGrid->Init(*this, theInterpolationMethod);
@@ -646,7 +646,7 @@ bool NFmiGrid::Init(const std::string &theFileName,
             floatData[elem] = kFloatMissing;
           else
           {
-            float value = static_cast<float>(dvalue * theConversionScale + theConversionBase);
+            auto value = static_cast<float>(dvalue * theConversionScale + theConversionBase);
             if (value == theAfterConversionMissingValue)
               floatData[elem] = kFloatMissing;
             else

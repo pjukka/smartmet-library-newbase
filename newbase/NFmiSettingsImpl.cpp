@@ -309,10 +309,10 @@ std::string expand(const std::string& value,
       throw runtime_error("Missing " + delim2 + " while expanding value " + value);
     const string name = ret.substr(pos1 + delim1.size(), pos2 - pos1 - delim2.size() - 1);
 
-    map<string, string>::const_iterator it = data.find(name);
+    auto it = data.find(name);
     if (it == data.end())
     {
-      for (list<string>::const_iterator iter = namespaces.begin(); iter != namespaces.end(); ++iter)
+      for (auto iter = namespaces.begin(); iter != namespaces.end(); ++iter)
       {
         const string newname = *iter + "::" + name;
         it = data.find(newname);
@@ -506,7 +506,7 @@ void NFmiSettingsImpl::Set(const std::string& theName,
   const list<string> nonamespaces;
   const string expanded = expand(theValue, itsData, "$(", ")", nonamespaces);
 
-  DataType::iterator foundIter = itsData.find(theName);
+  auto foundIter = itsData.find(theName);
   if ((modifyOnlyExisting && foundIter == itsData.end()) ||
       (foundIter != itsData.end() && theValue == foundIter->second))
     return;  // Jos asetettavaa arvoa ei löydy asetuksista TAI sen arvo ei muutu, ei tehdä mitään
@@ -761,11 +761,9 @@ void NFmiSettingsImpl::Save() const
   // collect all files to be modified
 
   std::set<string> modified_files;
-  for (std::set<std::string>::iterator it = itsChangedVariables.begin();
-       it != itsChangedVariables.end();
-       ++it)
+  for (auto it = itsChangedVariables.begin(); it != itsChangedVariables.end(); ++it)
   {
-    FileMap::iterator foundIter = itsFilenames.find(*it);
+    auto foundIter = itsFilenames.find(*it);
     if (foundIter != itsFilenames.end())
       modified_files.insert(foundIter->second);  // laitetaan vain niiden tiedostojen nimet mukaan,
                                                  // missä oli muuttuneita muuttujia
@@ -777,8 +775,7 @@ void NFmiSettingsImpl::Save() const
   */
 
   // then process the files one by one
-  for (std::set<string>::const_iterator it = modified_files.begin(); it != modified_files.end();
-       ++it)
+  for (auto it = modified_files.begin(); it != modified_files.end(); ++it)
   {
     // collect all modified variables in this file
     std::set<string> modified_variables;
@@ -791,9 +788,7 @@ void NFmiSettingsImpl::Save() const
     string contents = readfile(*it);
 
     // perform replacements
-    for (std::set<string>::const_iterator vt = modified_variables.begin();
-         vt != modified_variables.end();
-         ++vt)
+    for (auto vt = modified_variables.begin(); vt != modified_variables.end(); ++vt)
       replace_assignment(contents, *vt, Value(*vt));
 
     // save new contents

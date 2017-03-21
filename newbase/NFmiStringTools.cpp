@@ -945,7 +945,7 @@ const std::map<std::string, std::string> ParseQueryString(const std::string &the
 
   map<string, string> ret;
 
-  for (vector<string>::const_iterator it = vars.begin(); it != vars.end(); ++it)
+  for (auto it = vars.begin(); it != vars.end(); ++it)
   {
     const vector<string> parts = Split<vector<string> >(*it, "=");
     if (parts.size() == 1)

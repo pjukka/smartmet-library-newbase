@@ -78,9 +78,9 @@ double WindVector(double theFactor, double theLeftWV, double theRightWV)
   else
   {
     double leftWD = (static_cast<int>(theLeftWV) % 100) * 10.;
-    double leftWS = static_cast<double>(static_cast<int>(theLeftWV) / 100);
+    auto leftWS = static_cast<double>(static_cast<int>(theLeftWV) / 100);
     double rightWD = (static_cast<int>(theRightWV) % 100) * 10.;
-    double rightWS = static_cast<double>(static_cast<int>(theRightWV) / 100);
+    auto rightWS = static_cast<double>(static_cast<int>(theRightWV) / 100);
 
     NFmiInterpolation::WindInterpolator windInterpolator;
     windInterpolator.operator()(leftWS, leftWD, 1 - theFactor);
@@ -109,13 +109,13 @@ double WindVector(double theX,
       theBottomLeft != kFloatMissing && theBottomRight != kFloatMissing)
   {
     double blWD = (static_cast<int>(theBottomLeft) % 100) * 10.;
-    double blWS = static_cast<double>(static_cast<int>(theBottomLeft) / 100);
+    auto blWS = static_cast<double>(static_cast<int>(theBottomLeft) / 100);
     double brWD = (static_cast<int>(theBottomRight) % 100) * 10.;
-    double brWS = static_cast<double>(static_cast<int>(theBottomRight) / 100);
+    auto brWS = static_cast<double>(static_cast<int>(theBottomRight) / 100);
     double tlWD = (static_cast<int>(theTopLeft) % 100) * 10.;
-    double tlWS = static_cast<double>(static_cast<int>(theTopLeft) / 100);
+    auto tlWS = static_cast<double>(static_cast<int>(theTopLeft) / 100);
     double trWD = (static_cast<int>(theTopRight) % 100) * 10.;
-    double trWS = static_cast<double>(static_cast<int>(theTopRight) / 100);
+    auto trWS = static_cast<double>(static_cast<int>(theTopRight) / 100);
 
     NFmiInterpolation::WindInterpolator windInterpolator;
     windInterpolator.operator()(blWS, blWD, (1 - dx) * (1 - dy));

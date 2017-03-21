@@ -206,7 +206,7 @@ double degrees_from_projparam(const string &inParam)
 void print_unused_parameters(const map<string, string> &inMap, const set<string> &usedParams)
 {
   cerr << "Unused parameters :" << endl;
-  for (map<string, string>::const_iterator it = inMap.begin(); it != inMap.end(); ++it)
+  for (auto it = inMap.begin(); it != inMap.end(); ++it)
   {
     if (usedParams.find(it->first) == usedParams.end())
     {
@@ -514,8 +514,8 @@ boost::shared_ptr<NFmiArea> Create(const std::string &theProjection)
     {
       double w = area->WorldXYWidth();
       double h = area->WorldXYHeight();
-      int xsize = static_cast<int>(round(w / (unitfactor * width)));
-      int ysize = static_cast<int>(round(h / (unitfactor * height)));
+      auto xsize = static_cast<int>(round(w / (unitfactor * width)));
+      auto ysize = static_cast<int>(round(h / (unitfactor * height)));
       NFmiRect rect(0, 0, xsize, ysize);
       area->SetXYArea(rect);
     }
@@ -563,7 +563,7 @@ return_type CreateProj(const std::string &projString,
   return_type result;
 
   // Build token map, while validating the proj-string
-  for (vector<string>::iterator it = tokens.begin(); it != tokens.end(); ++it)
+  for (auto it = tokens.begin(); it != tokens.end(); ++it)
   {
     // Split token into key->value pairs
     boost::split(splitToken, *it, boost::is_any_of("="));
