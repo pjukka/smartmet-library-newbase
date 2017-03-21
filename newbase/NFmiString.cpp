@@ -31,7 +31,7 @@
 #include <string>
 
 #ifdef UNIX
-#include <locale.h>
+#include <clocale>
 #endif
 
 using namespace std;
