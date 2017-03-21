@@ -728,13 +728,13 @@ unsigned long NFmiTotalWind::WindDirectionMean(unsigned long dir1, unsigned long
       return dir2;  // ei tarvitse laskea mitään
   }
 
-  for (int i = 0; i < 2; i++)  // katsotaan kummalla puolella 180:aa astetta arvot ovat
+  for (unsigned long i : dirTable)  // katsotaan kummalla puolella 180:aa astetta arvot ovat
   {
-    if (dirTable[i] != kT6BitMissing)
+    if (i != kT6BitMissing)
     {
-      if (dirTable[i] < 18)
+      if (i < 18)
         lkm1++;
-      else if (dirTable[i] >= 18)
+      else if (i >= 18)
         lkm2++;
     }
     else

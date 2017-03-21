@@ -312,9 +312,9 @@ std::string expand(const std::string& value,
     auto it = data.find(name);
     if (it == data.end())
     {
-      for (auto iter = namespaces.begin(); iter != namespaces.end(); ++iter)
+      for (const auto& iter : namespaces)
       {
-        const string newname = *iter + "::" + name;
+        const string newname = iter + "::" + name;
         it = data.find(newname);
         if (it != data.end()) break;
       }
@@ -761,9 +761,9 @@ void NFmiSettingsImpl::Save() const
   // collect all files to be modified
 
   std::set<string> modified_files;
-  for (auto it = itsChangedVariables.begin(); it != itsChangedVariables.end(); ++it)
+  for (const auto& itsChangedVariable : itsChangedVariables)
   {
-    auto foundIter = itsFilenames.find(*it);
+    auto foundIter = itsFilenames.find(itsChangedVariable);
     if (foundIter != itsFilenames.end())
       modified_files.insert(foundIter->second);  // laitetaan vain niiden tiedostojen nimet mukaan,
                                                  // missä oli muuttuneita muuttujia
@@ -775,24 +775,24 @@ void NFmiSettingsImpl::Save() const
   */
 
   // then process the files one by one
-  for (auto it = modified_files.begin(); it != modified_files.end(); ++it)
+  for (const auto& modified_file : modified_files)
   {
     // collect all modified variables in this file
     std::set<string> modified_variables;
     for (FileMap::const_iterator jt = itsFilenames.begin(); jt != itsFilenames.end(); ++jt)
-      if (*it == jt->second)
+      if (modified_file == jt->second)
         if (itsChangedVariables.find(jt->first) != itsChangedVariables.end())
           modified_variables.insert(jt->first);
 
     // read old contents
-    string contents = readfile(*it);
+    string contents = readfile(modified_file);
 
     // perform replacements
-    for (auto vt = modified_variables.begin(); vt != modified_variables.end(); ++vt)
-      replace_assignment(contents, *vt, Value(*vt));
+    for (const auto& modified_variable : modified_variables)
+      replace_assignment(contents, modified_variable, Value(modified_variable));
 
     // save new contents
-    savefile(*it, contents);
+    savefile(modified_file, contents);
   }
 
   // indicate that all variables now have unchanged state compared to file

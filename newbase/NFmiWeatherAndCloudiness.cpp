@@ -1011,8 +1011,8 @@ unsigned long NFmiWeatherAndCloudiness::PrecipitationFormWeightedMean(unsigned l
   // painotus sademäärän mukaan
 
   double sums[FmiNumberOfPrecipitationForms];
-  for (unsigned int i = 0; i < FmiNumberOfPrecipitationForms; i++)
-    sums[i] = 0;
+  for (double &sum : sums)
+    sum = 0;
 
   if (form1 != kT3BitMissing && amount1 != TotalPrecipitationMissingValue())
   {
@@ -1969,8 +1969,8 @@ bool NFmiWeatherAndCloudiness::SetToWeightedPeriod(NFmiQueryInfo *info,
   double thunderProbabilitySum = 0.;
   double fogIntensitySum = 0.;
   double precipitationForms[FmiNumberOfPrecipitationForms];
-  for (unsigned int i = 0; i < FmiNumberOfPrecipitationForms; i++)
-    precipitationForms[i] = 0;
+  for (double &precipitationForm : precipitationForms)
+    precipitationForm = 0;
 
   double totalCloudinessFactorSum = 0;
   double lowCloudsFactorSum = 0;
@@ -2154,8 +2154,8 @@ bool NFmiWeatherAndCloudiness::SetToWeightedPeriod(NFmiQueryInfo *info,
   double thunderProbabilitySum = 0.;
   double fogIntensitySum = 0.;
   double precipitationForms[FmiNumberOfPrecipitationForms];
-  for (unsigned int i = 0; i < FmiNumberOfPrecipitationForms; i++)
-    precipitationForms[i] = 0;
+  for (double &precipitationForm : precipitationForms)
+    precipitationForm = 0;
 
   double totalCloudinessFactorSum = 0;
   double lowCloudsFactorSum = 0;

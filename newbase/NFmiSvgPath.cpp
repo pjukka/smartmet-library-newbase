@@ -421,9 +421,9 @@ bool NFmiSvgPath::IsInside(const NFmiPoint& thePoint) const
 
   if (!itsBBoxValid)
   {
-    for (auto it = itsData.begin(); it != itsData.end(); ++it)
+    for (const auto& it : itsData)
     {
-      switch (it->itsType)
+      switch (it.itsType)
       {
         case kElementNotValid:
         case kElementClosePath:
@@ -433,16 +433,16 @@ bool NFmiSvgPath::IsInside(const NFmiPoint& thePoint) const
         {
           if (!itsBBoxValid)
           {
-            itsMinX = itsMaxX = it->itsX;
-            itsMinY = itsMaxY = it->itsY;
+            itsMinX = itsMaxX = it.itsX;
+            itsMinY = itsMaxY = it.itsY;
             itsBBoxValid = true;
           }
           else
           {
-            itsMinX = FmiMin(itsMinX, it->itsX);
-            itsMinY = FmiMin(itsMinY, it->itsY);
-            itsMaxX = FmiMax(itsMaxX, it->itsX);
-            itsMaxY = FmiMax(itsMaxY, it->itsY);
+            itsMinX = FmiMin(itsMinX, it.itsX);
+            itsMinY = FmiMin(itsMinY, it.itsY);
+            itsMaxX = FmiMax(itsMaxX, it.itsX);
+            itsMaxY = FmiMax(itsMaxY, it.itsY);
           }
         }
       }

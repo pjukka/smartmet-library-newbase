@@ -161,11 +161,11 @@ bool NFmiAreaMaskList::IsMasked(const NFmiPoint &theLatLon)
   if (fMaskInUse)  // 1999.09.24/Marko Muutin tämän katsomaan ensin onko maski käytössä
   {                // jos on, katsotaan onko maskattu, muuten on aina maskattu
                    // näin pääsee eroon muutamasta ikävästä if-lause testeistä
-    for (int index = 0; index < static_cast<int>(itsMaskVector.size()); index++)
+    for (auto &index : itsMaskVector)
     {
-      if (itsMaskVector[index]->IsEnabled())
+      if (index->IsEnabled())
       {
-        if (!(itsMaskVector[index]->IsMasked(theLatLon)))
+        if (!(index->IsMasked(theLatLon)))
         {
           return false;
         }
@@ -196,18 +196,18 @@ double NFmiAreaMaskList::MaskValue(const NFmiPoint &theLatLon)
                    // näin pääsee eroon muutamasta ikävästä if-lause testeistä
     double sum = 0, tempValue = 0;
     int count = 0;
-    for (int index = 0; index < static_cast<int>(itsMaskVector.size()); index++)
+    for (auto &index : itsMaskVector)
     {
-      if (itsMaskVector[index]->IsEnabled())
+      if (index->IsEnabled())
       {
-        tempValue = itsMaskVector[index]->MaskValue(theLatLon);
+        tempValue = index->MaskValue(theLatLon);
         if (!tempValue)
         {
           return 0.;
         }
         else
         {
-          if (itsMaskVector[index]->IsRampMask())
+          if (index->IsRampMask())
           {
             sum += tempValue;
             count++;
@@ -271,9 +271,9 @@ void NFmiAreaMaskList::Clear() { itsMaskVector.clear(); }
 bool NFmiAreaMaskList::CheckIfMaskUsed()
 {
   fMaskInUse = false;
-  for (int index = 0; index < static_cast<int>(itsMaskVector.size()); index++)
+  for (auto &index : itsMaskVector)
   {
-    if (itsMaskVector[index]->IsEnabled())
+    if (index->IsEnabled())
     {
       fMaskInUse = true;
     }
@@ -293,9 +293,9 @@ bool NFmiAreaMaskList::CheckIfMaskUsed()
 
 bool NFmiAreaMaskList::SyncronizeMaskTime(const NFmiMetTime &theTime)
 {
-  for (int index = 0; index < static_cast<int>(itsMaskVector.size()); index++)
+  for (auto &index : itsMaskVector)
   {
-    if (itsMaskVector[index]->IsEnabled()) itsMaskVector[index]->Time(theTime);
+    if (index->IsEnabled()) index->Time(theTime);
   }
   return true;
 }
@@ -319,9 +319,9 @@ bool NFmiAreaMaskList::Index(unsigned long theIndex) { return Find(theIndex); }
 
 bool NFmiAreaMaskList::Find(const NFmiDataIdent &theParam)
 {
-  for (int index = 0; index < static_cast<int>(itsMaskVector.size()); index++)
+  for (auto &index : itsMaskVector)
   {
-    if (itsMaskVector[index]->IsWantedParam(theParam)) return true;
+    if (index->IsWantedParam(theParam)) return true;
   }
   return false;
 }
@@ -337,9 +337,9 @@ bool NFmiAreaMaskList::Find(const NFmiDataIdent &theParam)
 
 bool NFmiAreaMaskList::Find(const NFmiDataIdent &theParam, const NFmiLevel *theLevel)
 {
-  for (int index = 0; index < static_cast<int>(itsMaskVector.size()); index++)
+  for (auto &index : itsMaskVector)
   {
-    if (itsMaskVector[index]->IsWantedParam(theParam, theLevel)) return true;
+    if (index->IsWantedParam(theParam, theLevel)) return true;
   }
   return false;
 }

@@ -144,9 +144,9 @@ const char *NFmiEnumConverter::ToCharPtr(int theName)
 {
   EnumTableInit();
 
-  for (auto iter = itsData.begin(); iter != itsData.end(); ++iter)
+  for (auto &iter : itsData)
   {
-    if (iter->second == theName) return iter->first;
+    if (iter.second == theName) return iter.first;
   }
   return nullptr;
 }

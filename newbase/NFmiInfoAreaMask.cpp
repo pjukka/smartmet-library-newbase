@@ -780,14 +780,14 @@ float NFmiInfoAreaMaskMetFuncBase::CalcMetFuncWithFactors(
 {
   float gradValue = kFloatMissing;
   float gradValueSum = 0;
-  for (size_t i = 0; i < theCalcFactors.size(); i++)
+  for (const auto &theCalcFactor : theCalcFactors)
   {
-    int offsetX = fDoX ? theCalcFactors[i].first : 0;
-    int offsetY = fDoX ? 0 : theCalcFactors[i].first;
+    int offsetX = fDoX ? theCalcFactor.first : 0;
+    int offsetY = fDoX ? 0 : theCalcFactor.first;
     float value = Peek(theLocationCachePoint, offsetX, offsetY);
     if (value == kFloatMissing)
       return kFloatMissing;  // jos yksikin kohde arvo oli puuttuvaa, koko juttu on puuttuvaa
-    gradValueSum += theCalcFactors[i].second * value;
+    gradValueSum += theCalcFactor.second * value;
   }
   gradValue = gradValueSum / (fDoX ? itsMetFuncDividerX : itsMetFuncDividerY);
   return gradValue;
@@ -2072,8 +2072,8 @@ static void AddExtremeValues(boost::shared_ptr<NFmiFastQueryInfo> &theInfo,
   {
     std::vector<float> values(4, kFloatMissing);
     theInfo->GetCachedValues(locCache, values);
-    for (size_t i = 0; i < values.size(); i++)
-      theFunctionModifier->Calculate(values[i]);
+    for (float value : values)
+      theFunctionModifier->Calculate(value);
   }
 }
 

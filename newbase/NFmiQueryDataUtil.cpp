@@ -2460,10 +2460,9 @@ static void SetPrecipitationFormValue(
     const std::vector<unsigned long> &thePrecipFormParamIndexVector)
 {
   float precipFormValue = kFloatMissing;
-  for (size_t i = 0; i < thePrecipFormParamIndexVector.size(); i++)
+  for (unsigned long i : thePrecipFormParamIndexVector)
   {
-    theSourceInfo.ParamIndex(
-        thePrecipFormParamIndexVector[i]);  // asetetaan hetkeksi precipForm parametri päälle
+    theSourceInfo.ParamIndex(i);  // asetetaan hetkeksi precipForm parametri päälle
     if (theSourceInfo.FloatValue() != kFloatMissing)
     {
       precipFormValue = theSourceInfo.FloatValue();
@@ -2528,9 +2527,9 @@ void WeatherAndCloudinessFromManyParams(NFmiFastQueryInfo &theSourceInfo,
   unsigned long destAccurePrecipParIndex = theDestInfo.ParamIndex();
 
   std::vector<unsigned long> precipFormParamIndexVector;
-  for (size_t i = 0; i < thePrecipFormParIds.size(); i++)
+  for (int thePrecipFormParId : thePrecipFormParIds)
   {
-    theSourceInfo.Param(static_cast<FmiParameterName>(std::abs(thePrecipFormParIds[i])));
+    theSourceInfo.Param(static_cast<FmiParameterName>(std::abs(thePrecipFormParId)));
     precipFormParamIndexVector.push_back(theSourceInfo.ParamIndex());
   }
 
@@ -3080,11 +3079,11 @@ NFmiParamBag CheckAndMakeCombinedParamBag(NFmiFastQueryInfo &theSourceInfo,
     // niitä (positiiviset arvot) vai ei (negatiiviset arvot)
     if (thePrecipFormParIds.size() && (*theWeather1 || *theWeather2))
     {
-      for (size_t i = 0; i < thePrecipFormParIds.size(); i++)
+      for (int thePrecipFormParId : thePrecipFormParIds)
       {
-        if (thePrecipFormParIds[i] > 0)
+        if (thePrecipFormParId > 0)
         {
-          auto precipFormParId = static_cast<FmiParameterName>(thePrecipFormParIds[i]);
+          auto precipFormParId = static_cast<FmiParameterName>(thePrecipFormParId);
           if (theSourceInfo.Param(precipFormParId))
           {
             // poista precipForm parametri uudesta parambagistä, koska sillä rakennetaan Weatheria
@@ -4171,10 +4170,10 @@ static void ReadQueryDataFiles(boost::shared_ptr<NFmiQueryData> theBaseQData,
     lastBaseTime = theBaseQData->Info()->TimeDescriptor().LastTime();
   }
 
-  for (size_t i = 0; i < theFilesIn.size(); i++)
+  for (const auto &i : theFilesIn)
   {
     NFmiQueryDataUtil::CheckIfStopped(theStopFunctor);
-    std::string totalFileName = theDirName + theFilesIn[i];
+    std::string totalFileName = theDirName + i;
     if (NFmiFileSystem::FileReadable(totalFileName))
     {
       boost::shared_ptr<NFmiQueryData> qDataPtr;
@@ -4202,9 +4201,9 @@ static void ReadQueryDataFiles(boost::shared_ptr<NFmiQueryData> theBaseQData,
 static void MakeFastInfos(std::vector<boost::shared_ptr<NFmiQueryData> > &theQDataVectorIn,
                           std::vector<boost::shared_ptr<NFmiFastQueryInfo> > &theFInfoVectorOut)
 {
-  for (size_t i = 0; i < theQDataVectorIn.size(); i++)
+  for (auto &i : theQDataVectorIn)
   {
-    auto *fInfo = new NFmiFastQueryInfo(theQDataVectorIn[i].get());
+    auto *fInfo = new NFmiFastQueryInfo(i.get());
     if (fInfo) theFInfoVectorOut.push_back(boost::shared_ptr<NFmiFastQueryInfo>(fInfo));
   }
 }
@@ -4217,9 +4216,9 @@ static std::vector<NFmiMetTime> MakeValidTimesList(
     std::vector<boost::shared_ptr<NFmiFastQueryInfo> > &theFInfoVectorIn, int theMaxTimeStepsInData)
 {
   std::set<NFmiMetTime> uniqueValidTimes;
-  for (size_t i = 0; i < theFInfoVectorIn.size(); i++)
+  for (auto &i : theFInfoVectorIn)
   {
-    NFmiFastQueryInfo *fInfo = theFInfoVectorIn[i].get();
+    NFmiFastQueryInfo *fInfo = i.get();
     if (fInfo)
     {
       for (fInfo->ResetTime(); fInfo->NextTime();)
@@ -4243,8 +4242,8 @@ static std::vector<NFmiMetTime> MakeValidTimesList(
 static NFmiTimeList MakeTimeList(std::vector<NFmiMetTime> &theValidTimesIn)
 {
   NFmiTimeList timeList;
-  for (size_t i = 0; i < theValidTimesIn.size(); i++)
-    timeList.Add(new NFmiMetTime(theValidTimesIn[i]), false, false);
+  for (const auto &i : theValidTimesIn)
+    timeList.Add(new NFmiMetTime(i), false, false);
 
   return timeList;
 }
@@ -4265,10 +4264,10 @@ static NFmiParamDescriptor MakeParamDesc(
     std::vector<boost::shared_ptr<NFmiFastQueryInfo> > &theFInfoVectorIn)
 {
   std::set<NFmiDataIdent> paramSet;
-  for (size_t i = 0; i < theFInfoVectorIn.size(); i++)
+  for (auto &i : theFInfoVectorIn)
   {
-    for (theFInfoVectorIn[i]->ResetParam(); theFInfoVectorIn[i]->NextParam();)
-      paramSet.insert(theFInfoVectorIn[i]->Param());
+    for (i->ResetParam(); i->NextParam();)
+      paramSet.insert(i->Param());
   }
   if (paramSet.empty())
     throw std::runtime_error("Error in MakeParamDesc, no parameters were found.");
@@ -4296,10 +4295,10 @@ static NFmiVPlaceDescriptor MakeVPlaceDesc(
     std::vector<boost::shared_ptr<NFmiFastQueryInfo> > &theFInfoVectorIn)
 {
   std::set<NFmiLevel> levelSet;
-  for (size_t i = 0; i < theFInfoVectorIn.size(); i++)
+  for (auto &i : theFInfoVectorIn)
   {
-    for (theFInfoVectorIn[i]->ResetLevel(); theFInfoVectorIn[i]->NextLevel();)
-      levelSet.insert(*(theFInfoVectorIn[i]->Level()));
+    for (i->ResetLevel(); i->NextLevel();)
+      levelSet.insert(*(i->Level()));
   }
   if (levelSet.empty()) throw std::runtime_error("Error in MakeVPlaceDesc, no levels were found.");
 
@@ -4354,9 +4353,9 @@ static NFmiFastQueryInfo *FindWantedInfo(
     const NFmiMetTime &theTime,
     std::vector<boost::shared_ptr<NFmiFastQueryInfo> > &theFInfoVectorIn)
 {
-  for (size_t i = 0; i < theFInfoVectorIn.size(); i++)
+  for (auto &i : theFInfoVectorIn)
   {
-    if (theFInfoVectorIn[i]->Time(theTime)) return theFInfoVectorIn[i].get();
+    if (i->Time(theTime)) return i.get();
   }
   return nullptr;  // tänne ei pitäisi mennä, pitäisikö heittää poikkeus?
 }
@@ -4424,9 +4423,9 @@ static void CombineSliceDatas(NFmiQueryData &theData,
 {
   NFmiFastQueryInfo combFastInfo(&theData);
   // käydään kaikki fInfot läpi ja katsotaan mihin rakoihin data saadaan tungettua
-  for (size_t i = 0; i < theFInfoVector.size(); i++)
+  for (auto &i : theFInfoVector)
   {
-    NFmiFastQueryInfo &fInfo = *(theFInfoVector[i].get());
+    NFmiFastQueryInfo &fInfo = *(i.get());
 
     // ainakin aluksi pitää olla hila dataa ja hilojenkin samanlaisia, TODO tämän voisi muuttaa
     // tulevaisuudessa

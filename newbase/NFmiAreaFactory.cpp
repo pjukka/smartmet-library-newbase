@@ -206,11 +206,11 @@ double degrees_from_projparam(const string &inParam)
 void print_unused_parameters(const map<string, string> &inMap, const set<string> &usedParams)
 {
   cerr << "Unused parameters :" << endl;
-  for (auto it = inMap.begin(); it != inMap.end(); ++it)
+  for (const auto &it : inMap)
   {
-    if (usedParams.find(it->first) == usedParams.end())
+    if (usedParams.find(it.first) == usedParams.end())
     {
-      cerr << it->first << "=" << it->second << endl;
+      cerr << it.first << "=" << it.second << endl;
     }
   }
   cerr << endl;
@@ -563,10 +563,10 @@ return_type CreateProj(const std::string &projString,
   return_type result;
 
   // Build token map, while validating the proj-string
-  for (auto it = tokens.begin(); it != tokens.end(); ++it)
+  for (auto &token : tokens)
   {
     // Split token into key->value pairs
-    boost::split(splitToken, *it, boost::is_any_of("="));
+    boost::split(splitToken, token, boost::is_any_of("="));
 
     if (!boost::starts_with(splitToken[0], "+"))
     {

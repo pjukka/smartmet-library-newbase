@@ -136,9 +136,9 @@ std::ostream &NFmiMetBox::Write(std::ostream &file) const
        << " ";
   file << "VER " << FmiBoxVersion << std::endl;
 
-  for (int i = 0; i < HEADERMAX; i++)
+  for (const auto &i : itsHeader)
   {
-    file << itsHeader[i];
+    file << i;
   }
 
   FmiInfoVersion = 3;  // Halutaan kirjoittaa Box vanhalla versiolla
@@ -178,9 +178,9 @@ std::istream &NFmiMetBox::Read(std::istream &file)
     file >> tmpchars2;
     file >> FmiBoxVersion;  // ..really, this modifies a system wide global? --AKa 3-Jun-10
 
-    for (int i = 0; i < HEADERMAX; i++)
+    for (auto &i : itsHeader)
     {
-      file >> itsHeader[i];
+      file >> i;
     }
   }
   else

@@ -665,12 +665,12 @@ void Insert(NFmiNearTree<NFmiPoint> &theTree, const NFmiSvgPath &thePath, double
 
   NFmiPoint lastPoint(0, 0);
 
-  for (auto it = thePath.begin(); it != thePath.end(); ++it)
+  for (const auto &it : thePath)
   {
-    switch (it->itsType)
+    switch (it.itsType)
     {
       case NFmiSvgPath::kElementMoveto:
-        lastPoint.Set(it->itsX, it->itsY);
+        lastPoint.Set(it.itsX, it.itsY);
         firstPoint = lastPoint;
         break;
       case NFmiSvgPath::kElementClosePath:
@@ -681,7 +681,7 @@ void Insert(NFmiNearTree<NFmiPoint> &theTree, const NFmiSvgPath &thePath, double
       }
       case NFmiSvgPath::kElementLineto:
       {
-        NFmiPoint nextPoint(it->itsX, it->itsY);
+        NFmiPoint nextPoint(it.itsX, it.itsY);
         Insert(theTree, lastPoint, nextPoint, theResolution);
         lastPoint = nextPoint;
         break;

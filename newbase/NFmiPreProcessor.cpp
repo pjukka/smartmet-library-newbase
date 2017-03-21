@@ -405,9 +405,8 @@ bool NFmiPreProcessor::IncludeFile(const string &theFileName, string &theFileCon
   if (fUseReplace)
     // Add included definitions to replace map, overwriting existing values
     //
-    for (auto iterMap = stripper.itsReplaceMap.begin(); iterMap != stripper.itsReplaceMap.end();
-         iterMap++)
-      AddReplaceString(iterMap->first, iterMap->second);
+    for (auto &iterMap : stripper.itsReplaceMap)
+      AddReplaceString(iterMap.first, iterMap.second);
 
   return true;
 }

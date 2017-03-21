@@ -125,14 +125,14 @@ string extend_plain_regex(const string &thePattern)
   string ret;
   ret.reserve(thePattern.size());
 
-  for (string::size_type i = 0; i < thePattern.size(); i++)
+  for (char i : thePattern)
   {
-    if (thePattern[i] == '*')
+    if (i == '*')
       ret += ".*";
-    else if (thePattern[i] == '?')
+    else if (i == '?')
       ret += '.';
     else
-      ret += thePattern[i];
+      ret += i;
   }
   return ret;
 }
@@ -684,9 +684,9 @@ std::time_t NewestFileTime(const std::list<std::string> &theFileList, const std:
   if (theFileList.empty()) return 0;
 
   time_t newesttime = 0;
-  for (auto f = theFileList.begin(); f != theFileList.end(); ++f)
+  for (const auto &f : theFileList)
   {
-    string filename = thePath + '/' + *f;
+    string filename = thePath + '/' + f;
     if (FileReadable(filename))
     {
       time_t modtime = FileModificationTime(filename);
@@ -702,9 +702,9 @@ std::string NewestFileName(const std::list<std::string> &theFileList, const std:
 
   std::string newestFileName;
   time_t newesttime = 0;
-  for (auto f = theFileList.begin(); f != theFileList.end(); ++f)
+  for (const auto &f : theFileList)
   {
-    string filename = thePath + *f;
+    string filename = thePath + f;
     if (FileReadable(filename))
     {
       time_t modtime = FileModificationTime(filename);
