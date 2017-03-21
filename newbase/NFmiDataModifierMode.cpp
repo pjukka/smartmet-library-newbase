@@ -15,17 +15,14 @@
 #include "NFmiDataModifierMode.h"
 #include <algorithm>
 
-NFmiDataModifierMode::NFmiDataModifierMode(void) : NFmiDataModifier(), itsDataVector() {}
-NFmiDataModifierMode::~NFmiDataModifierMode(void) {}
+NFmiDataModifierMode::NFmiDataModifierMode() : NFmiDataModifier(), itsDataVector() {}
+NFmiDataModifierMode::~NFmiDataModifierMode() {}
 NFmiDataModifierMode::NFmiDataModifierMode(const NFmiDataModifierMode& theOther)
     : NFmiDataModifier(theOther), itsDataVector(theOther.itsDataVector)
 {
 }
 
-NFmiDataModifier* NFmiDataModifierMode::Clone(void) const
-{
-  return new NFmiDataModifierMode(*this);
-}
+NFmiDataModifier* NFmiDataModifierMode::Clone() const { return new NFmiDataModifierMode(*this); }
 
 void NFmiDataModifierMode::Calculate(float theValue)
 {
@@ -40,8 +37,8 @@ void NFmiDataModifierMode::Calculate(float theValue)
   }
 }
 
-void NFmiDataModifierMode::Clear(void) { itsDataVector.clear(); }
-float NFmiDataModifierMode::CalculationResult(void)
+void NFmiDataModifierMode::Clear() { itsDataVector.clear(); }
+float NFmiDataModifierMode::CalculationResult()
 {
   checkedVector<Data>::iterator pos = std::max_element(itsDataVector.begin(), itsDataVector.end());
   if (pos != itsDataVector.end()) return (*pos).Value();

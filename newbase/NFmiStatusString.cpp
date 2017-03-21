@@ -14,14 +14,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiStatusString::~NFmiStatusString(void) {}
+NFmiStatusString::~NFmiStatusString() {}
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiStatusString::NFmiStatusString(void) : NFmiString(), itsStatus(0) {}
+NFmiStatusString::NFmiStatusString() : NFmiString(), itsStatus(0) {}
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -55,7 +55,7 @@ NFmiStatusString::NFmiStatusString(const NFmiStatusString &theStatusString)
  */
 // ----------------------------------------------------------------------
 
-long NFmiStatusString::Status(void) { return itsStatus; }
+long NFmiStatusString::Status() { return itsStatus; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
@@ -63,7 +63,7 @@ long NFmiStatusString::Status(void) { return itsStatus; }
  */
 // ----------------------------------------------------------------------
 
-const NFmiString &NFmiStatusString::String(void) { return *static_cast<NFmiString *>(this); }
+const NFmiString &NFmiStatusString::String() { return *static_cast<NFmiString *>(this); }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
@@ -72,7 +72,7 @@ const NFmiString &NFmiStatusString::String(void) { return *static_cast<NFmiStrin
  */
 // ----------------------------------------------------------------------
 
-NFmiString *NFmiStatusString::Clone(void) const { return new NFmiStatusString(*this); }
+NFmiString *NFmiStatusString::Clone() const { return new NFmiStatusString(*this); }
 // ----------------------------------------------------------------------
 /*!
  * Assignment operator

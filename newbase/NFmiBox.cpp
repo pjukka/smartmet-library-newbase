@@ -20,7 +20,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiBox::~NFmiBox(void) { delete[] itsValues; }
+NFmiBox::~NFmiBox() { delete[] itsValues; }
 // ----------------------------------------------------------------------
 /*!
  * \param newSize Undocumented
@@ -111,7 +111,7 @@ NFmiBox::NFmiBox(long theSize) : itsValues(0), itsSize(theSize)
  */
 // ----------------------------------------------------------------------
 
-long NFmiBox::GetSize(void) const { return itsSize; }
+long NFmiBox::GetSize() const { return itsSize; }
 // ----------------------------------------------------------------------
 /*!
  * \param theIndex Undocumented
@@ -126,7 +126,7 @@ float& NFmiBox::operator[](long theIndex) { return itsValues[theIndex]; }
  */
 // ----------------------------------------------------------------------
 
-long NFmiBox::CalcSize(void) { return 0; }
+long NFmiBox::CalcSize() { return 0; }
 // ----------------------------------------------------------------------
 /*!
  * \param theIndex Undocumented

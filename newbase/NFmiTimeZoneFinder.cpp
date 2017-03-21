@@ -63,10 +63,10 @@ class NFmiTimeZoneEdge
     if (itsPoint1.Y() > itsPoint2.Y()) swap(itsPoint1, itsPoint2);
   }
 
-  double X1(void) const { return itsPoint1.X(); }
-  double Y1(void) const { return itsPoint1.Y(); }
-  double X2(void) const { return itsPoint2.X(); }
-  double Y2(void) const { return itsPoint2.Y(); }
+  double X1() const { return itsPoint1.X(); }
+  double Y1() const { return itsPoint1.Y(); }
+  double X2() const { return itsPoint2.X(); }
+  double Y2() const { return itsPoint2.Y(); }
   bool operator==(const NFmiTimeZoneEdge& theOther) const;
   bool operator<(const NFmiTimeZoneEdge& theOther) const;
 
@@ -111,15 +111,15 @@ bool NFmiTimeZoneEdge::operator<(const NFmiTimeZoneEdge& theOther) const
 class NFmiTimeZoneRing
 {
  public:
-  NFmiTimeZoneRing(void) : itsSignedArea(0.0), itsStarted(false) {}
+  NFmiTimeZoneRing() : itsSignedArea(0.0), itsStarted(false) {}
   void Add(const NFmiPoint& thePoint);
   bool Inside(const NFmiPoint& thePoint) const;
-  bool Clockwise(void) const;
+  bool Clockwise() const;
 
  private:
   static double MaxLength;
 
-  void CheckClosed(void) const;
+  void CheckClosed() const;
   void Add(const NFmiTimeZoneEdge& theEdge);
 
   typedef set<NFmiTimeZoneEdge> storage_type;
@@ -198,7 +198,7 @@ void NFmiTimeZoneRing::Add(const NFmiTimeZoneEdge& theEdge)
  */
 // ----------------------------------------------------------------------
 
-void NFmiTimeZoneRing::CheckClosed(void) const
+void NFmiTimeZoneRing::CheckClosed() const
 {
   if (itsFirstPoint != itsLastPoint) throw runtime_error("NFmiTimeZoneRing is not closed!");
 }
@@ -209,7 +209,7 @@ void NFmiTimeZoneRing::CheckClosed(void) const
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeZoneRing::Clockwise(void) const
+bool NFmiTimeZoneRing::Clockwise() const
 {
   if (!itsStarted) return false;
   CheckClosed();
@@ -278,10 +278,10 @@ class NFmiTimeZonePolygon
   NFmiTimeZonePolygon(float theTZ) : itsTimeZone(theTZ) {}
   void Add(const NFmiTimeZoneRing& theRing);
   bool Inside(const NFmiPoint& thePoint) const;
-  float TimeZone(void) const { return itsTimeZone; }
+  float TimeZone() const { return itsTimeZone; }
 
  private:
-  NFmiTimeZonePolygon(void);
+  NFmiTimeZonePolygon();
   float itsTimeZone;
   typedef list<NFmiTimeZoneRing> storage_type;
   storage_type itsRings;
@@ -377,14 +377,14 @@ float NFmiTimeZoneFinderPimple::Find(const NFmiPoint& theLatLon) const
  */
 // ----------------------------------------------------------------------
 
-NFmiTimeZoneFinder::~NFmiTimeZoneFinder(void) {}
+NFmiTimeZoneFinder::~NFmiTimeZoneFinder() {}
 // ----------------------------------------------------------------------
 /*!
  * \brief Constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiTimeZoneFinder::NFmiTimeZoneFinder(void) { itsPimple.reset(new NFmiTimeZoneFinderPimple()); }
+NFmiTimeZoneFinder::NFmiTimeZoneFinder() { itsPimple.reset(new NFmiTimeZoneFinderPimple()); }
 // ----------------------------------------------------------------------
 /*!
  * \brief Copy constructor
@@ -438,14 +438,14 @@ float NFmiTimeZoneFinder::Find(const NFmiPoint& theLatLon) const
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeZoneFinder::Empty(void) const { return itsPimple->itsData.empty(); }
+bool NFmiTimeZoneFinder::Empty() const { return itsPimple->itsData.empty(); }
 // ----------------------------------------------------------------------
 /*!
  * \brief Clear the finder
  */
 // ----------------------------------------------------------------------
 
-void NFmiTimeZoneFinder::Clear(void) { itsPimple->itsData.clear(); }
+void NFmiTimeZoneFinder::Clear() { itsPimple->itsData.clear(); }
 // ----------------------------------------------------------------------
 /*!
  * \brief Read the given timezone polygon file

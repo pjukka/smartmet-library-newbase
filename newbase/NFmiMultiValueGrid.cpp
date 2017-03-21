@@ -22,7 +22,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiMultiValuedGrid::~NFmiMultiValuedGrid(void)
+NFmiMultiValuedGrid::~NFmiMultiValuedGrid()
 {
   if (itsParamDescriptor) delete itsParamDescriptor;
   itsParamDescriptor = 0;
@@ -64,7 +64,7 @@ NFmiMultiValuedGrid::NFmiMultiValuedGrid(const NFmiGrid &theGrid,
  */
 // ----------------------------------------------------------------------
 
-void NFmiMultiValuedGrid::Init(void)
+void NFmiMultiValuedGrid::Init()
 {
   itsMultiData = new NFmiDataPool();
   if (!itsMultiData->Init(NFmiGridBase::Size() * NFmiQueryInfo::Size()))
@@ -80,7 +80,7 @@ void NFmiMultiValuedGrid::Init(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiMultiValuedGrid::FirstValue(void)
+bool NFmiMultiValuedGrid::FirstValue()
 {
   Save();
   NFmiQueryInfo::First();
@@ -93,7 +93,7 @@ bool NFmiMultiValuedGrid::FirstValue(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiMultiValuedGrid::Save(void)
+bool NFmiMultiValuedGrid::Save()
 {
   float *sourceAddress = 0;
 
@@ -115,7 +115,7 @@ bool NFmiMultiValuedGrid::Save(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiMultiValuedGrid::Edit(void)
+bool NFmiMultiValuedGrid::Edit()
 {
   float *sourceAddress = 0;
 
@@ -138,7 +138,7 @@ bool NFmiMultiValuedGrid::Edit(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiMultiValuedGrid::UpDate(void)
+void NFmiMultiValuedGrid::UpDate()
 {
   Save();
   itsCurrentDataStatus = NFmiQueryInfo::Index() * NFmiGridBase::Size();

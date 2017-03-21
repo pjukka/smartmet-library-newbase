@@ -346,7 +346,7 @@ NFmiCmdLine::~NFmiCmdLine()
  */
 // ----------------------------------------------------------------------
 
-int NFmiCmdLine::NumberofOptions(void) const { return itsOptionCount; }
+int NFmiCmdLine::NumberofOptions() const { return itsOptionCount; }
 // ----------------------------------------------------------------------
 /*!
  * Returns the number of parameters on the command line
@@ -355,7 +355,7 @@ int NFmiCmdLine::NumberofOptions(void) const { return itsOptionCount; }
  */
 // ----------------------------------------------------------------------
 
-int NFmiCmdLine::NumberofParameters(void) const { return itsParameterCount; }
+int NFmiCmdLine::NumberofParameters() const { return itsParameterCount; }
 // ----------------------------------------------------------------------
 /*!
  * Returns the desired parameter from the command line. if the
@@ -383,7 +383,7 @@ const char *NFmiCmdLine::Parameter(int i) const
  */
 // ----------------------------------------------------------------------
 
-char *NFmiCmdLine::Command(void) const { return itsCommand; }
+char *NFmiCmdLine::Command() const { return itsCommand; }
 // ----------------------------------------------------------------------
 /*!
  * Returns the desired option letter from the command line. If the
@@ -476,5 +476,5 @@ const char *NFmiCmdLine::OptionValue(char c) const
  */
 // ----------------------------------------------------------------------
 
-const NFmiStatus &NFmiCmdLine::Status(void) const { return itsStatus; }
+const NFmiStatus &NFmiCmdLine::Status() const { return itsStatus; }
 // ======================================================================

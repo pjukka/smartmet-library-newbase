@@ -304,7 +304,7 @@ NFmiSvgPath::NFmiSvgPath()
  */
 // ----------------------------------------------------------------------
 
-NFmiSvgPath::size_type NFmiSvgPath::size(void) const { return itsData.size(); }
+NFmiSvgPath::size_type NFmiSvgPath::size() const { return itsData.size(); }
 // ----------------------------------------------------------------------
 /*!
  * \brief Testaa onko polku tyhjä
@@ -313,14 +313,14 @@ NFmiSvgPath::size_type NFmiSvgPath::size(void) const { return itsData.size(); }
  */
 // ----------------------------------------------------------------------
 
-bool NFmiSvgPath::empty(void) const { return itsData.empty(); }
+bool NFmiSvgPath::empty() const { return itsData.empty(); }
 // ----------------------------------------------------------------------
 /*!
  * \brief Tyhjennä polku
  */
 // ----------------------------------------------------------------------
 
-void NFmiSvgPath::clear(void)
+void NFmiSvgPath::clear()
 {
   itsBBoxValid = false;
   itsData.clear();

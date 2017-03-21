@@ -343,7 +343,7 @@ std::string expand(const std::string& value,
  */
 // ----------------------------------------------------------------------
 
-NFmiSettingsImpl::NFmiSettingsImpl(void)
+NFmiSettingsImpl::NFmiSettingsImpl()
     : itsFilename(DEFAULT_FILE), itsData(), itIsInitialized(false), itsNamespaces()
 {
 #ifdef UNIX
@@ -365,7 +365,7 @@ NFmiSettingsImpl::NFmiSettingsImpl(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiSettingsImpl::~NFmiSettingsImpl(void)
+NFmiSettingsImpl::~NFmiSettingsImpl()
 {
   itsInstance = 0;  // the pointer is address of static, not by new()
   itIsDestroyed = true;
@@ -383,7 +383,7 @@ NFmiSettingsImpl::~NFmiSettingsImpl(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiSettingsImpl& NFmiSettingsImpl::Instance(void)
+NFmiSettingsImpl& NFmiSettingsImpl::Instance()
 {
   if (!itsInstance)
   {
@@ -406,7 +406,7 @@ NFmiSettingsImpl& NFmiSettingsImpl::Instance(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiSettingsImpl::Create(void)
+void NFmiSettingsImpl::Create()
 {
   static NFmiSettingsImpl theSettings;
   NFmiSettingsImpl::itsInstance = &theSettings;
@@ -422,7 +422,7 @@ void NFmiSettingsImpl::Create(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiSettingsImpl::Die(void)
+void NFmiSettingsImpl::Die()
 {
   throw runtime_error("NFmiSettingsImpl detected a dead reference problem");
 }

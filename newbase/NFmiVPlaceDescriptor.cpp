@@ -13,14 +13,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiVPlaceDescriptor::~NFmiVPlaceDescriptor(void) { Destroy(); }
+NFmiVPlaceDescriptor::~NFmiVPlaceDescriptor() { Destroy(); }
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiVPlaceDescriptor::NFmiVPlaceDescriptor(void) : itsLevelBag(0), itsActivity(0) {}
+NFmiVPlaceDescriptor::NFmiVPlaceDescriptor() : itsLevelBag(0), itsActivity(0) {}
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -67,7 +67,7 @@ NFmiVPlaceDescriptor::NFmiVPlaceDescriptor(const NFmiVPlaceDescriptor &theVPlace
  */
 // ----------------------------------------------------------------------
 
-void NFmiVPlaceDescriptor::Destroy(void)
+void NFmiVPlaceDescriptor::Destroy()
 {
   if (itsActivity)
   {
@@ -87,7 +87,7 @@ void NFmiVPlaceDescriptor::Destroy(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiVPlaceDescriptor::Next(void)
+bool NFmiVPlaceDescriptor::Next()
 {
   if (itsLevelBag)
     return itsLevelBag->Next();
@@ -101,7 +101,7 @@ bool NFmiVPlaceDescriptor::Next(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiVPlaceDescriptor::Previous(void)  // 15.1.1997/Marko
+bool NFmiVPlaceDescriptor::Previous()  // 15.1.1997/Marko
 {
   if (itsLevelBag)
     return itsLevelBag->Previous();
@@ -115,7 +115,7 @@ bool NFmiVPlaceDescriptor::Previous(void)  // 15.1.1997/Marko
  */
 // ----------------------------------------------------------------------
 
-NFmiLevel *NFmiVPlaceDescriptor::Level(void) const
+NFmiLevel *NFmiVPlaceDescriptor::Level() const
 {
   if (itsLevelBag)
     return itsLevelBag->Level();
@@ -144,7 +144,7 @@ NFmiLevel *NFmiVPlaceDescriptor::Level(unsigned long theIndex) const
  */
 // ----------------------------------------------------------------------
 
-NFmiLevel *NFmiVPlaceDescriptor::LevelMinValue(void) const
+NFmiLevel *NFmiVPlaceDescriptor::LevelMinValue() const
 {
   if (itsLevelBag)
     return itsLevelBag->LevelMinValue();
@@ -158,7 +158,7 @@ NFmiLevel *NFmiVPlaceDescriptor::LevelMinValue(void) const
  */
 // ----------------------------------------------------------------------
 
-NFmiLevel *NFmiVPlaceDescriptor::LevelMaxValue(void) const
+NFmiLevel *NFmiVPlaceDescriptor::LevelMaxValue() const
 {
   if (itsLevelBag)
     return itsLevelBag->LevelMaxValue();
@@ -213,7 +213,7 @@ void NFmiVPlaceDescriptor::LevelBag(NFmiLevelBag &theLevelBag)
  */
 // ----------------------------------------------------------------------
 
-unsigned long NFmiVPlaceDescriptor::Index(void) const
+unsigned long NFmiVPlaceDescriptor::Index() const
 {
   if (itsLevelBag)
     return itsLevelBag->CurrentIndex();
@@ -227,7 +227,7 @@ unsigned long NFmiVPlaceDescriptor::Index(void) const
  */
 // ----------------------------------------------------------------------
 
-unsigned long NFmiVPlaceDescriptor::Size(void) const
+unsigned long NFmiVPlaceDescriptor::Size() const
 {
   if (itsLevelBag)
     return itsLevelBag->GetSize();
@@ -241,7 +241,7 @@ unsigned long NFmiVPlaceDescriptor::Size(void) const
  */
 // ----------------------------------------------------------------------
 
-bool NFmiVPlaceDescriptor::IsLevel(void) const
+bool NFmiVPlaceDescriptor::IsLevel() const
 {
   if (itsLevelBag)
     return true;
@@ -255,7 +255,7 @@ bool NFmiVPlaceDescriptor::IsLevel(void) const
  */
 // ----------------------------------------------------------------------
 
-bool NFmiVPlaceDescriptor::NextActive(void)
+bool NFmiVPlaceDescriptor::NextActive()
 {
   while (Next())
     if (IsActive()) return true;

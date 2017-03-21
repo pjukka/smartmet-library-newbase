@@ -245,7 +245,7 @@ double NFmiGnomonicArea::CalcDelta(const double xyDistance) const
  */
 // ----------------------------------------------------------------------
 
-double NFmiGnomonicArea::DistanceFromPerspectivePointToCenterOfEarth(void) const
+double NFmiGnomonicArea::DistanceFromPerspectivePointToCenterOfEarth() const
 {
   // Distance (in world-coordinate meters) for gnomonic projection.
   // See details in ref. [1] pp. 58-62.
@@ -296,7 +296,7 @@ NFmiArea *NFmiGnomonicArea::NewArea(const NFmiPoint &theBottomLeftLatLon,
  */
 // ----------------------------------------------------------------------
 
-NFmiArea *NFmiGnomonicArea::Clone(void) const { return new NFmiGnomonicArea(*this); }
+NFmiArea *NFmiGnomonicArea::Clone() const { return new NFmiGnomonicArea(*this); }
 // ----------------------------------------------------------------------
 /*!
  * Assignment operator
@@ -419,7 +419,7 @@ void NFmiGnomonicArea::Init(bool fKeepWorldRect)
   NFmiAzimuthalArea::Init(fKeepWorldRect);
 }
 
-const std::string NFmiGnomonicArea::AreaStr(void) const
+const std::string NFmiGnomonicArea::AreaStr() const
 {
   std::ostringstream out;
   out << "stereographic," << CentralLongitude() << ',' << CentralLatitude() << ','

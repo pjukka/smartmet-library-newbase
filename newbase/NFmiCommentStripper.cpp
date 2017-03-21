@@ -235,7 +235,7 @@ bool NFmiCommentStripper::ReadAndStripFile(const string& theFileName)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiCommentStripper::Strip(void)
+bool NFmiCommentStripper::Strip()
 {
   string filt_elem2("/*"), filt_elem3("*/");
   if (fStripSlashAst)
@@ -324,7 +324,7 @@ bool NFmiCommentStripper::CollectAndStripNested(const string& theBeginDirective,
  */
 // ----------------------------------------------------------------------
 
-bool NFmiCommentStripper::StripDoubleSlashes(void)  // from to endline
+bool NFmiCommentStripper::StripDoubleSlashes()  // from to endline
 {
   string oldString(itsString);
   string newString = "";
@@ -361,7 +361,7 @@ bool NFmiCommentStripper::StripDoubleSlashes(void)  // from to endline
  */
 // ----------------------------------------------------------------------
 
-bool NFmiCommentStripper::StripPounds(void)  // from pound to end of line
+bool NFmiCommentStripper::StripPounds()  // from pound to end of line
 {
   string oldString(itsString);
   string newString = "";

@@ -22,12 +22,12 @@
 
 using namespace std;
 
-NFmiLocationCache::NFmiLocationCache(void)
+NFmiLocationCache::NFmiLocationCache()
     : itsGridPoint(), itsLocationIndex(static_cast<unsigned long>(-1)), fNoInterpolation(false)
 {
 }
 
-NFmiLocationCache::~NFmiLocationCache(void) {}
+NFmiLocationCache::~NFmiLocationCache() {}
 static const double gGridPointEpsilon =
     0.0000001;  // kuinka paljon interpolointi hila-piste saa poiketa maksimissaan tasaluvuista,
 // että erotus tulkitaan interpolaatiossa turhaksi ja indeksi pyöristetään vain lähintä
@@ -110,15 +110,15 @@ void NFmiLocationCache::SetToNearestGridPoint(bool fDoX,
   if (fDoX || fDoY) CalcIsInterpolationNeeded(theGridSizeX, theGridSizeY);
 }
 
-NFmiTimeCache::NFmiTimeCache(void)
+NFmiTimeCache::NFmiTimeCache()
     : itsTimeIndex1(static_cast<unsigned long>(-1)),
       itsTimeIndex2(static_cast<unsigned long>(-1)),
       itsOffset(1)
 {
 }
 
-NFmiTimeCache::~NFmiTimeCache(void) {}
-void NFmiTimeCache::CalcIsInterpolationNeeded(void)
+NFmiTimeCache::~NFmiTimeCache() {}
+void NFmiTimeCache::CalcIsInterpolationNeeded()
 {
   double diff = ::fabs(itsOffset - ::round(itsOffset));
 
@@ -430,7 +430,7 @@ bool NFmiGrid::AreGridsIdentical(const NFmiGrid &theOtherGrid) const
  */
 // ----------------------------------------------------------------------
 
-const NFmiPoint NFmiGrid::RelativePoint(void) const
+const NFmiPoint NFmiGrid::RelativePoint() const
 {
   double relativeX = itsCurrentX / (itsXNumber - 1);
   double relativeY = itsCurrentY / (itsYNumber - 1);

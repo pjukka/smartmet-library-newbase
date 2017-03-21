@@ -101,7 +101,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiAzimuthalArea::NFmiAzimuthalArea(void)
+NFmiAzimuthalArea::NFmiAzimuthalArea()
     : itsTopRightLatLon(),
       itsBottomLeftLatLon(),
       itsBottomLeftWorldXY(),
@@ -729,7 +729,7 @@ const NFmiPoint NFmiAzimuthalArea::ToLatLon(double theAzimuth, double theRadius)
  */
 // ----------------------------------------------------------------------
 
-const NFmiPoint NFmiAzimuthalArea::CurrentCenter(void) const
+const NFmiPoint NFmiAzimuthalArea::CurrentCenter() const
 {
   return NFmiPoint(itsCentralLongitude, itsCentralLatitude.Value());
 }

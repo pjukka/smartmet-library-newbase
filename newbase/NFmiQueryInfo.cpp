@@ -609,7 +609,7 @@ NFmiQueryInfo::NFmiQueryInfo(const string &filename)
  */
 // ----------------------------------------------------------------------
 
-NFmiQueryInfo::~NFmiQueryInfo(void)
+NFmiQueryInfo::~NFmiQueryInfo()
 {
   Destroy();
 #ifndef NDEBUG
@@ -623,7 +623,7 @@ NFmiQueryInfo::~NFmiQueryInfo(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiQueryInfo::Destroy(void)
+void NFmiQueryInfo::Destroy()
 {
   if (itsHeaderText)
   {
@@ -678,7 +678,7 @@ void NFmiQueryInfo::Destroy(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiQueryInfo::Reset(void)
+void NFmiQueryInfo::Reset()
 {
   itsParamDescriptor->Reset();
   itsTimeDescriptor->Reset();
@@ -692,7 +692,7 @@ void NFmiQueryInfo::Reset(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::First(void)
+bool NFmiQueryInfo::First()
 {
   Reset();
   return (itsTimeDescriptor->Next() && itsParamDescriptor->Next() && itsHPlaceDescriptor->Next() &&
@@ -718,7 +718,7 @@ bool NFmiQueryInfo::FirstParam(bool fIgnoreSubParam)
 // ----------------------------------------------------------------------
 
 /*----------------------------------------------------------------------------------------------*/
-bool NFmiQueryInfo::FirstLocation(void)
+bool NFmiQueryInfo::FirstLocation()
 {
   ResetLocation();
   return NextLocation();
@@ -730,7 +730,7 @@ bool NFmiQueryInfo::FirstLocation(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::FirstLevel(void)
+bool NFmiQueryInfo::FirstLevel()
 {
   ResetLevel();
   return NextLevel();
@@ -742,7 +742,7 @@ bool NFmiQueryInfo::FirstLevel(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::FirstTime(void)
+bool NFmiQueryInfo::FirstTime()
 {
   ResetTime();
   return NextTime();
@@ -754,7 +754,7 @@ bool NFmiQueryInfo::FirstTime(void)
  */
 // ----------------------------------------------------------------------
 
-unsigned long NFmiQueryInfo::SizeActiveLocations(void) const
+unsigned long NFmiQueryInfo::SizeActiveLocations() const
 {
   return 0;  // itsHPlaceDescriptor->SizeActive(); TARKISTA
 }
@@ -765,7 +765,7 @@ unsigned long NFmiQueryInfo::SizeActiveLocations(void) const
  */
 // ----------------------------------------------------------------------
 
-unsigned long NFmiQueryInfo::SizeActiveLevels(void) const
+unsigned long NFmiQueryInfo::SizeActiveLevels() const
 {
   return 0;  // itsVPlaceDescriptor?itsVPlaceDescriptor->SizeActive():0;
 }
@@ -777,7 +777,7 @@ unsigned long NFmiQueryInfo::SizeActiveLevels(void) const
  */
 // ----------------------------------------------------------------------
 
-NFmiDataIdent &NFmiQueryInfo::EditParam(void)
+NFmiDataIdent &NFmiQueryInfo::EditParam()
 {
   // ************** TÄMÄ TOIMII VÄÄRIN KORJAA!!!!! /Marko 1999.08.24 *********************
   //	if(fUseSubParam)
@@ -791,7 +791,7 @@ NFmiDataIdent &NFmiQueryInfo::EditParam(void)
  */
 // ----------------------------------------------------------------------
 
-size_t NFmiQueryInfo::Index(void) const
+size_t NFmiQueryInfo::Index() const
 {
   //  if(!IsLocationMasked(itsHPlaceDescriptor->Index()))
   //	return static_cast<unsigned long>(-1);
@@ -833,7 +833,7 @@ size_t NFmiQueryInfo::Index(unsigned long theParamIndex,
  */
 // ----------------------------------------------------------------------
 
-NFmiQueryInfo *NFmiQueryInfo::Clone(void) const { return new NFmiQueryInfo(*this); }
+NFmiQueryInfo *NFmiQueryInfo::Clone() const { return new NFmiQueryInfo(*this); }
 // ----------------------------------------------------------------------
 /*!
  * \param theCombine Undocumented
@@ -855,7 +855,7 @@ NFmiQueryInfo NFmiQueryInfo::Combine(const NFmiQueryInfo &theCombine)
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiQueryInfo::Owner(void)
+const NFmiString NFmiQueryInfo::Owner()
 {
   if (!itsHeaderText) return NFmiString();
 
@@ -870,7 +870,7 @@ const NFmiString NFmiQueryInfo::Owner(void)
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiQueryInfo::TimeStamp(void)
+const NFmiString NFmiQueryInfo::TimeStamp()
 {
   if (!itsHeaderText) return NFmiString();
 
@@ -887,7 +887,7 @@ const NFmiString NFmiQueryInfo::TimeStamp(void)
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiQueryInfo::Leader(void)
+const NFmiString NFmiQueryInfo::Leader()
 {
   if (!itsHeaderText) return NFmiString();
 
@@ -924,14 +924,14 @@ void NFmiQueryInfo::Header(NFmiStringList *theHeader)
  */
 // ----------------------------------------------------------------------
 
-NFmiStringList *NFmiQueryInfo::Header(void) const { return itsHeaderText; }
+NFmiStringList *NFmiQueryInfo::Header() const { return itsHeaderText; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiQueryInfo::Text(void) const
+const NFmiString NFmiQueryInfo::Text() const
 {
   if (!itsHeaderText) return NFmiString();
 
@@ -944,7 +944,7 @@ const NFmiString NFmiQueryInfo::Text(void) const
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::ResetText(void)
+bool NFmiQueryInfo::ResetText()
 {
   if (itsHeaderText) return false;
 
@@ -963,7 +963,7 @@ bool NFmiQueryInfo::ResetText(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::NextText(void)
+bool NFmiQueryInfo::NextText()
 {
   if (itsHeaderText) return false;
 
@@ -996,14 +996,14 @@ void NFmiQueryInfo::PostProcText(NFmiStringList *theHeader)
  */
 // ----------------------------------------------------------------------
 
-NFmiStringList *NFmiQueryInfo::PostProcText(void) const { return itsPostProc; }
+NFmiStringList *NFmiQueryInfo::PostProcText() const { return itsPostProc; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::ResetPostProc(void)
+bool NFmiQueryInfo::ResetPostProc()
 {
   if (!itsPostProc) return false;
 
@@ -1018,7 +1018,7 @@ bool NFmiQueryInfo::ResetPostProc(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::NextPostProc(void)
+bool NFmiQueryInfo::NextPostProc()
 {
   if (!itsPostProc) return false;
 
@@ -1033,7 +1033,7 @@ bool NFmiQueryInfo::NextPostProc(void)
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiQueryInfo::PostProc(void) const
+const NFmiString NFmiQueryInfo::PostProc() const
 {
   if (!itsPostProc) return NFmiString();
 
@@ -1058,7 +1058,7 @@ void * NFmiQueryInfo::VoidValue(void)
  */
 // ----------------------------------------------------------------------
 
-const NFmiGrid NFmiQueryInfo::GridValue(void)
+const NFmiGrid NFmiQueryInfo::GridValue()
 {
   if (Grid())
   {
@@ -2005,7 +2005,7 @@ bool NFmiQueryInfo::ChangeCombinedParamParser(const NFmiDataIdent &theParam)
  */
 // ----------------------------------------------------------------------
 
-NFmiProducer *NFmiQueryInfo::Producer(void)
+NFmiProducer *NFmiQueryInfo::Producer()
 {
   return (itsParamDescriptor ? itsParamDescriptor->ParamBag()->Current()->GetProducer() : 0);
 }
@@ -2016,14 +2016,14 @@ NFmiProducer *NFmiQueryInfo::Producer(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiDataIdent &NFmiQueryInfo::Param(void) const { return itsParamDescriptor->Param(false); }
+NFmiDataIdent &NFmiQueryInfo::Param() const { return itsParamDescriptor->Param(false); }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-float NFmiQueryInfo::SubParamFloatValue(void) const
+float NFmiQueryInfo::SubParamFloatValue() const
 {
   if (itsCombinedParamParser)
   {
@@ -4415,7 +4415,7 @@ float NFmiQueryInfo::PeekValue(int theTimeOffset, int theXOffset, int theYOffset
  */
 // ----------------------------------------------------------------------
 
-long NFmiQueryInfo::CalcAreaUnCertainty(void)
+long NFmiQueryInfo::CalcAreaUnCertainty()
 {
   double tmpValue = itsAreaUnCertaintyStart +
                     (itsAreaUnCertaintyEnd - itsAreaUnCertaintyStart) * TimeIndex() /
@@ -4429,7 +4429,7 @@ long NFmiQueryInfo::CalcAreaUnCertainty(void)
  */
 // ----------------------------------------------------------------------
 
-long NFmiQueryInfo::CalcTimeUnCertainty(void)
+long NFmiQueryInfo::CalcTimeUnCertainty()
 {
   return itsTimeUnCertaintyStart;  // käytä oikeasti näitä
 }
@@ -4694,7 +4694,7 @@ bool NFmiQueryInfo::MoveRight(int /* moveBy */)  // toimii vain gridi datalle oi
 
 // näillä asetetaan paikka suoraan johonkin laitaan (ei 'laatikon' ulkopuolelle!)
 
-bool NFmiQueryInfo::Top(void)  // toimii vain gridi datalle oikein!!!
+bool NFmiQueryInfo::Top()  // toimii vain gridi datalle oikein!!!
 {
   return false;
 }
@@ -4705,7 +4705,7 @@ bool NFmiQueryInfo::Top(void)  // toimii vain gridi datalle oikein!!!
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::Bottom(void)  // toimii vain gridi datalle oikein!!!
+bool NFmiQueryInfo::Bottom()  // toimii vain gridi datalle oikein!!!
 {
   return false;
 }
@@ -4716,7 +4716,7 @@ bool NFmiQueryInfo::Bottom(void)  // toimii vain gridi datalle oikein!!!
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::Left(void)  // toimii vain gridi datalle oikein!!!
+bool NFmiQueryInfo::Left()  // toimii vain gridi datalle oikein!!!
 {
   return false;
 }
@@ -4727,7 +4727,7 @@ bool NFmiQueryInfo::Left(void)  // toimii vain gridi datalle oikein!!!
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::Right(void)  // toimii vain gridi datalle oikein!!!
+bool NFmiQueryInfo::Right()  // toimii vain gridi datalle oikein!!!
 {
   return false;
 }
@@ -4827,7 +4827,7 @@ bool NFmiQueryInfo::SetCurrentKeyValue(const NFmiString &newValue)
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiQueryInfo::GetCurrentKeyValue(void)
+const NFmiString NFmiQueryInfo::GetCurrentKeyValue()
 {
   if (itsRefQueryData)  // jos this-info on jonkin datan iteraattori, tällöin välitä käsky datalle
     return itsRefQueryData->GetCurrentKeyValue();
@@ -4845,7 +4845,7 @@ const NFmiString NFmiQueryInfo::GetCurrentKeyValue(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::RemoveCurrentKey(void)
+bool NFmiQueryInfo::RemoveCurrentKey()
 {
   if (itsRefQueryData)  // jos this-info on jonkin datan iteraattori, tällöin välitä käsky datalle
     return itsRefQueryData->RemoveCurrentKey();
@@ -4863,7 +4863,7 @@ bool NFmiQueryInfo::RemoveCurrentKey(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::RemoveAllKeys(void)
+bool NFmiQueryInfo::RemoveAllKeys()
 {
   if (itsRefQueryData)  // jos this-info on jonkin datan iteraattori, tällöin välitä käsky datalle
     return itsRefQueryData->RemoveAllKeys();
@@ -4958,7 +4958,7 @@ const NFmiStringList NFmiQueryInfo::GetAllKeys(bool fRemoveDuplicates)
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiQueryInfo::GetCurrentKey(void)
+const NFmiString NFmiQueryInfo::GetCurrentKey()
 {
   if (itsRefQueryData)  // jos this-info on jonkin datan iteraattori, tällöin välitä käsky datalle
     return itsRefQueryData->GetCurrentKey();
@@ -4998,7 +4998,7 @@ const NFmiString NFmiQueryInfo::MakeKeyValueString(const NFmiString &theKey,
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::FindFirstAnyKey(void)
+bool NFmiQueryInfo::FindFirstAnyKey()
 {
   itsHeaderText->Reset();
   do
@@ -5016,7 +5016,7 @@ bool NFmiQueryInfo::FindFirstAnyKey(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::FindNextAnyKey(void)
+bool NFmiQueryInfo::FindNextAnyKey()
 {
   for (; itsHeaderText->Next();)
   {
@@ -5035,7 +5035,7 @@ bool NFmiQueryInfo::FindNextAnyKey(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiQueryInfo::IsCurrentAnyKey(void)
+bool NFmiQueryInfo::IsCurrentAnyKey()
 {
   NFmiString *currentStr = itsHeaderText->Current();
   if (currentStr)
@@ -5115,7 +5115,7 @@ bool NFmiQueryInfo::ReplaceCurrentKeyValue(const NFmiString &newValue)
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiQueryInfo::ExtractCurrentKeyValue(void)
+const NFmiString NFmiQueryInfo::ExtractCurrentKeyValue()
 {
   NFmiString returnVal;
   NFmiString *currentStr = itsHeaderText->Current();
@@ -5141,7 +5141,7 @@ const NFmiString NFmiQueryInfo::ExtractCurrentKeyValue(void)
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiQueryInfo::ExtractCurrentKey(void)
+const NFmiString NFmiQueryInfo::ExtractCurrentKey()
 {
   NFmiString returnVal;
   NFmiString *currentStr = itsHeaderText->Current();

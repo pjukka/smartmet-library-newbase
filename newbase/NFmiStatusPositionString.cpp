@@ -24,14 +24,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiStatusPositionString::~NFmiStatusPositionString(void) {}
+NFmiStatusPositionString::~NFmiStatusPositionString() {}
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiStatusPositionString::NFmiStatusPositionString(void)
+NFmiStatusPositionString::NFmiStatusPositionString()
     : NFmiStatusString(), itsStartPosition(0), itsEndPosition(0)
 {
 }
@@ -96,24 +96,21 @@ NFmiStatusPositionString::NFmiStatusPositionString(
  */
 // ----------------------------------------------------------------------
 
-long NFmiStatusPositionString::StartPosition(void) { return itsStartPosition; }
+long NFmiStatusPositionString::StartPosition() { return itsStartPosition; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-long NFmiStatusPositionString::EndPosition(void) { return itsEndPosition; }
+long NFmiStatusPositionString::EndPosition() { return itsEndPosition; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-NFmiString* NFmiStatusPositionString::Clone(void) const
-{
-  return new NFmiStatusPositionString(*this);
-}
+NFmiString* NFmiStatusPositionString::Clone() const { return new NFmiStatusPositionString(*this); }
 
 // ----------------------------------------------------------------------
 /*!

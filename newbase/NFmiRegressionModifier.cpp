@@ -27,7 +27,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiRegressionModifier::~NFmiRegressionModifier(void) { delete itsRegressionItems; }
+NFmiRegressionModifier::~NFmiRegressionModifier() { delete itsRegressionItems; }
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -75,7 +75,7 @@ NFmiRegressionModifier::NFmiRegressionModifier(NFmiDataIdent *theParam,
  */
 // ----------------------------------------------------------------------
 
-double NFmiRegressionModifier::FloatValue(void)
+double NFmiRegressionModifier::FloatValue()
 {
   if (!itsData) return kFloatMissing;
 

@@ -72,7 +72,7 @@ NFmiString::NFmiString(const char *aText, unsigned long len)
  */
 // ----------------------------------------------------------------------
 
-NFmiString::NFmiString(void) : NFmiSortable(), fChar(), fLength(), fReservedLength(-1)
+NFmiString::NFmiString() : NFmiSortable(), fChar(), fLength(), fReservedLength(-1)
 {
   Set(reinterpret_cast<const unsigned char *>(""), 0);
 }
@@ -155,7 +155,7 @@ NFmiString::NFmiString(const std::string &str)
  */
 // ----------------------------------------------------------------------
 
-NFmiString::~NFmiString(void) { delete[] fChar; }
+NFmiString::~NFmiString() { delete[] fChar; }
 // ----------------------------------------------------------------------
 /*!
  * \param fFmi Undocumented
@@ -639,7 +639,7 @@ void NFmiString::UpperCase(void)
   setlocale(LC_ALL, "C");
 }
 #else
-void NFmiString::UpperCase(void)
+void NFmiString::UpperCase()
 {
   char *p;
   setlocale(LC_ALL, "Finnish");
@@ -666,7 +666,7 @@ void NFmiString::LowerCase(void)
   setlocale(LC_ALL, "C");
 }
 #else
-void NFmiString::LowerCase(void)
+void NFmiString::LowerCase()
 {
   char *p;
   setlocale(LC_ALL, "Finnish");
@@ -710,7 +710,7 @@ void NFmiString::FirstCharToUpper(unsigned long theUpperIndex)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiString::FirstCharIsUpper(void) const
+bool NFmiString::FirstCharIsUpper() const
 {
   char c = fChar[0];
   if ((c >= 'A' && c <= 'Z') || c == '\304' || c == '\326' || c == '\305') return true;
@@ -772,7 +772,7 @@ bool NFmiString::Replace(const NFmiString &newChars, unsigned long fromIndex)
  */
 // ----------------------------------------------------------------------
 
-void NFmiString::RemoveExtraSpaces(void)
+void NFmiString::RemoveExtraSpaces()
 {
   NFmiString tmpStr;
   TrimR();
@@ -791,7 +791,7 @@ void NFmiString::RemoveExtraSpaces(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiString::FirstInWordToUpper(void)
+void NFmiString::FirstInWordToUpper()
 {
   LowerCase();
   FirstCharToUpper();

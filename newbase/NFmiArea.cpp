@@ -354,7 +354,7 @@ bool NFmiArea::IsPacificLongitude(double theLongitude)
     return false;
 }
 
-void NFmiArea::CheckForPacificView(void)
+void NFmiArea::CheckForPacificView()
 {
   fPacificView = NFmiArea::IsPacificView(BottomLeftLatLon(), TopRightLatLon());
 }
@@ -406,7 +406,7 @@ double NFmiArea::FixLongitude(double theLon) const
     return theLon;
 }
 
-NFmiArea *NFmiArea::DoPossiblePacificFix(void) const
+NFmiArea *NFmiArea::DoPossiblePacificFix() const
 {
   // On olemassa pari erikoistapausta, mitkä halutaan eri areoissa korjata, että alueet toimisivat
   // paremmin newbase:ssa.
@@ -431,7 +431,7 @@ NFmiArea *NFmiArea::DoPossiblePacificFix(void) const
   return 0;
 }
 
-NFmiArea *NFmiArea::DoForcePacificFix(void) const
+NFmiArea *NFmiArea::DoForcePacificFix() const
 {
   // Joskus on pakko muuttaa atlantic-area pacific tyyppiseksi vaikka väkisin
   if (!fPacificView)

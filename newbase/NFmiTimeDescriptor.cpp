@@ -25,14 +25,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiTimeDescriptor::~NFmiTimeDescriptor(void) { Destroy(); }
+NFmiTimeDescriptor::~NFmiTimeDescriptor() { Destroy(); }
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiTimeDescriptor::NFmiTimeDescriptor(void)
+NFmiTimeDescriptor::NFmiTimeDescriptor()
     : itsOriginTimeBag(0),
       itsValidTimeBag(0),
       itsTimeList(0),
@@ -253,7 +253,7 @@ NFmiTimeDescriptor::NFmiTimeDescriptor(const NFmiTimeDescriptor &theTimeDescript
  */
 // ----------------------------------------------------------------------
 
-void NFmiTimeDescriptor::Destroy(void)
+void NFmiTimeDescriptor::Destroy()
 {
   if (itsValidTimeBag)
   {
@@ -283,7 +283,7 @@ void NFmiTimeDescriptor::Destroy(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiTimeDescriptor::ExtendTimeBag(void)
+void NFmiTimeDescriptor::ExtendTimeBag()
 {
   NFmiMetTime theFirstTime(itsValidTimeBag->FirstTime());
   NFmiMetTime theLastTime(itsValidTimeBag->LastTime());
@@ -326,7 +326,7 @@ void NFmiTimeDescriptor::ExtendTimeBag(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiTimeDescriptor::ReduseTimeBag(void)
+void NFmiTimeDescriptor::ReduseTimeBag()
 {
   NFmiMetTime theFirstTime(itsValidTimeBag->FirstTime());
   NFmiMetTime theLastTime(itsValidTimeBag->LastTime());
@@ -363,7 +363,7 @@ void NFmiTimeDescriptor::ReduseTimeBag(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiTimeDescriptor::Reset(void)
+void NFmiTimeDescriptor::Reset()
 {
   if (itsTimeBagIdent)
   {
@@ -387,7 +387,7 @@ void NFmiTimeDescriptor::Reset(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeDescriptor::Next(void)
+bool NFmiTimeDescriptor::Next()
 {
   if (itsTimeBagIdent)
   {
@@ -411,7 +411,7 @@ bool NFmiTimeDescriptor::Next(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeDescriptor::Previous(void)
+bool NFmiTimeDescriptor::Previous()
 {
   if (itsTimeBagIdent)
   {
@@ -478,7 +478,7 @@ bool NFmiTimeDescriptor::TimeToNearestStep(const NFmiMetTime &theTime,
  */
 // ----------------------------------------------------------------------
 
-const NFmiMetTime &NFmiTimeDescriptor::Time(void) const
+const NFmiMetTime &NFmiTimeDescriptor::Time() const
 {
   if (itsTimeBagIdent)
     return (itsTimeList ? *itsTimeList->Current() : itsValidTimeBag->CurrentTime());
@@ -486,7 +486,7 @@ const NFmiMetTime &NFmiTimeDescriptor::Time(void) const
     return (itsOriginTimeBag->CurrentTime());
 }
 
-const NFmiMetTime &NFmiTimeDescriptor::FirstTime(void) const
+const NFmiMetTime &NFmiTimeDescriptor::FirstTime() const
 {
   if (itsTimeBagIdent)
     return (itsTimeList ? itsTimeList->FirstTime() : itsValidTimeBag->FirstTime());
@@ -494,7 +494,7 @@ const NFmiMetTime &NFmiTimeDescriptor::FirstTime(void) const
     return (itsOriginTimeBag->FirstTime());
 }
 
-const NFmiMetTime &NFmiTimeDescriptor::LastTime(void) const
+const NFmiMetTime &NFmiTimeDescriptor::LastTime() const
 {
   if (itsTimeBagIdent)
     return (itsTimeList ? itsTimeList->LastTime() : itsValidTimeBag->LastTime());
@@ -508,7 +508,7 @@ const NFmiMetTime &NFmiTimeDescriptor::LastTime(void) const
  */
 // ----------------------------------------------------------------------
 
-const NFmiMetTime &NFmiTimeDescriptor::OriginTime(void) const
+const NFmiMetTime &NFmiTimeDescriptor::OriginTime() const
 {
   if (!itsTimeBagIdent)
     return (itsOriginTimeBag->CurrentTime());
@@ -547,7 +547,7 @@ void NFmiTimeDescriptor::OriginTime(const NFmiMetTime &newTime)
  */
 // ----------------------------------------------------------------------
 
-const NFmiMetTime &NFmiTimeDescriptor::ValidTime(void) const
+const NFmiMetTime &NFmiTimeDescriptor::ValidTime() const
 {
   if (itsTimeBagIdent)
     return (itsTimeList ? *itsTimeList->Current() : itsValidTimeBag->CurrentTime());
@@ -578,7 +578,7 @@ const NFmiMetTime &NFmiTimeDescriptor::ValidTime(void) const
  */
 // ----------------------------------------------------------------------
 
-unsigned long NFmiTimeDescriptor::Index(void) const
+unsigned long NFmiTimeDescriptor::Index() const
 {
   if (itsTimeBagIdent)
   {
@@ -602,7 +602,7 @@ unsigned long NFmiTimeDescriptor::Index(void) const
  */
 // ----------------------------------------------------------------------
 
-unsigned long NFmiTimeDescriptor::Size(void) const
+unsigned long NFmiTimeDescriptor::Size() const
 {
   if (itsTimeBagIdent)
   {
@@ -620,7 +620,7 @@ unsigned long NFmiTimeDescriptor::Size(void) const
   }
 }
 
-bool NFmiTimeDescriptor::IsEmpty(void) const
+bool NFmiTimeDescriptor::IsEmpty() const
 {
   if (itsTimeBagIdent)
   {
@@ -645,7 +645,7 @@ bool NFmiTimeDescriptor::IsEmpty(void) const
  */
 // ----------------------------------------------------------------------
 
-unsigned long NFmiTimeDescriptor::SizeActive(void) const
+unsigned long NFmiTimeDescriptor::SizeActive() const
 {
   if (itsTimeBagIdent && IsValidTime())
   {
@@ -666,7 +666,7 @@ unsigned long NFmiTimeDescriptor::SizeActive(void) const
  */
 // ----------------------------------------------------------------------
 
-NFmiTimeBag NFmiTimeDescriptor::GetActivePeriod(void)
+NFmiTimeBag NFmiTimeDescriptor::GetActivePeriod()
 {
   NFmiTime saveTime(Time());
 
@@ -741,7 +741,7 @@ bool NFmiTimeDescriptor::SetActivity(bool theActivityState)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeDescriptor::FirstActive(void)
+bool NFmiTimeDescriptor::FirstActive()
 {
   Reset();
   return NextActive();
@@ -753,7 +753,7 @@ bool NFmiTimeDescriptor::FirstActive(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeDescriptor::LastActive(void)
+bool NFmiTimeDescriptor::LastActive()
 {
   TFmiTime lastActive(Time());
   Reset();
@@ -776,7 +776,7 @@ bool NFmiTimeDescriptor::LastActive(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeDescriptor::PreviousActive(void)
+bool NFmiTimeDescriptor::PreviousActive()
 {
   while (Previous())
     if (IsActive()) return true;
@@ -790,7 +790,7 @@ bool NFmiTimeDescriptor::PreviousActive(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeDescriptor::NextActive(void)
+bool NFmiTimeDescriptor::NextActive()
 {
   while (Next())
     if (IsActive()) return true;
@@ -804,7 +804,7 @@ bool NFmiTimeDescriptor::NextActive(void)
  */
 // ----------------------------------------------------------------------
 
-const NFmiTimePerioid NFmiTimeDescriptor::ActiveResolution(void)
+const NFmiTimePerioid NFmiTimeDescriptor::ActiveResolution()
 {
   if (itsValidTimeBag)
   {
@@ -833,7 +833,7 @@ const NFmiTimePerioid NFmiTimeDescriptor::ActiveResolution(void)
  */
 // ----------------------------------------------------------------------
 
-const NFmiTimePerioid NFmiTimeDescriptor::Resolution(void) const
+const NFmiTimePerioid NFmiTimeDescriptor::Resolution() const
 {
   if (itsTimeBagIdent)
   {

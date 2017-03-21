@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiModifiedDataIterator::~NFmiModifiedDataIterator(void) {}
+NFmiModifiedDataIterator::~NFmiModifiedDataIterator() {}
 // ----------------------------------------------------------------------
 /*!
  * Constructor

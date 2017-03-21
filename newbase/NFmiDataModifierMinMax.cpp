@@ -20,16 +20,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierMinMax::~NFmiDataModifierMinMax(void) {}
+NFmiDataModifierMinMax::~NFmiDataModifierMinMax() {}
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierMinMax::NFmiDataModifierMinMax(void) : itsMinValue(FLT_MAX), itsMaxValue(-FLT_MAX)
-{
-}
+NFmiDataModifierMinMax::NFmiDataModifierMinMax() : itsMinValue(FLT_MAX), itsMaxValue(-FLT_MAX) {}
 
 NFmiDataModifierMinMax::NFmiDataModifierMinMax(const NFmiDataModifierMinMax& theOther)
     : NFmiDataModifier(theOther),
@@ -38,7 +36,7 @@ NFmiDataModifierMinMax::NFmiDataModifierMinMax(const NFmiDataModifierMinMax& the
 {
 }
 
-NFmiDataModifier* NFmiDataModifierMinMax::Clone(void) const
+NFmiDataModifier* NFmiDataModifierMinMax::Clone() const
 {
   return new NFmiDataModifierMinMax(*this);
 }
@@ -49,7 +47,7 @@ NFmiDataModifier* NFmiDataModifierMinMax::Clone(void) const
  */
 // ----------------------------------------------------------------------
 
-float NFmiDataModifierMinMax::MinValue(void)
+float NFmiDataModifierMinMax::MinValue()
 {
   if (itsMinValue != FLT_MAX)
     return itsMinValue;
@@ -63,7 +61,7 @@ float NFmiDataModifierMinMax::MinValue(void)
  */
 // ----------------------------------------------------------------------
 
-float NFmiDataModifierMinMax::MaxValue(void)
+float NFmiDataModifierMinMax::MaxValue()
 {
   if (itsMaxValue != -FLT_MAX)
     return itsMaxValue;
@@ -92,7 +90,7 @@ void NFmiDataModifierMinMax::Calculate(float theValue)
  */
 // ----------------------------------------------------------------------
 
-void NFmiDataModifierMinMax::Clear(void)
+void NFmiDataModifierMinMax::Clear()
 {
   NFmiDataModifier::Clear();
   itsMaxValue = -FLT_MAX;
@@ -105,5 +103,5 @@ void NFmiDataModifierMinMax::Clear(void)
  */
 // ----------------------------------------------------------------------
 
-float NFmiDataModifierMinMax::CalculationResult(void) { return kFloatMissing; }
+float NFmiDataModifierMinMax::CalculationResult() { return kFloatMissing; }
 // ======================================================================

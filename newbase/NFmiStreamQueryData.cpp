@@ -75,7 +75,7 @@ const string find_newest_querydata(const string &thePath)
  */
 // ----------------------------------------------------------------------
 
-NFmiStreamQueryData::~NFmiStreamQueryData(void)
+NFmiStreamQueryData::~NFmiStreamQueryData()
 {
   if (!itsOwnerData && itsQueryData) delete itsQueryData;
   if (itsQueryDataIter) delete itsQueryDataIter;
@@ -87,7 +87,7 @@ NFmiStreamQueryData::~NFmiStreamQueryData(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiStreamQueryData::NFmiStreamQueryData(void)
+NFmiStreamQueryData::NFmiStreamQueryData()
     : itsQueryData(0), itsQueryDataIter(0), itsOwnerData(false)
 {
 }
@@ -111,7 +111,7 @@ NFmiStreamQueryData::NFmiStreamQueryData(NFmiQueryData *theQueryData, bool isOwn
  */
 // ----------------------------------------------------------------------
 
-NFmiFastQueryInfo *NFmiStreamQueryData::QueryInfoIter(void)
+NFmiFastQueryInfo *NFmiStreamQueryData::QueryInfoIter()
 {
   if (itsQueryData)
   {
@@ -148,7 +148,7 @@ NFmiQueryData *NFmiStreamQueryData::QueryData(bool theOwnerData)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiStreamQueryData::IsData(void)
+bool NFmiStreamQueryData::IsData()
 {
   if (itsQueryData) return true;
 

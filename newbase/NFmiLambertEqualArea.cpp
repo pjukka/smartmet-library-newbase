@@ -23,7 +23,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiLambertEqualArea::NFmiLambertEqualArea(void) {}
+NFmiLambertEqualArea::NFmiLambertEqualArea() {}
 // ----------------------------------------------------------------------
 /*!
  * Copy constructor
@@ -258,7 +258,7 @@ double NFmiLambertEqualArea::CalcDelta(const double xyDistance) const
  */
 // ----------------------------------------------------------------------
 
-double NFmiLambertEqualArea::DistanceFromPerspectivePointToCenterOfEarth(void) const
+double NFmiLambertEqualArea::DistanceFromPerspectivePointToCenterOfEarth() const
 {
   // Distance (in world-coordinate meters) for LambertEqual projection.
   // See details in ref. [2] p. 13.
@@ -310,7 +310,7 @@ NFmiArea *NFmiLambertEqualArea::NewArea(const NFmiPoint &theBottomLeftLatLon,
  */
 // ----------------------------------------------------------------------
 
-NFmiArea *NFmiLambertEqualArea::Clone(void) const { return new NFmiLambertEqualArea(*this); }
+NFmiArea *NFmiLambertEqualArea::Clone() const { return new NFmiLambertEqualArea(*this); }
 // ----------------------------------------------------------------------
 /*!
  * Assignment operator
@@ -419,7 +419,7 @@ NFmiArea *NFmiLambertEqualArea::CreateNewArea(const NFmiRect &theRect) const
   return area;
 }
 
-const std::string NFmiLambertEqualArea::AreaStr(void) const
+const std::string NFmiLambertEqualArea::AreaStr() const
 {
   std::ostringstream out;
   out << "lambertequal," << CentralLongitude() << ',' << CentralLatitude() << ','

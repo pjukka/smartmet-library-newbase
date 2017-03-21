@@ -20,7 +20,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiLevelBag::~NFmiLevelBag(void)
+NFmiLevelBag::~NFmiLevelBag()
 {
   if (itsLevels) delete[] static_cast<NFmiLevel *>(itsLevels);
 }
@@ -31,7 +31,7 @@ NFmiLevelBag::~NFmiLevelBag(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiLevelBag::NFmiLevelBag(void) : itsLevels(0), itsStep(0) {}
+NFmiLevelBag::NFmiLevelBag() : itsLevels(0), itsStep(0) {}
 // ----------------------------------------------------------------------
 /*!
  * \param theLevelType Undocumented

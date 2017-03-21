@@ -335,7 +335,7 @@ bool NFmiTotalWind::FromWindVector(unsigned long theValue)
  */
 // ----------------------------------------------------------------------
 
-unsigned long NFmiTotalWind::ToWindVector(void)
+unsigned long NFmiTotalWind::ToWindVector()
 {
   unsigned long windVector = kUnsignedLongMissing;
   if (itsData.longType == kTCombinedWeatherMissing) return windVector;
@@ -496,7 +496,7 @@ double NFmiTotalWind::SubValue(FmiParameterName theParam,
  */
 // ----------------------------------------------------------------------
 
-double NFmiTotalWind::WindDirectionValue(void)
+double NFmiTotalWind::WindDirectionValue()
 {
   double returnVal = kFloatMissing;
   unsigned long tempValue = WindDirection();
@@ -517,7 +517,7 @@ double NFmiTotalWind::WindDirectionValue(void)
  */
 // ----------------------------------------------------------------------
 
-double NFmiTotalWind::CalcU(void)
+double NFmiTotalWind::CalcU()
 {
   double value = kFloatMissing;
   double WS = WindSpeedVx(WindSpeed());
@@ -543,7 +543,7 @@ double NFmiTotalWind::CalcU(void)
  */
 // ----------------------------------------------------------------------
 
-double NFmiTotalWind::CalcV(void)
+double NFmiTotalWind::CalcV()
 {
   double value = kFloatMissing;
   double WS = WindSpeedVx(WindSpeed());

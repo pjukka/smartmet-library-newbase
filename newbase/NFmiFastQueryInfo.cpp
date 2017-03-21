@@ -329,14 +329,14 @@ NFmiFastQueryInfo::NFmiFastQueryInfo(const NFmiFastQueryInfo &theInfo)
  */
 // ----------------------------------------------------------------------
 
-NFmiFastQueryInfo::~NFmiFastQueryInfo(void) { delete itsTemporaryGridData; }
+NFmiFastQueryInfo::~NFmiFastQueryInfo() { delete itsTemporaryGridData; }
 // ----------------------------------------------------------------------
 /*!
  *
  */
 // ----------------------------------------------------------------------
 
-void NFmiFastQueryInfo::Reset(void)
+void NFmiFastQueryInfo::Reset()
 {
   fUseSubParam = false;
 
@@ -352,7 +352,7 @@ void NFmiFastQueryInfo::Reset(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiFastQueryInfo::First(void)
+bool NFmiFastQueryInfo::First()
 {
   fUseSubParam = false;
   bool firstOK = true;
@@ -410,7 +410,7 @@ bool NFmiFastQueryInfo::NextParam(bool fIgnoreSubParam)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiFastQueryInfo::NextLevel(void)
+bool NFmiFastQueryInfo::NextLevel()
 {
   itsLevelIndex++;
   if (itsLevelIndex < itsLevelSize)
@@ -466,7 +466,7 @@ bool NFmiFastQueryInfo::PreviousParam(bool fIgnoreSubParam)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiFastQueryInfo::PreviousLocation(void)
+bool NFmiFastQueryInfo::PreviousLocation()
 {
   if (itsLocationIndex > 0 &&
       itsLocationIndex !=
@@ -490,7 +490,7 @@ bool NFmiFastQueryInfo::PreviousLocation(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiFastQueryInfo::PreviousLevel(void)
+bool NFmiFastQueryInfo::PreviousLevel()
 {
   if (itsLevelIndex > 0 &&
       itsLevelIndex !=
@@ -513,7 +513,7 @@ bool NFmiFastQueryInfo::PreviousLevel(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiFastQueryInfo::PreviousTime(void)
+bool NFmiFastQueryInfo::PreviousTime()
 {
   if (itsTimeIndex > 0 &&
       itsTimeIndex !=
@@ -840,7 +840,7 @@ bool NFmiFastQueryInfo::TimeToNearestStep(const NFmiMetTime &theTime,
  */
 // ----------------------------------------------------------------------
 
-NFmiDataIdent &NFmiFastQueryInfo::Param(void) const
+NFmiDataIdent &NFmiFastQueryInfo::Param() const
 {
   return itsParamDescriptor->Param(itsParamIndex, !fUseSubParam);
 }
@@ -851,7 +851,7 @@ NFmiDataIdent &NFmiFastQueryInfo::Param(void) const
  */
 // ----------------------------------------------------------------------
 
-NFmiProducer *NFmiFastQueryInfo::Producer(void)
+NFmiProducer *NFmiFastQueryInfo::Producer()
 {
   if (itsParamSize == 0)
     throw std::runtime_error(
@@ -871,7 +871,7 @@ NFmiProducer *NFmiFastQueryInfo::Producer(void)
  * jos ei ole ollenkaan parametreja.
  */
 // ----------------------------------------------------------------------
-const NFmiProducer &NFmiFastQueryInfo::FirstParamProducer(void)
+const NFmiProducer &NFmiFastQueryInfo::FirstParamProducer()
 {
   static NFmiProducer dummy;
   if (SizeParams() <= 0)
@@ -888,7 +888,7 @@ const NFmiProducer &NFmiFastQueryInfo::FirstParamProducer(void)
 //   MUISTA OTTAA HUOMIOON GRIDIN PALAUTUS
 //   (temporary location muuttuja luokkaan???)
 
-const NFmiLocation *NFmiFastQueryInfo::Location(void) const
+const NFmiLocation *NFmiFastQueryInfo::Location() const
 {
   static NFmiLocation dummy(kFloatMissing, kFloatMissing);
   const NFmiLocation *loc = itsHPlaceDescriptor->LocationWithIndex(itsLocationIndex);
@@ -925,12 +925,12 @@ const NFmiPoint &NFmiFastQueryInfo::LatLon(unsigned long index) const
  */
 // ----------------------------------------------------------------------
 
-const NFmiLevel *NFmiFastQueryInfo::Level(void) const
+const NFmiLevel *NFmiFastQueryInfo::Level() const
 {
   return itsVPlaceDescriptor->Level(itsLevelIndex);
 }
 
-FmiLevelType NFmiFastQueryInfo::LevelType(void) const
+FmiLevelType NFmiFastQueryInfo::LevelType() const
 {
   if (itsLevelIndex < SizeLevels())
     return itsVPlaceDescriptor->Level(itsLevelIndex)->LevelType();
@@ -950,7 +950,7 @@ FmiLevelType NFmiFastQueryInfo::LevelType(void) const
 // palautuu tilapäismuuttujan referenssi ja se ei ole välttämättä käyttökelpoinen
 // (tällöin funktiota on tosin käytetty väärin!)
 
-const NFmiMetTime &NFmiFastQueryInfo::Time(void) const
+const NFmiMetTime &NFmiFastQueryInfo::Time() const
 {
   if (itsTimeDescriptor->Time(itsTimeIndex))
   {
@@ -969,7 +969,7 @@ const NFmiMetTime &NFmiFastQueryInfo::Time(void) const
 // palautuu tilapäismuuttujan referenssi ja se ei ole välttämättä käyttökelpoinen
 // (tällöin funktiota on tosin käytetty väärin!)
 
-const NFmiMetTime &NFmiFastQueryInfo::ValidTime(void) const
+const NFmiMetTime &NFmiFastQueryInfo::ValidTime() const
 {
   // HUOM!!! tästä voisi varmaan tehdä nopeamman!!!!
   if (itsTimeDescriptor->Time(itsTimeIndex))
@@ -989,7 +989,7 @@ const NFmiMetTime &NFmiFastQueryInfo::ValidTime(void) const
 // palautuu tilapäismuuttujan referenssi ja se ei ole välttämättä käyttökelpoinen
 // (tällöin funktiota on tosin käytetty väärin!)
 
-const NFmiMetTime &NFmiFastQueryInfo::OriginTime(void) const
+const NFmiMetTime &NFmiFastQueryInfo::OriginTime() const
 {
   // HUOM!!! tästä voisi varmaan tehd<E4> nopeamman!!!!
   // HUOM!!! en ole varma oikeasta toiminnasta, laitan palauttamaan suoraan origin timea
@@ -1310,7 +1310,7 @@ static bool IsLevelValuesInRisingOrder(NFmiFastQueryInfo *theInfo)
  *
  */
 // ----------------------------------------------------------------------
-void NFmiFastQueryInfo::InitFastInfo(void)
+void NFmiFastQueryInfo::InitFastInfo()
 {
   if (itsParamDescriptor && itsHPlaceDescriptor && itsVPlaceDescriptor && itsTimeDescriptor)
   {
@@ -1415,7 +1415,7 @@ void NFmiFastQueryInfo::InitFastInfo(void)
 // Laskee paine datan painepinta level tietojen avulla. xSize kertoo matriisin x koon ja levelSize y
 // koon.
 // Jokaiseen columniin siis sijoitetaan vain samat paine arvot uudestaan ja uudestaan.
-std::vector<float> NFmiFastQueryInfo::CalcPressureLevelDataPressures(void)
+std::vector<float> NFmiFastQueryInfo::CalcPressureLevelDataPressures()
 {
   std::vector<float> pressureLevels;
   for (ResetLevel(); NextLevel();)
@@ -1426,7 +1426,7 @@ std::vector<float> NFmiFastQueryInfo::CalcPressureLevelDataPressures(void)
 }
 
 // Sama kuin CalcPressureLevelDataPressures, mutta heightlevel-datoille
-std::vector<float> NFmiFastQueryInfo::CalcHeightLevelDataHeights(void)
+std::vector<float> NFmiFastQueryInfo::CalcHeightLevelDataHeights()
 {
   std::vector<float> heightLevels;
   for (ResetLevel(); NextLevel();)
@@ -1547,7 +1547,7 @@ const NFmiPoint NFmiFastQueryInfo::PeekLocationLatLon(int theXOffset, int theYOf
  */
 // ----------------------------------------------------------------------
 
-bool NFmiFastQueryInfo::NextActiveParam(void) { return NextActiveParam(true); }
+bool NFmiFastQueryInfo::NextActiveParam() { return NextActiveParam(true); }
 // ----------------------------------------------------------------------
 /*!
  * \param fIgnoreSubParam Undocumented
@@ -1568,7 +1568,7 @@ bool NFmiFastQueryInfo::NextActiveParam(bool fIgnoreSubParam)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiFastQueryInfo::IsActiveParam(void) { return Param().IsActive(); }
+bool NFmiFastQueryInfo::IsActiveParam() { return Param().IsActive(); }
 // ----------------------------------------------------------------------
 /*!
  * \param newState Undocumented
@@ -1598,7 +1598,7 @@ bool NFmiFastQueryInfo::ActivateParam(bool newState) { return ActivateParam(newS
  */
 // ----------------------------------------------------------------------
 
-const NFmiPoint NFmiFastQueryInfo::RelativePoint(void) const
+const NFmiPoint NFmiFastQueryInfo::RelativePoint() const
 {
   if (IsGrid())
   {
@@ -1806,7 +1806,7 @@ bool NFmiFastQueryInfo::MoveRight(int moveBy)  // toimii vain gridi datalle oike
  */
 // ----------------------------------------------------------------------
 
-bool NFmiFastQueryInfo::Top(void)  // toimii vain gridi datalle oikein!!!
+bool NFmiFastQueryInfo::Top()  // toimii vain gridi datalle oikein!!!
 {
   // tämä on hilan yläosa eli suurin y-indeksi
   int xLoc = itsLocationIndex % itsGridXNumber;
@@ -1822,7 +1822,7 @@ bool NFmiFastQueryInfo::Top(void)  // toimii vain gridi datalle oikein!!!
  */
 // ----------------------------------------------------------------------
 
-bool NFmiFastQueryInfo::Bottom(void)  // toimii vain gridi datalle oikein!!!
+bool NFmiFastQueryInfo::Bottom()  // toimii vain gridi datalle oikein!!!
 {
   // tämä on hilan alaosa, eli 0 y-indeksi
   int xLoc = itsLocationIndex % itsGridXNumber;
@@ -1838,7 +1838,7 @@ bool NFmiFastQueryInfo::Bottom(void)  // toimii vain gridi datalle oikein!!!
  */
 // ----------------------------------------------------------------------
 
-bool NFmiFastQueryInfo::Left(void)  // toimii vain gridi datalle oikein!!!
+bool NFmiFastQueryInfo::Left()  // toimii vain gridi datalle oikein!!!
 {
   int xLoc = 0;
   int yLoc = itsLocationIndex / itsGridXNumber;
@@ -1853,7 +1853,7 @@ bool NFmiFastQueryInfo::Left(void)  // toimii vain gridi datalle oikein!!!
  */
 // ----------------------------------------------------------------------
 
-bool NFmiFastQueryInfo::Right(void)  // toimii vain gridi datalle oikein!!!
+bool NFmiFastQueryInfo::Right()  // toimii vain gridi datalle oikein!!!
 {
   int xLoc = itsGridXNumber - 1;
   int yLoc = itsLocationIndex / itsGridXNumber;
@@ -2340,7 +2340,7 @@ bool NFmiFastQueryInfo::SetValues(const NFmiDataMatrix<float> &theMatrix)
  */
 // ----------------------------------------------------------------------
 
-NFmiQueryInfo *NFmiFastQueryInfo::Clone(void) const { return new NFmiFastQueryInfo(*this); }
+NFmiQueryInfo *NFmiFastQueryInfo::Clone() const { return new NFmiFastQueryInfo(*this); }
 // ----------------------------------------------------------------------
 /*!
  * \brief Get the float value at the index, subparam or not
@@ -2794,7 +2794,7 @@ float NFmiFastQueryInfo::FastPressureLevelValue(double xInd, double yInd)
 
 // Palauttaa PressureLevelValue-metodia varten paineparametrin tai asetetun painepinnan arvon, tai
 // palauttaa puuttuvan arvon jos sellaista ei löydy.
-float NFmiFastQueryInfo::GetCurrentLevelPressure(void)
+float NFmiFastQueryInfo::GetCurrentLevelPressure()
 {
   if (!PressureDataAvailable())  // Tarkistetaan että datassa on P parametri tai painepintadataa
     return kFloatMissing;
@@ -2822,7 +2822,7 @@ float NFmiFastQueryInfo::GetCurrentLevelPressure(void)
 
 // Etsii PressureLevelValue-metodia varten 1. paine arvon, mikä ei ole puuttuvaa, tai
 // palauttaa puuttuvan arvon jos sellaista ei löydy.
-float NFmiFastQueryInfo::FindFirstPressureValue(void)
+float NFmiFastQueryInfo::FindFirstPressureValue()
 {
   float firstPressureValue = kFloatMissing;
   FirstLevel();
@@ -2853,7 +2853,7 @@ float NFmiFastQueryInfo::FindFirstPressureValue(void)
   return firstPressureValue;
 }
 
-float NFmiFastQueryInfo::FindFirstHeightValue(void)
+float NFmiFastQueryInfo::FindFirstHeightValue()
 {
   float firstHeightValue = kFloatMissing;
   FirstLevel();
@@ -4538,7 +4538,7 @@ bool NFmiFastQueryInfo::HasLatlonInfoInData() const
 
 // jos datassa on kFmiLongitude ja kFmiLatitude parametrit, lasketaan sijanti asetetun ajan ja
 // paikan suhteen niiden avulla
-NFmiPoint NFmiFastQueryInfo::GetLatlonFromData(void)
+NFmiPoint NFmiFastQueryInfo::GetLatlonFromData()
 {
   double lon = PeekParamValue(itsLongitudeParamIndex);
   double lat = PeekParamValue(itsLatitudeParamIndex);
@@ -4576,7 +4576,7 @@ float NFmiFastQueryInfo::PeekParamValue(unsigned long theParamIndex)
 // false:n.
 // HUOM! jos tämän kutsu palauttaa true:n, voidaan korkeus parametria käyttää ja käytön jälkeen
 // pitää kutsua vastaavaa RestoreAfterUsingPressureParam -funktiota.
-bool NFmiFastQueryInfo::StartUsingPressureParam(void)
+bool NFmiFastQueryInfo::StartUsingPressureParam()
 {
   if (fPressureValueAvailable)  // pitää tarkistaa onko tälle datalle paineparametria tarjolla
                                 // ollenkaan.
@@ -4592,7 +4592,7 @@ bool NFmiFastQueryInfo::StartUsingPressureParam(void)
 }
 
 // Ja käytön jälkeen palautus.
-void NFmiFastQueryInfo::RestoreAfterUsingPressureParam(void)
+void NFmiFastQueryInfo::RestoreAfterUsingPressureParam()
 {
   if (itsOldParamIndex !=
       gMissingIndex)  // ei tehdä palautusta, jos vanha indeksi on missing-arvossa
@@ -4606,7 +4606,7 @@ void NFmiFastQueryInfo::RestoreAfterUsingPressureParam(void)
   }
 }
 
-bool NFmiFastQueryInfo::StartUsingHeightParam(void)
+bool NFmiFastQueryInfo::StartUsingHeightParam()
 {
   if (fHeightValueAvailable)  // pitää tarkistaa onko tälle datalle korkeusparametria tarjolla
                               // ollenkaan.
@@ -4621,7 +4621,7 @@ bool NFmiFastQueryInfo::StartUsingHeightParam(void)
   return false;
 }
 
-void NFmiFastQueryInfo::RestoreAfterUsingHeightParam(void)
+void NFmiFastQueryInfo::RestoreAfterUsingHeightParam()
 {
   RestoreAfterUsingPressureParam();  // tämä tekee tarvittavat asetukset
 }

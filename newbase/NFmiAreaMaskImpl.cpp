@@ -24,7 +24,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiAreaMaskImpl::NFmiAreaMaskImpl(void)
+NFmiAreaMaskImpl::NFmiAreaMaskImpl()
     : itsMaskCondition(),
       itsMaskType(kNoType),
       itsDataType(NFmiInfoData::kNoDataType),
@@ -99,7 +99,7 @@ NFmiAreaMaskImpl::NFmiAreaMaskImpl(const NFmiAreaMaskImpl &theOther)
  */
 // ----------------------------------------------------------------------
 
-NFmiAreaMaskImpl::~NFmiAreaMaskImpl(void) {}
+NFmiAreaMaskImpl::~NFmiAreaMaskImpl() {}
 // ----------------------------------------------------------------------
 /*!
  * \param theLatLon Undocumented
@@ -183,7 +183,7 @@ bool NFmiAreaMaskImpl::IsWantedParam(const NFmiDataIdent & /* theParam */,
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiAreaMaskImpl::MaskString(void) const
+const NFmiString NFmiAreaMaskImpl::MaskString() const
 {
   NFmiString subStr(MakeSubMaskString());
   NFmiString returnValue(itsMaskCondition.MaskString(subStr));
@@ -196,21 +196,21 @@ const NFmiString NFmiAreaMaskImpl::MaskString(void) const
  */
 // ----------------------------------------------------------------------
 
-const NFmiDataIdent *NFmiAreaMaskImpl::DataIdent(void) const { return 0; }
+const NFmiDataIdent *NFmiAreaMaskImpl::DataIdent() const { return 0; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-const NFmiParam *NFmiAreaMaskImpl::Param(void) const { return 0; }
+const NFmiParam *NFmiAreaMaskImpl::Param() const { return 0; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-const NFmiLevel *NFmiAreaMaskImpl::Level(void) const { return 0; }
+const NFmiLevel *NFmiAreaMaskImpl::Level() const { return 0; }
 void NFmiAreaMaskImpl::Level(const NFmiLevel & /* theLevel */) {}
 // ----------------------------------------------------------------------
 /*!
@@ -218,10 +218,10 @@ void NFmiAreaMaskImpl::Level(const NFmiLevel & /* theLevel */) {}
  */
 // ----------------------------------------------------------------------
 
-bool NFmiAreaMaskImpl::UseLevelInfo(void) const { return false; }
-bool NFmiAreaMaskImpl::UsePressureLevelInterpolation(void) const { return false; }
+bool NFmiAreaMaskImpl::UseLevelInfo() const { return false; }
+bool NFmiAreaMaskImpl::UsePressureLevelInterpolation() const { return false; }
 void NFmiAreaMaskImpl::UsePressureLevelInterpolation(bool /* newValue */) {}
-double NFmiAreaMaskImpl::UsedPressureLevelValue(void) const { return kFloatMissing; }
+double NFmiAreaMaskImpl::UsedPressureLevelValue() const { return kFloatMissing; }
 void NFmiAreaMaskImpl::UsedPressureLevelValue(double /* newValue */) {}
 // ----------------------------------------------------------------------
 /*!
@@ -269,7 +269,7 @@ double NFmiAreaMaskImpl::CalcValueFromLocation(const NFmiPoint & /* theLatLon */
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiAreaMaskImpl::MakeSubMaskString(void) const
+const NFmiString NFmiAreaMaskImpl::MakeSubMaskString() const
 {
   NFmiString returnVal;
   return returnVal;
@@ -292,5 +292,5 @@ void NFmiAreaMaskImpl::Condition(const NFmiCalculationCondition &theCondition)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiAreaMaskImpl::IsRampMask(void) const { return itsMaskCondition.IsRampMask(); }
+bool NFmiAreaMaskImpl::IsRampMask() const { return itsMaskCondition.IsRampMask(); }
 // ======================================================================

@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataIterator::~NFmiDataIterator(void) {}
+NFmiDataIterator::~NFmiDataIterator() {}
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -48,7 +48,7 @@ void NFmiDataIterator::DoForEach(NFmiDataModifier* /* theDataModifier */) {}
  */
 // ----------------------------------------------------------------------
 
-void NFmiDataIterator::CheckIfMaskIsUsed(void)
+void NFmiDataIterator::CheckIfMaskIsUsed()
 {
   if (itsMask && itsMask->IsEnabled())
     fMaskInUse = true;

@@ -79,14 +79,14 @@ static bool CheckProbabilityCondition(NFmiAreaMask::FunctionType condition,
  */
 // ----------------------------------------------------------------------
 
-NFmiInfoAreaMask::~NFmiInfoAreaMask(void) {}
+NFmiInfoAreaMask::~NFmiInfoAreaMask() {}
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiInfoAreaMask::NFmiInfoAreaMask(void)
+NFmiInfoAreaMask::NFmiInfoAreaMask()
     : NFmiAreaMaskImpl(),
       itsInfo(),
       itsDataIdent(),
@@ -163,7 +163,7 @@ NFmiInfoAreaMask::NFmiInfoAreaMask(const NFmiInfoAreaMask &theOther)
 {
 }
 
-NFmiAreaMask *NFmiInfoAreaMask::Clone(void) const { return new NFmiInfoAreaMask(*this); }
+NFmiAreaMask *NFmiInfoAreaMask::Clone() const { return new NFmiInfoAreaMask(*this); }
 // ----------------------------------------------------------------------
 /*!
  * \param theTime Undocumented
@@ -207,10 +207,7 @@ bool NFmiInfoAreaMask::IsWantedParam(const NFmiDataIdent & /* theParam */,
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiInfoAreaMask::MakeSubMaskString(void) const
-{
-  return itsDataIdent.GetParamName();
-}
+const NFmiString NFmiInfoAreaMask::MakeSubMaskString() const { return itsDataIdent.GetParamName(); }
 
 // ----------------------------------------------------------------------
 /*!
@@ -218,21 +215,21 @@ const NFmiString NFmiInfoAreaMask::MakeSubMaskString(void) const
  */
 // ----------------------------------------------------------------------
 
-const NFmiDataIdent *NFmiInfoAreaMask::DataIdent(void) const { return &itsDataIdent; }
+const NFmiDataIdent *NFmiInfoAreaMask::DataIdent() const { return &itsDataIdent; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-const NFmiParam *NFmiInfoAreaMask::Param(void) const { return itsDataIdent.GetParam(); }
+const NFmiParam *NFmiInfoAreaMask::Param() const { return itsDataIdent.GetParam(); }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-const NFmiLevel *NFmiInfoAreaMask::Level(void) const { return &itsLevel; }
+const NFmiLevel *NFmiInfoAreaMask::Level() const { return &itsLevel; }
 void NFmiInfoAreaMask::Level(const NFmiLevel &theLevel) { itsLevel = theLevel; }
 // ----------------------------------------------------------------------
 /*!
@@ -240,7 +237,7 @@ void NFmiInfoAreaMask::Level(const NFmiLevel &theLevel) { itsLevel = theLevel; }
  */
 // ----------------------------------------------------------------------
 
-bool NFmiInfoAreaMask::UseLevelInfo(void) const { return false; }
+bool NFmiInfoAreaMask::UseLevelInfo() const { return false; }
 // ----------------------------------------------------------------------
 /*!
  * \param theLatLon Undocumented
@@ -389,8 +386,8 @@ void NFmiInfoAreaMask::UpdateInfo(boost::shared_ptr<NFmiFastQueryInfo> &theInfo)
 
 // ======================================================================
 
-NFmiInfoAreaMaskPeekXY::~NFmiInfoAreaMaskPeekXY(void) {}
-NFmiInfoAreaMaskPeekXY::NFmiInfoAreaMaskPeekXY(void)
+NFmiInfoAreaMaskPeekXY::~NFmiInfoAreaMaskPeekXY() {}
+NFmiInfoAreaMaskPeekXY::NFmiInfoAreaMaskPeekXY()
     : NFmiInfoAreaMask(),
       itsXOffset(0),
       itsYOffset(0),
@@ -440,12 +437,9 @@ NFmiInfoAreaMaskPeekXY::NFmiInfoAreaMaskPeekXY(const NFmiInfoAreaMaskPeekXY &the
 {
 }
 
-NFmiAreaMask *NFmiInfoAreaMaskPeekXY::Clone(void) const
-{
-  return new NFmiInfoAreaMaskPeekXY(*this);
-}
+NFmiAreaMask *NFmiInfoAreaMaskPeekXY::Clone() const { return new NFmiInfoAreaMaskPeekXY(*this); }
 
-void NFmiInfoAreaMaskPeekXY::CalcGridDiffs(void)
+void NFmiInfoAreaMaskPeekXY::CalcGridDiffs()
 {
   // oletetaan, että on hila dataa ja area löytyy
   if (itsInfo->Grid() == NULL)
@@ -490,8 +484,8 @@ double NFmiInfoAreaMaskPeekXY::PressureValue(double thePressure,
 // *****    NFmiInfoAreaMaskPeekXY2    **********************
 // **********************************************************
 
-NFmiInfoAreaMaskPeekXY2::~NFmiInfoAreaMaskPeekXY2(void) {}
-NFmiInfoAreaMaskPeekXY2::NFmiInfoAreaMaskPeekXY2(void)
+NFmiInfoAreaMaskPeekXY2::~NFmiInfoAreaMaskPeekXY2() {}
+NFmiInfoAreaMaskPeekXY2::NFmiInfoAreaMaskPeekXY2()
     : NFmiInfoAreaMask(), itsXOffset(0), itsYOffset(0), itsEditedInfo()
 {
 }
@@ -533,10 +527,7 @@ NFmiInfoAreaMaskPeekXY2::NFmiInfoAreaMaskPeekXY2(const NFmiInfoAreaMaskPeekXY2 &
 {
 }
 
-NFmiAreaMask *NFmiInfoAreaMaskPeekXY2::Clone(void) const
-{
-  return new NFmiInfoAreaMaskPeekXY2(*this);
-}
+NFmiAreaMask *NFmiInfoAreaMaskPeekXY2::Clone() const { return new NFmiInfoAreaMaskPeekXY2(*this); }
 
 NFmiCalculationParams NFmiInfoAreaMaskPeekXY2::MakeModifiedCalculationParams(
     const NFmiCalculationParams &theCalculationParams)
@@ -573,8 +564,8 @@ double NFmiInfoAreaMaskPeekXY2::PressureValue(double thePressure,
 // *****    NFmiInfoAreaMaskPeekXY3    **********************
 // **********************************************************
 
-NFmiInfoAreaMaskPeekXY3::~NFmiInfoAreaMaskPeekXY3(void) {}
-NFmiInfoAreaMaskPeekXY3::NFmiInfoAreaMaskPeekXY3(void)
+NFmiInfoAreaMaskPeekXY3::~NFmiInfoAreaMaskPeekXY3() {}
+NFmiInfoAreaMaskPeekXY3::NFmiInfoAreaMaskPeekXY3()
     : NFmiInfoAreaMask(), itsXOffsetInKM(0), itsYOffsetInKM(0), itsEditedInfo()
 {
 }
@@ -616,10 +607,7 @@ NFmiInfoAreaMaskPeekXY3::NFmiInfoAreaMaskPeekXY3(const NFmiInfoAreaMaskPeekXY3 &
 {
 }
 
-NFmiAreaMask *NFmiInfoAreaMaskPeekXY3::Clone(void) const
-{
-  return new NFmiInfoAreaMaskPeekXY3(*this);
-}
+NFmiAreaMask *NFmiInfoAreaMaskPeekXY3::Clone() const { return new NFmiInfoAreaMaskPeekXY3(*this); }
 
 static bool IsPacificViewData(boost::shared_ptr<NFmiFastQueryInfo> &theInfo)
 {
@@ -672,7 +660,7 @@ double NFmiInfoAreaMaskPeekXY3::PressureValue(double thePressure,
 // *****    NFmiInfoAreaMaskMetFuncBase *********************
 // **********************************************************
 
-NFmiInfoAreaMaskMetFuncBase::~NFmiInfoAreaMaskMetFuncBase(void) {}
+NFmiInfoAreaMaskMetFuncBase::~NFmiInfoAreaMaskMetFuncBase() {}
 NFmiInfoAreaMaskMetFuncBase::NFmiInfoAreaMaskMetFuncBase(
     const NFmiCalculationCondition &theOperation,
     Type theMaskType,
@@ -713,7 +701,7 @@ NFmiInfoAreaMaskMetFuncBase::NFmiInfoAreaMaskMetFuncBase(
 {
 }
 
-void NFmiInfoAreaMaskMetFuncBase::Initialize(void)
+void NFmiInfoAreaMaskMetFuncBase::Initialize()
 {
   SetGridSizeVariables();
   if (itsInfo->Param().GetParamIdent() == kFmiTotalWindMS) fTotalWindParam = true;
@@ -731,7 +719,7 @@ NFmiLocationCache NFmiInfoAreaMaskMetFuncBase::CalcLocationCache(const NFmiPoint
   return itsInfo->CalcLocationCache(theLatlon, itsGridSizeX, itsGridSizeY);
 }
 
-void NFmiInfoAreaMaskMetFuncBase::SetGridSizeVariables(void)
+void NFmiInfoAreaMaskMetFuncBase::SetGridSizeVariables()
 {
   if (IsDataOperatable(itsInfo) == false)
     throw std::runtime_error("Error: given data for Met-function was not grid-data");
@@ -914,7 +902,7 @@ NFmiInfoAreaMaskGrad::CalcFactorVector NFmiInfoAreaMaskGrad::itsLowerEdgeFactors
 NFmiInfoAreaMaskGrad::CalcFactorVector NFmiInfoAreaMaskGrad::itsUpperEdgeFactors;
 NFmiInfoAreaMaskGrad::CalcFactorVector NFmiInfoAreaMaskGrad::itsMiddleAreaFactors;
 
-void NFmiInfoAreaMaskGrad::InitCalcFactorVectors(void)
+void NFmiInfoAreaMaskGrad::InitCalcFactorVectors()
 {
   if (NFmiInfoAreaMaskGrad::fCalcFactorVectorsInitialized == false)
   {
@@ -933,7 +921,7 @@ void NFmiInfoAreaMaskGrad::InitCalcFactorVectors(void)
   }
 }
 
-NFmiInfoAreaMaskGrad::~NFmiInfoAreaMaskGrad(void) {}
+NFmiInfoAreaMaskGrad::~NFmiInfoAreaMaskGrad() {}
 NFmiInfoAreaMaskGrad::NFmiInfoAreaMaskGrad(const NFmiCalculationCondition &theOperation,
                                            Type theMaskType,
                                            NFmiInfoData::Type theDataType,
@@ -958,8 +946,8 @@ NFmiInfoAreaMaskGrad::NFmiInfoAreaMaskGrad(const NFmiInfoAreaMaskGrad &theOther)
 {
 }
 
-NFmiAreaMask *NFmiInfoAreaMaskGrad::Clone(void) const { return new NFmiInfoAreaMaskGrad(*this); }
-void NFmiInfoAreaMaskGrad::SetDividers(void)
+NFmiAreaMask *NFmiInfoAreaMaskGrad::Clone() const { return new NFmiInfoAreaMaskGrad(*this); }
+void NFmiInfoAreaMaskGrad::SetDividers()
 {
   itsMetFuncDividerX = itsGridPointWidthInMeters * 2;
   itsMetFuncDividerY = itsGridPointHeightInMeters * 2;
@@ -1028,7 +1016,7 @@ double NFmiInfoAreaMaskGrad::PressureValue(double thePressure,
 // *****    NFmiInfoAreaMaskAdvection  **********************
 // **********************************************************
 
-NFmiInfoAreaMaskAdvection::~NFmiInfoAreaMaskAdvection(void) {}
+NFmiInfoAreaMaskAdvection::~NFmiInfoAreaMaskAdvection() {}
 NFmiInfoAreaMaskAdvection::NFmiInfoAreaMaskAdvection(
     const NFmiCalculationCondition &theOperation,
     Type theMaskType,
@@ -1058,7 +1046,7 @@ NFmiInfoAreaMaskAdvection::NFmiInfoAreaMaskAdvection(const NFmiInfoAreaMaskAdvec
 {
 }
 
-NFmiAreaMask *NFmiInfoAreaMaskAdvection::Clone(void) const
+NFmiAreaMask *NFmiInfoAreaMaskAdvection::Clone() const
 {
   return new NFmiInfoAreaMaskAdvection(*this);
 }
@@ -1131,7 +1119,7 @@ NFmiInfoAreaMaskLaplace::CalcFactorVector NFmiInfoAreaMaskLaplace::itsLowerEdgeF
 NFmiInfoAreaMaskLaplace::CalcFactorVector NFmiInfoAreaMaskLaplace::itsUpperEdgeFactors;
 NFmiInfoAreaMaskLaplace::CalcFactorVector NFmiInfoAreaMaskLaplace::itsMiddleAreaFactors;
 
-void NFmiInfoAreaMaskLaplace::InitCalcFactorVectors(void)
+void NFmiInfoAreaMaskLaplace::InitCalcFactorVectors()
 {
   if (NFmiInfoAreaMaskLaplace::fCalcFactorVectorsInitialized == false)
   {
@@ -1151,7 +1139,7 @@ void NFmiInfoAreaMaskLaplace::InitCalcFactorVectors(void)
   }
 }
 
-NFmiInfoAreaMaskLaplace::~NFmiInfoAreaMaskLaplace(void) {}
+NFmiInfoAreaMaskLaplace::~NFmiInfoAreaMaskLaplace() {}
 NFmiInfoAreaMaskLaplace::NFmiInfoAreaMaskLaplace(
     const NFmiCalculationCondition &theOperation,
     Type theMaskType,
@@ -1176,12 +1164,9 @@ NFmiInfoAreaMaskLaplace::NFmiInfoAreaMaskLaplace(const NFmiInfoAreaMaskLaplace &
 {
 }
 
-NFmiAreaMask *NFmiInfoAreaMaskLaplace::Clone(void) const
-{
-  return new NFmiInfoAreaMaskLaplace(*this);
-}
+NFmiAreaMask *NFmiInfoAreaMaskLaplace::Clone() const { return new NFmiInfoAreaMaskLaplace(*this); }
 
-void NFmiInfoAreaMaskLaplace::SetDividers(void)
+void NFmiInfoAreaMaskLaplace::SetDividers()
 {
   itsMetFuncDividerX = itsGridPointWidthInMeters * itsGridPointWidthInMeters;
   itsMetFuncDividerY = itsGridPointHeightInMeters * itsGridPointHeightInMeters;
@@ -1228,7 +1213,7 @@ double NFmiInfoAreaMaskLaplace::Value(const NFmiCalculationParams &theCalculatio
 // *****    NFmiInfoAreaMaskRotor      **********************
 // **********************************************************
 
-NFmiInfoAreaMaskRotor::~NFmiInfoAreaMaskRotor(void) {}
+NFmiInfoAreaMaskRotor::~NFmiInfoAreaMaskRotor() {}
 NFmiInfoAreaMaskRotor::NFmiInfoAreaMaskRotor(const NFmiCalculationCondition &theOperation,
                                              Type theMaskType,
                                              NFmiInfoData::Type theDataType,
@@ -1251,7 +1236,7 @@ NFmiInfoAreaMaskRotor::NFmiInfoAreaMaskRotor(const NFmiInfoAreaMaskRotor &theOth
 {
 }
 
-NFmiAreaMask *NFmiInfoAreaMaskRotor::Clone(void) const { return new NFmiInfoAreaMaskRotor(*this); }
+NFmiAreaMask *NFmiInfoAreaMaskRotor::Clone() const { return new NFmiInfoAreaMaskRotor(*this); }
 // tätä kaytetaan smarttool-modifierin yhteydessä
 double NFmiInfoAreaMaskRotor::Value(const NFmiCalculationParams &theCalculationParams,
                                     bool /* fUseTimeInterpolationAlways */)
@@ -1293,7 +1278,7 @@ double NFmiInfoAreaMaskRotor::Value(const NFmiCalculationParams &theCalculationP
 // *****    NFmiInfoAreaMaskVertFunc   **********************
 // **********************************************************
 
-NFmiInfoAreaMaskVertFunc::~NFmiInfoAreaMaskVertFunc(void) {}
+NFmiInfoAreaMaskVertFunc::~NFmiInfoAreaMaskVertFunc() {}
 NFmiInfoAreaMaskVertFunc::NFmiInfoAreaMaskVertFunc(
     const NFmiCalculationCondition &theOperation,
     Type theMaskType,
@@ -1340,7 +1325,7 @@ NFmiInfoAreaMaskVertFunc::NFmiInfoAreaMaskVertFunc(const NFmiInfoAreaMaskVertFun
 {
 }
 
-NFmiAreaMask *NFmiInfoAreaMaskVertFunc::Clone(void) const
+NFmiAreaMask *NFmiInfoAreaMaskVertFunc::Clone() const
 {
   return new NFmiInfoAreaMaskVertFunc(*this);
 }
@@ -1387,7 +1372,7 @@ static boost::shared_ptr<NFmiDataModifier> CreateIntegrationFuction(NFmiAreaMask
   return modifier;
 }
 
-void NFmiInfoAreaMaskVertFunc::Initialize(void)
+void NFmiInfoAreaMaskVertFunc::Initialize()
 {
   NFmiInfoAreaMaskMetFuncBase::Initialize();
 
@@ -1540,7 +1525,7 @@ static float ConvertFL2P(float FL)
     return kFloatMissing;
 }
 
-void NFmiInfoAreaMaskVertFunc::SetLevelValues(void)
+void NFmiInfoAreaMaskVertFunc::SetLevelValues()
 {
   // otetaan argumentteina annetut arvot haettaviin level-rajoihin
   itsStartLevelValue = itsArgumentVector[0];
@@ -1815,8 +1800,8 @@ class DoubleValueSearcher
     }
   }
 
-  float ExtremeValue(void) const { return itsExtremeValue; }
-  float ExtremeSecondaryValue(void) const { return itsExtremeSecondaryValue; }
+  float ExtremeValue() const { return itsExtremeValue; }
+  float ExtremeSecondaryValue() const { return itsExtremeSecondaryValue; }
 
  private:
   bool IsExtreme(float primaryValue)
@@ -1882,7 +1867,7 @@ float NFmiInfoAreaMaskVertFunc::DoNormalFunction(const NFmiLocationCache &theLoc
 // *****    NFmiInfoAreaMaskVertConditionalFunc  ************
 // **********************************************************
 
-NFmiInfoAreaMaskVertConditionalFunc::~NFmiInfoAreaMaskVertConditionalFunc(void) {}
+NFmiInfoAreaMaskVertConditionalFunc::~NFmiInfoAreaMaskVertConditionalFunc() {}
 NFmiInfoAreaMaskVertConditionalFunc::NFmiInfoAreaMaskVertConditionalFunc(
     const NFmiCalculationCondition &theOperation,
     Type theMaskType,
@@ -1912,18 +1897,15 @@ NFmiInfoAreaMaskVertConditionalFunc::NFmiInfoAreaMaskVertConditionalFunc(
 {
 }
 
-NFmiAreaMask *NFmiInfoAreaMaskVertConditionalFunc::Clone(void) const
+NFmiAreaMask *NFmiInfoAreaMaskVertConditionalFunc::Clone() const
 {
   return new NFmiInfoAreaMaskVertConditionalFunc(*this);
 }
 
-void NFmiInfoAreaMaskVertConditionalFunc::Initialize(void)
-{
-  NFmiInfoAreaMaskVertFunc::Initialize();
-}
+void NFmiInfoAreaMaskVertConditionalFunc::Initialize() { NFmiInfoAreaMaskVertFunc::Initialize(); }
 
 // Tätä kutsutaan jokaiselle erillis pistelaskulle erikseen value-funktiossa.
-bool NFmiInfoAreaMaskVertConditionalFunc::InitializeFromArguments(void)
+bool NFmiInfoAreaMaskVertConditionalFunc::InitializeFromArguments()
 {
   itsStartLevelValue = itsArgumentVector[0];
   itsEndLevelValue = itsArgumentVector[1];
@@ -1998,7 +1980,7 @@ float NFmiInfoAreaMaskVertConditionalFunc::DoFindConditionalFunction(
 // **********************************************************
 // *****    NFmiInfoAreaMaskTimeVertFunc  *******************
 // **********************************************************
-NFmiInfoAreaMaskTimeVertFunc::~NFmiInfoAreaMaskTimeVertFunc(void) {}
+NFmiInfoAreaMaskTimeVertFunc::~NFmiInfoAreaMaskTimeVertFunc() {}
 NFmiInfoAreaMaskTimeVertFunc::NFmiInfoAreaMaskTimeVertFunc(
     const NFmiCalculationCondition &theOperation,
     Type theMaskType,
@@ -2027,12 +2009,12 @@ NFmiInfoAreaMaskTimeVertFunc::NFmiInfoAreaMaskTimeVertFunc(
 {
 }
 
-NFmiAreaMask *NFmiInfoAreaMaskTimeVertFunc::Clone(void) const
+NFmiAreaMask *NFmiInfoAreaMaskTimeVertFunc::Clone() const
 {
   return new NFmiInfoAreaMaskTimeVertFunc(*this);
 }
 
-void NFmiInfoAreaMaskTimeVertFunc::SetRangeValuesFromArguments(void)
+void NFmiInfoAreaMaskTimeVertFunc::SetRangeValuesFromArguments()
 {
   itsStartTimeOffsetInHours = itsArgumentVector[0];
   itsEndTimeOffsetInHours = itsArgumentVector[1];
@@ -2184,7 +2166,7 @@ double NFmiInfoAreaMaskTimeVertFunc::Value(const NFmiCalculationParams &theCalcu
 // *****    NFmiInfoAreaMaskProbFunc   **********************
 // **********************************************************
 
-NFmiInfoAreaMaskProbFunc::~NFmiInfoAreaMaskProbFunc(void) {}
+NFmiInfoAreaMaskProbFunc::~NFmiInfoAreaMaskProbFunc() {}
 NFmiInfoAreaMaskProbFunc::NFmiInfoAreaMaskProbFunc(
     const NFmiCalculationCondition &theOperation,
     Type theMaskType,
@@ -2225,14 +2207,14 @@ NFmiInfoAreaMaskProbFunc::NFmiInfoAreaMaskProbFunc(const NFmiInfoAreaMaskProbFun
 {
 }
 
-NFmiAreaMask *NFmiInfoAreaMaskProbFunc::Clone(void) const
+NFmiAreaMask *NFmiInfoAreaMaskProbFunc::Clone() const
 {
   return new NFmiInfoAreaMaskProbFunc(*this);
 }
 
-void NFmiInfoAreaMaskProbFunc::Initialize(void) {}
+void NFmiInfoAreaMaskProbFunc::Initialize() {}
 // Tätä kutsutaan jokaiselle erillis pistelaskulle erikseen value-funktiossa.
-void NFmiInfoAreaMaskProbFunc::InitializeFromArguments(void)
+void NFmiInfoAreaMaskProbFunc::InitializeFromArguments()
 {
   itsSearchRangeInKM = itsArgumentVector[0];
   itsStartTimeOffsetInHours = itsArgumentVector[1];
@@ -2466,7 +2448,7 @@ double NFmiInfoAreaMaskProbFunc::Value(const NFmiCalculationParams &theCalculati
 // *****    NFmiInfoAreaMaskTimeRange  **********************
 // **********************************************************
 
-NFmiInfoAreaMaskTimeRange::~NFmiInfoAreaMaskTimeRange(void) {}
+NFmiInfoAreaMaskTimeRange::~NFmiInfoAreaMaskTimeRange() {}
 NFmiInfoAreaMaskTimeRange::NFmiInfoAreaMaskTimeRange(
     const NFmiCalculationCondition &theOperation,
     Type theMaskType,
@@ -2495,14 +2477,14 @@ NFmiInfoAreaMaskTimeRange::NFmiInfoAreaMaskTimeRange(const NFmiInfoAreaMaskTimeR
 {
 }
 
-NFmiAreaMask *NFmiInfoAreaMaskTimeRange::Clone(void) const
+NFmiAreaMask *NFmiInfoAreaMaskTimeRange::Clone() const
 {
   return new NFmiInfoAreaMaskTimeRange(*this);
 }
 
-void NFmiInfoAreaMaskTimeRange::Initialize(void) {}
+void NFmiInfoAreaMaskTimeRange::Initialize() {}
 // Tätä kutsutaan jokaiselle erillis pistelaskulle erikseen value-funktiossa.
-void NFmiInfoAreaMaskTimeRange::InitializeFromArguments(void)
+void NFmiInfoAreaMaskTimeRange::InitializeFromArguments()
 {
   itsStartTimeOffsetInHours = itsArgumentVector[0];
   itsEndTimeOffsetInHours = itsArgumentVector[1];
@@ -2564,7 +2546,7 @@ double NFmiInfoAreaMaskTimeRange::Value(const NFmiCalculationParams &theCalculat
 // *****    NFmiInfoTimeIntegrator   ************************
 // **********************************************************
 
-NFmiInfoTimeIntegrator::~NFmiInfoTimeIntegrator(void) {}
+NFmiInfoTimeIntegrator::~NFmiInfoTimeIntegrator() {}
 NFmiInfoTimeIntegrator::NFmiInfoTimeIntegrator(const NFmiCalculationCondition &theOperation,
                                                Type theMaskType,
                                                NFmiInfoData::Type theDataType,
@@ -2591,10 +2573,7 @@ NFmiInfoTimeIntegrator::NFmiInfoTimeIntegrator(const NFmiInfoTimeIntegrator &the
 {
 }
 
-NFmiAreaMask *NFmiInfoTimeIntegrator::Clone(void) const
-{
-  return new NFmiInfoTimeIntegrator(*this);
-}
+NFmiAreaMask *NFmiInfoTimeIntegrator::Clone() const { return new NFmiInfoTimeIntegrator(*this); }
 
 double NFmiInfoTimeIntegrator::Value(const NFmiCalculationParams &theCalculationParams,
                                      bool /* fUseTimeInterpolationAlways */)
@@ -2634,7 +2613,7 @@ double NFmiInfoTimeIntegrator::Value(const NFmiCalculationParams &theCalculation
 // *****  NFmiInfoRectAreaIntegrator ************************
 // **********************************************************
 
-NFmiInfoRectAreaIntegrator::~NFmiInfoRectAreaIntegrator(void) {}
+NFmiInfoRectAreaIntegrator::~NFmiInfoRectAreaIntegrator() {}
 NFmiInfoRectAreaIntegrator::NFmiInfoRectAreaIntegrator(
     const NFmiCalculationCondition &theOperation,
     Type theMaskType,
@@ -2668,7 +2647,7 @@ NFmiInfoRectAreaIntegrator::NFmiInfoRectAreaIntegrator(const NFmiInfoRectAreaInt
 {
 }
 
-NFmiAreaMask *NFmiInfoRectAreaIntegrator::Clone(void) const
+NFmiAreaMask *NFmiInfoRectAreaIntegrator::Clone() const
 {
   return new NFmiInfoRectAreaIntegrator(*this);
 }

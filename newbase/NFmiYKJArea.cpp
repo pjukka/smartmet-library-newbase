@@ -105,7 +105,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiYKJArea::NFmiYKJArea(void) : NFmiKKJArea() {}
+NFmiYKJArea::NFmiYKJArea() : NFmiKKJArea() {}
 // ----------------------------------------------------------------------
 /*!
  * Copy constructor
@@ -331,7 +331,7 @@ NFmiArea *NFmiYKJArea::NewArea(const NFmiPoint &theBottomLeftLatLon,
  */
 // ----------------------------------------------------------------------
 
-NFmiArea *NFmiYKJArea::Clone(void) const { return new NFmiYKJArea(*this); }
+NFmiArea *NFmiYKJArea::Clone() const { return new NFmiYKJArea(*this); }
 // ----------------------------------------------------------------------
 /*!
  * Assignment operator
@@ -430,7 +430,7 @@ std::istream &NFmiYKJArea::Read(std::istream &file)
   return file;
 }
 
-const std::string NFmiYKJArea::AreaStr(void) const
+const std::string NFmiYKJArea::AreaStr() const
 {
   std::ostringstream out;
   out << "ykj:" << BottomLeftLatLon().X() << ',' << BottomLeftLatLon().Y() << ','

@@ -21,14 +21,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiLatLonArea::~NFmiLatLonArea(void) {}
+NFmiLatLonArea::~NFmiLatLonArea() {}
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiLatLonArea::NFmiLatLonArea(void)
+NFmiLatLonArea::NFmiLatLonArea()
     : NFmiArea(),
       itsBottomLeftLatLon(),
       itsTopRightLatLon(),
@@ -88,7 +88,7 @@ NFmiLatLonArea::NFmiLatLonArea(const NFmiLatLonArea &theLatLonArea)
  */
 // ----------------------------------------------------------------------
 
-NFmiArea *NFmiLatLonArea::Clone(void) const { return new NFmiLatLonArea(*this); }
+NFmiArea *NFmiLatLonArea::Clone() const { return new NFmiLatLonArea(*this); }
 // ----------------------------------------------------------------------
 /*!
  * \param fKeepWorldRect Undocumented
@@ -158,14 +158,14 @@ const NFmiPoint NFmiLatLonArea::XYToWorldXY(const NFmiPoint &theXYPoint) const
  */
 // ----------------------------------------------------------------------
 
-double NFmiLatLonArea::XScale(void) const { return 1. / itsXScaleFactor; }
+double NFmiLatLonArea::XScale() const { return 1. / itsXScaleFactor; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-double NFmiLatLonArea::YScale(void) const { return 1. / itsYScaleFactor; }
+double NFmiLatLonArea::YScale() const { return 1. / itsYScaleFactor; }
 // ----------------------------------------------------------------------
 /*!
  * \param theBottomLeftLatLon Undocumented
@@ -249,7 +249,7 @@ std::istream &NFmiLatLonArea::Read(std::istream &file)
   return file;
 }
 
-const std::string NFmiLatLonArea::AreaStr(void) const
+const std::string NFmiLatLonArea::AreaStr() const
 {
   std::ostringstream out;
   out << "latlon:" << BottomLeftLatLon().X() << ',' << BottomLeftLatLon().Y() << ','

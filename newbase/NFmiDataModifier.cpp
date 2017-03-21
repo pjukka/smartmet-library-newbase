@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifier::~NFmiDataModifier(void) { delete itsCombinedParam; }
+NFmiDataModifier::~NFmiDataModifier() { delete itsCombinedParam; }
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -68,7 +68,7 @@ NFmiDataModifier::NFmiDataModifier(const NFmiDataModifier& theModier)
 {
 }
 
-NFmiDataModifier* NFmiDataModifier::Clone(void) const { return new NFmiDataModifier(*this); }
+NFmiDataModifier* NFmiDataModifier::Clone() const { return new NFmiDataModifier(*this); }
 // ----------------------------------------------------------------------
 /*!
  * \param theValue Undocumented
@@ -114,21 +114,21 @@ bool NFmiDataModifier::SetLimits(float theLowerLimit, float theUpperLimit)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiDataModifier::IsCombinedParam(void) { return fIsCombinedParam; }
+bool NFmiDataModifier::IsCombinedParam() { return fIsCombinedParam; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-double NFmiDataModifier::FloatValue(void) { return CalculationResult(); }
+double NFmiDataModifier::FloatValue() { return CalculationResult(); }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-NFmiCombinedParam* NFmiDataModifier::CombinedCalculationResult(void) { return 0; }
+NFmiCombinedParam* NFmiDataModifier::CombinedCalculationResult() { return 0; }
 // ----------------------------------------------------------------------
 /*!
  * \param theValue Undocumenetd
@@ -151,5 +151,5 @@ bool NFmiDataModifier::CheckMissingValues(float theValue)
 
 void NFmiDataModifier::SetLocationIndex(unsigned long /* theIndex */) {}
 void NFmiDataModifier::SetTimeIndex(unsigned long /* theIndex */) {}
-void NFmiDataModifier::InitLatlonCache(void) {}
+void NFmiDataModifier::InitLatlonCache() {}
 // ======================================================================

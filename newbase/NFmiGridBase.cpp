@@ -187,7 +187,7 @@ bool NFmiGridBase::Init(NFmiGridBase *theData)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiGridBase::First(void)
+bool NFmiGridBase::First()
 {
   Setf(false);
   return GridPoint(itsFirstX, itsFirstY);
@@ -199,7 +199,7 @@ bool NFmiGridBase::First(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiGridBase::Reset(void)
+bool NFmiGridBase::Reset()
 {
   First();
   Setf(true);
@@ -212,7 +212,7 @@ bool NFmiGridBase::Reset(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiGridBase::Last(void)
+bool NFmiGridBase::Last()
 {
   Setf(false);
   return GridPoint(itsLastX, itsLastY);
@@ -224,7 +224,7 @@ bool NFmiGridBase::Last(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiGridBase::ResetLast(void)
+bool NFmiGridBase::ResetLast()
 {
   Last();
   Setf(true);
@@ -488,7 +488,7 @@ bool NFmiGridBase::Crop(const NFmiPoint &theBottomLeft,
  */
 // ----------------------------------------------------------------------
 
-bool NFmiGridBase::ResetCrop(void)
+bool NFmiGridBase::ResetCrop()
 {
   //  const NFmiPoint bl(itsBase,itsBase);
   const NFmiPoint bl(0, 0);
@@ -925,7 +925,7 @@ double NFmiGridBase::DataValue(int x, int y)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiGridBase::Swap(void)
+bool NFmiGridBase::Swap()
 {
   if (itsStartingCorner == kBottomLeft) return true;
 
@@ -1048,7 +1048,7 @@ void NFmiGridBase::MeanFilter(unsigned long numOfSteps)
  */
 // ----------------------------------------------------------------------
 
-void NFmiGridBase::Center(void)
+void NFmiGridBase::Center()
 {
   GridPoint(FirstGridPoint().X() + (LastGridPoint().X() - FirstGridPoint().X()) / 2.,
             FirstGridPoint().Y() + (LastGridPoint().Y() - FirstGridPoint().Y()) / 2.);

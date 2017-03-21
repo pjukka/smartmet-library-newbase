@@ -20,16 +20,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiAreaMaskList::~NFmiAreaMaskList(void) {}
+NFmiAreaMaskList::~NFmiAreaMaskList() {}
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiAreaMaskList::NFmiAreaMaskList(void) : itsMaskVector(), itsCurrentIndex(-1), fMaskInUse(false)
-{
-}
+NFmiAreaMaskList::NFmiAreaMaskList() : itsMaskVector(), itsCurrentIndex(-1), fMaskInUse(false) {}
 
 NFmiAreaMaskList::NFmiAreaMaskList(const NFmiAreaMaskList &theOther)
     : itsMaskVector(theOther.itsMaskVector),
@@ -56,7 +54,7 @@ boost::shared_ptr<NFmiAreaMaskList> NFmiAreaMaskList::CreateShallowCopy(
     return boost::shared_ptr<NFmiAreaMaskList>();
 }
 
-unsigned long NFmiAreaMaskList::NumberOfItems(void)
+unsigned long NFmiAreaMaskList::NumberOfItems()
 {
   return static_cast<unsigned long>(itsMaskVector.size());
 }
@@ -82,7 +80,7 @@ void NFmiAreaMaskList::Add(boost::shared_ptr<NFmiAreaMask> &theMask)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiAreaMaskList::Reset(void)
+bool NFmiAreaMaskList::Reset()
 {
   itsCurrentIndex = -1;
   return true;
@@ -95,7 +93,7 @@ bool NFmiAreaMaskList::Reset(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiAreaMaskList::Next(void)
+bool NFmiAreaMaskList::Next()
 {
   itsCurrentIndex++;
   if (static_cast<std::size_t>(itsCurrentIndex) < itsMaskVector.size())
@@ -120,7 +118,7 @@ bool NFmiAreaMaskList::IsValidIndex(int theIndex)
  */
 // ----------------------------------------------------------------------
 
-boost::shared_ptr<NFmiAreaMask> NFmiAreaMaskList::Current(void)
+boost::shared_ptr<NFmiAreaMask> NFmiAreaMaskList::Current()
 {
   if (IsValidIndex(itsCurrentIndex))
     return itsMaskVector[itsCurrentIndex];
@@ -140,7 +138,7 @@ boost::shared_ptr<NFmiAreaMask> NFmiAreaMaskList::Current(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiAreaMaskList::Remove(void)
+bool NFmiAreaMaskList::Remove()
 {
   if (IsValidIndex(itsCurrentIndex))
   {
@@ -258,7 +256,7 @@ bool NFmiAreaMaskList::Find(unsigned long theIndex)
  */
 // ----------------------------------------------------------------------
 
-void NFmiAreaMaskList::Clear(void) { itsMaskVector.clear(); }
+void NFmiAreaMaskList::Clear() { itsMaskVector.clear(); }
 // ----------------------------------------------------------------------
 /*!
  *  Tarkistaa listassa olevilta maskeilta, onko
@@ -273,7 +271,7 @@ void NFmiAreaMaskList::Clear(void) { itsMaskVector.clear(); }
  */
 // ----------------------------------------------------------------------
 
-bool NFmiAreaMaskList::CheckIfMaskUsed(void)
+bool NFmiAreaMaskList::CheckIfMaskUsed()
 {
   fMaskInUse = false;
   for (int index = 0; index < static_cast<int>(itsMaskVector.size()); index++)

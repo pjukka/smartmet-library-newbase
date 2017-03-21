@@ -77,7 +77,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiStereographicArea::NFmiStereographicArea(void) {}
+NFmiStereographicArea::NFmiStereographicArea() {}
 // ----------------------------------------------------------------------
 /*!
  * Copy constructor
@@ -300,7 +300,7 @@ double NFmiStereographicArea::CalcDelta(const double xyDistance) const
  */
 // ----------------------------------------------------------------------
 
-double NFmiStereographicArea::DistanceFromPerspectivePointToCenterOfEarth(void) const
+double NFmiStereographicArea::DistanceFromPerspectivePointToCenterOfEarth() const
 {
   // Distance (in world-coordinate meters) for stereographic projection.
   // See details in ref. [2] p. 13.
@@ -352,7 +352,7 @@ NFmiArea *NFmiStereographicArea::NewArea(const NFmiPoint &theBottomLeftLatLon,
  */
 // ----------------------------------------------------------------------
 
-NFmiArea *NFmiStereographicArea::Clone(void) const { return new NFmiStereographicArea(*this); }
+NFmiArea *NFmiStereographicArea::Clone() const { return new NFmiStereographicArea(*this); }
 // ----------------------------------------------------------------------
 /*!
  * Assignment operator
@@ -465,7 +465,7 @@ NFmiArea *NFmiStereographicArea::CreateNewArea(const NFmiRect &theRect) const
   return area;
 }
 
-const std::string NFmiStereographicArea::AreaStr(void) const
+const std::string NFmiStereographicArea::AreaStr() const
 {
   std::ostringstream out;
   out << "stereographic," << CentralLongitude() << ',' << CentralLatitude() << ','

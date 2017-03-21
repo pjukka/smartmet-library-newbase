@@ -30,7 +30,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiSuperSmartInfo::NFmiSuperSmartInfo(void)
+NFmiSuperSmartInfo::NFmiSuperSmartInfo()
     : NFmiFastQueryInfo(),
       itsFloatValueAccessLevel(kNormalAccess),
       fUseCalculator(false),
@@ -213,7 +213,7 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo(const NFmiSuperSmartInfo& theInfo)
  */
 // ----------------------------------------------------------------------
 
-NFmiSuperSmartInfo::~NFmiSuperSmartInfo(void) { Destroy(); }
+NFmiSuperSmartInfo::~NFmiSuperSmartInfo() { Destroy(); }
 // ----------------------------------------------------------------------
 /*!
  * Kopioi helperbinarymaskit omaan käyttöönsä
@@ -245,7 +245,7 @@ void NFmiSuperSmartInfo::CopyHelperBinaryMasksAndInfo(const NFmiSuperSmartInfo& 
  */
 // ----------------------------------------------------------------------
 
-bool NFmiSuperSmartInfo::FirstLocation(void)
+bool NFmiSuperSmartInfo::FirstLocation()
 {
   // asettaa 1. maskatun locationin
   ResetLocation();
@@ -261,7 +261,7 @@ bool NFmiSuperSmartInfo::FirstLocation(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiSuperSmartInfo::NextLocation(void)
+bool NFmiSuperSmartInfo::NextLocation()
 {
   if (!fUseAreaMask) return NFmiFastQueryInfo::NextLocation();
 
@@ -281,7 +281,7 @@ bool NFmiSuperSmartInfo::NextLocation(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiSuperSmartInfo::PreviousLocation(void)
+bool NFmiSuperSmartInfo::PreviousLocation()
 {
   if (!fUseAreaMask) return NFmiFastQueryInfo::PreviousLocation();
 
@@ -331,7 +331,7 @@ bool NFmiSuperSmartInfo::NearestPoint(const NFmiPoint& theLatLonPoint)
  */
 // ----------------------------------------------------------------------
 
-unsigned long NFmiSuperSmartInfo::SizeLocations(void) const
+unsigned long NFmiSuperSmartInfo::SizeLocations() const
 {
   return NFmiFastQueryInfo::SizeLocations();
 }
@@ -344,7 +344,7 @@ unsigned long NFmiSuperSmartInfo::SizeLocations(void) const
  */
 // ----------------------------------------------------------------------
 
-unsigned long NFmiSuperSmartInfo::SizeActiveLocations(void) const
+unsigned long NFmiSuperSmartInfo::SizeActiveLocations() const
 {
   return NFmiFastQueryInfo::SizeActiveLocations();
 }
@@ -355,7 +355,7 @@ unsigned long NFmiSuperSmartInfo::SizeActiveLocations(void) const
  */
 // ----------------------------------------------------------------------
 
-float NFmiSuperSmartInfo::FloatValue(void) const
+float NFmiSuperSmartInfo::FloatValue() const
 {
   // Käyttäjä on etukäteen määrännyt millä tasolla haluaa dataa
   // määrämällä itsFloatValueAccessLevel.
@@ -386,7 +386,7 @@ float NFmiSuperSmartInfo::FloatValue(void) const
  */
 // ----------------------------------------------------------------------
 
-NFmiCombinedParam* NFmiSuperSmartInfo::CombinedValue(void)
+NFmiCombinedParam* NFmiSuperSmartInfo::CombinedValue()
 {
 // Käyttäjä on etukäteen määrännyt millä tasolla haluaa dataa
 // määrämällä itsFloatValueAccessLevel.
@@ -653,7 +653,7 @@ bool NFmiSuperSmartInfo::LocationIndex2XYPosition(unsigned long theIndex,
  */
 // ----------------------------------------------------------------------
 
-NFmiQueryInfo* NFmiSuperSmartInfo::Clone(void) const { return new NFmiSuperSmartInfo(*this); }
+NFmiQueryInfo* NFmiSuperSmartInfo::Clone() const { return new NFmiSuperSmartInfo(*this); }
 // ----------------------------------------------------------------------
 /*!
  * Write the object to the given output stream
@@ -727,7 +727,7 @@ NFmiSuperSmartInfo& NFmiSuperSmartInfo::operator=(const NFmiSuperSmartInfo& theI
  */
 // ----------------------------------------------------------------------
 
-void NFmiSuperSmartInfo::Destroy(void)
+void NFmiSuperSmartInfo::Destroy()
 {
   delete itsCurrentVarianceCalculator;
   ClearHelperBinaryMasks();
@@ -741,7 +741,7 @@ void NFmiSuperSmartInfo::Destroy(void)
  */
 // ----------------------------------------------------------------------
 
-size_t NFmiSuperSmartInfo::Index(void) const
+size_t NFmiSuperSmartInfo::Index() const
 {
   // tämä saattaa muuttua, jos datan järjestystä muutetaan
   // (locationit sisimmäiseen looppiin!)
@@ -775,7 +775,7 @@ bool NFmiSuperSmartInfo::IsLocationMasked(unsigned long theLocationIndex) const
  */
 // ----------------------------------------------------------------------
 
-float NFmiSuperSmartInfo::VarianceFloatValue(void) const
+float NFmiSuperSmartInfo::VarianceFloatValue() const
 {
   if (fUseVarianceCalculator && itsCurrentVarianceCalculator)
   {
@@ -800,7 +800,7 @@ float NFmiSuperSmartInfo::VarianceFloatValue(void) const
  */
 // ----------------------------------------------------------------------
 
-float NFmiSuperSmartInfo::VariationFloatValue(void) const
+float NFmiSuperSmartInfo::VariationFloatValue() const
 {
   if (fUseVariationCalculator && itsVariationCalculator)
   {
@@ -827,7 +827,7 @@ float NFmiSuperSmartInfo::VariationFloatValue(void) const
  */
 // ----------------------------------------------------------------------
 
-float NFmiSuperSmartInfo::TimeIntegrationFloatValue(void) const
+float NFmiSuperSmartInfo::TimeIntegrationFloatValue() const
 {
   if (fUseTimeIntegrationCalculator && itsTimeIntegrationCalculator)
   {
@@ -853,7 +853,7 @@ float NFmiSuperSmartInfo::TimeIntegrationFloatValue(void) const
  */
 // ----------------------------------------------------------------------
 
-NFmiCombinedParam* NFmiSuperSmartInfo::VariationCombinedValue(void)
+NFmiCombinedParam* NFmiSuperSmartInfo::VariationCombinedValue()
 {
   if (fUseVariationCalculator && itsVariationCalculator)
   {
@@ -880,7 +880,7 @@ NFmiCombinedParam* NFmiSuperSmartInfo::VariationCombinedValue(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiCombinedParam* NFmiSuperSmartInfo::CalculationCombinedValue(void)
+NFmiCombinedParam* NFmiSuperSmartInfo::CalculationCombinedValue()
 {
   if (fUseCalculator && itsCalculator)
   {
@@ -907,7 +907,7 @@ NFmiCombinedParam* NFmiSuperSmartInfo::CalculationCombinedValue(void)
  */
 // ----------------------------------------------------------------------
 
-float NFmiSuperSmartInfo::CalculationFloatValue(void) const
+float NFmiSuperSmartInfo::CalculationFloatValue() const
 {
   if (fUseCalculator && itsCalculator)
   {
@@ -1071,7 +1071,7 @@ bool NFmiSuperSmartInfo::Param(const NFmiDataIdent& theDataIdent)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiSuperSmartInfo::FirstTime(void)
+bool NFmiSuperSmartInfo::FirstTime()
 {
   // Ajansiirto-funktioissa pitää päivittää myös maskin aikaa
   unsigned long oldTimeIndex = itsTimeIndex;
@@ -1086,7 +1086,7 @@ bool NFmiSuperSmartInfo::FirstTime(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiSuperSmartInfo::NextTime(void)
+bool NFmiSuperSmartInfo::NextTime()
 {
   unsigned long oldTimeIndex = itsTimeIndex;
   bool status = NFmiFastQueryInfo::NextTime();
@@ -1100,7 +1100,7 @@ bool NFmiSuperSmartInfo::NextTime(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiSuperSmartInfo::LastTime(void)
+bool NFmiSuperSmartInfo::LastTime()
 {
   unsigned long oldTimeIndex = itsTimeIndex;
   bool status = NFmiFastQueryInfo::LastTime();
@@ -1114,7 +1114,7 @@ bool NFmiSuperSmartInfo::LastTime(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiSuperSmartInfo::PreviousTime(void)
+bool NFmiSuperSmartInfo::PreviousTime()
 {
   unsigned long oldTimeIndex = itsTimeIndex;
   bool status = NFmiFastQueryInfo::PreviousTime();
@@ -1158,7 +1158,7 @@ bool NFmiSuperSmartInfo::TimeIndex(unsigned long theIndex)
  *
  */
 // ----------------------------------------------------------------------
-void NFmiSuperSmartInfo::UpdateVarianceCalculator(void)
+void NFmiSuperSmartInfo::UpdateVarianceCalculator()
 {
   if (itsDataModifierDescriptor)
   {
@@ -1176,7 +1176,7 @@ void NFmiSuperSmartInfo::UpdateVarianceCalculator(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiSuperSmartInfo::UpdateAreaMaskTime(void)
+void NFmiSuperSmartInfo::UpdateAreaMaskTime()
 {
   if (fUseAreaMask && itsAreaMask)
   {
@@ -1190,7 +1190,7 @@ void NFmiSuperSmartInfo::UpdateAreaMaskTime(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiSuperSmartInfo::SetCurrentHelperBinaryMask(void)
+void NFmiSuperSmartInfo::SetCurrentHelperBinaryMask()
 {
   itsCurrentHelperBinaryMask = HelperBinaryMask(CalcAreaUnCertainty());
 }
@@ -1232,7 +1232,7 @@ void NFmiSuperSmartInfo::UseHelperBinaryMasks(bool newStatus)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiSuperSmartInfo::InitHelperBinaryMasks(void)
+bool NFmiSuperSmartInfo::InitHelperBinaryMasks()
 {
   if (fUseHelperBinaryMasks)
   {
@@ -1304,7 +1304,7 @@ NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateHelperBinaryMask(int theUsedVariat
  */
 // ----------------------------------------------------------------------
 
-NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateZeroVariationHelperBinaryMask(void)
+NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateZeroVariationHelperBinaryMask()
 {
   NFmiAreaMask* mask = AreaMask();
   NFmiBitmapAreaMask* helperMask = new NFmiBitmapAreaMask;
@@ -1331,7 +1331,7 @@ NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateZeroVariationHelperBinaryMask(void
  */
 // ----------------------------------------------------------------------
 
-void NFmiSuperSmartInfo::ClearHelperBinaryMasks(void)
+void NFmiSuperSmartInfo::ClearHelperBinaryMasks()
 {
   size_t size = itsHelperBinaryMaskList.size();
   for (size_t i = 0; i < size; i++)
@@ -1347,7 +1347,7 @@ void NFmiSuperSmartInfo::ClearHelperBinaryMasks(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiSuperSmartInfo::CalcXYMaskBoundingBox(void)
+void NFmiSuperSmartInfo::CalcXYMaskBoundingBox()
 {
   unsigned int oldLocationIndex = LocationIndex();
   bool oldUseAreaMaskStatus = UseAreaMask();
@@ -1465,7 +1465,7 @@ NFmiString NFmiSuperSmartInfo::HelperBinaryMaskTestString(int theUsedVariationFa
  */
 // ----------------------------------------------------------------------
 
-void NFmiSuperSmartInfo::UpdateHelperBinaryMasks(void)
+void NFmiSuperSmartInfo::UpdateHelperBinaryMasks()
 {
   InitHelperBinaryMasks();
   SetCurrentHelperBinaryMask();
@@ -1498,7 +1498,7 @@ void NFmiSuperSmartInfo::TimeChanged(unsigned long theOldTimeIndex)
  */
 // ----------------------------------------------------------------------
 
-void NFmiSuperSmartInfo::InitEmptyAreaMask(void)
+void NFmiSuperSmartInfo::InitEmptyAreaMask()
 {
   NFmiDataIdent dummyParam;
   NFmiLevel dummyLevel;

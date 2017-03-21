@@ -28,7 +28,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiStringList::~NFmiStringList(void) { Destroy(); }
+NFmiStringList::~NFmiStringList() { Destroy(); }
 // ----------------------------------------------------------------------
 /*!
  * Copy constructor
@@ -79,7 +79,7 @@ bool NFmiStringList::Next(NFmiString **theItem)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiStringList::Next(void)
+bool NFmiStringList::Next()
 {
   if (itsList.size())
   {
@@ -96,7 +96,7 @@ bool NFmiStringList::Next(void)
  * \return false, if the original value of itsIndex = 0, others true
  */
 //--------------------------------------------------------
-bool NFmiStringList::Previous(void)
+bool NFmiStringList::Previous()
 {
   if (itsIndex > 0)
   {
@@ -116,7 +116,7 @@ bool NFmiStringList::Previous(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiString *NFmiStringList::Current(void) const
+NFmiString *NFmiStringList::Current() const
 {
   if (itsIndex < itsList.size())
     return itsList[itsIndex];
@@ -370,7 +370,7 @@ bool NFmiStringList::Find(const NFmiString &str)
 // SYY VoidPointerList ja sen rajoitukset ja vaikeudet (en luettele tässä)
 // KORJAUS: Toteuta koko juttu STL-vector:ia käyttäen.
 
-bool NFmiStringList::Remove(void)
+bool NFmiStringList::Remove()
 {
   if (Current())
   {
@@ -390,7 +390,7 @@ bool NFmiStringList::Remove(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiStringList::Destroy(void)
+void NFmiStringList::Destroy()
 {
   const StorageType::iterator begin = itsList.begin();
   const StorageType::iterator end = itsList.end();

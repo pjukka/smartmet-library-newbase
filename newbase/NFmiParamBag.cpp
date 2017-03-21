@@ -24,14 +24,14 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiParamBag::~NFmiParamBag(void) { Destroy(); }
+NFmiParamBag::~NFmiParamBag() { Destroy(); }
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiParamBag::NFmiParamBag(void)
+NFmiParamBag::NFmiParamBag()
     : NFmiSize(0), itsParamsVector(0), fIsSubParamUsed(false), itsUsedSubParam(0)
 {
 }
@@ -166,7 +166,7 @@ bool NFmiParamBag::operator==(const NFmiParamBag& theOtherParams) const
  */
 // ----------------------------------------------------------------------
 
-void NFmiParamBag::Destroy(void) { itsParamsVector.clear(); }
+void NFmiParamBag::Destroy() { itsParamsVector.clear(); }
 // ----------------------------------------------------------------------
 /*!
  * \param theBag Undocumented
@@ -391,7 +391,7 @@ bool NFmiParamBag::NextActive(bool fIgnoreSubParam)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiParamBag::NextData(void)
+bool NFmiParamBag::NextData()
 {
   while (Next())
     if (Current()->IsDataParam()) return true;
@@ -471,7 +471,7 @@ bool NFmiParamBag::SetCurrentActive(bool isActive, bool fIgnoreSubParam)
  */
 // ----------------------------------------------------------------------
 
-unsigned long NFmiParamBag::SizeOfActive(void)
+unsigned long NFmiParamBag::SizeOfActive()
 {
   NFmiParamBag tmpBag(*this);
   tmpBag.Reset();
@@ -669,7 +669,7 @@ NFmiDataIdent* NFmiParamBag::EditParam(unsigned long theIndex, bool fIgnoreSubPa
  */
 // ----------------------------------------------------------------------
 
-bool NFmiParamBag::Next(void) { return Next(true); }
+bool NFmiParamBag::Next() { return Next(true); }
 // ----------------------------------------------------------------------
 /*!
  * \param fIgnoreSubParam Undocumented
@@ -725,7 +725,7 @@ bool NFmiParamBag::Next(bool fIgnoreSubParam)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiParamBag::Previous(void) { return Previous(true); }
+bool NFmiParamBag::Previous() { return Previous(true); }
 // ----------------------------------------------------------------------
 /*!
  * \param fIgnoreSubParam Undocumented
@@ -893,7 +893,7 @@ bool NFmiParamBag::Add(const NFmiDataIdent& theParam, bool fCheckNoDuplicatePara
  * \return True if remove succeeded, false if there was no current parameter.
  */
 
-bool NFmiParamBag::Remove(void)
+bool NFmiParamBag::Remove()
 {
   if (itsIndex < 0 || static_cast<unsigned long>(itsIndex) >= itsSize)
     return false;

@@ -21,14 +21,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierExtreme::~NFmiDataModifierExtreme(void) {}
+NFmiDataModifierExtreme::~NFmiDataModifierExtreme() {}
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierExtreme::NFmiDataModifierExtreme(void) : itsExtremeValue(), itsExtremeTime() {}
+NFmiDataModifierExtreme::NFmiDataModifierExtreme() : itsExtremeValue(), itsExtremeTime() {}
 NFmiDataModifierExtreme::NFmiDataModifierExtreme(const NFmiDataModifierExtreme &theOther)
     : NFmiDataModifier(theOther),
       itsExtremeValue(theOther.itsExtremeValue),
@@ -53,7 +53,7 @@ void NFmiDataModifierExtreme::SetTime(NFmiQueryInfo *theQI)
  */
 // ----------------------------------------------------------------------
 
-const NFmiTime NFmiDataModifierExtreme::GetTime(void) { return itsExtremeTime; }
+const NFmiTime NFmiDataModifierExtreme::GetTime() { return itsExtremeTime; }
 // ----------------------------------------------------------------------
 /*!
  * \param theQI Undocumented

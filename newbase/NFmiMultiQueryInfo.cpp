@@ -342,7 +342,7 @@ bool NFmiMultiQueryInfo::FirstTime() { return TimeIndex(0); }
  */
 // ----------------------------------------------------------------------
 
-bool NFmiMultiQueryInfo::PreviousTime(void)
+bool NFmiMultiQueryInfo::PreviousTime()
 {
   if (itsMultiTimeIndex == kUnsignedLongMissing || itsMultiTimeIndex == 0)
   {

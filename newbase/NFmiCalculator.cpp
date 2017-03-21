@@ -20,7 +20,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiCalculator::~NFmiCalculator(void) {}
+NFmiCalculator::~NFmiCalculator() {}
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -55,7 +55,7 @@ NFmiCalculator::NFmiCalculator(NFmiQueryInfo* theData, NFmiDataModifier* theData
  */
 // ----------------------------------------------------------------------
 
-double NFmiCalculator::FloatValue(void)
+double NFmiCalculator::FloatValue()
 {
   if (itsDataIterator && itsDataModifier)
   {
@@ -75,7 +75,7 @@ double NFmiCalculator::FloatValue(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiCombinedParam* NFmiCalculator::CombinedValue(void)
+NFmiCombinedParam* NFmiCalculator::CombinedValue()
 {
   if (itsDataIterator && itsDataModifier)
   {
@@ -91,7 +91,7 @@ NFmiCombinedParam* NFmiCalculator::CombinedValue(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifier* NFmiCalculator::CalculatedModifier(void)
+NFmiDataModifier* NFmiCalculator::CalculatedModifier()
 {
   if (itsDataIterator && itsDataModifier)
   {
@@ -110,5 +110,5 @@ NFmiDataModifier* NFmiCalculator::CalculatedModifier(void)
 // Tämä on kuten FloatValue, paitsi että juoksutus tehdään täällä loopissa
 // ja laskut tehdään täällä eikä iteratorin DoForEach-metodissa.
 
-float NFmiCalculator::CalculatedValue(void) { return kFloatMissing; }
+float NFmiCalculator::CalculatedValue() { return kFloatMissing; }
 // ======================================================================

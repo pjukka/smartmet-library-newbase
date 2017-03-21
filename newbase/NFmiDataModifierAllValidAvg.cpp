@@ -23,14 +23,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierAllValidAvg::~NFmiDataModifierAllValidAvg(void) {}
+NFmiDataModifierAllValidAvg::~NFmiDataModifierAllValidAvg() {}
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierAllValidAvg::NFmiDataModifierAllValidAvg(void) : NFmiDataModifierAvg()
+NFmiDataModifierAllValidAvg::NFmiDataModifierAllValidAvg() : NFmiDataModifierAvg()
 {
   fMissingValuesAllowed = false;
 }

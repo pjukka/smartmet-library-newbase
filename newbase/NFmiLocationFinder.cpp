@@ -50,14 +50,14 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiLocationFinder::~NFmiLocationFinder(void) {}
+NFmiLocationFinder::~NFmiLocationFinder() {}
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiLocationFinder::NFmiLocationFinder(void)
+NFmiLocationFinder::NFmiLocationFinder()
     : itsPrimaryPoints(), itsSecondaryPoints(), itsLastSearchFailed(false)
 {
 }

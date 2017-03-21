@@ -34,7 +34,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiDataPool::NFmiDataPool(void)
+NFmiDataPool::NFmiDataPool()
     : itsSize(0),
       itsIndex(-1),
       itsData(0),
@@ -81,7 +81,7 @@ NFmiDataPool::NFmiDataPool(const NFmiDataPool &theDataPool)
  *
  */
 // ----------------------------------------------------------------------
-void NFmiDataPool::Destroy(void)
+void NFmiDataPool::Destroy()
 {
   if (itsData)
   {
@@ -344,7 +344,7 @@ bool NFmiDataPool::IsMissingValue(double theMissingValue)
  */
 // ----------------------------------------------------------------------
 
-double NFmiDataPool::MinValue(void)
+double NFmiDataPool::MinValue()
 {
   if (fabs(itsMinValue) == kFloatMissing)  // Min and max have not been calculated yet
     CalcMinMaxValues();
@@ -356,7 +356,7 @@ double NFmiDataPool::MinValue(void)
  */
 // ----------------------------------------------------------------------
 
-double NFmiDataPool::MaxValue(void)
+double NFmiDataPool::MaxValue()
 {
   if (fabs(itsMaxValue) == kFloatMissing)  // Min and max have not been calculated yet
     CalcMinMaxValues();
@@ -369,7 +369,7 @@ double NFmiDataPool::MaxValue(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiDataPool::CalcMinMaxValues(void)
+bool NFmiDataPool::CalcMinMaxValues()
 {
   unsigned long saveIndex = itsIndex;
   double value;
@@ -823,7 +823,7 @@ std::istream &NFmiDataPool::Read(std::istream &file)
  *
  */
 // ----------------------------------------------------------------------
-void NFmiDataPool::DoEndianByteSwap(void)
+void NFmiDataPool::DoEndianByteSwap()
 {
   if (fDoEndianByteSwap)  // tämä tieto on annettu ulkoa (qdata on kysynyt qinfolta, tarvitaanko
                           // swappaus)

@@ -21,7 +21,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-unsigned long NFmiTimeBag::GetSize(void) const
+unsigned long NFmiTimeBag::GetSize() const
 {
   if (itsResolution.IsDate())
   {
@@ -55,7 +55,7 @@ unsigned long NFmiTimeBag::GetSize(void) const
   return 0;
 }
 
-bool NFmiTimeBag::IsEmpty(void) const { return NFmiSize::GetSize() == 0; }
+bool NFmiTimeBag::IsEmpty() const { return NFmiSize::GetSize() == 0; }
 // ----------------------------------------------------------------------
 /*!
  * \param theBag This-otus ja theBag yhdistetään halutulla tavalla.
@@ -100,7 +100,7 @@ const NFmiTimeBag NFmiTimeBag::Combine(const NFmiTimeBag &theBag,
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeBag::Next(void)
+bool NFmiTimeBag::Next()
 {
   itsCurrentTime.NextMetTime(itsResolution);
   itsIndex++;
@@ -113,7 +113,7 @@ bool NFmiTimeBag::Next(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeBag::Previous(void)
+bool NFmiTimeBag::Previous()
 {
   itsCurrentTime.PreviousMetTime(itsResolution);
   itsIndex--;

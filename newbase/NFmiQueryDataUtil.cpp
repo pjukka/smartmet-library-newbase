@@ -52,7 +52,7 @@
 
 using namespace std;
 
-GridRecordData::GridRecordData(void)
+GridRecordData::GridRecordData()
     : itsOrigTime(),
       itsValidTime(),
       itsParam(),
@@ -108,7 +108,7 @@ bool MyGrid::operator<(const MyGrid &theGrid) const
 }
 
 // NFmiThreadCallBacks inplemantations
-bool NFmiThreadCallBacks::Stop(void) const
+bool NFmiThreadCallBacks::Stop() const
 {
   if (itsStopper)
     return itsStopper->Stop();
@@ -121,7 +121,7 @@ void NFmiThreadCallBacks::Stop(bool newValue)
   if (itsStopper) return itsStopper->Stop(newValue);
 }
 
-void NFmiThreadCallBacks::StepIt(void)
+void NFmiThreadCallBacks::StepIt()
 {
   if (itsProgress) itsProgress->StepIt();
 }
@@ -144,12 +144,12 @@ bool NFmiThreadCallBacks::DoPostMessage(unsigned int message, unsigned int wPara
     return false;
 }
 
-void NFmiThreadCallBacks::CheckIfStopped(void)
+void NFmiThreadCallBacks::CheckIfStopped()
 {
   if (itsStopper && itsStopper->Stop()) throw NFmiStopThreadException();
 }
 
-bool NFmiThreadCallBacks::WaitUntilInitialized(void)
+bool NFmiThreadCallBacks::WaitUntilInitialized()
 {
   if (itsProgress)
     return itsProgress->WaitUntilInitialized();
@@ -313,7 +313,7 @@ float NFmiQueryDataUtil::LimitChecker::GetInsideLimitsValue(float theValue) cons
   return theValue;
 }
 
-void NFmiQueryDataUtil::LimitChecker::Update(void)
+void NFmiQueryDataUtil::LimitChecker::Update()
 {
   if (fCircularValue)
   {
@@ -3988,7 +3988,7 @@ NFmiQueryData *NFmiQueryDataUtil::DoAreaFiltering(NFmiQueryData *theSourceData,
 
 // ======================================================================
 
-const NFmiString &NFmiQueryDataUtil::GetOfficialQueryDataProdIdsKey(void)
+const NFmiString &NFmiQueryDataUtil::GetOfficialQueryDataProdIdsKey()
 {
   static const NFmiString officialKey("ProdIds");
   return officialKey;

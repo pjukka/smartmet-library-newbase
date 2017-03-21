@@ -277,7 +277,7 @@ double NFmiEquidistArea::CalcDelta(const double xyDistance) const
  */
 // ----------------------------------------------------------------------
 
-double NFmiEquidistArea::DistanceFromPerspectivePointToCenterOfEarth(void) const
+double NFmiEquidistArea::DistanceFromPerspectivePointToCenterOfEarth() const
 {
   return 0.0;  // This is a non-perspective projection
 }
@@ -324,7 +324,7 @@ NFmiArea *NFmiEquidistArea::NewArea(const NFmiPoint &theBottomLeftLatLon,
  */
 // ----------------------------------------------------------------------
 
-NFmiArea *NFmiEquidistArea::Clone(void) const { return new NFmiEquidistArea(*this); }
+NFmiArea *NFmiEquidistArea::Clone() const { return new NFmiEquidistArea(*this); }
 // ----------------------------------------------------------------------
 /*!
  * Assignment operator
@@ -415,7 +415,7 @@ void NFmiEquidistArea::Init(bool fKeepWorldRect)
   NFmiAzimuthalArea::Init(fKeepWorldRect);
 }
 
-const std::string NFmiEquidistArea::AreaStr(void) const
+const std::string NFmiEquidistArea::AreaStr() const
 {
   // Todo: use cppformat instead
   std::ostringstream out;

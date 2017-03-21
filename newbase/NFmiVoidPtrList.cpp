@@ -14,7 +14,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiVoidPtrList::NFmiVoidPtrList(void)
+NFmiVoidPtrList::NFmiVoidPtrList()
     : itsFirstItem(0), itsCurrentItem(0), itsPreviousItem(0), itsNumberOffItems(0)
 {
 }
@@ -162,7 +162,7 @@ void NFmiVoidPtrList::Clear(
  */
 // ----------------------------------------------------------------------
 
-void NFmiVoidPtrList::DeleteItem(void)
+void NFmiVoidPtrList::DeleteItem()
 {
   NFmiVoidPtrItem *deleteItem;
   deleteItem = itsFirstItem;
@@ -231,7 +231,7 @@ NFmiVoidPtrIterator::NFmiVoidPtrIterator(NFmiVoidPtrList &listItem)
  */
 // ----------------------------------------------------------------------
 
-void NFmiVoidPtrIterator::Reset(void)
+void NFmiVoidPtrIterator::Reset()
 {
   itsListItem->itsPreviousItem = itsPreviousItem = 0;
   itsCurrentItem = itsListItem->itsFirstItem;
@@ -244,7 +244,7 @@ void NFmiVoidPtrIterator::Reset(void)
  */
 // ----------------------------------------------------------------------
 
-void *NFmiVoidPtrIterator::Next(void)
+void *NFmiVoidPtrIterator::Next()
 {
   NFmiVoidPtrItem *temp = itsCurrentItem;
   if (temp)
@@ -265,7 +265,7 @@ void *NFmiVoidPtrIterator::Next(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiVoidPtrIterator::NextPreviousPtr(void)
+void NFmiVoidPtrIterator::NextPreviousPtr()
 {
   if (itsPreviousItem)
     itsPreviousItem = itsPreviousItem->itsNextItem;
@@ -279,7 +279,7 @@ void NFmiVoidPtrIterator::NextPreviousPtr(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiVoidPtrData *NFmiVoidPtrIterator::NextPtr(void)
+NFmiVoidPtrData *NFmiVoidPtrIterator::NextPtr()
 {
   NFmiVoidPtrItem *temp = itsCurrentItem;
   if (temp)
@@ -299,7 +299,7 @@ NFmiVoidPtrData *NFmiVoidPtrIterator::NextPtr(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiVoidPtrData *NFmiVoidPtrIterator::CurrentPtr(void) { return itsCurrentItem->itsValue; }
+NFmiVoidPtrData *NFmiVoidPtrIterator::CurrentPtr() { return itsCurrentItem->itsValue; }
 // ----------------------------------------------------------------------
 /*!
  * \param theItem Undocumented
@@ -331,7 +331,7 @@ bool NFmiVoidPtrIterator::NextPtr(NFmiVoidPtrData *&theItem)
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
-void *NFmiVoidPtrIterator::Current(void)
+void *NFmiVoidPtrIterator::Current()
 {
   return itsCurrentItem ? itsCurrentItem->itsValue->itsDataValue : 0;
 }
@@ -342,7 +342,7 @@ void *NFmiVoidPtrIterator::Current(void)
  */
 // ----------------------------------------------------------------------
 
-long NFmiVoidPtrIterator::Index(void) const { return CheckIndex(itsIndex) ? itsIndex : kNotInList; }
+long NFmiVoidPtrIterator::Index() const { return CheckIndex(itsIndex) ? itsIndex : kNotInList; }
 // ----------------------------------------------------------------------
 /*!
  * \param theNewValue Undocumented

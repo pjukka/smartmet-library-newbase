@@ -32,7 +32,7 @@ long int abs(long int theValue) { return (theValue < 0 ? -theValue : theValue); 
 
 using namespace std;
 
-NFmiTimeList::~NFmiTimeList(void) { Clear(true); }
+NFmiTimeList::~NFmiTimeList() { Clear(true); }
 // ----------------------------------------------------------------------
 /*!
  * Copy constructor
@@ -110,7 +110,7 @@ bool NFmiTimeList::Next(NFmiMetTime **theItem) const
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeList::Next(void) const
+bool NFmiTimeList::Next() const
 {
   if (itsIsReset)
     return First();
@@ -133,7 +133,7 @@ bool NFmiTimeList::IndexOk(int theIndex) const
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeList::Previous(void) const
+bool NFmiTimeList::Previous() const
 {
   if (itsIsReset)
     return false;
@@ -150,7 +150,7 @@ bool NFmiTimeList::Previous(void) const
  */
 // ----------------------------------------------------------------------
 
-NFmiMetTime *NFmiTimeList::Current(void) const
+NFmiMetTime *NFmiTimeList::Current() const
 {
   if (IndexOk(itsIndex)) return itsVectorList[itsIndex];
   return 0;
@@ -162,7 +162,7 @@ NFmiMetTime *NFmiTimeList::Current(void) const
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeList::Reset(void) const
+bool NFmiTimeList::Reset() const
 {
   itsIsReset = true;
   itsIndex = -1;
@@ -175,7 +175,7 @@ bool NFmiTimeList::Reset(void) const
  */
 // ----------------------------------------------------------------------
 
-bool NFmiTimeList::First(void) const
+bool NFmiTimeList::First() const
 {
   if (itsVectorList.empty())
   {
@@ -363,7 +363,7 @@ bool NFmiTimeList::Index(int theIndex) const
  */
 // ----------------------------------------------------------------------
 
-int NFmiTimeList::Index(void) const
+int NFmiTimeList::Index() const
 {
   return itsIndex;
   //  return itsIter?itsIter->Index():false;		// index = -1 out of list
@@ -660,14 +660,14 @@ const NFmiTimeList NFmiTimeList::Combine(NFmiTimeList &theList,
 
 // ======================================================================
 
-const NFmiMetTime &NFmiTimeList::FirstTime(void) const
+const NFmiMetTime &NFmiTimeList::FirstTime() const
 {
   static NFmiMetTime dummy;
   if (IndexOk(0)) return *itsVectorList[0];
   return dummy;
 }
 
-const NFmiMetTime &NFmiTimeList::LastTime(void) const
+const NFmiMetTime &NFmiTimeList::LastTime() const
 {
   static NFmiMetTime dummy;
   int index = NumberOfItems() - 1;
@@ -675,7 +675,7 @@ const NFmiMetTime &NFmiTimeList::LastTime(void) const
   return dummy;
 }
 
-int NFmiTimeList::CurrentResolution(void) const
+int NFmiTimeList::CurrentResolution() const
 {
   if (itsIndex > 0 && itsIndex < static_cast<int>(itsVectorList.size()))
     return itsVectorList[itsIndex]->DifferenceInMinutes(*itsVectorList[itsIndex - 1]);

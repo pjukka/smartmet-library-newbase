@@ -23,14 +23,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiRadarStation::~NFmiRadarStation(void) {}
+NFmiRadarStation::~NFmiRadarStation() {}
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiRadarStation::NFmiRadarStation(void)
+NFmiRadarStation::NFmiRadarStation()
     : NFmiStation(),
       itsResolution(static_cast<unsigned long>(kFloatMissing)),
       itsXNumber(static_cast<unsigned long>(kFloatMissing)),

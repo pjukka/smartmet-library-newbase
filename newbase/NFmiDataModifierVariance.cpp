@@ -29,7 +29,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierVariance::~NFmiDataModifierVariance(void) {}
+NFmiDataModifierVariance::~NFmiDataModifierVariance() {}
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -61,7 +61,7 @@ NFmiDataModifierVariance::NFmiDataModifierVariance(NFmiDataIdent* theDataIdent,
  */
 // ----------------------------------------------------------------------
 
-double NFmiDataModifierVariance::FloatValue(void)
+double NFmiDataModifierVariance::FloatValue()
 {
   double variance = NFmiRegressionModifier::FloatValue();
   if (variance == kFloatMissing) return variance;
@@ -83,7 +83,7 @@ double NFmiDataModifierVariance::FloatValue(void)
  */
 // ----------------------------------------------------------------------
 
-double NFmiDataModifierVariance::GaussianRandom(void)
+double NFmiDataModifierVariance::GaussianRandom()
 {
   // Using static local variables like this is not
   // thread safe - we need to lock. Note also that

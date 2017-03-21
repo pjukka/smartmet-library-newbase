@@ -38,14 +38,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiMultiPolygonAreaMask::~NFmiMultiPolygonAreaMask(void) { Clear(); }
+NFmiMultiPolygonAreaMask::~NFmiMultiPolygonAreaMask() { Clear(); }
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiMultiPolygonAreaMask::NFmiMultiPolygonAreaMask(void)
+NFmiMultiPolygonAreaMask::NFmiMultiPolygonAreaMask()
     : NFmiAreaMaskImpl(), itsAreaPolygons(), itsAreaPolygonValues(), fInitialized(false)
 {
 }
@@ -97,7 +97,7 @@ double NFmiMultiPolygonAreaMask::CalcValueFromLocation(const NFmiPoint& theLatLo
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiMultiPolygonAreaMask::MakeSubMaskString(void) const
+const NFmiString NFmiMultiPolygonAreaMask::MakeSubMaskString() const
 {
   NFmiString str;
   return str;
@@ -109,7 +109,7 @@ const NFmiString NFmiMultiPolygonAreaMask::MakeSubMaskString(void) const
  */
 // ----------------------------------------------------------------------
 
-void NFmiMultiPolygonAreaMask::Clear(void)
+void NFmiMultiPolygonAreaMask::Clear()
 {
   int size = itsAreaPolygons.size();
   for (int i = 0; i < size; i++)

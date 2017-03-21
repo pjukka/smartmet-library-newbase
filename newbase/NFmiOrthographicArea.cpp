@@ -78,7 +78,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiOrthographicArea::NFmiOrthographicArea(void) : itsZoomFactor(), itsGlobeRadius(kRearth) {}
+NFmiOrthographicArea::NFmiOrthographicArea() : itsZoomFactor(), itsGlobeRadius(kRearth) {}
 // ----------------------------------------------------------------------
 /*!
  * Copy constructor
@@ -355,7 +355,7 @@ void NFmiOrthographicArea::ZoomFactor(double theZoomFactor)
 
 // ----------------------------------------------------------------------
 
-double NFmiOrthographicArea::ZoomFactor(void) const { return itsZoomFactor; }
+double NFmiOrthographicArea::ZoomFactor() const { return itsZoomFactor; }
 // ----------------------------------------------------------------------
 
 void NFmiOrthographicArea::GlobeRadius(double &theGlobeRadius) { itsGlobeRadius = theGlobeRadius; }
@@ -366,7 +366,7 @@ void NFmiOrthographicArea::AzimuthAngle(double &theAzimuthAngle)
   itsAzimuthAngle = theAzimuthAngle;
 }
 
-double NFmiOrthographicArea::AzimuthAngle(void) const { return itsAzimuthAngle; }
+double NFmiOrthographicArea::AzimuthAngle() const { return itsAzimuthAngle; }
 // ----------------------------------------------------------------------
 
 NFmiArea *NFmiOrthographicArea::NewArea(const NFmiPoint & /* theBottomLeftLatLon */,
@@ -383,7 +383,7 @@ NFmiArea *NFmiOrthographicArea::NewArea(const NFmiPoint & /* theBottomLeftLatLon
  */
 // ----------------------------------------------------------------------
 
-NFmiArea *NFmiOrthographicArea::Clone(void) const { return new NFmiOrthographicArea(*this); }
+NFmiArea *NFmiOrthographicArea::Clone() const { return new NFmiOrthographicArea(*this); }
 // ----------------------------------------------------------------------
 /*!
  * Assignment operator
@@ -482,7 +482,7 @@ std::istream &NFmiOrthographicArea::Read(std::istream &file)
   return file;
 }
 
-const std::string NFmiOrthographicArea::AreaStr(void) const
+const std::string NFmiOrthographicArea::AreaStr() const
 {
   std::ostringstream out;
   out << "orthographic," << itsCurrentLatlonPoint.X() << ',' << itsCurrentLatlonPoint.Y() << ','

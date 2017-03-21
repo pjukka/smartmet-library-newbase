@@ -146,7 +146,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiTransformList::~NFmiTransformList(void)
+NFmiTransformList::~NFmiTransformList()
 {
   if (itsFirstPair)
   {
@@ -333,7 +333,7 @@ bool NFmiTransformList::Equal(NFmiPoint& p1, NFmiPoint& p2)
  */
 // ----------------------------------------------------------------------
 
-void NFmiTransformList::First(void) { itsCurrentIndex = 0; }
+void NFmiTransformList::First() { itsCurrentIndex = 0; }
 // ----------------------------------------------------------------------
 /*!
  * \param theMaxPairNumber Undocumented

@@ -77,14 +77,14 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiIndexMask::~NFmiIndexMask(void) {}
+NFmiIndexMask::~NFmiIndexMask() {}
 // ----------------------------------------------------------------------
 /*!
  * \brief Constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiIndexMask::NFmiIndexMask(void) : itsData(), itsSorted(true), itsXSize(0), itsYSize(0) {}
+NFmiIndexMask::NFmiIndexMask() : itsData(), itsSorted(true), itsXSize(0), itsYSize(0) {}
 // ----------------------------------------------------------------------
 /*!
  * \brief Constructor with grid sizes.
@@ -139,7 +139,7 @@ NFmiIndexMask& NFmiIndexMask::operator=(const NFmiIndexMask& theMask)
  */
 // ----------------------------------------------------------------------
 
-void NFmiIndexMask::clear(void)
+void NFmiIndexMask::clear()
 {
   itsData.clear();
   itsSorted = true;
@@ -153,7 +153,7 @@ void NFmiIndexMask::clear(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiIndexMask::empty(void) const { return itsData.empty(); }
+bool NFmiIndexMask::empty() const { return itsData.empty(); }
 // ----------------------------------------------------------------------
 /*!
  * \brief Return the size of the mask
@@ -162,7 +162,7 @@ bool NFmiIndexMask::empty(void) const { return itsData.empty(); }
  */
 // ----------------------------------------------------------------------
 
-NFmiIndexMask::size_type NFmiIndexMask::size(void) const
+NFmiIndexMask::size_type NFmiIndexMask::size() const
 {
   require_sorted();
   return itsData.size();
@@ -209,7 +209,7 @@ NFmiIndexMask::const_iterator NFmiIndexMask::find(value_type theIndex) const
  */
 // ----------------------------------------------------------------------
 
-NFmiIndexMask::const_iterator NFmiIndexMask::begin(void) const
+NFmiIndexMask::const_iterator NFmiIndexMask::begin() const
 {
   require_sorted();
   return itsData.begin();
@@ -223,7 +223,7 @@ NFmiIndexMask::const_iterator NFmiIndexMask::begin(void) const
  */
 // ----------------------------------------------------------------------
 
-NFmiIndexMask::const_iterator NFmiIndexMask::end(void) const
+NFmiIndexMask::const_iterator NFmiIndexMask::end() const
 {
   require_sorted();
   return itsData.end();
@@ -491,7 +491,7 @@ void NFmiIndexMask::Move(int theXMove, int theYMove)
  */
 // ----------------------------------------------------------------------
 
-void NFmiIndexMask::require_sorted(void) const
+void NFmiIndexMask::require_sorted() const
 {
   if (itsSorted) return;
 

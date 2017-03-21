@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierLogical::~NFmiDataModifierLogical(void) {}
+NFmiDataModifierLogical::~NFmiDataModifierLogical() {}
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -51,7 +51,7 @@ NFmiDataModifierLogical::NFmiDataModifierLogical(NFmiDataModifierBoolean *theCon
  */
 // ----------------------------------------------------------------------
 
-double NFmiDataModifierLogical::FloatValue(void)
+double NFmiDataModifierLogical::FloatValue()
 {
   if (itsCondition && itsPrimaryModifier && itsSecondaryModifier)
     return itsCondition->BooleanValue() ? itsPrimaryModifier->FloatValue()

@@ -21,7 +21,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiMetBoxQueryData::~NFmiMetBoxQueryData(void)
+NFmiMetBoxQueryData::~NFmiMetBoxQueryData()
 {
   if (itsMetBox) delete itsMetBox;
 }
@@ -32,7 +32,7 @@ NFmiMetBoxQueryData::~NFmiMetBoxQueryData(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiMetBoxQueryData::NFmiMetBoxQueryData(void) : NFmiQueryData(), itsMetBox(0) {}
+NFmiMetBoxQueryData::NFmiMetBoxQueryData() : NFmiQueryData(), itsMetBox(0) {}
 // ----------------------------------------------------------------------
 /*!
  * Copy constructor
@@ -65,7 +65,7 @@ NFmiMetBoxQueryData::NFmiMetBoxQueryData(NFmiQueryInfo& theInfo)
  */
 // ----------------------------------------------------------------------
 
-NFmiMetBox* NFmiMetBoxQueryData::Value(void)
+NFmiMetBox* NFmiMetBoxQueryData::Value()
 {
   Reset();
   NextTime();

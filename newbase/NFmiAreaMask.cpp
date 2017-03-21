@@ -19,7 +19,7 @@
 #include <cmath>
 
 //! Destructor
-NFmiAreaMask::~NFmiAreaMask(void) {}
+NFmiAreaMask::~NFmiAreaMask() {}
 boost::shared_ptr<NFmiFastQueryInfo> NFmiAreaMask::DoShallowCopy(
     const boost::shared_ptr<NFmiFastQueryInfo> &theInfo)
 {

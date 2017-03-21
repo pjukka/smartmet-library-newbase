@@ -98,7 +98,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiMercatorArea::NFmiMercatorArea(void)
+NFmiMercatorArea::NFmiMercatorArea()
     : NFmiArea(),
       itsBottomLeftLatLon(),
       itsTopRightLatLon(),
@@ -159,7 +159,7 @@ NFmiMercatorArea::NFmiMercatorArea(const NFmiMercatorArea& theLatLonArea)
  */
 // ----------------------------------------------------------------------
 
-NFmiArea* NFmiMercatorArea::Clone(void) const { return new NFmiMercatorArea(*this); }
+NFmiArea* NFmiMercatorArea::Clone() const { return new NFmiMercatorArea(*this); }
 // ----------------------------------------------------------------------
 /*!
  * \param fKeepWorldRect Undocumented
@@ -288,14 +288,14 @@ const NFmiPoint NFmiMercatorArea::ToLatLon(const NFmiPoint& theXYPoint) const
  */
 // ----------------------------------------------------------------------
 
-double NFmiMercatorArea::XScale(void) const { return 1. / itsXScaleFactor; }
+double NFmiMercatorArea::XScale() const { return 1. / itsXScaleFactor; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-double NFmiMercatorArea::YScale(void) const { return 1. / itsYScaleFactor; }
+double NFmiMercatorArea::YScale() const { return 1. / itsYScaleFactor; }
 // ----------------------------------------------------------------------
 /*!
  * \param theBottomLeftLatLon Undocumented
@@ -381,7 +381,7 @@ std::istream& NFmiMercatorArea::Read(std::istream& file)
   return file;
 }
 
-const std::string NFmiMercatorArea::AreaStr(void) const
+const std::string NFmiMercatorArea::AreaStr() const
 {
   std::ostringstream out;
   out << "mercator:" << BottomLeftLatLon().X() << ',' << BottomLeftLatLon().Y() << ','

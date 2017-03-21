@@ -501,7 +501,7 @@ void NFmiTime::ChangeBySeconds(long seconds)
  */
 // ----------------------------------------------------------------------
 
-short NFmiTime::GetWeekday(void) const
+short NFmiTime::GetWeekday() const
 {
   NFmiTime Sunday(
       static_cast<short>(1830), static_cast<short>(1), static_cast<short>(4));  // toimiikohan?????
@@ -540,7 +540,7 @@ const NFmiString NFmiTime::Weekday(const FmiLanguage theLanguage) const
  */
 // ----------------------------------------------------------------------
 
-void NFmiTime::PrintWeekday(void) const { std::cout << weekdays[GetWeekday() - 1]; }
+void NFmiTime::PrintWeekday() const { std::cout << weekdays[GetWeekday() - 1]; }
 // ----------------------------------------------------------------------
 /*!
  * Returns time in minutes since 01.01.2001 00:00
@@ -556,7 +556,7 @@ void NFmiTime::PrintWeekday(void) const { std::cout << weekdays[GetWeekday() - 1
  */
 // ----------------------------------------------------------------------
 
-long NFmiTime::GetCompareValue(void) const
+long NFmiTime::GetCompareValue() const
 {
   long a = (14 - GetMonth()) / 12;
   long y = GetYear() + 4800 - a;
@@ -736,7 +736,7 @@ const NFmiTime NFmiTime::LocalTime(const NFmiLocation &theLocation) const
 
 // Suomessa talvella -2, kesÃ¤llÃ¤ -3
 
-void NFmiTime::SetZoneDifferenceHour(void)
+void NFmiTime::SetZoneDifferenceHour()
 {
   // time  returns the time since the Epoch (00:00:00 UTC, JanÂ­
   // uary 1, 1970), measured in seconds.

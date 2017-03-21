@@ -22,14 +22,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiQueryInfoSatel::~NFmiQueryInfoSatel(void) { Destroy(); }
+NFmiQueryInfoSatel::~NFmiQueryInfoSatel() { Destroy(); }
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiQueryInfoSatel::NFmiQueryInfoSatel(void) : NFmiQueryInfo(), itsSatelName(0) {}
+NFmiQueryInfoSatel::NFmiQueryInfoSatel() : NFmiQueryInfo(), itsSatelName(0) {}
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -93,7 +93,7 @@ NFmiQueryInfoSatel::NFmiQueryInfoSatel(const NFmiQueryInfoSatel &theInfo)
  */
 // ----------------------------------------------------------------------
 
-void NFmiQueryInfoSatel::Destroy(void)
+void NFmiQueryInfoSatel::Destroy()
 {
   delete itsSatelName;
   itsSatelName = 0;
@@ -105,7 +105,7 @@ void NFmiQueryInfoSatel::Destroy(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiQueryInfo *NFmiQueryInfoSatel::Clone(void) const { return new NFmiQueryInfoSatel(*this); }
+NFmiQueryInfo *NFmiQueryInfoSatel::Clone() const { return new NFmiQueryInfoSatel(*this); }
 // ----------------------------------------------------------------------
 /*!
  * Assignment operator

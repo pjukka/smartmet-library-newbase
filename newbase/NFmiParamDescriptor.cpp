@@ -25,9 +25,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiParamDescriptor::NFmiParamDescriptor(void) : itsParamBag(0), itsActivity(0), fInterpolate(false)
-{
-}
+NFmiParamDescriptor::NFmiParamDescriptor() : itsParamBag(0), itsActivity(0), fInterpolate(false) {}
 
 // ----------------------------------------------------------------------
 /*!
@@ -72,7 +70,7 @@ NFmiParamDescriptor::NFmiParamDescriptor(const NFmiParamDescriptor &theParamDesc
  */
 // ----------------------------------------------------------------------
 
-void NFmiParamDescriptor::Destroy(void)
+void NFmiParamDescriptor::Destroy()
 {
   if (itsActivity != 0)
   {
@@ -131,7 +129,7 @@ bool NFmiParamDescriptor::Param(FmiParameterName theParam)
 
 // TÄMÄ PITÄÄ KORJATA KÄYTTÄMÄÄN PARAMBAGIN VASTAAVAA METODIA?!?!?!
 
-unsigned long NFmiParamDescriptor::SizeActive(void) const
+unsigned long NFmiParamDescriptor::SizeActive() const
 {
   unsigned long theActiveSize = 0;
 
@@ -190,7 +188,7 @@ bool NFmiParamDescriptor::SetActivity(bool theActivityState,
  */
 // ----------------------------------------------------------------------
 
-bool NFmiParamDescriptor::NextActive(void)
+bool NFmiParamDescriptor::NextActive()
 {
   while (Next())
     if (IsActive()) return true;

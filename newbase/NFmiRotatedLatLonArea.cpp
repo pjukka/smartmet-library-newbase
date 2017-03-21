@@ -121,7 +121,7 @@ const NFmiPoint toreglatlon(const NFmiPoint &theRotLatLonPoint,
  */
 // ----------------------------------------------------------------------
 
-NFmiRotatedLatLonArea::NFmiRotatedLatLonArea(void) : NFmiLatLonArea(), itsSouthernPole() {}
+NFmiRotatedLatLonArea::NFmiRotatedLatLonArea() : NFmiLatLonArea(), itsSouthernPole() {}
 NFmiRotatedLatLonArea::NFmiRotatedLatLonArea(const NFmiRotatedLatLonArea &theRotatedLatLonArea)
     : NFmiLatLonArea(theRotatedLatLonArea), itsSouthernPole(theRotatedLatLonArea.itsSouthernPole)
 {
@@ -163,7 +163,7 @@ NFmiRotatedLatLonArea::NFmiRotatedLatLonArea(const NFmiPoint &theBottomLeftLatLo
  */
 // ----------------------------------------------------------------------
 
-NFmiArea *NFmiRotatedLatLonArea::Clone(void) const { return new NFmiRotatedLatLonArea(*this); }
+NFmiArea *NFmiRotatedLatLonArea::Clone() const { return new NFmiRotatedLatLonArea(*this); }
 // ----------------------------------------------------------------------
 /*!
  * \param theXYPoint Undocumented
@@ -289,7 +289,7 @@ std::istream &NFmiRotatedLatLonArea::Read(std::istream &file)
   return file;
 }
 
-const std::string NFmiRotatedLatLonArea::AreaStr(void) const
+const std::string NFmiRotatedLatLonArea::AreaStr() const
 {
   std::ostringstream out;
   out << "rotlatlon," << SouthernPole().Y() << ',' << SouthernPole().X() << ':'

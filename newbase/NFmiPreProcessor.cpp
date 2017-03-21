@@ -233,7 +233,7 @@ NFmiPreProcessor::NFmiPreProcessor(const NFmiPreProcessor &theStripper)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiPreProcessor::Strip(void)
+bool NFmiPreProcessor::Strip()
 {
   if (!NFmiCommentStripper::Strip()) return false;
 
@@ -292,7 +292,7 @@ static void RemovePossibleCharactersFromStartAndEnd(std::string &theString, char
  */
 // ----------------------------------------------------------------------
 
-bool NFmiPreProcessor::Include(void)
+bool NFmiPreProcessor::Include()
 {
   if (itsCurNumOfIncludes >= kMaxNumOfStripperIncludes)
   {
@@ -517,7 +517,7 @@ bool NFmiPreProcessor::StripConditionally(bool theCondValue,
  */
 // ----------------------------------------------------------------------
 
-bool NFmiPreProcessor::StripConditionally(void)
+bool NFmiPreProcessor::StripConditionally()
 {
   if (!fConditionValue)
   {
@@ -551,7 +551,7 @@ bool NFmiPreProcessor::StripConditionally(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiPreProcessor::Replace(void)
+bool NFmiPreProcessor::Replace()
 {
   //  itsReplaceMap.insert(pair<string, string>("5vrk", "9vrk"));
   //  itsReplaceMap.insert(pair<string, string>("Summa", "Hop"));
@@ -578,7 +578,7 @@ bool NFmiPreProcessor::Replace(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiPreProcessor::ReplaceAll(void) { return Replace(); }
+bool NFmiPreProcessor::ReplaceAll() { return Replace(); }
 // ----------------------------------------------------------------------
 /*!
  * \param theIncludeDirective Undocumented

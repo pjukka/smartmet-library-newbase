@@ -614,7 +614,7 @@ void NFmiLocation::CalcSunriseOrSunsetTime(NFmiTime &theSolarTime)
  */
 // ----------------------------------------------------------------------
 
-NFmiLocation *NFmiLocation::Clone(void) const { return new NFmiLocation(*this); }
+NFmiLocation *NFmiLocation::Clone() const { return new NFmiLocation(*this); }
 // ----------------------------------------------------------------------
 /*!
  * Write the object to the given output stream

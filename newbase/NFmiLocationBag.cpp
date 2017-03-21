@@ -34,15 +34,14 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiLocationBag::~NFmiLocationBag(void) { Destroy(); }
+NFmiLocationBag::~NFmiLocationBag() { Destroy(); }
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiLocationBag::NFmiLocationBag(void)
-    : NFmiSize(), itsLocations(), itsSortedLocations(), itsNearTree()
+NFmiLocationBag::NFmiLocationBag() : NFmiSize(), itsLocations(), itsSortedLocations(), itsNearTree()
 {
 }
 
@@ -151,7 +150,7 @@ NFmiLocationBag::NFmiLocationBag(const NFmiLocationBag &theLocationBag)
  */
 // ----------------------------------------------------------------------
 
-void NFmiLocationBag::Destroy(void)
+void NFmiLocationBag::Destroy()
 {
   for (unsigned long i = 0; i < itsLocations.size(); i++)
     delete itsLocations[i];
@@ -199,7 +198,7 @@ const NFmiLocationBag NFmiLocationBag::Combine(const NFmiLocationBag &theBag)
  */
 // ----------------------------------------------------------------------
 
-const NFmiLocation *NFmiLocationBag::Location(void) const
+const NFmiLocation *NFmiLocationBag::Location() const
 {
   if (CurrentIndex() == -1) return 0;
   return itsLocations[CurrentIndex()];

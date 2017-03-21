@@ -106,7 +106,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiPKJArea::NFmiPKJArea(void) : NFmiKKJArea() {}
+NFmiPKJArea::NFmiPKJArea() : NFmiKKJArea() {}
 // ----------------------------------------------------------------------
 /*!
  * Copy constructor
@@ -306,7 +306,7 @@ NFmiArea *NFmiPKJArea::NewArea(const NFmiPoint &theBottomLeftLatLon,
  */
 // ----------------------------------------------------------------------
 
-NFmiArea *NFmiPKJArea::Clone(void) const { return new NFmiPKJArea(*this); }
+NFmiArea *NFmiPKJArea::Clone() const { return new NFmiPKJArea(*this); }
 // ----------------------------------------------------------------------
 /*!
  * Assignment operator

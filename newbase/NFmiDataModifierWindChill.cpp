@@ -27,7 +27,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierWindChill::~NFmiDataModifierWindChill(void) {}
+NFmiDataModifierWindChill::~NFmiDataModifierWindChill() {}
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -101,7 +101,7 @@ void NFmiDataModifierWindChill::Calculate(float /* theValue */)
  */
 // ----------------------------------------------------------------------
 
-float NFmiDataModifierWindChill::CalculationResult(void)
+float NFmiDataModifierWindChill::CalculationResult()
 {
   return itsDataModifier->CalculationResult();
 }
@@ -112,5 +112,5 @@ float NFmiDataModifierWindChill::CalculationResult(void)
  */
 // ----------------------------------------------------------------------
 
-void NFmiDataModifierWindChill::Clear(void) { itsDataModifier->Clear(); }
+void NFmiDataModifierWindChill::Clear() { itsDataModifier->Clear(); }
 // ======================================================================

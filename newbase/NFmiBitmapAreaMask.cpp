@@ -16,14 +16,14 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiBitmapAreaMask::~NFmiBitmapAreaMask(void) { Destroy(); }
+NFmiBitmapAreaMask::~NFmiBitmapAreaMask() { Destroy(); }
 // ----------------------------------------------------------------------
 /*!
  * Void constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiBitmapAreaMask::NFmiBitmapAreaMask(void)
+NFmiBitmapAreaMask::NFmiBitmapAreaMask()
     : NFmiAreaMaskImpl(),
       itsBitmask(),
       itsArea(0),
@@ -119,14 +119,14 @@ NFmiBitmapAreaMask::NFmiBitmapAreaMask(const NFmiBitmapAreaMask& theMask)
  */
 // ----------------------------------------------------------------------
 
-NFmiAreaMask* NFmiBitmapAreaMask::Clone(void) const { return new NFmiBitmapAreaMask(*this); }
+NFmiAreaMask* NFmiBitmapAreaMask::Clone() const { return new NFmiBitmapAreaMask(*this); }
 // ----------------------------------------------------------------------
 /*!
  * Internal data destructuction utility
  */
 // ----------------------------------------------------------------------
 
-void NFmiBitmapAreaMask::Destroy(void)
+void NFmiBitmapAreaMask::Destroy()
 {
   delete itsArea;
   itsArea = 0;
@@ -257,7 +257,7 @@ double NFmiBitmapAreaMask::CalcValueFromLocation(const NFmiPoint& theLatLon) con
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiBitmapAreaMask::MakeSubMaskString(void) const
+const NFmiString NFmiBitmapAreaMask::MakeSubMaskString() const
 {
   return NFmiString("NFmiBitmapAreaMask::MakeSubMaskString ei ole toteutettu");
 }

@@ -17,7 +17,7 @@ using namespace std;
  */
 // ----------------------------------------------------------------------
 
-NFmiSnapShotInterface::~NFmiSnapShotInterface(void)
+NFmiSnapShotInterface::~NFmiSnapShotInterface()
 {
   delete itsData;
   delete itsInfo;
@@ -126,7 +126,7 @@ bool NFmiSnapShotInterface::Update(NFmiQueryInfo** theInfo)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiSnapShotInterface::IsValid(void)
+bool NFmiSnapShotInterface::IsValid()
 {
   if (!itsInfo || time(NULL) - itsStartingTime > itsUpdateInterval)
   {
@@ -142,7 +142,7 @@ bool NFmiSnapShotInterface::IsValid(void)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiSnapShotInterface::ReadData(void)
+bool NFmiSnapShotInterface::ReadData()
 {
   // Kopioidaan tiedosto paikalliseksi
   NFmiString command = NFmiString("clone.exe ");

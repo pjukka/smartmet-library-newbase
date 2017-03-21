@@ -24,7 +24,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiFindFile::~NFmiFindFile(void)
+NFmiFindFile::~NFmiFindFile()
 {
 #ifdef UNIX
   if (itsGlobBuffer) globfree(itsGlobBuffer);
@@ -39,7 +39,7 @@ NFmiFindFile::~NFmiFindFile(void)
  */
 // ----------------------------------------------------------------------
 
-NFmiFindFile::NFmiFindFile(void)
+NFmiFindFile::NFmiFindFile()
     : itsFileName(),
       itsFilePath(),
       itsFileFile(0)
@@ -64,21 +64,21 @@ void NFmiFindFile::Path(const NFmiString& thePathName) { itsFilePath = thePathNa
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiFindFile::FileName(void) { return itsFileName; }
+const NFmiString NFmiFindFile::FileName() { return itsFileName; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiFindFile::PathName(void) { return itsFilePath; }
+const NFmiString NFmiFindFile::PathName() { return itsFilePath; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-const NFmiString NFmiFindFile::PathAndFileName(void)
+const NFmiString NFmiFindFile::PathAndFileName()
 {
   std::string thePathAndFileName(itsFilePath);
 
@@ -156,7 +156,7 @@ bool NFmiFindFile::Find(const NFmiString& theFileMask)
  */
 // ----------------------------------------------------------------------
 
-bool NFmiFindFile::Next(void)
+bool NFmiFindFile::Next()
 {
 #ifdef UNIX
   if (!itsGlobBuffer) return false;

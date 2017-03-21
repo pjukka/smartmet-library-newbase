@@ -22,7 +22,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiRelativeTimeIntegrationIterator::~NFmiRelativeTimeIntegrationIterator(void) {}
+NFmiRelativeTimeIntegrationIterator::~NFmiRelativeTimeIntegrationIterator() {}
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -66,7 +66,7 @@ void NFmiRelativeTimeIntegrationIterator::DoForEach(NFmiDataModifier* theDataMod
  */
 // ----------------------------------------------------------------------
 
-NFmiRelativeTimeIntegrationIterator2::~NFmiRelativeTimeIntegrationIterator2(void) {}
+NFmiRelativeTimeIntegrationIterator2::~NFmiRelativeTimeIntegrationIterator2() {}
 // ----------------------------------------------------------------------
 /*!
  * Constructor

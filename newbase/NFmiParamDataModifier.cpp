@@ -23,7 +23,7 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiParamDataModifier::~NFmiParamDataModifier(void)
+NFmiParamDataModifier::~NFmiParamDataModifier()
 {
   delete itsParam;
   delete itsLevel;
@@ -92,7 +92,7 @@ bool NFmiParamDataModifier::AddSubModifier(NFmiDataModifier* /* theModifier */)
  */
 // ----------------------------------------------------------------------
 
-NFmiDataModifierList* NFmiParamDataModifier::SubModifiers(void) { return itsSubList; }
+NFmiDataModifierList* NFmiParamDataModifier::SubModifiers() { return itsSubList; }
 // ----------------------------------------------------------------------
 /*!
  * \param theValue Undocumented, unused
@@ -115,7 +115,7 @@ float NFmiParamDataModifier::FloatOperation(float theValue) { return theValue; }
  */
 // ----------------------------------------------------------------------
 
-float NFmiParamDataModifier::CalculationResult(void) { return kFloatMissing; }
+float NFmiParamDataModifier::CalculationResult() { return kFloatMissing; }
 // ----------------------------------------------------------------------
 /*!
  * \param theValue Undocumented, unused
@@ -129,7 +129,7 @@ void NFmiParamDataModifier::Calculate(float /* theValue */) {}
  */
 // ----------------------------------------------------------------------
 
-void NFmiParamDataModifier::Clear(void) {}
+void NFmiParamDataModifier::Clear() {}
 // ----------------------------------------------------------------------
 /*!
  * \param file The output stream to write to

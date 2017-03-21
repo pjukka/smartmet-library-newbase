@@ -144,5 +144,5 @@ const NFmiIndexMask& NFmiIndexMaskSource::Find(const NFmiMetTime& theTime) const
  */
 // ----------------------------------------------------------------------
 
-void NFmiIndexMaskSource::Clear(void) { itsData.clear(); }
+void NFmiIndexMaskSource::Clear() { itsData.clear(); }
 // ======================================================================
