@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiArea.h"
 #include "NFmiAngle.h"
+#include "NFmiArea.h"
 
 //! Undocumented
 class _FMI_DLL NFmiKKJArea : public NFmiArea
@@ -157,6 +157,5 @@ inline double NFmiKKJArea::Artanh(double x) const
   using namespace std;
   return 0.5 * log((1.0 + x) / (1.0 - x));
 }
-
 
 // ======================================================================

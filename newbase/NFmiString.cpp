@@ -22,13 +22,13 @@
 
 #include <boost/functional/hash.hpp>
 
-#include <cstdlib>
-#include <string>
-#include <cstdio>
 #include <cctype>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include <iostream>
 #include <stdexcept>
-#include <cstring>
+#include <string>
 
 #ifdef UNIX
 #include <locale.h>

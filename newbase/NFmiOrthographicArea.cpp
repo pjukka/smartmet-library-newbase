@@ -65,8 +65,8 @@
 // ======================================================================
 
 #include "NFmiOrthographicArea.h"
-#include <cmath>
 #include <algorithm>
+#include <cmath>
 #include <iomanip>
 
 using namespace std;

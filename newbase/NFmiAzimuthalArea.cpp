@@ -87,8 +87,8 @@
 // ======================================================================
 
 #include "NFmiAzimuthalArea.h"
-#include <cmath>
 #include <cassert>
+#include <cmath>
 #include <iostream>
 
 using namespace std;

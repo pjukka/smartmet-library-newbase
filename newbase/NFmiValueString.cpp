@@ -6,12 +6,12 @@
 // ----------------------------------------------------------------------
 
 #include "NFmiValueString.h"
-#include <cstdio>
-#include <iostream>
-#include <cstdlib>
-#include <string>
 #include <cctype>
 #include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+#include <string>
 
 using namespace std;
 

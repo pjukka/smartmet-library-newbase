@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiDef.h"
 #include "NFmiDataMatrix.h"
+#include "NFmiDef.h"
 #include <iosfwd>
 
 class NFmiPoint;
@@ -71,6 +71,7 @@ class _FMI_DLL NFmiSvgPath
 
   bool IsInside(const NFmiPoint& thePoint) const;
   storage_type& GetData(void) { return itsData; }
+
  private:
   storage_type itsData;
 

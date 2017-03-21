@@ -8,9 +8,9 @@
 #pragma once
 
 #include "NFmiDef.h"
-#include <string>  // filenames are strings
 #include <ctime>   // time_t
 #include <list>    // for ListDirectory
+#include <string>  // filenames are strings
 
 // Koska Winkkari headerissa
 // on makro joka muuttaa funktion nimeä:
@@ -107,6 +107,5 @@ _FMI_DLL bool IsAbsolutePath(const std::string &thePath);
 _FMI_DLL void SafeFileSave(const std::string &theFileName, const std::string &theContents);
 
 }  // namespace NFmiFileSystem
-
 
 // ======================================================================

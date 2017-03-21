@@ -27,10 +27,10 @@
 
 #include "NFmiMultiPolygonAreaMask.h"
 #include "NFmiBitmapAreaMask.h"
+#include "NFmiGrid.h"
+#include "NFmiPoint.h"
 #include "NFmiSvgPath.h"
 #include "NFmiSvgTools.h"
-#include "NFmiPoint.h"
-#include "NFmiGrid.h"
 
 // ----------------------------------------------------------------------
 /*!

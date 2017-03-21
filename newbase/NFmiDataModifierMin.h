@@ -31,5 +31,4 @@ class _FMI_DLL NFmiDataModifierMin : public NFmiDataModifierExtreme
 
 };  // class NFmiDataModifierMin
 
-
 // ======================================================================

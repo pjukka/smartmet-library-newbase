@@ -20,10 +20,10 @@
 #include "NFmiSvgPath.h"
 #include "NFmiPoint.h"
 
-#include <iterator>
 #include <algorithm>
-#include <string>
+#include <iterator>
 #include <sstream>
+#include <string>
 
 using namespace std;
 

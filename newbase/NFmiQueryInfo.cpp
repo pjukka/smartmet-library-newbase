@@ -36,16 +36,16 @@
 #include "NFmiTotalWind.h"
 #include "NFmiWeatherAndCloudiness.h"
 #include <cassert>
+#include <cstdlib>
 #include <fstream>
 #include <stdexcept>
-#include <cstdlib>
 // abort()
 
 #ifdef FMI_COMPRESSION
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
 #endif
 
 // Mika: isspace on määritelty ctypessä
@@ -3286,8 +3286,8 @@ bool NFmiQueryInfo::CalcLatlonCachePoints(NFmiQueryInfo &theTargetInfo,
     {
       NFmiLocationCache locCache =
           CalcLocationCache(theTargetInfo.LatLon(), sourceSizeX, sourceSizeY);
-      theLocationCache[theTargetInfo.LocationIndex() % targetSizeX][theTargetInfo.LocationIndex() /
-                                                                    targetSizeX] = locCache;
+      theLocationCache[theTargetInfo.LocationIndex() % targetSizeX]
+                      [theTargetInfo.LocationIndex() / targetSizeX] = locCache;
     }
     return true;
   }
@@ -3769,8 +3769,8 @@ static float InterpolateWindDir(std::vector<float> &theWSvalues,
   NFmiInterpolation::WindInterpolator windInterpolator;
   windInterpolator.operator()(
       theWSvalues[0], theWDvalues[theWDStartIndex + 0], (1 - dx) * (1 - dy));
-  windInterpolator.operator()(theWSvalues[1], theWDvalues[theWDStartIndex + 1], dx * (1 - dy));
-  windInterpolator.operator()(theWSvalues[2], theWDvalues[theWDStartIndex + 2], dx * dy);
+  windInterpolator.operator()(theWSvalues[1], theWDvalues[theWDStartIndex + 1], dx *(1 - dy));
+  windInterpolator.operator()(theWSvalues[2], theWDvalues[theWDStartIndex + 2], dx *dy);
   windInterpolator.operator()(theWSvalues[3], theWDvalues[theWDStartIndex + 3], (1 - dx) * dy);
 
   return static_cast<float>(windInterpolator.Direction());  // meitä kiinnostaa vain tuulen suunta
@@ -4318,8 +4318,8 @@ float NFmiQueryInfo::InterpolatedValue(const NFmiPoint &theLatLonPoint,
           double dy = gpoint.Y() - floor(gpoint.Y());
           NFmiInterpolation::WindInterpolator windInterpolator;
           windInterpolator.operator()(blWS, bottomLeftValue, (1 - dx) * (1 - dy));
-          windInterpolator.operator()(brWS, bottomRightValue, dx * (1 - dy));
-          windInterpolator.operator()(trWS, topRightValue, dx * dy);
+          windInterpolator.operator()(brWS, bottomRightValue, dx *(1 - dy));
+          windInterpolator.operator()(trWS, topRightValue, dx *dy);
           windInterpolator.operator()(tlWS, topLeftValue, (1 - dx) * dy);
 
           theValue = static_cast<float>(windInterpolator.Direction());  // meitä kiinnostaa vain

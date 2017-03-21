@@ -47,5 +47,4 @@ class _FMI_DLL NFmiDataModifierBoolean : public NFmiDataModifier
 
 };  // class NFmiDataModifierBoolean
 
-
 // ======================================================================

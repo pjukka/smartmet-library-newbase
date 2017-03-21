@@ -32,5 +32,4 @@ class _FMI_DLL NFmiDataModifierAvg : public NFmiDataModifier
 
 };  // class NFmiDataModifierAvg
 
-
 // ======================================================================

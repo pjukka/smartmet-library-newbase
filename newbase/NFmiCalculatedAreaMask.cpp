@@ -41,12 +41,12 @@
 // ======================================================================
 
 #include "NFmiCalculatedAreaMask.h"
-#include "NFmiDataIdent.h"
-#include "NFmiPoint.h"
-#include "NFmiLocation.h"
-#include "NFmiFastQueryInfo.h"
 #include "NFmiArea.h"
+#include "NFmiDataIdent.h"
+#include "NFmiFastQueryInfo.h"
 #include "NFmiGrid.h"
+#include "NFmiLocation.h"
+#include "NFmiPoint.h"
 
 // ----------------------------------------------------------------------
 /*!

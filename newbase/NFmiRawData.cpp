@@ -18,10 +18,10 @@
 #include "NFmiRawData.h"
 #include "NFmiVersion.h"
 
-#include <boost/lexical_cast.hpp>
-#include <boost/scoped_ptr.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/iostreams/device/mapped_file.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/scoped_ptr.hpp>
 #include <boost/thread.hpp>
 
 #include <cstring>
@@ -313,7 +313,9 @@ bool NFmiRawData::Pimple::Init(size_t size,
   long datatype = 6;  // float??
   bool saveasbinary = true;
   std::ostringstream headerstream;
-  headerstream << theHeader << '\n' << datatype << '\n' << saveasbinary << '\n'
+  headerstream << theHeader << '\n'
+               << datatype << '\n'
+               << saveasbinary << '\n'
                << itsSize * sizeof(float) << '\n';
   std::string fullheader = headerstream.str();
 

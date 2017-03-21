@@ -8,8 +8,8 @@
 #pragma once
 
 #include "NFmiCommentStripper.h"
-#include <string>
 #include <map>
+#include <string>
 
 //! Undocumented
 class _FMI_DLL NFmiPreProcessor : public NFmiCommentStripper

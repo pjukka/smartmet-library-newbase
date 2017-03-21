@@ -17,14 +17,14 @@
 
 #include "NFmiWeatherAndCloudiness.h"
 #include "NFmiDataIdent.h"
-#include "NFmiParamBag.h"
-#include "NFmiQueryInfo.h"
-#include "NFmiPoint.h"
 #include "NFmiDataModifierClasses.h"
 #include "NFmiDataModifierCombi.h"
 #include "NFmiIntegrationSelector.h"
-#include <cmath>
+#include "NFmiParamBag.h"
+#include "NFmiPoint.h"
+#include "NFmiQueryInfo.h"
 #include <algorithm>
+#include <cmath>
 
 using namespace std;
 

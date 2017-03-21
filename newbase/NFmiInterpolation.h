@@ -94,5 +94,4 @@ class WindInterpolator
 
 }  // namespace NFmiInterpolation
 
-
 // ======================================================================

@@ -88,4 +88,3 @@ class checked_ptr
 
   void reset(element_type* ptr = 0) { p = ptr; }
 };
-

@@ -6,18 +6,18 @@
 // ======================================================================
 
 #include "NFmiFileSystem.h"
-#include "NFmiStringTools.h"
 #include "NFmiFileString.h"
+#include "NFmiStringTools.h"
 
 #include <boost/filesystem.hpp>
 
+#include <cctype>  // for isalpha
 #include <cstdio>
 #include <ctime>    // for time()
 #include <fstream>  // for time()
-#include <vector>   // for time()
 #include <sstream>
 #include <stdexcept>
-#include <cctype>  // for isalpha
+#include <vector>  // for time()
 
 #include <boost/filesystem/operations.hpp>  // uusi FileSize toteutus tarvitsee tätä
 
@@ -47,23 +47,23 @@
 #ifdef BOOST
 // Finding files is implemented in Linux using boost filesystem & regex
 #include <boost/algorithm/string/predicate.hpp>  //Lasse
-#include <boost/filesystem/path.hpp>
 #include <boost/filesystem/convenience.hpp>
+#include <boost/filesystem/path.hpp>
 #include <boost/regex.hpp>
 #endif
 
 extern "C" {
-#include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 
 #ifndef UNIX
-#include <io.h>
 #include <direct.h>
+#include <io.h>
 #else
 #include <sys/dir.h>  // opendir() etc
 #include <sys/types.h>
-#include <unistd.h>
 #include <errno.h>
+#include <unistd.h>
 #endif
 }
 

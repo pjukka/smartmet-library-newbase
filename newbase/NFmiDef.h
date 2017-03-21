@@ -32,5 +32,4 @@ const unsigned char kFmiDirectorySeparator = '/';
 const unsigned char kFmiDirectorySeparator = '\\';
 #endif
 
-
 // ======================================================================

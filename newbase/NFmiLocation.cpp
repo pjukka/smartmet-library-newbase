@@ -21,14 +21,14 @@
 // ======================================================================
 
 #include "NFmiLocation.h"
+#include "NFmiAngle.h"
 #include "NFmiGeoTools.h"
 #include "NFmiMetTime.h"
-#include "NFmiAngle.h"
 
 #include <boost/functional/hash.hpp>
 
-#include <fstream>
 #include <algorithm>
+#include <fstream>
 
 using namespace std;
 

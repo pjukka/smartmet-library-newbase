@@ -33,9 +33,9 @@
 
 #include "NFmiLagrange.h"
 
+#include <cctype>
 #include <cstdio>
 #include <cstdlib>
-#include <cctype>
 
 // ----------------------------------------------------------------------
 /*!

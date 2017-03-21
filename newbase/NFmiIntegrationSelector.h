@@ -176,5 +176,4 @@ inline void NFmiIntegrationSelector::ScaleUpperLimit(float theFactor)
   if (itsProbabilityLowerLimit != kFloatMissing) itsProbabilityUpperLimit *= theFactor;
 }
 
-
 // ======================================================================

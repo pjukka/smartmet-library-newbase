@@ -109,27 +109,27 @@
 #include "NFmiEquidistArea.h"
 #include "NFmiGdalArea.h"
 #include "NFmiGnomonicArea.h"
+#include "NFmiLambertEqualArea.h"
 #include "NFmiLatLonArea.h"
 #include "NFmiMercatorArea.h"
 #include "NFmiOrthographicArea.h"
+#include "NFmiPKJArea.h"
 #include "NFmiRotatedLatLonArea.h"
 #include "NFmiStereographicArea.h"
-#include "NFmiLambertEqualArea.h"
 #include "NFmiStringTools.h"
-#include "NFmiPKJArea.h"
 #include "NFmiYKJArea.h"
 
+#include <boost/algorithm/string.hpp>
+#include <boost/lexical_cast.hpp>
 #include <algorithm>
 #include <deque>
 #include <list>
-#include <stdexcept>
-#include <string>
-#include <vector>
 #include <map>
 #include <set>
+#include <stdexcept>
+#include <string>
 #include <utility>
-#include <boost/algorithm/string.hpp>
-#include <boost/lexical_cast.hpp>
+#include <vector>
 
 using namespace std;
 

@@ -76,5 +76,4 @@ const unsigned int KNFmiMaxClass = 99;
 
 void* CreateSaveBase(unsigned int classId);
 
-
 // ======================================================================

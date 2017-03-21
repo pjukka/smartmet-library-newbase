@@ -33,5 +33,4 @@ class _FMI_DLL NFmiStatusString : public NFmiString
 
 };  // class NFmiStatusString
 
-
 // ======================================================================

@@ -23,5 +23,4 @@ class _FMI_DLL NFmiDataModifierConstant : public NFmiDataModifier
 
 };  // class NFmiDataModifierConstant
 
-
 // ======================================================================

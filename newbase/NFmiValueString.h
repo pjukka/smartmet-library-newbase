@@ -80,5 +80,4 @@ class _FMI_DLL NFmiValueString : public NFmiString
 
 };  // NFmiValueString
 
-
 // ======================================================================

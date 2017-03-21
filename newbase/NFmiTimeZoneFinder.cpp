@@ -30,12 +30,12 @@
 #include "NFmiFileSystem.h"
 #include "NFmiPoint.h"
 #include "NFmiPreProcessor.h"
+#include <iostream>
 #include <list>
 #include <memory>
 #include <set>
-#include <stdexcept>
-#include <iostream>
 #include <sstream>
+#include <stdexcept>
 
 using namespace std;
 
@@ -279,6 +279,7 @@ class NFmiTimeZonePolygon
   void Add(const NFmiTimeZoneRing& theRing);
   bool Inside(const NFmiPoint& thePoint) const;
   float TimeZone(void) const { return itsTimeZone; }
+
  private:
   NFmiTimeZonePolygon(void);
   float itsTimeZone;

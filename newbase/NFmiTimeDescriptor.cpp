@@ -13,8 +13,8 @@
 // ======================================================================
 
 #include "NFmiTimeDescriptor.h"
-#include "NFmiTimeBag.h"
 #include "NFmiMetTime.h"
+#include "NFmiTimeBag.h"
 #include "NFmiTimeList.h"
 
 #include "NFmiVersion.h"

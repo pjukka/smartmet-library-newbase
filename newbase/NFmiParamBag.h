@@ -7,10 +7,10 @@
 
 #pragma once
 
-#include "NFmiSize.h"
-#include "NFmiParameterName.h"
 #include "NFmiDataIdent.h"
 #include "NFmiDataMatrix.h"
+#include "NFmiParameterName.h"
+#include "NFmiSize.h"
 
 //! Undocumented
 class _FMI_DLL NFmiParamBag : public NFmiSize
@@ -79,6 +79,7 @@ class _FMI_DLL NFmiParamBag : public NFmiSize
   virtual std::istream &Read(std::istream &file);
 
   virtual const char *ClassName(void) const { return "NFmiParamBag"; }
+
  private:
   checkedVector<NFmiDataIdent> itsParamsVector;
   bool fIsSubParamUsed;
@@ -187,6 +188,5 @@ inline bool NFmiParamBag::SetCurrent(unsigned long theParam, bool fIgnoreSubPara
 {
   return SetCurrent(FmiParameterName(theParam), fIgnoreSubParam);
 }
-
 
 // ======================================================================

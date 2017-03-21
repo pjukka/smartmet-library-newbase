@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiRect.h"
 #include "NFmiAngle.h"
+#include "NFmiRect.h"
 #include "NFmiSaveBaseFactory.h"
 #include <string>
 

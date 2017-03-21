@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiDataModifier.h"
 #include "NFmiDataMatrix.h"
+#include "NFmiDataModifier.h"
 
 class _FMI_DLL NFmiDataModifierMode : public NFmiDataModifier
 {
@@ -37,12 +37,12 @@ class _FMI_DLL NFmiDataModifierMode : public NFmiDataModifier
     int Counter(void) const { return itsCounter; };
     bool operator==(const Data &theData) const { return itsValue == theData.itsValue; };
     bool operator<(const Data &theData) const { return itsValue < theData.itsValue; };
+
    private:
     float itsValue;
     int itsCounter;
   };
   checkedVector<Data> itsDataVector;
 };
-
 
 // ======================================================================

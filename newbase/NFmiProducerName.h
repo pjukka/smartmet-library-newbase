@@ -38,5 +38,4 @@ enum FmiProducerName
   kFmiTAFMET = 2011         //!< Fmi number for TAFMET
 };
 
-
 // ======================================================================

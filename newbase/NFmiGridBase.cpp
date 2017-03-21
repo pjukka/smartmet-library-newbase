@@ -15,8 +15,8 @@
 #include "NFmiGridBase.h"
 #include <boost/functional/hash.hpp>
 #include <algorithm>
-#include <iostream>
 #include <cstring>
+#include <iostream>
 // memcpy()
 
 using namespace std;

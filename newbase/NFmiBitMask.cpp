@@ -27,8 +27,8 @@
 // ======================================================================
 
 #include "NFmiBitMask.h"
-#include "NFmiQueryInfo.h"
 #include "NFmiDataModifier.h"
+#include "NFmiQueryInfo.h"
 
 using namespace std;
 

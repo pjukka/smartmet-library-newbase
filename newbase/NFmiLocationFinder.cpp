@@ -37,9 +37,9 @@
 #include "NFmiLocationFinder.h"
 #include "NFmiStringTools.h"
 #include <cstdio>  // for sscanf()
-#include <vector>
-#include <fstream>
 #include <cstdlib>
+#include <fstream>
+#include <vector>
 // atoi()
 
 using namespace std;

@@ -12,11 +12,7 @@
 #include <cmath>
 
 //! Tyyppimääritelmä kulmayksiköille.
-typedef enum
-{
-  kDeg,
-  kRad
-} FmiAngleUnit;
+typedef enum { kDeg, kRad } FmiAngleUnit;
 
 //! Yleinen kulman määrittely perusluokka
 
@@ -188,6 +184,5 @@ class _FMI_DLL NFmiLongitude : public NFmiAngle
 
   bool fPacificView;
 };
-
 
 // ======================================================================

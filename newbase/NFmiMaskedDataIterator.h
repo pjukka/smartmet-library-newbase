@@ -32,5 +32,4 @@ class _FMI_DLL NFmiMaskedDataIterator : public NFmiDataIterator
 
 };  // class NFmiMaskedDataIterator
 
-
 // ======================================================================

@@ -13,8 +13,8 @@
 // ======================================================================
 
 #include "NFmiParamDataModifier.h"
-#include "NFmiQueryInfo.h"
 #include "NFmiDataModifierList.h"
+#include "NFmiQueryInfo.h"
 #include <stdexcept>
 
 // ----------------------------------------------------------------------

@@ -33,5 +33,4 @@ class _FMI_DLL NFmiDataModifierVariance : public NFmiRegressionModifier
 
 };  // class NFmiDataModifierVariance
 
-
 // ======================================================================

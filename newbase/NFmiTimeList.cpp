@@ -13,11 +13,11 @@
 // ======================================================================
 
 #include "NFmiTimeList.h"
-#include "NFmiTimeBag.h"
 #include "NFmiMetTime.h"
+#include "NFmiTimeBag.h"
+#include <algorithm>
 #include <cmath>
 #include <functional>
-#include <algorithm>
 
 #ifdef UNIX
 long int abs(long int theValue);

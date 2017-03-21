@@ -13,14 +13,14 @@
 // ======================================================================
 
 #include "NFmiSuperSmartInfo.h"
-#include "NFmiGrid.h"
-#include "NFmiCalculator.h"
 #include "NFmiAreaMask.h"
-#include "NFmiDataModifierDescriptor.h"
+#include "NFmiBitmapAreaMask.h"
+#include "NFmiCalculator.h"
 #include "NFmiDataModifierClasses.h"
+#include "NFmiDataModifierDescriptor.h"
+#include "NFmiGrid.h"
 #include "NFmiParamDataModifier.h"
 #include "NFmiRelativeDataIterator.h"
-#include "NFmiBitmapAreaMask.h"
 
 using namespace std;
 

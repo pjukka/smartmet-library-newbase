@@ -7,9 +7,9 @@
 
 #pragma once
 
+#include "NFmiDataMatrix.h"
 #include "NFmiString.h"
 #include "NFmiVoidPtrList.h"
-#include "NFmiDataMatrix.h"
 
 //! Undocumented
 class _FMI_DLL NFmiStringList

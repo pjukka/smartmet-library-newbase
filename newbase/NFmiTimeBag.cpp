@@ -6,9 +6,9 @@
 // ======================================================================
 
 #include "NFmiTimeBag.h"
-#include <fstream>
-#include <cstdlib>
 #include <cassert>
+#include <cstdlib>
+#include <fstream>
 #include <stdexcept>
 
 using namespace std;

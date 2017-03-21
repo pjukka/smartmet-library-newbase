@@ -363,5 +363,4 @@ inline FmiMaskOperation NFmiAreaMaskImpl::MaskOperation(void) const
   return itsMaskCondition.Condition();
 }
 
-
 // ======================================================================

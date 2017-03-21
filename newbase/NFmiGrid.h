@@ -7,12 +7,12 @@
 
 #pragma once
 
-#include "NFmiGridBase.h"
 #include "NFmiArea.h"
 #include "NFmiDataMatrix.h"
+#include "NFmiGridBase.h"
 
-#include <string>
 #include <algorithm>
+#include <string>
 
 class NFmiLocation;
 

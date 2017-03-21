@@ -87,6 +87,7 @@ class _FMI_DLL NFmiLogger
   void LogJustMessages(bool newValue) { fLogJustMessages = newValue; }
   bool NewLogFileInUse(void) { return fNewLogFileInUse; }
   void NewLogFileInUse(bool newState) { fNewLogFileInUse = newState; }
+
  private:
   void UpdateFileNamesAndPaths(
       bool updatePath);  // tämä päivittää itsAbsolutLogFilePath:in ja itsCurrentLogFileName:n
@@ -275,6 +276,5 @@ inline const std::string &NFmiLogger::TimeStampStringFormat(void) const
 {
   return itsTimeStampStringFormat;
 }
-
 
 // ======================================================================

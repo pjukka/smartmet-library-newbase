@@ -33,5 +33,4 @@ class _FMI_DLL NFmiDataModifierLogical : public NFmiDataModifier
 
 };  // class NFmiDataModifierLogical
 
-
 // ======================================================================

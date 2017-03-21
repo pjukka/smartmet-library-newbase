@@ -28,5 +28,4 @@ double DistanceFromLineSegment(
 
 }  // namespace NFmiGeoTools
 
-
 // ======================================================================

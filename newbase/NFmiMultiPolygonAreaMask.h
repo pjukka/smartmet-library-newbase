@@ -77,5 +77,4 @@ inline std::istream &operator>>(std::istream &is, NFmiMultiPolygonAreaMask &item
   return item.Read(is);
 }
 
-
 // ======================================================================

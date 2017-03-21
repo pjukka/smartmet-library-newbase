@@ -13,8 +13,8 @@
 // ======================================================================
 
 #include "NFmiParamDescriptor.h"
-#include "NFmiParamBag.h"
 #include "NFmiDataDescriptor.h"
+#include "NFmiParamBag.h"
 #include <cassert>
 
 #include "NFmiVersion.h"

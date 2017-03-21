@@ -91,4 +91,3 @@ enum SpecialParameters
 };
 
 }  // end of namespace NFmiInfoData
-

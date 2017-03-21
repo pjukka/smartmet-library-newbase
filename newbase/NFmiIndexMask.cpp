@@ -66,8 +66,8 @@
 #include "NFmiIndexMask.h"
 #include <algorithm>
 #include <deque>
-#include <set>
 #include <iterator>
+#include <set>
 
 using namespace std;
 

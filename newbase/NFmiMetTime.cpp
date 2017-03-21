@@ -19,8 +19,8 @@
 
 #include "NFmiMetTime.h"
 #include "NFmiLocation.h"
-#include <iostream>
 #include <ctime>
+#include <iostream>
 #include <vector>
 
 using namespace std;

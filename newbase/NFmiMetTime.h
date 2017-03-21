@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiTimePeriod.h"
 #include "NFmiTime.h"
+#include "NFmiTimePeriod.h"
 
 class NFmiLocation;
 

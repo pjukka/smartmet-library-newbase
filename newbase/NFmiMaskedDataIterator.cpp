@@ -14,11 +14,11 @@
 // ======================================================================
 
 #include "NFmiMaskedDataIterator.h"
-#include "NFmiDataModifier.h"
-#include "NFmiSuperSmartInfo.h"
 #include "NFmiCombinedParam.h"
-#include "NFmiWeatherAndCloudiness.h"
+#include "NFmiDataModifier.h"
 #include "NFmiIntegrationSelector.h"
+#include "NFmiSuperSmartInfo.h"
+#include "NFmiWeatherAndCloudiness.h"
 
 // ----------------------------------------------------------------------
 /*!

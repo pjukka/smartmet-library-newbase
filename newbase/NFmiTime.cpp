@@ -18,11 +18,11 @@
 
 #include "NFmiTime.h"
 #include "NFmiLocation.h"
-#include "NFmiValueString.h"
 #include "NFmiSettings.h"
-#include <iostream>
-#include <ctime>
+#include "NFmiValueString.h"
 #include <sys/timeb.h>
+#include <ctime>
+#include <iostream>
 
 using namespace std;
 

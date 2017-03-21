@@ -77,5 +77,4 @@ float Integrate(NFmiFastQueryInfo& theQI,
 
 }  // namespace NFmiDataIntegrator
 
-
 // ======================================================================

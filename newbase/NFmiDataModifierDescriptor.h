@@ -44,5 +44,4 @@ class _FMI_DLL NFmiDataModifierDescriptor : public NFmiDataDescriptor
 
 };  // class NFmiDataModifierDescriptor
 
-
 // ======================================================================

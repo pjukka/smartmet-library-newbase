@@ -14,9 +14,9 @@
 #include "NFmiStringTools.h"
 #include <iostream>
 
-#include <locale>
 #include <cctype>
 #include <cstdlib>
+#include <locale>
 
 using namespace std;
 

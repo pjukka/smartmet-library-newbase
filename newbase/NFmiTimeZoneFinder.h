@@ -38,5 +38,4 @@ class _FMI_DLL NFmiTimeZoneFinder
 
 };  // class NFmiTimeZoneFinder
 
-
 // ======================================================================

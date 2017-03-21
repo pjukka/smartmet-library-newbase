@@ -23,5 +23,4 @@ class _FMI_DLL NFmiDataModifierAllValidClipSum : public NFmiDataModifierAllValid
 
 };  // class NFmiDataModifierAllValidClipSum
 
-
 // ======================================================================

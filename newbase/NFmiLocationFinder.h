@@ -9,8 +9,8 @@
 
 #include "NFmiPoint.h"
 #include "NFmiString.h"
-#include <string>
 #include <map>
+#include <string>
 
 //! Undocumented
 class _FMI_DLL NFmiLocationFinder

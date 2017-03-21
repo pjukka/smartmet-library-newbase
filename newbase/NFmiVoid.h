@@ -68,5 +68,4 @@ inline NFmiVoid& NFmiVoid::operator=(const NFmiVoid& theVoid)
   return *this;
 }
 
-
 // ======================================================================

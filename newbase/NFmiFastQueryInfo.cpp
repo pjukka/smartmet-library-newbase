@@ -20,13 +20,13 @@
 #include "NFmiFastQueryInfo.h"
 #include "NFmiCombinedParam.h"
 #include "NFmiDataModifier.h"
-#include "NFmiRawData.h"
-#include "NFmiInterpolation.h"
 #include "NFmiGrid.h"
+#include "NFmiInterpolation.h"
+#include "NFmiMetMath.h"
 #include "NFmiQueryData.h"
+#include "NFmiRawData.h"
 #include "NFmiTotalWind.h"
 #include "NFmiWeatherAndCloudiness.h"
-#include "NFmiMetMath.h"
 
 #include <stdexcept>
 

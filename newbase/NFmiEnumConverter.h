@@ -7,13 +7,13 @@
 
 #pragma once
 
-#include "NFmiParameterName.h"
 #include "NFmiDef.h"
 #include "NFmiGlobals.h"
-#include <string>
-#include <map>
-#include <list>
+#include "NFmiParameterName.h"
 #include <cstring>
+#include <list>
+#include <map>
+#include <string>
 
 // Case insensitive < operator
 struct myenumcomparator
@@ -51,6 +51,5 @@ class _FMI_DLL NFmiEnumConverter
   int itsBadEnum;
 
 };  // class NFmiEnumConverter
-
 
 // ======================================================================

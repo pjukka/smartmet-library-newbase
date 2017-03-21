@@ -13,11 +13,11 @@
 // ======================================================================
 
 #include "NFmiInfoAreaMask.h"
-#include "NFmiFastQueryInfo.h"
 #include "NFmiArea.h"
+#include "NFmiDataModifierClasses.h"
+#include "NFmiFastQueryInfo.h"
 #include "NFmiMetMath.h"
 #include "NFmiQueryDataUtil.h"
-#include "NFmiDataModifierClasses.h"
 
 #include <cassert>
 
@@ -1817,6 +1817,7 @@ class DoubleValueSearcher
 
   float ExtremeValue(void) const { return itsExtremeValue; }
   float ExtremeSecondaryValue(void) const { return itsExtremeSecondaryValue; }
+
  private:
   bool IsExtreme(float primaryValue)
   {

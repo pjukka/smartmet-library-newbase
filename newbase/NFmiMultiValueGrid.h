@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiQueryInfo.h"
 #include "NFmiGrid.h"
+#include "NFmiQueryInfo.h"
 
 // infolta iteraattori-ominaisuudet
 

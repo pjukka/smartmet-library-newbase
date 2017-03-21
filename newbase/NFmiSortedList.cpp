@@ -13,8 +13,8 @@
 // ======================================================================
 
 #include "NFmiSortedList.h"
-#include "NFmiSortable.h"
 #include "NFmiMetTime.h"
+#include "NFmiSortable.h"
 
 // ----------------------------------------------------------------------
 /*!

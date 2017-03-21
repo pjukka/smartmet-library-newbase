@@ -14,10 +14,10 @@
 
 #include "NFmiHPlaceDescriptor.h"
 #include "NFmiGrid.h"
-#include "NFmiValueString.h"
-#include "NFmiStation.h"
 #include "NFmiLocationBag.h"
 #include "NFmiSaveBaseFactory.h"
+#include "NFmiStation.h"
+#include "NFmiValueString.h"
 
 #include <boost/functional/hash.hpp>
 

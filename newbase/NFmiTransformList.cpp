@@ -133,9 +133,9 @@
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>
+#include <cstring>
 #include <iostream>
 #include <string>
-#include <cstring>
 // memcpy()
 
 using namespace std;

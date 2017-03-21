@@ -288,5 +288,4 @@ inline NFmiString operator+(const NFmiString &lhs1, const NFmiString &lhs2)
   return temp;
 }
 
-
 // ======================================================================

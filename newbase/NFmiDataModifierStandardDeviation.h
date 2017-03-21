@@ -29,5 +29,4 @@ class _FMI_DLL NFmiDataModifierStandardDeviation : public NFmiDataModifier
 
 };  // class NFmiDataModifierStandardDeviation
 
-
 // ======================================================================

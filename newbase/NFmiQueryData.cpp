@@ -14,17 +14,17 @@
 
 #include "NFmiVersion.h"
 
+#include "NFmiFileSystem.h"
+#include "NFmiGrid.h"
 #include "NFmiQueryData.h"
 #include "NFmiQueryInfo.h"
-#include "NFmiGrid.h"
-#include "NFmiFileSystem.h"
-#include "NFmiStationBag.h"
 #include "NFmiSaveBaseFactory.h"
+#include "NFmiStationBag.h"
 
 #include <boost/make_shared.hpp>
 
-#include <fstream>
 #include <fcntl.h>
+#include <fstream>
 
 #ifndef UNIX
 #include <io.h>
@@ -32,9 +32,9 @@
 
 #ifdef FMI_COMPRESSION
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
 #endif
 
 //#ifndef  NDEBUG

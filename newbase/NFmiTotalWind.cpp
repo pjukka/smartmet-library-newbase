@@ -13,12 +13,12 @@
 // ======================================================================
 
 #include "NFmiTotalWind.h"
+#include "NFmiAngle.h"
 #include "NFmiDataIdent.h"
 #include "NFmiParamBag.h"
-#include "NFmiAngle.h"
 
-#include <cmath>  // Mika: abs()
 #include <algorithm>
+#include <cmath>  // Mika: abs()
 
 using namespace std;
 

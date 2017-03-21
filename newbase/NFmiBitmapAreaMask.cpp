@@ -6,8 +6,8 @@
 // ======================================================================
 
 #include "NFmiBitmapAreaMask.h"
-#include "NFmiFastQueryInfo.h"
 #include "NFmiArea.h"
+#include "NFmiFastQueryInfo.h"
 #include "NFmiGrid.h"
 
 // ----------------------------------------------------------------------

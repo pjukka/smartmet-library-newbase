@@ -528,5 +528,4 @@ inline float NFmiSuperSmartInfo::RawFloatValue(void) const
   return NFmiFastQueryInfo::FloatValue();
 }
 
-
 // ======================================================================

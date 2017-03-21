@@ -175,5 +175,4 @@ inline NFmiQueryData *NFmiSatelQueryData::Clone(void)
   return static_cast<NFmiQueryData *>(data);
 }
 
-
 // ======================================================================

@@ -16,9 +16,9 @@
 
 #include "NFmiCommentStripper.h"
 
+#include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <algorithm>
 
 using namespace std;
 
@@ -495,8 +495,8 @@ bool NFmiCommentStripper::StripNested(checkedVector<unsigned long> theBeginPosit
       level--;
       if (level < 0)
       {
-        itsMessage = "ERROR in " + itsFileName + ": Missing pair to */ after: " +
-                     itsString.substr(max(posEnd - 22, 0), 21);
+        itsMessage = "ERROR in " + itsFileName +
+                     ": Missing pair to */ after: " + itsString.substr(max(posEnd - 22, 0), 21);
         return false;
       }
       else if (level == 0)

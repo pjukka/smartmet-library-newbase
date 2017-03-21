@@ -13,8 +13,8 @@
 // ======================================================================
 
 #include "NFmiParamBag.h"
-#include <fstream>
 #include <cassert>
+#include <fstream>
 
 using namespace std;
 
@@ -574,18 +574,18 @@ bool NFmiParamBag::SetActivities(NFmiParamBag& theParams,
           this->Current(false)->SetActive(theParams.Current(false)->IsActive());
           break;
         case kAnd:  // eli jos molemmissa aktiviteetti oli true, laitetaan true, muuten false
-          this->Current(false)
-              ->SetActive(this->Current(false)->IsActive() && theParams.Current(false)->IsActive());
+          this->Current(false)->SetActive(this->Current(false)->IsActive() &&
+                                          theParams.Current(false)->IsActive());
           break;
         case kOr:  // eli jos kummassa tahansa on true, laitetaan true, muuten false (itse haluan
           // käyttää tätä siten, että theParams:issa on aktiivisina ne mitkä haluan lisäksi
           // aktivoida, mutta muita en halua deaktivoida)
-          this->Current(false)
-              ->SetActive(this->Current(false)->IsActive() || theParams.Current(false)->IsActive());
+          this->Current(false)->SetActive(this->Current(false)->IsActive() ||
+                                          theParams.Current(false)->IsActive());
           break;
         case kXor:  // jos toinen on false ja toinen true, tulkee true, muuten false
-          this->Current(false)
-              ->SetActive(this->Current(false)->IsActive() ^ theParams.Current(false)->IsActive());
+          this->Current(false)->SetActive(this->Current(false)->IsActive() ^
+                                          theParams.Current(false)->IsActive());
           break;
         case kNot:  // eli asetetaan this:in aktiviteetti päinvastoin kuin se on theParamsissa
           this->Current(false)->SetActive(!theParams.Current(false)->IsActive());

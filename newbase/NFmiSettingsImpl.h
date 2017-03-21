@@ -9,9 +9,9 @@
 
 #include "NFmiDef.h"
 #include <list>
+#include <map>
 #include <set>
 #include <string>
-#include <map>
 #include <vector>
 
 //! A generic settings holder
@@ -72,6 +72,5 @@ class _FMI_DLL NFmiSettingsImpl
   mutable FileMap itsFilenames;
 
 };  // class NFmiSettingsImpl
-
 
 // ======================================================================

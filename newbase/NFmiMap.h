@@ -107,5 +107,4 @@ inline const NFmiPoint NFmiMap::Reverse(const NFmiPoint &thePoint) const
   return newPoint;
 }
 
-
 // ======================================================================

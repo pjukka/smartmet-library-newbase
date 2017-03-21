@@ -33,5 +33,4 @@ class _FMI_DLL NFmiInfoModifier : public NFmiParamDataModifier
 
 };  // class NFmiInfoModifier
 
-
 // ======================================================================

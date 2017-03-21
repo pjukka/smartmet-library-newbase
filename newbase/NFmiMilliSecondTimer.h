@@ -110,5 +110,4 @@ inline int NFmiMilliSecondTimer::CurrentTimeDiffInMSeconds() const
   return CalcTimeDiffInMS(itsTime1, currentTime);
 }
 
-
 // ======================================================================

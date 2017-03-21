@@ -1,6 +1,6 @@
 #include "NFmiNearTreeLocation.h"
-#include "NFmiLocation.h"
 #include "NFmiGlobals.h"
+#include "NFmiLocation.h"
 
 // ----------------------------------------------------------------------
 /*!

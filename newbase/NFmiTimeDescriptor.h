@@ -7,11 +7,11 @@
 
 #pragma once
 
-#include "NFmiSaveBaseFactory.h"
-#include "NFmiTimeBag.h"
-#include "NFmiMetTime.h"
 #include "NFmiDataDescriptor.h"
 #include "NFmiGlobals.h"
+#include "NFmiMetTime.h"
+#include "NFmiSaveBaseFactory.h"
+#include "NFmiTimeBag.h"
 
 class NFmiTimeList;
 
@@ -324,6 +324,5 @@ inline std::istream &operator>>(std::istream &file, NFmiTimeDescriptor &ob)
 {
   return ob.Read(file);
 }
-
 
 // ======================================================================

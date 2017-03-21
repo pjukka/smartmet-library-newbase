@@ -19,15 +19,19 @@
 // querydata-otuksia.
 
 #include "NFmiQueryDataUtil.h"
+#include "NFmiAzimuthalArea.h"
 #include "NFmiCalculationCondition.h"
 #include "NFmiCalculator.h"
 #include "NFmiCombinedParam.h"
 #include "NFmiDataModifierClasses.h"
 #include "NFmiDataModifierMode.h"
 #include "NFmiFastQueryInfo.h"
+#include "NFmiFileString.h"
+#include "NFmiFileSystem.h"
 #include "NFmiGrid.h"
 #include "NFmiInterpolation.h"
 #include "NFmiLagrange.h"
+#include "NFmiLogger.h"
 #include "NFmiProducerIdLister.h"
 #include "NFmiQueryData.h"
 #include "NFmiRelativeDataIterator.h"
@@ -39,16 +43,12 @@
 #include "NFmiTotalWind.h"
 #include "NFmiValueString.h"
 #include "NFmiWeatherAndCloudiness.h"
-#include "NFmiFileSystem.h"
-#include "NFmiFileString.h"
-#include "NFmiAzimuthalArea.h"
-#include "NFmiLogger.h"
 
+#include <algorithm>
 #include <cassert>
 #include <fstream>
 #include <numeric>
 #include <stdexcept>
-#include <algorithm>
 
 using namespace std;
 
@@ -4660,9 +4660,8 @@ static void FillGridDataInThread(NFmiFastQueryInfo &theSourceInfo,
                   //=
                   // kFloatMissing;
                   NFmiLocationCache &locCache =
-                      theLocationCacheMatrix[theTargetInfo.LocationIndex() %
-                                             targetXSize][theTargetInfo.LocationIndex() /
-                                                          targetXSize];
+                      theLocationCacheMatrix[theTargetInfo.LocationIndex() % targetXSize]
+                                            [theTargetInfo.LocationIndex() / targetXSize];
                   if (doLocationInterpolation && doTimeInterpolation)
                     value = theSourceInfo.CachedInterpolation(locCache, timeCache);
                   else if (doLocationInterpolation)
@@ -4956,9 +4955,8 @@ static void FillSingleTimeGridDataInThread(
                 {
                   float value = kFloatMissing;
                   const NFmiLocationCache &locCache =
-                      theLocationCacheMatrix[theTargetInfo.LocationIndex() %
-                                             targetXSize][theTargetInfo.LocationIndex() /
-                                                          targetXSize];
+                      theLocationCacheMatrix[theTargetInfo.LocationIndex() % targetXSize]
+                                            [theTargetInfo.LocationIndex() / targetXSize];
                   if (fDoLocationInterpolation && doTimeInterpolation)
                     value = theSourceInfo.CachedInterpolation(locCache, timeCache);
                   else if (fDoLocationInterpolation)

@@ -119,8 +119,8 @@ double WindVector(double theX,
 
     NFmiInterpolation::WindInterpolator windInterpolator;
     windInterpolator.operator()(blWS, blWD, (1 - dx) * (1 - dy));
-    windInterpolator.operator()(brWS, brWD, dx * (1 - dy));
-    windInterpolator.operator()(trWS, trWD, dx * dy);
+    windInterpolator.operator()(brWS, brWD, dx *(1 - dy));
+    windInterpolator.operator()(trWS, trWD, dx *dy);
     windInterpolator.operator()(tlWS, tlWD, (1 - dx) * dy);
 
     double wdInterp = windInterpolator.Direction();

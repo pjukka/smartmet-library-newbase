@@ -31,6 +31,7 @@ class _FMI_DLL NFmiVoidPtrData
   NFmiVoidPtrData(void* value) : itsDataValue(value), itsReferenceCount(0) {}
   void* GetVoidPtr(void) { return itsDataValue; }
   bool Remove(void) { return --itsReferenceCount ? false : true; }
+
  private:
   NFmiVoidPtrData(const NFmiVoidPtrData& theData);
   NFmiVoidPtrData& operator=(const NFmiVoidPtrData& theData);
@@ -168,6 +169,5 @@ class _FMI_DLL NFmiVoidPtrIterator
   NFmiVoidPtrItem* itsPreviousItem;
   NFmiVoidPtrList* itsListItem;
 };
-
 
 // ======================================================================

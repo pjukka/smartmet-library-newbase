@@ -7,11 +7,11 @@
 
 #pragma once
 
-#include "NFmiString.h"
-#include "NFmiPoint.h"
-#include "NFmiMetTime.h"
-#include "NFmiInfoData.h"
 #include "NFmiDataMatrix.h"
+#include "NFmiInfoData.h"
+#include "NFmiMetTime.h"
+#include "NFmiPoint.h"
+#include "NFmiString.h"
 #include <boost/shared_ptr.hpp>
 #include <vector>
 
@@ -211,9 +211,9 @@ class _FMI_DLL NFmiAreaMask
     Occurrence,  //!< aika-väli + aluehaku datasta, laskee kuinka monta kertaa tarkastelupisteessä
     PeekT,       //!< 'Kurkistetaan' arvo halutun aikahypyn [h] päästä
     Resolution,  //!< Tällä asetetaan macroParamin lasketun hilan toive resoluutio, joko jostain
-                 //!datasta tai suoraan kilometreinä.
+                 //! datasta tai suoraan kilometreinä.
     CalculationPoint,  //!< Tällä asetetaan macroParamin laskentapiste (lat,lon). Laskut saavat
-                       //!muissa hilapisteissä puuttuvaa.
+                       //! muissa hilapisteissä puuttuvaa.
     ObservationRadius,  //!< Tällä määrätään että laskuissa otetaan huomioon havainnoista vain x
                         //![km] säteellä olevat arvot.
     //! joku ehto toteutuu
@@ -355,6 +355,5 @@ class _FMI_DLL NFmiAreaMask
       const checkedVector<boost::shared_ptr<NFmiAreaMask> > &theMaskVector);
 
 };  // class NFmiAreaMask
-
 
 // ======================================================================

@@ -15,10 +15,10 @@
 // ======================================================================
 
 #include "NFmiLocationBag.h"
-#include "NFmiValueString.h"
-#include "NFmiStation.h"
 #include "NFmiArea.h"
 #include "NFmiRadarStation.h"
+#include "NFmiStation.h"
+#include "NFmiValueString.h"
 #include "NFmiVersion.h"
 
 #include <boost/foreach.hpp>

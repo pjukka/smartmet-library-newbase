@@ -181,8 +181,7 @@ NFmiNearTree<T, F>::~NFmiNearTree(void)
 // ----------------------------------------------------------------------
 
 template <typename T, typename F>
-NFmiNearTree<T, F>::NFmiNearTree(void)
-    : itsImpl(), itsInputBuffer()
+NFmiNearTree<T, F>::NFmiNearTree(void) : itsImpl(), itsInputBuffer()
 {
 }
 
@@ -326,6 +325,5 @@ void NFmiNearTree<T, F>::Flush(void) const
     itsInputBuffer.clear();
   }
 }
-
 
 // ======================================================================

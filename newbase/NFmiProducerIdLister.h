@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "NFmiTimeDescriptor.h"
 #include "NFmiDataMatrix.h"
+#include "NFmiTimeDescriptor.h"
 
 class NFmiQueryInfo;
 

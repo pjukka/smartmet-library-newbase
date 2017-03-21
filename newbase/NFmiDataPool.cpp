@@ -13,15 +13,15 @@
 // ======================================================================
 
 #include "NFmiDataPool.h"
-#include "NFmiTransformList.h"
 #include "NFmiString.h"
+#include "NFmiTransformList.h"
 
-#include <stdexcept>
-#include <memory>
-#include <cmath>
 #include <algorithm>
-#include <fstream>
+#include <cmath>
 #include <cstring>
+#include <fstream>
+#include <memory>
+#include <stdexcept>
 // memcpy()
 
 using namespace std;

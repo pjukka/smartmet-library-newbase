@@ -34,5 +34,4 @@ class _FMI_DLL NFmiDataModifierPrecFormUnion : public NFmiDataModifier
 
 };  // class NFmiDataModifierPrecFormUnion
 
-
 // ======================================================================

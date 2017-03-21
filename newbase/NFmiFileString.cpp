@@ -37,9 +37,9 @@ NFmiFileString::NFmiFileString(void) {}
  */
 // ----------------------------------------------------------------------
 
-NFmiFileString::NFmiFileString(const NFmiString &theStr) : NFmiString(theStr) 
+NFmiFileString::NFmiFileString(const NFmiString &theStr) : NFmiString(theStr)
 {
-    NormalizeDelimiter();
+  NormalizeDelimiter();
 }
 // ----------------------------------------------------------------------
 /*!
@@ -47,9 +47,9 @@ NFmiFileString::NFmiFileString(const NFmiString &theStr) : NFmiString(theStr)
  */
 // ----------------------------------------------------------------------
 
-NFmiFileString::NFmiFileString(const NFmiFileString &theFileStr) : NFmiString(theFileStr) 
+NFmiFileString::NFmiFileString(const NFmiFileString &theFileStr) : NFmiString(theFileStr)
 {
-    NormalizeDelimiter();
+  NormalizeDelimiter();
 }
 // ----------------------------------------------------------------------
 /*!

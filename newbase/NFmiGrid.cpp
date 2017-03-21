@@ -16,8 +16,8 @@
 #include "NFmiLocationBag.h"
 #include "NFmiSaveBaseFactory.h"
 #include <boost/functional/hash.hpp>
-#include <cmath>
 #include <algorithm>
+#include <cmath>
 #include <fstream>
 
 using namespace std;

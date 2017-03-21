@@ -35,5 +35,4 @@ return_type CreateProj(const std::string &projString,
 
 }  // namespace NFmiAreaFactory
 
-
 // ======================================================================

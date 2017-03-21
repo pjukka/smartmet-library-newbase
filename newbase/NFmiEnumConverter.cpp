@@ -48,10 +48,10 @@
  */
 // ======================================================================
 
-#include "NFmiDef.h"
 #include "NFmiEnumConverter.h"
-#include "NFmiTiesaaAlueet.h"
+#include "NFmiDef.h"
 #include "NFmiPressMasks.h"
+#include "NFmiTiesaaAlueet.h"
 
 #define PARAMINSERT(A, B) theData[A] = (B)
 
@@ -848,12 +848,18 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("ProbabilityOfColdLimit3", kFmiProbabilityOfColdLimit3);
   PARAMINSERT("ProbabilityOfColdLimit4", kFmiProbabilityOfColdLimit4);
   PARAMINSERT("ProbabilityOfColdLimit5", kFmiProbabilityOfColdLimit5);
-  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit1", kFmiProbabilityOfConvectivePrecipitationLimit1);
-  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit2", kFmiProbabilityOfConvectivePrecipitationLimit2);
-  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit3", kFmiProbabilityOfConvectivePrecipitationLimit3);
-  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit4", kFmiProbabilityOfConvectivePrecipitationLimit4);
-  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit5", kFmiProbabilityOfConvectivePrecipitationLimit5);
-  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit6", kFmiProbabilityOfConvectivePrecipitationLimit6);
+  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit1",
+              kFmiProbabilityOfConvectivePrecipitationLimit1);
+  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit2",
+              kFmiProbabilityOfConvectivePrecipitationLimit2);
+  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit3",
+              kFmiProbabilityOfConvectivePrecipitationLimit3);
+  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit4",
+              kFmiProbabilityOfConvectivePrecipitationLimit4);
+  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit5",
+              kFmiProbabilityOfConvectivePrecipitationLimit5);
+  PARAMINSERT("ProbabilityOfConvectivePrecipitationLimit6",
+              kFmiProbabilityOfConvectivePrecipitationLimit6);
   PARAMINSERT("ProbabilityOfGustLimit1", kFmiProbabilityOfGustLimit1);
   PARAMINSERT("ProbabilityOfGustLimit2", kFmiProbabilityOfGustLimit2);
   PARAMINSERT("ProbabilityOfGustLimit3", kFmiProbabilityOfGustLimit3);

@@ -178,17 +178,17 @@
 // ======================================================================
 
 #include "NFmiSettingsImpl.h"
-#include "NFmiPreProcessor.h"
 #include "NFmiFileSystem.h"
+#include "NFmiPreProcessor.h"
 #include "NFmiStringTools.h"
 
 #include <boost/algorithm/string/trim.hpp>
 
-#include <list>
-#include <stdexcept>
-#include <iostream>
 #include <fstream>
+#include <iostream>
+#include <list>
 #include <sstream>
+#include <stdexcept>
 
 #define DEFAULT_FILE "smartmet.conf"
 
