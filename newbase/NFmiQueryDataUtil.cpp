@@ -4204,7 +4204,7 @@ static void MakeFastInfos(std::vector<boost::shared_ptr<NFmiQueryData> > &theQDa
   for (auto &i : theQDataVectorIn)
   {
     auto *fInfo = new NFmiFastQueryInfo(i.get());
-    if (fInfo) theFInfoVectorOut.push_back(boost::shared_ptr<NFmiFastQueryInfo>(fInfo));
+    if (fInfo) theFInfoVectorOut.emplace_back(fInfo);
   }
 }
 
