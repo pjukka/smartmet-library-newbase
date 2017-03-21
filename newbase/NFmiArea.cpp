@@ -77,7 +77,7 @@ const NFmiRect NFmiArea::XYArea(const NFmiArea *theArea) const
   }
   else if (PacificView() == false && theArea->PacificView())
   {
-    std::auto_ptr<NFmiArea> pacificAreaFromThis(DoForcePacificFix());
+    std::unique_ptr<NFmiArea> pacificAreaFromThis(DoForcePacificFix());
 
     NFmiPoint topLeft(pacificAreaFromThis->ToXY(theArea->ToLatLon(theArea->TopLeft())));
     NFmiPoint bottomRight(pacificAreaFromThis->ToXY(theArea->ToLatLon(theArea->BottomRight())));
