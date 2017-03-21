@@ -189,7 +189,7 @@ list<string> NFmiEnumConverter::Names()
   storage_type::const_iterator iter;
 
   for (iter = itsData.begin(); iter != itsData.end(); ++iter)
-    out.push_back(iter->first);
+    out.emplace_back(iter->first);
 
   return out;
 }
