@@ -741,7 +741,7 @@ void NFmiTime::SetZoneDifferenceHour()
   // time  returns the time since the Epoch (00:00:00 UTC, JanÂ­
   // uary 1, 1970), measured in seconds.
 
-  const time_t now = time(NULL);
+  const time_t now = time(nullptr);
 
   // The localtime() function converts the calendar time  timep
   // to  broken-time  representation, expressed relative to the

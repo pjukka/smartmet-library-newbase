@@ -153,7 +153,7 @@ bool NFmiTimeList::Previous() const
 NFmiMetTime *NFmiTimeList::Current() const
 {
   if (IndexOk(itsIndex)) return itsVectorList[itsIndex];
-  return 0;
+  return nullptr;
 }
 
 // ----------------------------------------------------------------------
@@ -720,7 +720,7 @@ int NFmiTimeList::FindNearestTimes(const NFmiMetTime &theTime,
 const NFmiMetTime *NFmiTimeList::Time(int theIndex) const
 {
   if (IndexOk(theIndex)) return itsVectorList[theIndex];
-  return 0;
+  return nullptr;
 }
 
 // ----------------------------------------------------------------------

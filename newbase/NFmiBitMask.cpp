@@ -45,7 +45,7 @@ long NFmiBitMask::itsNumberOfBitsInLong = sizeof(long) * 8;
 NFmiBitMask::NFmiBitMask(long theSize)
     : itsSize(), itsNumberOfBytesInMask(), itsNumberOfLongsInMask(), itsMaskData()
 {
-  itsMaskData = 0;
+  itsMaskData = nullptr;
   Init(theSize);
 }
 
@@ -61,7 +61,7 @@ NFmiBitMask::NFmiBitMask(const NFmiBitMask& theBitMask)
     : itsSize(theBitMask.itsSize),
       itsNumberOfBytesInMask(theBitMask.itsNumberOfBytesInMask),
       itsNumberOfLongsInMask(theBitMask.itsNumberOfLongsInMask),
-      itsMaskData(0)
+      itsMaskData(nullptr)
 {
   if (theBitMask.itsMaskData)
   {

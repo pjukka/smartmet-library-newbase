@@ -46,7 +46,7 @@ NFmiFindFile::NFmiFindFile()
 #ifdef UNIX
       ,
       itsGlobIndex(0),
-      itsGlobBuffer(0)
+      itsGlobBuffer(nullptr)
 #endif
 {
 }
@@ -111,11 +111,11 @@ bool NFmiFindFile::Find(const NFmiString& theFileMask)
   itsGlobIndex = 0;
   if (itsGlobBuffer) globfree(itsGlobBuffer);
   itsGlobBuffer = new glob_t;
-  glob(theFindFileName, 0, NULL, itsGlobBuffer);
+  glob(theFindFileName, 0, nullptr, itsGlobBuffer);
   if (itsGlobBuffer->gl_pathc == 0)
   {
     globfree(itsGlobBuffer);
-    itsGlobBuffer = 0;
+    itsGlobBuffer = nullptr;
     return false;
   }
   if (std::string(".") == std::string(itsGlobBuffer->gl_pathv[itsGlobIndex]))
@@ -168,7 +168,7 @@ bool NFmiFindFile::Next()
   else
   {
     globfree(itsGlobBuffer);
-    itsGlobBuffer = 0;
+    itsGlobBuffer = nullptr;
     return false;
   }
 

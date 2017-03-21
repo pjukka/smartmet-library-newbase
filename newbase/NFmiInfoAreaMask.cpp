@@ -442,7 +442,7 @@ NFmiAreaMask *NFmiInfoAreaMaskPeekXY::Clone() const { return new NFmiInfoAreaMas
 void NFmiInfoAreaMaskPeekXY::CalcGridDiffs()
 {
   // oletetaan, että on hila dataa ja area löytyy
-  if (itsInfo->Grid() == NULL)
+  if (itsInfo->Grid() == nullptr)
     throw std::runtime_error(
         "Error in NFmiInfoAreaMaskPeekXY::CalcGridDiffs, given data was not grid form");
   itsGridXDiff = itsInfo->Area()->Width() / (itsInfo->Grid()->XNumber() - 1);
@@ -1313,7 +1313,8 @@ NFmiInfoAreaMaskVertFunc::NFmiInfoAreaMaskVertFunc(const NFmiInfoAreaMaskVertFun
       itsPrimaryFunc(theOther.itsPrimaryFunc),
       itsSecondaryFunc(theOther.itsSecondaryFunc),
       itsArgumentVector(theOther.itsArgumentVector),
-      itsFunctionModifier(theOther.itsFunctionModifier ? theOther.itsFunctionModifier->Clone() : 0),
+      itsFunctionModifier(theOther.itsFunctionModifier ? theOther.itsFunctionModifier->Clone()
+                                                       : nullptr),
       itsStartLevelValue(theOther.itsStartLevelValue),
       itsEndLevelValue(theOther.itsEndLevelValue),
       itsStartLevelIndex(theOther.itsStartLevelIndex),
@@ -2470,7 +2471,8 @@ NFmiInfoAreaMaskTimeRange::NFmiInfoAreaMaskTimeRange(
 NFmiInfoAreaMaskTimeRange::NFmiInfoAreaMaskTimeRange(const NFmiInfoAreaMaskTimeRange &theOther)
     : NFmiInfoAreaMask(theOther),
       itsIntegrationFunc(theOther.itsIntegrationFunc),
-      itsFunctionModifier(theOther.itsFunctionModifier ? theOther.itsFunctionModifier->Clone() : 0),
+      itsFunctionModifier(theOther.itsFunctionModifier ? theOther.itsFunctionModifier->Clone()
+                                                       : nullptr),
       itsArgumentVector(theOther.itsArgumentVector),
       itsStartTimeOffsetInHours(theOther.itsStartTimeOffsetInHours),
       itsEndTimeOffsetInHours(theOther.itsEndTimeOffsetInHours)
@@ -2567,7 +2569,8 @@ NFmiInfoTimeIntegrator::NFmiInfoTimeIntegrator(const NFmiCalculationCondition &t
 NFmiInfoTimeIntegrator::NFmiInfoTimeIntegrator(const NFmiInfoTimeIntegrator &theOther)
     : NFmiInfoAreaMaskMetFuncBase(theOther),
       itsIntegrationFunc(theOther.itsIntegrationFunc),
-      itsFunctionModifier(theOther.itsFunctionModifier ? theOther.itsFunctionModifier->Clone() : 0),
+      itsFunctionModifier(theOther.itsFunctionModifier ? theOther.itsFunctionModifier->Clone()
+                                                       : nullptr),
       itsStartTimeOffset(theOther.itsStartTimeOffset),
       itsEndTimeOffset(theOther.itsEndTimeOffset)
 {
@@ -2639,7 +2642,8 @@ NFmiInfoRectAreaIntegrator::NFmiInfoRectAreaIntegrator(
 NFmiInfoRectAreaIntegrator::NFmiInfoRectAreaIntegrator(const NFmiInfoRectAreaIntegrator &theOther)
     : NFmiInfoAreaMaskMetFuncBase(theOther),
       itsIntegrationFunc(theOther.itsIntegrationFunc),
-      itsFunctionModifier(theOther.itsFunctionModifier ? theOther.itsFunctionModifier->Clone() : 0),
+      itsFunctionModifier(theOther.itsFunctionModifier ? theOther.itsFunctionModifier->Clone()
+                                                       : nullptr),
       itsStartXOffset(theOther.itsStartXOffset),
       itsEndXOffset(theOther.itsEndXOffset),
       itsStartYOffset(theOther.itsStartYOffset),

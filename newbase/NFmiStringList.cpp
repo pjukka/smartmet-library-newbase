@@ -121,7 +121,7 @@ NFmiString *NFmiStringList::Current() const
   if (itsIndex < itsList.size())
     return itsList[itsIndex];
   else
-    return 0;
+    return nullptr;
 }
 
 // ----------------------------------------------------------------------
@@ -203,7 +203,7 @@ void NFmiStringList::Add(NFmiStringList *theList)
 void NFmiStringList::Add(NFmiString *theStr, unsigned short theLengthLimitForStrItem)
 {
   auto *strLeft = new NFmiString(*theStr);
-  NFmiString *tempStr = 0;
+  NFmiString *tempStr = nullptr;
   unsigned long lineLenght = theLengthLimitForStrItem;
   unsigned long ind = 0;
 
@@ -306,7 +306,7 @@ std::istream &NFmiStringList::Read(std::istream &file)
 
   unsigned long classId;
 
-  NFmiString *item = 0;
+  NFmiString *item = nullptr;
   for (long i = 0; i < items; i++)
   {
     file >> classId;
@@ -376,7 +376,7 @@ bool NFmiStringList::Remove()
   {
     auto iter = itsList.begin() + itsIndex;
     delete *iter;
-    *iter = 0;
+    *iter = nullptr;
     itsList.erase(iter);
     if (itsIndex > itsList.size()) Reset();
     return true;

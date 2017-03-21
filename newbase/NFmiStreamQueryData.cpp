@@ -88,7 +88,7 @@ NFmiStreamQueryData::~NFmiStreamQueryData()
 // ----------------------------------------------------------------------
 
 NFmiStreamQueryData::NFmiStreamQueryData()
-    : itsQueryData(0), itsQueryDataIter(0), itsOwnerData(false)
+    : itsQueryData(nullptr), itsQueryDataIter(nullptr), itsOwnerData(false)
 {
 }
 
@@ -101,7 +101,7 @@ NFmiStreamQueryData::NFmiStreamQueryData()
 // ----------------------------------------------------------------------
 
 NFmiStreamQueryData::NFmiStreamQueryData(NFmiQueryData *theQueryData, bool isOwnerData)
-    : itsQueryData(theQueryData), itsQueryDataIter(0), itsOwnerData(isOwnerData)
+    : itsQueryData(theQueryData), itsQueryDataIter(nullptr), itsOwnerData(isOwnerData)
 {
 }
 
@@ -137,8 +137,8 @@ NFmiQueryData *NFmiStreamQueryData::QueryData(bool theOwnerData)
                                       // omistajuus vaihtuu ja itsQueryData nollataan
   itsOwnerData = theOwnerData;
   if (itsOwnerData)
-    itsQueryData =
-        0;  // pitää nollata pointteri, muuten voi tapahtua kauheita jos luetaan uusi data sisään
+    itsQueryData = nullptr;  // pitää nollata pointteri, muuten voi tapahtua kauheita jos luetaan
+                             // uusi data sisään
   return tmp;
 }
 
@@ -288,7 +288,7 @@ bool NFmiStreamQueryData::ReadData(const NFmiString &theFileName, NFmiQueryData 
            << endl;
       dataFile.close();
       delete theTempData;  // siivotaan jäljet kun ongelmia tuli
-      theTempData = 0;
+      theTempData = nullptr;
       return false;
     }
 #ifdef FMI_MET_EDITOR_CONTINUOIS_MEMORY_ALLOC_FAILED
@@ -308,7 +308,7 @@ bool NFmiStreamQueryData::ReadData(const NFmiString &theFileName, NFmiQueryData 
     {
       dataFile.close();
       delete theTempData;  // siivotaan jäljet kun ongelmia tuli
-      theTempData = 0;
+      theTempData = nullptr;
       throw;
     }
 
@@ -325,8 +325,8 @@ bool NFmiStreamQueryData::ReadData(const NFmiString &theFileName, NFmiQueryData 
   delete itsQueryData;
   delete itsQueryDataIter;
 
-  itsQueryData = 0;
-  itsQueryDataIter = 0;
+  itsQueryData = nullptr;
+  itsQueryDataIter = nullptr;
 
   if (theQueryData)
   {
@@ -408,8 +408,8 @@ bool NFmiStreamQueryData::ReadIn(NFmiQueryData *theQueryData)
 
   delete itsQueryData;
   delete itsQueryDataIter;
-  itsQueryData = 0;
-  itsQueryDataIter = 0;
+  itsQueryData = nullptr;
+  itsQueryDataIter = nullptr;
 
   if (theQueryData)
   {

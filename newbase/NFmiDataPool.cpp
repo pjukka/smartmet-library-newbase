@@ -37,7 +37,7 @@ using namespace std;
 NFmiDataPool::NFmiDataPool()
     : itsSize(0),
       itsIndex(-1),
-      itsData(0),
+      itsData(nullptr),
       fFirst(0),
       fLast(0),
       itsMinValue(kFloatMissing),
@@ -61,7 +61,7 @@ NFmiDataPool::NFmiDataPool()
 NFmiDataPool::NFmiDataPool(const NFmiDataPool &theDataPool)
     : itsSize(theDataPool.itsSize),
       itsIndex(theDataPool.itsIndex),
-      itsData(0),
+      itsData(nullptr),
       fFirst(0),
       fLast(0),
       itsMinValue(theDataPool.itsMinValue),
@@ -86,7 +86,7 @@ void NFmiDataPool::Destroy()
   if (itsData)
   {
     delete[] itsData;
-    itsData = 0;
+    itsData = nullptr;
   }
 }
 
@@ -513,7 +513,7 @@ const float *NFmiDataPool::Data(unsigned long theBeginIndex, unsigned long theNu
   // Also checks that at least 'theNumberOfItems' items can be safely read
   // starting from this location.
 
-  if (!IsInside(theBeginIndex) || !IsInside(theBeginIndex + theNumberOfItems - 1)) return 0;
+  if (!IsInside(theBeginIndex) || !IsInside(theBeginIndex + theNumberOfItems - 1)) return nullptr;
 
   return &(itsData[theBeginIndex]);
 }

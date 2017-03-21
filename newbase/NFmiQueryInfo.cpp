@@ -257,18 +257,18 @@ bool NFmiQueryInfo::ModBiLinearInterpolation(double factor,
 // ----------------------------------------------------------------------
 
 NFmiQueryInfo::NFmiQueryInfo(double theInfoVersion)
-    : itsRefRawData(0),
-      itsRefQueryData(0)
+    : itsRefRawData(nullptr),
+      itsRefQueryData(nullptr)
       //  , itsStaticDataMask(0)
       ,
-      itsParamDescriptor(0),
-      itsHPlaceDescriptor(0),
-      itsVPlaceDescriptor(0),
-      itsTimeDescriptor(0),
-      itsHeaderText(0),
-      itsPostProc(0),
+      itsParamDescriptor(nullptr),
+      itsHPlaceDescriptor(nullptr),
+      itsVPlaceDescriptor(nullptr),
+      itsTimeDescriptor(nullptr),
+      itsHeaderText(nullptr),
+      itsPostProc(nullptr),
       itsNewClassIdent(kNFmiQueryInfo),
-      itsCombinedParamParser(0),
+      itsCombinedParamParser(nullptr),
       itsInfoVersion(theInfoVersion),
       itsGridXNumber(0),
       itsGridYNumber(0)
@@ -306,18 +306,18 @@ NFmiQueryInfo::NFmiQueryInfo(const NFmiParamDescriptor &theParamDescriptor,
                              const NFmiVPlaceDescriptor &theVPlaceDescriptor,
                              double theInfoVersion)
 
-    : itsRefRawData(0),
-      itsRefQueryData(0)
+    : itsRefRawData(nullptr),
+      itsRefQueryData(nullptr)
       //  , itsStaticDataMask(0)
       ,
       itsParamDescriptor(new NFmiParamDescriptor(theParamDescriptor)),
-      itsHPlaceDescriptor(0),
-      itsVPlaceDescriptor(0),
+      itsHPlaceDescriptor(nullptr),
+      itsVPlaceDescriptor(nullptr),
       itsTimeDescriptor(new NFmiTimeDescriptor(theTimeDescriptor)),
-      itsHeaderText(0),
-      itsPostProc(0),
+      itsHeaderText(nullptr),
+      itsPostProc(nullptr),
       itsNewClassIdent(kNFmiQueryInfo),
-      itsCombinedParamParser(0),
+      itsCombinedParamParser(nullptr),
       itsInfoVersion(theInfoVersion),
       itsGridXNumber(0),
       itsGridYNumber(0)
@@ -377,20 +377,20 @@ NFmiQueryInfo::NFmiQueryInfo(NFmiQueryData *theInfo,
       ,
       itsParamDescriptor(theInfo->Info()->itsParamDescriptor
                              ? new NFmiParamDescriptor(*(theInfo->Info()->itsParamDescriptor))
-                             : 0),
+                             : nullptr),
       itsHPlaceDescriptor(theInfo->Info()->itsHPlaceDescriptor
                               ? new NFmiHPlaceDescriptor(*(theInfo->Info()->itsHPlaceDescriptor))
-                              : 0),
+                              : nullptr),
       itsVPlaceDescriptor(theInfo->Info()->itsVPlaceDescriptor
                               ? new NFmiVPlaceDescriptor(*(theInfo->Info()->itsVPlaceDescriptor))
-                              : 0),
+                              : nullptr),
       itsTimeDescriptor(theInfo->Info()->itsTimeDescriptor
                             ? new NFmiTimeDescriptor(*(theInfo->Info()->itsTimeDescriptor))
-                            : 0),
-      itsHeaderText(0),
-      itsPostProc(0),
+                            : nullptr),
+      itsHeaderText(nullptr),
+      itsPostProc(nullptr),
       itsNewClassIdent(theInfo->Info()->itsNewClassIdent),
-      itsCombinedParamParser(0),
+      itsCombinedParamParser(nullptr),
       itsInfoVersion(theInfo->InfoVersion()),
       itsGridXNumber(0),
       itsGridYNumber(0)
@@ -495,21 +495,23 @@ NFmiQueryInfo::NFmiQueryInfo(const NFmiQueryInfo &theInfo)
       itsRefQueryData(theInfo.itsRefQueryData)
       //  , itsStaticDataMask(theInfo.itsStaticDataMask)
       ,
-      itsParamDescriptor(
-          theInfo.itsParamDescriptor ? new NFmiParamDescriptor(*(theInfo.itsParamDescriptor)) : 0),
+      itsParamDescriptor(theInfo.itsParamDescriptor
+                             ? new NFmiParamDescriptor(*(theInfo.itsParamDescriptor))
+                             : nullptr),
       itsHPlaceDescriptor(theInfo.itsHPlaceDescriptor
                               ? new NFmiHPlaceDescriptor(*(theInfo.itsHPlaceDescriptor))
-                              : 0),
+                              : nullptr),
       itsVPlaceDescriptor(theInfo.itsVPlaceDescriptor
                               ? new NFmiVPlaceDescriptor(*(theInfo.itsVPlaceDescriptor))
-                              : 0),
-      itsTimeDescriptor(
-          theInfo.itsTimeDescriptor ? new NFmiTimeDescriptor(*(theInfo.itsTimeDescriptor)) : 0),
-      itsHeaderText(0),
-      itsPostProc(0),
+                              : nullptr),
+      itsTimeDescriptor(theInfo.itsTimeDescriptor
+                            ? new NFmiTimeDescriptor(*(theInfo.itsTimeDescriptor))
+                            : nullptr),
+      itsHeaderText(nullptr),
+      itsPostProc(nullptr),
       itsNewClassIdent(theInfo.itsNewClassIdent),
       itsCombinedParamParser(
-          theInfo.itsCombinedParamParser ? theInfo.itsCombinedParamParser->Clone() : 0),
+          theInfo.itsCombinedParamParser ? theInfo.itsCombinedParamParser->Clone() : nullptr),
       itsInfoVersion(theInfo.InfoVersion()),
       itsGridXNumber(theInfo.itsGridXNumber),
       itsGridYNumber(theInfo.itsGridYNumber)
@@ -546,18 +548,18 @@ NFmiQueryInfo::NFmiQueryInfo(const NFmiQueryInfo &theInfo)
 // ----------------------------------------------------------------------
 
 NFmiQueryInfo::NFmiQueryInfo(const string &filename)
-    : itsRefRawData(0),
-      itsRefQueryData(0)
+    : itsRefRawData(nullptr),
+      itsRefQueryData(nullptr)
       //  , itsStaticDataMask(0)
       ,
-      itsParamDescriptor(0),
-      itsHPlaceDescriptor(0),
-      itsVPlaceDescriptor(0),
-      itsTimeDescriptor(0),
-      itsHeaderText(0),
-      itsPostProc(0),
+      itsParamDescriptor(nullptr),
+      itsHPlaceDescriptor(nullptr),
+      itsVPlaceDescriptor(nullptr),
+      itsTimeDescriptor(nullptr),
+      itsHeaderText(nullptr),
+      itsPostProc(nullptr),
       itsNewClassIdent(kNFmiQueryInfo),
-      itsCombinedParamParser(0),
+      itsCombinedParamParser(nullptr),
       itsInfoVersion(7.0),
       itsGridXNumber(0),
       itsGridYNumber(0)
@@ -628,43 +630,43 @@ void NFmiQueryInfo::Destroy()
   if (itsHeaderText)
   {
     delete itsHeaderText;
-    itsHeaderText = 0;
+    itsHeaderText = nullptr;
   }
 
   if (itsPostProc)
   {
     delete itsPostProc;
-    itsPostProc = 0;
+    itsPostProc = nullptr;
   }
 
   if (itsTimeDescriptor)
   {
     delete itsTimeDescriptor;
-    itsTimeDescriptor = 0;
+    itsTimeDescriptor = nullptr;
   }
 
   if (itsHPlaceDescriptor)
   {
     delete itsHPlaceDescriptor;
-    itsHPlaceDescriptor = 0;
+    itsHPlaceDescriptor = nullptr;
   }
 
   if (itsVPlaceDescriptor)
   {
     delete itsVPlaceDescriptor;
-    itsVPlaceDescriptor = 0;
+    itsVPlaceDescriptor = nullptr;
   }
 
   if (itsParamDescriptor)
   {
     delete itsParamDescriptor;
-    itsParamDescriptor = 0;
+    itsParamDescriptor = nullptr;
   }
 
   if (itsCombinedParamParser)
   {
     delete itsCombinedParamParser;
-    itsCombinedParamParser = 0;
+    itsCombinedParamParser = nullptr;
   }
 
   itsNewClassIdent = kNFmiQueryInfo;
@@ -1109,7 +1111,7 @@ NFmiQueryInfo &NFmiQueryInfo::operator=(const NFmiQueryInfo &theInfo)
 
   if (theInfo.PostProcText()) itsPostProc = new NFmiStringList(*(theInfo.PostProcText()));
 
-  itsCombinedParamParser = 0;  // ei tarvita, jos kutsutaan Destroy():ta
+  itsCombinedParamParser = nullptr;  // ei tarvita, jos kutsutaan Destroy():ta
   if (theInfo.itsCombinedParamParser)
     itsCombinedParamParser = theInfo.itsCombinedParamParser->Clone();
   itsTimeUnCertaintyStart = theInfo.itsTimeUnCertaintyStart;
@@ -1313,7 +1315,7 @@ std::istream &NFmiQueryInfo::Read(std::istream &file)
     if (!itsVPlaceDescriptor->Size())
     {
       delete itsVPlaceDescriptor;
-      itsVPlaceDescriptor = 0;
+      itsVPlaceDescriptor = nullptr;
     }
 
     itsTimeDescriptor = new NFmiTimeDescriptor;
@@ -1982,7 +1984,7 @@ bool NFmiQueryInfo::ChangeCombinedParamParser(const NFmiDataIdent &theParam)
   if (itsCombinedParamParser)
   {
     delete itsCombinedParamParser;
-    itsCombinedParamParser = 0;
+    itsCombinedParamParser = nullptr;
   }
   auto paramName = FmiParameterName(theParam.GetParam()->GetIdent());
   switch (paramName)
@@ -2007,7 +2009,7 @@ bool NFmiQueryInfo::ChangeCombinedParamParser(const NFmiDataIdent &theParam)
 
 NFmiProducer *NFmiQueryInfo::Producer()
 {
-  return (itsParamDescriptor ? itsParamDescriptor->ParamBag()->Current()->GetProducer() : 0);
+  return (itsParamDescriptor ? itsParamDescriptor->ParamBag()->Current()->GetProducer() : nullptr);
 }
 
 // ----------------------------------------------------------------------
@@ -2661,7 +2663,8 @@ void NFmiQueryInfo::ModifyTimesLocationData_FullMT(NFmiDataModifier *theModifier
   std::vector<boost::shared_ptr<NFmiFastQueryInfo> > modifiedInfoVector(usedThreadCount);
   std::vector<boost::shared_ptr<NFmiDataModifier> > dataModifierVector(usedThreadCount);
   auto *thisFastInfo = dynamic_cast<NFmiFastQueryInfo *>(this);
-  if (thisFastInfo == 0) return;  // ei voi edetä, koska this info ei ollutkaan oikeasti fastInfo
+  if (thisFastInfo == nullptr)
+    return;  // ei voi edetä, koska this info ei ollutkaan oikeasti fastInfo
   for (unsigned int i = 0; i < usedThreadCount; i++)
   {
     // HUOM! pakko tehdä fastQueryInfo copioita, että ei menetetä nopeutta, eikä saa tehdä Clone:ja,
@@ -3147,7 +3150,7 @@ float NFmiQueryInfo::FindNearestNonMissingValueFromTimeList(const NFmiMetTime &t
   bool backWard = (theDirection == kBackward);
   float value = kFloatMissing;
   NFmiTimeList *timeList = itsTimeDescriptor->ValidTimeList();
-  if (timeList == 0)
+  if (timeList == nullptr)
     throw runtime_error(
         "Error: Programming error in NFmiQueryInfo::FindNearestNonMissingValueFromTimeList, no "
         "timelist found.");
@@ -3156,7 +3159,7 @@ float NFmiQueryInfo::FindNearestNonMissingValueFromTimeList(const NFmiMetTime &t
     value = PeekValue(Index(ParamIndex(), LocationIndex(), LevelIndex(), theTimeIndexInOut));
     if (value != kFloatMissing)
     {
-      if (timeList->Time(theTimeIndexInOut) == 0)
+      if (timeList->Time(theTimeIndexInOut) == nullptr)
         throw runtime_error(
             "Error: Programming error in NFmiQueryInfo::FindNearestNonMissingValueFromTimeList, "
             "time not found.");
@@ -4239,7 +4242,7 @@ float NFmiQueryInfo::InterpolatedValue(const NFmiPoint &theLatLonPoint,
 
   float theValue = kFloatMissing;
   NFmiParam *parameter = Param().GetParam();
-  if (parameter == 0)  // parametria ei ole asetettu kohdalleen!!!!
+  if (parameter == nullptr)  // parametria ei ole asetettu kohdalleen!!!!
   {
     assert(parameter);
     return theValue;
@@ -4935,7 +4938,7 @@ const NFmiStringList NFmiQueryInfo::GetAllKeys(bool fRemoveDuplicates)
   NFmiStringList list;
   if (FindFirstAnyKey())
   {
-    NFmiString *key = 0;
+    NFmiString *key = nullptr;
     do
     {
       key = new NFmiString(ExtractCurrentKey());

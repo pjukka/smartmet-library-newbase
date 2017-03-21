@@ -137,12 +137,12 @@ NFmiGdalArea::NFmiGdalArea(const std::string &theDatum,
 {
   // Guess a good value for itsDescription
 
-  const char *auth = theCRS.GetAuthorityName(NULL);
-  if (auth != NULL)
+  const char *auth = theCRS.GetAuthorityName(nullptr);
+  if (auth != nullptr)
   {
     itsDescription = std::string(auth);
-    const char *code = theCRS.GetAuthorityCode(NULL);
-    if (code != NULL) itsDescription += ":" + std::string(code);
+    const char *code = theCRS.GetAuthorityCode(nullptr);
+    if (code != nullptr) itsDescription += ":" + std::string(code);
   }
   else
   {
@@ -180,12 +180,12 @@ NFmiGdalArea::NFmiGdalArea(const std::string &theDatum,
 {
   // Guess a good value for itsDescription
 
-  const char *auth = theCRS.GetAuthorityName(NULL);
-  if (auth != NULL)
+  const char *auth = theCRS.GetAuthorityName(nullptr);
+  if (auth != nullptr)
   {
     itsDescription = std::string(auth);
-    const char *code = theCRS.GetAuthorityCode(NULL);
-    if (code != NULL) itsDescription += ":" + std::string(code);
+    const char *code = theCRS.GetAuthorityCode(nullptr);
+    if (code != nullptr) itsDescription += ":" + std::string(code);
   }
   else
   {

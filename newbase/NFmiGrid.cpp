@@ -142,7 +142,7 @@ void NFmiTimeCache::CalcIsInterpolationNeeded()
 // ----------------------------------------------------------------------
 
 NFmiGrid::NFmiGrid(const NFmiGrid &theGrid, FmiDirection theStartingCorner)
-    : NFmiGridBase(theGrid), itsArea(theGrid.itsArea ? theGrid.itsArea->Clone() : 0)
+    : NFmiGridBase(theGrid), itsArea(theGrid.itsArea ? theGrid.itsArea->Clone() : nullptr)
 {
   if (theStartingCorner != kBase)
   {
@@ -157,7 +157,7 @@ NFmiGrid &NFmiGrid::operator=(const NFmiGrid &theGrid)
   if (this != &theGrid)
   {
     NFmiGridBase::operator=(theGrid);
-    itsArea = theGrid.itsArea ? theGrid.itsArea->Clone() : 0;
+    itsArea = theGrid.itsArea ? theGrid.itsArea->Clone() : nullptr;
   }
   return *this;
 }
@@ -851,6 +851,6 @@ bool NFmiGrid::IsStrechableGlobalGrid(const NFmiGrid &theGrid)
 std::size_t NFmiGrid::HashValue() const
 {
   std::size_t hash = NFmiGridBase::HashValue();
-  if (itsArea != 0) boost::hash_combine(hash, itsArea->HashValue());
+  if (itsArea != nullptr) boost::hash_combine(hash, itsArea->HashValue());
   return hash;
 }

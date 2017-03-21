@@ -159,7 +159,7 @@ std::ostream& NFmiMultiPolygonAreaMask::Write(std::ostream& file) const
 
 std::istream& NFmiMultiPolygonAreaMask::Read(std::istream& file)
 {
-  NFmiSvgPath* tmp = 0;
+  NFmiSvgPath* tmp = nullptr;
   double value;
   Clear();
   do
@@ -197,7 +197,7 @@ std::istream& NFmiMultiPolygonAreaMask::Read(std::istream& file)
 
 NFmiBitmapAreaMask* NFmiMultiPolygonAreaMask::CreateBitmapAreaMask(const NFmiGrid& theGrid)
 {
-  auto* mask = new NFmiBitmapAreaMask(theGrid, 0, 0);
+  auto* mask = new NFmiBitmapAreaMask(theGrid, nullptr, nullptr);
   if (mask)
   {
     NFmiGrid grid(theGrid);  // tehdään hilasta kopio, että voidaan käydä hila läpi

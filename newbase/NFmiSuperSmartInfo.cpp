@@ -37,18 +37,19 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo()
       fUseVarianceCalculator(false),
       fUseVariationCalculator(false),
       fUseTimeIntegrationCalculator(false),
-      itsCalculator(0),
-      itsVariationCalculator(0)  // laitetaan täällä tyhjät calculaattorit valmiiksi
+      itsCalculator(nullptr),
+      itsVariationCalculator(nullptr)  // laitetaan täällä tyhjät calculaattorit valmiiksi
       ,
-      itsTimeIntegrationCalculator(0),
-      itsCurrentVarianceCalculator(new NFmiCalculator(
-          static_cast<NFmiQueryInfo*>(0), 0))  // laitetaan täällä tyhjät calculaattorit valmiiksi
+      itsTimeIntegrationCalculator(nullptr),
+      itsCurrentVarianceCalculator(
+          new NFmiCalculator(static_cast<NFmiQueryInfo*>(nullptr),
+                             nullptr))  // laitetaan täällä tyhjät calculaattorit valmiiksi
       ,
-      itsDataModifierDescriptor(0),
-      itsAreaMask(0),
+      itsDataModifierDescriptor(nullptr),
+      itsAreaMask(nullptr),
       fUseAreaMask(false),
       fUseHelperBinaryMasks(false),
-      itsCurrentHelperBinaryMask(0),
+      itsCurrentHelperBinaryMask(nullptr),
       itsXYMaskBoundingBox(),
       itsHelperBinaryMaskList()
 {
@@ -76,18 +77,19 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo(const NFmiParamDescriptor& theParamDescri
       fUseVarianceCalculator(false),
       fUseVariationCalculator(false),
       fUseTimeIntegrationCalculator(false),
-      itsCalculator(0),
-      itsVariationCalculator(0)  // laitetaan täällä tyhjät calculaattorit valmiiksi
+      itsCalculator(nullptr),
+      itsVariationCalculator(nullptr)  // laitetaan täällä tyhjät calculaattorit valmiiksi
       ,
-      itsTimeIntegrationCalculator(0),
-      itsCurrentVarianceCalculator(new NFmiCalculator(
-          static_cast<NFmiQueryInfo*>(0), 0))  // laitetaan täällä tyhjät calculaattorit valmiiksi
+      itsTimeIntegrationCalculator(nullptr),
+      itsCurrentVarianceCalculator(
+          new NFmiCalculator(static_cast<NFmiQueryInfo*>(nullptr),
+                             nullptr))  // laitetaan täällä tyhjät calculaattorit valmiiksi
       ,
-      itsDataModifierDescriptor(0),
-      itsAreaMask(0),
+      itsDataModifierDescriptor(nullptr),
+      itsAreaMask(nullptr),
       fUseAreaMask(false),
       fUseHelperBinaryMasks(false),
-      itsCurrentHelperBinaryMask(0),
+      itsCurrentHelperBinaryMask(nullptr),
       itsXYMaskBoundingBox(),
       itsHelperBinaryMaskList()
 {
@@ -117,18 +119,19 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo(NFmiQueryData* data,
       fUseVarianceCalculator(false),
       fUseVariationCalculator(false),
       fUseTimeIntegrationCalculator(false),
-      itsCalculator(0),
-      itsVariationCalculator(0)  // laitetaan täällä tyhjät calculaattorit valmiiksi
+      itsCalculator(nullptr),
+      itsVariationCalculator(nullptr)  // laitetaan täällä tyhjät calculaattorit valmiiksi
       ,
-      itsTimeIntegrationCalculator(0),
-      itsCurrentVarianceCalculator(new NFmiCalculator(
-          static_cast<NFmiQueryInfo*>(0), 0))  // laitetaan täällä tyhjät calculaattorit valmiiksi
+      itsTimeIntegrationCalculator(nullptr),
+      itsCurrentVarianceCalculator(
+          new NFmiCalculator(static_cast<NFmiQueryInfo*>(nullptr),
+                             nullptr))  // laitetaan täällä tyhjät calculaattorit valmiiksi
       ,
-      itsDataModifierDescriptor(0),
-      itsAreaMask(0),
+      itsDataModifierDescriptor(nullptr),
+      itsAreaMask(nullptr),
       fUseAreaMask(false),
       fUseHelperBinaryMasks(false),
-      itsCurrentHelperBinaryMask(0),
+      itsCurrentHelperBinaryMask(nullptr),
       itsXYMaskBoundingBox(),
       itsHelperBinaryMaskList()
 {
@@ -149,18 +152,19 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo(const NFmiQueryInfo& theInfo)
       fUseVarianceCalculator(false),
       fUseVariationCalculator(false),
       fUseTimeIntegrationCalculator(false),
-      itsCalculator(0),
-      itsVariationCalculator(0)  // laitetaan täällä tyhjät calculaattorit valmiiksi
+      itsCalculator(nullptr),
+      itsVariationCalculator(nullptr)  // laitetaan täällä tyhjät calculaattorit valmiiksi
       ,
-      itsTimeIntegrationCalculator(0),
-      itsCurrentVarianceCalculator(new NFmiCalculator(
-          static_cast<NFmiQueryInfo*>(0), 0))  // laitetaan täällä tyhjät calculaattorit valmiiksi
+      itsTimeIntegrationCalculator(nullptr),
+      itsCurrentVarianceCalculator(
+          new NFmiCalculator(static_cast<NFmiQueryInfo*>(nullptr),
+                             nullptr))  // laitetaan täällä tyhjät calculaattorit valmiiksi
       ,
-      itsDataModifierDescriptor(0),
-      itsAreaMask(0),
+      itsDataModifierDescriptor(nullptr),
+      itsAreaMask(nullptr),
       fUseAreaMask(false),
       fUseHelperBinaryMasks(false),
-      itsCurrentHelperBinaryMask(0),
+      itsCurrentHelperBinaryMask(nullptr),
       itsXYMaskBoundingBox(),
       itsHelperBinaryMaskList()
 {
@@ -184,18 +188,18 @@ NFmiSuperSmartInfo::NFmiSuperSmartInfo(const NFmiSuperSmartInfo& theInfo)
       itsVariationCalculator(
           theInfo.itsVariationCalculator)  // laitetaan täällä tyhjät calculaattorit valmiiksi
       ,
-      itsTimeIntegrationCalculator(0)
+      itsTimeIntegrationCalculator(nullptr)
       // HUOM!!!! TÄMÄ PITÄÄ HOITAA SITTEN KUNTOON (itsCurrentVarianceCalculator)
       //,itsCurrentVarianceCalculator(new NFmiCalculator((NFmiQueryInfo *)0, 0)) // laitetaan täällä
       // tyhjät calculaattorit valmiiksi
       ,
-      itsCurrentVarianceCalculator(0),
+      itsCurrentVarianceCalculator(nullptr),
       itsDataModifierDescriptor(theInfo.itsDataModifierDescriptor),
       itsAreaMask(theInfo.itsAreaMask),
       fUseAreaMask(theInfo.fUseAreaMask),
       fUseHelperBinaryMasks(theInfo.fUseHelperBinaryMasks),
       itsCurrentHelperBinaryMask(
-          0)  // tämä alustetaan (virheellisesti) CopyHelperBinaryMasksAndInfo:issa
+          nullptr)  // tämä alustetaan (virheellisesti) CopyHelperBinaryMasksAndInfo:issa
       ,
       itsXYMaskBoundingBox()  // tämä alustetaan (virheellisesti) CopyHelperBinaryMasksAndInfo:issa
       ,
@@ -405,7 +409,7 @@ NFmiCombinedParam* NFmiSuperSmartInfo::CombinedValue()
 
   if (itsFloatValueAccessLevel == kVariationAccess) return VariationCombinedValue();
   if (itsFloatValueAccessLevel == kCalculatorAccess) return CalculationCombinedValue();
-  return 0;
+  return nullptr;
 
 #if 0
   if(itsFloatValueAccessLevel == kCalculatorAccess)
@@ -486,7 +490,7 @@ NFmiCombinedParam* NFmiSuperSmartInfo::CombinedValue(bool doVariationCalculation
   fUseTimeIntegrationCalculator = doTimeIntegration;
   fUseVarianceCalculator = doVarianceCalculation;
 
-  NFmiCombinedParam* value = 0;
+  NFmiCombinedParam* value = nullptr;
   value = CombinedValue();
 
   fUseCalculator = oldUseCalc;
@@ -715,7 +719,7 @@ NFmiSuperSmartInfo& NFmiSuperSmartInfo::operator=(const NFmiSuperSmartInfo& theI
     fUseAreaMask = theInfo.fUseAreaMask;
 
     // tämä alustetaan (virheellisesti) CopyHelperBinaryMasksAndInfo:issa
-    itsCurrentHelperBinaryMask = 0;
+    itsCurrentHelperBinaryMask = nullptr;
     CopyHelperBinaryMasksAndInfo(theInfo);
   }
   return *this;
@@ -871,7 +875,7 @@ NFmiCombinedParam* NFmiSuperSmartInfo::VariationCombinedValue()
   // mielestäni pitää kutsua seuraavaa tasoa, jos tältä tasolta
   // ei löydy calculaattoria
 
-  return 0;  // VarianceFloatValue();
+  return nullptr;  // VarianceFloatValue();
 }
 
 // ----------------------------------------------------------------------
@@ -1206,7 +1210,7 @@ NFmiBitmapAreaMask* NFmiSuperSmartInfo::HelperBinaryMask(int theUsedVariationFac
 {
   size_t size = itsHelperBinaryMaskList.size();
   if (theUsedVariationFactor < 0 || static_cast<std::size_t>(theUsedVariationFactor) >= size)
-    return 0;
+    return nullptr;
   else
     return itsHelperBinaryMaskList[theUsedVariationFactor];
 }
@@ -1261,7 +1265,7 @@ NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateHelperBinaryMask(int theUsedVariat
 
   auto* helperMask =
       new NFmiBitmapAreaMask(itsGridXNumber, itsGridYNumber, Area(), &Param(), Level());
-  if (!helperMask) return 0;
+  if (!helperMask) return nullptr;
 
   int moveByX = theUsedVariationFactor * 2 + 1;
   int moveByY = theUsedVariationFactor * 2 + 1;
@@ -1322,7 +1326,7 @@ NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateZeroVariationHelperBinaryMask()
 
     return helperMask;
   }
-  return 0;
+  return nullptr;
 }
 
 // ----------------------------------------------------------------------

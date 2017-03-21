@@ -25,7 +25,10 @@
  */
 // ----------------------------------------------------------------------
 
-NFmiParamDescriptor::NFmiParamDescriptor() : itsParamBag(0), itsActivity(0), fInterpolate(false) {}
+NFmiParamDescriptor::NFmiParamDescriptor()
+    : itsParamBag(nullptr), itsActivity(nullptr), fInterpolate(false)
+{
+}
 
 // ----------------------------------------------------------------------
 /*!
@@ -37,7 +40,7 @@ NFmiParamDescriptor::NFmiParamDescriptor() : itsParamBag(0), itsActivity(0), fIn
 // ----------------------------------------------------------------------
 
 NFmiParamDescriptor::NFmiParamDescriptor(const NFmiParamBag &theParamBag, bool interpolate)
-    : itsParamBag(new NFmiParamBag(theParamBag)), itsActivity(0), fInterpolate(interpolate)
+    : itsParamBag(new NFmiParamBag(theParamBag)), itsActivity(nullptr), fInterpolate(interpolate)
 {
   itsActivity = new bool[static_cast<int>(itsParamBag->GetSize())];
   for (int i = 0; i < static_cast<int>(itsParamBag->GetSize()); i++)
@@ -54,9 +57,10 @@ NFmiParamDescriptor::NFmiParamDescriptor(const NFmiParamBag &theParamBag, bool i
 
 NFmiParamDescriptor::NFmiParamDescriptor(const NFmiParamDescriptor &theParamDescriptor)
     : NFmiDataDescriptor(),
-      itsParamBag(
-          theParamDescriptor.itsParamBag ? new NFmiParamBag(*(theParamDescriptor.itsParamBag)) : 0),
-      itsActivity(0),
+      itsParamBag(theParamDescriptor.itsParamBag
+                      ? new NFmiParamBag(*(theParamDescriptor.itsParamBag))
+                      : nullptr),
+      itsActivity(nullptr),
       fInterpolate(theParamDescriptor.fInterpolate)
 {
   itsActivity = new bool[static_cast<int>(itsParamBag->GetSize())];  // 5.3.1997/Marko
@@ -72,15 +76,15 @@ NFmiParamDescriptor::NFmiParamDescriptor(const NFmiParamDescriptor &theParamDesc
 
 void NFmiParamDescriptor::Destroy()
 {
-  if (itsActivity != 0)
+  if (itsActivity != nullptr)
   {
     delete[] static_cast<bool *>(itsActivity);
-    itsActivity = 0;
+    itsActivity = nullptr;
   }
-  if (itsParamBag != 0)
+  if (itsParamBag != nullptr)
   {
     delete itsParamBag;
-    itsParamBag = 0;
+    itsParamBag = nullptr;
   }
 }
 
@@ -225,7 +229,7 @@ NFmiParamDescriptor &NFmiParamDescriptor::operator=(const NFmiParamDescriptor &t
   Destroy();
 
   itsParamBag =
-      theParamDescriptor.itsParamBag ? new NFmiParamBag(*theParamDescriptor.itsParamBag) : 0;
+      theParamDescriptor.itsParamBag ? new NFmiParamBag(*theParamDescriptor.itsParamBag) : nullptr;
 
   if (itsParamBag)
   {

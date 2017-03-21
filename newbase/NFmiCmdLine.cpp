@@ -234,14 +234,14 @@ void NFmiCmdLine::Init(int argc, const char **argv, const char *optallow)
     itsArgv[i] = new char[strlen(argv[i]) + 1];
     strcpy(itsArgv[i], argv[i]);
     itsOptionLetters[i] = '?';
-    itsOptionValues[i] = NULL;
-    itsParameters[i] = NULL;
+    itsOptionValues[i] = nullptr;
+    itsParameters[i] = nullptr;
   }
   // Save optallow
   // If optallow is NULL, force it to "" (No options allowed)
   char nopt[1] = "";
   p = optallow;
-  if (p == NULL) p = nopt;
+  if (p == nullptr) p = nopt;
   itsOptionsAllowed = new char[strlen(p) + 1];
   strcpy(itsOptionsAllowed, p);
   // Save Command
@@ -262,7 +262,7 @@ void NFmiCmdLine::Init(int argc, const char **argv, const char *optallow)
       break;
     }
 
-    if ((p = strchr(itsOptionsAllowed, itsArgv[i][1])) == NULL)
+    if ((p = strchr(itsOptionsAllowed, itsArgv[i][1])) == nullptr)
     {
       char e[256];
 #ifdef _MSC_VER
@@ -459,7 +459,7 @@ const char *NFmiCmdLine::OptionValue(char c) const
   if (i <= itsOptionCount)
     return itsOptionValues[i];
   else
-    return NULL;
+    return nullptr;
 }
 
 // ----------------------------------------------------------------------

@@ -54,10 +54,10 @@ NFmiDataIdent::NFmiDataIdent(const NFmiParam &theParam,
       fContainsIndividualParams(containsIndividualParams),
       fIsDataParam(isDataParam),
       fHasDataParams(hasDataParam),
-      itsDataParams(theSubParamBag ? new NFmiParamBag(*theSubParamBag) : 0),
-      itsSecondaryProducers(0),
-      itsSecondaryProducerIterator(0),
-      itsCurrentSecondaryProducer(0)
+      itsDataParams(theSubParamBag ? new NFmiParamBag(*theSubParamBag) : nullptr),
+      itsSecondaryProducers(nullptr),
+      itsSecondaryProducerIterator(nullptr),
+      itsCurrentSecondaryProducer(nullptr)
 {
   if (theSecondaryProducerList && theSecondaryProducerList->NumberOfItems() > 0)
   {
@@ -90,10 +90,10 @@ NFmiDataIdent::NFmiDataIdent(const NFmiDataIdent &theDataIdent)
       fIsDataParam(theDataIdent.fIsDataParam),
       fHasDataParams(theDataIdent.fHasDataParams),
       itsDataParams(theDataIdent.itsDataParams ? new NFmiParamBag(*(theDataIdent.itsDataParams))
-                                               : 0),
-      itsSecondaryProducers(0),
-      itsSecondaryProducerIterator(0),
-      itsCurrentSecondaryProducer(0)
+                                               : nullptr),
+      itsSecondaryProducers(nullptr),
+      itsSecondaryProducerIterator(nullptr),
+      itsCurrentSecondaryProducer(nullptr)
 {
   if (theDataIdent.itsSecondaryProducers && theDataIdent.itsSecondaryProducers->NumberOfItems() > 0)
   {
@@ -211,7 +211,8 @@ NFmiDataIdent &NFmiDataIdent::operator=(const NFmiDataIdent &theDataIdent)
   fContainsIndividualParams = theDataIdent.fContainsIndividualParams;
   fIsDataParam = theDataIdent.fIsDataParam;
   fHasDataParams = theDataIdent.fHasDataParams;
-  itsDataParams = theDataIdent.itsDataParams ? new NFmiParamBag(*(theDataIdent.itsDataParams)) : 0;
+  itsDataParams =
+      theDataIdent.itsDataParams ? new NFmiParamBag(*(theDataIdent.itsDataParams)) : nullptr;
   if (theDataIdent.itsSecondaryProducers && theDataIdent.itsSecondaryProducers->NumberOfItems() > 0)
   {
     itsSecondaryProducers = new NFmiVoidPtrList;
@@ -226,9 +227,9 @@ NFmiDataIdent &NFmiDataIdent::operator=(const NFmiDataIdent &theDataIdent)
   else  // 24.2.1999/Marko Lisäsin else haaran, koska muuten kaatuu jos on ensin ollut
         // dataparamsseja ja sitten sijoitetaan identti missä ei ole dataparamsseja
   {
-    itsSecondaryProducers = 0;
-    itsSecondaryProducerIterator = 0;
-    itsCurrentSecondaryProducer = 0;
+    itsSecondaryProducers = nullptr;
+    itsSecondaryProducerIterator = nullptr;
+    itsCurrentSecondaryProducer = nullptr;
   }
   return *this;
 }

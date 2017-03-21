@@ -107,8 +107,8 @@ NFmiRawData::Pimple::~Pimple() { delete[] itsData; }
 
 NFmiRawData::Pimple::Pimple()
     : itsMutex(),
-      itsData(0),
-      itsMappedFile(0),
+      itsData(nullptr),
+      itsMappedFile(nullptr),
       itsOffset(0),
       itsSize(0),
       itsSaveAsBinaryFlag(true),
@@ -124,8 +124,8 @@ NFmiRawData::Pimple::Pimple()
 
 NFmiRawData::Pimple::Pimple(const Pimple &other)
     : itsMutex(),
-      itsData(0),
-      itsMappedFile(0),
+      itsData(nullptr),
+      itsMappedFile(nullptr),
       itsOffset(0),
       itsSize(other.itsSize),
       itsSaveAsBinaryFlag(other.itsSaveAsBinaryFlag),
@@ -137,7 +137,7 @@ NFmiRawData::Pimple::Pimple(const Pimple &other)
   WriteLock lock(itsMutex);
   itsData = new float[itsSize];
 
-  if (other.itsData != 0)
+  if (other.itsData != nullptr)
   {
     memcpy(itsData, other.itsData, itsSize * sizeof(float));
   }
@@ -157,8 +157,8 @@ NFmiRawData::Pimple::Pimple(const Pimple &other)
 
 NFmiRawData::Pimple::Pimple(const string &filename, istream &file, size_t size)
     : itsMutex(),
-      itsData(0),
-      itsMappedFile(0),
+      itsData(nullptr),
+      itsMappedFile(nullptr),
       itsOffset(0),
       itsSize(size),
       itsSaveAsBinaryFlag(true),
@@ -228,8 +228,8 @@ NFmiRawData::Pimple::Pimple(const string &filename, istream &file, size_t size)
 
 NFmiRawData::Pimple::Pimple(istream &file, size_t size, bool endianswap)
     : itsMutex(),
-      itsData(0),
-      itsMappedFile(0),
+      itsData(nullptr),
+      itsMappedFile(nullptr),
       itsOffset(0),
       itsSize(size),
       itsSaveAsBinaryFlag(true),
@@ -359,7 +359,7 @@ bool NFmiRawData::Pimple::Init(size_t size)
 {
   WriteLock lock(itsMutex);
 
-  itsData = 0;
+  itsData = nullptr;
   itsSize = size;
   if (itsSize > 0)
   {
@@ -496,7 +496,7 @@ ostream &NFmiRawData::Pimple::Write(ostream &file) const
 
   if (itsSaveAsBinaryFlag && FmiInfoVersion >= 6)
   {
-    if (itsData != 0)
+    if (itsData != nullptr)
     {
       auto *ptr = reinterpret_cast<char *>(itsData);
       file.write(ptr, itsSize * sizeof(float));

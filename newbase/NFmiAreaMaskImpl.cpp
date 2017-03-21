@@ -196,21 +196,21 @@ const NFmiString NFmiAreaMaskImpl::MaskString() const
  */
 // ----------------------------------------------------------------------
 
-const NFmiDataIdent *NFmiAreaMaskImpl::DataIdent() const { return 0; }
+const NFmiDataIdent *NFmiAreaMaskImpl::DataIdent() const { return nullptr; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-const NFmiParam *NFmiAreaMaskImpl::Param() const { return 0; }
+const NFmiParam *NFmiAreaMaskImpl::Param() const { return nullptr; }
 // ----------------------------------------------------------------------
 /*!
  * \return Undocumented
  */
 // ----------------------------------------------------------------------
 
-const NFmiLevel *NFmiAreaMaskImpl::Level() const { return 0; }
+const NFmiLevel *NFmiAreaMaskImpl::Level() const { return nullptr; }
 void NFmiAreaMaskImpl::Level(const NFmiLevel & /* theLevel */) {}
 // ----------------------------------------------------------------------
 /*!
@@ -242,7 +242,7 @@ bool NFmiAreaMaskImpl::AddMask(NFmiAreaMask * /* theMask */) { return false; }
  */
 // ----------------------------------------------------------------------
 
-NFmiAreaMask *NFmiAreaMaskImpl::AreaMask(int /* theIndex */) const { return 0; }
+NFmiAreaMask *NFmiAreaMaskImpl::AreaMask(int /* theIndex */) const { return nullptr; }
 // ----------------------------------------------------------------------
 /*!
  * \param theIndex Undocumented, unused

@@ -907,7 +907,7 @@ const std::string UrlDecode(const std::string &theString)
 const std::map<std::string, std::string> ParseQueryString()
 {
   const char *env = getenv("QUERY_STRING");
-  if (env == NULL)
+  if (env == nullptr)
     throw runtime_error("ParseQueryString:: Environment variable QUERY_STRING is not set");
   return ParseQueryString(env);
 }

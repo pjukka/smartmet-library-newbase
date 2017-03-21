@@ -134,9 +134,9 @@ NFmiQueryData::~NFmiQueryData()
 // ----------------------------------------------------------------------
 
 NFmiQueryData::NFmiQueryData()
-    : itsRawData(0),
+    : itsRawData(nullptr),
       itsFirst(false),
-      itsQueryInfo(0),
+      itsQueryInfo(nullptr),
       itsLatLonCache(),
       itsLatLonCacheFlag(BOOST_ONCE_INIT)
 {
@@ -193,7 +193,10 @@ NFmiQueryData::NFmiQueryData(const NFmiQueryData &theData)
 // ----------------------------------------------------------------------
 
 NFmiQueryData::NFmiQueryData(const string &thePath, bool theMemoryMapFlag)
-    : itsRawData(0), itsFirst(false), itsQueryInfo(0), itsLatLonCacheFlag(BOOST_ONCE_INIT)
+    : itsRawData(nullptr),
+      itsFirst(false),
+      itsQueryInfo(nullptr),
+      itsLatLonCacheFlag(BOOST_ONCE_INIT)
 {
   //#ifndef  NDEBUG
   NFmiQueryData::itsConstructorCalls++;
@@ -340,7 +343,7 @@ bool NFmiQueryData::Init(const NFmiQueryInfo &theInfo)
   itsRawData = new NFmiRawData();
   itsRawData->Init(itsQueryInfo->Size());
 
-  return (itsQueryInfo != 0);
+  return (itsQueryInfo != nullptr);
 }
 
 // ----------------------------------------------------------------------

@@ -61,7 +61,7 @@ NFmiCalculatedAreaMask::~NFmiCalculatedAreaMask() { delete itsDataIdent; }
  */
 // ----------------------------------------------------------------------
 
-NFmiCalculatedAreaMask::NFmiCalculatedAreaMask() : NFmiAreaMaskImpl(), itsDataIdent(0) {}
+NFmiCalculatedAreaMask::NFmiCalculatedAreaMask() : NFmiAreaMaskImpl(), itsDataIdent(nullptr) {}
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -88,7 +88,7 @@ NFmiCalculatedAreaMask::NFmiCalculatedAreaMask(const NFmiDataIdent& theParam,
 
 NFmiCalculatedAreaMask::NFmiCalculatedAreaMask(const NFmiCalculatedAreaMask& theMask)
     : NFmiAreaMaskImpl(theMask),
-      itsDataIdent(theMask.itsDataIdent ? new NFmiDataIdent(*theMask.itsDataIdent) : 0)
+      itsDataIdent(theMask.itsDataIdent ? new NFmiDataIdent(*theMask.itsDataIdent) : nullptr)
 {
 }
 
@@ -107,7 +107,7 @@ NFmiCalculatedAreaMask& NFmiCalculatedAreaMask::operator=(const NFmiCalculatedAr
   if (this != &theMask)
   {
     NFmiAreaMaskImpl::operator=(theMask);
-    itsDataIdent = theMask.itsDataIdent ? new NFmiDataIdent(*theMask.itsDataIdent) : 0;
+    itsDataIdent = theMask.itsDataIdent ? new NFmiDataIdent(*theMask.itsDataIdent) : nullptr;
   }
   return *this;
 }
@@ -143,7 +143,7 @@ const NFmiDataIdent* NFmiCalculatedAreaMask::DataIdent() const { return itsDataI
 const NFmiParam* NFmiCalculatedAreaMask::Param() const
 {
   if (itsDataIdent) return itsDataIdent->GetParam();
-  return 0;
+  return nullptr;
 }
 
 // ----------------------------------------------------------------------

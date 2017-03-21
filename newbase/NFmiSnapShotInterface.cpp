@@ -40,12 +40,12 @@ NFmiSnapShotInterface::NFmiSnapShotInterface(NFmiString theDataFileName,
                                              time_t theUpdateInterval)
     : fIsValid(),
       itsUpdateInterval(theUpdateInterval),
-      itsInfo(0),
-      itsData(0),
+      itsInfo(nullptr),
+      itsData(nullptr),
       itsDataFileName(),
       itsSourceDirectory(theSourceDirectory),
       itsWorkingDirectory(theWorkingDirectory),
-      itsStartingTime(time(NULL))
+      itsStartingTime(time(nullptr))
 {
   theDataFileName.UpperCase();
   if (theDataFileName == NFmiString("ECMWF"))
@@ -128,7 +128,7 @@ bool NFmiSnapShotInterface::Update(NFmiQueryInfo** theInfo)
 
 bool NFmiSnapShotInterface::IsValid()
 {
-  if (!itsInfo || time(NULL) - itsStartingTime > itsUpdateInterval)
+  if (!itsInfo || time(nullptr) - itsStartingTime > itsUpdateInterval)
   {
     return false;
   }
@@ -160,8 +160,8 @@ bool NFmiSnapShotInterface::ReadData()
 
   delete itsData;
   delete itsInfo;
-  itsData = 0;
-  itsInfo = 0;
+  itsData = nullptr;
+  itsInfo = nullptr;
   NFmiString fileName = NFmiString(itsWorkingDirectory) += itsDataFileName;
   ifstream localFile;
   localFile.open(fileName, ios::in | ios::binary);

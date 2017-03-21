@@ -45,8 +45,8 @@ NFmiCombinedParam::~NFmiCombinedParam()
 // ----------------------------------------------------------------------
 
 NFmiCombinedParam::NFmiCombinedParam(double theInfoVersion)
-    : itsSubParams(0),
-      itsIntegrators(0),
+    : itsSubParams(nullptr),
+      itsIntegrators(nullptr),
       fIntegrationMode(false),
       fIntegrationReady(false),
       fIntegrationStarted(),
@@ -65,9 +65,9 @@ NFmiCombinedParam::NFmiCombinedParam(double theInfoVersion)
 // ----------------------------------------------------------------------
 
 NFmiCombinedParam::NFmiCombinedParam(const NFmiCombinedParam &theParam)
-    : itsSubParams(theParam.itsSubParams ? new NFmiParamBag(*theParam.itsSubParams) : 0),
-      itsIntegrators(
-          0)  // Tässä pitäisi käyttää ParamModifierListin copy construktoria, vaan ei ole vielä
+    : itsSubParams(theParam.itsSubParams ? new NFmiParamBag(*theParam.itsSubParams) : nullptr),
+      itsIntegrators(nullptr)  // Tässä pitäisi käyttää ParamModifierListin copy construktoria, vaan
+                               // ei ole vielä
       ,
       fIntegrationMode(theParam.fIntegrationMode),
       fIntegrationReady(theParam.fIntegrationReady),
@@ -99,8 +99,9 @@ NFmiCombinedParam &NFmiCombinedParam::operator=(const NFmiCombinedParam &thePara
 {
   if (this != &theParam)
   {
-    itsSubParams = (theParam.itsSubParams ? new NFmiParamBag(*theParam.itsSubParams) : 0);
-    itsIntegrators = 0;  // Tässä pitäisi käyttää ParamModifierListin operator=, vaan ei ole vielä
+    itsSubParams = (theParam.itsSubParams ? new NFmiParamBag(*theParam.itsSubParams) : nullptr);
+    itsIntegrators =
+        nullptr;  // Tässä pitäisi käyttää ParamModifierListin operator=, vaan ei ole vielä
     fIntegrationMode = theParam.fIntegrationMode;
     fIntegrationReady = theParam.fIntegrationReady;
     fIntegrationStarted = theParam.fIntegrationStarted;
@@ -315,7 +316,7 @@ NFmiDataModifierCombi *NFmiCombinedParam::FindSubParamIntegrator(FmiParameterNam
     return itsIntegrators[idx];
   }
   else
-    return 0;
+    return nullptr;
 }
 
 // ----------------------------------------------------------------------
@@ -369,14 +370,14 @@ bool NFmiCombinedParam::SetSubIntegrator(FmiParameterName theSubParamName,
  */
 // ----------------------------------------------------------------------
 
-NFmiCombinedParam *NFmiCombinedParam::CreateNew(float /* theInitValue */) { return 0; }
+NFmiCombinedParam *NFmiCombinedParam::CreateNew(float /* theInitValue */) { return nullptr; }
 // ----------------------------------------------------------------------
 /*!
  *
  */
 // ----------------------------------------------------------------------
 
-void NFmiCombinedParam::CreateSubParams() { itsSubParams = 0; }
+void NFmiCombinedParam::CreateSubParams() { itsSubParams = nullptr; }
 // ----------------------------------------------------------------------
 /*!
  * \param theIndex Undocumented
@@ -389,7 +390,7 @@ NFmiDataModifierCombi *NFmiCombinedParam::GetSubIntegrator(unsigned long theInde
   if (theIndex < itsSubParams->GetSize())
     return itsIntegrators[theIndex];
   else
-    return 0;
+    return nullptr;
 }
 
 // ----------------------------------------------------------------------
@@ -405,7 +406,7 @@ NFmiDataModifierCombi *NFmiCombinedParam::SubIntegrator(FmiParameterName theSubP
   if (idx >= 0)
     return GetSubIntegrator(idx);
   else
-    return 0;
+    return nullptr;
 }
 
 // ----------------------------------------------------------------------

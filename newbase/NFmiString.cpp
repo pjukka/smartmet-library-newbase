@@ -477,7 +477,7 @@ unsigned long NFmiString::Search(const unsigned char *searChar, unsigned long fr
   findChar = reinterpret_cast<unsigned char *>(strstr(reinterpret_cast<char *>(fChar + fromPos - 1),
                                                       reinterpret_cast<const char *>(searChar)));
 
-  if (findChar == NULL) return 0;
+  if (findChar == nullptr) return 0;
 
   return static_cast<unsigned long>(findChar - fChar + 1);
 }
@@ -492,7 +492,7 @@ unsigned long NFmiString::Search(const unsigned char *searChar, unsigned long fr
 unsigned long NFmiString::SearchLast(const unsigned char *searChar) const
 {
   unsigned char *findChar;
-  unsigned char *lastChar = NULL;
+  unsigned char *lastChar = nullptr;
 
   findChar = reinterpret_cast<unsigned char *>(
       strstr(reinterpret_cast<char *>(fChar), reinterpret_cast<const char *>(searChar)));
@@ -504,7 +504,7 @@ unsigned long NFmiString::SearchLast(const unsigned char *searChar) const
         strstr(reinterpret_cast<char *>(findChar + 1), reinterpret_cast<const char *>(searChar)));
   }
 
-  if (lastChar == NULL)
+  if (lastChar == nullptr)
   {
     return 0;
   }

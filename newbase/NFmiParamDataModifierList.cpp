@@ -110,7 +110,7 @@ bool NFmiParamDataModifierList::Index(unsigned long theIndex)
 
 bool NFmiParamDataModifierList::Find(const NFmiDataIdent& theParam)
 {
-  NFmiDataIdent* paramPtr = 0;
+  NFmiDataIdent* paramPtr = nullptr;
   for (Reset(); Next();)
   {
     paramPtr = Current()->Param();

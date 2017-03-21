@@ -200,7 +200,7 @@ const NFmiLocationBag NFmiLocationBag::Combine(const NFmiLocationBag &theBag)
 
 const NFmiLocation *NFmiLocationBag::Location() const
 {
-  if (CurrentIndex() == -1) return 0;
+  if (CurrentIndex() == -1) return nullptr;
   return itsLocations[CurrentIndex()];
 }
 
@@ -639,7 +639,7 @@ std::size_t NFmiLocationBag::HashValue() const
 
   BOOST_FOREACH (NFmiLocation *location, itsLocations)
   {
-    if (location != 0) boost::hash_combine(hash, location->HashValue());
+    if (location != nullptr) boost::hash_combine(hash, location->HashValue());
   }
 
   return hash;

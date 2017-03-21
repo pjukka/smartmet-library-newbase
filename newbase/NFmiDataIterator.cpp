@@ -31,7 +31,7 @@ NFmiDataIterator::~NFmiDataIterator() {}
 // ----------------------------------------------------------------------
 
 NFmiDataIterator::NFmiDataIterator(NFmiQueryInfo* theData)
-    : itsData(theData), itsMask(0), fMaskInUse(false)
+    : itsData(theData), itsMask(nullptr), fMaskInUse(false)
 {
 }
 

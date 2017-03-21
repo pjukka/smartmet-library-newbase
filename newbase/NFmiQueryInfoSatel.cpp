@@ -29,7 +29,7 @@ NFmiQueryInfoSatel::~NFmiQueryInfoSatel() { Destroy(); }
  */
 // ----------------------------------------------------------------------
 
-NFmiQueryInfoSatel::NFmiQueryInfoSatel() : NFmiQueryInfo(), itsSatelName(0) {}
+NFmiQueryInfoSatel::NFmiQueryInfoSatel() : NFmiQueryInfo(), itsSatelName(nullptr) {}
 // ----------------------------------------------------------------------
 /*!
  * Constructor
@@ -70,7 +70,7 @@ NFmiQueryInfoSatel::NFmiQueryInfoSatel(NFmiQueryData *theInfo,
                                        NFmiVPlaceDescriptor *theVPlaceDescriptor)
     : NFmiQueryInfo(
           theInfo, theParamDescriptor, theTimeDescriptor, theHPlaceDescriptor, theVPlaceDescriptor),
-      itsSatelName(0)
+      itsSatelName(nullptr)
 {
 }
 
@@ -96,7 +96,7 @@ NFmiQueryInfoSatel::NFmiQueryInfoSatel(const NFmiQueryInfoSatel &theInfo)
 void NFmiQueryInfoSatel::Destroy()
 {
   delete itsSatelName;
-  itsSatelName = 0;
+  itsSatelName = nullptr;
 }
 
 // ----------------------------------------------------------------------

@@ -118,7 +118,7 @@ int NFmiEnumConverter::ToEnum(const char *s)
 const std::string NFmiEnumConverter::ToString(int theValue)
 {
   const char *ptr = ToCharPtr(theValue);
-  if (ptr == NULL)
+  if (ptr == nullptr)
     return "";
   else
     return ptr;
@@ -148,7 +148,7 @@ const char *NFmiEnumConverter::ToCharPtr(int theName)
   {
     if (iter->second == theName) return iter->first;
   }
-  return NULL;
+  return nullptr;
 }
 
 /* Was (AKa 9-Apr-09):

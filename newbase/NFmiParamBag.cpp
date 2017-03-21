@@ -32,7 +32,7 @@ NFmiParamBag::~NFmiParamBag() { Destroy(); }
 // ----------------------------------------------------------------------
 
 NFmiParamBag::NFmiParamBag()
-    : NFmiSize(0), itsParamsVector(0), fIsSubParamUsed(false), itsUsedSubParam(0)
+    : NFmiSize(0), itsParamsVector(0), fIsSubParamUsed(false), itsUsedSubParam(nullptr)
 {
 }
 
@@ -49,7 +49,7 @@ NFmiParamBag::NFmiParamBag(FmiParameterName* theParamArray, unsigned long number
     : NFmiSize(numberOfParams),
       itsParamsVector(numberOfParams),
       fIsSubParamUsed(false),
-      itsUsedSubParam(0)
+      itsUsedSubParam(nullptr)
 {
   if (GetSize())
   {
@@ -74,7 +74,7 @@ NFmiParamBag::NFmiParamBag(NFmiDataIdent* theParamArray, unsigned long numberOfP
     : NFmiSize(numberOfParams),
       itsParamsVector(numberOfParams),
       fIsSubParamUsed(false),
-      itsUsedSubParam(0)
+      itsUsedSubParam(nullptr)
 {
   if (GetSize())
   {
@@ -367,7 +367,7 @@ NFmiDataIdent* NFmiParamBag::EditParam(bool fIgnoreSubParam)
 {
   if (!fIgnoreSubParam)
     if (fIsSubParamUsed) return itsUsedSubParam;
-  return GetSize() ? const_cast<NFmiDataIdent*>(&itsParamsVector[itsIndex]) : 0;
+  return GetSize() ? const_cast<NFmiDataIdent*>(&itsParamsVector[itsIndex]) : nullptr;
 }
 
 // ----------------------------------------------------------------------
@@ -642,7 +642,7 @@ NFmiDataIdent* NFmiParamBag::Param(unsigned long theIndex, bool fIgnoreSubParam)
 
   unsigned long size = GetSize();
   if (size && theIndex < size) return const_cast<NFmiDataIdent*>(&itsParamsVector[theIndex]);
-  return 0;
+  return nullptr;
 }
 
 // ----------------------------------------------------------------------
@@ -660,7 +660,7 @@ NFmiDataIdent* NFmiParamBag::EditParam(unsigned long theIndex, bool fIgnoreSubPa
 
   unsigned long size = GetSize();
   if (size && theIndex < size) return const_cast<NFmiDataIdent*>(&itsParamsVector[theIndex]);
-  return 0;
+  return nullptr;
 }
 
 // ----------------------------------------------------------------------
@@ -711,7 +711,7 @@ bool NFmiParamBag::Next(bool fIgnoreSubParam)
       else
       {
         fIsSubParamUsed = false;
-        itsUsedSubParam = 0;
+        itsUsedSubParam = nullptr;
         return true;
       }
     }
@@ -760,7 +760,7 @@ bool NFmiParamBag::Previous(bool fIgnoreSubParam)
       else
       {
         fIsSubParamUsed = false;
-        itsUsedSubParam = 0;
+        itsUsedSubParam = nullptr;
         return true;
       }
     }
@@ -862,7 +862,7 @@ bool NFmiParamBag::FindSubParam(const NFmiDataIdent& theDataIdent)
 void NFmiParamBag::Reset(FmiDirection directionToIter)
 {
   NFmiSize::Reset(directionToIter);
-  itsUsedSubParam = 0;
+  itsUsedSubParam = nullptr;
   fIsSubParamUsed = false;
 }
 

@@ -32,7 +32,7 @@ NFmiMetBox::NFmiMetBox(const NFmiTimeBag &theTimeDescriptor,
     : itsTimeDescriptor(new NFmiTimeBag(theTimeDescriptor)),
       itsParamDescriptor(new NFmiParamBag(theParamDescriptor)),
       itsStationDescriptor(new NFmiLocationBag(theStationDescriptor)),
-      itsData(0)
+      itsData(nullptr)
 {
   itsData = new NFmiBox(CalcSize());
 }
@@ -44,7 +44,10 @@ NFmiMetBox::NFmiMetBox(const NFmiTimeBag &theTimeDescriptor,
 // ----------------------------------------------------------------------
 
 NFmiMetBox::NFmiMetBox()
-    : itsTimeDescriptor(0), itsParamDescriptor(0), itsStationDescriptor(0), itsData(0)
+    : itsTimeDescriptor(nullptr),
+      itsParamDescriptor(nullptr),
+      itsStationDescriptor(nullptr),
+      itsData(nullptr)
 {
   itsData = new NFmiBox;
 }

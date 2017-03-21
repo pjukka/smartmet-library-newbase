@@ -36,7 +36,7 @@ NFmiDataModifier::NFmiDataModifier(FmiJoinOperator theJoinOperator,
                                    bool missingValuesAllowed,
                                    NFmiCombinedParam* thePotentialCombinedParam)
     : NFmiDataModifierBase(theJoinOperator),
-      itsCombinedParam(thePotentialCombinedParam ? thePotentialCombinedParam->Clone() : 0),
+      itsCombinedParam(thePotentialCombinedParam ? thePotentialCombinedParam->Clone() : nullptr),
       fCalculationResultOk(true),
       fMissingValuesAllowed(missingValuesAllowed),
       itsNumberOfMissingValues(0),
@@ -57,7 +57,7 @@ NFmiDataModifier::NFmiDataModifier(FmiJoinOperator theJoinOperator,
 
 NFmiDataModifier::NFmiDataModifier(const NFmiDataModifier& theModier)
     : NFmiDataModifierBase(theModier),
-      itsCombinedParam(theModier.itsCombinedParam ? theModier.itsCombinedParam->Clone() : 0),
+      itsCombinedParam(theModier.itsCombinedParam ? theModier.itsCombinedParam->Clone() : nullptr),
       fCalculationResultOk(theModier.fCalculationResultOk),
       fMissingValuesAllowed(theModier.fMissingValuesAllowed),
       itsNumberOfMissingValues(theModier.itsNumberOfMissingValues),
@@ -128,7 +128,7 @@ double NFmiDataModifier::FloatValue() { return CalculationResult(); }
  */
 // ----------------------------------------------------------------------
 
-NFmiCombinedParam* NFmiDataModifier::CombinedCalculationResult() { return 0; }
+NFmiCombinedParam* NFmiDataModifier::CombinedCalculationResult() { return nullptr; }
 // ----------------------------------------------------------------------
 /*!
  * \param theValue Undocumenetd

@@ -33,15 +33,15 @@ NFmiTimeDescriptor::~NFmiTimeDescriptor() { Destroy(); }
 // ----------------------------------------------------------------------
 
 NFmiTimeDescriptor::NFmiTimeDescriptor()
-    : itsOriginTimeBag(0),
-      itsValidTimeBag(0),
-      itsTimeList(0),
+    : itsOriginTimeBag(nullptr),
+      itsValidTimeBag(nullptr),
+      itsTimeList(nullptr),
       itsTimeBagIdent(true),
       itsIsLocalTime(kUTC),
       itsIsInterpolation(false),
       itsIsOriginLastest(false),
       itsLocalTimeStep(0),
-      itsActivity(0)
+      itsActivity(nullptr)
 {
   NFmiMetTime timeNow;
   itsOriginTimeBag = new NFmiTimeBag(timeNow, timeNow, 60);
@@ -68,7 +68,7 @@ NFmiTimeDescriptor::NFmiTimeDescriptor(const NFmiMetTime &theOriginTime,
                                        bool theIsInterpolation)
     : itsOriginTimeBag(new NFmiTimeBag(theOriginTime, theOriginTime, 0)),
       itsValidTimeBag(new NFmiTimeBag(theValidTimeBag)),
-      itsTimeList(0),
+      itsTimeList(nullptr),
       itsTimeBagIdent(true),
       itsIsLocalTime(theIsLocalTime),
       itsIsInterpolation(theIsInterpolation),
@@ -99,14 +99,14 @@ NFmiTimeDescriptor::NFmiTimeDescriptor(const NFmiMetTime &theOriginTime,
                                        FmiTimeLocalzation theIsLocalTime,
                                        bool theIsInterpolation)
     : itsOriginTimeBag(new NFmiTimeBag(theOriginTime, theOriginTime, 0)),
-      itsValidTimeBag(0),
+      itsValidTimeBag(nullptr),
       itsTimeList(new NFmiTimeList(theTimeList)),
       itsTimeBagIdent(true),
       itsIsLocalTime(theIsLocalTime),
       itsIsInterpolation(theIsInterpolation),
       itsIsOriginLastest(false),
       itsLocalTimeStep(0),
-      itsActivity(0)
+      itsActivity(nullptr)
 {
   if (itsValidTimeBag)
   {
@@ -138,7 +138,7 @@ NFmiTimeDescriptor::NFmiTimeDescriptor(const NFmiTimeBag &theOriginTimeBag,
                                        const NFmiMetTime &theValidTime)
     : itsOriginTimeBag(new NFmiTimeBag(theOriginTimeBag)),
       itsValidTimeBag(new NFmiTimeBag(theValidTime, theValidTime, 0)),
-      itsTimeList(0),
+      itsTimeList(nullptr),
       itsTimeBagIdent(false),
       itsIsLocalTime(kUTC),
       itsIsInterpolation(false),
@@ -160,8 +160,8 @@ NFmiTimeDescriptor::NFmiTimeDescriptor(const NFmiTimeBag &theOriginTimeBag,
 NFmiTimeDescriptor::NFmiTimeDescriptor(const NFmiTimeBag &theOriginTimeBag,
                                        unsigned long theForecastPeriod)
     : itsOriginTimeBag(new NFmiTimeBag(theOriginTimeBag)),
-      itsValidTimeBag(0),
-      itsTimeList(0),
+      itsValidTimeBag(nullptr),
+      itsTimeList(nullptr),
       itsTimeBagIdent(false),
       itsIsLocalTime(kUTC),
       itsIsInterpolation(false),
@@ -190,14 +190,14 @@ NFmiTimeDescriptor::NFmiTimeDescriptor(const NFmiMetTime &theOriginTime,
                                        unsigned long theForecastPeriodMin,
                                        unsigned long theForecastPeriodMax)
     : itsOriginTimeBag(new NFmiTimeBag(theOriginTime, theOriginTime, 0)),
-      itsValidTimeBag(0),
-      itsTimeList(0),
+      itsValidTimeBag(nullptr),
+      itsTimeList(nullptr),
       itsTimeBagIdent(true),
       itsIsLocalTime(kUTC),
       itsIsInterpolation(false),
       itsIsOriginLastest(false),
       itsLocalTimeStep(0),
-      itsActivity(0)
+      itsActivity(nullptr)
 {
   NFmiMetTime theStartTime(theOriginTime);
   theStartTime.ChangeByHours(static_cast<short>(theForecastPeriodMin));
@@ -227,18 +227,18 @@ NFmiTimeDescriptor::NFmiTimeDescriptor(const NFmiTimeDescriptor &theTimeDescript
     : NFmiDataDescriptor(),
       itsOriginTimeBag(theTimeDescriptor.itsOriginTimeBag
                            ? new NFmiTimeBag(*(theTimeDescriptor.itsOriginTimeBag))
-                           : 0),
+                           : nullptr),
       itsValidTimeBag(theTimeDescriptor.itsValidTimeBag
                           ? new NFmiTimeBag(*(theTimeDescriptor.itsValidTimeBag))
-                          : 0),
+                          : nullptr),
       itsTimeList(theTimeDescriptor.itsTimeList ? new NFmiTimeList(*(theTimeDescriptor.itsTimeList))
-                                                : 0),
+                                                : nullptr),
       itsTimeBagIdent(theTimeDescriptor.itsTimeBagIdent),
       itsIsLocalTime(theTimeDescriptor.itsIsLocalTime),
       itsIsInterpolation(theTimeDescriptor.itsIsInterpolation),
       itsIsOriginLastest(theTimeDescriptor.itsIsOriginLastest),
       itsLocalTimeStep(theTimeDescriptor.itsLocalTimeStep),
-      itsActivity(0)
+      itsActivity(nullptr)
 {
   unsigned long theSize =
       itsValidTimeBag ? itsValidTimeBag->GetSize() : itsTimeList->NumberOfItems();
@@ -258,22 +258,22 @@ void NFmiTimeDescriptor::Destroy()
   if (itsValidTimeBag)
   {
     delete itsValidTimeBag;
-    itsValidTimeBag = 0;
+    itsValidTimeBag = nullptr;
   }
   if (itsTimeList)
   {
     delete itsTimeList;
-    itsTimeList = 0;
+    itsTimeList = nullptr;
   }
   if (itsOriginTimeBag)
   {
     delete itsOriginTimeBag;
-    itsOriginTimeBag = 0;
+    itsOriginTimeBag = nullptr;
   }
   if (itsActivity)
   {
     delete[] itsActivity;
-    itsActivity = 0;
+    itsActivity = nullptr;
   }
 }
 
@@ -865,12 +865,14 @@ NFmiTimeDescriptor &NFmiTimeDescriptor::operator=(const NFmiTimeDescriptor &theT
 {
   Destroy();
 
-  itsOriginTimeBag =
-      theTimeDescriptor.itsOriginTimeBag ? new NFmiTimeBag(*theTimeDescriptor.itsOriginTimeBag) : 0;
-  itsValidTimeBag =
-      theTimeDescriptor.itsValidTimeBag ? new NFmiTimeBag(*theTimeDescriptor.itsValidTimeBag) : 0;
+  itsOriginTimeBag = theTimeDescriptor.itsOriginTimeBag
+                         ? new NFmiTimeBag(*theTimeDescriptor.itsOriginTimeBag)
+                         : nullptr;
+  itsValidTimeBag = theTimeDescriptor.itsValidTimeBag
+                        ? new NFmiTimeBag(*theTimeDescriptor.itsValidTimeBag)
+                        : nullptr;
   itsTimeList =
-      theTimeDescriptor.itsTimeList ? new NFmiTimeList(*theTimeDescriptor.itsTimeList) : 0;
+      theTimeDescriptor.itsTimeList ? new NFmiTimeList(*theTimeDescriptor.itsTimeList) : nullptr;
   itsTimeBagIdent = theTimeDescriptor.itsTimeBagIdent;
 
   itsActivity = new bool[theTimeDescriptor.Size()];
@@ -1079,7 +1081,7 @@ std::istream &NFmiTimeDescriptor::Read(std::istream &file)
   }
   else
   {
-    if (itsOriginTimeBag != 0)
+    if (itsOriginTimeBag != nullptr)
     {
       itsActivity = new bool[static_cast<int>(itsOriginTimeBag->GetSize())];
       for (int i = 0; i < static_cast<int>(itsOriginTimeBag->GetSize()); i++)
@@ -1089,7 +1091,7 @@ std::istream &NFmiTimeDescriptor::Read(std::istream &file)
           itsActivity[i] = true;
     }
     else
-      itsActivity = 0;
+      itsActivity = nullptr;
   }
 
   if (itsValidTimeBag)

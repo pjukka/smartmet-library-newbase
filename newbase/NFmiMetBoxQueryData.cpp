@@ -32,7 +32,7 @@ NFmiMetBoxQueryData::~NFmiMetBoxQueryData()
  */
 // ----------------------------------------------------------------------
 
-NFmiMetBoxQueryData::NFmiMetBoxQueryData() : NFmiQueryData(), itsMetBox(0) {}
+NFmiMetBoxQueryData::NFmiMetBoxQueryData() : NFmiQueryData(), itsMetBox(nullptr) {}
 // ----------------------------------------------------------------------
 /*!
  * Copy constructor
@@ -55,7 +55,7 @@ NFmiMetBoxQueryData::NFmiMetBoxQueryData(const NFmiMetBoxQueryData& theData)
 // ----------------------------------------------------------------------
 
 NFmiMetBoxQueryData::NFmiMetBoxQueryData(NFmiQueryInfo& theInfo)
-    : NFmiQueryData(theInfo), itsMetBox(0)
+    : NFmiQueryData(theInfo), itsMetBox(nullptr)
 {
 }
 

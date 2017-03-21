@@ -30,8 +30,8 @@ const double kFmiEps = 0.0001;
 // ----------------------------------------------------------------------
 
 NFmiGridBase::NFmiGridBase(const NFmiGridBase &theGridBase)
-    : itsData(theGridBase.itsData ? new NFmiDataPool(*(theGridBase.itsData)) : 0),
-      itsFloatData(0),
+    : itsData(theGridBase.itsData ? new NFmiDataPool(*(theGridBase.itsData)) : nullptr),
+      itsFloatData(nullptr),
       itsStartingCorner(theGridBase.itsStartingCorner),
       itsInterpolationMethod(theGridBase.itsInterpolationMethod),
       itsXNumber(theGridBase.itsXNumber),
@@ -819,7 +819,7 @@ bool NFmiGridBase::FastBiVariateInterpolation(double x, double y, double &theVal
 
   long numberOfFloats = XNumber() * YNumber();
 
-  if (itsFloatData == 0)
+  if (itsFloatData == nullptr)
   {
     // In fact, this initialization is a "once in a life time" operation and should be in
     // constructor or Init(), instead.
@@ -931,7 +931,7 @@ bool NFmiGridBase::Swap()
 
   NFmiDataPool datapool(*itsData);
 
-  if (datapool.Data() == 0) return false;
+  if (datapool.Data() == nullptr) return false;
 
   if (itsData) delete itsData;
   itsData = new NFmiDataPool();
@@ -1232,7 +1232,7 @@ bool NFmiGridBase::Index(unsigned long theIndex)
 
 bool NFmiGridBase::Init(unsigned long theXNumber, unsigned long theYNumber)
 {
-  itsFloatData = 0;
+  itsFloatData = nullptr;
   itsStartingCorner = kBottomLeft;
   itsInterpolationMethod = kLinearly;
   itsXNumber = theXNumber;
@@ -1291,8 +1291,8 @@ bool NFmiGridBase::Swap(FmiDirection theCurrentDirection)
 
 NFmiGridBase &NFmiGridBase::operator=(const NFmiGridBase &theBase)
 {
-  theBase.itsData ? itsData = new NFmiDataPool(*(theBase.itsData)) : itsData = 0;
-  itsFloatData = 0;
+  theBase.itsData ? itsData = new NFmiDataPool(*(theBase.itsData)) : itsData = nullptr;
+  itsFloatData = nullptr;
   itsStartingCorner = theBase.itsStartingCorner;
   itsInterpolationMethod = theBase.itsInterpolationMethod;
   itsXNumber = theBase.itsXNumber;

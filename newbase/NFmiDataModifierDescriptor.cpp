@@ -34,7 +34,7 @@ NFmiDataModifierDescriptor::~NFmiDataModifierDescriptor()
 // ----------------------------------------------------------------------
 
 NFmiDataModifierDescriptor::NFmiDataModifierDescriptor()
-    : NFmiDataDescriptor(), itsSystematicModifiers(0), itsVarianceModifiers(0)
+    : NFmiDataDescriptor(), itsSystematicModifiers(nullptr), itsVarianceModifiers(nullptr)
 {
 }
 
@@ -49,7 +49,7 @@ NFmiDataModifierDescriptor::NFmiDataModifierDescriptor()
 NFmiParamDataModifier* NFmiDataModifierDescriptor::VarianceModifier(const NFmiDataIdent& theParam,
                                                                     const NFmiLevel* theLevel)
 {
-  NFmiParamDataModifier* modifier = 0;
+  NFmiParamDataModifier* modifier = nullptr;
   if (itsVarianceModifiers)
     if (itsVarianceModifiers->Find(theParam, theLevel)) modifier = itsVarianceModifiers->Current();
   return modifier;

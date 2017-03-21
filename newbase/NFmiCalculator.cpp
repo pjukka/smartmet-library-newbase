@@ -31,7 +31,7 @@ NFmiCalculator::~NFmiCalculator() {}
 // ----------------------------------------------------------------------
 
 NFmiCalculator::NFmiCalculator(NFmiDataIterator* theDataIterator, NFmiDataModifier* theDataModifier)
-    : itsDataModifier(theDataModifier), itsDataIterator(theDataIterator), itsData(0)
+    : itsDataModifier(theDataModifier), itsDataIterator(theDataIterator), itsData(nullptr)
 {
 }
 
@@ -45,7 +45,7 @@ NFmiCalculator::NFmiCalculator(NFmiDataIterator* theDataIterator, NFmiDataModifi
 // ----------------------------------------------------------------------
 
 NFmiCalculator::NFmiCalculator(NFmiQueryInfo* theData, NFmiDataModifier* theDataModifier)
-    : itsDataModifier(theDataModifier), itsDataIterator(0), itsData(theData)
+    : itsDataModifier(theDataModifier), itsDataIterator(nullptr), itsData(theData)
 {
 }
 
@@ -82,7 +82,7 @@ NFmiCombinedParam* NFmiCalculator::CombinedValue()
     itsDataIterator->DoForEach(itsDataModifier);
     return itsDataModifier->CombinedCalculationResult();
   }
-  return 0;
+  return nullptr;
 }
 
 // ----------------------------------------------------------------------
@@ -98,7 +98,7 @@ NFmiDataModifier* NFmiCalculator::CalculatedModifier()
     itsDataIterator->DoForEach(itsDataModifier);
     return itsDataModifier;
   }
-  return 0;
+  return nullptr;
 }
 
 // ----------------------------------------------------------------------

@@ -89,7 +89,7 @@ NFmiFastQueryInfo::NFmiFastQueryInfo(double theInfoVersion)
       //  , itsDataArraySize()
       // , itsDataArray()
       ,
-      itsTemporaryGridData(0),
+      itsTemporaryGridData(nullptr),
       itsLocLevTimSize(),
       itsLevTimSize(),
       fUseSubParam(false),
@@ -147,7 +147,7 @@ NFmiFastQueryInfo::NFmiFastQueryInfo(const NFmiParamDescriptor &theParamDescript
       //  , itsDataArraySize()
       //  , itsDataArray()
       ,
-      itsTemporaryGridData(0),
+      itsTemporaryGridData(nullptr),
       itsLocLevTimSize(),
       itsLevTimSize(),
       fUseSubParam(false),
@@ -202,7 +202,7 @@ NFmiFastQueryInfo::NFmiFastQueryInfo(NFmiQueryData *data,
       //  , itsDataArraySize()
       //  , itsDataArray()
       ,
-      itsTemporaryGridData(0),
+      itsTemporaryGridData(nullptr),
       itsLocLevTimSize(),
       itsLevTimSize(),
       fUseSubParam(false),
@@ -251,7 +251,7 @@ NFmiFastQueryInfo::NFmiFastQueryInfo(const NFmiQueryInfo &theInfo)
       //  , itsDataArraySize()
       //  , itsDataArray()
       ,
-      itsTemporaryGridData(0),
+      itsTemporaryGridData(nullptr),
       itsLocLevTimSize(),
       itsLevTimSize(),
       fUseSubParam(false),
@@ -298,7 +298,7 @@ NFmiFastQueryInfo::NFmiFastQueryInfo(const NFmiFastQueryInfo &theInfo)
       //  , itsDataArray(theInfo.itsDataArray)
       ,
       itsTemporaryGridData(
-          theInfo.itsTemporaryGridData ? new NFmiGrid(*theInfo.itsTemporaryGridData) : 0),
+          theInfo.itsTemporaryGridData ? new NFmiGrid(*theInfo.itsTemporaryGridData) : nullptr),
       itsLocLevTimSize(theInfo.itsLocLevTimSize),
       itsLevTimSize(theInfo.itsLevTimSize),
       fUseSubParam(theInfo.fUseSubParam),
@@ -1032,7 +1032,7 @@ float NFmiFastQueryInfo::PeekLocationValue(int theXOffset,
 
 NFmiGrid *NFmiFastQueryInfo::GridData(bool fUseExisting)
 {
-  if (!Grid()) return 0;
+  if (!Grid()) return nullptr;
 
   if (fUseExisting) return itsTemporaryGridData;
 
@@ -1080,7 +1080,7 @@ NFmiFastQueryInfo &NFmiFastQueryInfo::operator=(const NFmiFastQueryInfo &theInfo
   //  itsDataArray = theInfo.itsDataArray;
 
   itsTemporaryGridData =
-      theInfo.itsTemporaryGridData ? new NFmiGrid(*theInfo.itsTemporaryGridData) : 0;
+      theInfo.itsTemporaryGridData ? new NFmiGrid(*theInfo.itsTemporaryGridData) : nullptr;
 
   itsLocLevTimSize = theInfo.itsLocLevTimSize;
   itsLevTimSize = theInfo.itsLevTimSize;

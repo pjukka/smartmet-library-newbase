@@ -373,7 +373,7 @@ NFmiArea *NFmiOrthographicArea::NewArea(const NFmiPoint & /* theBottomLeftLatLon
                                         const NFmiPoint & /* theTopRightLatLon */,
                                         bool /* allowPacificFix */) const
 {
-  return 0;
+  return nullptr;
 }
 
 // ----------------------------------------------------------------------

@@ -195,7 +195,7 @@
 using namespace std;
 
 // Static variable initializations
-NFmiSettingsImpl* NFmiSettingsImpl::itsInstance = 0;
+NFmiSettingsImpl* NFmiSettingsImpl::itsInstance = nullptr;
 bool NFmiSettingsImpl::itIsDestroyed = false;
 
 // Hidden internal methods and variables
@@ -367,7 +367,7 @@ NFmiSettingsImpl::NFmiSettingsImpl()
 
 NFmiSettingsImpl::~NFmiSettingsImpl()
 {
-  itsInstance = 0;  // the pointer is address of static, not by new()
+  itsInstance = nullptr;  // the pointer is address of static, not by new()
   itIsDestroyed = true;
 }
 

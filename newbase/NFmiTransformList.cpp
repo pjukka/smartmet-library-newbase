@@ -151,19 +151,19 @@ NFmiTransformList::~NFmiTransformList()
   if (itsFirstPair)
   {
     delete[] itsFirstPair;
-    itsFirstPair = 0;
+    itsFirstPair = nullptr;
   }
 
   if (itsLastPair)
   {
     delete[] itsLastPair;
-    itsLastPair = 0;
+    itsLastPair = nullptr;
   }
 
   if (itsOutputInputRatio)
   {
     delete[] itsOutputInputRatio;
-    itsOutputInputRatio = 0;
+    itsOutputInputRatio = nullptr;
   }
 }
 
@@ -185,12 +185,12 @@ NFmiTransformList::NFmiTransformList(int theMaxPairNumber)
       itsMaxInputValue(),
       itsInputValue(),
       itsOutputValue(),
-      itsFirstPair(0),
-      itsLastPair(0),
+      itsFirstPair(nullptr),
+      itsLastPair(nullptr),
       itsVeryFirstPair(),
       itsVeryLastPair(),
       itsEps(NFmiPoint(0.0000001, 0.0000001)),
-      itsOutputInputRatio(0)
+      itsOutputInputRatio(nullptr)
 {
   Allocate(theMaxPairNumber);
 }
@@ -347,9 +347,9 @@ void NFmiTransformList::Init(int theMaxPairNumber)
   itsIncrementSize = itsMaxPairNumber;
   itsCurrentMaxIndex = itsCurrentIndex;
   itsInputValue = itsOutputValue = kFloatMissing;
-  itsFirstPair = 0;
-  itsLastPair = 0;
-  itsOutputInputRatio = 0;
+  itsFirstPair = nullptr;
+  itsLastPair = nullptr;
+  itsOutputInputRatio = nullptr;
   itsPreviousInputRangeIndex = 0;
   itsPreviousInputValue = itsPreviousOutputValue = kMaxDouble;
   itsVeryFirstPair = NFmiPoint(kMaxDouble, kMaxDouble);
@@ -658,13 +658,13 @@ std::istream& NFmiTransformList::Read(std::istream& file)
   if (itsFirstPair)
   {
     delete[] itsFirstPair;
-    itsFirstPair = 0;
+    itsFirstPair = nullptr;
   }
 
   if (itsLastPair)
   {
     delete[] itsLastPair;
-    itsLastPair = 0;
+    itsLastPair = nullptr;
   }
 
   itsFirstPair = new NFmiPoint[itsMaxPairNumber];

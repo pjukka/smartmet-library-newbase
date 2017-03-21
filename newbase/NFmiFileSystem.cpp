@@ -495,7 +495,7 @@ long FileAge(const string &theFile)
   if (FMI_stat_func(theFile.c_str(), &st) != 0) return -1;
   time_t modtime = st.st_mtime;
 
-  time_t nowtime = time(NULL);
+  time_t nowtime = time(nullptr);
 
   return static_cast<long>(nowtime - modtime);
 }
@@ -1056,7 +1056,7 @@ time_t FindFile(const string &theFileFilter,
   else
   {
     Matches::const_iterator it = (fSearchNewest ? --matches.end() : matches.begin());
-    if (theFoundFileName != 0) *theFoundFileName = it->second;
+    if (theFoundFileName != nullptr) *theFoundFileName = it->second;
     return it->first;
   }
 #else

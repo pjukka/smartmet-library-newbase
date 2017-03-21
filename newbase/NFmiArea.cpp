@@ -252,7 +252,8 @@ NFmiArea *NFmiArea::CreateNewArea(double theNewAspectRatioXperY,
   // REDIMENSIONING OF THE WORLD RECTANGLE
   //----------------------------------------
 
-  if (!newWorldRect.AdjustAspectRatio(theNewAspectRatioXperY, keepWidth, theFixedPoint)) return 0;
+  if (!newWorldRect.AdjustAspectRatio(theNewAspectRatioXperY, keepWidth, theFixedPoint))
+    return nullptr;
 
   // Create a new area with the new aspect ratio
   NFmiArea *newArea =
@@ -286,11 +287,11 @@ NFmiArea *NFmiArea::CreateNewAreaByWorldRect(const NFmiRect &theWorldRect)
   NFmiPoint newBottomLeftLatLon = WorldXYToLatLon(newBottomLeftXY);
   NFmiPoint newTopRightLatLon = WorldXYToLatLon(newTopRightXY);
 
-  if (!IsInside(newBottomLeftLatLon) || !IsInside(newTopRightLatLon)) return 0;
+  if (!IsInside(newBottomLeftLatLon) || !IsInside(newTopRightLatLon)) return nullptr;
 
   auto *newArea = static_cast<NFmiArea *>(NewArea(newBottomLeftLatLon, newTopRightLatLon));
 
-  if (!IsInside(*newArea)) return 0;
+  if (!IsInside(*newArea)) return nullptr;
 
   return newArea;
 }
@@ -428,7 +429,7 @@ NFmiArea *NFmiArea::DoPossiblePacificFix() const
       }
     }
   }
-  return 0;
+  return nullptr;
 }
 
 NFmiArea *NFmiArea::DoForcePacificFix() const
@@ -448,7 +449,7 @@ NFmiArea *NFmiArea::DoForcePacificFix() const
       return newArea;
     }
   }
-  return 0;
+  return nullptr;
 }
 
 // ----------------------------------------------------------------------

@@ -491,8 +491,8 @@ bool NFmiTimeZoneFinder::ReadFile(const string& theFileName)
   {
     if (command == "timezone")
     {
-      if (ring.get() != 0) poly->Add(*ring);
-      if (poly.get() != 0) itsPimple->itsData.push_back(*poly);
+      if (ring.get() != nullptr) poly->Add(*ring);
+      if (poly.get() != nullptr) itsPimple->itsData.push_back(*poly);
 
       float tz;
       input >> tz;
@@ -504,7 +504,7 @@ bool NFmiTimeZoneFinder::ReadFile(const string& theFileName)
       double x, y;
       input >> x >> y;
 
-      if (ring.get() == 0)
+      if (ring.get() == nullptr)
       {
         itsPimple->itsData.clear();
         return false;
@@ -514,7 +514,7 @@ bool NFmiTimeZoneFinder::ReadFile(const string& theFileName)
     }
     else if (command == "ring")
     {
-      if (poly.get() == 0 || ring.get() == 0)
+      if (poly.get() == nullptr || ring.get() == nullptr)
       {
         itsPimple->itsData.clear();
         return false;
