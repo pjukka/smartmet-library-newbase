@@ -313,15 +313,15 @@ double BiLinear(double theX,
 class PointData
 {
  public:
-  PointData() : corner_(kNoDirection), value_(kFloatMissing), distance_(kFloatMissing) {}
+  PointData() : value_(kFloatMissing), distance_(kFloatMissing) {}
   PointData(FmiDirection corner, double value, double distance)
       : corner_(corner), value_(value), distance_(distance)
   {
   }
 
-  FmiDirection corner_;  // Minkä kulman pisteestä on kyse (lähinnä debuggaus infoa)
-  double value_;         // Määrätyn kulman arvo
-  double distance_;      // Etäisyys referenssi pisteeseen
+  FmiDirection corner_{kNoDirection};  // Minkä kulman pisteestä on kyse (lähinnä debuggaus infoa)
+  double value_;                       // Määrätyn kulman arvo
+  double distance_;                    // Etäisyys referenssi pisteeseen
 };
 
 bool operator<(const PointData &p1, const PointData &p2) { return p1.distance_ < p2.distance_; }

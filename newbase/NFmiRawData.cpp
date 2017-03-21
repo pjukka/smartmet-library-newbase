@@ -83,13 +83,13 @@ class NFmiRawData::Pimple
 #endif
 
   mutable MutexType itsMutex;
-  mutable float *itsData;                               // non-memory mapped data
+  mutable float *itsData{nullptr};                      // non-memory mapped data
   mutable boost::scoped_ptr<MappedFile> itsMappedFile;  // memory mapped data
-  size_t itsOffset;                                     // offset to raw data
+  size_t itsOffset{0};                                  // offset to raw data
 
-  size_t itsSize;
-  mutable bool itsSaveAsBinaryFlag;
-  bool itsEndianSwapFlag;
+  size_t itsSize{0};
+  mutable bool itsSaveAsBinaryFlag{true};
+  bool itsEndianSwapFlag{false};
 };
 
 // ----------------------------------------------------------------------
@@ -107,12 +107,9 @@ NFmiRawData::Pimple::~Pimple() { delete[] itsData; }
 
 NFmiRawData::Pimple::Pimple()
     : itsMutex(),
-      itsData(nullptr),
-      itsMappedFile(nullptr),
-      itsOffset(0),
-      itsSize(0),
-      itsSaveAsBinaryFlag(true),
-      itsEndianSwapFlag(false)
+
+      itsMappedFile(nullptr)
+
 {
 }
 

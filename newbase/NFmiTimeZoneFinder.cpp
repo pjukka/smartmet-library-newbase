@@ -111,7 +111,7 @@ bool NFmiTimeZoneEdge::operator<(const NFmiTimeZoneEdge& theOther) const
 class NFmiTimeZoneRing
 {
  public:
-  NFmiTimeZoneRing() : itsSignedArea(0.0), itsStarted(false) {}
+  NFmiTimeZoneRing() {}
   void Add(const NFmiPoint& thePoint);
   bool Inside(const NFmiPoint& thePoint) const;
   bool Clockwise() const;
@@ -124,10 +124,10 @@ class NFmiTimeZoneRing
 
   typedef set<NFmiTimeZoneEdge> storage_type;
   storage_type itsData;
-  double itsSignedArea;
+  double itsSignedArea{0.0};
   NFmiPoint itsFirstPoint;
   NFmiPoint itsLastPoint;
-  bool itsStarted;
+  bool itsStarted{false};
   double itsMinX;
   double itsMinY;
   double itsMaxX;
