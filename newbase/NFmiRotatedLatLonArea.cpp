@@ -314,12 +314,12 @@ const std::string NFmiRotatedLatLonArea::AreaStr() const
 const std::string NFmiRotatedLatLonArea::WKT() const
 {
   std::ostringstream ret;
-  ret << std::setprecision(16) << "GEOGCS[\"FMI_Sphere\","
-      << "DATUM[\"FMI_2007\",SPHEROID[\"FMI_Sphere\",6371220,0]],"
-      << "PRIMEM[\"Greenwich\",0],"
-      << "UNIT[\"Degree\",0.0174532925199433]],"
-      << "PARAMETER[\"latitude_of_origin\"," << itsSouthernPole.Y() << "],"
-      << "PARAMETER[\"central_meridian\"," << itsSouthernPole.X() << "]";
+  ret << std::setprecision(16) << R"(GEOGCS["FMI_Sphere",)"
+      << R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",6371220,0]],)"
+      << R"(PRIMEM["Greenwich",0],)"
+      << R"(UNIT["Degree",0.0174532925199433]],)"
+      << R"(PARAMETER["latitude_of_origin",)" << itsSouthernPole.Y() << "],"
+      << R"(PARAMETER["central_meridian",)" << itsSouthernPole.X() << "]";
   return ret.str();
 }
 

@@ -445,15 +445,15 @@ const std::string NFmiEquidistArea::AreaStr() const
 const std::string NFmiEquidistArea::WKT() const
 {
   std::ostringstream ret;
-  ret << std::setprecision(16) << "PROJCS[\"FMI_Azimuthal_Equidistant\","
-      << "GEOGCS[\"FMI_Sphere\","
-      << "DATUM[\"FMI_2007\",SPHEROID[\"FMI_Sphere\",6371220,0]],"
-      << "PRIMEM[\"Greenwich\",0],"
-      << "UNIT[\"Degree\",0.0174532925199433]],"
-      << "PROJECTION[\"Azimuthal_Equidistant\"],"
-      << "PARAMETER[\"latitude_of_center\"," << itsCentralLatitude.Value() << "],"
-      << "PARAMETER[\"longitude_of_center\"," << itsCentralLongitude << "],"
-      << "UNIT[\"Metre\",1.0]]";
+  ret << std::setprecision(16) << R"(PROJCS["FMI_Azimuthal_Equidistant",)"
+      << R"(GEOGCS["FMI_Sphere",)"
+      << R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",6371220,0]],)"
+      << R"(PRIMEM["Greenwich",0],)"
+      << R"(UNIT["Degree",0.0174532925199433]],)"
+      << R"(PROJECTION["Azimuthal_Equidistant"],)"
+      << R"(PARAMETER["latitude_of_center",)" << itsCentralLatitude.Value() << "],"
+      << R"(PARAMETER["longitude_of_center",)" << itsCentralLongitude << "],"
+      << R"(UNIT["Metre",1.0]])";
   return ret.str();
 }
 

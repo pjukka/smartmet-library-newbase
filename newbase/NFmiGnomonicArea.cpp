@@ -448,15 +448,15 @@ const std::string NFmiGnomonicArea::AreaStr() const
 const std::string NFmiGnomonicArea::WKT() const
 {
   std::ostringstream ret;
-  ret << std::setprecision(16) << "PROJCS[\"FMI_Gnomonic\","
-      << "GEOGCS[\"FMI_Sphere\","
-      << "DATUM[\"FMI_2007\",SPHEROID[\"FMI_Sphere\",6371220,0]],"
-      << "PRIMEM[\"Greenwich\",0],"
-      << "UNIT[\"Degree\",0.0174532925199433]],"
-      << "PROJECTION[\"Gnomonic\"],"
-      << "PARAMETER[\"latitude_of_origin\"," << itsCentralLatitude.Value() << "],"
-      << "PARAMETER[\"central_meridian\"," << itsCentralLongitude << "],"
-      << "UNIT[\"Metre\",1.0]]";
+  ret << std::setprecision(16) << R"(PROJCS["FMI_Gnomonic",)"
+      << R"(GEOGCS["FMI_Sphere",)"
+      << R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",6371220,0]],)"
+      << R"(PRIMEM["Greenwich",0],)"
+      << R"(UNIT["Degree",0.0174532925199433]],)"
+      << R"(PROJECTION["Gnomonic"],)"
+      << R"(PARAMETER["latitude_of_origin",)" << itsCentralLatitude.Value() << "],"
+      << R"(PARAMETER["central_meridian",)" << itsCentralLongitude << "],"
+      << R"(UNIT["Metre",1.0]])";
   return ret.str();
 }
 

@@ -143,7 +143,7 @@ const NFmiString NFmiFileString::Header() const
 const NFmiString NFmiFileString::Path() const
 {
   unsigned long first, last;
-  unsigned char find[2] = "\\";
+  unsigned char find[2] = R"(\)";
   unsigned char find2[2] = "/";
 
   first = Search(find);

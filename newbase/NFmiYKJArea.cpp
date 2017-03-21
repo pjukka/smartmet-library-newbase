@@ -459,18 +459,18 @@ const std::string NFmiYKJArea::AreaStr() const
 const std::string NFmiYKJArea::WKT() const
 {
   std::ostringstream ret;
-  ret << "PROJCS[\"KKJ / Finland Uniform Coordinate System\","
-      << "GEOGCS[\"KKJ\","
-      << "DATUM[\"Kartastokoordinaattijarjestelma\", SPHEROID[\"International 1924\",6378388,297]],"
-      << "PRIMEM[\"Greenwich\",0],"
-      << "UNIT[\"degree\",0.0174532925199433]],"
-      << "PROJECTION[\"Transverse_Mercator\"],"
-      << "PARAMETER[\"latitude_of_origin\",0],"
-      << "PARAMETER[\"central_meridian\",27],"
-      << "PARAMETER[\"scale_factor\",1],"
-      << "PARAMETER[\"false_easting\",3500000],"
-      << "PARAMETER[\"false_northing\",0],"
-      << "UNIT[\"metre\",1]]";
+  ret << R"(PROJCS["KKJ / Finland Uniform Coordinate System",)"
+      << R"(GEOGCS["KKJ",)"
+      << R"(DATUM["Kartastokoordinaattijarjestelma", SPHEROID["International 1924",6378388,297]],)"
+      << R"(PRIMEM["Greenwich",0],)"
+      << R"(UNIT["degree",0.0174532925199433]],)"
+      << R"(PROJECTION["Transverse_Mercator"],)"
+      << R"(PARAMETER["latitude_of_origin",0],)"
+      << R"(PARAMETER["central_meridian",27],)"
+      << R"(PARAMETER["scale_factor",1],)"
+      << R"(PARAMETER["false_easting",3500000],)"
+      << R"(PARAMETER["false_northing",0],)"
+      << R"(UNIT["metre",1]])";
   return ret.str();
 }
 

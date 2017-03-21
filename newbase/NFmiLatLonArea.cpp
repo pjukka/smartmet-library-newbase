@@ -271,10 +271,10 @@ const std::string NFmiLatLonArea::AreaStr() const
 const std::string NFmiLatLonArea::WKT() const
 {
   std::ostringstream ret;
-  ret << "GEOGCS[\"FMI_Sphere\","
-      << "DATUM[\"FMI_2007\",SPHEROID[\"FMI_Sphere\",6371220,0]],"
-      << "PRIMEM[\"Greenwich\",0],"
-      << "UNIT[\"Degree\",0.0174532925199433]]";
+  ret << R"(GEOGCS["FMI_Sphere",)"
+      << R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",6371220,0]],)"
+      << R"(PRIMEM["Greenwich",0],)"
+      << R"(UNIT["Degree",0.0174532925199433]])";
   return ret.str();
 }
 

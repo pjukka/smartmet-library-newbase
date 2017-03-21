@@ -19,8 +19,7 @@ using namespace std;
 
 // See also NFmiLatLonArea::WKT()
 std::string fmiwkt =
-    "GEOGCS[\"FMI_Sphere\",DATUM[\"FMI_2007\",SPHEROID[\"FMI_Sphere\",6371220,0]],PRIMEM["
-    "\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]]";
+    R"(GEOGCS["FMI_Sphere",DATUM["FMI_2007",SPHEROID["FMI_Sphere",6371220,0]],PRIMEM["Greenwich",0],UNIT["Degree",0.0174532925199433]])";
 
 // ----------------------------------------------------------------------
 /*!

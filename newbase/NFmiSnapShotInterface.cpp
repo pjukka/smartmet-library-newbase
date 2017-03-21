@@ -82,11 +82,11 @@ NFmiSnapShotInterface::NFmiSnapShotInterface(NFmiString theDataFileName,
   }
   else if (theDataFileName == NFmiString("TOPOGRAFIA"))
   {
-    itsDataFileName = "Mask\\topography_europe_400x399_polster_text.fqd";
+    itsDataFileName = R"(Mask\topography_europe_400x399_polster_text.fqd)";
   }
   else if (theDataFileName == NFmiString("TIEPIIRIT"))
   {
-    itsDataFileName = "Mask\\tiealueet2.sqd";
+    itsDataFileName = R"(Mask\tiealueet2.sqd)";
   }
   else
   {

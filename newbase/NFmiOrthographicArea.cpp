@@ -511,15 +511,15 @@ const std::string NFmiOrthographicArea::AreaStr() const
 const std::string NFmiOrthographicArea::WKT() const
 {
   std::ostringstream ret;
-  ret << std::setprecision(16) << "PROJCS[\"FMI_Orthographic\","
-      << "GEOGCS[\"FMI_Sphere\","
-      << "DATUM[\"FMI_2007\",SPHEROID[\"FMI_Sphere\",6371220,0]],"
-      << "PRIMEM[\"Greenwich\",0],"
-      << "UNIT[\"Degree\",0.0174532925199433]],"
-      << "PROJECTION[\"Orthographic\"],"
-      << "PARAMETER[\"latitude_of_origin\"," << itsCentralLatitude.Value() << "],"
-      << "PARAMETER[\"central_meridian\"," << itsCentralLongitude << "],"
-      << "UNIT[\"Metre\",1.0]]";
+  ret << std::setprecision(16) << R"(PROJCS["FMI_Orthographic",)"
+      << R"(GEOGCS["FMI_Sphere",)"
+      << R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",6371220,0]],)"
+      << R"(PRIMEM["Greenwich",0],)"
+      << R"(UNIT["Degree",0.0174532925199433]],)"
+      << R"(PROJECTION["Orthographic"],)"
+      << R"(PARAMETER["latitude_of_origin",)" << itsCentralLatitude.Value() << "],"
+      << R"(PARAMETER["central_meridian",)" << itsCentralLongitude << "],"
+      << R"(UNIT["Metre",1.0]])";
   return ret.str();
 }
 
