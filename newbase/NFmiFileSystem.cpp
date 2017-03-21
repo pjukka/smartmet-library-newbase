@@ -42,7 +42,7 @@
 #endif
 #endif
 
-#include <assert.h>
+#include <cassert>
 
 #ifdef BOOST
 // Finding files is implemented in Linux using boost filesystem & regex
@@ -62,7 +62,7 @@ extern "C" {
 #else
 #include <sys/dir.h>  // opendir() etc
 #include <sys/types.h>
-#include <errno.h>
+#include <cerrno>
 #include <unistd.h>
 #endif
 }
@@ -248,7 +248,7 @@ const string FileComplete(const string &theFile, const string &theSearchPath)
 
   // Split the search path into individual paths
 
-  typedef std::list<std::string> PathList;
+  using PathList = std::list<std::string>;
   PathList paths;
   string::size_type pos1 = 0;
   while (pos1 < theSearchPath.size())
@@ -841,7 +841,7 @@ const std::list<std::string> PatternFiles(const std::string &thePattern)
     if (boost::regex_match(it->path().filename().string().c_str(), reg))
       if (!fs::is_directory(*it))
       {
-        out.push_back(it->path().filename().string().c_str());
+        out.emplace_back(it->path().filename().string().c_str());
       }
   }
 
@@ -966,7 +966,7 @@ const std::list<std::string> Directories(const std::string &thePath)
   {
     if (fs::is_directory(*it))
     {
-      out.push_back(it->path().filename().string().c_str());
+      out.emplace_back(it->path().filename().string().c_str());
     }
   }
 
@@ -1489,7 +1489,7 @@ string FindQueryData(const string &thePath)
     return thePath;
   }
 
-  typedef list<string> Files;
+  using Files = list<string>;
   Files files = DirectoryFiles(thePath);
 
   string newestfile;
