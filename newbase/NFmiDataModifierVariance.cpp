@@ -19,7 +19,7 @@
 #include <cstdlib>
 #include <ctime>
 
-typedef boost::unique_lock<MutexType> WriteLock;
+using WriteLock = boost::unique_lock<MutexType>;
 
 using namespace std;
 
