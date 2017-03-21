@@ -347,10 +347,10 @@ NFmiSettingsImpl::NFmiSettingsImpl()
     : itsFilename(DEFAULT_FILE), itsData(), itIsInitialized(false), itsNamespaces()
 {
 #ifdef UNIX
-  itsSearchPath.push_back("/smartmet/cnf");
-  itsSearchPath.push_back("/fmi/conf");
-  itsSearchPath.push_back("/var/www/share/conf");
-  itsSearchPath.push_back(".");
+  itsSearchPath.emplace_back("/smartmet/cnf");
+  itsSearchPath.emplace_back("/fmi/conf");
+  itsSearchPath.emplace_back("/var/www/share/conf");
+  itsSearchPath.emplace_back(".");
 
 #else
   itsSearchPath.push_back("conf");
