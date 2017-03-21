@@ -783,7 +783,7 @@ bool NFmiParamBag::IsActive(bool fIgnoreSubParam) const
   unsigned long size = GetSize();
   if (size > 0 && CurrentIndex() < static_cast<long>(size))
     return itsParamsVector[CurrentIndex()].IsActive();
-  return 0;
+  return false;
 }
 
 // ----------------------------------------------------------------------
@@ -801,7 +801,7 @@ bool NFmiParamBag::IsActive(unsigned long index, bool fIgnoreSubParam) const
 
   unsigned long size = GetSize();
   if (size && index < size) return itsParamsVector[index].IsActive();
-  return 0;
+  return false;
 }
 
 // ----------------------------------------------------------------------
