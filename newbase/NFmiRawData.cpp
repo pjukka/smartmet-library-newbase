@@ -38,13 +38,13 @@ typedef boost::unique_lock<MutexType> WriteLock;
 struct FooBar
 {
 };
-typedef FooBar MutexType;
-typedef FooBar ReadLock;
-typedef FooBar WriteLock;
+using MutexType = FooBar;
+using ReadLock = FooBar;
+using WriteLock = FooBar;
 #endif
 
-typedef boost::iostreams::mapped_file_params MappedFileParams;
-typedef boost::iostreams::mapped_file MappedFile;
+using MappedFileParams = boost::iostreams::mapped_file_params;
+using MappedFile = boost::iostreams::mapped_file;
 
 using namespace std;
 
@@ -125,8 +125,8 @@ NFmiRawData::Pimple::Pimple(const Pimple &other)
       itsMappedFile(nullptr),
       itsOffset(0),
       itsSize(other.itsSize),
-      itsSaveAsBinaryFlag(other.itsSaveAsBinaryFlag),
-      itsEndianSwapFlag(false)
+      itsSaveAsBinaryFlag(other.itsSaveAsBinaryFlag)
+
 {
   // We assume copied data will be changed so that copying mmapping would
   // be a wasted effort
@@ -153,13 +153,8 @@ NFmiRawData::Pimple::Pimple(const Pimple &other)
 // ----------------------------------------------------------------------
 
 NFmiRawData::Pimple::Pimple(const string &filename, istream &file, size_t size)
-    : itsMutex(),
-      itsData(nullptr),
-      itsMappedFile(nullptr),
-      itsOffset(0),
-      itsSize(size),
-      itsSaveAsBinaryFlag(true),
-      itsEndianSwapFlag(false)
+    : itsMutex(), itsData(nullptr), itsMappedFile(nullptr), itsOffset(0), itsSize(size)
+
 {
   WriteLock lock(itsMutex);
 
@@ -229,7 +224,7 @@ NFmiRawData::Pimple::Pimple(istream &file, size_t size, bool endianswap)
       itsMappedFile(nullptr),
       itsOffset(0),
       itsSize(size),
-      itsSaveAsBinaryFlag(true),
+
       itsEndianSwapFlag(endianswap)
 {
   WriteLock lock(itsMutex);
