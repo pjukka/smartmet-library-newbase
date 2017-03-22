@@ -126,7 +126,7 @@ class _FMI_DLL NFmiNearTreeImpl
   typedef F functor_type;
 
   ~NFmiNearTreeImpl();
-  NFmiNearTreeImpl();
+  NFmiNearTreeImpl() = default;
 
   void Clear();
 

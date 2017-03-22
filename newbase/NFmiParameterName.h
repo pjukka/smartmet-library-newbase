@@ -1209,10 +1209,11 @@ enum FmiParameterName
   kFmiProbabilityOfPrecipitation3h03mm,  // > 0.3 mm
   kFmiProbabilityOfColdLimit5,           // T < -35
 
-  // Opera ODIM ZDR = Logged Differential Reflectivity
-  // We discard "logged" since it is not mentioned for Reflectivity either
-
-  kFmiDifferentialReflectivity = 1300,
+  kFmiDifferentialReflectivity = 1300,   // Opera ODIM ZDR = Logged Differential Reflectivity
+  kFmiSpecificDifferentialPhase = 1301,  // Opera ODIM KDP = Specific Differential Phase
+  kFmiDifferentialPhase = 1302,          // Opera ODIM PHIDP = Differential Phase
+  kFmiSignalQualityIndex = 1303,         // Opera ODIM SQI = Signal Quality Index
+  kFmiReflectivityCorrelation = 1304,    // Opera ODIM RHORV = Correlation between Zh and Zv
 
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 

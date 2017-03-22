@@ -385,6 +385,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("DewPointF97.5", kFmiDewPointF97_5);
   PARAMINSERT("DewPointF99", kFmiDewPointF99);
   PARAMINSERT("DewPointF100", kFmiDewPointF100);
+  PARAMINSERT("DifferentialPhase", kFmiDifferentialPhase);
   PARAMINSERT("DifferentialReflectivity", kFmiDifferentialReflectivity);
   PARAMINSERT("DivergenceAbsolute", kFmiDivergenceAbsolute);
   PARAMINSERT("DivergenceRelative", kFmiDivergenceRelative);
@@ -1003,6 +1004,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("RainWaterMixingRatio", kFmiRainWaterMixingRatio);
   PARAMINSERT("RawRadarData", kFmiRawRadarData);
   PARAMINSERT("Reflectivity", kFmiReflectivity);
+  PARAMINSERT("ReflectivityCorrelation", kFmiReflectivityCorrelation);
   PARAMINSERT("RidgeIceConcentration", kFmiRidgeIceConcentration);
   PARAMINSERT("RoadCondition", kFmiRoadCondition);
   PARAMINSERT("RoadConditionAlternative", kFmiRoadConditionAlternative);
@@ -1072,6 +1074,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("SevereFrostProbability", kFmiSevereFrostProbability);
   PARAMINSERT("ShipDirection", kFmiShipDirection);
   PARAMINSERT("ShipSpeed", kFmiShipSpeed);
+  PARAMINSERT("SignalQualityIndex", kFmiSignalQualityIndex);
   PARAMINSERT("SigWaveHeight", kFmiSigWaveHeight);
   PARAMINSERT("SigWaveHeightBandB", kFmiSigWaveHeightBandB);
   PARAMINSERT("SigWaveHeightBandC", kFmiSigWaveHeightBandC);
@@ -1171,6 +1174,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("SoundingStormRelativeHelicity1km", kFmiSoundingSRH0_1km);
   PARAMINSERT("SoundingWindSpeed1500m", kFmiSoundingWS1500m);
   PARAMINSERT("SoundingThetaE3km", kFmiSoundingThetaE0_3km);
+  PARAMINSERT("SpecificDifferentialPhase", kFmiSpecificDifferentialPhase);
   PARAMINSERT("SpecificHumidity", kFmiSpecificHumidity);
   PARAMINSERT("SpecificHumidityF0", kFmiSpecificHumidityF0);
   PARAMINSERT("SpecificHumidityF1", kFmiSpecificHumidityF1);
