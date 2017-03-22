@@ -385,6 +385,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("DewPointF97.5", kFmiDewPointF97_5);
   PARAMINSERT("DewPointF99", kFmiDewPointF99);
   PARAMINSERT("DewPointF100", kFmiDewPointF100);
+  PARAMINSERT("DifferentialReflectivity", kFmiDifferentialReflectivity);
   PARAMINSERT("DivergenceAbsolute", kFmiDivergenceAbsolute);
   PARAMINSERT("DivergenceRelative", kFmiDivergenceRelative);
   PARAMINSERT("DragCoefficient", kFmiDragCoefficient);
