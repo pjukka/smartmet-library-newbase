@@ -18,6 +18,8 @@
 #include "NFmiFastQueryInfo.h"
 #include "NFmiMetMath.h"
 #include "NFmiQueryDataUtil.h"
+#include "NFmiDataModifierClasses.h"
+#include "NFmiFastInfoUtils.h"
 
 #include <cassert>
 
@@ -177,7 +179,7 @@ bool NFmiInfoAreaMask::Time(const NFmiMetTime &theTime)
   assert(itsInfo);
   if (itsInfo)
   {
-    itsTime = theTime;
+    itsTime = NFmiFastInfoUtils::GetUsedTimeIfModelClimatologyData(itsInfo, theTime);
     bool status = (true == itsInfo->Time(theTime));
     fIsTimeIntepolationNeededInValue = !status;  // jos tämän jälkeen käytetään samaa aikaa
                                                  // Value-metodissa, ei aikainterpolointia tarvitse
@@ -294,7 +296,7 @@ double NFmiInfoAreaMask::Value(const NFmiCalculationParams &theCalculationParams
   }
   else
   {
-    if (fUseTimeInterpolationAlways || fIsTimeIntepolationNeededInValue)
+    if ((fUseTimeInterpolationAlways || fIsTimeIntepolationNeededInValue) && !NFmiFastInfoUtils::IsModelClimatologyData(itsInfo))
       result = itsInfo->InterpolatedValue(theCalculationParams.itsLatlon,
                                           theCalculationParams.itsTime,
                                           360);  // interpoloidaan ajassa ja paikassa
