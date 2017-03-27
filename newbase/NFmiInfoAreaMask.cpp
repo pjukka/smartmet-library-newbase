@@ -18,7 +18,6 @@
 #include "NFmiFastQueryInfo.h"
 #include "NFmiMetMath.h"
 #include "NFmiQueryDataUtil.h"
-#include "NFmiDataModifierClasses.h"
 #include "NFmiFastInfoUtils.h"
 
 #include <cassert>
