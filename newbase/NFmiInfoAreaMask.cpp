@@ -1147,9 +1147,15 @@ NFmiInfoAreaMaskLaplace::NFmiInfoAreaMaskLaplace(
 NFmiInfoAreaMaskLaplace::NFmiInfoAreaMaskLaplace(const NFmiInfoAreaMaskLaplace &theOther)
 
     = default;
+<<<<<<< HEAD
 
 NFmiAreaMask *NFmiInfoAreaMaskLaplace::Clone() const { return new NFmiInfoAreaMaskLaplace(*this); }
 
+=======
+
+NFmiAreaMask *NFmiInfoAreaMaskLaplace::Clone() const { return new NFmiInfoAreaMaskLaplace(*this); }
+
+>>>>>>> git subrepo commit modules/newbase
 void NFmiInfoAreaMaskLaplace::SetDividers()
 {
   itsMetFuncDividerX = itsGridPointWidthInMeters * itsGridPointWidthInMeters;
