@@ -15,10 +15,10 @@
 #include "NFmiInfoAreaMask.h"
 #include "NFmiArea.h"
 #include "NFmiDataModifierClasses.h"
+#include "NFmiFastInfoUtils.h"
 #include "NFmiFastQueryInfo.h"
 #include "NFmiMetMath.h"
 #include "NFmiQueryDataUtil.h"
-#include "NFmiFastInfoUtils.h"
 
 #include <cassert>
 
@@ -295,7 +295,8 @@ double NFmiInfoAreaMask::Value(const NFmiCalculationParams &theCalculationParams
   }
   else
   {
-    if ((fUseTimeInterpolationAlways || fIsTimeIntepolationNeededInValue) && !NFmiFastInfoUtils::IsModelClimatologyData(itsInfo))
+    if ((fUseTimeInterpolationAlways || fIsTimeIntepolationNeededInValue) &&
+        !NFmiFastInfoUtils::IsModelClimatologyData(itsInfo))
       result = itsInfo->InterpolatedValue(theCalculationParams.itsLatlon,
                                           theCalculationParams.itsTime,
                                           360);  // interpoloidaan ajassa ja paikassa

@@ -13,5 +13,6 @@ void SetSoundingDataLevel(const NFmiLevel &theWantedSoundingPressureLevel, NFmiF
 std::string GetTotalDataFilePath(const boost::shared_ptr<NFmiFastQueryInfo> &theInfo);
 bool IsYearLongData(boost::shared_ptr<NFmiFastQueryInfo> &info);
 bool IsModelClimatologyData(boost::shared_ptr<NFmiFastQueryInfo> &info);
-NFmiMetTime GetUsedTimeIfModelClimatologyData(boost::shared_ptr<NFmiFastQueryInfo> &theInfo, const NFmiMetTime &theTime);
+NFmiMetTime GetUsedTimeIfModelClimatologyData(boost::shared_ptr<NFmiFastQueryInfo> &theInfo,
+                                              const NFmiMetTime &theTime);
 }
