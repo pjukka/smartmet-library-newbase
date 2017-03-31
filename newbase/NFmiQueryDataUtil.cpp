@@ -2461,10 +2461,9 @@ static void SetSubParamValue(
     FmiParameterName wantedSubParam)
 {
   float subParamValue = kFloatMissing;
-  for (size_t i = 0; i < theParamIndexVector.size(); i++)
+  for (unsigned long i : theParamIndexVector)
   {
-    theSourceInfo.ParamIndex(
-        theParamIndexVector[i]);  // asetetaan hetkeksi precipForm parametri päälle
+    theSourceInfo.ParamIndex(i);  // asetetaan hetkeksi precipForm parametri päälle
     if (theSourceInfo.FloatValue() != kFloatMissing)
     {
         subParamValue = theSourceInfo.FloatValue();
