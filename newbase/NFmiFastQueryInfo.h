@@ -231,6 +231,10 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
   float HeightValue(float theHeight);
   float HeightValue(float theHeight, const NFmiPoint &theLatlon);
   float HeightValue(float theHeight, const NFmiPoint &theLatlon, const NFmiMetTime &theTime);
+  float HeightValue(float theHeight,
+                    const NFmiPoint &theLatlon,
+                    const NFmiMetTime &theTime,
+                    unsigned long theTimeRangeInMinutes);
   float HeightValue(float theHeight, const NFmiMetTime &theTime);
 
   // Tähän tulee joukko funktioita, jotka palauttavat aktiivisen parametrin
@@ -239,6 +243,10 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
   float PressureLevelValue(float P);
   float PressureLevelValue(float P, const NFmiPoint &theLatlon);
   float PressureLevelValue(float P, const NFmiPoint &theLatlon, const NFmiMetTime &theTime);
+  float PressureLevelValue(float P,
+                           const NFmiPoint &theLatlon,
+                           const NFmiMetTime &theTime,
+                           unsigned long theTimeRangeInMinutes);
   float PressureLevelValue(float P, const NFmiMetTime &theTime);
 
   // Tässä metodit millä saadaan dataan nopeita osoitus indeksejä, mitä voidaan hyödyntää kun

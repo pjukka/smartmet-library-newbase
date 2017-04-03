@@ -2990,14 +2990,55 @@ float NFmiFastQueryInfo::PressureLevelValue(float P, const NFmiPoint &theLatlon)
 // TODO kFmiWindDirection tapaus pitää koodata käyttämään NFmiInterpolation::WindInterpolator:ia
 float NFmiFastQueryInfo::PressureLevelValue(float P,
                                             const NFmiPoint &theLatlon,
-                                            const NFmiMetTime &theTime)
+                                            const NFmiMetTime &theTime,
+                                            unsigned long theTimeRangeInMinutes)
 {
+  bool isTimeInside;
+
   if (Time(theTime))
     return PressureLevelValue(P, theLatlon);
-  else if (IsInside(theTime))
+  else if ((isTimeInside = IsInside(theTime)) && (theTimeRangeInMinutes > 0))
   {
-    if (FindNearestTime(theTime, kBackward))  // pitäisi löytyä, eikä ole reunalla, koska edellä on
-                                              // kokeiltu, löytyykö theTime jo suoraan
+    NFmiMetTime refTime(theTime);
+    boost::posix_time::ptime rangeStartTime,rangeEndTime;
+    float value1 = kFloatMissing;
+
+    if (theTimeRangeInMinutes != kUnsignedLongMissing)
+    {
+      rangeStartTime = theTime.PosixTime() - boost::posix_time::minutes(theTimeRangeInMinutes);
+      rangeEndTime = theTime.PosixTime() + boost::posix_time::minutes(theTimeRangeInMinutes);
+    }
+    else
+    {
+      FirstTime(); rangeStartTime = Time().PosixTime();
+      LastTime(); rangeEndTime = Time().PosixTime();
+    }
+
+    for ( ; ((value1 == kFloatMissing) && FindNearestTime(refTime, kBackward, theTimeRangeInMinutes) && (Time().PosixTime() >= rangeStartTime)); )
+    {
+      value1 = PressureLevelValue(P, theLatlon);
+      refTime = Time().PosixTime() - boost::posix_time::seconds(1);
+    }
+
+    auto time1 = Time();
+    float value2 = kFloatMissing;
+
+    // Using minute step forwards; seconds get zeroed when constructing NFmiMetTime
+
+    refTime = theTime;
+
+    for ( ; ((value2 == kFloatMissing) && FindNearestTime(refTime, kForward, theTimeRangeInMinutes) && (Time().PosixTime() <= rangeEndTime)); )
+    {
+      value2 = PressureLevelValue(P, theLatlon);
+      refTime = Time().PosixTime() + boost::posix_time::minutes(1);
+    }
+
+    return Interpolate(Param(), theTime, time1, Time(), value1, value2);
+  }
+  else if (isTimeInside)
+  {
+    if (FindNearestTime(theTime, kBackward, theTimeRangeInMinutes)) // pitäisi löytyä, eikä ole reunalla, koska edellä on
+                                                                    // kokeiltu, löytyykö theTime jo suoraan
     {
       NFmiMetTime time1(Time());
       float value1 = PressureLevelValue(P, theLatlon);
@@ -3009,6 +3050,13 @@ float NFmiFastQueryInfo::PressureLevelValue(float P,
     }
   }
   return kFloatMissing;
+}
+
+float NFmiFastQueryInfo::PressureLevelValue(float P,
+                                            const NFmiPoint &theLatlon,
+                                            const NFmiMetTime &theTime)
+{
+  return PressureLevelValue(P, theLatlon, theTime, 0);
 }
 
 // TODO kFmiWindDirection tapaus pitää koodata käyttämään NFmiInterpolation::WindInterpolator:ia
@@ -3154,14 +3202,55 @@ float NFmiFastQueryInfo::HeightValue(float theHeight, const NFmiPoint &theLatlon
 // TODO kFmiWindDirection tapaus pitää koodata käyttämään NFmiInterpolation::WindInterpolator:ia
 float NFmiFastQueryInfo::HeightValue(float theHeight,
                                      const NFmiPoint &theLatlon,
-                                     const NFmiMetTime &theTime)
+                                     const NFmiMetTime &theTime,
+                                     unsigned long theTimeRangeInMinutes)
 {
+  bool isTimeInside;
+
   if (Time(theTime))
     return HeightValue(theHeight, theLatlon);
-  else if (IsInside(theTime))
+  else if ((isTimeInside = IsInside(theTime)) && (theTimeRangeInMinutes > 0))
   {
-    if (FindNearestTime(theTime, kBackward))  // pitäisi löytyä, eikä ole reunalla, koska edellä on
-                                              // kokeiltu, löytyykö theTime jo suoraan
+    NFmiMetTime refTime(theTime);
+    boost::posix_time::ptime rangeStartTime,rangeEndTime;
+    float value1 = kFloatMissing;
+
+    if (theTimeRangeInMinutes != kUnsignedLongMissing)
+    {
+      rangeStartTime = theTime.PosixTime() - boost::posix_time::minutes(theTimeRangeInMinutes);
+      rangeEndTime = theTime.PosixTime() + boost::posix_time::minutes(theTimeRangeInMinutes);
+    }
+    else
+    {
+      FirstTime(); rangeStartTime = Time().PosixTime();
+      LastTime(); rangeEndTime = Time().PosixTime();
+    }
+
+    for ( ; ((value1 == kFloatMissing) && FindNearestTime(refTime, kBackward, theTimeRangeInMinutes) && (Time().PosixTime() >= rangeStartTime)); )
+    {
+      value1 = HeightValue(theHeight, theLatlon);
+      refTime = Time().PosixTime() - boost::posix_time::seconds(1);
+    }
+
+    auto time1 = Time();
+    float value2 = kFloatMissing;
+
+    // Using minute step forwards because seconds get zeroed when constructing NFmiMetTime
+
+    refTime = theTime;
+
+    for ( ; ((value2 == kFloatMissing) && FindNearestTime(refTime, kForward, theTimeRangeInMinutes) && (Time().PosixTime() <= rangeEndTime)); )
+    {
+      value2 = HeightValue(theHeight, theLatlon);
+      refTime = Time().PosixTime() + boost::posix_time::minutes(1);
+    }
+
+    return Interpolate(Param(), theTime, time1, Time(), value1, value2);
+  }
+  else if (isTimeInside)
+  {
+    if (FindNearestTime(theTime, kBackward, theTimeRangeInMinutes)) // pitäisi löytyä, eikä ole reunalla, koska edellä on
+                                                                    // kokeiltu, löytyykö theTime jo suoraan
     {
       NFmiMetTime time1(Time());
       float value1 = HeightValue(theHeight, theLatlon);
@@ -3173,6 +3262,13 @@ float NFmiFastQueryInfo::HeightValue(float theHeight,
     }
   }
   return kFloatMissing;
+}
+
+float NFmiFastQueryInfo::HeightValue(float theHeight,
+                                     const NFmiPoint &theLatlon,
+                                     const NFmiMetTime &theTime)
+{
+  return HeightValue(theHeight, theLatlon, theTime, 0);
 }
 
 // TODO kFmiWindDirection tapaus pitää koodata käyttämään NFmiInterpolation::WindInterpolator:ia
