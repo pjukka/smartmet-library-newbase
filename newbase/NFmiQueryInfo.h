@@ -312,13 +312,6 @@ class _FMI_DLL NFmiQueryInfo
   {
     return kFloatMissing;
   };
-  virtual float HeightValue(float /* theHeight */,
-                            const NFmiPoint & /* theLatlon */,
-                            const NFmiMetTime & /* theTime */,
-                            unsigned long /* theTimeRangeInMinutes */)
-  {
-    return kFloatMissing;
-  };
   virtual float HeightValue(float /* theHeight */, const NFmiMetTime & /* theTime */)
   {
     return kFloatMissing;
@@ -337,13 +330,6 @@ class _FMI_DLL NFmiQueryInfo
   virtual float PressureLevelValue(float /* P */,
                                    const NFmiPoint & /* theLatlon */,
                                    const NFmiMetTime & /* theTime */)
-  {
-    return kFloatMissing;
-  };
-  virtual float PressureLevelValue(float /* P */,
-                                   const NFmiPoint & /* theLatlon */,
-                                   const NFmiMetTime & /* theTime */,
-                                   unsigned long /* theTimeRangeInMinutes */)
   {
     return kFloatMissing;
   };
