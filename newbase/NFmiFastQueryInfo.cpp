@@ -3014,7 +3014,8 @@ float NFmiFastQueryInfo::PressureLevelValue(float P,
       LastTime(); rangeEndTime = Time().PosixTime();
     }
 
-    for ( ; ((value1 == kFloatMissing) && FindNearestTime(refTime, kBackward, theTimeRangeInMinutes) && (Time().PosixTime() >= rangeStartTime)); )
+    for (; ((value1 == kFloatMissing) && FindNearestTime(refTime, kBackward, theTimeRangeInMinutes) &&
+            (Time().PosixTime() >= rangeStartTime));)
     {
       value1 = PressureLevelValue(P, theLatlon);
       refTime = Time().PosixTime() - boost::posix_time::seconds(1);
@@ -3023,12 +3024,12 @@ float NFmiFastQueryInfo::PressureLevelValue(float P,
     auto time1 = Time();
     float value2 = kFloatMissing;
 
-    // Using minute step forwards; seconds get zeroed when constructing NFmiMetTime
-
-    refTime = theTime;
-
-    for ( ; ((value2 == kFloatMissing) && FindNearestTime(refTime, kForward, theTimeRangeInMinutes) && (Time().PosixTime() <= rangeEndTime)); )
+    for (refTime = theTime;
+         ((value2 == kFloatMissing) && FindNearestTime(refTime, kForward, theTimeRangeInMinutes) &&
+          (Time().PosixTime() <= rangeEndTime));)
     {
+      // Using minute step forwards because seconds get zeroed when constructing NFmiMetTime
+
       value2 = PressureLevelValue(P, theLatlon);
       refTime = Time().PosixTime() + boost::posix_time::minutes(1);
     }
@@ -3037,8 +3038,8 @@ float NFmiFastQueryInfo::PressureLevelValue(float P,
   }
   else if (isTimeInside)
   {
-    if (FindNearestTime(theTime, kBackward, theTimeRangeInMinutes)) // pitäisi löytyä, eikä ole reunalla, koska edellä on
-                                                                    // kokeiltu, löytyykö theTime jo suoraan
+    if (FindNearestTime(theTime, kBackward)) // pitäisi löytyä, eikä ole reunalla, koska edellä on
+                                             // kokeiltu, löytyykö theTime jo suoraan
     {
       NFmiMetTime time1(Time());
       float value1 = PressureLevelValue(P, theLatlon);
@@ -3226,7 +3227,8 @@ float NFmiFastQueryInfo::HeightValue(float theHeight,
       LastTime(); rangeEndTime = Time().PosixTime();
     }
 
-    for ( ; ((value1 == kFloatMissing) && FindNearestTime(refTime, kBackward, theTimeRangeInMinutes) && (Time().PosixTime() >= rangeStartTime)); )
+    for (; ((value1 == kFloatMissing) && FindNearestTime(refTime, kBackward, theTimeRangeInMinutes) &&
+            (Time().PosixTime() >= rangeStartTime));)
     {
       value1 = HeightValue(theHeight, theLatlon);
       refTime = Time().PosixTime() - boost::posix_time::seconds(1);
@@ -3235,12 +3237,12 @@ float NFmiFastQueryInfo::HeightValue(float theHeight,
     auto time1 = Time();
     float value2 = kFloatMissing;
 
-    // Using minute step forwards because seconds get zeroed when constructing NFmiMetTime
-
-    refTime = theTime;
-
-    for ( ; ((value2 == kFloatMissing) && FindNearestTime(refTime, kForward, theTimeRangeInMinutes) && (Time().PosixTime() <= rangeEndTime)); )
+    for (refTime = theTime;
+         ((value2 == kFloatMissing) && FindNearestTime(refTime, kForward, theTimeRangeInMinutes) &&
+          (Time().PosixTime() <= rangeEndTime));)
     {
+      // Using minute step forwards because seconds get zeroed when constructing NFmiMetTime
+
       value2 = HeightValue(theHeight, theLatlon);
       refTime = Time().PosixTime() + boost::posix_time::minutes(1);
     }
@@ -3249,8 +3251,8 @@ float NFmiFastQueryInfo::HeightValue(float theHeight,
   }
   else if (isTimeInside)
   {
-    if (FindNearestTime(theTime, kBackward, theTimeRangeInMinutes)) // pitäisi löytyä, eikä ole reunalla, koska edellä on
-                                                                    // kokeiltu, löytyykö theTime jo suoraan
+    if (FindNearestTime(theTime, kBackward)) // pitäisi löytyä, eikä ole reunalla, koska edellä on
+                                             // kokeiltu, löytyykö theTime jo suoraan
     {
       NFmiMetTime time1(Time());
       float value1 = HeightValue(theHeight, theLatlon);
