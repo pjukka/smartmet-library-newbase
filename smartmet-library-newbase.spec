@@ -73,6 +73,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Upcoming
+- Added support for interpolating within given time window when interpolating to given pressure or height
+
 * Mon Apr  3 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.4.3-1.fmi
 - New methods for dealing with moving sounding data
 - Bug fix to FindTimeIndicesForGivenTimeRange
