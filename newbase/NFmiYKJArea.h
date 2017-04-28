@@ -66,6 +66,8 @@ class _FMI_DLL NFmiYKJArea : public NFmiKKJArea
   virtual std::ostream& Write(std::ostream& file) const;
   virtual std::istream& Read(std::istream& file);
 
+  std::size_t HashValue() const;
+
  protected:
   virtual int ZoneNumberByLongitude(const double lon) const;
   virtual int ZoneNumberByEasting(const double easting) const;

@@ -65,6 +65,7 @@
 // ======================================================================
 
 #include "NFmiOrthographicArea.h"
+#include <boost/functional/hash.hpp>
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
@@ -521,6 +522,21 @@ const std::string NFmiOrthographicArea::WKT() const
       << R"(PARAMETER["central_meridian",)" << itsCentralLongitude << "],"
       << R"(UNIT["Metre",1.0]])";
   return ret.str();
+}
+
+// ----------------------------------------------------------------------
+/*!
+ * \brief Hash value
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiOrthographicArea::HashValue() const
+{
+  std::size_t hash = NFmiAzimuthalArea::HashValue();
+  boost::hash_combine(hash, boost::hash_value(itsAzimuthAngle));
+  boost::hash_combine(hash, boost::hash_value(itsGlobeRadius));
+  boost::hash_combine(hash, itsCurrentLatlonPoint.HashValue());
+  return hash;
 }
 
 // ======================================================================

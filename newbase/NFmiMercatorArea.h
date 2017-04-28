@@ -47,6 +47,8 @@ class _FMI_DLL NFmiMercatorArea : public NFmiArea
   virtual std::ostream &Write(std::ostream &file) const;
   virtual std::istream &Read(std::istream &file);
 
+  std::size_t HashValue() const;
+
  protected:
   NFmiPoint itsBottomLeftLatLon;
   NFmiPoint itsTopRightLatLon;

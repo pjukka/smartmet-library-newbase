@@ -77,6 +77,8 @@ class _FMI_DLL NFmiOrthographicArea : public NFmiAzimuthalArea
   virtual std::ostream &Write(std::ostream &file) const;
   virtual std::istream &Read(std::istream &file);
 
+  std::size_t HashValue() const;
+
  protected:
   virtual double K(const double /* delta */) const { return 1.; };
   virtual double CalcDelta(const double /* xyDistance */) const { return 0.; };

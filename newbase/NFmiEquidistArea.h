@@ -67,6 +67,8 @@ class _FMI_DLL NFmiEquidistArea : public NFmiAzimuthalArea
   const std::string AreaStr(void) const;
   virtual const std::string WKT() const;
 
+  std::size_t HashValue() const;
+
  protected:
   virtual double K(const double delta) const;
   virtual double CalcDelta(const double xyDistance) const;

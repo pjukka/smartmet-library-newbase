@@ -470,4 +470,17 @@ const std::string NFmiYKJArea::WKT() const
   return ret.str();
 }
 
+// ----------------------------------------------------------------------
+/*!
+ * \brief Hash value
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiYKJArea::HashValue() const
+{
+  std::size_t hash = NFmiKKJArea::HashValue();
+  // no private members
+  return hash;
+}
+
 // ======================================================================

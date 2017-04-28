@@ -129,6 +129,9 @@ class _FMI_DLL NFmiArea
 
   std::size_t HashValue() const;
 
+  // Temporary fix until the above method is fixed to be virtual
+  std::size_t HashValueKludge() const;
+
  protected:
   int Sign(double theValue) const;
   double FixLongitude(double theLongitude) const;

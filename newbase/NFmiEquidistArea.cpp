@@ -452,4 +452,17 @@ const std::string NFmiEquidistArea::WKT() const
   return ret.str();
 }
 
+// ----------------------------------------------------------------------
+/*!
+ * \brief Hash value
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiEquidistArea::HashValue() const
+{
+  std::size_t hash = NFmiAzimuthalArea::HashValue();
+  // no private members
+  return hash;
+}
+
 // ======================================================================

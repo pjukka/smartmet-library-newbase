@@ -88,6 +88,7 @@
 // ======================================================================
 
 #include "NFmiMercatorArea.h"
+#include <boost/functional/hash.hpp>
 #include <limits>
 
 using namespace std;
@@ -450,6 +451,23 @@ bool NFmiMercatorArea::operator==(const NFmiMercatorArea& theArea) const
     return true;
 
   return false;
+}
+
+// ----------------------------------------------------------------------
+/*!
+ * \brief Hash value
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiMercatorArea::HashValue() const
+{
+  std::size_t hash = NFmiArea::HashValue();
+  boost::hash_combine(hash, itsBottomLeftLatLon.HashValue());
+  boost::hash_combine(hash, itsTopRightLatLon.HashValue());
+  boost::hash_combine(hash, boost::hash_value(itsXScaleFactor));
+  boost::hash_combine(hash, boost::hash_value(itsYScaleFactor));
+  boost::hash_combine(hash, itsWorldRect.HashValue());
+  return hash;
 }
 
 // ======================================================================

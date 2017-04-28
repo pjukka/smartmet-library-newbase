@@ -13,6 +13,7 @@
 // ======================================================================
 
 #include "NFmiRotatedLatLonArea.h"
+#include <boost/functional/hash.hpp>
 #include <algorithm>
 #include <iomanip>
 
@@ -388,6 +389,19 @@ const NFmiAngle NFmiRotatedLatLonArea::TrueNorthAzimuth(const NFmiPoint &theLatL
                      270.);  // Azimuth is exactly east 90 degrees or west 270 degrees, respectively
 
   return NFmiAngle(FmiDeg(atan2(xyDistanceAlongMeridian.X(), xyDistanceAlongMeridian.Y())));
+}
+
+// ----------------------------------------------------------------------
+/*!
+ * \brief Hash value
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiRotatedLatLonArea::HashValue() const
+{
+  std::size_t hash = NFmiLatLonArea::HashValue();
+  boost::hash_combine(hash, itsSouthernPole.HashValue());
+  return hash;
 }
 
 // ======================================================================

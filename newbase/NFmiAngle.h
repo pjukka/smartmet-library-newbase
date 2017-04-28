@@ -72,6 +72,8 @@ class _FMI_DLL NFmiAngle
     return atan(ToRad());
   }
 
+  std::size_t HashValue() const;
+
  protected:
   //! Itse kulma asteissa.
   double itsValue;

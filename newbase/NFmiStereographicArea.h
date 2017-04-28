@@ -78,6 +78,8 @@ class _FMI_DLL NFmiStereographicArea : public NFmiAzimuthalArea
   virtual std::ostream& Write(std::ostream& file) const;
   virtual std::istream& Read(std::istream& file);
 
+  std::size_t HashValue() const;
+
  protected:
   virtual double K(const double delta) const;
   virtual double CalcDelta(const double xyDistance) const;

@@ -14,6 +14,7 @@
 
 #include "NFmiLatLonArea.h"
 #include "NFmiAreaFactory.h"
+#include <boost/functional/hash.hpp>
 
 // ----------------------------------------------------------------------
 /*!
@@ -308,4 +309,20 @@ bool NFmiLatLonArea::operator==(const NFmiLatLonArea &theArea) const
   return false;
 }
 
+// ----------------------------------------------------------------------
+/*!
+ * \brief Hash value
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiLatLonArea::HashValue() const
+{
+  std::size_t hash = NFmiArea::HashValue();
+  boost::hash_combine(hash, itsBottomLeftLatLon.HashValue());
+  boost::hash_combine(hash, itsTopRightLatLon.HashValue());
+  boost::hash_combine(hash, boost::hash_value(itsXScaleFactor));
+  boost::hash_combine(hash, boost::hash_value(itsYScaleFactor));
+  boost::hash_combine(hash, itsWorldRect.HashValue());
+  return hash;
+}
 // ======================================================================

@@ -60,6 +60,8 @@ class _FMI_DLL NFmiPKJArea : public NFmiKKJArea
 
   virtual const std::string WKT() const;
 
+  std::size_t HashValue() const;
+
  protected:
   virtual int ZoneNumberByLongitude(const double lon) const;
   virtual int ZoneNumberByEasting(const double easting) const;

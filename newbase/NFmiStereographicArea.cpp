@@ -535,4 +535,17 @@ const std::string NFmiStereographicArea::WKT() const
   return ret.str();
 }
 
+// ----------------------------------------------------------------------
+/*!
+ * \brief Hash value
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiStereographicArea::HashValue() const
+{
+  std::size_t hash = NFmiAzimuthalArea::HashValue();
+  // no private members
+  return hash;
+}
+
 // ======================================================================

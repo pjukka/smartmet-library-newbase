@@ -457,4 +457,16 @@ const std::string NFmiLambertEqualArea::WKT() const
   return ret.str();
 }
 
+// ----------------------------------------------------------------------
+/*!
+ * \brief Hash value
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiLambertEqualArea::HashValue() const
+{
+  std::size_t hash = NFmiAzimuthalArea::HashValue();
+  // no private members
+  return hash;
+}
 // ======================================================================

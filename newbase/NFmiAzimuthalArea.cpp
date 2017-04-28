@@ -87,6 +87,7 @@
 // ======================================================================
 
 #include "NFmiAzimuthalArea.h"
+#include <boost/functional/hash.hpp>
 #include <cassert>
 #include <cmath>
 #include <iostream>
@@ -884,6 +885,30 @@ std::istream &NFmiAzimuthalArea::Read(std::istream &file)
   Init();
 
   return file;
+}
+
+// ----------------------------------------------------------------------
+/*!
+ * \brief Hash value
+ */
+// ----------------------------------------------------------------------
+
+std::size_t NFmiAzimuthalArea::HashValue() const
+{
+  std::size_t hash = NFmiArea::HashValue();
+  boost::hash_combine(hash, itsTopRightLatLon.HashValue());
+  boost::hash_combine(hash, itsBottomLeftLatLon.HashValue());
+  boost::hash_combine(hash, itsBottomLeftWorldXY.HashValue());
+  boost::hash_combine(hash, boost::hash_value(itsXScaleFactor));
+  boost::hash_combine(hash, boost::hash_value(itsYScaleFactor));
+  boost::hash_combine(hash, itsWorldRect.HashValue());
+  boost::hash_combine(hash, boost::hash_value(itsRadialRange));
+  boost::hash_combine(hash, boost::hash_value(itsCentralLongitude));
+  boost::hash_combine(hash, itsCentralLatitude.HashValue());
+  boost::hash_combine(hash, itsTrueLatitude.HashValue());
+  boost::hash_combine(hash, boost::hash_value(itsTrueLatScaleFactor));
+  
+  return hash;
 }
 
 // ======================================================================

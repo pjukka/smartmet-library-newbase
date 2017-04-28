@@ -82,6 +82,8 @@ class _FMI_DLL NFmiGdalArea : public NFmiArea
   virtual double WorldXYHeight() const;
   virtual double WorldXYWidth() const;
 
+  std::size_t HashValue() const;
+
  private:
   void init();
 
