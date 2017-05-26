@@ -931,6 +931,10 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("ProbabilityOfPrecipitation3h8mm", kFmiProbabilityOfPrecipitation3h8mm);
   PARAMINSERT("ProbabilityOfPrecipitation3h90mm", kFmiProbabilityOfPrecipitation3h90mm);
   PARAMINSERT("ProbabilityOfPrecipitation3h9mm", kFmiProbabilityOfPrecipitation3h9mm);
+  PARAMINSERT("ProbabilityOfSeaLevelLimit1", kFmiProbabilityOfSeaLevelLimit1);
+  PARAMINSERT("ProbabilityOfSeaLevelLimit2", kFmiProbabilityOfSeaLevelLimit2);
+  PARAMINSERT("ProbabilityOfSeaLevelLimit3", kFmiProbabilityOfSeaLevelLimit3);
+  PARAMINSERT("ProbabilityOfSeaLevelLimit4", kFmiProbabilityOfSeaLevelLimit4);
   PARAMINSERT("ProbabilityOfSigWaveHeightLimit1", kFmiProbabilityOfSigWaveHeightLimit1);
   PARAMINSERT("ProbabilityOfSigWaveHeightLimit2", kFmiProbabilityOfSigWaveHeightLimit2);
   PARAMINSERT("ProbabilityOfSigWaveHeightLimit3", kFmiProbabilityOfSigWaveHeightLimit3);

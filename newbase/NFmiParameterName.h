@@ -1215,6 +1215,12 @@ enum FmiParameterName
   kFmiSignalQualityIndex = 1303,         // Opera ODIM SQI = Signal Quality Index
   kFmiReflectivityCorrelation = 1304,    // Opera ODIM RHORV = Correlation between Zh and Zv
 
+  kFmiProbabilityOfSeaLevelLimit1 = 1305, // HANSEN probability of sea level below some threshold
+  kFmiProbabilityOfSeaLevelLimit2,        // HANSEN probability of sea level above some threshold
+  kFmiProbabilityOfSeaLevelLimit3,        // -,,-
+  kFmiProbabilityOfSeaLevelLimit4,
+
+
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 
   kFmiTemperatureF99 = 4500,
