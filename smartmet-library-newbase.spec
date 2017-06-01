@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.5.26
+Version: 17.6.1
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -73,6 +73,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Thu Jun  1 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.6.1-1.fmi
+- Add parameters for sea level fractiles, mean and deviation
+
 * Fri May 26 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.5.26-1.fmi
 - Added sea level probability parameters
 
