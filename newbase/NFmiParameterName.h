@@ -1220,6 +1220,15 @@ enum FmiParameterName
   kFmiProbabilityOfSeaLevelLimit3,        // -,,-
   kFmiProbabilityOfSeaLevelLimit4,
 
+  kFmiSeaLevelF95,
+  kFmiSeaLevelF90,
+  kFmiSeaLevelF75,
+  kFmiSeaLevelF50,
+  kFmiSeaLevelF25,
+  kFmiSeaLevelF10,
+  kFmiSeaLevelF5,
+  kFmiSeaLevelDeviation,
+  kFmiSeaLevelMean,
 
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 

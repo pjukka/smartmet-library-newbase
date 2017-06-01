@@ -1064,7 +1064,16 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("SaturationDeficit", kFmiSaturationDeficit);
   PARAMINSERT("SeaLevel", kFmiSeaLevel);
   PARAMINSERT("SeaLevelAnomaly", kFmiSeaLevelAnomaly);
+  PARAMINSERT("SeaLevelDeviation", kFmiSeaLevelDeviation);
+  PARAMINSERT("SeaLevelF95", kFmiSeaLevelF95);
+  PARAMINSERT("SeaLevelF90", kFmiSeaLevelF90);
+  PARAMINSERT("SeaLevelF75", kFmiSeaLevelF75);
+  PARAMINSERT("SeaLevelF50", kFmiSeaLevelF50);
+  PARAMINSERT("SeaLevelF25", kFmiSeaLevelF25);
+  PARAMINSERT("SeaLevelF10", kFmiSeaLevelF10);
+  PARAMINSERT("SeaLevelF5", kFmiSeaLevelF5);
   PARAMINSERT("SeaLevelMaximum", kFmiSeaLevelMaximum);
+  PARAMINSERT("SeaLevelMean", kFmiSeaLevelMean);
   PARAMINSERT("SeaLevelMinimum", kFmiSeaLevelMinimum);
   PARAMINSERT("SeaPercentage", kFmiSeaPercentage);
   PARAMINSERT("SeaSprayIcing", kFmiSeaSprayIcing);
