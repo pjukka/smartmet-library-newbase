@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.6.1
+Version: 17.6.30
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -73,6 +73,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Fri Jun 30 2017 Santeri Oksman <santeri.oksman@fmi.fi> - 17.6.30-1.fmi
+- Added all CF standard names (http://cfconventions.org/Data/cf-standard-names/45/build/cf-standard-name-table.html)
+
 * Thu Jun  1 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.6.1-1.fmi
 - Add parameters for sea level fractiles, mean and deviation
 
