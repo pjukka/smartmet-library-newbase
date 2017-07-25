@@ -272,16 +272,6 @@ inline NFmiMetTime::NFmiMetTime(const short year,
 // ----------------------------------------------------------------------
 
 inline void NFmiMetTime::PreviousMetTime(void) { PreviousMetTime(GetTimeStep()); }
-// ----------------------------------------------------------------------
-/*!
- * \param thePerioid Undocumented
- */
-// ----------------------------------------------------------------------
-
-inline void NFmiMetTime::NearestMetTime(const NFmiTimePerioid& thePerioid, FmiDirection theDirect)
-{
-  NearestMetTime(thePerioid, theDirect);
-}
 
 // ----------------------------------------------------------------------
 /*!
