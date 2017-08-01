@@ -1502,6 +1502,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("PM10Concentration", kFmiPM10Concentration);
   PARAMINSERT("PM25Concentration", kFmiPM25Concentration);
   PARAMINSERT("SO2Concentration", kFmiSO2Concentration);
+  PARAMINSERT("SnowAccumulation5cmDays", kFmiSnowAccumulation5cmDays);
 }
 
 // ----------------------------------------------------------------------

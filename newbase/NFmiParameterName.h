@@ -1511,6 +1511,8 @@ enum FmiParameterName
   kFmiPM25Concentration,
   kFmiSO2Concentration,
 
+  kFmiSnowAccumulation5cmDays = 5000,
+
   // Some value larger than any other enum value
   kFmiLastParameter = 6000
 

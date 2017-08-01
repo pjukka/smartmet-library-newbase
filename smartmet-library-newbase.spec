@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.7.25
+Version: 17.8.1
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -73,6 +73,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Tue Aug 1 2017 Ville Ilkka <ville.ilkka@fmi.fi> - 17.8.1-1.fmi
+- Added a new parameter for 5cm snow accumulation days
+
 * Tue Jul 25 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.7.25-1.fmi
 - Fixed NFmiBox to use delete[]
 - Removed NearestMetTime method whose implementation caused infinite recursion
