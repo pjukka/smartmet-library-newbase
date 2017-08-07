@@ -10,6 +10,7 @@ Group: Development/Libraries
 URL: https://github.com/fmidev/smartmet-library-newbase
 Source: %{name}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildRequires: make
 BuildRequires: boost-devel >= 1.55, boost-devel < 1.56
 BuildRequires: bzip2-devel
 BuildRequires: geos-devel >= 3.4.2
