@@ -19,11 +19,6 @@
 #include <cmath>
 #include <functional>
 
-#ifdef UNIX
-long int abs(long int theValue);
-long int abs(long int theValue) { return (theValue < 0 ? -theValue : theValue); }
-#endif
-
 // ----------------------------------------------------------------------
 /*!
  * Destructor
