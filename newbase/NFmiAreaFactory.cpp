@@ -202,19 +202,6 @@ double degrees_from_projparam(const string &inParam)
     throw runtime_error(errStr);
   }
 }
-
-void print_unused_parameters(const map<string, string> &inMap, const set<string> &usedParams)
-{
-  cerr << "Unused parameters :" << endl;
-  for (const auto &it : inMap)
-  {
-    if (usedParams.find(it.first) == usedParams.end())
-    {
-      cerr << it.first << "=" << it.second << endl;
-    }
-  }
-  cerr << endl;
-}
 }
 
 namespace NFmiAreaFactory
@@ -869,7 +856,6 @@ return_type CreateProj(const std::string &projString,
     throw runtime_error(errStr);
   }
 
-  //	print_unused_parameters(projParams,usedParams);
   return result;
 }
 
