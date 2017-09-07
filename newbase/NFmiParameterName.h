@@ -5267,6 +5267,8 @@ enum FmiParameterName
   kFmitendency_of_atmosphere_mass_content_of_nitrogen_due_to_dry_deposition = 13285,
   kFmitendency_of_atmosphere_mass_content_of_nitrogen_due_to_deposition = 13286,
 
+  kFmiSnowAccumulation5cmDays = 5000,
+
   // Some value larger than any other enum value
   kFmiLastParameter = 14000
 

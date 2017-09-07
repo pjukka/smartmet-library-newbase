@@ -7887,6 +7887,8 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
               kFmitendency_of_atmosphere_mass_content_of_nitrogen_due_to_dry_deposition);
   PARAMINSERT("tendency_of_atmosphere_mass_content_of_nitrogen_due_to_deposition",
               kFmitendency_of_atmosphere_mass_content_of_nitrogen_due_to_deposition);
+
+  PARAMINSERT("SnowAccumulation5cmDays", kFmiSnowAccumulation5cmDays);
 }
 
 // ----------------------------------------------------------------------

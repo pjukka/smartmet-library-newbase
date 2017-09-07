@@ -3,24 +3,26 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.6.30
+Version: 17.9.7
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
 URL: https://github.com/fmidev/smartmet-library-newbase
 Source: %{name}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires: boost-devel >= 1.55, boost-devel < 1.56
+BuildRequires: gcc-c++
+BuildRequires: make
+BuildRequires: boost-devel >= 1.65
 BuildRequires: bzip2-devel
-BuildRequires: geos-devel >= 3.4.2
+BuildRequires: geos-devel >= 3.5.0
 BuildRequires: gdal-devel
-Requires: boost-date-time >= 1.55, boost-date-time < 1.56
-Requires: boost-regex >= 1.55, boost-regex < 1.56
-Requires: boost-filesystem >= 1.55, boost-filesystem < 1.56
-Requires: boost-iostreams >= 1.55, boost-iostreams < 1.56
-Requires: boost-system >= 1.55, boost-system < 1.56
+Requires: boost-date-time >= 1.65
+Requires: boost-regex >= 1.65
+Requires: boost-filesystem >= 1.65
+Requires: boost-iostreams >= 1.65
+Requires: boost-system >= 1.65
 Requires: gdal
-Requires: geos >= 3.4.2
+Requires: geos >= 3.5.0
 Provides: %{LIBNAME}
 Obsoletes: libsmartmet-newbase < 16.12.19
 Obsoletes: libsmartmet-newbase-debuginfo < 16.12.19
@@ -73,8 +75,19 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
-* Fri Jun 30 2017 Santeri Oksman <santeri.oksman@fmi.fi> - 17.6.30-1.fmi
+* Thu Sep  7 2017 Santeri Oksman <santeri.oksman@fmi.fi> - 17.9.7-1.fmi
 - Added all CF standard names (http://cfconventions.org/Data/cf-standard-names/45/build/cf-standard-name-table.html)
+
+* Mon Aug 28 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.8.28-1.fmi
+- Upgrade to boost 1.65
+- Ignore use of NFmiGdalArea in NFmiArea if not UNIX
+
+* Tue Aug 1 2017 Ville Ilkka <ville.ilkka@fmi.fi> - 17.8.1-1.fmi
+- Added a new parameter for 5cm snow accumulation days
+
+* Tue Jul 25 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.7.25-1.fmi
+- Fixed NFmiBox to use delete[]
+- Removed NearestMetTime method whose implementation caused infinite recursion
 
 * Thu Jun  1 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.6.1-1.fmi
 - Add parameters for sea level fractiles, mean and deviation
