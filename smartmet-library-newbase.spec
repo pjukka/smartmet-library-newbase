@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.8.28
+Version: 17.9.11
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -75,6 +75,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Mon Sep 11 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.9.11-1.fmi
+- Fixed NFmiRotatedLatLonArea WKT
+
 * Mon Aug 28 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.8.28-1.fmi
 - Upgrade to boost 1.65
 - Ignore use of NFmiGdalArea in NFmiArea if not UNIX
