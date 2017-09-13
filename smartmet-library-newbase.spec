@@ -4,7 +4,7 @@
 Summary: newbase library
 Name: %{SPECNAME}
 Version: 17.9.13
-Release: 1%{?dist}.fmi
+Release: 2%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
 URL: https://github.com/fmidev/smartmet-library-newbase
@@ -75,14 +75,14 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Wed Sep 13 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.9.13-2.fmi
+- Added all CF standard names (http://cfconventions.org/Data/cf-standard-names/45/build/cf-standard-name-table.html)
+
 * Wed Sep 13 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.9.13-1.fmi
 - New sounding index parameters for the last equilibrium level
 
 * Mon Sep 11 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.9.11-1.fmi
 - Fixed NFmiRotatedLatLonArea WKT
-
-* Thu Sep  7 2017 Santeri Oksman <santeri.oksman@fmi.fi> - 17.9.7-1.fmi
-- Added all CF standard names (http://cfconventions.org/Data/cf-standard-names/45/build/cf-standard-name-table.html)
 
 * Mon Aug 28 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.8.28-1.fmi
 - Upgrade to boost 1.65
