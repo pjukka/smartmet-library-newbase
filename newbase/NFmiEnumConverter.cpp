@@ -1164,7 +1164,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("SoundingCIN500m", kFmiSoundingCIN500m);
   PARAMINSERT("SoundingLCLHeight500m", kFmiSoundingLCLHeight500m);
   PARAMINSERT("SoundingLFCHeight500m", kFmiSoundingLFCHeight500m);
-  PARAMINSERT("SoundingELHeightS500m", kFmiSoundingELHeight500m);
+  PARAMINSERT("SoundingELHeight500m", kFmiSoundingELHeight500m);
   PARAMINSERT("SoundingLCLPressureMostUnstable", kFmiSoundingLCLMostUn);
   PARAMINSERT("SoundingLFCPressureMostUnstable", kFmiSoundingLFCMostUn);
   PARAMINSERT("SoundingELPressureMostUnstable", kFmiSoundingELMostUn);
@@ -1187,6 +1187,12 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("SoundingStormRelativeHelicity1km", kFmiSoundingSRH0_1km);
   PARAMINSERT("SoundingWindSpeed1500m", kFmiSoundingWS1500m);
   PARAMINSERT("SoundingThetaE3km", kFmiSoundingThetaE0_3km);
+  PARAMINSERT("SoundingELPressureLastSurface", kFmiSoundingELLastSur);
+  PARAMINSERT("SoundingELHeightLastSurface", kFmiSoundingELHeightLastSur);
+  PARAMINSERT("SoundingELPressureLast500m", kFmiSoundingELLast500m);
+  PARAMINSERT("SoundingELHeightLast500m", kFmiSoundingELHeightLast500m);
+  PARAMINSERT("SoundingELPressureLastMostUnstable", kFmiSoundingELLastMostUn);
+  PARAMINSERT("SoundingELHeightLastMostUnstable", kFmiSoundingELHeightLastMostUn);
   PARAMINSERT("SpecificDifferentialPhase", kFmiSpecificDifferentialPhase);
   PARAMINSERT("SpecificHumidity", kFmiSpecificHumidity);
   PARAMINSERT("SpecificHumidityF0", kFmiSpecificHumidityF0);

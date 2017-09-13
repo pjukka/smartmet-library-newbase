@@ -1480,6 +1480,13 @@ enum FmiParameterName
   kFmiSoundingSRH0_1km,
   kFmiSoundingWS1500m,
   kFmiSoundingThetaE0_3km,
+  // myohemmin lisattya: viimeinen EL-taso
+  kFmiSoundingELLastSur = 4776,
+  kFmiSoundingELHeightLastSur,
+  kFmiSoundingELLast500m,
+  kFmiSoundingELHeightLast500m,
+  kFmiSoundingELLastMostUn,
+  kFmiSoundingELHeightLastMostUn,
 
   /* STOP SOUNDING INDEX PARAMETERS */
 
