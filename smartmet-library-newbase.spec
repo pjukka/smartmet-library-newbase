@@ -81,6 +81,9 @@ FMI newbase static library
 * Mon Sep 11 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.9.11-1.fmi
 - Fixed NFmiRotatedLatLonArea WKT
 
+* Thu Sep  7 2017 Santeri Oksman <santeri.oksman@fmi.fi> - 17.9.7-1.fmi
+- Added all CF standard names (http://cfconventions.org/Data/cf-standard-names/45/build/cf-standard-name-table.html)
+
 * Mon Aug 28 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.8.28-1.fmi
 - Upgrade to boost 1.65
 - Ignore use of NFmiGdalArea in NFmiArea if not UNIX
