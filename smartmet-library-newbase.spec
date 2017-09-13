@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.9.11
+Version: 17.9.13
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -75,6 +75,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Wed Sep 13 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.9.13-1.fmi
+- New sounding index parameters for the last equilibrium level
+
 * Mon Sep 11 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.9.11-1.fmi
 - Fixed NFmiRotatedLatLonArea WKT
 
