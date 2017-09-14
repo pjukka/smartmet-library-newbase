@@ -3,8 +3,8 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.9.13
-Release: 2%{?dist}.fmi
+Version: 17.9.14
+Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
 URL: https://github.com/fmidev/smartmet-library-newbase
@@ -75,6 +75,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Thu Sep 14 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.9.14-1.fmi
+- NFmiGdalArea now prepends AreaStr with WGS84 so that NFmiAreaFactory can be used on the output
+
 * Wed Sep 13 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.9.13-2.fmi
 - Added all CF standard names (http://cfconventions.org/Data/cf-standard-names/45/build/cf-standard-name-table.html)
 
