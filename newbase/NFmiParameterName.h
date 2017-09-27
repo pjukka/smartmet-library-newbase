@@ -1230,6 +1230,23 @@ enum FmiParameterName
   kFmiSeaLevelDeviation,
   kFmiSeaLevelMean,
 
+  kFmiProbabilityOfMUCAPELimit1 = 1318,  // Most Unstable CAPE over some threshold
+  kFmiProbabilityOfMUCAPELimit2,
+  kFmiProbabilityOfMUCAPELimit3,
+  kFmiProbabilityOfMUCAPELimit4,
+  kFmiProbabilityOfMUCAPELimit5,
+  kFmiProbabilityOfMLCAPELimit1 = 1325,  // Mixed Layer CAPE over some threshold
+  kFmiProbabilityOfMLCAPELimit2,
+  kFmiProbabilityOfMLCAPELimit3,
+  kFmiProbabilityOfMLCAPELimit4,
+  kFmiProbabilityOfMLCAPELimit5,
+  kFmiProbabilityOfMUCAPE1040Limit1 = 1332,  // Most Unstable CAPE -10 .. -40 over some threshold
+  kFmiProbabilityOfMUCAPE1040Limit2,
+  kFmiProbabilityOfMUCAPE1040Limit3,
+  kFmiProbabilityOfMUCAPE1040Limit4,
+  kFmiProbabilityOfMUCAPE1040Limit5,
+
+
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 
   kFmiTemperatureF99 = 4500,
