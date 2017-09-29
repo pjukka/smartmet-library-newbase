@@ -54,6 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 %package -n %{SPECNAME}-devel
 Summary: FMI newbase development files
 Provides: %{SPECNAME}-devel
+Requires: %{SPECNAME}
 Obsoletes: libsmartmet-newbase-devel < 16.12.19
 
 %description -n %{SPECNAME}-devel
