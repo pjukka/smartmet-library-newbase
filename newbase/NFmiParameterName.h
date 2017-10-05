@@ -1245,7 +1245,43 @@ enum FmiParameterName
   kFmiProbabilityOfMUCAPE1040Limit3,
   kFmiProbabilityOfMUCAPE1040Limit4,
   kFmiProbabilityOfMUCAPE1040Limit5,
-
+  kFmiProbabilityOfCeilingLimit1 = 1339,
+  kFmiProbabilityOfCeilingLimit2,
+  kFmiProbabilityOfCeilingLimit3,
+  kFmiProbabilityOfCeilingLimit4,
+  kFmiProbabilityOfCeilingLimit5,
+  kFmiProbabilityOfCeilingLimit6,
+  kFmiProbabilityOfVisibilityLimit1 = 1346,
+  kFmiProbabilityOfVisibilityLimit2,
+  kFmiProbabilityOfVisibilityLimit3,
+  kFmiProbabilityOfVisibilityLimit4,
+  kFmiProbabilityOfVisibilityLimit5,
+  kFmiProbabilityOfVisibilityLimit6,
+  kFmiProbabilityOfVisibility2Limit1 = 1353,
+  kFmiProbabilityOfVisibility2Limit2,
+  kFmiProbabilityOfVisibility2Limit3,
+  kFmiProbabilityOfVisibility2Limit4,
+  kFmiProbabilityOfVisibility2Limit5,
+  kFmiProbabilityOfVisibility2Limit6,
+  kFmiProbabilityOfCBOrTCU = 1360,
+  kFmiProbabilityOfFreezingPrecForm, // freezing rain + freezing drizzle
+  kFmiProbabilityOfLVP, // low visibility procedures (aviation)
+  kFmiProbabilityOfSnLimit1 = 1363,
+  kFmiProbabilityOfSnLimit2,
+  kFmiProbabilityOfSnLimit3,
+  kFmiProbabilityOfSnLimit4,
+  kFmiProbabilityOfSnLimit5,
+  kFmiProbabilityOfSnLimit6,
+  kFmiProbabilityOfSn3Limit1 = 1370,
+  kFmiProbabilityOfSn3Limit2,
+  kFmiProbabilityOfSn3Limit3,
+  kFmiProbabilityOfSn3Limit4,
+  kFmiProbabilityOfSn3Limit5,
+  kFmiProbabilityOfSn3Limit6,
+  kFmiLowestFEWHeight = 1377, // height of lowest FEW cloud layer
+  kFmiLowestSCTHeight,
+  kFmiLowestBKNHeight,
+  kFmiLowestOVCHeight,
 
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 
@@ -1504,6 +1540,12 @@ enum FmiParameterName
   kFmiSoundingELHeightLast500m,
   kFmiSoundingELLastMostUn,
   kFmiSoundingELHeightLastMostUn,
+  kFmiSoundingLPLMostUn,
+  kFmiSoundingLPLHeightMostUn,
+  kFmiSoundingBS0_3km,
+  kFmiSoundingEBS, // effective bulk shear
+  kFmiSoundingBulkRichardsonNumber,
+  kFmiSoundingEnergyHelicityIndex,
 
   /* STOP SOUNDING INDEX PARAMETERS */
 
