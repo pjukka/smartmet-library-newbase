@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.9.27
+Version: 17.10.5
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -12,15 +12,15 @@ Source: %{name}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: gcc-c++
 BuildRequires: make
-BuildRequires: boost-devel >= 1.65
+BuildRequires: boost-devel >= 1.65.0
 BuildRequires: bzip2-devel
 BuildRequires: geos-devel >= 3.5.0
 BuildRequires: gdal-devel
-Requires: boost-date-time >= 1.65
-Requires: boost-regex >= 1.65
-Requires: boost-filesystem >= 1.65
-Requires: boost-iostreams >= 1.65
-Requires: boost-system >= 1.65
+Requires: boost-date-time >= 1.65.0
+Requires: boost-regex >= 1.65.0
+Requires: boost-filesystem >= 1.65.0
+Requires: boost-iostreams >= 1.65.0
+Requires: boost-system >= 1.65.0
 Requires: gdal
 Requires: geos >= 3.5.0
 Provides: %{LIBNAME}
@@ -76,6 +76,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Thu Oct  5 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.10.5-1.fmi
+- New probability type parameters
+
 * Wed Sep 27 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.9.27-1.fmi
 - Add probability parameters for MUCAPE, MLCAPE and MUCAPE -10 .. -40
 
