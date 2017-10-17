@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.10.5
+Version: 17.10.17
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -76,6 +76,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Tue Oct 17 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.10.17-1.fmi
+- Added new parameters for olive pollen
+
 * Thu Oct  5 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.10.5-1.fmi
 - New probability type parameters
 

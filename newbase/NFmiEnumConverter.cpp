@@ -1544,6 +1544,10 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("RagweedPollenConcentration", kFmiRagweedPollenConcentration);
   PARAMINSERT("RagweedPollenAvailable", kFmiRagweedPollenAvailable);
   PARAMINSERT("RagweedPollenRemainingRatio", kFmiRagweedPollenRemainingRatio);
+  PARAMINSERT("OlivePollenTemperatureSum", kFmiOlivePollenTemperatureSum);
+  PARAMINSERT("OlivePollenConcentration", kFmiOlivePollenConcentration);
+  PARAMINSERT("OlivePollenAvailable", kFmiOlivePollenAvailable);
+  PARAMINSERT("OlivePollenRemainingRatio", kFmiOlivePollenRemainingRatio);
   PARAMINSERT("SeaDepth", kFmiSeaDepth);
   PARAMINSERT("MixedLayerThickness", kFmiMixedLayerThickness);
   PARAMINSERT("SeaSurfaceElevation", kFmiSeaSurfaceElevation);

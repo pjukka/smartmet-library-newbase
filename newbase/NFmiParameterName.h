@@ -597,6 +597,11 @@ enum FmiParameterName
   kFmiRagweedPollenAvailable = 620,
   kFmiRagweedPollenRemainingRatio = 621,
 
+  kFmiOlivePollenTemperatureSum = 622,
+  kFmiOlivePollenConcentration = 623,
+  kFmiOlivePollenAvailable = 624,
+  kFmiOlivePollenRemainingRatio = 625,
+
   // Tiesäämallin ja aurausmallin parametreja
   kFmiFrostSum = 634,  // kFmiGrowthPeriodPrecipitationAnomaly
   kFmiRoadFrostCover = 635,
@@ -1264,8 +1269,8 @@ enum FmiParameterName
   kFmiProbabilityOfVisibility2Limit5,
   kFmiProbabilityOfVisibility2Limit6,
   kFmiProbabilityOfCBOrTCU = 1360,
-  kFmiProbabilityOfFreezingPrecForm, // freezing rain + freezing drizzle
-  kFmiProbabilityOfLVP, // low visibility procedures (aviation)
+  kFmiProbabilityOfFreezingPrecForm,  // freezing rain + freezing drizzle
+  kFmiProbabilityOfLVP,               // low visibility procedures (aviation)
   kFmiProbabilityOfSnLimit1 = 1363,
   kFmiProbabilityOfSnLimit2,
   kFmiProbabilityOfSnLimit3,
@@ -1278,7 +1283,7 @@ enum FmiParameterName
   kFmiProbabilityOfSn3Limit4,
   kFmiProbabilityOfSn3Limit5,
   kFmiProbabilityOfSn3Limit6,
-  kFmiLowestFEWHeight = 1377, // height of lowest FEW cloud layer
+  kFmiLowestFEWHeight = 1377,  // height of lowest FEW cloud layer
   kFmiLowestSCTHeight,
   kFmiLowestBKNHeight,
   kFmiLowestOVCHeight,
@@ -1543,7 +1548,7 @@ enum FmiParameterName
   kFmiSoundingLPLMostUn,
   kFmiSoundingLPLHeightMostUn,
   kFmiSoundingBS0_3km,
-  kFmiSoundingEBS, // effective bulk shear
+  kFmiSoundingEBS,  // effective bulk shear
   kFmiSoundingBulkRichardsonNumber,
   kFmiSoundingEnergyHelicityIndex,
 
