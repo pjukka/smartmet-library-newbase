@@ -452,13 +452,13 @@ boost::shared_ptr<NFmiArea> Create(const std::string &theProjection)
 #else
     else
     {
-      throw std::runtime_error("gdal disabled");
+      throw std::runtime_error("Unknown projection (GDAL not linked in): " + theProjection);
     }
 #endif  // DISABLED_GDAL
 #else
     else
     {
-      throw std::runtime_error("unsupported projection");
+      throw std::runtime_error("Unknown projection: " + theProjection);
     }
 #endif  // UNIX
 
