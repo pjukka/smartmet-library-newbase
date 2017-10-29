@@ -15,10 +15,11 @@
  */
 // ======================================================================
 
+#include <prettyprint.hpp>
+
 // NFmiQueryDataUtil-luokka käsittelee/muokkaa funktioidensa avulla
 // querydata-otuksia.
 
-#include "NFmiQueryDataUtil.h"
 #include "NFmiAzimuthalArea.h"
 #include "NFmiCalculationCondition.h"
 #include "NFmiCalculator.h"
@@ -34,6 +35,7 @@
 #include "NFmiLogger.h"
 #include "NFmiProducerIdLister.h"
 #include "NFmiQueryData.h"
+#include "NFmiQueryDataUtil.h"
 #include "NFmiRelativeDataIterator.h"
 #include "NFmiRelativeTimeIntegrationIterator.h"
 #include "NFmiSmoother.h"
@@ -4680,93 +4682,113 @@ static void FillGridDataInThread(NFmiFastQueryInfo &theSourceInfo,
                                  int theThreadNumber,
                                  NFmiLogger *theLogger)
 {
-  if (theLogger)
-  {
-    std::string logStr("FillGridDataInThread - thread no: ");
-    logStr += NFmiStringTools::Convert(theThreadNumber);
-    logStr += " started with start-time-index: ";
-    logStr += NFmiStringTools::Convert(theStartTimeIndex);
-    logStr += " and end-time-index: ";
-    logStr += NFmiStringTools::Convert(theEndTimeIndex);
-    theLogger->LogMessage(logStr, NFmiLogger::kDebugInfo);
-  }
   if (theStartTimeIndex == gMissingIndex || theEndTimeIndex == gMissingIndex) return;
 
   NFmiDataMatrix<float> gridValues;
-  bool doGroundData =
+  const bool doGroundData =
       (theSourceInfo.SizeLevels() == 1) &&
       (theTargetInfo.SizeLevels() ==
        1);  // jos molemmissa datoissa vain yksi leveli, se voidaan jättää tarkastamatta
-  bool doLocationInterpolation =
+  const bool doLocationInterpolation =
       (NFmiQueryDataUtil::AreGridsEqual(theSourceInfo.Grid(), theTargetInfo.Grid()) == false);
 
   unsigned long targetXSize = theTargetInfo.GridXNumber();
-  for (theTargetInfo.ResetParam(); theTargetInfo.NextParam();)
+
+  // Establish output timeindexes up front for speed. -1 implies time is not available
+  std::vector<long> timeindexes(theEndTimeIndex + 1, -1);
+
+  bool doTimeInterpolations = false;
+  for (unsigned long i = theStartTimeIndex; i <= theEndTimeIndex; i++)
   {
-    if (theLogger)
+    if (theTargetInfo.TimeIndex(i))
     {
-      std::string logStr("FillGridDataInThread - thread no: ");
-      logStr += NFmiStringTools::Convert(theThreadNumber);
-      logStr += " starting param: ";
-      logStr += NFmiStringTools::Convert(theTargetInfo.ParamIndex() + 1);
-      logStr += "/";
-      logStr += NFmiStringTools::Convert(theTargetInfo.SizeParams());
-      if (theTargetInfo.ParamIndex() == 0) logStr += " (outer loop)";
-      theLogger->LogMessage(logStr, NFmiLogger::kDebugInfo);
+      if (theSourceInfo.Time(theTargetInfo.Time()))
+        timeindexes[i] = theSourceInfo.TimeIndex();
+      else if (!doTimeInterpolations &&
+               theSourceInfo.TimeDescriptor().IsInside(theTargetInfo.Time()))
+        doTimeInterpolations = true;
     }
+  }
 
-    if (theSourceInfo.Param(static_cast<FmiParameterName>(theTargetInfo.Param().GetParamIdent())))
+  // Fast special case if there are no location or time interpolations
+
+  if (!doLocationInterpolation && !doTimeInterpolations)
+  {
+    for (theTargetInfo.ResetParam(); theTargetInfo.NextParam();)
     {
-      for (theTargetInfo.ResetLevel(); theTargetInfo.NextLevel();)
+      if (theSourceInfo.Param(static_cast<FmiParameterName>(theTargetInfo.Param().GetParamIdent())))
       {
-        if (doGroundData || theSourceInfo.Level(*theTargetInfo.Level()))
+        for (theTargetInfo.ResetLevel(); theTargetInfo.NextLevel();)
         {
-          for (unsigned long i = theStartTimeIndex; i <= theEndTimeIndex; i++)
+          // if (doGroundData || theSourceInfo.Level(*theTargetInfo.Level()))
+          if (theSourceInfo.Level(*theTargetInfo.Level()))
           {
-            if (theTargetInfo.TimeIndex(i) == false) continue;
-            NFmiMetTime targetTime = theTargetInfo.Time();
-            bool doTimeInterpolation =
-                false;  // jos aikaa ei löydy suoraan, tarvittaessa tehdään aikainterpolaatio
-            if (theSourceInfo.Time(theTargetInfo.Time()) ||
-                (doTimeInterpolation =
-                     theSourceInfo.TimeDescriptor().IsInside(theTargetInfo.Time())) == true)
+            for (theTargetInfo.ResetLocation(), theSourceInfo.ResetLocation();
+                 theTargetInfo.NextLocation() && theSourceInfo.NextLocation();)
             {
-              NFmiTimeCache &timeCache = theTimeCacheVector[theTargetInfo.TimeIndex()];
-              if (doLocationInterpolation == false)
+              for (unsigned long i = theStartTimeIndex; i <= theEndTimeIndex; i++)
               {
-                if (doTimeInterpolation)
-                  theSourceInfo.Values(gridValues, targetTime);
-                else
-                  theSourceInfo.Values(gridValues);
-
-                theTargetInfo.SetValues(gridValues);
-              }
-              else
-              {  // interpoloidaan paikan suhteen
-                for (theTargetInfo.ResetLocation(); theTargetInfo.NextLocation();)
+                if (timeindexes[i] >= 0)
                 {
-                  float value = kFloatMissing;
-                  //									float value2
-                  //=
-                  // kFloatMissing;
-                  NFmiLocationCache &locCache =
-                      theLocationCacheMatrix[theTargetInfo.LocationIndex() % targetXSize]
-                                            [theTargetInfo.LocationIndex() / targetXSize];
-                  if (doLocationInterpolation && doTimeInterpolation)
-                    value = theSourceInfo.CachedInterpolation(locCache, timeCache);
-                  else if (doLocationInterpolation)
+                  theTargetInfo.TimeIndex(i);
+                  theSourceInfo.TimeIndex(timeindexes[i]);
+                  theTargetInfo.FloatValue(theSourceInfo.FloatValue());
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    // There are location or time interpolations
+
+    for (theTargetInfo.ResetParam(); theTargetInfo.NextParam();)
+    {
+      if (theSourceInfo.Param(static_cast<FmiParameterName>(theTargetInfo.Param().GetParamIdent())))
+      {
+        for (theTargetInfo.ResetLevel(); theTargetInfo.NextLevel();)
+        {
+          if (doGroundData || theSourceInfo.Level(*theTargetInfo.Level()))
+          {
+            for (unsigned long i = theStartTimeIndex; i <= theEndTimeIndex; i++)
+            {
+              if (theTargetInfo.TimeIndex(i) == false) continue;
+              NFmiMetTime targetTime = theTargetInfo.Time();
+              bool doTimeInterpolation =
+                  false;  // jos aikaa ei löydy suoraan, tarvittaessa tehdään aikainterpolaatio
+              if (theSourceInfo.Time(theTargetInfo.Time()) ||
+                  (doTimeInterpolation =
+                       theSourceInfo.TimeDescriptor().IsInside(theTargetInfo.Time())) == true)
+              {
+                NFmiTimeCache &timeCache = theTimeCacheVector[theTargetInfo.TimeIndex()];
+                if (doLocationInterpolation == false)
+                {
+                  if (doTimeInterpolation)
+                    theSourceInfo.Values(gridValues, targetTime);
+                  else
+                    theSourceInfo.Values(gridValues);
+
+                  theTargetInfo.SetValues(gridValues);
+                }
+                else
+                {  // interpoloidaan paikan suhteen
+                  for (theTargetInfo.ResetLocation(); theTargetInfo.NextLocation();)
                   {
-                    value = theSourceInfo.CachedInterpolation(locCache);
-                    /*
-                                                                                                    value2 = theSourceInfo.InterpolatedValue(theTargetInfo.LatLon());
-                                                                                                    if(::IsEqualEnough(value, value2, 0.00000001f) == false)
-                                                                                                    {
-                                                                                                            value = theSourceInfo.CachedInterpolation(locCache);
-                                                                                                            value2 = theSourceInfo.InterpolatedValue(theTargetInfo.LatLon());
-                                                                                                    }
-                    */
+                    float value = kFloatMissing;
+                    NFmiLocationCache &locCache =
+                        theLocationCacheMatrix[theTargetInfo.LocationIndex() % targetXSize]
+                                              [theTargetInfo.LocationIndex() / targetXSize];
+                    if (doLocationInterpolation && doTimeInterpolation)
+                      value = theSourceInfo.CachedInterpolation(locCache, timeCache);
+                    else if (doLocationInterpolation)
+                    {
+                      value = theSourceInfo.CachedInterpolation(locCache);
+                    }
+                    theTargetInfo.FloatValue(value);
                   }
-                  theTargetInfo.FloatValue(value);
                 }
               }
             }
