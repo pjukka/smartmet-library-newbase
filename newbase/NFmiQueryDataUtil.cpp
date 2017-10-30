@@ -15,11 +15,10 @@
  */
 // ======================================================================
 
-#include <prettyprint.hpp>
-
 // NFmiQueryDataUtil-luokka käsittelee/muokkaa funktioidensa avulla
 // querydata-otuksia.
 
+#include "NFmiQueryDataUtil.h"
 #include "NFmiAzimuthalArea.h"
 #include "NFmiCalculationCondition.h"
 #include "NFmiCalculator.h"
@@ -35,7 +34,6 @@
 #include "NFmiLogger.h"
 #include "NFmiProducerIdLister.h"
 #include "NFmiQueryData.h"
-#include "NFmiQueryDataUtil.h"
 #include "NFmiRelativeDataIterator.h"
 #include "NFmiRelativeTimeIntegrationIterator.h"
 #include "NFmiSmoother.h"
