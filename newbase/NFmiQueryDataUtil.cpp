@@ -4702,8 +4702,7 @@ static void FillGridDataInThread(NFmiFastQueryInfo &theSourceInfo,
     {
       if (theSourceInfo.Time(theTargetInfo.Time()))
         timeindexes[i] = theSourceInfo.TimeIndex();
-      else if (!doTimeInterpolations &&
-               theSourceInfo.TimeDescriptor().IsInside(theTargetInfo.Time()))
+      else if (!doTimeInterpolations && theSourceInfo.IsInside(theTargetInfo.Time()))
         doTimeInterpolations = true;
     }
   }
