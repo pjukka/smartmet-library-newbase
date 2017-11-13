@@ -3784,13 +3784,13 @@ static float InterpolateWindDir(std::vector<float> &theWSvalues,
 float NFmiQueryInfo::CachedLocationInterpolatedValue(std::vector<float> &theValues,
                                                      size_t theStartIndex,
                                                      const NFmiLocationCache &theLocationCache,
-                                                     FmiInterpolationMethod theInterpolatioMethod,
+                                                     FmiInterpolationMethod theInterpolationMethod,
                                                      FmiParameterName theParId)
 {
   float value = kFloatMissing;
   const NFmiPoint &gpoint = theLocationCache.itsGridPoint;
 
-  if (theInterpolatioMethod == kByCombinedParam)
+  if (theInterpolationMethod == kByCombinedParam)
   {
     if (theParId == kFmiWeatherAndCloudiness)
       value = ::InterpolateWandC(
@@ -3799,7 +3799,16 @@ float NFmiQueryInfo::CachedLocationInterpolatedValue(std::vector<float> &theValu
       value = ::InterpolateTotalWind(
           theValues, theStartIndex, theLocationCache.itsGridPoint, InfoVersion());
   }
-  else if (theInterpolatioMethod == kNearestNonMissing)
+  else if (theInterpolationMethod == kNearestPoint)
+  {
+    value = static_cast<float>(NFmiInterpolation::NearestPoint(gpoint.X() - floor(gpoint.X()),
+                                                               gpoint.Y() - floor(gpoint.Y()),
+                                                               theValues[theStartIndex + 3],
+                                                               theValues[theStartIndex + 2],
+                                                               theValues[theStartIndex + 0],
+                                                               theValues[theStartIndex + 1]));
+  }
+  else if (theInterpolationMethod == kNearestNonMissing)
   {
     value = static_cast<float>(NFmiInterpolation::NearestNonMissing(gpoint.X() - floor(gpoint.X()),
                                                                     gpoint.Y() - floor(gpoint.Y()),
@@ -3847,12 +3856,12 @@ float NFmiQueryInfo::CachedLocationInterpolatedValue(std::vector<float> &theValu
 float NFmiQueryInfo::CachedTimeInterpolatedValue(float theValue1,
                                                  float theValue2,
                                                  const NFmiTimeCache &theTimeCache,
-                                                 FmiInterpolationMethod theInterpolatioMethod,
+                                                 FmiInterpolationMethod theInterpolationMethod,
                                                  FmiParameterName theParId)
 {
   float value = kFloatMissing;
   float offset = theTimeCache.itsOffset;
-  if (theInterpolatioMethod == kByCombinedParam)
+  if (theInterpolationMethod == kByCombinedParam)
   {
     if (theParId == kFmiTotalWindMS)
     {  // korjasin käyttämään SetToWeightedMean-metodia, joka laskee u- ja v-komponenttien avulla
@@ -3896,7 +3905,7 @@ float NFmiQueryInfo::CachedTimeInterpolatedValue(float theValue1,
     }
     else
     {
-      if (theInterpolatioMethod == kNearestNonMissing)
+      if (theInterpolationMethod == kNearestNonMissing)
       {
         if (offset <= 0.5)
         {
@@ -3909,7 +3918,7 @@ float NFmiQueryInfo::CachedTimeInterpolatedValue(float theValue1,
           if (value == kFloatMissing) value = theValue1;
         }
       }
-      else if (theInterpolatioMethod != kLinearly)
+      else if (theInterpolationMethod != kLinearly)
       {
         if (offset <= 0.5)
           value = theValue1;
