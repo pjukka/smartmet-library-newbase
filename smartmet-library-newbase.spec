@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.11.13
+Version: 17.11.16
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -76,6 +76,10 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Thu Nov 16 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.11.16-1.fmi
+- Added two 24h precipitation probability parameters (which are used even now, but not 'registered')
+- Added short wave radiation accumulation parameter (for Harmonie / open data)
+
 * Mon Nov 13 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.11.13-1.fmi
 - Fixed cached interpolations to work with the nearest point method
 
