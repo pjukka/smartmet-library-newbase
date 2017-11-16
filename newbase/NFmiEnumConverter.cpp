@@ -903,6 +903,8 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("ProbabilityOfPr24Limit3", kFmiProbabilityOfPr24Limit3);
   PARAMINSERT("ProbabilityOfPr24Limit4", kFmiProbabilityOfPr24Limit4);
   PARAMINSERT("ProbabilityOfPr24Limit5", kFmiProbabilityOfPr24Limit5);
+  PARAMINSERT("ProbabilityOfPr24Limit6", kFmiProbabilityOfPr24Limit6);
+  PARAMINSERT("ProbabilityOfPr24Limit7", kFmiProbabilityOfPr24Limit7);
   PARAMINSERT("ProbabilityOfPr6Limit1", kFmiProbabilityOfPr6Limit1);
   PARAMINSERT("ProbabilityOfPr6Limit2", kFmiProbabilityOfPr6Limit2);
   PARAMINSERT("ProbabilityOfPr6Limit3", kFmiProbabilityOfPr6Limit3);
@@ -1051,6 +1053,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("RadiationOutSW2", kFmiRadiationOutSW2);
   PARAMINSERT("RadiationReflected", kFmiRadiationReflected);
   PARAMINSERT("RadiationSW", kFmiRadiationSW);
+  PARAMINSERT("RadiationSWAccumulation", kFmiRadiationSWAccumulation);
   PARAMINSERT("RaftIceConcentration", kFmiRaftIceConcentration);
   PARAMINSERT("RaftIceThickness", kFmiRaftIceThickness);
   PARAMINSERT("RainIntensityWeather", kFmiRainIntensityWeather);

@@ -974,6 +974,8 @@ enum FmiParameterName
   kFmiProbabilityOfPr24Limit3 = 1073,  // EPS: tod.n. rr24h > 50 mm
   kFmiProbabilityOfPr24Limit4 = 1074,  // EPS: tod.n. rr24h > 70 mm
   kFmiProbabilityOfPr24Limit5 = 1075,  // EPS: tod.n. rr24h > 120 mm
+  kFmiProbabilityOfPr24Limit6 = 1076,  // EPS: tod.n. rr24h > X mm
+  kFmiProbabilityOfPr24Limit7 = 1077,  // EPS: tod.n. rr24h > X mm
 
   kFmiProbabilityOfSn6Limit1 = 1081,  // EPS: tod.n. SN 6h > 1mm
   kFmiProbabilityOfSn6Limit2 = 1082,  // EPS: tod.n. SN 6h > 5mm
@@ -1287,6 +1289,7 @@ enum FmiParameterName
   kFmiLowestSCTHeight,
   kFmiLowestBKNHeight,
   kFmiLowestOVCHeight,
+  kFmiRadiationSWAccumulation = 1381,
 
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 
