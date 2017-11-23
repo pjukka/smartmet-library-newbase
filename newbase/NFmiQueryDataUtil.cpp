@@ -525,13 +525,24 @@ NFmiQueryData *NFmiQueryDataUtil::Area1QDOverArea2QD(NFmiQueryData *areaData1,
 
 NFmiQueryData *NFmiQueryDataUtil::CreateEmptyData(NFmiQueryInfo &srcInfo)
 {
-  if (srcInfo.Size() == 0)
-    throw std::runtime_error(
-        "Error in NFmiQueryDataUtil::CreateEmptyData: given srcInfo size was 0, one or several "
-        "descriptor(s) was empty?");
-  auto *data = new NFmiQueryData(srcInfo);
-  data->Init();
-  return data;
+  if (srcInfo.Size() != 0)
+  {
+    auto *data = new NFmiQueryData(srcInfo);
+    data->Init();
+    return data;
+  }
+
+  if (srcInfo.SizeParams() == 0)
+    throw std::runtime_error("CreateEmptyData: number of parameters is zero");
+  if (srcInfo.SizeTimes() == 0)
+    throw std::runtime_error("CreateEmptyData: number of times is zero");
+  if (srcInfo.SizeLevels() == 0)
+    throw std::runtime_error("CreateEmptyData: number of levels is zero");
+  if (srcInfo.SizeLocations() == 0)
+    throw std::runtime_error("CreateEmptyData: number of locations is zero");
+
+  // Should never be reached
+  throw std::runtime_error("CreateEmptyData: total size of data descriptors is zero");
 }
 
 // ----------------------------------------------------------------------
@@ -1379,7 +1390,7 @@ bool InterpolateSimilarDataToSmallerTimeResolution(NFmiFastQueryInfo *theDestina
     bool useLagrange = theInterpolationMethod == kLagrange;
     unsigned long lagrangeTimeIndex = 0;  // tähän laitetaan interpoloitavaa aikaa lähin edeltävän
                                           // ajan aikaindeksi, joka löytyy lähdedatasta
-    double lagrangeTimePosition = 0;      // tähän laitetaan interpoloitavan ajan paikka 0 - 1
+    double lagrangeTimePosition = 0;  // tähän laitetaan interpoloitavan ajan paikka 0 - 1
     // avaruudessa niiden kahden aikapisteen välissä, jotka ovat
     // lähinnä interpoloitavaa pistettä lähdedatassa.
     fullFill = true;
@@ -3829,8 +3840,10 @@ NFmiQueryData *DoTimeFilteringWithSmoother(NFmiQueryData *theSourceData,
     // HUOM! ei osaa hoitaa hommaa oikein jos datassa on aikalista jossa erilaiset aikavälit
     int sizeTimes = sourceInfo.SizeTimes();
     checkedVector<float> relTimeLocation(
-        sizeTimes);  // x on aika eli eri aika-askelten suhteelliset sijainnit (0, 1, 2, 3, ...)
-                     //		std::accumulate(relTimeLocation.begin(), relTimeLocation.end(), 0); // 0
+        sizeTimes);  // x on aika eli eri aika-askelten suhteelliset sijainnit (0,
+                     // 1, 2, 3, ...)
+                     //		std::accumulate(relTimeLocation.begin(),
+                     // relTimeLocation.end(), 0); // 0
     // tarkoittaa
     // että
     // täytetään vektori luvuilla jotka alkavat 0:sta ja kasvavat aina yhdellä
@@ -4349,7 +4362,7 @@ struct less<NFmiDataIdent>
     return lhs.GetParamIdent() < rhs.GetParamIdent();
   }
 };
-}
+}  // namespace std
 
 static NFmiParamDescriptor MakeParamDesc(
     std::vector<boost::shared_ptr<NFmiFastQueryInfo> > &theFInfoVectorIn)
@@ -4380,7 +4393,7 @@ struct less<NFmiLevel>
     return lhs.LevelValue() < rhs.LevelValue();
   }
 };
-}
+}  // namespace std
 
 static NFmiVPlaceDescriptor MakeVPlaceDesc(
     std::vector<boost::shared_ptr<NFmiFastQueryInfo> > &theFInfoVectorIn)
