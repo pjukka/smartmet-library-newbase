@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.11.23
+Version: 17.11.27
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -76,6 +76,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Mon Nov 27 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.11.27-1.fmi
+- Fixed potential memory leaks and nullptr dereferences
+
 * Thu Nov 23 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.11.23-1.fmi
 - Improved error messages when trying to create empty output querydata
 
