@@ -392,11 +392,11 @@ float NFmiSuperSmartInfo::FloatValue() const
 
 NFmiCombinedParam* NFmiSuperSmartInfo::CombinedValue()
 {
-// Käyttäjä on etukäteen määrännyt millä tasolla haluaa dataa
-// määrämällä itsFloatValueAccessLevel.
-// kommenteissa on oikea käyntijärjestys. Jos joku lisää jonkun
-// haaran käyttöön (esim. TimeIntegrationCombinedValue:n), pitää
-// se kommentoida esiin että 'vesiputous' toimisi oikeassa järjestyksessä.
+  // Käyttäjä on etukäteen määrännyt millä tasolla haluaa dataa
+  // määrämällä itsFloatValueAccessLevel.
+  // kommenteissa on oikea käyntijärjestys. Jos joku lisää jonkun
+  // haaran käyttöön (esim. TimeIntegrationCombinedValue:n), pitää
+  // se kommentoida esiin että 'vesiputous' toimisi oikeassa järjestyksessä.
 
 #if 0
   if(itsFloatValueAccessLevel == kNormalAccess)
@@ -1326,6 +1326,7 @@ NFmiBitmapAreaMask* NFmiSuperSmartInfo::CreateZeroVariationHelperBinaryMask()
 
     return helperMask;
   }
+  delete helperMask;
   return nullptr;
 }
 
