@@ -63,9 +63,12 @@ NFmiParamDescriptor::NFmiParamDescriptor(const NFmiParamDescriptor &theParamDesc
       itsActivity(nullptr),
       fInterpolate(theParamDescriptor.fInterpolate)
 {
-  itsActivity = new bool[static_cast<int>(itsParamBag->GetSize())];  // 5.3.1997/Marko
-  for (int i = 0; i < static_cast<int>(itsParamBag->GetSize()); i++)
-    itsActivity[i] = theParamDescriptor.itsActivity[i];
+  if (itsParamBag != nullptr)
+  {
+    itsActivity = new bool[static_cast<int>(itsParamBag->GetSize())];  // 5.3.1997/Marko
+    for (int i = 0; i < static_cast<int>(itsParamBag->GetSize()); i++)
+      itsActivity[i] = theParamDescriptor.itsActivity[i];
+  }
 }
 
 // ----------------------------------------------------------------------
