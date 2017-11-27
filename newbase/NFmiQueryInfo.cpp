@@ -404,7 +404,7 @@ NFmiQueryInfo::NFmiQueryInfo(NFmiQueryData *theInfo,
       fDoEndianByteSwap(false),
       fHasNonFiniteValueSet(false)
 {
-  if (theParamDescriptor)
+  if (theParamDescriptor != nullptr && itsParamDescriptor != nullptr)
   {
     itsParamDescriptor->Reset();
     while (itsParamDescriptor->Next())
@@ -420,7 +420,7 @@ NFmiQueryInfo::NFmiQueryInfo(NFmiQueryData *theInfo,
     }
   }
 
-  if (theTimeDescriptor)
+  if (theTimeDescriptor != nullptr && itsTimeDescriptor != nullptr)
   {
     itsTimeDescriptor->Reset();
     while (itsTimeDescriptor->Next())
@@ -436,7 +436,7 @@ NFmiQueryInfo::NFmiQueryInfo(NFmiQueryData *theInfo,
     }
   }
 
-  if (theHPlaceDescriptor)
+  if (theHPlaceDescriptor != nullptr && itsHPlaceDescriptor != nullptr)
   {
     itsHPlaceDescriptor->Reset();
     while (itsHPlaceDescriptor->Next())
@@ -452,7 +452,7 @@ NFmiQueryInfo::NFmiQueryInfo(NFmiQueryData *theInfo,
     }
   }
 
-  if (theVPlaceDescriptor)
+  if (theVPlaceDescriptor != nullptr && itsVPlaceDescriptor != nullptr)
   {
     itsVPlaceDescriptor->Reset();
     while (itsVPlaceDescriptor->Next())
@@ -682,10 +682,10 @@ void NFmiQueryInfo::Destroy()
 
 void NFmiQueryInfo::Reset()
 {
-  itsParamDescriptor->Reset();
-  itsTimeDescriptor->Reset();
-  itsHPlaceDescriptor->Reset();
-  itsVPlaceDescriptor->Reset();
+  if (itsParamDescriptor != nullptr) itsParamDescriptor->Reset();
+  if (itsTimeDescriptor != nullptr) itsTimeDescriptor->Reset();
+  if (itsHPlaceDescriptor != nullptr) itsHPlaceDescriptor->Reset();
+  if (itsVPlaceDescriptor != nullptr) itsVPlaceDescriptor->Reset();
 }
 
 // ----------------------------------------------------------------------
@@ -3400,9 +3400,9 @@ float NFmiQueryInfo::InterpolatedValueFromTimeList(const NFmiMetTime &theTime,
             float offset1 = CalcTimeOffsetToLastTime(theTime, time1, time2);
             windInterpolator.operator()(ws1, value1, offset1);
             windInterpolator.operator()(ws2, value2, (1 - offset1));
-            returnValue =
-                static_cast<float>(windInterpolator.Direction());  // meitä kiinnostaa vain
-                                                                   // tuulen suunta (tämä
+            returnValue = static_cast<float>(windInterpolator.Direction());  // meitä kiinnostaa
+                                                                             // vain tuulen suunta
+                                                                             // (tämä
             // pitää tehdä jotenkin
             // fiksummin)
           }
@@ -4430,9 +4430,8 @@ float NFmiQueryInfo::PeekValue(int theTimeOffset, int theXOffset, int theYOffset
 
 long NFmiQueryInfo::CalcAreaUnCertainty()
 {
-  double tmpValue = itsAreaUnCertaintyStart +
-                    (itsAreaUnCertaintyEnd - itsAreaUnCertaintyStart) * TimeIndex() /
-                        static_cast<double>(SizeTimes());
+  double tmpValue = itsAreaUnCertaintyStart + (itsAreaUnCertaintyEnd - itsAreaUnCertaintyStart) *
+                                                  TimeIndex() / static_cast<double>(SizeTimes());
   return static_cast<long>(round(tmpValue));  // käytä oikeasti näitä
 }
 
