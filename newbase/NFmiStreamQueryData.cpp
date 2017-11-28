@@ -275,7 +275,7 @@ bool NFmiStreamQueryData::ReadData(const NFmiString &theFileName, NFmiQueryData 
     return false;
   }
 
-  NFmiQueryData *theTempData = theTempData = static_cast<NFmiQueryData *>(new NFmiQueryData);
+  NFmiQueryData *theTempData = static_cast<NFmiQueryData *>(new NFmiQueryData);
 
   try
   {
