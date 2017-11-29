@@ -72,13 +72,13 @@ NFmiLambertEqualArea::NFmiLambertEqualArea(const NFmiPoint &theBottomLeftLatLon,
 }
 
 /*!
-* Constructor
-*
-* \param theCenterLatLon Undocumented
-* \param theRadialRangeInMeters Undocumented
-* \param theTopLeftXY Undocumented
-* \param theBottomRightXY Undocumented
-*/
+ * Constructor
+ *
+ * \param theCenterLatLon Undocumented
+ * \param theRadialRangeInMeters Undocumented
+ * \param theTopLeftXY Undocumented
+ * \param theBottomRightXY Undocumented
+ */
 NFmiLambertEqualArea::NFmiLambertEqualArea(double theRadialRangeInMeters,
                                            const NFmiPoint &theCenterLatLon,
                                            const NFmiPoint &theTopLeftXY,
@@ -232,7 +232,7 @@ else
 
   if (delta <= -1.0) return kFloatMissing;
 
-  return sqrt(2. / (1. + delta));
+  return kRearth * sqrt(2. / (1. + delta));
 }
 
 // ----------------------------------------------------------------------
