@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.11.29
+Version: 17.12.11
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -76,6 +76,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Mon Dec 11 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.12.11-1.fmi
+- Fixed LAEA CalcDelta method to divide the input by earth radius
+
 * Wed Nov 29 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.11.29-1.fmi
 - Fixed Lambert equal area world coordinates to be scaled by earth radius
 

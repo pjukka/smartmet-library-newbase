@@ -247,7 +247,7 @@ double NFmiLambertEqualArea::CalcDelta(const double xyDistance) const
   // Calculates the delta angle for LambertEqual projection.
   // See details in ref. [2] p. 13.
 
-  return 2.0 * asin(FmiMax(-1.0, FmiMin(1.0, xyDistance / 2.0)));
+  return 2.0 * asin(FmiMax(-1.0, FmiMin(1.0, xyDistance / (2 * kRearth))));
   // 11.5.98/EL: delta is always computed for tangential plane only --> itsTrueLatitude.Sin() == 1
 }
 
