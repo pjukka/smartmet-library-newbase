@@ -387,6 +387,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("DewPointF100", kFmiDewPointF100);
   PARAMINSERT("DifferentialPhase", kFmiDifferentialPhase);
   PARAMINSERT("DifferentialReflectivity", kFmiDifferentialReflectivity);
+  PARAMINSERT("DirectNormalIrradiance", kFmiDirectNormalIrradiance);
   PARAMINSERT("DivergenceAbsolute", kFmiDivergenceAbsolute);
   PARAMINSERT("DivergenceRelative", kFmiDivergenceRelative);
   PARAMINSERT("DragCoefficient", kFmiDragCoefficient);
@@ -1158,6 +1159,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("SigWavePeriodSwell2", kFmiSigWavePeriodSwell2);
   PARAMINSERT("SimpleWeather", kFmiSimpleWeather);
   PARAMINSERT("SkinTemperature", kFmiSkinTemperature);
+  PARAMINSERT("SmartSymbol", kFmiSmartSymbol);
   PARAMINSERT("SmogIndex", kFmiSmogIndex);
   PARAMINSERT("SmogSymbol", kFmiSmogSymbol);
   PARAMINSERT("SnowAccumulation", kFmiSnowAccumulation);
@@ -1448,6 +1450,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("WavePeriod", kFmiWavePeriod);
   PARAMINSERT("WaveSpread", kFmiWaveSpread);
   PARAMINSERT("WeatherAndCloudiness", kFmiWeatherAndCloudiness);
+  PARAMINSERT("WeatherNumber", kFmiWeatherNumber);
   PARAMINSERT("WeatherSymbol1", kFmiWeatherSymbol1);
   PARAMINSERT("WeatherSymbol2", kFmiWeatherSymbol2);
   PARAMINSERT("WeatherSymbol3", kFmiWeatherSymbol3);
