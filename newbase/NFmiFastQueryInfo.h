@@ -185,6 +185,16 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
                               const NFmiDataMatrix<bool> &theWaterFlagMatrix,
                               const NFmiDataMatrix<NFmiLocationCache> &theLocationCache =
                                   NFmiDataMatrix<NFmiLocationCache>());
+  void LandscapeCroppedValues(NFmiDataMatrix<float> &theMatrix,
+                              const NFmiMetTime &theInterpolatedTime,
+                              int x1,
+                              int y1,
+                              int x2,
+                              int y2,
+                              const NFmiDataMatrix<float> &theDEMMatrix,
+                              const NFmiDataMatrix<bool> &theWaterFlagMatrix,
+                              const NFmiDataMatrix<NFmiLocationCache> &theLocationCache =
+                                  NFmiDataMatrix<NFmiLocationCache>());
   void LandscapeCachedInterpolation(NFmiDataMatrix<float> &theMatrix,
                                     const NFmiDataMatrix<NFmiLocationCache> &theLocationCache,
                                     const NFmiDataMatrix<float> &theDEMMatrix,

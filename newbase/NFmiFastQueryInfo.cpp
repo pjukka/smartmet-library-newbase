@@ -66,7 +66,7 @@ void PeekCellValues(NFmiFastQueryInfo &theInfo,
   topLeftValue = theInfo.PeekLocationValue(dx, dy + 1, theTime);
   topRightValue = theInfo.PeekLocationValue(dx + 1, dy + 1, theTime);
 }
-}
+}  // namespace
 
 // ----------------------------------------------------------------------
 /*!
@@ -1181,10 +1181,11 @@ static checkedVector<unsigned long> FillLocationIndexies(NFmiFastQueryInfo *theI
     checkedVector<unsigned long> locationIndexies;
     if (xSize > 0 && ySize > 0)
     {
-      locationIndexies.push_back(GetGridDataIndex(
-          xSize, xSize / 2, ySize / 2));  // laitetaan ensimmäiseksi hilan puoliväli, koska
-                                          // reunoista puuttuu helposti dataa
-      locationIndexies.push_back(0);      // laitetaan 1. hilapiste
+      locationIndexies.push_back(
+          GetGridDataIndex(xSize, xSize / 2, ySize / 2));  // laitetaan ensimmäiseksi hilan
+                                                           // puoliväli, koska reunoista puuttuu
+                                                           // helposti dataa
+      locationIndexies.push_back(0);                       // laitetaan 1. hilapiste
       locationIndexies.push_back(theInfo->SizeLocations() -
                                  1);  // laitetaan mukaan vielä viimeinen hilapiste
       if (xSize > 4 && ySize > 4)
@@ -3000,7 +3001,7 @@ float NFmiFastQueryInfo::PressureLevelValue(float P,
   else if ((isTimeInside = IsInside(theTime)) && (theTimeRangeInMinutes > 0))
   {
     NFmiMetTime refTime(theTime);
-    boost::posix_time::ptime rangeStartTime,rangeEndTime;
+    boost::posix_time::ptime rangeStartTime, rangeEndTime;
     float value1 = kFloatMissing;
 
     if (theTimeRangeInMinutes != kUnsignedLongMissing)
@@ -3010,12 +3011,15 @@ float NFmiFastQueryInfo::PressureLevelValue(float P,
     }
     else
     {
-      FirstTime(); rangeStartTime = Time().PosixTime();
-      LastTime(); rangeEndTime = Time().PosixTime();
+      FirstTime();
+      rangeStartTime = Time().PosixTime();
+      LastTime();
+      rangeEndTime = Time().PosixTime();
     }
 
-    for (; ((value1 == kFloatMissing) && FindNearestTime(refTime, kBackward, theTimeRangeInMinutes) &&
-            (Time().PosixTime() >= rangeStartTime));)
+    for (;
+         ((value1 == kFloatMissing) && FindNearestTime(refTime, kBackward, theTimeRangeInMinutes) &&
+          (Time().PosixTime() >= rangeStartTime));)
     {
       value1 = PressureLevelValue(P, theLatlon);
       refTime = Time().PosixTime() - boost::posix_time::seconds(1);
@@ -3038,8 +3042,8 @@ float NFmiFastQueryInfo::PressureLevelValue(float P,
   }
   else if (isTimeInside)
   {
-    if (FindNearestTime(theTime, kBackward)) // pitäisi löytyä, eikä ole reunalla, koska edellä on
-                                             // kokeiltu, löytyykö theTime jo suoraan
+    if (FindNearestTime(theTime, kBackward))  // pitäisi löytyä, eikä ole reunalla, koska edellä on
+                                              // kokeiltu, löytyykö theTime jo suoraan
     {
       NFmiMetTime time1(Time());
       float value1 = PressureLevelValue(P, theLatlon);
@@ -3213,7 +3217,7 @@ float NFmiFastQueryInfo::HeightValue(float theHeight,
   else if ((isTimeInside = IsInside(theTime)) && (theTimeRangeInMinutes > 0))
   {
     NFmiMetTime refTime(theTime);
-    boost::posix_time::ptime rangeStartTime,rangeEndTime;
+    boost::posix_time::ptime rangeStartTime, rangeEndTime;
     float value1 = kFloatMissing;
 
     if (theTimeRangeInMinutes != kUnsignedLongMissing)
@@ -3223,12 +3227,15 @@ float NFmiFastQueryInfo::HeightValue(float theHeight,
     }
     else
     {
-      FirstTime(); rangeStartTime = Time().PosixTime();
-      LastTime(); rangeEndTime = Time().PosixTime();
+      FirstTime();
+      rangeStartTime = Time().PosixTime();
+      LastTime();
+      rangeEndTime = Time().PosixTime();
     }
 
-    for (; ((value1 == kFloatMissing) && FindNearestTime(refTime, kBackward, theTimeRangeInMinutes) &&
-            (Time().PosixTime() >= rangeStartTime));)
+    for (;
+         ((value1 == kFloatMissing) && FindNearestTime(refTime, kBackward, theTimeRangeInMinutes) &&
+          (Time().PosixTime() >= rangeStartTime));)
     {
       value1 = HeightValue(theHeight, theLatlon);
       refTime = Time().PosixTime() - boost::posix_time::seconds(1);
@@ -3251,8 +3258,8 @@ float NFmiFastQueryInfo::HeightValue(float theHeight,
   }
   else if (isTimeInside)
   {
-    if (FindNearestTime(theTime, kBackward)) // pitäisi löytyä, eikä ole reunalla, koska edellä on
-                                             // kokeiltu, löytyykö theTime jo suoraan
+    if (FindNearestTime(theTime, kBackward))  // pitäisi löytyä, eikä ole reunalla, koska edellä on
+                                              // kokeiltu, löytyykö theTime jo suoraan
     {
       NFmiMetTime time1(Time());
       float value1 = HeightValue(theHeight, theLatlon);
@@ -5715,6 +5722,92 @@ void NFmiFastQueryInfo::LandscapeCroppedValues(
     if (xExtended) theMatrix.RemoveColumn(nx - 1);
     if (yExtended) theMatrix.RemoveRow(ny - 1);
   }
+}
+
+// ----------------------------------------------------------------------
+/*!
+ * \brief Time interpolated landscaped values for a subgrid
+ */
+// ----------------------------------------------------------------------
+
+void NFmiFastQueryInfo::LandscapeCroppedValues(
+    NFmiDataMatrix<float> &theMatrix,
+    const NFmiMetTime &theInterpolatedTime,
+    int x1,
+    int y1,
+    int x2,
+    int y2,
+    const NFmiDataMatrix<float> &theDEMMatrix,
+    const NFmiDataMatrix<bool> &theWaterFlagMatrix,
+    const NFmiDataMatrix<NFmiLocationCache> &theLocationCache)
+{
+  // Only grids can be returned as matrices
+  if (!IsGrid()) return;
+
+  int oldTimeIndex = TimeIndex();
+
+  // Handle exact existing time
+  if (Time(theInterpolatedTime))
+  {
+    LandscapeCroppedValues(
+        theMatrix, x1, y1, x2, y2, theDEMMatrix, theWaterFlagMatrix, theLocationCache);
+    TimeIndex(oldTimeIndex);
+    return;
+  }
+
+  // Cannot interpolate outside data range
+  if (!IsInside(theInterpolatedTime))
+  {
+    TimeIndex(oldTimeIndex);
+    return;
+  }
+
+  // Extract leftside and rightside data values
+
+  auto nx = static_cast<int>(x2 - x1 + 1);
+  auto ny = static_cast<int>(y2 - y1 + 1);
+  theMatrix.Resize(nx, ny, kFloatMissing);
+
+  NFmiDataMatrix<float> values1;
+  NFmiDataMatrix<float> values2;
+
+  // pitää löytyä, koska isinside on tarkastettu edellä!!
+  if (TimeToNearestStep(theInterpolatedTime, kBackward))
+    LandscapeCroppedValues(
+        values1, x1, y1, x2, y2, theDEMMatrix, theWaterFlagMatrix, theLocationCache);
+  NFmiMetTime time1(Time());
+
+  // pitää löytyä, koska isinside on tarkastettu edellä!!
+  if (TimeToNearestStep(theInterpolatedTime, kForward))
+    LandscapeCroppedValues(
+        values2, x1, y1, x2, y2, theDEMMatrix, theWaterFlagMatrix, theLocationCache);
+  NFmiMetTime time2(Time());
+
+  auto diff1 = static_cast<float>(theInterpolatedTime.DifferenceInMinutes(time1));
+  auto diff2 = static_cast<float>(time2.DifferenceInMinutes(time1));
+
+  float factor = 1 - diff1 / diff2;
+
+  // Then interpolate the data. We must be careful to obey the interpolation
+  // rules of both discrete data and combined parameters
+
+  FmiInterpolationMethod interp = Param().GetParam()->InterpolationMethod();
+
+  if (interp != kLinearly)
+  {
+    if (factor > 0.5)
+      theMatrix = values1;
+    else
+      theMatrix = values2;
+  }
+  else
+  {
+    for (int j = 0; j < ny; j++)
+      for (int i = 0; i < nx; i++)
+        theMatrix[i][j] = InterpolationHelper(values1[i][j], values2[i][j], factor);
+  }
+
+  TimeIndex(oldTimeIndex);
 }
 
 // ----------------------------------------------------------------------
