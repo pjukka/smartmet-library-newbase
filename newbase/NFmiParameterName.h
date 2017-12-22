@@ -1293,6 +1293,8 @@ enum FmiParameterName
   kFmiWeatherNumber,
   kFmiSmartSymbol,
   kFmiDirectNormalIrradiance,
+  kFmiDirectNormalIrradianceAccumulation,
+  kFmiPrecipitationForm4,
 
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 

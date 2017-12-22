@@ -388,6 +388,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("DifferentialPhase", kFmiDifferentialPhase);
   PARAMINSERT("DifferentialReflectivity", kFmiDifferentialReflectivity);
   PARAMINSERT("DirectNormalIrradiance", kFmiDirectNormalIrradiance);
+  PARAMINSERT("DirectNormalIrradianceAccumulation", kFmiDirectNormalIrradianceAccumulation);
   PARAMINSERT("DivergenceAbsolute", kFmiDivergenceAbsolute);
   PARAMINSERT("DivergenceRelative", kFmiDivergenceRelative);
   PARAMINSERT("DragCoefficient", kFmiDragCoefficient);
@@ -797,6 +798,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("PrecipitationForm", kFmiPrecipitationForm);
   PARAMINSERT("PrecipitationForm2", kFmiPrecipitationForm2);
   PARAMINSERT("PrecipitationForm3", kFmiPrecipitationForm3);
+  PARAMINSERT("PrecipitationForm4", kFmiPrecipitationForm4);
   PARAMINSERT("PrecipitationGraupel", kFmiPrecipitationGraupel);
   PARAMINSERT("PrecipitationInstantWater", kFmiPrecipitationInstantWater);
   PARAMINSERT("PrecipitationInstantGraupel", kFmiPrecipitationInstantGraupel);
