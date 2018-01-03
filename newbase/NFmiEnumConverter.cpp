@@ -2543,7 +2543,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("land_ice_vertical_mean_y_velocity", cf_land_ice_vertical_mean_y_velocity);
   PARAMINSERT("land_ice_x_velocity", cf_land_ice_x_velocity);
   PARAMINSERT("land_ice_y_velocity", cf_land_ice_y_velocity);
-  PARAMINSERT("latitude", cf_latitude);
+  // PARAMINSERT("latitude", cf_latitude);
   PARAMINSERT("leaf_area_index", cf_leaf_area_index);
   PARAMINSERT("leaf_carbon_content", cf_leaf_carbon_content);
   PARAMINSERT("lightning_radiant_energy", cf_lightning_radiant_energy);
@@ -2560,7 +2560,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
       "log10_size_interval_based_number_size_distribution_of_cloud_condensation_nuclei_at_stp_in_"
       "air",
       cf_log10_size_interval_based_number_size_distribution_of_cloud_condensation_nuclei_at_stp_in_air);
-  PARAMINSERT("longitude", cf_longitude);
+  // PARAMINSERT("longitude", cf_longitude);
   PARAMINSERT("low_type_cloud_area_fraction", cf_low_type_cloud_area_fraction);
   PARAMINSERT("lwe_convective_precipitation_rate", cf_lwe_convective_precipitation_rate);
   PARAMINSERT("lwe_convective_snowfall_rate", cf_lwe_convective_snowfall_rate);

@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 17.12.22
+Version: 18.1.3
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -76,6 +76,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Wed Jan  3 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.1.3-1.fmi
+- Do not use NetCDF Latitude and Longitude parameter numbers when converting name to integer
+
 * Fri Dec 22 2017 Mika Heiskanen <mika.heiskanen@fmi.fi> - 17.12.22-1.fmi
 - New parameter PrecipitationForm4
 - New parameter DirectNormalIrradianceAccumulation
