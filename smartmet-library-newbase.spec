@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 18.1.3
+Version: 18.1.13
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -76,6 +76,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Sat Jan 13 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.1.13-1.fmi
+- Fixed Lambert azimuthal equal area WKT
+
 * Wed Jan  3 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.1.3-1.fmi
 - Do not use NetCDF Latitude and Longitude parameter numbers when converting name to integer
 
