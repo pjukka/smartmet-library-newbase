@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 18.1.13
+Version: 18.1.22
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -76,6 +76,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Mon Jan 22 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.1.22-1.fmi
+- Improved pressure level interpolations (SOL-6124)
+
 * Sat Jan 13 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.1.13-1.fmi
 - Fixed Lambert azimuthal equal area WKT
 

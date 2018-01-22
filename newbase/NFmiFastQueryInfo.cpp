@@ -2883,6 +2883,9 @@ float NFmiFastQueryInfo::PressureLevelValue(float P)
     if (firstPressureValue == kFloatMissing)
       return kFloatMissing;  // turha jatkaa, palautetaan puuttuvaa
 
+    // quick exit if we found an exact match
+    if (firstPressureValue == P) return FloatValue();
+
     // huom! isUnder on true myös jos P == 1. painearvo
     bool isUnder = (firstPressureValue != kFloatMissing)
                        ? (P <= firstPressureValue)
@@ -2916,8 +2919,15 @@ float NFmiFastQueryInfo::PressureLevelValue(float P)
 
       // tee korkeus interpolointi nyt kun tiedetään halutut levelit
       float value1 = FloatValue();
+
+      // Quick exit for exact match
+      if (pressureValue == P) return value1;
+
       PreviousLevel();
       float value2 = FloatValue();
+
+      // Quick exit for exact match
+      if (lastPressure == P) return value2;
 
       FmiInterpolationMethod interp = Param().GetParam()->InterpolationMethod();
       if (IsGrid() && interp == kLinearly)
