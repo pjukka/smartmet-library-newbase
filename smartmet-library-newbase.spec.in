@@ -24,6 +24,7 @@ Requires: boost-iostreams >= 1.65.0
 Requires: boost-system >= 1.65.0
 Requires: gdal
 Requires: geos >= 3.5.0
+Requires: postgis < 2.1
 
 
 %define _rpmdir %_topdir/RPMS

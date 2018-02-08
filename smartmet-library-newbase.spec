@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 18.1.22
+Version: 18.2.8
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -23,6 +23,7 @@ Requires: boost-iostreams >= 1.65.0
 Requires: boost-system >= 1.65.0
 Requires: gdal
 Requires: geos >= 3.5.0
+Requires: postgis < 2.1
 Provides: %{LIBNAME}
 Obsoletes: libsmartmet-newbase < 16.12.19
 Obsoletes: libsmartmet-newbase-debuginfo < 16.12.19
@@ -76,6 +77,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Thu Feb  8 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.2.8-1.fmi
+- Added explicit postgis dependency to avoid pgdg dependency problems
+
 * Mon Jan 22 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.1.22-1.fmi
 - Improved pressure level interpolations (SOL-6124)
 
