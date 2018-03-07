@@ -219,6 +219,7 @@ enum FmiParameterName
   kFmiGeopotentialHeightAnomaly,
 
   kFmiSkinTemperature = 235,
+  kFmiFeelsLike = 236,
 
   kFmiOpenLandSnowDepth = 239,
 
@@ -1166,7 +1167,7 @@ enum FmiParameterName
   // TopLink -lentosääprojektin indekseja
   kFmiTopLinkIndex2 = 1216,  // Lumisateen ja jäätävän sateen intensiteetin sekä sateesta johtuvan
                              // näkyvyyden yhdistelmä
-  kFmiTopLinkIndex3,         // Lumi/Räntäsateen ja näkyvyyden yhdistelmä
+  kFmiTopLinkIndex3,  // Lumi/Räntäsateen ja näkyvyyden yhdistelmä
 
   // Ukkosen todennaikoisyys, toinen parametri koska 260 on aliparametrina ja sen tarkkuus on
   // rajattu

@@ -440,6 +440,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("FLCbCover", kFmi_FL_Cb_Cover);        // SPELLING!
   PARAMINSERT("FLMaxBase", kFmi_FL_Max_Base);        // SPELLING!
   PARAMINSERT("FLMinBase", kFmi_FL_Min_Base);        // SPELLING!
+  PARAMINSERT("FeelsLike", kFmiFeelsLike);
   PARAMINSERT("FieldGroundHumidity", kFmiFieldGroundHumidity);
   PARAMINSERT("FlAltitude", kFmiFlAltitude);
   PARAMINSERT("FlagDate", kFmiFlagDate);
