@@ -80,6 +80,7 @@ CFLAGS_DEBUG   = $(DEFINES) $(FLAGS) $(FLAGS_DEBUG)   -Werror  -Og -g
 CFLAGS_PROFILE = $(DEFINES) $(FLAGS) $(FLAGS_PROFILE) -DNDEBUG -O2 -g -pg
 
 LIBS = -L$(libdir) \
+	-lfmt \
 	-lboost_filesystem \
 	-lboost_regex \
 	-lboost_thread

@@ -16,6 +16,12 @@
 #include "NFmiAreaFactory.h"
 #include <boost/functional/hash.hpp>
 
+#ifndef UNIX
+#include <iomanip>
+#else
+#include <fmt/format.h>
+#endif
+
 // ----------------------------------------------------------------------
 /*!
  * Destructor
@@ -129,9 +135,8 @@ const NFmiPoint NFmiLatLonArea::ToXY(const NFmiPoint &theLatLonPoint) const
 {
   double usedLongitude = FixLongitude(theLatLonPoint.X());
   double X = Left() + (usedLongitude - itsBottomLeftLatLon.X()) * itsXScaleFactor;
-  double Y =
-      Top() +
-      (theLatLonPoint.Y() - itsTopRightLatLon.Y()) * itsYScaleFactor;  // Tässä on edelleen virhe
+  double Y = Top() + (theLatLonPoint.Y() - itsTopRightLatLon.Y()) *
+                         itsYScaleFactor;  // Tässä on edelleen virhe
   return NFmiPoint(X, Y);
 }
 
@@ -265,12 +270,20 @@ const std::string NFmiLatLonArea::AreaStr() const
 
 const std::string NFmiLatLonArea::WKT() const
 {
+#ifndef UNIX
   std::ostringstream ret;
   ret << R"(GEOGCS["FMI_Sphere",)"
       << R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",6371220,0]],)"
       << R"(PRIMEM["Greenwich",0],)"
       << R"(UNIT["Degree",0.0174532925199433]])";
   return ret.str();
+#else
+  const char *fmt = R"(GEOGCS["FMI_Sphere",)"
+                    R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",{:.0f},0]],)"
+                    R"(PRIMEM["Greenwich",0],)"
+                    R"(UNIT["Degree",0.0174532925199433]])";
+  return fmt::format(fmt, kRearth);
+#endif
 }
 
 // ----------------------------------------------------------------------

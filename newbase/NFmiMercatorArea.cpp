@@ -91,6 +91,12 @@
 #include <boost/functional/hash.hpp>
 #include <limits>
 
+#ifndef UNIX
+#include <iomanip>
+#else
+#include <fmt/format.h>
+#endif
+
 using namespace std;
 
 // ----------------------------------------------------------------------
@@ -348,7 +354,7 @@ std::ostream& NFmiMercatorArea::Write(std::ostream& file) const
  *
  * \param file The input stream to read from
  * \return The input stream read from
-*/
+ */
 // ----------------------------------------------------------------------
 
 std::istream& NFmiMercatorArea::Read(std::istream& file)
@@ -406,6 +412,7 @@ const std::string NFmiMercatorArea::AreaStr() const
 
 const std::string NFmiMercatorArea::WKT() const
 {
+#ifndef UNIX
   std::ostringstream ret;
   ret << R"(PROJCS["FMI_Transverse_Mercator",)"
       << R"(GEOGCS["FMI_Sphere",)"
@@ -415,6 +422,16 @@ const std::string NFmiMercatorArea::WKT() const
       << R"(PROJECTION["Transverse_Mercator"],)"
       << R"(UNIT["Metre",1.0]])";
   return ret.str();
+#else
+  const char* fmt = R"(PROJCS["FMI_Transverse_Mercator",)"
+                    R"(GEOGCS["FMI_Sphere",)"
+                    R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",{:.0f},0]],)"
+                    R"(PRIMEM["Greenwich",0],)"
+                    R"(UNIT["Degree",0.0174532925199433]],)"
+                    R"(PROJECTION["Transverse_Mercator"],)"
+                    R"(UNIT["Metre",1.0]])";
+  return fmt::format(fmt, kRearth);
+#endif
 }
 
 // ----------------------------------------------------------------------

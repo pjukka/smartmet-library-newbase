@@ -15,7 +15,12 @@
 #include "NFmiRotatedLatLonArea.h"
 #include <boost/functional/hash.hpp>
 #include <algorithm>
+
+#ifndef UNIX
 #include <iomanip>
+#else
+#include <fmt/format.h>
+#endif
 
 using namespace std;
 
@@ -114,7 +119,7 @@ const NFmiPoint toreglatlon(const NFmiPoint &theRotLatLonPoint,
 
   return NFmiPoint(XReg.Value(), YReg.Value());
 }
-}
+}  // namespace
 
 // ----------------------------------------------------------------------
 /*!
@@ -315,12 +320,12 @@ const std::string NFmiRotatedLatLonArea::AreaStr() const
 
 const std::string NFmiRotatedLatLonArea::WKT() const
 {
-  std::ostringstream ret;
-
   // Location of north pole is at the opposite longitude unless the poles have not been moved
   auto plat = -itsSouthernPole.Y();
   auto plon = (plat == 90 ? 90 : fmod(itsSouthernPole.X() - 180, 360.0));
 
+#ifndef UNIX
+  std::ostringstream ret;
   ret << std::setprecision(16) << R"(PROJCS["Plate_Carree",)"
       << R"(GEOGCS["FMI_Sphere",)"
       << R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",6371220,0]],)"
@@ -331,6 +336,18 @@ const std::string NFmiRotatedLatLonArea::WKT() const
       << " +o_lat_p=" << plat << R"( +a=6371220 +k=1 +wktext"],)"
       << R"(UNIT["Meter",1]])";
   return ret.str();
+#else
+  const char *fmt = R"(PROJCS["Plate_Carree",)"
+                    R"(GEOGCS["FMI_Sphere",)"
+                    R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",{:.0f},0]],)"
+                    R"(PRIMEM["Greenwich",0],)"
+                    R"(UNIT["Degree",0.017453292519943295]],)"
+                    R"(PROJECTION["Plate_Carree"],)"
+                    R"(EXTENSION["PROJ4","+proj=ob_tran +o_proj=longlat +o_lon_p={})"
+                    R"( +o_lat_p={} +a={:.0f} +k=1 +wktext"],)"
+                    R"(UNIT["Meter",1]])";
+  return fmt::format(fmt, kRearth, plon, plat, kRearth);
+#endif
 }
 
 // ----------------------------------------------------------------------

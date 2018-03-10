@@ -68,7 +68,12 @@
 #include <boost/functional/hash.hpp>
 #include <algorithm>
 #include <cmath>
+
+#ifndef UNIX
 #include <iomanip>
+#else
+#include <fmt/format.h>
+#endif
 
 using namespace std;
 
@@ -511,6 +516,7 @@ const std::string NFmiOrthographicArea::AreaStr() const
 
 const std::string NFmiOrthographicArea::WKT() const
 {
+#ifndef UNIX
   std::ostringstream ret;
   ret << std::setprecision(16) << R"(PROJCS["FMI_Orthographic",)"
       << R"(GEOGCS["FMI_Sphere",)"
@@ -522,6 +528,18 @@ const std::string NFmiOrthographicArea::WKT() const
       << R"(PARAMETER["central_meridian",)" << itsCentralLongitude << "],"
       << R"(UNIT["Metre",1.0]])";
   return ret.str();
+#else
+  const char *fmt = R"(PROJCS["FMI_Orthographic",)"
+                    R"(GEOGCS["FMI_Sphere",)"
+                    R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",{:.0f},0]],)"
+                    R"(PRIMEM["Greenwich",0],)"
+                    R"(UNIT["Degree",0.0174532925199433]],)"
+                    R"(PROJECTION["Orthographic"],)"
+                    R"(PARAMETER["latitude_of_origin",{}],)"
+                    R"(PARAMETER["central_meridian",{}],)"
+                    R"(UNIT["Metre",1.0]])";
+  return fmt::format(fmt, kRearth, itsCentralLatitude.Value(), itsCentralLongitude);
+#endif
 }
 
 // ----------------------------------------------------------------------
