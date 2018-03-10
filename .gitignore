@@ -5,4 +5,4 @@ obj
 *.plist
 *.so
 *.a
-
+compile_commands.json
