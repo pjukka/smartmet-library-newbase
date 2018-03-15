@@ -14,13 +14,8 @@
 
 #include "NFmiRotatedLatLonArea.h"
 #include <boost/functional/hash.hpp>
-#include <algorithm>
-
-#ifndef UNIX
-#include <iomanip>
-#else
 #include <fmt/format.h>
-#endif
+#include <algorithm>
 
 using namespace std;
 
@@ -324,19 +319,6 @@ const std::string NFmiRotatedLatLonArea::WKT() const
   auto plat = -itsSouthernPole.Y();
   auto plon = (plat == 90 ? 90 : fmod(itsSouthernPole.X() - 180, 360.0));
 
-#ifndef UNIX
-  std::ostringstream ret;
-  ret << std::setprecision(16) << R"(PROJCS["Plate_Carree",)"
-      << R"(GEOGCS["FMI_Sphere",)"
-      << R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",6371220,0]],)"
-      << R"(PRIMEM["Greenwich",0],)"
-      << R"(UNIT["Degree",0.017453292519943295]],)"
-      << R"(PROJECTION["Plate_Carree"],)"
-      << R"(EXTENSION["PROJ4","+proj=ob_tran +o_proj=longlat +o_lon_p=)" << plon
-      << " +o_lat_p=" << plat << R"( +a=6371220 +k=1 +wktext"],)"
-      << R"(UNIT["Meter",1]])";
-  return ret.str();
-#else
   const char *fmt = R"(PROJCS["Plate_Carree",)"
                     R"(GEOGCS["FMI_Sphere",)"
                     R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",{:.0f},0]],)"
@@ -347,7 +329,6 @@ const std::string NFmiRotatedLatLonArea::WKT() const
                     R"( +o_lat_p={} +a={:.0f} +k=1 +wktext"],)"
                     R"(UNIT["Meter",1]])";
   return fmt::format(fmt, kRearth, plon, plat, kRearth);
-#endif
 }
 
 // ----------------------------------------------------------------------

@@ -95,15 +95,10 @@
 // ======================================================================
 
 #include "NFmiYKJArea.h"
+#include <fmt/format.h>
 #include <cmath>
 #include <cstdlib>
 #include <string>
-
-#ifndef UNIX
-#include <iomanip>
-#else
-#include <fmt/format.h>
-#endif
 
 // ----------------------------------------------------------------------
 /*!
@@ -460,22 +455,6 @@ const std::string NFmiYKJArea::AreaStr() const
 
 const std::string NFmiYKJArea::WKT() const
 {
-#ifndef UNIX
-  std::ostringstream ret;
-  ret << R"(PROJCS["KKJ / Finland Uniform Coordinate System",)"
-      << R"(GEOGCS["KKJ",)"
-      << R"(DATUM["Kartastokoordinaattijarjestelma", SPHEROID["International 1924",6378388,297]],)"
-      << R"(PRIMEM["Greenwich",0],)"
-      << R"(UNIT["degree",0.0174532925199433]],)"
-      << R"(PROJECTION["Transverse_Mercator"],)"
-      << R"(PARAMETER["latitude_of_origin",0],)"
-      << R"(PARAMETER["central_meridian",27],)"
-      << R"(PARAMETER["scale_factor",1],)"
-      << R"(PARAMETER["false_easting",3500000],)"
-      << R"(PARAMETER["false_northing",0],)"
-      << R"(UNIT["metre",1]])";
-  return ret.str();
-#else
   const char *fmt =
       R"(PROJCS["KKJ / Finland Uniform Coordinate System",)"
       R"(GEOGCS["KKJ",)"
@@ -490,7 +469,6 @@ const std::string NFmiYKJArea::WKT() const
       R"(PARAMETER["false_northing",0],)"
       R"(UNIT["metre",1]])";
   return fmt;
-#endif
 }
 
 // ----------------------------------------------------------------------

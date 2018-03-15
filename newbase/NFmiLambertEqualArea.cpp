@@ -12,13 +12,8 @@
 
 #include "NFmiLambertEqualArea.h"
 #include "NFmiStringTools.h"
-#include <cmath>
-
-#ifndef UNIX
-#include <iomanip>
-#else
 #include <fmt/format.h>
-#endif
+#include <cmath>
 
 using namespace std;
 
@@ -433,35 +428,6 @@ const std::string NFmiLambertEqualArea::AreaStr() const
 
 const std::string NFmiLambertEqualArea::WKT() const
 {
-#ifndef UNIX
-  std::ostringstream ret;
-
-  if (itsCentralLatitude.Value() != 90)
-  {
-    ret << std::setprecision(16) << R"(PROJCS["FMI_LambertEqual",)"
-        << R"(GEOGCS["FMI_Sphere",)"
-        << R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",6371220,0]],)"
-        << R"(PRIMEM["Greenwich",0],)"
-        << R"(UNIT["Degree",0.0174532925199433]],)"
-        << R"(PROJECTION["Lambert_Azimuthal_Equal_Area"],)"
-        << R"(PARAMETER["latitude_of_origin",)" << itsCentralLatitude.Value() << "],"
-        << R"(PARAMETER["central_meridian",)" << itsCentralLongitude << "],"
-        << R"(UNIT["Metre",1.0]])";
-  }
-  else
-  {
-    ret << std::setprecision(16) << R"(PROJCS["FMI_LambertEqual",)"
-        << R"(GEOGCS["FMI_Sphere",)"
-        << R"(DATUM["FMI_2007",SPHEROID["FMI_Sphere",6371220,0]],)"
-        << R"(PRIMEM["Greenwich",0],)"
-        << R"(UNIT["Degree",0.0174532925199433]],)"
-        << R"(PROJECTION["Lambert_Azimuthal_Equal_Area"],)"
-        << R"(PARAMETER["latitude_of_origin",)" << itsTrueLatitude.Value() << "],"
-        << R"(PARAMETER["central_meridian",)" << itsCentralLongitude << "],"
-        << R"(UNIT["Metre",1.0]])";
-  }
-  return ret.str();
-#else
   if (itsCentralLatitude.Value() != 90)
   {
     const char *fmt = R"(PROJCS["FMI_LambertEqual",)"
@@ -488,7 +454,6 @@ const std::string NFmiLambertEqualArea::WKT() const
                       R"(UNIT["Metre",1.0]])";
     return fmt::format(fmt, kRearth, itsTrueLatitude.Value(), itsCentralLongitude);
   }
-#endif
 }
 
 // ----------------------------------------------------------------------
