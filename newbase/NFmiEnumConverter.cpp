@@ -491,6 +491,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("GroundFrost", kFmiGroundFrost);
   PARAMINSERT("GroundHumidityForest", kFmiGroundHumidityForest);
   PARAMINSERT("GroundTemperature", kFmiGroundTemperature);
+  PARAMINSERT("GrowingDegreeDays", kFmiGrowingDegreeDays);
   PARAMINSERT("GrowthPeriodDeviationInDays", kFmiGrowthPeriodDeviationInDays);
   PARAMINSERT("GrowthPeriodDeviationInPrcnt", kFmiGrowthPeriodDeviationInPrcnt);
   PARAMINSERT("GrowthPeriodEnded", kFmiGrowthPeriodEnded);

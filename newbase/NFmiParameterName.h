@@ -1296,6 +1296,7 @@ enum FmiParameterName
   kFmiDirectNormalIrradiance,
   kFmiDirectNormalIrradianceAccumulation,
   kFmiPrecipitationForm4,
+  kFmiGrowingDegreeDays,
 
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 
