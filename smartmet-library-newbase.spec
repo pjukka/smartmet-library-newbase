@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 18.3.10
+Version: 18.3.23
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -79,6 +79,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Fri Mar 23 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.3.23-1.fmi
+- New parameter: GrowingDegreeDays
+
 * Sat Mar 10 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.3.10-1.fmi
 - Avoid ostringstream global locale locks by using fmt library for WKT formatting
 
