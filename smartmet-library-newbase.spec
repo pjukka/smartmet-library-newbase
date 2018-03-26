@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 18.3.23
+Version: 18.3.26
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -79,6 +79,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Mon Mar 26 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.3.26-1.fmi
+- Store memory mapped file name into NFmiRawData to ease core dump analysis
+
 * Fri Mar 23 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.3.23-1.fmi
 - New parameter: GrowingDegreeDays
 

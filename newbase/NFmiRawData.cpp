@@ -83,13 +83,13 @@ class NFmiRawData::Pimple
 #endif
 
   mutable MutexType itsMutex;
-  mutable float *itsData{nullptr};                      // non-memory mapped data
-  mutable boost::scoped_ptr<MappedFile> itsMappedFile;  // memory mapped data
-  size_t itsOffset{0};                                  // offset to raw data
-
+  mutable float *itsData{nullptr};                               // non-memory mapped data
+  mutable boost::scoped_ptr<MappedFile> itsMappedFile{nullptr};  // memory mapped data
+  size_t itsOffset{0};                                           // offset to raw data
   size_t itsSize{0};
   mutable bool itsSaveAsBinaryFlag{true};
   bool itsEndianSwapFlag{false};
+  std::string itsFileName{};  // to ease examining core dumps
 };
 
 // ----------------------------------------------------------------------
@@ -99,19 +99,14 @@ class NFmiRawData::Pimple
 // ----------------------------------------------------------------------
 
 NFmiRawData::Pimple::~Pimple() { delete[] itsData; }
+
 // ----------------------------------------------------------------------
 /*!
  * \brief Default constructor
  */
 // ----------------------------------------------------------------------
 
-NFmiRawData::Pimple::Pimple()
-    : itsMutex(),
-
-      itsMappedFile(nullptr)
-
-{
-}
+NFmiRawData::Pimple::Pimple() : itsMutex(), itsMappedFile(nullptr) {}
 
 // ----------------------------------------------------------------------
 /*!
@@ -120,12 +115,7 @@ NFmiRawData::Pimple::Pimple()
 // ----------------------------------------------------------------------
 
 NFmiRawData::Pimple::Pimple(const Pimple &other)
-    : itsMutex(),
-      itsData(nullptr),
-      itsMappedFile(nullptr),
-      itsOffset(0),
-      itsSize(other.itsSize),
-      itsSaveAsBinaryFlag(other.itsSaveAsBinaryFlag)
+    : itsMutex(), itsSize(other.itsSize), itsSaveAsBinaryFlag(other.itsSaveAsBinaryFlag)
 
 {
   // We assume copied data will be changed so that copying mmapping would
@@ -153,7 +143,7 @@ NFmiRawData::Pimple::Pimple(const Pimple &other)
 // ----------------------------------------------------------------------
 
 NFmiRawData::Pimple::Pimple(const string &filename, istream &file, size_t size)
-    : itsMutex(), itsData(nullptr), itsMappedFile(nullptr), itsOffset(0), itsSize(size)
+    : itsMutex(), itsSize(size), itsFileName(filename)
 
 {
   WriteLock lock(itsMutex);
@@ -458,7 +448,7 @@ bool NFmiRawData::Pimple::SetValue(size_t index, float value)
     return true;
   }
 
-// copy-on-write semantics: switch to memory buffer on a write
+  // copy-on-write semantics: switch to memory buffer on a write
 
 #if 0
   Unmap();
@@ -539,8 +529,8 @@ void NFmiRawData::Pimple::Undo(char *ptr)
 {
   WriteLock lock(itsMutex);
 
-// This may be slower than necessary when mmapped, but since Backup
-// unmaps this really should never actually unmap
+  // This may be slower than necessary when mmapped, but since Backup
+  // unmaps this really should never actually unmap
 
 #if NFMIRAWDATA_ENABLE_UNDO_REDO
   Unmap();
