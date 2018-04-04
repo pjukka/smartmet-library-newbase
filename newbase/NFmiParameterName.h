@@ -1561,6 +1561,7 @@ enum FmiParameterName
   kFmiSoundingEBS,  // effective bulk shear
   kFmiSoundingBulkRichardsonNumber,
   kFmiSoundingEnergyHelicityIndex,
+  kFmiSoundingMixingRatio500m,
 
   /* STOP SOUNDING INDEX PARAMETERS */
 

@@ -1260,6 +1260,7 @@ static void InitParamNames(NFmiEnumConverter::storage_type &theData)
   PARAMINSERT("SoundingLPLHeightMostUnstable", kFmiSoundingLPLHeightMostUn);
   PARAMINSERT("SoundingBulkRichardsonNumber", kFmiSoundingBulkRichardsonNumber);
   PARAMINSERT("SoundingEnergyHelicityIndex", kFmiSoundingEnergyHelicityIndex);
+  PARAMINSERT("SoundingMixingRatio500m", kFmiSoundingMixingRatio500m);
   PARAMINSERT("SpecificDifferentialPhase", kFmiSpecificDifferentialPhase);
   PARAMINSERT("SpecificHumidity", kFmiSpecificHumidity);
   PARAMINSERT("SpecificHumidityF0", kFmiSpecificHumidityF0);
