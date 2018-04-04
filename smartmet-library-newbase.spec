@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 18.3.26
+Version: 18.4.4
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -79,6 +79,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Wed Apr  4 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.4.4-1.fmi
+- Add parameter for average mixing ratio in the lowest 500 meters
+
 * Mon Mar 26 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.3.26-1.fmi
 - Store memory mapped file name into NFmiRawData to ease core dump analysis
 
