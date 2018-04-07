@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 18.4.4
+Version: 18.4.7
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -12,16 +12,16 @@ Source: %{name}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: gcc-c++
 BuildRequires: make
-BuildRequires: boost-devel >= 1.65.0
+BuildRequires: boost-devel
 BuildRequires: bzip2-devel
 BuildRequires: geos-devel >= 3.5.0
 BuildRequires: gdal-devel
 BuildRequires: fmt-devel
-Requires: boost-date-time >= 1.65.0
-Requires: boost-regex >= 1.65.0
-Requires: boost-filesystem >= 1.65.0
-Requires: boost-iostreams >= 1.65.0
-Requires: boost-system >= 1.65.0
+Requires: boost-date-time
+Requires: boost-regex
+Requires: boost-filesystem
+Requires: boost-iostreams
+Requires: boost-system
 Requires: gdal
 Requires: geos >= 3.5.0
 Requires: fmt
@@ -79,6 +79,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Sat Apr  7 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.4.7-1.fmi
+- Upgrade to boost 1.66
+
 * Wed Apr  4 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.4.4-1.fmi
 - Add parameter for average mixing ratio in the lowest 500 meters
 
