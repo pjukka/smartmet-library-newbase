@@ -3353,7 +3353,8 @@ static float GetValueAtHeight(NFmiDataMatrix<float> &theParValues,
                               NFmiDataMatrix<float> &theHValues,
                               float theHeight,
                               int theColumn,
-                              FmiInterpolationMethod theInterpolationMethod)
+                              FmiInterpolationMethod theInterpolationMethod,
+                              const NFmiFastQueryInfo &theInfo)
 {
   double value = kFloatMissing;
   if (theColumn > static_cast<int>(theHValues.size() - 1)) return kFloatMissing;
@@ -3380,7 +3381,13 @@ static float GetValueAtHeight(NFmiDataMatrix<float> &theParValues,
     double p2 = theParValues[theColumn][index];      // ylempi parametri
     if (p1 == kFloatMissing || p2 == kFloatMissing) return kFloatMissing;
     if (theInterpolationMethod == kLinearly)
-      value = ratio * p1 + (1 - ratio) * p2;
+    {
+      auto param = static_cast<FmiParameterName>(theInfo.Param().GetParamIdent());
+      if (param == kFmiWindDirection || param == kFmiWaveDirection)
+        value = static_cast<float>(NFmiInterpolation::ModLinear(1 - ratio, p1, p2, 360));
+      else
+        value = ratio * p1 + (1 - ratio) * p2;
+    }
     else if (theInterpolationMethod == kNearestPoint)
     {
       if (::fabs(theHeight - h1) < ::fabs(theHeight - h2))
@@ -3608,7 +3615,7 @@ void NFmiFastQueryInfo::CrossSectionValues(NFmiDataMatrix<float> &theValues,
       for (unsigned int i = 0; i < theValues.NX(); i++)
       {
         tmpHeight = theHeights[j];
-        tmpValue = GetValueAtHeight(paramValues, heightValues, tmpHeight, i, interp);
+        tmpValue = GetValueAtHeight(paramValues, heightValues, tmpHeight, i, interp, *this);
         theValues[i][j] = tmpValue;
       }
     }
@@ -3820,7 +3827,7 @@ void NFmiFastQueryInfo::TimeCrossSectionValues(NFmiDataMatrix<float> &theValues,
       for (unsigned int i = 0; i < theValues.NX(); i++)
       {
         tmpHeight = theHeights[j];
-        tmpValue = GetValueAtHeight(paramValues, heightValues, tmpHeight, i, interp);
+        tmpValue = GetValueAtHeight(paramValues, heightValues, tmpHeight, i, interp, *this);
         theValues[i][j] = tmpValue;
       }
     }
@@ -4067,7 +4074,7 @@ void NFmiFastQueryInfo::RouteCrossSectionValues(NFmiDataMatrix<float> &theValues
       for (unsigned int i = 0; i < theValues.NX(); i++)
       {
         tmpHeight = theHeights[j];
-        tmpValue = GetValueAtHeight(paramValues, heightValues, tmpHeight, i, interp);
+        tmpValue = GetValueAtHeight(paramValues, heightValues, tmpHeight, i, interp, *this);
         theValues[i][j] = tmpValue;
       }
     }
@@ -4147,7 +4154,7 @@ void NFmiFastQueryInfo::FlightRouteValues(NFmiDataMatrix<float> &theValues,
     for (unsigned int i = 0; i < theValues.NX(); i++)
     {
       tmpHeight = theHeights[i];
-      tmpValue = GetValueAtHeight(paramValues, heightValues, tmpHeight, i, interp);
+      tmpValue = GetValueAtHeight(paramValues, heightValues, tmpHeight, i, interp, *this);
       theValues[i][0] = tmpValue;
     }
   }
