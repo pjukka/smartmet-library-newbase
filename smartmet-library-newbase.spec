@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 18.4.7
+Version: 1
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -79,6 +79,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Upcoming
+- GetValueAtHeight(): using ModLinear interpolation for kFmiWindDirection and kFmiWaveDirection
+
 * Sat Apr  7 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.4.7-1.fmi
 - Upgrade to boost 1.66
 
