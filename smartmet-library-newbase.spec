@@ -81,6 +81,7 @@ FMI newbase static library
 %changelog
 * Upcoming
 - GetValueAtHeight(): using ModLinear interpolation for kFmiWindDirection and kFmiWaveDirection
+- PressureValue(P): fixed factor for ModLinear interpolation
 
 * Sat Apr  7 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.4.7-1.fmi
 - Upgrade to boost 1.66

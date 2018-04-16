@@ -2935,7 +2935,7 @@ float NFmiFastQueryInfo::PressureLevelValue(float P)
         auto param = static_cast<FmiParameterName>(Param().GetParamIdent());
         if (param == kFmiWindDirection || param == kFmiWaveDirection)
         {
-          float factor = ::fabs(P - lastPressure) / ::fabs(lastPressure - pressureValue);
+          float factor = 1. - (::fabs(P - lastPressure) / ::fabs(lastPressure - pressureValue));
           value = static_cast<float>(NFmiInterpolation::ModLinear(factor, value1, value2, 360));
         }
         else
