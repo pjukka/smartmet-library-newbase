@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 1
+Version: 18.4.16
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -79,8 +79,8 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
-* Upcoming
-- GetValueAtHeight(): using ModLinear interpolation for kFmiWindDirection and kFmiWaveDirection
+* Mon Apr 16 2018 Pertti Kinnia <pertti.kinnia@fmi.fi> - 18.4.16-1.fmi
+- GetValueAtHeight(): using ModLinear interpolation for wind direction
 - PressureValue(P): fixed factor for ModLinear interpolation
 
 * Sat Apr  7 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.4.7-1.fmi
