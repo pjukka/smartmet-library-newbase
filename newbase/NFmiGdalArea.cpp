@@ -254,7 +254,13 @@ NFmiArea *NFmiGdalArea::Clone() const { return new NFmiGdalArea(*this); }
  */
 // ----------------------------------------------------------------------
 
-const std::string NFmiGdalArea::AreaStr() const { return "WGS84:" + itsDescription; }
+const std::string NFmiGdalArea::AreaStr() const
+{
+  std::ostringstream out;
+  out << "WGS84:" << itsDescription << "|" << BottomLeftLatLon().X() << ","
+      << BottomLeftLatLon().Y() << "," << TopRightLatLon().X() << "," << TopRightLatLon().Y();
+  return out.str();
+}
 // ----------------------------------------------------------------------
 /*!
  * \brief Datum
