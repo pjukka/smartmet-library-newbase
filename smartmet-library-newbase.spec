@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 18.4.16
+Version: 18.4.19
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -79,6 +79,10 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Thu Apr 19 2018 Pertti Kinnia <pertti.kinnia@fmi.fi> - 18.4.19-1.fmi
+- NFmiGdalArea::AreaStr(): Return bbox at the end of projection string
+- AreaFactory::Create(): Fixed parsing for NFmiGdalArea projection string (BS-1140)
+
 * Mon Apr 16 2018 Pertti Kinnia <pertti.kinnia@fmi.fi> - 18.4.16-1.fmi
 - GetValueAtHeight(): using ModLinear interpolation for wind direction
 - PressureValue(P): fixed factor for ModLinear interpolation
