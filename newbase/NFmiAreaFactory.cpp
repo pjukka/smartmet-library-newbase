@@ -252,6 +252,29 @@ boost::shared_ptr<NFmiArea> Create(const std::string &theProjection)
   NFmiStringTools::TrimAll(
       projection);  // siivotaan mahdolliset etu ja taka white spacet pois ettei sotke parserointia
 
+  // NFmiGdalArea's projection string starts with FMI{:|} or WGS84{:|}, and area definition at the
+  // end is delimited with pipe, thus resulting pipe to be used as the separator below. Replace
+  // possible pipe delimiter at the start with colon, because parsing must see the projection part
+  // upto the area as one comma separated string.
+  //
+  // FMI:PROJCS["unnamed",GEOGCS[...|0.237,51.849,49.662,71.161
+  // WGS84:PROJCS["unnamed",GEOGCS[...|0.237,51.849,49.662,71.161
+ 
+  bool gdalArea = false;
+
+#ifndef DISABLED_GDAL
+  if ((projection.substr(0, 4) == "FMI:") || (projection.substr(0, 6) == "WGS84:") ||
+      (projection.substr(0, 4) == "FMI|") || (projection.substr(0, 6) == "WGS84|"))
+  {
+    if (projection.substr(0, 3) == "FMI")
+      projection = "FMI:" + projection.substr(4);
+    else
+      projection = "WGS84:" + projection.substr(6);
+
+    gdalArea = true;
+  }
+#endif
+
   const char *separator = ":";
   if (projection.find('|') != std::string::npos) separator = "|";
 
@@ -309,8 +332,9 @@ boost::shared_ptr<NFmiArea> Create(const std::string &theProjection)
 
     vector<double> pvec;
 
-    for (list<string>::const_iterator it = pparts.begin(); it != pparts.end(); ++it)
-      pvec.push_back(NFmiStringTools::Convert<double>(*it));
+    if (!gdalArea)
+      for (list<string>::const_iterator it = pparts.begin(); it != pparts.end(); ++it)
+        pvec.push_back(NFmiStringTools::Convert<double>(*it));
 
     // fixate gvec to size 4
 
@@ -440,12 +464,14 @@ boost::shared_ptr<NFmiArea> Create(const std::string &theProjection)
       if (proj.substr(0, 4) == "FMI:")
       {
         datum = "FMI";
-        proj = proj.substr(4, std::string::npos);
+        proj = projection.substr(4, std::string::npos);
       }
       else if (proj.substr(0, 6) == "WGS84:")
       {
-        proj = proj.substr(6, std::string::npos);
+        proj = projection.substr(6, std::string::npos);
       }
+      else
+        proj = projection;
       area.reset(
           new NFmiGdalArea(datum, proj, bottomleft, topright, corner1, corner2, usePacificView));
     }
