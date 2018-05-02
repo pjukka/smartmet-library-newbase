@@ -141,6 +141,7 @@ $(ALIBFILE): $(OBJS)
 clean:
 	rm -f $(LIBFILE) $(ALIBFILE) *~ $(SUBNAME)/*~
 	rm -rf $(objdir)
+	rm -f test/*Test
 
 format:
 	clang-format -i -style=file $(SUBNAME)/*.h $(SUBNAME)/*.cpp test/*.cpp

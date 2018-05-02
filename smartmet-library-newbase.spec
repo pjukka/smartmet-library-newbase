@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 18.4.19
+Version: 18.5.2
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -79,6 +79,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Wed May  2 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.5.2-1.fmi
+- Optimized NFmiEnumConverter for speed
+
 * Thu Apr 19 2018 Pertti Kinnia <pertti.kinnia@fmi.fi> - 18.4.19-1.fmi
 - NFmiGdalArea::AreaStr(): Return bbox at the end of projection string
 - AreaFactory::Create(): Fixed parsing for NFmiGdalArea projection string (BS-1140)
