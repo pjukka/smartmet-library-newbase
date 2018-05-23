@@ -350,11 +350,11 @@ class _FMI_DLL NFmiFastQueryInfo : public NFmiQueryInfo
                               const NFmiGrid &theWantedGrid,
                               const NFmiMetTime &theInterpolatedTime,
                               float wantedPressureLevel);
-  virtual void PressureValues(NFmiDataMatrix<float> &theValues,
-                              const NFmiGrid &theWantedGrid,
-                              const NFmiMetTime &theInterpolatedTime,
-                              float wantedPressureLevel,
-                              bool relative_uv);
+  void PressureValues(NFmiDataMatrix<float> &theValues,
+                      const NFmiGrid &theWantedGrid,
+                      const NFmiMetTime &theInterpolatedTime,
+                      float wantedPressureLevel,
+                      bool relative_uv);
   // Tämä hakee hilan sellaisenaan (datan originaali hila ja alue) halutulle korkeudelle [m].
   // Jos haluat lentopinnoille dataa (Flight Level) on lentopinta -> metri kerroin = 30.5
   // eli esim. lentopinta 50 saadaan laskulla 50 * 30.5 eli 1525 [m].
