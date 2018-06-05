@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 18.5.24
+Version: 18.6.5
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -80,6 +80,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Tue Jun  5 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.6.5-1.fmi
+- Three new parameters: ProbabilityOfGustLimit1Aggregation1, ProbabilityOfPrecLimit1Aggregation1, ProbabilityOfHailLimit1Aggregation1
+
 * Thu May 24 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.5.24-1.fmi
 - Optimized rotated latlon conversions for speed
 
