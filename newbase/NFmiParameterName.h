@@ -1297,6 +1297,9 @@ enum FmiParameterName
   kFmiDirectNormalIrradianceAccumulation,
   kFmiPrecipitationForm4,
   kFmiGrowingDegreeDays,
+  kProbabilityOfGustLimit1Aggregation1, // probabilities that are aggregated somehow (f.ex. time/area)
+  kProbabilityOfPrecLimit1Aggregation1,
+  kProbabilityOfHailLimit1Aggregation1,
 
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 
