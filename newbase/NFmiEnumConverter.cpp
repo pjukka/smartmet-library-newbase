@@ -1069,6 +1069,7 @@ void NFmiEnumConverter::Impl::initParamNames()
       { "PseudoAdiabaticPotentialTemperature", kFmiPseudoAdiabaticPotentialTemperature},
       { "QNH", kFmiQNH},
       { "QOL", kFmiQOL},
+      { "RadarPrecipitation1d", kFmiRadarPrecipitation1d},
       { "RadarBorder", kFmiRadarBorder},
       { "RadarLayer", kFmiRadarLayer},
       { "RadarLevelType", kFmiRadarLevelType},
