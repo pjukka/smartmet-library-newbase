@@ -80,7 +80,7 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
-* Tue Jun  6 2018 Mikko Parviainen <mikko.parviainen@fmi.fi> - 18.6.6-1.fmi
+* Wed Jun  6 2018 Mikko Parviainen <mikko.parviainen@fmi.fi> - 18.6.6-1.fmi
 - New parameter: RadarPrecipitation1d
 
 * Tue Jun  5 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.6.5-1.fmi
