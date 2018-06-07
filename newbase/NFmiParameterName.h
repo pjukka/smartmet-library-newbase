@@ -114,6 +114,7 @@ enum FmiParameterName
   kFmiIceContent = 96,
 
   kFmiThickness = 101,
+  kFmiWaterTemperature = 102,
 
   kFmiRadarPrecipitation1d = 107,
   kFmiRadarBorder = 108,  // is the point at the border of two radar measurements
@@ -1298,7 +1299,8 @@ enum FmiParameterName
   kFmiDirectNormalIrradianceAccumulation,
   kFmiPrecipitationForm4,
   kFmiGrowingDegreeDays,
-  kProbabilityOfGustLimit1Aggregation1, // probabilities that are aggregated somehow (f.ex. time/area)
+  kProbabilityOfGustLimit1Aggregation1,  // probabilities that are aggregated somehow (f.ex.
+                                         // time/area)
   kProbabilityOfPrecLimit1Aggregation1,
   kProbabilityOfHailLimit1Aggregation1,
 

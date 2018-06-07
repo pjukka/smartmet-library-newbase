@@ -3,7 +3,7 @@
 %define SPECNAME smartmet-library-%{DIRNAME}
 Summary: newbase library
 Name: %{SPECNAME}
-Version: 18.6.6
+Version: 18.6.7
 Release: 1%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
@@ -80,6 +80,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Thu Jun  7 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.6.7-1.fmi
+- New parameter: WaterTemperature
+
 * Wed Jun  6 2018 Mikko Parviainen <mikko.parviainen@fmi.fi> - 18.6.6-1.fmi
 - New parameter: RadarPrecipitation1d
 

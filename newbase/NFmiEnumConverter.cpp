@@ -1503,6 +1503,7 @@ void NFmiEnumConverter::Impl::initParamNames()
       { "WaterEquivalentOfSnow", kFmiWaterEquivalentOfSnow},
       { "WaterLevelIndex", kFmiWaterLevelIndex},
       { "WaterStorage", kFmiWaterStorage},
+      { "WaterTemperature", kFmiWaterTemperature},
       { "WaterVapourBrightnessTemperature", kFmiWaterVapourBrightnessTemperature},
       { "WaterVapourBrightnessTemperatureIncludingCloudCorrection", kFmiWaterVapourBrightnessTemperatureIncludingCloudCorrection},
       { "WaveDirection", kFmiWaveDirection},
