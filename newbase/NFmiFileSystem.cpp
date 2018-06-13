@@ -44,15 +44,13 @@
 
 #include <cassert>
 
-#ifdef BOOST
-// Finding files is implemented in Linux using boost filesystem & regex
 #include <boost/algorithm/string/predicate.hpp>  //Lasse
 #include <boost/filesystem/convenience.hpp>
 #include <boost/filesystem/path.hpp>
 #include <boost/regex.hpp>
-#endif
 
-extern "C" {
+extern "C"
+{
 #include <sys/stat.h>
 #include <sys/types.h>
 
@@ -108,7 +106,7 @@ static bool IsWinDir(const struct _finddata_t &fileinfo)
  */
 // ----------------------------------------------------------------------
 
-#ifdef BOOST
+#ifdef UNIX
 namespace Unix
 {
 // ----------------------------------------------------------------------
@@ -175,9 +173,9 @@ string regex_of_msdos_pattern(const string &theMsPattern)
 }
 
 }  // namespace Unix
-#endif
 
-#ifndef UNIX
+#else   // #ifdef UNIX
+
 // Tein winkkari puolelle FMI-versiot findfirst, findnext ja findclose -funktioista, koska
 // haluan napata kaikki mahdolliset poikkeukset kiinni ja jatkaa kuten virhetilanteessa normaalisti.
 // Nyt olen törmännyt monesti SmartMetin kanssa että ohjelma on vain kaatunut käydessään läpi jotain
@@ -217,7 +215,7 @@ int FmiFindClose(intptr_t handle)
     return -1;
   }
 }
-#endif
+#endif  // #ifdef UNIX
 
 namespace NFmiFileSystem
 {
@@ -817,8 +815,6 @@ const std::list<std::string> PatternFiles(const std::string &thePattern)
 {
   list<string> out;
 
-#ifdef BOOST
-
   namespace fs = boost::filesystem;
 
   // Conversion to Boost type searching
@@ -844,25 +840,6 @@ const std::list<std::string> PatternFiles(const std::string &thePattern)
         out.emplace_back(it->path().filename().string().c_str());
       }
   }
-
-#else
-
-  struct _finddata_t fileinfo;
-  intptr_t handle;
-  if ((handle = FmiFindFirst(const_cast<char *>(thePattern.c_str()), &fileinfo)) != -1)
-  {
-    if (!::IsWinDir(fileinfo))  // ei ole hakemisto
-      out.push_back(string(fileinfo.name));
-  }
-  else  // jos find_first ei löytänyt mitään ja mentiin silti find_next:iin, käätui XP:ssä
-        // rakennettu juttu NT4:ssa
-    return out;
-  while (!FmiFindNext(handle, &fileinfo))
-    if (!::IsWinDir(fileinfo))  // ei ole hakemisto
-      out.push_back(string(fileinfo.name));
-  FmiFindClose(handle);
-
-#endif
 
   return out;
 }
@@ -951,7 +928,6 @@ const std::list<std::string> Directories(const std::string &thePath)
 {
   list<string> out;
 
-#ifdef BOOST
   namespace fs = boost::filesystem;
 
   // Safety checks
@@ -969,30 +945,6 @@ const std::list<std::string> Directories(const std::string &thePath)
       out.emplace_back(it->path().filename().string().c_str());
     }
   }
-
-#else
-
-  std::string usedPath(thePath);
-  usedPath += "/*";
-  //	NFmiStringTools::TrimR(usedPath, '\\');
-  //	NFmiStringTools::TrimR(usedPath, '/');
-
-  struct _finddata_t fileinfo;
-  intptr_t handle;
-  if ((handle = FmiFindFirst(const_cast<char *>(usedPath.c_str()), &fileinfo)) != -1)
-  {
-    if (::IsWinDir(fileinfo))  // jos on hakemisto
-      out.push_back(string(fileinfo.name));
-  }
-  else  // jos find_first ei löytänyt mitään ja mentiin silti find_next:iin, käätui XP:ssä
-        // rakennettu juttu NT4:ssa
-    return out;
-  while (!FmiFindNext(handle, &fileinfo))
-    if (::IsWinDir(fileinfo))  // jos on hakemisto
-      out.push_back(string(fileinfo.name));
-  FmiFindClose(handle);
-
-#endif
 
   return out;
 }
@@ -1018,7 +970,6 @@ time_t FindFile(const string &theFileFilter,
                 bool fSearchNewest,
                 string *theFoundFileName /*RELATIVE, NO PATH!*/)
 {
-#ifdef BOOST
   namespace fs = boost::filesystem;
 
   // Collect matches into a modification time sorted map
@@ -1059,40 +1010,6 @@ time_t FindFile(const string &theFileFilter,
     if (theFoundFileName != nullptr) *theFoundFileName = it->second;
     return it->first;
   }
-#else
-  struct _finddata_t fileinfo;
-  intptr_t handle;
-  time_t currentTime = 0;
-
-  if ((handle = FmiFindFirst(const_cast<char *>(theFileFilter.c_str()), &fileinfo)) != -1)
-  {
-    if (!::IsWinDir(fileinfo))  // ei ole hakemisto
-    {
-      *theFoundFileName = fileinfo.name;
-      currentTime = fileinfo.time_write;  // time_write, time_create, time_access
-    }
-  }
-  else
-  {
-    *theFoundFileName = "";
-    return 0;
-  }
-
-  while (!FmiFindNext(handle, &fileinfo))
-  {
-    if (!::IsWinDir(fileinfo))  // ei ole hakemisto
-    {
-      if ((fSearchNewest && (currentTime < fileinfo.time_write)) ||
-          (!fSearchNewest && (currentTime > fileinfo.time_write)))
-      {
-        currentTime = fileinfo.time_write;
-        *theFoundFileName = fileinfo.name;
-      }
-    }
-  }
-  FmiFindClose(handle);
-  return currentTime;
-#endif
 }
 
 // ----------------------------------------------------------------------
@@ -1500,11 +1417,7 @@ string FindQueryData(const string &thePath)
     const string &name = *f;
 
     if (!name.empty() && name[0] == '.') continue;
-#ifdef BOOST
     bool ok = (boost::iends_with(name, ".sqd") || boost::iends_with(name, ".fqd"));
-#else
-    bool ok = true;
-#endif
 
 #ifdef FMI_COMPRESSION
     if (!ok)
@@ -1540,11 +1453,7 @@ string FindQueryData(const string &thePath)
 
 bool IsCompressed(const string &theName)
 {
-#ifdef BOOST
   return (boost::iends_with(theName, ".gz") || boost::iends_with(theName, ".bz2"));
-#else
-  return false;
-#endif
 }
 
 // Tarkoitus on tehdä annetusta theOrigPath-parametrista absoluuttinen polku.
