@@ -41,12 +41,10 @@
 #include <stdexcept>
 // abort()
 
-#ifdef FMI_COMPRESSION
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
-#endif
 
 // Mika: isspace on määritelty ctypessä
 #ifdef UNIX
@@ -580,7 +578,6 @@ NFmiQueryInfo::NFmiQueryInfo(const string &filename)
   ifstream file(filename.c_str(), ios::in | ios::binary);
   if (!file) throw runtime_error("Could not open '" + filename + "' for reading");
 
-#ifdef FMI_COMPRESSION
   if (NFmiFileSystem::IsCompressed(filename))
   {
     using namespace boost;
@@ -599,10 +596,6 @@ NFmiQueryInfo::NFmiQueryInfo(const string &filename)
     Read(file);
     if (!file.good()) throw runtime_error("Error while reading '" + filename + "'");
   }
-#else
-  Read(file);
-  if (!file.good()) throw runtime_error("Error while reading '" + filename + "'");
-#endif
 }
 
 // ----------------------------------------------------------------------

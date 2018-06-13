@@ -1419,11 +1419,10 @@ string FindQueryData(const string &thePath)
     if (!name.empty() && name[0] == '.') continue;
     bool ok = (boost::iends_with(name, ".sqd") || boost::iends_with(name, ".fqd"));
 
-#ifdef FMI_COMPRESSION
     if (!ok)
       ok = (boost::iends_with(name, ".sqd.gz") || boost::iends_with(name, ".fqd.gz") ||
             boost::iends_with(name, ".sqd.bz2") || boost::iends_with(name, ".fqd.bz2"));
-#endif
+
     if (ok)
     {
       string fullpath = thePath + '/' + name;
