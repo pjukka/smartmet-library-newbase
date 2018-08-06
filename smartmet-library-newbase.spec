@@ -82,6 +82,7 @@ FMI newbase static library
 %changelog
 * Mon Aug  6 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.8.6-1.fmi
 - Fixed NFmiVoidPtrList destructor not to call derived class Clear()
+- New parameter InstantaneousWindGust
 
 * Thu Aug  2 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.8.2-1.fmi
 - Fixed constructors/destructors not to call virtual methods
