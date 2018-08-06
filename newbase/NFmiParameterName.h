@@ -1305,6 +1305,7 @@ enum FmiParameterName
   kProbabilityOfHailLimit1Aggregation1,
 
   kFmiInstantaneousWindGust,
+  kFmiCAPEShear,
 
   // Add a bunch of extreme fractile parameters (on the high and low end of the distribution)
 

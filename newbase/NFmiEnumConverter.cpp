@@ -325,6 +325,7 @@ void NFmiEnumConverter::Impl::initParamNames()
       { "CAPEF95", kFmiCAPEF95 },
       { "CAPEF97.5", kFmiCAPEF97_5 },
       { "CAPEF99", kFmiCAPEF99 },
+      { "CAPEShear", kFmiCAPEShear },
       { "CAPPIHeight", kFmiCAPPIHeight },
       { "CH112", kFmiCH112 },
       { "CIN", kFmiCIN },
