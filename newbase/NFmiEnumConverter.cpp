@@ -921,6 +921,7 @@ void NFmiEnumConverter::Impl::initParamNames()
       { "ProbabilityOfGustLimit5", kFmiProbabilityOfGustLimit5},
       { "ProbabilityOfGustLimit1Aggregation1", kProbabilityOfGustLimit1Aggregation1},
       { "ProbabilityOfHailLimit1Aggregation1", kProbabilityOfHailLimit1Aggregation1},
+      { "InstantaneousWindGust", kFmiInstantaneousWindGust},
       { "ProbabilityOfHeatLimit1", kFmiProbabilityOfHeatLimit1},
       { "ProbabilityOfHeatLimit2", kFmiProbabilityOfHeatLimit2},
       { "ProbabilityOfHeatLimit3", kFmiProbabilityOfHeatLimit3},
