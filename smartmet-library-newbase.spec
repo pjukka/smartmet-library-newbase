@@ -4,7 +4,7 @@
 Summary: newbase library
 Name: %{SPECNAME}
 Version: 18.8.6
-Release: 1%{?dist}.fmi
+Release: 2%{?dist}.fmi
 License: MIT
 Group: Development/Libraries
 URL: https://github.com/fmidev/smartmet-library-newbase
@@ -80,6 +80,9 @@ FMI newbase static library
 %{_libdir}/libsmartmet-%{DIRNAME}.a
 
 %changelog
+* Mon Aug  6 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.8.6-2.fmi
+- New parameter CAPEShear
+
 * Mon Aug  6 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 18.8.6-1.fmi
 - Fixed NFmiVoidPtrList destructor not to call derived class Clear()
 - New parameter InstantaneousWindGust
