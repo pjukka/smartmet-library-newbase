@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: fmidev/rpmbuild:el7
-      - entrypoint: bash
+        entrypoint: bash
     steps:
       - checkout
       - run:
