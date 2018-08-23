@@ -12,5 +12,8 @@ jobs:
       - run:
           name: Make rpm
           command: make rpm
+      - run:
+          name: Move artifacts
+          command: sudo cp -av /home/rpmbuild/rpmbuild/RPMS /
       - store_artifacts:
-          path: /home/rpmbuild/rpmbuild/RPMS/x86_64/
+          path: /RPMS
