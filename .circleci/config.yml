@@ -1,9 +1,14 @@
 version: 2
 jobs:
   build:
-    machine: true
+    docker:
+      - image: fmidev/rpmbuild:el7
+        entrypoint: bash
     steps:
       - checkout
       - run:
-          name: Build
-          command: docker run -h rpmbuild-el7.fmi.fi -v $HOME/project:/home/rpmbuild/rpmbuild/SOURCES/$CIRCLE_PROJECT_REPONAME --rm fmidev/rpmbuild:el7 $CIRCLE_PROJECT_REPONAME 
+          name: Install dependencies
+          command: sudo yum-builddep -y *.spec 
+      - run:
+          name: Make rpm
+          command: make rpm
