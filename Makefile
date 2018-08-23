@@ -79,6 +79,8 @@ CFLAGS         = $(DEFINES) $(FLAGS) $(FLAGS_RELEASE) -DNDEBUG -O2 -g
 CFLAGS_DEBUG   = $(DEFINES) $(FLAGS) $(FLAGS_DEBUG)   -Werror  -Og -g
 CFLAGS_PROFILE = $(DEFINES) $(FLAGS) $(FLAGS_PROFILE) -DNDEBUG -O2 -g -pg
 
+CFLAGS0        = $(DEFINES) $(FLAGS) $(FLAGS_RELEASE) -DNDEBUG -O0 -g
+
 LIBS = -L$(libdir) \
 	-lfmt \
 	-lboost_date_time \
@@ -105,10 +107,12 @@ ARFLAGS = -r
 
 ifneq (,$(findstring debug,$(MAKECMDGOALS)))
   CFLAGS = $(CFLAGS_DEBUG)
+  CFLAGS0 = $(CFLAGS_DEBUG)
 endif
 
 ifneq (,$(findstring profile,$(MAKECMDGOALS)))
   CFLAGS = $(CFLAGS_PROFILE)
+  CFLAGS0 = $(CFLAGS_PROFILE)
 endif
 
 # Compilation directories
@@ -180,6 +184,9 @@ modernize:
 
 obj/%.o: %.cpp
 	$(CXX) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+
+obj/NFmiEnumConverter.o: NFmiEnumConverter.cpp
+	$(CXX) $(CFLAGS0) $(INCLUDES) -c -o $@ $<
 
 ifneq ($(wildcard obj/*.d),)
 -include $(wildcard obj/*.d)
