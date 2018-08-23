@@ -24,4 +24,4 @@ bool FindTimeIndicesForGivenTimeRange(const boost::shared_ptr<NFmiFastQueryInfo>
 bool FindMovingSoundingDataTime(const boost::shared_ptr<NFmiFastQueryInfo> &theInfo,
                                 const NFmiMetTime &theTime,
                                 NFmiLocation &theLocation);
-}
+}  // namespace NFmiFastInfoUtils

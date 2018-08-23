@@ -29,8 +29,8 @@ class _FMI_DLL NFmiParamDataModifier : public NFmiDataModifier
   virtual bool BoolOperation(float);
   virtual float FloatOperation(float theValue);
 
-  using NFmiDataModifier::CalculationResult;
   using NFmiDataModifier::Calculate;
+  using NFmiDataModifier::CalculationResult;
 
   virtual float CalculationResult(void);
   virtual void Calculate(float);

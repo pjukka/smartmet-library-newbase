@@ -18,7 +18,8 @@
 #include "NFmiGlobals.h"
 #include "NFmiStringTools.h"
 
-extern "C" {
+extern "C"
+{
 #include <sys/timeb.h>
 }
 

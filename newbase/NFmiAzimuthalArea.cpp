@@ -130,13 +130,13 @@ NFmiAzimuthalArea::NFmiAzimuthalArea(const NFmiAzimuthalArea &theAzimuthalArea)
     = default;
 
 /*!
-* Constructor
-*
-* \param theCenterLatLon Undocumented
-* \param theRadialRangeInMeters Undocumented
-* \param theTopLeftXY Undocumented
-* \param theBottomRightXY Undocumented
-*/
+ * Constructor
+ *
+ * \param theCenterLatLon Undocumented
+ * \param theRadialRangeInMeters Undocumented
+ * \param theTopLeftXY Undocumented
+ * \param theBottomRightXY Undocumented
+ */
 NFmiAzimuthalArea::NFmiAzimuthalArea(double theRadialRangeInMeters,
                                      const NFmiPoint &theCenterLatLon,
                                      const NFmiPoint &theTopLeftXY,
@@ -907,7 +907,7 @@ std::size_t NFmiAzimuthalArea::HashValue() const
   boost::hash_combine(hash, itsCentralLatitude.HashValue());
   boost::hash_combine(hash, itsTrueLatitude.HashValue());
   boost::hash_combine(hash, boost::hash_value(itsTrueLatScaleFactor));
-  
+
   return hash;
 }
 

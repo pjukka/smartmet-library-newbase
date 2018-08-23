@@ -329,15 +329,13 @@ bool NFmiTimeBag::FindNearestTime(const NFmiMetTime &theTime,
       if (CurrentTime() > theTime)
       {
         if (theDirection == kForward)
-          return (noTimeRange ||
-                  CurrentTime().DifferenceInMinutes(theTime) <=
-                      static_cast<long>(theTimeRangeInMinutes));
+          return (noTimeRange || CurrentTime().DifferenceInMinutes(theTime) <=
+                                     static_cast<long>(theTimeRangeInMinutes));
         if (theDirection == kBackward)
         {
           Previous();
-          return (noTimeRange ||
-                  theTime.DifferenceInMinutes(CurrentTime()) <=
-                      static_cast<long>(theTimeRangeInMinutes));
+          return (noTimeRange || theTime.DifferenceInMinutes(CurrentTime()) <=
+                                     static_cast<long>(theTimeRangeInMinutes));
         }
         // finds the nearest time to theTime (e.g. theDirection == kCenter)
         long deltaT2 = CurrentTime().DifferenceInMinutes(theTime);

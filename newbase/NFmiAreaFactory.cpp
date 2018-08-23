@@ -202,7 +202,7 @@ double degrees_from_projparam(const string &inParam)
     throw runtime_error(errStr);
   }
 }
-}
+}  // namespace
 
 namespace NFmiAreaFactory
 {
@@ -259,7 +259,7 @@ boost::shared_ptr<NFmiArea> Create(const std::string &theProjection)
   //
   // FMI:PROJCS["unnamed",GEOGCS[...|0.237,51.849,49.662,71.161
   // WGS84:PROJCS["unnamed",GEOGCS[...|0.237,51.849,49.662,71.161
- 
+
   bool gdalArea = false;
 
 #ifndef DISABLED_GDAL

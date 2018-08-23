@@ -160,9 +160,8 @@ bool FindMovingSoundingDataTime(const boost::shared_ptr<NFmiFastQueryInfo> &theI
       }
     }
   }
-  if (minDistance <
-      1000 * 1000)  // jos liikkuva luotaus paikka lˆytyi v‰hint‰in 1000 km s‰teelt‰ hiiren
-                    // klikkauspaikasta, otetaan kyseinen luotaus piirtoon
+  if (minDistance < 1000 * 1000)  // jos liikkuva luotaus paikka lˆytyi v‰hint‰in 1000 km s‰teelt‰
+                                  // hiiren klikkauspaikasta, otetaan kyseinen luotaus piirtoon
   {
     theInfo->TimeIndex(minDistTimeInd);
     // pit‰‰ lis‰ksi asettaa locationiksi luotauksen alkupiste
@@ -179,4 +178,4 @@ bool FindMovingSoundingDataTime(const boost::shared_ptr<NFmiFastQueryInfo> &theI
 
   return false;
 }
-}
+}  // namespace NFmiFastInfoUtils

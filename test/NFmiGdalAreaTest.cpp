@@ -230,7 +230,7 @@ class tests : public tframe::tests
   }
 };
 
-}  // namespace NFmiGdalAreaTest
+}  // namespace NFmiAreaFactoryTest
 
 //! The main program
 int main(void)
