@@ -7,6 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Create local repo
+          command: createrepo /home/rpmbuild/rpmbuild/RPMS/x86_64
+      - run:
           name: Install dependencies
           command: sudo yum-builddep -y *.spec 
       - run:
