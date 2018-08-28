@@ -85,6 +85,7 @@ LIBS = -L$(libdir) \
 	-lfmt \
 	-lboost_date_time \
 	-lboost_filesystem \
+	-lboost_iostreams \
 	-lboost_regex \
 	-lboost_thread
 ifneq ($(DISABLED_GDAL),yes)
