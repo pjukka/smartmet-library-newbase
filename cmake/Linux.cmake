@@ -15,7 +15,7 @@ else()
     find_package(GDAL REQUIRED)
 endif()
 
-find_package(Boost 1.55.0 REQUIRED COMPONENTS regex thread filesystem system date_time)
+find_package(Boost 1.55.0 REQUIRED COMPONENTS regex thread filesystem iostreams system date_time)
 
 add_compile_options(-std=c++11 -fPIC -MD -Wall -W -Wno-unused-parameter)
 
